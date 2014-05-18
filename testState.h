@@ -29,7 +29,7 @@ class testState final : virtual public gameState {
         int             mouseY = 0;
         shaderProgram   program = {};
         texture2d       tex = {};
-        mesh            testMesh = {};
+        mesh            primMesh = {};
         mesh            textMesh = {};
         matrixStack*    matStack = nullptr;
         math::quat      orientation = {};

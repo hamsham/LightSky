@@ -10,8 +10,9 @@ build/Release/MinGW-Windows/mesh.o: mesh.cpp mesh.h main.h \
  ../hamlibs/include/math/vec3.h ../hamlibs/include/math/matrix4.h \
  ../hamlibs/include/math/vec4.h ../hamlibs/include/math/quat.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
- ../hamlibs/include/math/mat_utils.h bufferObject.h vertexArray.h \
- resource.h meshResource.h
+ ../hamlibs/include/math/mat_utils.h bufferObject.h renderer.h \
+ vertexArray.h vertex.h resource.h meshResource.h textureAtlas.h \
+ fontResource.h texture.h
 
 mesh.h:
 
@@ -59,8 +60,18 @@ main.h:
 
 bufferObject.h:
 
+renderer.h:
+
 vertexArray.h:
+
+vertex.h:
 
 resource.h:
 
 meshResource.h:
+
+textureAtlas.h:
+
+fontResource.h:
+
+texture.h:

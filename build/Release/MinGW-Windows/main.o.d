@@ -10,10 +10,10 @@ build/Release/MinGW-Windows/main.o: main.cpp main.h \
  ../hamlibs/include/math/vec3.h ../hamlibs/include/math/matrix4.h \
  ../hamlibs/include/math/vec4.h ../hamlibs/include/math/quat.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
- ../hamlibs/include/math/mat_utils.h system.h display.h gameState.h \
- testState.h shaderProgram.h shaderObject.h matrixStack.h texture.h \
- vertexArray.h bufferObject.h textureAtlas.h fontResource.h resource.h \
- mesh.h meshResource.h
+ ../hamlibs/include/math/mat_utils.h system.h display.h renderer.h \
+ gameState.h testState.h shaderProgram.h shaderObject.h matrixStack.h \
+ texture.h vertexArray.h bufferObject.h textureAtlas.h fontResource.h \
+ resource.h mesh.h vertex.h meshResource.h
 
 main.h:
 
@@ -61,6 +61,8 @@ system.h:
 
 display.h:
 
+renderer.h:
+
 gameState.h:
 
 testState.h:
@@ -84,5 +86,7 @@ fontResource.h:
 resource.h:
 
 mesh.h:
+
+vertex.h:
 
 meshResource.h:

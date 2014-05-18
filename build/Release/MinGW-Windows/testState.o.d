@@ -12,8 +12,8 @@ build/Release/MinGW-Windows/testState.o: testState.cpp testState.h main.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
  ../hamlibs/include/math/mat_utils.h shaderProgram.h shaderObject.h \
  gameState.h matrixStack.h texture.h vertexArray.h bufferObject.h \
- textureAtlas.h fontResource.h resource.h mesh.h meshResource.h display.h \
- imageResource.h text.h
+ textureAtlas.h fontResource.h resource.h mesh.h renderer.h vertex.h \
+ meshResource.h display.h imageResource.h
 
 testState.h:
 
@@ -81,10 +81,12 @@ resource.h:
 
 mesh.h:
 
+renderer.h:
+
+vertex.h:
+
 meshResource.h:
 
 display.h:
 
 imageResource.h:
-
-text.h:

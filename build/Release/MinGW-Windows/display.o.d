@@ -10,7 +10,7 @@ build/Release/MinGW-Windows/display.o: display.cpp display.h main.h \
  ../hamlibs/include/math/vec3.h ../hamlibs/include/math/matrix4.h \
  ../hamlibs/include/math/vec4.h ../hamlibs/include/math/quat.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
- ../hamlibs/include/math/mat_utils.h
+ ../hamlibs/include/math/mat_utils.h renderer.h
 
 display.h:
 
@@ -55,3 +55,5 @@ main.h:
 ../hamlibs/include/math/vec_utils.h:
 
 ../hamlibs/include/math/mat_utils.h:
+
+renderer.h:

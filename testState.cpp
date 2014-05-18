@@ -77,9 +77,9 @@ out vec2 uvCoords;
 
 void main() {
     vec4 p = mvpMatrix * vec4(inPosVerts, 1.0);
-    const float C = 1;
+    const float C = 1.0;
     const float FAR = 100.0;
-    float pz = log(C * p.z + 1) / log(C * FAR + 1);
+    float pz = -log(C * p.z + 1.0) / log(C * FAR + 1.0);
     
     gl_Position = vec4(p.xy, pz, p.w);
     
@@ -282,7 +282,7 @@ bool testState::onStart() {
     
     if (    pLoader == nullptr
     ||      !pLoader->loadTriangle()
-    ||      !testMesh.init(*pLoader, 0)
+    ||      !primMesh.init(*pLoader, 0)
     ||      matStack == nullptr
     ||      !imgFile.loadFile("test_img.jpg")
     ||      !tex.init(0, GL_RGB, imgFile.getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, imgFile.getData())
@@ -344,7 +344,8 @@ bool testState::onStart() {
     }
     LOG_GL_ERR();
     
-    //glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_CULL_FACE);
     
     return true;
 }
@@ -355,7 +356,7 @@ bool testState::onStart() {
 void testState::onStop() {
     delete matStack;
     matStack = nullptr;
-    testMesh.terminate();
+    primMesh.terminate();
     textMesh.terminate();
     tex.terminate();
 }
@@ -402,7 +403,7 @@ void testState::drawScene() {
         mvpId = program.getUniformLocation("mvpMatrix");
         program.setUniformValue(mvpId, matStack->getMvpMatrix());
         tex.bind();
-        testMesh.draw();
+        primMesh.draw();
         tex.unbind();
 
         matStack->popMatrix(matrix_type::MODEL_MATRIX);

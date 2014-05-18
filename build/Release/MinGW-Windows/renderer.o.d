@@ -1,4 +1,4 @@
-build/Release/MinGW-Windows/system.o: system.cpp main.h \
+build/Release/MinGW-Windows/renderer.o: renderer.cpp renderer.h main.h \
  ../hamlibs/include/utils/assert.h \
  ../hamlibs/include/utils/../defs/preprocessor.h \
  ../hamlibs/include/utils/timeObject.h ../hamlibs/include/utils/hash.h \
@@ -10,8 +10,9 @@ build/Release/MinGW-Windows/system.o: system.cpp main.h \
  ../hamlibs/include/math/vec3.h ../hamlibs/include/math/matrix4.h \
  ../hamlibs/include/math/vec4.h ../hamlibs/include/math/quat.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
- ../hamlibs/include/math/mat_utils.h system.h display.h renderer.h \
- gameState.h
+ ../hamlibs/include/math/mat_utils.h
+
+renderer.h:
 
 main.h:
 
@@ -54,11 +55,3 @@ main.h:
 ../hamlibs/include/math/vec_utils.h:
 
 ../hamlibs/include/math/mat_utils.h:
-
-system.h:
-
-display.h:
-
-renderer.h:
-
-gameState.h:

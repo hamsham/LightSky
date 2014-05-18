@@ -1,6 +1,5 @@
-build/Release/MinGW-Windows/text.o: text.cpp text.h vertexArray.h \
- bufferObject.h textureAtlas.h fontResource.h main.h \
- ../hamlibs/include/utils/assert.h \
+build/Release/MinGW-Windows/text.o: text.cpp text.h bufferObject.h \
+ renderer.h main.h ../hamlibs/include/utils/assert.h \
  ../hamlibs/include/utils/../defs/preprocessor.h \
  ../hamlibs/include/utils/timeObject.h ../hamlibs/include/utils/hash.h \
  ../hamlibs/include/utils/randomNum.h ../hamlibs/include/math/math.h \
@@ -11,17 +10,14 @@ build/Release/MinGW-Windows/text.o: text.cpp text.h vertexArray.h \
  ../hamlibs/include/math/vec3.h ../hamlibs/include/math/matrix4.h \
  ../hamlibs/include/math/vec4.h ../hamlibs/include/math/quat.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
- ../hamlibs/include/math/mat_utils.h resource.h texture.h
+ ../hamlibs/include/math/mat_utils.h textureAtlas.h fontResource.h \
+ resource.h texture.h vertex.h vertexArray.h
 
 text.h:
 
-vertexArray.h:
-
 bufferObject.h:
 
-textureAtlas.h:
-
-fontResource.h:
+renderer.h:
 
 main.h:
 
@@ -65,6 +61,14 @@ main.h:
 
 ../hamlibs/include/math/mat_utils.h:
 
+textureAtlas.h:
+
+fontResource.h:
+
 resource.h:
 
 texture.h:
+
+vertex.h:
+
+vertexArray.h:

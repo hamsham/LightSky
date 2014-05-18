@@ -203,13 +203,13 @@ bool meshResource::loadTriangle() {
     }
     
     for (unsigned i = 0; i < 3; ++i) {
-        const float theta = HL_TWO_PI * ((float)i / 3.f);
+        const float theta = -HL_TWO_PI * ((float)i / 3.f);
         const float bc = std::cos(theta);
         const float bs = std::sin(theta);
         vertex* const pVert = &vertices[0][i];
             
         pVert->pos = math::vec3{bs, bc, 0.f};
-        pVert->uv = math::vec2{(bs+1.f)*0.5f, (bc+1.f)*0.5f};
+        pVert->uv = math::vec2{(bs*0.5f)+0.5f, (bc*0.5f)+0.5f};
         pVert->norm = math::vec3{0.f, 0.f, 1.f};
         
         LOG_MSG("Loaded pont ", i, '.');
@@ -298,13 +298,13 @@ bool meshResource::loadText(const textureAtlas& ta, const std::string& str) {
             pData->norm = {0.f, 0.f, 1.f};
             ++pData;
             
-            pData->pos = {xOffset+rGlyph.size[0],yOffset, 0.f};
-            pData->uv = {rGlyph.uv[1][0], rGlyph.uv[1][1]};
+            pData->pos = {xOffset, yOffset, 0.f};
+            pData->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
             pData->norm = {0.f, 0.f, 1.f};
             ++pData;
             
-            pData->pos = {xOffset, yOffset, 0.f};
-            pData->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
+            pData->pos = {xOffset+rGlyph.size[0],yOffset, 0.f};
+            pData->uv = {rGlyph.uv[1][0], rGlyph.uv[1][1]};
             pData->norm = {0.f, 0.f, 1.f};
             ++pData;
         }

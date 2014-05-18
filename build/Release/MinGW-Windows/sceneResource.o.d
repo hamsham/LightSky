@@ -1,5 +1,5 @@
-build/Release/MinGW-Windows/system.o: system.cpp main.h \
- ../hamlibs/include/utils/assert.h \
+build/Release/MinGW-Windows/sceneResource.o: sceneResource.cpp \
+ sceneResource.h mesh.h main.h ../hamlibs/include/utils/assert.h \
  ../hamlibs/include/utils/../defs/preprocessor.h \
  ../hamlibs/include/utils/timeObject.h ../hamlibs/include/utils/hash.h \
  ../hamlibs/include/utils/randomNum.h ../hamlibs/include/math/math.h \
@@ -10,8 +10,12 @@ build/Release/MinGW-Windows/system.o: system.cpp main.h \
  ../hamlibs/include/math/vec3.h ../hamlibs/include/math/matrix4.h \
  ../hamlibs/include/math/vec4.h ../hamlibs/include/math/quat.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
- ../hamlibs/include/math/mat_utils.h system.h display.h renderer.h \
- gameState.h
+ ../hamlibs/include/math/mat_utils.h bufferObject.h renderer.h \
+ vertexArray.h vertex.h resource.h
+
+sceneResource.h:
+
+mesh.h:
 
 main.h:
 
@@ -55,10 +59,12 @@ main.h:
 
 ../hamlibs/include/math/mat_utils.h:
 
-system.h:
-
-display.h:
+bufferObject.h:
 
 renderer.h:
 
-gameState.h:
+vertexArray.h:
+
+vertex.h:
+
+resource.h:

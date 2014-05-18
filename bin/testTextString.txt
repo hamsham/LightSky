@@ -1,0 +1,9 @@
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+01234    56789
+~!@#$%^&*()_+
+`{}|:\<>?
+[];',./
+
+The [quick] (brown) fox
+jumped over the slow, lazy dog! :)

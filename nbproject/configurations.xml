@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="94">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>bufferObject.h</itemPath>
+      <itemPath>dataResource.h</itemPath>
+      <itemPath>display.h</itemPath>
+      <itemPath>fontResource.h</itemPath>
+      <itemPath>gameState.h</itemPath>
+      <itemPath>geometry.h</itemPath>
+      <itemPath>imageResource.h</itemPath>
+      <itemPath>main.h</itemPath>
+      <itemPath>matrixStack.h</itemPath>
+      <itemPath>mesh.h</itemPath>
+      <itemPath>meshResource.h</itemPath>
+      <itemPath>renderer.h</itemPath>
+      <itemPath>resource.h</itemPath>
+      <itemPath>sceneResource.h</itemPath>
+      <itemPath>shaderObject.h</itemPath>
+      <itemPath>shaderProgram.h</itemPath>
+      <itemPath>system.h</itemPath>
+      <itemPath>testState.h</itemPath>
+      <itemPath>text.h</itemPath>
+      <itemPath>texture.h</itemPath>
+      <itemPath>textureAtlas.h</itemPath>
+      <itemPath>vertex.h</itemPath>
+      <itemPath>vertexArray.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>bufferObject.cpp</itemPath>
+      <itemPath>dataResource.cpp</itemPath>
+      <itemPath>display.cpp</itemPath>
+      <itemPath>fontResource.cpp</itemPath>
+      <itemPath>gameState.cpp</itemPath>
+      <itemPath>geometry.cpp</itemPath>
+      <itemPath>imageResource.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>matrixStack.cpp</itemPath>
+      <itemPath>mesh.cpp</itemPath>
+      <itemPath>meshResource.cpp</itemPath>
+      <itemPath>renderer.cpp</itemPath>
+      <itemPath>resource.cpp</itemPath>
+      <itemPath>sceneResource.cpp</itemPath>
+      <itemPath>shaderObject.cpp</itemPath>
+      <itemPath>shaderProgram.cpp</itemPath>
+      <itemPath>system.cpp</itemPath>
+      <itemPath>testState.cpp</itemPath>
+      <itemPath>text.cpp</itemPath>
+      <itemPath>texture.cpp</itemPath>
+      <itemPath>textureAtlas.cpp</itemPath>
+      <itemPath>vertex.cpp</itemPath>
+      <itemPath>vertexArray.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <architecture>1</architecture>
+          <standard>8</standard>
+          <incDir>
+            <pElem>../hamlibs/include</pElem>
+            <pElem>C:/mingw/include/freetype2</pElem>
+          </incDir>
+          <commandLine>-ggdb -Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
+          <preprocessorList>
+            <Elem>LS_DEBUG</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>bin/lightsky_d</output>
+          <linkerLibItems>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+            <linkerLibLibItem>FreeImage</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
+                            CT="3"
+                            CN="Release_Win32"
+                            AC="false"
+                            BL="false"
+                            WD="../hamlibs/HamLibs_NetBeans"
+                            BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
+                            CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                            OP="../bin/WIN32/libhamlibs.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
+                        CT="3"
+                        CN="Release_Win32"
+                        AC="false"
+                        BL="false"
+                        WD="../hamlibs/HamLibs_NetBeans"
+                        BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
+                        CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                        OP="../bin/WIN32/libhamlibs.a">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="bufferObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="bufferObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="dataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="dataResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="fontResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="fontResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="gameState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="gameState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="imageResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="imageResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="matrixStack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="matrixStack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mesh.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="meshResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="meshResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="resource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sceneResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="sceneResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="shaderObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="shaderObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="shaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="shaderProgram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="system.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="system.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="testState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="text.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="text.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="texture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="textureAtlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="textureAtlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="vertex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="vertex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="vertexArray.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="vertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <architecture>1</architecture>
+          <standard>8</standard>
+          <incDir>
+            <pElem>../hamlibs/include</pElem>
+            <pElem>C:/mingw/include/freetype2</pElem>
+          </incDir>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>bin/lightsky</output>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+            <linkerLibLibItem>FreeImage</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
+                            CT="3"
+                            CN="Release_Win32"
+                            AC="false"
+                            BL="false"
+                            WD="../hamlibs/HamLibs_NetBeans"
+                            BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
+                            CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                            OP="../bin/WIN32/libhamlibs.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
+                        CT="3"
+                        CN="Release_Win32"
+                        AC="false"
+                        BL="false"
+                        WD="../hamlibs/HamLibs_NetBeans"
+                        BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
+                        CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                        OP="../bin/WIN32/libhamlibs.a">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="bufferObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="bufferObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="dataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="dataResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="fontResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="fontResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="gameState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="gameState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="imageResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="imageResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="matrixStack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="matrixStack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mesh.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="meshResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="meshResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="resource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sceneResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="sceneResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="shaderObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="shaderObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="shaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="shaderProgram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="system.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="system.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="testState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="text.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="text.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="texture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="textureAtlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="textureAtlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="vertex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="vertex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="vertexArray.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="vertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

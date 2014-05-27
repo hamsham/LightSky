@@ -47,7 +47,7 @@ class textureAtlas {
         /**
          * Texture Rectangle used to store the texture atlas.
          */
-        textureRect atlas = {};
+        texture atlas = {tex_desc::TEX_RECT};
         
         /**
          * An array of atlas entries. The UVs for these entries is calculated
@@ -126,14 +126,14 @@ class textureAtlas {
         /**
          * Retrieve the texture rectangle used by *this.
          */
-        const textureRect& getTexture() const {
+        const texture& getTexture() const {
             return atlas;
         }
         
         /**
          * Get the texture object associated with *this
          */
-        textureRect& getTexture() {
+        texture& getTexture() {
             return atlas;
         }
         

@@ -51,7 +51,7 @@ bool textureAtlas::load(const fontResource& ff) {
     
     LOG_MSG(
         "Attempting to load a font atlas.",
-        "\n\tSupported X*Y Size: ", textureRect::getMaxTextureSize(),
+        "\n\tSupported X*Y Size: ", texture::getMaxTextureSize(),
         "\n\tGlyphs Per Row/Col: ", dimensions, " x ", dimensions,
         "\n\tTotal Glyph Count:  ", ff.getNumGlyphs(),
         "\n\tWidth Per Glyph:    ", maxGlyphSize[0],
@@ -95,6 +95,7 @@ bool textureAtlas::load(const fontResource& ff) {
             
             const float fDimension = (float)dimensions;
             
+            // Texture atlases use a rectangle texture. no need to normalize the UVs
             // top-left uv coordinate for each glyph
             pEntry.uv[0] = vec2{(float)maxGlyphSize[0]*x, (float)maxGlyphSize[1]*y};
             

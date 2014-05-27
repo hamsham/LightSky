@@ -10,7 +10,27 @@
 #include "mesh.h"
 #include "geometry.h"
 #include "meshResource.h"
-#include "text.h"
+
+/**
+ * Utility function to get all of the non-whitespace characters in a string
+ */
+int getDrawableCharCount(const char* const str) {
+    int charCount = 0;
+    
+    for(unsigned i = 0; str[i]; ++i) {
+        switch(str[i]) {
+            case '\n':
+            case '\v':
+            case '\f':
+            case '\r':
+            case '\t':
+            case ' ': continue;
+            default: ++charCount;
+        }
+    }
+    return charCount;
+}
+
 
 /*
  * MeshLoader Move Constructor
@@ -65,9 +85,7 @@ void meshResource::unload() {
     resource::dataSize = 0;
     
     for (unsigned i = 0; i < numMeshes; ++i) {
-        for (unsigned vertIter = 0; vertIter < numVertices[i]; ++vertIter) {
-            delete [] vertices[vertIter];
-        }
+        delete [] vertices[i];
     }
     
     numMeshes = 0;
@@ -171,15 +189,15 @@ bool meshResource::loadPolygon(unsigned numPoints) {
     }
     
     for (unsigned i = 0; i < numPoints; ++i) {
-        const float theta = HL_TWO_PI * ((float)i / (float)numPoints);
+        const float theta = -HL_TWO_PI * ((float)i / (float)numPoints);
         const float bc = std::cos(theta);
         const float bs = std::sin(theta);
+        vertex* const pVert = &vertices[0][i];
+        pVert->pos = math::vec3{bs, bc, 0.f};
+        pVert->uv = math::vec2{(bs*0.5f)+0.5f, (bc*0.5f)+0.5f};
+        pVert->norm = math::vec3{0.f, 0.f, 1.f};
         
         LOG_MSG("Loaded pont ", bc, ' ', bs, '.');
-            
-        vertices[0][i].pos = math::vec3{bs, bc, 0.f};
-        vertices[0][i].uv = math::vec2{(bs+1.f)*0.5f, (bc+1.f)*0.5f};
-        vertices[0][i].norm = math::vec3{0.f, 0.f, 1.f};
     }
     
     LOG_MSG("Successfully loaded a ", numPoints, "-sided polygon.\n");
@@ -187,39 +205,8 @@ bool meshResource::loadPolygon(unsigned numPoints) {
 }
 
 /*
- * load a convex polygon
+ * Load the polygons required to create a renderable string of characters.
  */
-bool meshResource::loadTriangle() {
-    LOG_MSG("Attempting to load a triangle.");
-    
-    if (!initArrays(1)) {
-        LOG_ERR("An error occurred while initializing an array of meshes.\n");
-        return false;
-    }
-    
-    if (!initMeshAt(0, 3)) {
-        LOG_ERR("An error occurred while initializing a triangle.\n");
-        return false;
-    }
-    
-    for (unsigned i = 0; i < 3; ++i) {
-        const float theta = -HL_TWO_PI * ((float)i / 3.f);
-        const float bc = std::cos(theta);
-        const float bs = std::sin(theta);
-        vertex* const pVert = &vertices[0][i];
-            
-        pVert->pos = math::vec3{bs, bc, 0.f};
-        pVert->uv = math::vec2{(bs*0.5f)+0.5f, (bc*0.5f)+0.5f};
-        pVert->norm = math::vec3{0.f, 0.f, 1.f};
-        
-        LOG_MSG("Loaded pont ", i, '.');
-    }
-    
-    LOG_MSG("Successfully loaded a triangle.\n");
-    
-    return true;
-}
-
 bool meshResource::loadText(const textureAtlas& ta, const std::string& str) {
     LOG_MSG("Attempting to load text.");
     
@@ -228,6 +215,7 @@ bool meshResource::loadText(const textureAtlas& ta, const std::string& str) {
         return false;
     }
     
+    // deternime the number of non-whitespace characters
     const int numChars = getDrawableCharCount(str.c_str());
     
     if (!initMeshAt(0, numChars*text_properties::VERTICES_PER_GLYPH)) {
@@ -244,7 +232,7 @@ bool meshResource::loadText(const textureAtlas& ta, const std::string& str) {
     float yPos = -((pGlyphs['\n'].bearing[1]*2.f)+pGlyphs['\n'].bearing[1]-pGlyphs['\n'].size[1]);
     float xPos = 0.f;
     
-    for (unsigned i = 0; str[i]; ++i) {
+    for (unsigned i = 0; i < str.size(); ++i) {
         const unsigned currChar = (unsigned)str[i];
         const atlasEntry& rGlyph = pGlyphs[currChar];
         const float vertHang = (rGlyph.bearing[1]-rGlyph.size[1]);

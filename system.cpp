@@ -55,8 +55,8 @@ bool subsystem::init() {
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS,
         SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG
-#ifdef LSLS_DEBUG
-        | SDL_GL_CONTEXTLS_DEBUG_FLAG
+#ifdef LS_DEBUG
+        | SDL_GL_CONTEXT_DEBUG_FLAG
 #endif
     );
     

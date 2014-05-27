@@ -43,9 +43,9 @@ math::quat_t<numType> lookAt(const math::vec3_t<numType>& v1, const math::vec3_t
 }
 
 const char testTextFile[] = {
-    //"liberationmono.ttf"
-    "testfont.ttf"
-    //"DejaVuSansMono.ttf"
+    //"FiraSans-Bold.otf"
+    //"FiraSans-Italic.otf"
+    "FiraSans-Regular.otf"
 };
 
 const char testTextString[] = R"***(x
@@ -68,15 +68,18 @@ jumped over the slow, lazy dog! :)
 const char vertShaderData[] = R"***(
 #version 330 core
 
-layout (location = 0) in vec3 inPosVerts;
+layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inUv;
+layout (location = 2) in vec2 inNorm;
+layout (location = 3) in mat4 inModelMat;
 
-uniform mat4 mvpMatrix;
+uniform mat4 vpMatrix;
 
 out vec2 uvCoords;
 
 void main() {
-    vec4 p = mvpMatrix * vec4(inPosVerts, 1.0);
+    mat4 mvpMatrix = vpMatrix * inModelMat;
+    vec4 p = mvpMatrix * vec4(inPos, 1.0);
     const float C = 1.0;
     const float FAR = 100.0;
     float pz = -log(C * p.z + 1.0) / log(C * FAR + 1.0);
@@ -100,7 +103,7 @@ void main() {
 }
 )***";
 
-// Testing Signed-Distance-Fields for font rendering (SDF by texture mask).
+// Testing Alpha Masking for font rendering.
 const char fontFS[] = R"***(
 #version 330
 
@@ -115,7 +118,6 @@ uniform vec4 fontColor = vec4(0.0, 1.0, 1.0, 1.0);
 void main() {
     float mask = texture(texSampler, uvCoords).r;
     outFragCol = fontColor*step(0.5, mask);
-    //outFragCol = fontColor*smoothstep(0.49, 0.51, mask);
 }
 )***";
 
@@ -292,13 +294,14 @@ bool testState::onStart() {
     ||      !textMesh.init(*pLoader, 0)
     ) {
         delete pLoader;
-        pLoader = nullptr;
         
         delete matStack;
         matStack = nullptr;
         
         return false;
     }
+    
+    delete pLoader;
     
     tex.bind();
     tex.setParameter(TEX_MAG_FILTER, LINEAR_FILTER);
@@ -322,30 +325,24 @@ bool testState::onStart() {
         fontProgram.link();
 
         // Initialize the matrix stacks
-        matStack->loadMatrix(
-            matrix_type::PROJECTION_MATRIX,
-            math::perspective(60.f, 4.f/3.f, 0.01f, 100.f)
-        );
-        matStack->loadMatrix(
-            matrix_type::VIEW_MATRIX,
-            math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f))
-        );
-        matStack->constructMvp();
+        matStack->loadMatrix(matrix_type::PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 100.f));
+        matStack->loadMatrix(matrix_type::VIEW_MATRIX, math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f)));
+        matStack->constructVp();
         
         program.bind();
-        GLuint mvpId = program.getUniformLocation("mvpMatrix");
-        program.setUniformValue(mvpId, matStack->getMvpMatrix());
+        GLuint mvpId = program.getUniformLocation("vpMatrix");
+        program.setUniformValue(mvpId, matStack->getVpMatrix());
         LOG_GL_ERR();
         
         fontProgram.bind();
-        mvpId = fontProgram.getUniformLocation("mvpMatrix");
-        program.setUniformValue(mvpId, matStack->getMvpMatrix());
+        mvpId = fontProgram.getUniformLocation("vpMatrix");
+        program.setUniformValue(mvpId, matStack->getVpMatrix());
         LOG_GL_ERR();
     }
     LOG_GL_ERR();
     
     glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
     
     return true;
 }
@@ -386,28 +383,27 @@ void testState::onPause(float dt) {
 void testState::drawScene() {
     LOG_GL_ERR();
     
+    // Meshes all contain their own model matrices. no need to use the ones in
+    // the matrix stack.
     const mat4& viewMat = matStack->getMatrix(matrix_type::VIEW_MATRIX);
-    const mat4&& rotatedView = viewMat * math::quatToMat4(orientation);
-    matStack->emplaceMatrix(matrix_type::VIEW_MATRIX, rotatedView);
+    matStack->pushMatrix(matrix_type::VIEW_MATRIX, math::quatToMat4(orientation));
+    matStack->constructVp();
     
     {
         /* Billboarding Test */
-        const vec3 camPos = {-viewMat[3][0], 0.f, viewMat[3][2]};
+        const vec3 camPos{-viewMat[3][0], 0.f, viewMat[3][2]};
         const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
         
-        matStack->emplaceMatrix(matrix_type::MODEL_MATRIX, modelMat);
-        matStack->constructMvp();
+        primMesh.setNumInstances(1, &modelMat);
 
         program.bind();
         GLuint mvpId = 0;
-        mvpId = program.getUniformLocation("mvpMatrix");
-        program.setUniformValue(mvpId, matStack->getMvpMatrix());
+        mvpId = program.getUniformLocation("vpMatrix");
+        program.setUniformValue(mvpId, matStack->getVpMatrix());
+        
         tex.bind();
         primMesh.draw();
         tex.unbind();
-
-        matStack->popMatrix(matrix_type::MODEL_MATRIX);
-        matStack->constructMvp();
 
         /* Premultiplied alpha */
         glEnable(GL_BLEND);
@@ -415,8 +411,8 @@ void testState::drawScene() {
         glBlendFuncSeparate(GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
         
         fontProgram.bind();
-        mvpId = fontProgram.getUniformLocation("mvpMatrix");
-        program.setUniformValue(mvpId, matStack->getMvpMatrix());
+        mvpId = fontProgram.getUniformLocation("vpMatrix");
+        program.setUniformValue(mvpId, matStack->getVpMatrix());
         atlas.getTexture().bind();
         textMesh.draw();
         atlas.getTexture().unbind();

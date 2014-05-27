@@ -28,7 +28,7 @@ class testState final : virtual public gameState {
         int             mouseX = 0;
         int             mouseY = 0;
         shaderProgram   program = {};
-        texture2d       tex = {};
+        texture         tex = {tex_desc::TEX_2D};
         mesh            primMesh = {};
         mesh            textMesh = {};
         matrixStack*    matStack = nullptr;

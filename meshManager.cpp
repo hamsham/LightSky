@@ -20,6 +20,6 @@ meshManager::~meshManager() {
 }
 
 meshManager& meshManager::operator=(meshManager&& mm) {
-    manager::operator = std::move(mm);
+    manager::operator=(std::move(mm));
     return *this;
 }

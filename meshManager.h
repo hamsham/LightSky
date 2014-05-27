@@ -183,7 +183,7 @@ class meshManager final : public manager<unsigned, mesh> {
          * 
          * @return A reference to the internal std::unordered_map used by *this.
          */
-        inline std::unordered_map<unsigned, mesh*>& getDataMap() const {
+        inline const std::unordered_map<unsigned, mesh*>& getDataMap() const {
             return dataMap;
         }
 };

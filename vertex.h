@@ -62,5 +62,13 @@ typedef plainVertex texturedVertex;
     #define LS_VERTEX_NORMAL_ATTRIB 2
 #endif
 
+#ifndef LS_MODEL_MATRIX_ATTRIB
+    #define LS_MODEL_MATRIX_ATTRIB 3
+    #define LS_MODEL_MATRIX0_ATTRIB 3 /* Row 1 */
+    #define LS_MODEL_MATRIX1_ATTRIB 4 /* Row 2 */
+    #define LS_MODEL_MATRIX2_ATTRIB 5 /* Row 3 */
+    #define LS_MODEL_MATRIX3_ATTRIB 6 /* Row 4 */
+#endif
+
 #endif	/* __LS_VERTEX_H__ */
 

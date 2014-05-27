@@ -25,6 +25,11 @@ class meshResource;
  * Designed to be used directly with OpenGL.
  */
 class mesh {
+    /**
+     * Allow the mesh resource class to load vertices directly into a mesh.
+     */
+    friend class meshResource;
+    
     private:
         /**
          * Vertex array to be used with this mesh object
@@ -37,10 +42,22 @@ class mesh {
         vertexBuffer vbo;
         
         /**
+         * Vertex Buffer that will be used specifically for model matrices.
+         */
+        vertexBuffer modelVbo;
+        
+        /**
          * Member to help determine the number of vertices contained within a
          * mesh object.
          */
         unsigned numVertices = 0;
+        
+        /**
+         * Counter of the number of instances that are currently reserved for
+         * drawing in the vao & vbo. This is also a cound of the number of model
+         * matrices that are held within the vbo.
+         */
+        unsigned numInstances = 1;
         
     public:
         /**
@@ -48,7 +65,9 @@ class mesh {
          */
         constexpr mesh() :
             vao{},
-            vbo{}
+            vbo{},
+            numVertices{},
+            numInstances{}
         {}
         
         /**
@@ -98,9 +117,44 @@ class mesh {
          * Unload all GPU-based resource that are used by *this;
          */
         void terminate() {
-            vbo.terminate();
             vao.terminate();
+            vbo.terminate();
+            modelVbo.terminate();
             numVertices = 0;
+            numInstances = 1;
+        }
+        
+        /**
+         * All meshes support instanced draws by default. This will set the
+         * number of instances that will appear when drawing a mesh.
+         * 
+         * @param instanceCount
+         * The number of instances (and modelMatrices) that will be drawn by
+         * this mesh.
+         * 
+         * @param modelMatrices
+         * A pointer to an array of model matrices that will be applied to each
+         * mesh instance.
+         */
+        void setNumInstances(int instanceCount, const math::mat4* const modelMatrices);
+        
+        /**
+         * Change the model matrix for a single instance
+         * 
+         * @param index
+         * @param modelMatrix
+         */
+        void modifyInstance(int index, const math::mat4& modelMatrix);
+        
+        /**
+         * Get the number of instances that will be rendered when a call to
+         * "draw()" is made.
+         * 
+         * @return the number of meshes/model matrices rendered by/with this
+         * mesh.
+         */
+        unsigned getNumInstances() const {
+            return numInstances;
         }
         
         /**
@@ -117,7 +171,7 @@ class mesh {
          * @param instanceCount - determines the number of instances that
          * need to be drawn at runtime.
          */
-        void draw(int instanceCount = 1) const;
+        void draw() const;
         
         /**
          * Draw a single part of the total sub-meshes contained within *this.
@@ -134,18 +188,18 @@ class mesh {
          * @param instanceCount - determines the number of instances that
          * need to be drawn at runtime.
          */
-        void drawSubMesh(int startPos, int endPos, int instanceCount = 1) const;
+        void drawSubMesh(int startPos, int endPos) const;
 };
 
-inline void mesh::draw(int instanceCount) const {
+inline void mesh::draw() const {
     vao.bind();
-    glDrawArraysInstanced(LS_TRIANGLES, 0, numVertices, instanceCount);
+    glDrawArraysInstanced(LS_TRIANGLES, 0, numVertices, numInstances);
     vao.unbind();
 }
 
-inline void mesh::drawSubMesh(int startPos, int endPos, int instanceCount) const {
+inline void mesh::drawSubMesh(int startPos, int endPos) const {
     vao.bind();
-    glDrawArraysInstanced(LS_TRIANGLES, startPos, endPos, instanceCount);
+    glDrawArraysInstanced(LS_TRIANGLES, startPos, endPos, numInstances);
     vao.unbind();
 }
 

@@ -114,11 +114,7 @@ std::string shaderProgram::getUniformInfo(
 ) const {
     GLint maxVarNameLen = 0;
     
-    glGetProgramiv(
-        programId,
-        GL_ACTIVE_UNIFORM_MAX_LENGTH,
-        &maxVarNameLen
-    );
+    glGetProgramiv(programId, GL_ACTIVE_UNIFORM_MAX_LENGTH, &maxVarNameLen);
     
     if (maxVarNameLen < 1) {
         return std::string{};
@@ -128,8 +124,7 @@ std::string shaderProgram::getUniformInfo(
     GLsizei* varNameLen = nullptr;
     
     glGetActiveUniform(
-        programId, index, maxVarNameLen,
-        varNameLen, varSize, varType, varName
+        programId, index, maxVarNameLen, varNameLen, varSize, varType, varName
     );
     
     if (varNameLen == nullptr || *varNameLen < 1 || varName == nullptr) {

@@ -12,19 +12,22 @@
       <itemPath>geometry.h</itemPath>
       <itemPath>imageResource.h</itemPath>
       <itemPath>main.h</itemPath>
+      <itemPath>manager.h</itemPath>
       <itemPath>matrixStack.h</itemPath>
       <itemPath>mesh.h</itemPath>
+      <itemPath>meshManager.h</itemPath>
       <itemPath>meshResource.h</itemPath>
       <itemPath>renderer.h</itemPath>
       <itemPath>resource.h</itemPath>
-      <itemPath>sceneResource.h</itemPath>
+      <itemPath>sceneManager.h</itemPath>
       <itemPath>shaderObject.h</itemPath>
       <itemPath>shaderProgram.h</itemPath>
       <itemPath>system.h</itemPath>
       <itemPath>testState.h</itemPath>
-      <itemPath>text.h</itemPath>
       <itemPath>texture.h</itemPath>
       <itemPath>textureAtlas.h</itemPath>
+      <itemPath>textureManager.h</itemPath>
+      <itemPath>util.h</itemPath>
       <itemPath>vertex.h</itemPath>
       <itemPath>vertexArray.h</itemPath>
     </logicalFolder>
@@ -43,19 +46,22 @@
       <itemPath>geometry.cpp</itemPath>
       <itemPath>imageResource.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>manager.cpp</itemPath>
       <itemPath>matrixStack.cpp</itemPath>
       <itemPath>mesh.cpp</itemPath>
+      <itemPath>meshManager.cpp</itemPath>
       <itemPath>meshResource.cpp</itemPath>
       <itemPath>renderer.cpp</itemPath>
       <itemPath>resource.cpp</itemPath>
-      <itemPath>sceneResource.cpp</itemPath>
+      <itemPath>sceneManager.cpp</itemPath>
       <itemPath>shaderObject.cpp</itemPath>
       <itemPath>shaderProgram.cpp</itemPath>
       <itemPath>system.cpp</itemPath>
       <itemPath>testState.cpp</itemPath>
-      <itemPath>text.cpp</itemPath>
       <itemPath>texture.cpp</itemPath>
       <itemPath>textureAtlas.cpp</itemPath>
+      <itemPath>textureManager.cpp</itemPath>
+      <itemPath>util.cpp</itemPath>
       <itemPath>vertex.cpp</itemPath>
       <itemPath>vertexArray.cpp</itemPath>
     </logicalFolder>
@@ -161,6 +167,10 @@
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="manager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="manager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="matrixStack.h" ex="false" tool="3" flavor2="0">
@@ -168,6 +178,10 @@
       <item path="mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="meshManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="meshManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="meshResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -181,9 +195,9 @@
       </item>
       <item path="resource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="sceneResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="sceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sceneResource.h" ex="false" tool="3" flavor2="0">
+      <item path="sceneManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="shaderObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -201,10 +215,6 @@
       </item>
       <item path="testState.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="text.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="text.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="texture.h" ex="false" tool="3" flavor2="0">
@@ -212,6 +222,14 @@
       <item path="textureAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="textureAtlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="textureManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="textureManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="vertex.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -319,6 +337,10 @@
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="manager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="manager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="matrixStack.h" ex="false" tool="3" flavor2="0">
@@ -326,6 +348,10 @@
       <item path="mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="meshManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="meshManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="meshResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -339,9 +365,9 @@
       </item>
       <item path="resource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="sceneResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="sceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sceneResource.h" ex="false" tool="3" flavor2="0">
+      <item path="sceneManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="shaderObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -359,10 +385,6 @@
       </item>
       <item path="testState.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="text.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="text.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="texture.h" ex="false" tool="3" flavor2="0">
@@ -370,6 +392,14 @@
       <item path="textureAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="textureAtlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="textureManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="textureManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="vertex.cpp" ex="false" tool="1" flavor2="0">
       </item>

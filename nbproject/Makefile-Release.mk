@@ -43,19 +43,22 @@ OBJECTFILES= \
 	${OBJECTDIR}/geometry.o \
 	${OBJECTDIR}/imageResource.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/manager.o \
 	${OBJECTDIR}/matrixStack.o \
 	${OBJECTDIR}/mesh.o \
+	${OBJECTDIR}/meshManager.o \
 	${OBJECTDIR}/meshResource.o \
 	${OBJECTDIR}/renderer.o \
 	${OBJECTDIR}/resource.o \
-	${OBJECTDIR}/sceneResource.o \
+	${OBJECTDIR}/sceneManager.o \
 	${OBJECTDIR}/shaderObject.o \
 	${OBJECTDIR}/shaderProgram.o \
 	${OBJECTDIR}/system.o \
 	${OBJECTDIR}/testState.o \
-	${OBJECTDIR}/text.o \
 	${OBJECTDIR}/texture.o \
 	${OBJECTDIR}/textureAtlas.o \
+	${OBJECTDIR}/textureManager.o \
+	${OBJECTDIR}/util.o \
 	${OBJECTDIR}/vertex.o \
 	${OBJECTDIR}/vertexArray.o
 
@@ -126,6 +129,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/manager.o: manager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/manager.o manager.cpp
+
 ${OBJECTDIR}/matrixStack.o: matrixStack.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -135,6 +143,11 @@ ${OBJECTDIR}/mesh.o: mesh.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mesh.o mesh.cpp
+
+${OBJECTDIR}/meshManager.o: meshManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/meshManager.o meshManager.cpp
 
 ${OBJECTDIR}/meshResource.o: meshResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -151,10 +164,10 @@ ${OBJECTDIR}/resource.o: resource.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/resource.o resource.cpp
 
-${OBJECTDIR}/sceneResource.o: sceneResource.cpp 
+${OBJECTDIR}/sceneManager.o: sceneManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sceneResource.o sceneResource.cpp
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sceneManager.o sceneManager.cpp
 
 ${OBJECTDIR}/shaderObject.o: shaderObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -176,11 +189,6 @@ ${OBJECTDIR}/testState.o: testState.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testState.o testState.cpp
 
-${OBJECTDIR}/text.o: text.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/text.o text.cpp
-
 ${OBJECTDIR}/texture.o: texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -190,6 +198,16 @@ ${OBJECTDIR}/textureAtlas.o: textureAtlas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/textureAtlas.o textureAtlas.cpp
+
+${OBJECTDIR}/textureManager.o: textureManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/textureManager.o textureManager.cpp
+
+${OBJECTDIR}/util.o: util.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util.o util.cpp
 
 ${OBJECTDIR}/vertex.o: vertex.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -16,6 +16,7 @@
  */
 enum buffer_t : GLenum {
     ARRAY_BUFFER                = GL_ARRAY_BUFFER,
+    ELEMENT_BUFFER              = GL_ELEMENT_ARRAY_BUFFER,
     TEXTURE_BUFFER              = GL_TEXTURE_BUFFER,
     TRANSFORM_FEEDBACK_BUFFER   = GL_TRANSFORM_FEEDBACK_BUFFER,
     UNIFORM_BUFFER              = GL_UNIFORM_BUFFER
@@ -57,9 +58,10 @@ enum buffer_access_t : GLbitfield {
  * Useful typedefs
  */
 template<buffer_t> class bufferObject;
-typedef bufferObject<ARRAY_BUFFER> vertexBuffer;
-typedef bufferObject<ARRAY_BUFFER> uvBuffer;
-typedef bufferObject<ARRAY_BUFFER> colorBuffer;
+typedef bufferObject<ARRAY_BUFFER>      vertexBuffer;
+typedef bufferObject<ELEMENT_BUFFER>    indexBuffer;
+typedef bufferObject<ARRAY_BUFFER>      uvBuffer;
+typedef bufferObject<ARRAY_BUFFER>      colorBuffer;
 
 /**
  * Vertex Buffer Object
@@ -186,7 +188,7 @@ class bufferObject {
          * dynamic and will be updated on a regular basis.
          * 
          */
-        inline void setData(GLsizeiptr size, const GLvoid* pData, buffer_usage_t usage) const {
+        inline void setData(ptrdiff_t size, const void* pData, buffer_usage_t usage) const {
             glBufferData(bufferType, size, pData, usage);
         }
         
@@ -204,8 +206,8 @@ class bufferObject {
          * A pointer to the data contained within the buffer.
          * 
          */
-        inline void setSubData(GLsizeiptr size, GLintptr offset, const GLvoid* pData) const {
-            glBufferSubData(bufferType, size, offset, pData);
+        inline void setSubData(ptrdiff_t offset, ptrdiff_t size, const void* pData) const {
+            glBufferSubData(bufferType, offset, size, pData);
         }
         
         /**
@@ -228,7 +230,7 @@ class bufferObject {
          * occurred while attempting to map the buffer to memory.
          * 
          */
-        inline void* mapData(GLintptr offset, GLsizeiptr range, buffer_access_t access) const {
+        inline void* mapData(ptrdiff_t offset, ptrdiff_t range, buffer_access_t access) const {
             return glMapBufferRange(bufferType, offset, range, access);
         }
         

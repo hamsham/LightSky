@@ -31,6 +31,9 @@ namespace geometry {
      * @param vertCount
      * The number of vertices in the arrays.
      * 
+     * @param vertCount
+     * The number of vertices that need tangents calculated
+     * 
      * @param positions
      * @param uvs
      * @param tangents

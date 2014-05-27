@@ -17,7 +17,8 @@ matrixStack::matrixStack() :
         std::stack<math::mat4>{}, // view
         std::stack<math::mat4>{} // models
     },
-    mvpMatrix{math::mat4(1.f)}
+    mvpMatrix{math::mat4(1.f)},
+    vpMatrix{math::mat4(1.f)}
 {
     stacks[PROJECTION_MATRIX].push(math::mat4(1.f));
     stacks[VIEW_MATRIX].push(math::mat4(1.f));
@@ -33,7 +34,8 @@ matrixStack::matrixStack(matrixStack&& ms) :
         std::move(ms.stacks[VIEW_MATRIX]),
         std::move(ms.stacks[MODEL_MATRIX]),
     },
-    mvpMatrix{std::move(ms.mvpMatrix)}
+    mvpMatrix{std::move(ms.mvpMatrix)},
+    vpMatrix{std::move(ms.vpMatrix)}
 {}
 
 /**
@@ -51,6 +53,7 @@ matrixStack& matrixStack::operator =(matrixStack&& ms) {
     stacks[MODEL_MATRIX] = std::move(ms.stacks[MODEL_MATRIX]);
     
     mvpMatrix = ms.mvpMatrix;
+    vpMatrix = ms.vpMatrix;
     
     return *this;
 }
@@ -131,21 +134,4 @@ void matrixStack::popMatrix(matrix_type mt) {
     if (stacks[mt].size() == 0) {
         stacks[mt].emplace(math::mat4{1.f});
     }
-}
-
-/**
- * Multiply the selected matrix with the one passed into the function.
- */
-void matrixStack::multMatrix(matrix_type mt, const math::mat4& m) {
-    stacks[mt].top() *= m;
-}
-
-/**
- * Multiply the matrix stack
- */
-void matrixStack::constructMvp() {
-    mvpMatrix =
-        stacks[MODEL_MATRIX].top() *
-        stacks[VIEW_MATRIX].top() *
-        stacks[PROJECTION_MATRIX].top();
 }

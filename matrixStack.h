@@ -24,6 +24,7 @@ class matrixStack {
     private:
         std::stack<math::mat4> stacks[matrix_type::MAX_VALUE];
         math::mat4 mvpMatrix = {1.f};
+        math::mat4 vpMatrix = {1.f};
         
     public:
         /**
@@ -123,9 +124,14 @@ class matrixStack {
         }
         
         /**
-         * Multiply the stacks together
+         * Multiply the model, view, and projection stacks together
          */
         void constructMvp();
+        
+        /**
+         * Multiply only the view and projection stacks together
+         */
+        void constructVp();
         
         /**
          * Get the MVP Matrix
@@ -135,12 +141,41 @@ class matrixStack {
         }
         
         /**
+         * Get the VP Matrix
+         */
+        const math::mat4& getVpMatrix() const {
+            return vpMatrix;
+        }
+        
+        /**
          * Clear a specific Stack
          */
         unsigned size(matrix_type mt) {
             return stacks[mt].size();
         }
 };
+
+/**
+ * Multiply the selected matrix with the one passed into the function.
+ */
+inline void matrixStack::multMatrix(matrix_type mt, const math::mat4& m) {
+    stacks[mt].top() *= m;
+}
+
+/**
+ * Multiply the matrix stack
+ */
+inline void matrixStack::constructMvp() {
+    this->constructVp();
+    mvpMatrix = stacks[MODEL_MATRIX].top() * vpMatrix;
+}
+
+/**
+ * Multiply the view and projection stacks
+ */
+inline void matrixStack::constructVp() {
+    vpMatrix = stacks[VIEW_MATRIX].top() * stacks[PROJECTION_MATRIX].top();
+}
 
 #endif	/* __LS_MATRIX_STACK_H__ */
 

@@ -25,12 +25,6 @@ enum tex_param : int {
     NEAREST_FILTER      = GL_NEAREST
 };
 
-enum tex_type : int {
-    TEXTURE_TYPE_1D,
-    TEXTURE_TYPE_2D,
-    TEXTURE_TYPE_3D
-};
-
 enum tex_desc : int {
     TEX_1D              = GL_TEXTURE_1D,
     TEX_2D              = GL_TEXTURE_2D,
@@ -41,9 +35,10 @@ enum tex_desc : int {
 /******************************************************************************
  * Texture Template
 ******************************************************************************/
-template<tex_type superType, tex_desc subType>
 class texture {
     private:
+        const tex_desc dimensions;
+        
         /**
          * Texture ID
          * The handle to the current texture used by OpenGL.
@@ -54,7 +49,9 @@ class texture {
         /**
          * Constructor
          */
-        constexpr texture();
+        texture(tex_desc td) :
+            dimensions{td}
+        {}
         
         /**
          * Copy Constructor -- DELETED
@@ -72,7 +69,9 @@ class texture {
          * Destructor
          * Releases all memory referenced by texId
          */
-        ~texture();
+        ~texture() {
+            terminate();
+        }
         
         /**
          * Copy Operator -- DELETED
@@ -165,7 +164,7 @@ class texture {
         /**
          * Get the texture type of that this texture uses in OpenGL
          */
-        constexpr tex_desc getTextType() const;
+        inline tex_desc getTextType() const;
         
         /**
          * Get the maximum texture size supported by OpenGL
@@ -174,234 +173,74 @@ class texture {
 };
 
 /******************************************************************************
- * Texture Typedefs
-******************************************************************************/
-HL_DECLARE_CLASS_TYPE(texture1d, texture, TEXTURE_TYPE_1D, TEX_1D);
-HL_DECLARE_CLASS_TYPE(texture2d, texture, TEXTURE_TYPE_2D, TEX_2D);
-HL_DECLARE_CLASS_TYPE(texture3d, texture, TEXTURE_TYPE_3D, TEX_3D);
-HL_DECLARE_CLASS_TYPE(textureRect, texture, TEXTURE_TYPE_2D, TEX_RECT);
-
-/******************************************************************************
  * Texture Data
  *****************************************************************************/
-
-/**
- * Constructor
- */
-template <tex_type superType, tex_desc subType>
-constexpr texture<superType, subType>::texture() {
-}
-
-/**
- * Move Constructor
- * Reassigns the texture ID at *this to the one referenced by the
- * source operand. Resets the source operand to 0.
- */
-template <tex_type superType, tex_desc subType>
-texture<superType, subType>::texture(texture&& t) :
-    texId{t.texId}
-{
-    t.texId = 0;
-}
-
-/**
- * Destructor
- * Releases all memory referenced by texId
- */
-template <tex_type superType, tex_desc subType>
-texture<superType, subType>::~texture() {
-    terminate();
-}
-
-/**
- * Move Operator
- */
-template <tex_type superType, tex_desc subType>
-texture<superType, subType>& texture<superType, subType>::operator=(texture<superType, subType>&& t) {
-    texId = t.texId;
-    t.texId = 0;
-    return *this;
-}
-
 /**
  * Bind the current texture to OpenGL
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::bind() const {
-    glBindTexture(subType, texId);
+
+inline void texture::bind() const {
+    glBindTexture(dimensions, texId);
 }
 
 /**
  * Unbind the current texture to OpenGL
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::unbind() const {
-    glBindTexture(subType, 0);
+
+inline void texture::unbind() const {
+    glBindTexture(dimensions, 0);
 }
 
 /**
  * Set a integer texture parameter.
  * Make sure that "bind()" has been called before using this method.
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::setParameter(int paramName, int param) const {
-    glTexParameteri(subType, paramName, param);
+
+inline void texture::setParameter(int paramName, int param) const {
+    glTexParameteri(dimensions, paramName, param);
 }
 
 /**
  * Set a float texture parameter.
  * Make sure that "bind()" has been called before using this method.
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::setParameter(int paramName, float param) const {
-    glTexParameterf(subType, paramName, param);
-}
-/*
- * Load 1D Textures
- */
-template <tex_type superType, tex_desc subType>
-bool texture<superType, subType>::init(
-    int mipmapLevel, int internalFormat,
-    int size, int format, int dataType, void* data
-) {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_1D);
-    #endif
-    
-    terminate();
-    glGenTextures(1, &texId);
-    LOG_GL_ERR();
-    
-    if (texId == 0) {
-        LOG_ERR("Unable to generate a texture object");
-        return false;
-    }
-    
-    glBindTexture(subType, texId);
-    LOG_GL_ERR();
-    
-    glTexImage1D(subType, mipmapLevel, internalFormat, size, 0, format, dataType, data);
-    LOG_GL_ERR();
-    
-    return true;
-}
 
-/*
- * Load 2D Textures
- */
-template <tex_type superType, tex_desc subType>
-bool texture<superType, subType>::init(
-    int mipmapLevel, int internalFormat,
-    math::vec2i size, int format, int dataType, void* data
-) {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_2D);
-    #endif
-    
-    terminate();
-    glGenTextures(1, &texId);
-    LOG_GL_ERR();
-    
-    if (texId == 0) {
-        LOG_ERR("Unable to generate a texture object");
-        return false;
-    }
-    
-    glBindTexture(subType, texId);
-    LOG_GL_ERR();
-    
-    glTexImage2D(
-        subType, mipmapLevel, internalFormat,
-        size[0], size[1], 0, format, dataType, data
-    );
-    LOG_GL_ERR();
-    
-    return true;
-}
-
-/*
- * Load 3D Textures
- */
-template <tex_type superType, tex_desc subType>
-bool texture<superType, subType>::init(
-    int mipmapLevel, int internalFormat,
-    math::vec3i size, int format, int dataType, void* data
-) {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_3D);
-    #endif
-    
-    terminate();
-    glGenTextures(1, &texId);
-    LOG_GL_ERR();
-    
-    if (texId == 0) {
-        LOG_ERR("Unable to generate a texture object");
-        return false;
-    }
-    
-    glBindTexture(subType, texId);
-    LOG_GL_ERR();
-    
-    glTexImage3D(
-        subType, mipmapLevel, internalFormat,
-        size[0], size[1], size[2], 0, format, dataType,
-        data
-    );
-    LOG_GL_ERR();
-    
-    return true;
+inline void texture::setParameter(int paramName, float param) const {
+    glTexParameterf(dimensions, paramName, param);
 }
 
 /**
  * Modify the internal data of a texture.
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::modify(int offset, int size, int format, int dataType, void* data) {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_1D);
-    #endif
+
+inline void texture::modify(int offset, int size, int format, int dataType, void* data) {
     glTexSubImage1D(getTextType(), 0, offset, size, format, dataType, data);
-     LOG_GL_ERR();
-}
-
-/**
- * Modify the internal data of a texture.
- */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::modify(math::vec2i offset, math::vec2i size, int format, int dataType, void* data) {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_2D);
-    #endif
-    glTexSubImage2D(
-        getTextType(), 0,
-        offset[0], offset[1], size[0], size[1],
-        format, dataType, data
-    );
     LOG_GL_ERR();
 }
 
 /**
  * Modify the internal data of a texture.
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::modify(math::vec3i offset, math::vec3i size, int format, int dataType, void* data) {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_3D);
-    #endif
-    glTexSubImage3D(
-        getTextType(), 0,
-        offset[0], offset[1], offset[2], size[0], size[1], size[2],
-        format, dataType, data
-    );
+
+inline void texture::modify(math::vec2i offset, math::vec2i size, int format, int dataType, void* data) {
+    glTexSubImage2D(getTextType(), 0, offset[0], offset[1], size[0], size[1], format, dataType, data);
+    LOG_GL_ERR();
+}
+
+/**
+ * Modify the internal data of a texture.
+ */
+
+inline void texture::modify(math::vec3i offset, math::vec3i size, int format, int dataType, void* data) {
+    glTexSubImage3D(getTextType(), 0, offset[0], offset[1], offset[2], size[0], size[1], size[2], format, dataType, data);
     LOG_GL_ERR();
 }
 
 /**
  * Release all memory referenced by *this.
  */
-template <tex_type superType, tex_desc subType>
-inline void texture<superType, subType>::terminate() {
+
+inline void texture::terminate() {
     glDeleteTextures(1, &texId);
     texId = 0;
 }
@@ -409,52 +248,46 @@ inline void texture<superType, subType>::terminate() {
 /**
  * Get the width of the texture referenced by texId
  */
-template <tex_type superType, tex_desc subType>
-inline unsigned texture<superType, subType>::getWidth() const {
+
+inline unsigned texture::getWidth() const {
     int w = 0;
-    glGetTexLevelParameteriv(subType, 0, TEX_WIDTH, &w);
+    glGetTexLevelParameteriv(dimensions, 0, TEX_WIDTH, &w);
     return w;
 }
 
 /**
  * Get the height of the texture referenced by texId
  */
-template <tex_type superType, tex_desc subType>
-inline unsigned texture<superType, subType>::getHeight() const {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType != TEXTURE_TYPE_1D);
-    #endif
+
+inline unsigned texture::getHeight() const {
     int h = 0;
-    glGetTexLevelParameteriv(subType, 0, TEX_HEIGHT, &h);
+    glGetTexLevelParameteriv(dimensions, 0, TEX_HEIGHT, &h);
     return h;
 }
 
 /**
  * Get the depth of the texture referenced by texId
  */
-template <tex_type superType, tex_desc subType>
-inline unsigned texture<superType, subType>::getDepth() const {
-    #ifdef LS_DEBUG
-        HL_ASSERT(superType == TEXTURE_TYPE_3D);
-    #endif
+
+inline unsigned texture::getDepth() const {
     int d = 0;
-    glGetTexLevelParameteriv(subType, 0, TEX_DEPTH, &d);
+    glGetTexLevelParameteriv(dimensions, 0, TEX_DEPTH, &d);
     return d;
 }
 
 /**
  * Get the texture type of that this texture uses in OpenGL
  */
-template <tex_type superType, tex_desc subType>
-constexpr tex_desc texture<superType, subType>::getTextType() const {
-    return subType;
+
+inline tex_desc texture::getTextType() const {
+    return dimensions;
 }
 
 /**
  * Get the maximum texture size supported by OpenGL
  */
-template <tex_type superType, tex_desc subType>
-int texture<superType, subType>::getMaxTextureSize() {
+
+inline int texture::getMaxTextureSize() {
     int maxTexSize;
     glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTexSize);
     return maxTexSize;

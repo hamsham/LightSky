@@ -15,7 +15,7 @@ class vertexArray {
         /**
          * A handle to the vertex array object residing on the GPU.
          */
-        GLuint vao = 0;
+        unsigned vao = 0;
 
     public:
         /**

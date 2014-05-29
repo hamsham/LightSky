@@ -26,7 +26,7 @@ class manager {
          */
         typedef std::unordered_map<hash_t, data_t*> map_t;
         
-    protected:
+    private:
         /**
          * dataMap
          * 
@@ -64,7 +64,7 @@ class manager {
          * Deletes all managed objects contained within *this, freeing all
          * memory.
          */
-        virtual ~manager() {
+        ~manager() {
             clear();
         }
         
@@ -234,7 +234,7 @@ class manager {
          * 
          * @return A reference to the internal std::unordered_map used by *this.
          */
-        inline std::unordered_map<hash_t, data_t*>& getDataMap() const {
+        inline const map_t& getDataMap() const {
             return dataMap;
         }
 };

@@ -29,6 +29,7 @@ class mesh {
      * Allow the mesh resource class to load vertices directly into a mesh.
      */
     friend class meshResource;
+    friend class meshManager;
     
     private:
         /**
@@ -111,7 +112,7 @@ class mesh {
          * A bitfield containing the types of vertices that were requested to
          * be loaded.
          */
-        bool init(const meshResource& mr, unsigned meshIndex);
+        bool init(const meshResource& mr);
         
         /**
          * Unload all GPU-based resource that are used by *this;

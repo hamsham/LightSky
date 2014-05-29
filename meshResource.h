@@ -31,24 +31,18 @@ int getDrawableCharCount(const char* const str);
 class meshResource final : public resource {
     private:
         /**
-         * Contains the number of vertices that were loaded into memory.
-         */
-        unsigned numMeshes = 0;
-        
-        /**
          * Contains the number of vertices used per mesh.
          * This is implemented as a single array of unsigned integers.
          */
-        unsigned* numVertices = nullptr;
+        unsigned numVertices = 0;
         
         /**
          * Contains the vertex data used by each mesh.
          * This is implemented as an array of vertex arrays.
          */
-        vertex** vertices = nullptr;
+        vertex* pVertices = nullptr;
         
-        bool initArrays(unsigned meshCount);
-        bool initMeshAt(unsigned meshIndex, unsigned vertCount);
+        bool initVertices(unsigned vertCount);
         
     public:
         /**
@@ -90,30 +84,17 @@ class meshResource final : public resource {
         meshResource& operator=(meshResource&&);
         
         /**
-         * Get the number of loaded meshes
+         * Get the number of loaded vertex variables in a mesh
          */
-        inline unsigned getNumMeshes() const {
-            return numMeshes;
+        inline unsigned getNumVertices() const {
+            return numVertices;
         }
         
         /**
-         * Get the number of loaded position variables in each mesh
+         * Get the array of standard vertex types of a loaded mesh
          */
-        inline unsigned getNumVertices(unsigned meshIndex) const {
-            if (vertices != nullptr && numVertices != nullptr && meshIndex < numMeshes) {
-                return numVertices[meshIndex];
-            }
-            return 0;
-        }
-        
-        /**
-         * Get the array of positions per mesh
-         */
-        inline vertex* getVertices(unsigned meshIndex) const {
-            if (vertices != nullptr && meshIndex < numMeshes) {
-                return vertices[meshIndex];
-            }
-            return nullptr;
+        inline vertex* getVertices() const {
+            return pVertices;
         }
         
         /**

@@ -61,13 +61,13 @@ bool textureAtlas::load(const fontResource& ff) {
     // prepare the array of atlas entries
     entries = new(std::nothrow) atlasEntry[ff.numGlyphs];
     if (entries == nullptr) {
-        LOG_ERR("Unable to generate an array of font atlas entries.");
+        LOG_ERR("\tUnable to generate an array of font atlas entries.\n");
         return false;
     }
     
     if (!atlas.init(0, GL_RED, maxGlyphSize*dimensions, GL_RED, GL_UNSIGNED_BYTE, nullptr)) {
         LOG_GL_ERR();
-        LOG_ERR("An error occurred while allocating space for a font atlas.");
+        LOG_ERR("\tAn error occurred while allocating space for a font atlas.\n");
         delete [] entries;
         entries = nullptr;
         return false;
@@ -125,7 +125,7 @@ bool textureAtlas::load(const fontResource& ff) {
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     LOG_GL_ERR();
     
-    LOG_MSG("Successfully loaded a font atlas.");
+    LOG_MSG("\tSuccessfully loaded a font atlas.\n");
     
     return true;
 }

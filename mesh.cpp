@@ -38,67 +38,59 @@ mesh& mesh::operator=(mesh&& m) {
 /*
  * Load the data contained within a mesh loader onto the GPU
  */
-bool mesh::init(const meshResource& ml, unsigned meshIndex) {
-    LOG_MSG("Loading a mesh.");
+bool mesh::init(const meshResource& ml) {
+    LOG_MSG("Attempting to send mesh vertex data to the GPU.");
     terminate();
     
-    if (meshIndex >= ml.getNumMeshes()) {
-        LOG_ERR("Attempted to load an out-of range mesh.");
-        return false;
-    }
-    
     if (!vao.init()) {
-        LOG_ERR("Unable to initialize a mesh VAO.");
+        LOG_ERR("\tUnable to initialize a mesh VAO.");
         return false;
     }
     
     if (!vbo.init()) {
-        LOG_ERR("Unable to initialize a mesh VBO.");
+        LOG_ERR("\tUnable to initialize a mesh VBO.");
         vao.terminate();
         return false;
     }
     
     if (!modelVbo.init()) {
-        LOG_ERR("Unable to initialize a model matrix buffer.");
+        LOG_ERR("\tUnable to initialize a model matrix buffer.");
         vbo.terminate();
         vao.terminate();
         return false;
     }
     
-    if (ml.getNumVertices(meshIndex) == 0) {
-        LOG_ERR("\tInvalid vertex count ", meshIndex, ". Aborting GPU load.");
+    if (ml.getNumVertices() == 0) {
+        LOG_ERR("\tInvalid vertex count in the mesh loader. Aborting GPU load.");
         return false;
     }
     else {
-        LOG_MSG("\tVertex Count: ", ml.getNumVertices(meshIndex));
+        LOG_MSG("\tVertex Count: ", ml.getNumVertices());
     }
     
     vao.bind();
     vbo.bind();
-    vbo.setData(ml.getByteSize(), ml.getVertices(meshIndex), buffer_usage_t::STATIC_DRAW);
+    vbo.setData(ml.getByteSize(), ml.getVertices(), buffer_usage_t::STATIC_DRAW);
     
     // Vertex positions
     vao.enableAttrib(LS_VERTEX_POSITION_ATTRIB);
     vao.setAttribOffset(
         LS_VERTEX_POSITION_ATTRIB, LS_ARRAY_SIZE(vertex::pos.v),
-        GL_FLOAT, GL_FALSE,
-        sizeof(vertex), (GLvoid*)offsetof(vertex, pos.v)
+        GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)offsetof(vertex, pos.v)
     );
     
     // Vertex UVs
     vao.enableAttrib(LS_VERTEX_TEXTURE_ATTRIB);
     vao.setAttribOffset(
         LS_VERTEX_TEXTURE_ATTRIB, LS_ARRAY_SIZE(vertex::uv.v),
-        GL_FLOAT, GL_FALSE,
-        sizeof(vertex), (GLvoid*)offsetof(vertex, uv.v)
+        GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)offsetof(vertex, uv.v)
     );
     
     // Vertex normals
     vao.enableAttrib(LS_VERTEX_NORMAL_ATTRIB);
     vao.setAttribOffset(
         LS_VERTEX_NORMAL_ATTRIB, LS_ARRAY_SIZE(vertex::norm.v),
-        GL_FLOAT, GL_FALSE,
-        sizeof(vertex), (GLvoid*)offsetof(vertex, norm.v)
+        GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)offsetof(vertex, norm.v)
     );
     
     LOG_GL_ERR();
@@ -110,7 +102,7 @@ bool mesh::init(const meshResource& ml, unsigned meshIndex) {
     for (unsigned i = 0; i < 4; ++i) {
         vao.enableAttrib(LS_MODEL_MATRIX_ATTRIB+i);
         vao.setAttribOffset(
-            LS_MODEL_MATRIX_ATTRIB + i, 4, GL_FLOAT, GL_FALSE,
+            LS_MODEL_MATRIX_ATTRIB+i, 4, GL_FLOAT, GL_FALSE,
             sizeof(math::mat4), (const GLvoid*)(sizeof(float)*i*4)
         );
         vao.setAttribInstanceRate(LS_MODEL_MATRIX_ATTRIB+i, 1);
@@ -124,9 +116,9 @@ bool mesh::init(const meshResource& ml, unsigned meshIndex) {
     
     LOG_GL_ERR();
     
-    numVertices = ml.getNumVertices(meshIndex);
+    numVertices = ml.getNumVertices();
     
-    LOG_MSG("Mesh object successfully loaded.\n");
+    LOG_MSG("\tSuccessfully sent a mesh of ", numVertices, " vertices to the GPU.\n");
     
     return true;
 }

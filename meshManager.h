@@ -11,12 +11,6 @@
 #include "manager.h"
 #include "vertexArray.h"
 #include "mesh.h"
-#include "util.h"
-
-/*
- * Forward declarations of dependencies.
- */
-class sceneManager;
 
 /**
  * Mesh Manager Class
@@ -25,7 +19,19 @@ class sceneManager;
  * class will keep a running list of those dependencies to that they can all be
  * sorted and drawn with a minimum amount of state changes.
  */
-class meshManager final : public manager<unsigned, mesh> {
+class meshManager {
+    private:
+        /**
+         * Rather than use the implementing manager as a base class, the actual
+         * data manager is just going to be used as a manager with some
+         * functionality exposed through the manager. Hopefully this will make
+         * future additions much easier to implement.
+         * 
+         * The manager object uses each mesh's VBO ID as the key to a location
+         * within a hash table.
+         */
+        manager<unsigned, mesh> vboMgr;
+        
     public:
         meshManager();
         meshManager(const meshManager&) = delete;
@@ -34,7 +40,8 @@ class meshManager final : public manager<unsigned, mesh> {
         ~meshManager();
         
         meshManager& operator=(const meshManager&) = delete;
-        meshManager& operator=(meshManager&&);
+        
+        meshManager& operator=(meshManager&& mm);
         
         /**
          * Manage the dynamic memory of an object, given an ID that it can be
@@ -49,10 +56,8 @@ class meshManager final : public manager<unsigned, mesh> {
          * @param id
          * The ID that *this object should be referenced by *this.
          */
-        inline void manage(mesh* const pData, const unsigned& id) {
-            if (this->contains(id) == false) {
-                dataMap[id] = pData;
-            }
+        inline void manage(mesh* const pMesh) {
+            vboMgr.manage(pMesh, pMesh->vbo.getId());
         }
         
         /**
@@ -63,18 +68,11 @@ class meshManager final : public manager<unsigned, mesh> {
          * @param id
          * The ID used to identify an object.
          * 
-         * @return mesh*
+         * @return data_t*
          * A pointer to an object (previously) managed by *this.
          */
-        inline mesh* unmanage(const unsigned& id) {
-            mesh* pData = nullptr;
-            
-            if (this->contains(id)) {
-                pData = dataMap.at(id);
-                dataMap.erase(id);
-            }
-            
-            return pData;
+        inline mesh* unmanage(unsigned id) {
+            return vboMgr.unmanage(id);
         }
         
         /**
@@ -84,14 +82,8 @@ class meshManager final : public manager<unsigned, mesh> {
          * @param id
          * The ID that is used to reference an object contained within *this.
          */
-        inline void erase(const unsigned& id) {
-            if (this->contains(id) == false) {
-                return;
-            }
-            
-            mesh* const pData = dataMap.at(id);
-            dataMap.erase(id);
-            delete pData;
+        inline void erase(unsigned id) {
+            vboMgr.erase(id);
         }
         
         /**
@@ -104,8 +96,8 @@ class meshManager final : public manager<unsigned, mesh> {
          * TRUE if an object is referenced by *this.
          * FALSE if this object is not managing something at ID.
          */
-        inline bool contains(const unsigned& id) const {
-            return dataMap.find(id) != dataMap.end();
+        inline bool contains(unsigned id) const {
+            return vboMgr.contains(id);
         }
         
         /**
@@ -118,8 +110,8 @@ class meshManager final : public manager<unsigned, mesh> {
          * @return
          * A const pointer to a managed object, or NULL if nothing at ID exists.
          */
-        inline mesh* get(const unsigned& id) const {
-            return this->contains(id) ? dataMap.at(id) : nullptr;
+        inline mesh* get(unsigned id) const {
+            return vboMgr.get(id);
         }
         
         /**
@@ -132,8 +124,8 @@ class meshManager final : public manager<unsigned, mesh> {
          * @return
          * A pointer to a managed object, or NULL if nothing at ID exists.
          */
-        inline mesh* get(const unsigned& id) {
-            return this->contains(id) ? dataMap.at(id) : nullptr;
+        inline mesh* get(unsigned id) {
+            return vboMgr.get(id);
         }
         
         /**
@@ -147,24 +139,14 @@ class meshManager final : public manager<unsigned, mesh> {
          * @return A pointer to an object managed by *this.
          */
         inline mesh* elementAt(unsigned index) {
-            if (index >= dataMap.size()) {
-                return nullptr;
-            }
-
-            typename map_t::iterator iter = dataMap.begin();
-            std::advance(iter, index);
-            return iter->second;
+            return vboMgr.elementAt(index);
         }
         
         /**
          * Release the memory of all objects managed by *this.
          */
         inline void clear() {
-            typename map_t::iterator iter;
-            for (iter = dataMap.begin(); iter != dataMap.end(); ++iter) {
-                delete iter->second;
-            }
-            dataMap.clear();
+            vboMgr.clear();
         }
         
         /**
@@ -174,7 +156,7 @@ class meshManager final : public manager<unsigned, mesh> {
          * managed by *this.
          */
         inline unsigned size() const {
-            return dataMap.size();
+            return vboMgr.size();
         }
         
         /**
@@ -184,7 +166,7 @@ class meshManager final : public manager<unsigned, mesh> {
          * @return A reference to the internal std::unordered_map used by *this.
          */
         inline const std::unordered_map<unsigned, mesh*>& getDataMap() const {
-            return dataMap;
+            return vboMgr.getDataMap();
         }
 };
 

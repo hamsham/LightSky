@@ -5,18 +5,26 @@
  * Created on May 26, 2014, 11:22 AM
  */
 
+#include <utility>
 #include "sceneManager.h"
 
-sceneManager::sceneManager() {
-}
+sceneManager::sceneManager() :
+    texMgr{},
+    meshMgr{}
+{}
 
-sceneManager::sceneManager(sceneManager&&) {
-}
+sceneManager::sceneManager(sceneManager&& sm) :
+    texMgr{std::move(sm.texMgr)},
+    meshMgr{std::move(sm.meshMgr)}
+{}
 
 sceneManager::~sceneManager() {
 }
 
-sceneManager& sceneManager::operator =(sceneManager&&) {
+sceneManager& sceneManager::operator =(sceneManager&& sm) {
+    texMgr = std::move(sm.texMgr);
+    meshMgr = std::move(sm.meshMgr);
+    
     return *this;
 }
 

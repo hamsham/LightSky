@@ -83,6 +83,10 @@ class texture {
          */
         texture& operator=(texture&& t);
         
+        inline unsigned getId() const {
+            return texId;
+        }
+        
         /**
          * Bind the current texture to OpenGL
          */

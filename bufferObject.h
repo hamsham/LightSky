@@ -148,6 +148,15 @@ class bufferObject {
         }
         
         /**
+         * Get the GPU-assigned handle of this buffer object
+         * @return An unsigned integer, representing the GPU-side buffer that
+         * this object represents.
+         */
+        inline unsigned getId() const {
+            return vbo;
+        }
+        
+        /**
          * Determine if there is data used by this object
          * 
          * @returns true if this object has data residing on GPU memory, false

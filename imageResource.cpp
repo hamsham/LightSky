@@ -20,7 +20,7 @@
  */
 void printImageLoadError(FREE_IMAGE_FORMAT fif, const char* msg) {
 	LOG_ERR(
-        "An image file error has occurred:",
+        "\tAn image file error has occurred:",
         "\n\tFormat: ", FreeImage_GetFormatFromFIF(fif),
         "\n\t", msg, "."
     );
@@ -75,30 +75,30 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
     switch(storageType) {
         // n-bit char
         case FIT_BITMAP:
-            LOG_MSG("Image pixel type: BYTE");
+            LOG_MSG("\tImage pixel type: BYTE");
             dataType = GL_BYTE;
             break;
             
         // 16-bit short
         case FIT_INT16:
             dataType = GL_SHORT;
-            LOG_MSG("Image pixel type: UNSIGNED SHORT");
+            LOG_MSG("\tImage pixel type: UNSIGNED SHORT");
                 break;
                 
         case FIT_UINT16:
             dataType = GL_UNSIGNED_SHORT;
-            LOG_MSG("Image pixel type: SHORT");
+            LOG_MSG("\tImage pixel type: SHORT");
             break;
         
         // 32-bit int
         case FIT_INT32:
             dataType = GL_INT;
-            LOG_MSG("Image pixel type: UNSIGNED INT");
+            LOG_MSG("\tImage pixel type: UNSIGNED INT");
             break;
                 
         case FIT_UINT32:
             dataType = GL_INT;
-            LOG_MSG("Image pixel type: INT");
+            LOG_MSG("\tImage pixel type: INT");
             break;
         
         // 96-bit float
@@ -106,13 +106,13 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
         // 128-bit float
         case FIT_RGBAF:
             dataType = GL_FLOAT;
-            LOG_MSG("Image pixel type: FLOAT");
+            LOG_MSG("\tImage pixel type: FLOAT");
             break;
         
         // unknown
         default:
             return 0;
-            LOG_MSG("Image pixel type: INVALID");
+            LOG_MSG("\tImage pixel type: INVALID");
             break;
     }
     
@@ -170,7 +170,7 @@ bool imageResource::loadFile(const char* filename) {
     unload();
     
     if (!filename) {
-        LOG_ERR("Attempted to load an image with no input filename.\n");
+        LOG_ERR("\tFailed to load an image as no filename was provided.\n");
         return false;
     }
     
@@ -181,13 +181,13 @@ bool imageResource::loadFile(const char* filename) {
     FREE_IMAGE_FORMAT fileFormat = deduceImageFormat(filename);
     
     if (fileFormat == FIF_UNKNOWN) {
-        LOG_ERR("Unable to determine the file type for ", filename, ".\n");
+        LOG_ERR("\tUnable to determine the file type for ", filename, ".\n");
         return false;
     }
     
     if (FreeImage_FIFSupportsReading(fileFormat) == false) {
         LOG_ERR(
-            "Support for the type of file used by ", filename,
+            "\tSupport for the type of file used by ", filename,
             " is not currently implemented.\n"
         );
         return false;
@@ -200,18 +200,21 @@ bool imageResource::loadFile(const char* filename) {
     FIBITMAP* fileData = FreeImage_Load(fileFormat, filename, fileFlags);
     
     if (!fileData) {
-        LOG_ERR("Unable to load the image ", filename, ".\n");
+        LOG_ERR(
+            "\tUnable to load the image ", filename,
+            " due to an internal library error.\n"
+        );
         return false;
     }
     
     const int dataType = getBitmapSize(fileData);
     if (dataType == 0) {
-        LOG_ERR(filename, " contains an unsupported pixel format.\n");
+        LOG_ERR('\t', filename, " contains an unsupported pixel format.\n");
         FreeImage_Unload(fileData);
         return false;
     }
     
-    LOG_MSG("Successfully loaded ", filename, ".\n");
+    LOG_MSG("\tSuccessfully loaded ", filename, ".\n");
     
     this->pData = reinterpret_cast<char*>(fileData);
     this->imgSize[0] = (int)FreeImage_GetWidth(fileData);

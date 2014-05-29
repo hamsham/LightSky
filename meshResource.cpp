@@ -37,22 +37,16 @@ int getDrawableCharCount(const char* const str) {
  */
 meshResource::meshResource(meshResource&& ml) :
     resource{},
-    
-    numMeshes{ml.numMeshes},
-    
     numVertices{ml.numVertices},
-    vertices{ml.vertices}
+    pVertices{ml.pVertices}
 {
     resource::pData = ml.pData;
     ml.pData = nullptr;
     
     resource::dataSize = ml.dataSize;
     ml.dataSize = 0;
-    
-    ml.numMeshes = 0;
-    
-    ml.numVertices = nullptr;
-    ml.vertices = nullptr;
+    ml.numVertices = 0;
+    ml.pVertices = nullptr;
 }
 
 /*
@@ -65,14 +59,11 @@ meshResource& meshResource::operator=(meshResource&& ml) {
     resource::dataSize = ml.dataSize;
     ml.dataSize = 0;
     
-    numMeshes = ml.numMeshes;
-    ml.numMeshes = 0;
-    
     numVertices = ml.numVertices;
-    ml.numVertices = nullptr;
+    ml.numVertices = 0;
     
-    vertices = ml.vertices;
-    ml.vertices = nullptr;
+    pVertices = ml.pVertices;
+    ml.pVertices = nullptr;
     
     return *this;
 }
@@ -84,75 +75,30 @@ void meshResource::unload() {
     resource::pData = nullptr;
     resource::dataSize = 0;
     
-    for (unsigned i = 0; i < numMeshes; ++i) {
-        delete [] vertices[i];
-    }
+    numVertices = 0;
     
-    numMeshes = 0;
-    
-    delete [] numVertices;
-    numVertices = nullptr;
-    
-    delete [] vertices;
-    vertices = nullptr;
+    delete [] pVertices;
+    pVertices = nullptr;
 }
 
 /*
  * Initialize the arrays that will be used to contain the mesh data.
  */
-bool meshResource::initArrays(unsigned meshCount) {
+bool meshResource::initVertices(unsigned vertCount) {
     unload();
     
-    numMeshes   = meshCount;
-    numVertices = new(std::nothrow) unsigned[numMeshes];
-    vertices    = new(std::nothrow) vertex* [numMeshes];
+    pVertices = new(std::nothrow) vertex [vertCount];
     
-    if (numVertices == nullptr || vertices == nullptr) {
-        LOG_ERR("Unable to allocate memory for ", numMeshes, " meshes.");
+    if (pVertices == nullptr) {
+        LOG_ERR("\tUnable to allocate memory for ", vertCount, " vertices.");
         unload();
         return false;
     }
-    
-    for (unsigned i = 0; i < meshCount; ++i) {
-        numVertices[i] = 0;
-        vertices[i] = nullptr;
-    }
-    
-    return true;
-}
-
-/*
- * Initialize a mesh at a position
- */
-bool meshResource::initMeshAt(unsigned meshIndex, unsigned vertCount) {
-    if (meshIndex >= numMeshes) {
-        return false;
-    }
-    
-    if (vertices != nullptr && vertices[meshIndex] != nullptr) {
-        resource::dataSize -= sizeof(vertex) * numVertices[meshIndex];
-    }
-    
-    // clear all preexisting memory first
-    auto clearVerts = [&]()->void {
-        vertices[meshIndex] = 0;
-        delete [] vertices[meshIndex];
-        vertices[meshIndex] = nullptr;
-    };
-    
-    clearVerts();
-    
-    vertices[meshIndex] = new(std::nothrow) vertex[vertCount];
-
-    if (vertices[meshIndex] == nullptr) {
-        LOG_ERR("Unable to allocate memory for the vertices used by mesh ", meshIndex, ".\n");
-        clearVerts();
-        return false;
-    }
     else {
-        numVertices[meshIndex] = vertCount;
-        resource::pData = reinterpret_cast<char*>(vertices[meshIndex]);
-        resource::dataSize += sizeof(vertex) * (vertCount);
+        resource::dataSize = sizeof(vertex) * vertCount;
+        resource::pData = reinterpret_cast<char*>(pVertices);
+        LOG_MSG("\tSuccessfully allocated a ", resource::dataSize, "-byte vertex buffer.");
+        numVertices = vertCount;
     }
     
     return true;
@@ -164,6 +110,7 @@ bool meshResource::initMeshAt(unsigned meshIndex, unsigned vertCount) {
  */
 bool meshResource::loadFile(const char* filename) {
     (void)filename;
+    unload();
     return false;
 }
 
@@ -178,13 +125,8 @@ bool meshResource::loadPolygon(unsigned numPoints) {
     
     LOG_MSG("Attempting to load a ", numPoints, "-sided polygon.");
     
-    if (!initArrays(1)) {
-        LOG_ERR("An error occurred while initializing an array of meshes.\n");
-        return false;
-    }
-    
-    if (!initMeshAt(0, numPoints)) {
-        LOG_ERR("An error occurred while initializing a mesh.\n");
+    if (!initVertices(numPoints)) {
+        LOG_ERR("\tAn error occurred while initializing a ", numPoints, "-sided polygon.\n");
         return false;
     }
     
@@ -192,15 +134,15 @@ bool meshResource::loadPolygon(unsigned numPoints) {
         const float theta = -HL_TWO_PI * ((float)i / (float)numPoints);
         const float bc = std::cos(theta);
         const float bs = std::sin(theta);
-        vertex* const pVert = &vertices[0][i];
+        vertex* const pVert = pVertices+i;
         pVert->pos = math::vec3{bs, bc, 0.f};
         pVert->uv = math::vec2{(bs*0.5f)+0.5f, (bc*0.5f)+0.5f};
         pVert->norm = math::vec3{0.f, 0.f, 1.f};
         
-        LOG_MSG("Loaded pont ", bc, ' ', bs, '.');
+        LOG_MSG("\tLoaded pont {", bc, ',', bs, "}.");
     }
     
-    LOG_MSG("Successfully loaded a ", numPoints, "-sided polygon.\n");
+    LOG_MSG("\tSuccessfully loaded a ", numPoints, "-sided polygon.\n");
     return true;
 }
 
@@ -208,23 +150,18 @@ bool meshResource::loadPolygon(unsigned numPoints) {
  * Load the polygons required to create a renderable string of characters.
  */
 bool meshResource::loadText(const textureAtlas& ta, const std::string& str) {
-    LOG_MSG("Attempting to load text.");
-    
-    if (!initArrays(1)) {
-        LOG_ERR("An error occurred while initializing an array of meshes.\n");
-        return false;
-    }
+    LOG_MSG("Attempting to load a text mesh.");
     
     // deternime the number of non-whitespace characters
     const int numChars = getDrawableCharCount(str.c_str());
     
-    if (!initMeshAt(0, numChars*text_properties::VERTICES_PER_GLYPH)) {
-        LOG_ERR("An error occurred while initializing text.\n");
+    if (!initVertices(numChars*text_properties::VERTICES_PER_GLYPH)) {
+        LOG_ERR("\tAn error occurred while initializing a text mesh.\n");
         return false;
     }
     
     // Attempt to get a pointer to an unsynchronized memory buffer
-    vertex* pData = &vertices[0][0];
+    vertex* pVerts = pVertices;
     
     // Get pointers to the buffer data that will be filled with quads
     const atlasEntry* const pGlyphs = ta.getEntries();
@@ -265,40 +202,40 @@ bool meshResource::loadText(const textureAtlas& ta, const std::string& str) {
             xPos += rGlyph.advance[0];
             
             // 1st triangle
-            pData->pos = {xOffset, yOffset+rGlyph.size[1], 0.f};
-            pData->uv = {rGlyph.uv[0][0], rGlyph.uv[0][1]};
-            pData->norm = {0.f, 0.f, 1.f};
-            ++pData;
+            pVerts->pos = {xOffset, yOffset+rGlyph.size[1], 0.f};
+            pVerts->uv = {rGlyph.uv[0][0], rGlyph.uv[0][1]};
+            pVerts->norm = {0.f, 0.f, 1.f};
+            ++pVerts;
             
-            pData->pos = {xOffset, yOffset, 0.f};
-            pData->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
-            pData->norm = {0.f, 0.f, 1.f};
-            ++pData;
+            pVerts->pos = {xOffset, yOffset, 0.f};
+            pVerts->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
+            pVerts->norm = {0.f, 0.f, 1.f};
+            ++pVerts;
             
-            pData->pos = {xOffset+rGlyph.size[0], yOffset+rGlyph.size[1], 0.f};
-            pData->uv = {rGlyph.uv[1][0], rGlyph.uv[0][1]};
-            pData->norm = {0.f, 0.f, 1.f};
-            ++pData;
+            pVerts->pos = {xOffset+rGlyph.size[0], yOffset+rGlyph.size[1], 0.f};
+            pVerts->uv = {rGlyph.uv[1][0], rGlyph.uv[0][1]};
+            pVerts->norm = {0.f, 0.f, 1.f};
+            ++pVerts;
             
             // 2nd triangle
-            pData->pos = {xOffset+rGlyph.size[0], yOffset+rGlyph.size[1], 0.f};
-            pData->uv = {rGlyph.uv[1][0], rGlyph.uv[0][1]};
-            pData->norm = {0.f, 0.f, 1.f};
-            ++pData;
+            pVerts->pos = {xOffset+rGlyph.size[0], yOffset+rGlyph.size[1], 0.f};
+            pVerts->uv = {rGlyph.uv[1][0], rGlyph.uv[0][1]};
+            pVerts->norm = {0.f, 0.f, 1.f};
+            ++pVerts;
             
-            pData->pos = {xOffset, yOffset, 0.f};
-            pData->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
-            pData->norm = {0.f, 0.f, 1.f};
-            ++pData;
+            pVerts->pos = {xOffset, yOffset, 0.f};
+            pVerts->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
+            pVerts->norm = {0.f, 0.f, 1.f};
+            ++pVerts;
             
-            pData->pos = {xOffset+rGlyph.size[0],yOffset, 0.f};
-            pData->uv = {rGlyph.uv[1][0], rGlyph.uv[1][1]};
-            pData->norm = {0.f, 0.f, 1.f};
-            ++pData;
+            pVerts->pos = {xOffset+rGlyph.size[0],yOffset, 0.f};
+            pVerts->uv = {rGlyph.uv[1][0], rGlyph.uv[1][1]};
+            pVerts->norm = {0.f, 0.f, 1.f};
+            ++pVerts;
         }
     }
     
-    numVertices[0] = numChars*VERTICES_PER_GLYPH;
+    LOG_MSG("\tSuccessfully loaded a text mesh.\n");
     
     return true;
 }

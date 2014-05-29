@@ -112,7 +112,7 @@ bool fontResource::loadFile(const char* filename, unsigned pixelSize) {
     ftErr = FT_Init_FreeType(&ftLib);
     if (ftErr) {
         LOG_ERR(
-            "An error occurred while attempting to initialize FreeType.",
+            "\tAn error occurred while attempting to initialize FreeType.",
             "\n\tFunction:   FT_Init_FreeType",
             "\n\tError Code: ", FT_Errors[ftErr].code,
             "\n\tFT Error:   ", FT_Errors[ftErr].message, '\n'
@@ -124,7 +124,7 @@ bool fontResource::loadFile(const char* filename, unsigned pixelSize) {
     ftErr = FT_New_Face(ftLib, filename, 0, &ftFace);
     if (ftErr) {
         LOG_ERR(
-            "Unable to load the font ", filename, '.',
+            "\tUnable to load the font ", filename, '.',
             "\n\tFunction:   FT_New_Face",
             "\n\tError Code: ", FT_Errors[ftErr].code,
             "\n\tFT Error:   ", FT_Errors[ftErr].message, '\n'
@@ -137,7 +137,7 @@ bool fontResource::loadFile(const char* filename, unsigned pixelSize) {
     ftErr = FT_Select_Charmap(ftFace, FT_ENCODING_UNICODE);
     if (ftErr) {
         LOG_ERR(
-            "An error occurred while selecting Unicode characters within ", filename, '.',
+            "\tAn error occurred while selecting Unicode characters within ", filename, '.',
             "\n\tFunction:   FT_Select_Charmap",
             "\n\tError Code: ", FT_Errors[ftErr].code,
             "\n\tFT Error:   ", FT_Errors[ftErr].message, '\n'
@@ -150,7 +150,7 @@ bool fontResource::loadFile(const char* filename, unsigned pixelSize) {
     // Set the pixel size for each character in the font
     ftErr = FT_Set_Pixel_Sizes(ftFace, 0, pixelSize);
     if (ftErr) {
-        LOG_ERR("Unable to set the pixel size of the font ", filename, '.',
+        LOG_ERR("\tUnable to set the pixel size of the font ", filename, '.',
             "\n\tFunction:   FT_Set_Pixel_Sizes",
             "\n\tError Code: ", FT_Errors[ftErr].code,
             "\n\tFT Error:   ", FT_Errors[ftErr].message, '\n'
@@ -168,19 +168,16 @@ bool fontResource::loadFile(const char* filename, unsigned pixelSize) {
     
     if (ret == false) {
         LOG_ERR(
-            "An error occurred while attempting to load the font file ",
-            filename, ".\n"
+            "\tAn error occurred while attempting to load the font file ", filename, ".\n"
         );
     }
     else {
         glyphSize = pixelSize;
-        LOG_MSG(
-            "Successfully loaded the font file ", filename, '.',
-            "\n\tData Address:    ", this->pData,
+        LOG_MSG("\tData Address:  ", this->pData,
             "\n\tByte Size:       ", this->dataSize,
             "\n\tGlyph Size:      ", this->glyphSize,
             "\n\tNum Glyphs:      ", this->numGlyphs,
-            '\n'
+            "\n\tSuccessfully loaded the font file ", filename, ".\n"
         );
     }
     
@@ -210,7 +207,7 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
         
         if (ftErr) {
             LOG_ERR(
-                "Unable to load a glyph at index ", charIndex,
+                "\tUnable to load a glyph at index ", charIndex,
                 "\n\tFunction:   FT_Load_Glyph",
                 "\n\tError Code: ", FT_Errors[ftErr].code,
                 "\n\tFT Error:   ", FT_Errors[ftErr].message
@@ -222,7 +219,7 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
         ftErr = FT_Render_Glyph(ftFace->glyph, FT_RENDER_MODE_NORMAL);
         if (ftErr) {
             LOG_ERR(
-                "Unable to render the glyph at index ", charIndex,
+                "\tUnable to render the glyph at index ", charIndex,
                 "\n\tFunction:   FT_Render_Glyph",
                 "\n\tError Code: ", FT_Errors[ftErr].code,
                 "\n\tFT Error:   ", FT_Errors[ftErr].message
@@ -238,7 +235,7 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
         char* const data            = new (std::nothrow) char[byteSize];
         
         if (data == nullptr) {
-            LOG_ERR("Unable to allocate ", byteSize, " bytes for glyph data.");
+            LOG_ERR("\tUnable to allocate ", byteSize, " bytes for glyph data.");
             dataSize = 0;
             maxGlyphSize = math::vec2i{0,0};
             delete [] pGlyphs;

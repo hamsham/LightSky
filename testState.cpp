@@ -284,14 +284,14 @@ bool testState::onStart() {
     
     if (    pLoader == nullptr
     ||      !pLoader->loadTriangle()
-    ||      !primMesh.init(*pLoader, 0)
+    ||      !primMesh.init(*pLoader)
     ||      matStack == nullptr
     ||      !imgFile.loadFile("test_img.jpg")
     ||      !tex.init(0, GL_RGB, imgFile.getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, imgFile.getData())
     ||      !font.loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
     ||      !atlas.load(font)
     ||      !pLoader->loadText(atlas, testTextString)
-    ||      !textMesh.init(*pLoader, 0)
+    ||      !textMesh.init(*pLoader)
     ) {
         delete pLoader;
         

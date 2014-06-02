@@ -8,17 +8,18 @@
 #ifndef __STATE_TESTSTATE_H__
 #define	__STATE_TESTSTATE_H__
 
-#include "main.h"
 #include <GL/glew.h>
-#include "shaderProgram.h"
-#include "gameState.h"
-#include "matrixStack.h"
-#include "texture.h"
-#include "vertexArray.h"
+
 #include "bufferObject.h"
-#include "textureAtlas.h"
+#include "gameState.h"
+#include "main.h"
+#include "matrixStack.h"
 #include "mesh.h"
-#include "meshResource.h"
+#include "shaderProgram.h"
+#include "text.h"
+#include "texture.h"
+#include "textureAtlas.h"
+#include "vertexArray.h"
 
 class testState final : virtual public gameState {
     /*
@@ -27,10 +28,11 @@ class testState final : virtual public gameState {
     private:
         int             mouseX = 0;
         int             mouseY = 0;
-        shaderProgram   program = {};
+        shaderProgram   meshProgram = {};
+        shaderProgram   fontProgram = {};
         texture         tex = {tex_desc::TEX_2D};
         mesh            primMesh = {};
-        mesh            textMesh = {};
+        text            textMesh = {};
         matrixStack*    matStack = nullptr;
         math::quat      orientation = {};
         textureAtlas    atlas = {};

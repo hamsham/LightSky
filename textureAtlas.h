@@ -101,6 +101,13 @@ class textureAtlas {
         textureAtlas& operator=(textureAtlas&&);
         
         /**
+         * Get a runtime ID associated with this object
+         */
+        inline unsigned getId() {
+            return atlas.getId();
+        }
+        
+        /**
          * Stores the bitmap data located within a font file in *this as a
          * texture atlas.
          * 

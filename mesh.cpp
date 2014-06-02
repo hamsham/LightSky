@@ -17,9 +17,11 @@
 mesh::mesh(mesh&& m) :
     vao{std::move(m.vao)},
     vbo{std::move(m.vbo)},
+    modelVbo{std::move(m.modelVbo)},
     numVertices{m.numVertices}
 {
     m.numVertices = 0;
+    m.numInstances = 0;
 }
 
 /*
@@ -28,49 +30,59 @@ mesh::mesh(mesh&& m) :
 mesh& mesh::operator=(mesh&& m) {
     vao = std::move(m.vao);
     vbo = std::move(m.vbo);
+    modelVbo = std::move(m.modelVbo);
     
     numVertices = m.numVertices;
     m.numVertices = 0;
+    
+    numInstances = m.numInstances;
+    m.numInstances = 0;
     
     return *this;
 }
 
 /*
- * Load the data contained within a mesh loader onto the GPU
+ * Helper function to initialize all vertex buffers & arrays
  */
-bool mesh::init(const meshResource& ml) {
-    LOG_MSG("Attempting to send mesh vertex data to the GPU.");
-    terminate();
+bool mesh::initVertices(unsigned numVerts) {
+    if (numVerts == 0) {
+        LOG_ERR("\tInvalid vertex count in the mesh loader. Aborting GPU load.");
+        terminate();
+        return false;
+    }
     
+    vao.terminate();
     if (!vao.init()) {
         LOG_ERR("\tUnable to initialize a mesh VAO.");
         return false;
     }
     
-    if (!vbo.init()) {
-        LOG_ERR("\tUnable to initialize a mesh VBO.");
-        vao.terminate();
-        return false;
+    if (vbo.isValid() == false) {
+        if (!vbo.init()) {
+            LOG_ERR("\tUnable to initialize a mesh VBO.");
+            terminate();
+            return false;
+        }
     }
     
-    if (!modelVbo.init()) {
-        LOG_ERR("\tUnable to initialize a model matrix buffer.");
-        vbo.terminate();
-        vao.terminate();
-        return false;
+    if (modelVbo.isValid() == false) {
+        if (!modelVbo.init()) {
+            LOG_ERR("\tUnable to initialize a model matrix buffer.");
+            terminate();
+            return false;
+        }
     }
     
-    if (ml.getNumVertices() == 0) {
-        LOG_ERR("\tInvalid vertex count in the mesh loader. Aborting GPU load.");
-        return false;
-    }
-    else {
-        LOG_MSG("\tVertex Count: ", ml.getNumVertices());
-    }
-    
+        LOG_MSG("\tVertex Count: ", numVerts);
+    return true;
+}
+
+/*
+ * Helper function to ensure all vertex attributes are setup properly.
+ */
+void mesh::setVertexAttribs() {
     vao.bind();
     vbo.bind();
-    vbo.setData(ml.getByteSize(), ml.getVertices(), buffer_usage_t::STATIC_DRAW);
     
     // Vertex positions
     vao.enableAttrib(LS_VERTEX_POSITION_ATTRIB);
@@ -96,9 +108,7 @@ bool mesh::init(const meshResource& ml) {
     LOG_GL_ERR();
     
     // setup the VBO/VAO for instancing
-    const math::mat4 identityMat = {1.f};
     modelVbo.bind();
-    modelVbo.setData(sizeof(math::mat4), &identityMat, buffer_usage_t::DYNAMIC_DRAW);
     for (unsigned i = 0; i < 4; ++i) {
         vao.enableAttrib(LS_MODEL_MATRIX_ATTRIB+i);
         vao.setAttribOffset(
@@ -115,6 +125,25 @@ bool mesh::init(const meshResource& ml) {
     modelVbo.unbind();
     
     LOG_GL_ERR();
+}
+
+/*
+ * Load the data contained within a mesh loader onto the GPU
+ */
+bool mesh::init(const meshResource& ml) {
+    LOG_MSG("Attempting to send mesh vertex data to the GPU.");
+    
+    if (!initVertices(ml.getNumVertices())) {
+        return false;
+    }
+    
+    vbo.bind();
+    vbo.setData(ml.getByteSize(), ml.getVertices(), buffer_usage_t::STATIC_DRAW);
+    LOG_GL_ERR();
+    
+    setVertexAttribs();
+    const math::mat4 identityMat = {1.f};
+    setNumInstances(1, &identityMat);
     
     numVertices = ml.getNumVertices();
     

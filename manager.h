@@ -7,6 +7,7 @@
 
 #ifndef __LS_MANAGER_H__
 #define	__LS_MANAGER_H__
+
 #include <utility>
 #include <unordered_map>
 

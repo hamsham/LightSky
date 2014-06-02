@@ -14,16 +14,6 @@
 #include "vertex.h"
 #include "textureAtlas.h"
 
-enum text_properties {
-    SPACES_PER_TAB      = 4,
-    VERTICES_PER_GLYPH  = 6
-};
-
-/**
- * Utility function to get all of the non-whitespace characters in a string
- */
-int getDrawableCharCount(const char* const str);
-
 /**
  * The mesh resource can be used to load a mesh or meshes from a file. It can
  * also be used to generate basic primitives such as a sphere, cube, cone, etc.
@@ -174,18 +164,6 @@ class meshResource final : public resource {
         bool loadCircle(unsigned numPoints = 5) {
             return loadPolygon(numPoints);
         }
-        
-        /**
-         * Load text in the form of several glyphs.
-         * @param textureAtlas
-         * @param std::string
-         * 
-         * @return
-         * TRUE if the text from the string was successfully loaded onto the GPU
-         * FALSE if an error occurred while the glyphs representing the string
-         * failed to load.
-         */
-        bool loadText(const textureAtlas&, const std::string&);
 };
 
 #endif	/* __LS_MESH_RESOURCE_H__ */

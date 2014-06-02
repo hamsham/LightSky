@@ -13,12 +13,12 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_keyboard.h>
 #include <cmath>
-#include "testState.h"
+
 #include "display.h"
-#include "imageResource.h"
 #include "fontResource.h"
+#include "imageResource.h"
 #include "meshResource.h"
-#include "mesh.h"
+#include "testState.h"
 
 bool GAME_KEYS[512] = {false};
 
@@ -120,8 +120,6 @@ void main() {
     outFragCol = fontColor*step(0.5, mask);
 }
 )***";
-
-shaderProgram fontProgram;
 
 /******************************************************************************
  * Constructor & Destructor
@@ -290,8 +288,7 @@ bool testState::onStart() {
     ||      !tex.init(0, GL_RGB, imgFile.getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, imgFile.getData())
     ||      !font.loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
     ||      !atlas.load(font)
-    ||      !pLoader->loadText(atlas, testTextString)
-    ||      !textMesh.init(*pLoader)
+    ||      !textMesh.init(atlas, testTextString)
     ) {
         delete pLoader;
         
@@ -316,8 +313,8 @@ bool testState::onStart() {
         
         vertShader.compile(vertShaderData);
         fragShader.compile(fragShaderData);
-        program.attachShaders(vertShader, fragShader);
-        program.link();
+        meshProgram.attachShaders(vertShader, fragShader);
+        meshProgram.link();
         
         fragShader.terminate();
         fragShader.compile(fontFS);
@@ -329,20 +326,20 @@ bool testState::onStart() {
         matStack->loadMatrix(matrix_type::VIEW_MATRIX, math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f)));
         matStack->constructVp();
         
-        program.bind();
-        GLuint mvpId = program.getUniformLocation("vpMatrix");
-        program.setUniformValue(mvpId, matStack->getVpMatrix());
+        meshProgram.bind();
+        GLuint mvpId = meshProgram.getUniformLocation("vpMatrix");
+        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         LOG_GL_ERR();
         
         fontProgram.bind();
         mvpId = fontProgram.getUniformLocation("vpMatrix");
-        program.setUniformValue(mvpId, matStack->getVpMatrix());
+        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         LOG_GL_ERR();
     }
     LOG_GL_ERR();
     
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     
     return true;
 }
@@ -396,10 +393,10 @@ void testState::drawScene() {
         
         primMesh.setNumInstances(1, &modelMat);
 
-        program.bind();
+        meshProgram.bind();
         GLuint mvpId = 0;
-        mvpId = program.getUniformLocation("vpMatrix");
-        program.setUniformValue(mvpId, matStack->getVpMatrix());
+        mvpId = meshProgram.getUniformLocation("vpMatrix");
+        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         
         tex.bind();
         primMesh.draw();
@@ -412,7 +409,7 @@ void testState::drawScene() {
         
         fontProgram.bind();
         mvpId = fontProgram.getUniformLocation("vpMatrix");
-        program.setUniformValue(mvpId, matStack->getVpMatrix());
+        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         atlas.getTexture().bind();
         textMesh.draw();
         atlas.getTexture().unbind();

@@ -14,12 +14,8 @@
 #include "gameState.h"
 #include "main.h"
 #include "matrixStack.h"
-#include "mesh.h"
+#include "sceneManager.h"
 #include "shaderProgram.h"
-#include "text.h"
-#include "texture.h"
-#include "textureAtlas.h"
-#include "vertexArray.h"
 
 class testState final : virtual public gameState {
     /*
@@ -30,12 +26,9 @@ class testState final : virtual public gameState {
         int             mouseY = 0;
         shaderProgram   meshProgram = {};
         shaderProgram   fontProgram = {};
-        texture         tex = {tex_desc::TEX_2D};
-        mesh            primMesh = {};
-        text            textMesh = {};
         matrixStack*    matStack = nullptr;
         math::quat      orientation = {};
-        textureAtlas    atlas = {};
+        sceneManager*   pScene = nullptr;
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent*) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent*) override;
@@ -49,13 +42,16 @@ class testState final : virtual public gameState {
         virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent*) override;
         
         void drawScene();
+        void terminate();
         
     public:
         testState();
         testState(const testState&) = delete;
         testState(testState&&) = delete;
         
-        ~testState();
+        ~testState() {
+            terminate();
+        }
         
         testState& operator=(const testState&) = delete;
         testState& operator=(testState&&) = delete;

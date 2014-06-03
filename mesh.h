@@ -114,7 +114,7 @@ class mesh {
         /**
          * Get an general identification to be used for this object
          */
-        inline unsigned getId() {
+        inline unsigned getId() const {
             return vbo.getId();
         }
         

@@ -103,7 +103,7 @@ class textureAtlas {
         /**
          * Get a runtime ID associated with this object
          */
-        inline unsigned getId() {
+        inline unsigned getId() const {
             return atlas.getId();
         }
         

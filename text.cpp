@@ -75,6 +75,10 @@ bool text::initVertices(unsigned numVerts) {
         }
     }
     
+    // ensure at lease one model matrix is available on initialization.
+    const math::mat4 identityMat = {1.f};
+    setNumInstances(1, &identityMat);
+    
     LOG_MSG("\tVertex Count: ", numVerts);
     return true;
 }
@@ -244,8 +248,6 @@ bool text::init(const textureAtlas& ta, const std::string& str) {
     LOG_GL_ERR();
     
     setVertexAttribs();
-    const math::mat4 identityMat = {1.f};
-    setNumInstances(1, &identityMat);
     
     numVertices = numVerts;
     

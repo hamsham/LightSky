@@ -9,7 +9,9 @@
 #define	__LS_RENDERER_H__
 
 #include <Gl/glew.h>
+
 #include "main.h"
+#include "color.h"
 
 enum draw_mode : int {
     LS_POINTS                   = GL_POINTS,
@@ -113,7 +115,7 @@ class renderer final {
         blend_func getBlendFunctionDstRgb() const;
         blend_func getBlendFunctionDstAlpha() const;
         
-        void setBlendColor(const math::vec4& rgba = math::vec4{0.f, 0.f, 0.f, 0.f});
+        void setBlendColor(const color::color& rgba = color::blank);
         math::vec4 getBlendColor() const;
         
         int getMaxTextureSize() const;

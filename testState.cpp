@@ -17,8 +17,12 @@
 #include "display.h"
 #include "fontResource.h"
 #include "imageResource.h"
+#include "mesh.h"
 #include "meshResource.h"
 #include "testState.h"
+#include "text.h"
+#include "texture.h"
+#include "textureAtlas.h"
 
 bool GAME_KEYS[512] = {false};
 
@@ -127,9 +131,6 @@ void main() {
 testState::testState() {
     SDL_StopTextInput();
     SDL_SetRelativeMouseMode(SDL_TRUE);
-}
-
-testState::~testState() {
 }
 
 /******************************************************************************
@@ -272,37 +273,62 @@ void testState::onMouseWheelEvent(const SDL_MouseWheelEvent*) {
 }
 
 /******************************************************************************
+ * termination assistant
+******************************************************************************/
+void testState::terminate() {
+        delete matStack;
+        matStack = nullptr;
+        delete pScene;
+        pScene = nullptr;
+}
+
+/******************************************************************************
  * Starting state
 ******************************************************************************/
 bool testState::onStart() {
+    matStack = new matrixStack{};
+    pScene = new sceneManager{};
+    
+    if (!matStack || !pScene) {
+        LOG_ERR("An error occurred while initializing the scene.");
+        terminate();
+        return false;
+    }
+    
     meshResource* pLoader = new meshResource{};
-    matStack = new matrixStack();
     imageResource imgFile;
     fontResource font;
+    mesh* pMesh = new mesh{};
+    texture* pTex = new texture{tex_desc::TEX_2D};
+    textureAtlas* pAtlas = new textureAtlas{};
+    text* pText = new text{};
     
     if (    pLoader == nullptr
     ||      !pLoader->loadTriangle()
-    ||      !primMesh.init(*pLoader)
+    ||      !pMesh->init(*pLoader)
     ||      matStack == nullptr
     ||      !imgFile.loadFile("test_img.jpg")
-    ||      !tex.init(0, GL_RGB, imgFile.getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, imgFile.getData())
+    ||      !pTex->init(0, GL_RGB, imgFile.getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, imgFile.getData())
     ||      !font.loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
-    ||      !atlas.load(font)
-    ||      !textMesh.init(atlas, testTextString)
+    ||      !pAtlas->load(font)
+    ||      !pText->init(*pAtlas, testTextString)
     ) {
         delete pLoader;
-        
-        delete matStack;
-        matStack = nullptr;
-        
+        terminate();
         return false;
+    }
+    else {
+        pScene->manageMesh(pMesh);
+        pScene->manageTexture(pTex);
+        pScene->manageText(pText);
+        pScene->manageAtlas(pAtlas);
     }
     
     delete pLoader;
     
-    tex.bind();
-    tex.setParameter(TEX_MAG_FILTER, LINEAR_FILTER);
-    tex.setParameter(TEX_MIN_FILTER, NEAREST_FILTER);
+    pTex->bind();
+    pTex->setParameter(TEX_MAG_FILTER, LINEAR_FILTER);
+    pTex->setParameter(TEX_MIN_FILTER, NEAREST_FILTER);
     
     LOG_GL_ERR();
     
@@ -348,11 +374,7 @@ bool testState::onStart() {
  * Stopping state
 ******************************************************************************/
 void testState::onStop() {
-    delete matStack;
-    matStack = nullptr;
-    primMesh.terminate();
-    textMesh.terminate();
-    tex.terminate();
+    terminate();
 }
 
 /******************************************************************************
@@ -390,17 +412,18 @@ void testState::drawScene() {
         /* Billboarding Test */
         const vec3 camPos{-viewMat[3][0], 0.f, viewMat[3][2]};
         const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
-        
-        primMesh.setNumInstances(1, &modelMat);
+        mesh* const pMesh = pScene->getMeshManager().begin()->second;
+        pMesh->setNumInstances(1, &modelMat);
 
         meshProgram.bind();
         GLuint mvpId = 0;
         mvpId = meshProgram.getUniformLocation("vpMatrix");
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         
-        tex.bind();
-        primMesh.draw();
-        tex.unbind();
+        texture* const pTex = pScene->getTextureManager().begin()->second;
+        pTex->bind();
+        pMesh->draw();
+        pTex->unbind();
 
         /* Premultiplied alpha */
         glEnable(GL_BLEND);
@@ -410,9 +433,11 @@ void testState::drawScene() {
         fontProgram.bind();
         mvpId = fontProgram.getUniformLocation("vpMatrix");
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
-        atlas.getTexture().bind();
-        textMesh.draw();
-        atlas.getTexture().unbind();
+        textureAtlas* const pAtlas = pScene->getAtlasManager().begin()->second;
+        text* const pText = pScene->getTextManager().begin()->second;
+        pAtlas->getTexture().bind();
+        pText->draw();
+        pAtlas->getTexture().unbind();
         glDisable(GL_BLEND);
     }
     matStack->popMatrix(matrix_type::VIEW_MATRIX);

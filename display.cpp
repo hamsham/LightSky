@@ -7,6 +7,7 @@
 
 #include <GL/glew.h>
 #include "display.h"
+#include "color.h"
 
 /******************************************************************************
  * Display Initialization
@@ -66,7 +67,8 @@ bool display::init(
      */
     SDL_GL_MakeCurrent(pWindow, pContext);
     SDL_GL_SetSwapInterval(useVsync ? 1 : 0);
-    glClearColor(1.f, 0.f, 1.f, 1.f);
+    const color::color& mgcPnk = color::magicPink;
+    glClearColor(mgcPnk[0], mgcPnk[1], mgcPnk[2], mgcPnk[3]);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
     if (!renderContext.init()) {

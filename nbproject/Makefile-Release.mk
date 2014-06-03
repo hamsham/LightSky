@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/bufferObject.o \
+	${OBJECTDIR}/color.o \
 	${OBJECTDIR}/dataResource.o \
 	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/fontResource.o \
@@ -92,6 +93,11 @@ ${OBJECTDIR}/bufferObject.o: bufferObject.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/bufferObject.o bufferObject.cpp
+
+${OBJECTDIR}/color.o: color.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/color.o color.cpp
 
 ${OBJECTDIR}/dataResource.o: dataResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}

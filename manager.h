@@ -17,6 +17,9 @@
  * The default implementation takes ownership of raw dynamic pointers and will
  * delete them upon destruction. A custom implementation is necessary to delete
  * dynamic arrays.
+ * 
+ * Remember, this non-specialized implementation takes pointers to data
+ * allocated with the new operator.
  */
 template <typename hash_t, typename data_t>
 class manager {
@@ -101,7 +104,7 @@ class manager {
          * @param id
          * The ID that *this object should be referenced by *this.
          */
-        inline void manage(data_t* const pData, const hash_t& id) {
+        inline void manage(const hash_t& id, data_t* const pData) {
             if (this->contains(id) == false) {
                 dataMap[id] = pData;
             }
@@ -137,13 +140,11 @@ class manager {
          * The ID that is used to reference an object contained within *this.
          */
         inline void erase(const hash_t& id) {
-            if (this->contains(id) == false) {
-                return;
+            if (this->contains(id) == true) {
+                data_t* const pData = dataMap.at(id);
+                dataMap.erase(id);
+                delete pData;
             }
-            
-            data_t* const pData = dataMap.at(id);
-            dataMap.erase(id);
-            delete pData;
         }
         
         /**
@@ -236,6 +237,16 @@ class manager {
          * @return A reference to the internal std::unordered_map used by *this.
          */
         inline const map_t& getDataMap() const {
+            return dataMap;
+        }
+        
+        /**
+         * Retrieve the implementing hash table that is used internally by this
+         * object.
+         * 
+         * @return A reference to the internal std::unordered_map used by *this.
+         */
+        inline map_t& getDataMap() {
             return dataMap;
         }
 };

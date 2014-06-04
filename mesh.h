@@ -59,6 +59,11 @@ class mesh {
         unsigned numInstances = 1;
         
         /**
+         * Draw mode for each mesh
+         */
+        draw_mode drawMode = draw_mode::DEFAULT_DRAW_MODE;
+        
+        /**
          * Helper function to ensure that the vao/vbo combos are loaded.
          */
         bool initVertices(unsigned numVerts);
@@ -76,7 +81,8 @@ class mesh {
             vao{},
             vbo{},
             numVertices{},
-            numInstances{}
+            numInstances{},
+            drawMode{}
         {}
         
         /**
@@ -170,6 +176,24 @@ class mesh {
         }
         
         /**
+         * Get the current Draw Mode for this mesh.
+         * 
+         * @return draw_mode
+         */
+        draw_mode getDrawMode() const {
+            return drawMode;
+        }
+        
+        /**
+         * Set the method of drawing that should be used for this mesh.
+         * 
+         * @param dm
+         */
+        void setDrawMode(draw_mode dm) {
+            drawMode = dm;
+        }
+        
+        /**
          * Draw a mesh
          * 
          * This method renders a mesh to the currently bound framebuffer.
@@ -193,15 +217,14 @@ class mesh {
 
 inline void mesh::draw() const {
     vao.bind();
-    glDrawArraysInstanced(LS_TRIANGLES, 0, numVertices, numInstances);
+    glDrawArraysInstanced(drawMode, 0, numVertices, numInstances);
     vao.unbind();
 }
 
 inline void mesh::drawSubMesh(int startPos, int endPos) const {
     vao.bind();
-    glDrawArraysInstanced(LS_TRIANGLES, startPos, endPos, numInstances);
+    glDrawArraysInstanced(drawMode, startPos, endPos, numInstances);
     vao.unbind();
 }
 
 #endif	/* __LS_MESH_H__ */
-

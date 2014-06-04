@@ -13,6 +13,7 @@
 #include "resource.h"
 #include "vertex.h"
 #include "atlas.h"
+#include "renderer.h"
 
 /**
  * The mesh resource can be used to load a mesh or meshes from a file. It can
@@ -31,6 +32,11 @@ class meshResource final : public resource {
          * This is implemented as an array of vertex arrays.
          */
         vertex* pVertices = nullptr;
+        
+        /**
+         * Contains the resulting draw mode for each mesh after loading.
+         */
+        draw_mode resultDrawMode = draw_mode::DEFAULT_DRAW_MODE;
         
         bool initVertices(unsigned vertCount);
         
@@ -118,6 +124,15 @@ class meshResource final : public resource {
         }
         
         /**
+         * Get the draw mode that was generated while loading a mesh.
+         * 
+         * @return The target draw mode for the currently loaded mesh.
+         */
+        draw_mode getDrawMode() const {
+            return resultDrawMode;
+        }
+        
+        /**
          * N-Sided polygon primitive loading method
          * 
          * @param vertTypes
@@ -157,9 +172,7 @@ class meshResource final : public resource {
             return loadPolygon(3);
         }
         
-        bool loadQuad() {
-            return loadPolygon(4);
-        }
+        bool loadQuad();
         
         bool loadCircle(unsigned numPoints = 5) {
             return loadPolygon(numPoints);

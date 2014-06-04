@@ -38,7 +38,8 @@ unsigned getDrawableCharCount(const char* const str) {
 meshResource::meshResource(meshResource&& ml) :
     resource{},
     numVertices{ml.numVertices},
-    pVertices{ml.pVertices}
+    pVertices{ml.pVertices},
+    resultDrawMode{ml.resultDrawMode}
 {
     resource::pData = ml.pData;
     ml.pData = nullptr;
@@ -47,6 +48,7 @@ meshResource::meshResource(meshResource&& ml) :
     ml.dataSize = 0;
     ml.numVertices = 0;
     ml.pVertices = nullptr;
+    ml.resultDrawMode = draw_mode::DEFAULT_DRAW_MODE;
 }
 
 /*
@@ -64,6 +66,9 @@ meshResource& meshResource::operator=(meshResource&& ml) {
     
     pVertices = ml.pVertices;
     ml.pVertices = nullptr;
+    
+    resultDrawMode = ml.resultDrawMode;
+    ml.resultDrawMode = draw_mode::DEFAULT_DRAW_MODE;
     
     return *this;
 }
@@ -115,6 +120,38 @@ bool meshResource::loadFile(const char* filename) {
 }
 
 /*
+ * Load a square
+ */
+bool meshResource::loadQuad() {
+    LOG_MSG("Attempting to load a quad mesh.");
+    
+    if (!initVertices(4)) {
+        LOG_ERR("\tAn error occurred while initializing a quad mesh.\n");
+        return false;
+    }
+    
+    pVertices[0].pos = math::vec3{1.f, 1.f, 0.f};
+    pVertices[0].uv = math::vec2{1.f, 1.f};
+    pVertices[0].norm = math::vec3{0.f, 0.f, 1.f};
+    
+    pVertices[1].pos = math::vec3{-1.f, 1.f, 0.f};
+    pVertices[1].uv = math::vec2{0.f, 1.f};
+    pVertices[1].norm = math::vec3{0.f, 0.f, 1.f};
+    
+    pVertices[2].pos = math::vec3{-1.f, -1.f, 0.f};
+    pVertices[2].uv = math::vec2{0.f, 0.f};
+    pVertices[2].norm = math::vec3{0.f, 0.f, 1.f};
+    
+    pVertices[3].pos = math::vec3{1.f, -1.f, 0.f};
+    pVertices[3].uv = math::vec2{1.f, 0.f};
+    pVertices[3].norm = math::vec3{0.f, 0.f, 1.f};
+    
+    LOG_MSG("\tSuccessfully loaded a quad mesh.\n");
+    resultDrawMode = draw_mode::LS_TRIANGLE_FAN;
+    return true;
+}
+
+/*
  * Load a primitive
  */
 bool meshResource::loadPolygon(unsigned numPoints) {
@@ -138,10 +175,9 @@ bool meshResource::loadPolygon(unsigned numPoints) {
         pVert->pos = math::vec3{bs, bc, 0.f};
         pVert->uv = math::vec2{(bs*0.5f)+0.5f, (bc*0.5f)+0.5f};
         pVert->norm = math::vec3{0.f, 0.f, 1.f};
-        
-        LOG_MSG("\tLoaded pont {", bc, ',', bs, "}.");
     }
     
     LOG_MSG("\tSuccessfully loaded a ", numPoints, "-sided polygon.\n");
+    resultDrawMode = draw_mode::LS_TRIANGLE_FAN;
     return true;
 }

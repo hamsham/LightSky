@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   mesh.cpp
  * Author: miles
  * 
@@ -18,10 +18,12 @@ mesh::mesh(mesh&& m) :
     vao{std::move(m.vao)},
     vbo{std::move(m.vbo)},
     modelVbo{std::move(m.modelVbo)},
-    numVertices{m.numVertices}
+    numVertices{m.numVertices},
+    drawMode{m.drawMode}
 {
     m.numVertices = 0;
     m.numInstances = 0;
+    m.drawMode = draw_mode::DEFAULT_DRAW_MODE;
 }
 
 /*
@@ -37,6 +39,9 @@ mesh& mesh::operator=(mesh&& m) {
     
     numInstances = m.numInstances;
     m.numInstances = 0;
+    
+    drawMode = m.drawMode;
+    m.drawMode = draw_mode::DEFAULT_DRAW_MODE;
     
     return *this;
 }
@@ -148,6 +153,7 @@ bool mesh::init(const meshResource& ml) {
     setVertexAttribs();
     
     numVertices = ml.getNumVertices();
+    drawMode = ml.getDrawMode();
     
     LOG_MSG("\tSuccessfully sent a mesh of ", numVertices, " vertices to the GPU.\n");
     

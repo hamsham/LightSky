@@ -74,7 +74,7 @@ const char vertShaderData[] = R"***(
 
 layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inUv;
-layout (location = 2) in vec2 inNorm;
+layout (location = 2) in vec3 inNorm;
 layout (location = 3) in mat4 inModelMat;
 
 uniform mat4 vpMatrix;
@@ -111,7 +111,7 @@ void main() {
 const char fontFS[] = R"***(
 #version 330
 
-precision lowp float;
+//precision lowp float;
 
 in vec2 uvCoords;
 out vec4 outFragCol;
@@ -304,7 +304,7 @@ bool testState::onStart() {
     text* pText = new text{};
     
     if (    pLoader == nullptr
-    ||      !pLoader->loadTriangle()
+    ||      !pLoader->loadCube()
     ||      !pMesh->init(*pLoader)
     ||      matStack == nullptr
     ||      !imgFile.loadFile("test_img.jpg")
@@ -404,16 +404,18 @@ void testState::drawScene() {
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack.
-    const mat4& viewMat = matStack->getMatrix(matrix_type::VIEW_MATRIX);
+    //const mat4& viewMat =
+        //matStack->getMatrix(matrix_type::VIEW_MATRIX) *
+        //matStack->getMatrix(matrix_type::PROJECTION_MATRIX);
     matStack->pushMatrix(matrix_type::VIEW_MATRIX, math::quatToMat4(orientation));
     matStack->constructVp();
     
     {
         /* Billboarding Test */
-        const vec3 camPos{-viewMat[3][0], 0.f, viewMat[3][2]};
-        const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
+        //const vec3 camPos{-viewMat[3][0], 0.f, -viewMat[3][2]};
+        //const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
         mesh* const pMesh = pScene->getMeshList()[0];
-        pMesh->setNumInstances(1, &modelMat);
+        //pMesh->setNumInstances(1, &modelMat);
 
         meshProgram.bind();
         GLuint mvpId = 0;

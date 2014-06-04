@@ -284,25 +284,73 @@ text* sceneManager::unManageText(unsigned index) {
 // Resource queries
 ///////////////////////////////////////////////////////////////////////////////
 bool sceneManager::containsMesh(const mesh* const pMesh) const {
-    return pMesh != nullptr
-        ? std::find(meshMgr.begin(), meshMgr.end(), pMesh) != meshMgr.end()
-        : false;
+    if (pMesh == nullptr) {
+        return false;
+    }
+    else {
+        meshList::const_iterator iter = meshMgr.begin();
+        while (iter != meshMgr.end()) {
+            if (pMesh->getId() == iter->getId()) {
+                return true;
+            }
+            
+            ++iter;
+        }
+    }
+    
+    return false;
 }
 
 bool sceneManager::containsTexture(const texture* const pTex) const {
-    return pTex != nullptr
-        ? std::find(texMgr.begin(), texMgr.end(), pTex) != texMgr.end()
-        : false;
+    if (pTex == nullptr) {
+        return false;
+    }
+    else {
+        textureList::const_iterator iter = texMgr.begin();
+        while (iter != texMgr.end()) {
+            if (pTex->getId() == iter->getId()) {
+                return true;
+            }
+            
+            ++iter;
+        }
+    }
+    
+    return false;
 }
 
 bool sceneManager::containsAtlas(const atlas* const pAtlas) const {
-    return pAtlas != nullptr
-        ? std::find(atlasMgr.begin(), atlasMgr.end(), pAtlas) != atlasMgr.end()
-        : false;
+    if (pAtlas == nullptr) {
+        return false;
+    }
+    else {
+        atlasList::const_iterator iter = atlasMgr.begin();
+        while (iter != atlasMgr.end()) {
+            if (pAtlas->getId() == iter->getId()) {
+                return true;
+            }
+            
+            ++iter;
+        }
+    }
+    
+    return false;
 }
 
 bool sceneManager::containsText(const text* const pText) const {
-    return pText != nullptr
-        ? std::find(stringMgr.begin(), stringMgr.end(), pText) != stringMgr.end()
-        : false;
+    if (pText == nullptr) {
+        return false;
+    }
+    else {
+        textList::const_iterator iter = stringMgr.begin();
+        while (iter != stringMgr.end()) {
+            if (pText->getId() == iter->getId()) {
+                return true;
+            }
+            
+            ++iter;
+        }
+    }
+    
+    return false;
 }

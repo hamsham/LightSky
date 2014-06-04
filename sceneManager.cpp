@@ -5,12 +5,13 @@
  * Created on May 26, 2014, 11:22 AM
  */
 
+#include <algorithm>
 #include <utility>
 
 #include "mesh.h"
 #include "text.h"
 #include "texture.h"
-#include "textureAtlas.h"
+#include "atlas.h"
 #include "sceneManager.h"
 
 static const unsigned char checkeredCol[] = {
@@ -19,14 +20,6 @@ static const unsigned char checkeredCol[] = {
     255,    0,  255,    255,
     0,      0,  0,      255
 };
-
-/*
- * Management implementations
- */
-LS_DEFINE_CLASS_TYPE(manager, unsigned, mesh);
-LS_DEFINE_CLASS_TYPE(manager, unsigned, texture);
-LS_DEFINE_CLASS_TYPE(manager, unsigned, textureAtlas);
-LS_DEFINE_CLASS_TYPE(manager, unsigned, text);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Scene Manager Class
@@ -117,77 +110,81 @@ void sceneManager::clear() {
 ///////////////////////////////////////////////////////////////////////////////
 // Manager retrieval
 ///////////////////////////////////////////////////////////////////////////////
-meshManager::map_t& sceneManager::getMeshManager() {
-    return meshMgr.getDataMap();
+meshList& sceneManager::getMeshList() {
+    return meshMgr;
 }
 
-textureManager::map_t& sceneManager::getTextureManager() {
-    return texMgr.getDataMap();
+textureList& sceneManager::getTextureList() {
+    return texMgr;
 }
 
-atlasManager::map_t& sceneManager::getAtlasManager() {
-    return atlasMgr.getDataMap();
+atlasList& sceneManager::getAtlasList() {
+    return atlasMgr;
 }
 
-textManager::map_t& sceneManager::getTextManager() {
-    return stringMgr.getDataMap();
+textList& sceneManager::getTextManager() {
+    return stringMgr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Manager retrieval (const)
 ///////////////////////////////////////////////////////////////////////////////
-const meshManager::map_t& sceneManager::getMeshManager() const {
-    return meshMgr.getDataMap();
+const meshList& sceneManager::getMeshList() const {
+    return meshMgr;
 }
 
-const textureManager::map_t& sceneManager::getTextureManager() const {
-    return texMgr.getDataMap();
+const textureList& sceneManager::getTextureList() const {
+    return texMgr;
 }
 
-const atlasManager::map_t& sceneManager::getAtlasManager() const {
-    return atlasMgr.getDataMap();
+const atlasList& sceneManager::getAtlasList() const {
+    return atlasMgr;
 }
 
-const textManager::map_t& sceneManager::getTextManager() const {
-    return stringMgr.getDataMap();
+const textList& sceneManager::getTextManager() const {
+    return stringMgr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Resource "get" methods
 ///////////////////////////////////////////////////////////////////////////////
-mesh* sceneManager::getMesh(unsigned id) const {
-    return meshMgr.get(id);
+mesh* sceneManager::getMesh(unsigned index) const {
+    HL_DEBUG_ASSERT(index < meshMgr.size());
+    return meshMgr[index];
 }
 
-texture* sceneManager::getTexture(unsigned id) const {
-    return texMgr.get(id);
+texture* sceneManager::getTexture(unsigned index) const {
+    HL_DEBUG_ASSERT(index < texMgr.size());
+    return texMgr[index];
 }
 
-textureAtlas* sceneManager::getAtlas(unsigned id) const {
-    return atlasMgr.get(id);
+atlas* sceneManager::getAtlas(unsigned index) const {
+    HL_DEBUG_ASSERT(index < atlasMgr.size());
+    return atlasMgr[index];
 }
 
-text* sceneManager::getText(unsigned id) const {
-    return stringMgr.get(id);
+text* sceneManager::getText(unsigned index) const {
+    HL_DEBUG_ASSERT(index < stringMgr.size());
+    return stringMgr[index];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Resource deletion methods
 ///////////////////////////////////////////////////////////////////////////////
-void sceneManager::eraseMesh(unsigned id) {
-    meshMgr.erase(id);
+void sceneManager::eraseMesh(unsigned index) {
+    meshMgr.erase(meshMgr.begin()+index);
 }
 
-void sceneManager::eraseTexture(unsigned id) {
-    texMgr.erase(id);
+void sceneManager::eraseTexture(unsigned index) {
+    texMgr.erase(texMgr.begin()+index);
 }
 
-void sceneManager::eraseAtlas(unsigned id) {
-    atlasMgr.erase(id);
+void sceneManager::eraseAtlas(unsigned index) {
+    atlasMgr.erase(atlasMgr.begin()+index);
 }
 
-void sceneManager::eraseText(unsigned id) {
-    stringMgr.erase(id);
+void sceneManager::eraseText(unsigned index) {
+    stringMgr.erase(stringMgr.begin()+index);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -213,40 +210,40 @@ unsigned sceneManager::getNumTexts() const {
 // Resource management
 ///////////////////////////////////////////////////////////////////////////////
 unsigned sceneManager::manageMesh(mesh* const pMesh) {
-    if (pMesh != nullptr) {
-        const unsigned id = pMesh->getId();
-        meshMgr.manage(id, pMesh);
-        return id;
+    if (pMesh != nullptr && this->containsMesh(pMesh) == false) {
+        const unsigned index = pMesh->getId();
+        meshMgr.push_back(pMesh);
+        return index;
     }
     
     return INVALID_SCENE_ID;
 }
 
 unsigned sceneManager::manageTexture(texture* const pTexture) {
-    if (pTexture != nullptr) {
-        const unsigned id = pTexture->getId();
-        texMgr.manage(id, pTexture);
-        return id;
+    if (pTexture != nullptr && this->containsTexture(pTexture) == false) {
+        const unsigned index = pTexture->getId();
+        texMgr.push_back(pTexture);
+        return index;
     }
     
     return INVALID_SCENE_ID;
 }
 
-unsigned sceneManager::manageAtlas(textureAtlas* const pAtlas) {
-    if (pAtlas != nullptr) {
-        const unsigned id = pAtlas->getId();
-        atlasMgr.manage(id, pAtlas);
-        return id;
+unsigned sceneManager::manageAtlas(atlas* const pAtlas) {
+    if (pAtlas != nullptr && this->containsAtlas(pAtlas) == false) {
+        const unsigned index = pAtlas->getId();
+        atlasMgr.push_back(pAtlas);
+        return index;
     }
     
     return INVALID_SCENE_ID;
 }
 
 unsigned sceneManager::manageText(text* const pText) {
-    if (pText != nullptr) {
-        const unsigned id = pText->getId();
-        stringMgr.manage(id, pText);
-        return id;
+    if (pText != nullptr && this->containsText(pText) == false) {
+        const unsigned index = pText->getId();
+        stringMgr.push_back(pText);
+        return index;
     }
     
     return INVALID_SCENE_ID;
@@ -255,37 +252,57 @@ unsigned sceneManager::manageText(text* const pText) {
 ///////////////////////////////////////////////////////////////////////////////
 // Resource un-management
 ///////////////////////////////////////////////////////////////////////////////
-mesh* sceneManager::unManageMesh(unsigned id) {
-    return meshMgr.unmanage(id);
+mesh* sceneManager::unManageMesh(unsigned index) {
+    HL_DEBUG_ASSERT(index < meshMgr.size());
+    mesh* const pMesh = meshMgr[index];
+    meshMgr.erase(meshMgr.begin() + index);
+    return pMesh;
 }
 
-texture* sceneManager::unManageTexture(unsigned id) {
-    return texMgr.unmanage(id);
+texture* sceneManager::unManageTexture(unsigned index) {
+    HL_DEBUG_ASSERT(index < texMgr.size());
+    texture* const pTex = texMgr[index];
+    texMgr.erase(texMgr.begin() + index);
+    return pTex;
 }
 
-textureAtlas* sceneManager::unManageAtlas(unsigned id) {
-    return atlasMgr.unmanage(id);
+atlas* sceneManager::unManageAtlas(unsigned index) {
+    HL_DEBUG_ASSERT(index < atlasMgr.size());
+    atlas* const pAtlas = atlasMgr[index];
+    atlasMgr.erase(atlasMgr.begin() + index);
+    return pAtlas;
 }
 
-text* sceneManager::unManageText(unsigned id) {
-    return stringMgr.unmanage(id);
+text* sceneManager::unManageText(unsigned index) {
+    HL_DEBUG_ASSERT(index < stringMgr.size());
+    text* const pText = stringMgr[index];
+    stringMgr.erase(stringMgr.begin() + index);
+    return pText;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Resource queries
 ///////////////////////////////////////////////////////////////////////////////
 bool sceneManager::containsMesh(const mesh* const pMesh) const {
-    return pMesh != nullptr ? meshMgr.contains(pMesh->getId()) : false;
+    return pMesh != nullptr
+        ? std::find(meshMgr.begin(), meshMgr.end(), pMesh) != meshMgr.end()
+        : false;
 }
 
 bool sceneManager::containsTexture(const texture* const pTex) const {
-    return pTex != nullptr ? texMgr.contains(pTex->getId()) : false;
+    return pTex != nullptr
+        ? std::find(texMgr.begin(), texMgr.end(), pTex) != texMgr.end()
+        : false;
 }
 
-bool sceneManager::containsAtlas(const textureAtlas* const pAtlas) const {
-    return pAtlas != nullptr ? atlasMgr.contains(pAtlas->getId()) : false;
+bool sceneManager::containsAtlas(const atlas* const pAtlas) const {
+    return pAtlas != nullptr
+        ? std::find(atlasMgr.begin(), atlasMgr.end(), pAtlas) != atlasMgr.end()
+        : false;
 }
 
 bool sceneManager::containsText(const text* const pText) const {
-    return pText != nullptr ? stringMgr.contains(pText->getId()) : false;
+    return pText != nullptr
+        ? std::find(stringMgr.begin(), stringMgr.end(), pText) != stringMgr.end()
+        : false;
 }

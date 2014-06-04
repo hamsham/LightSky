@@ -22,7 +22,7 @@
 #include "testState.h"
 #include "text.h"
 #include "texture.h"
-#include "textureAtlas.h"
+#include "atlas.h"
 
 bool GAME_KEYS[512] = {false};
 
@@ -300,7 +300,7 @@ bool testState::onStart() {
     fontResource font;
     mesh* pMesh = new mesh{};
     texture* pTex = new texture{tex_desc::TEX_2D};
-    textureAtlas* pAtlas = new textureAtlas{};
+    atlas* pAtlas = new atlas{};
     text* pText = new text{};
     
     if (    pLoader == nullptr
@@ -412,7 +412,7 @@ void testState::drawScene() {
         /* Billboarding Test */
         const vec3 camPos{-viewMat[3][0], 0.f, viewMat[3][2]};
         const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
-        mesh* const pMesh = pScene->getMeshManager().begin()->second;
+        mesh* const pMesh = pScene->getMeshList()[0];
         pMesh->setNumInstances(1, &modelMat);
 
         meshProgram.bind();
@@ -420,7 +420,7 @@ void testState::drawScene() {
         mvpId = meshProgram.getUniformLocation("vpMatrix");
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         
-        texture* const pTex = pScene->getTextureManager().begin()->second;
+        texture* const pTex = pScene->getTextureList()[0];
         pTex->bind();
         pMesh->draw();
         pTex->unbind();
@@ -433,8 +433,8 @@ void testState::drawScene() {
         fontProgram.bind();
         mvpId = fontProgram.getUniformLocation("vpMatrix");
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
-        textureAtlas* const pAtlas = pScene->getAtlasManager().begin()->second;
-        text* const pText = pScene->getTextManager().begin()->second;
+        atlas* const pAtlas = pScene->getAtlasList()[0];
+        text* const pText = pScene->getTextManager()[0];
         pAtlas->getTexture().bind();
         pText->draw();
         pAtlas->getTexture().unbind();

@@ -8,22 +8,27 @@
 #ifndef __LS_SCENE_MANAGER_H__
 #define	__LS_SCENE_MANAGER_H__
 
+#include <deque>
+
 #include "main.h"
-#include "manager.h"
 #include "mesh.h"
 #include "text.h"
 #include "texture.h"
-#include "textureAtlas.h"
+#include "atlas.h"
 
+/*
+ * Macros for types needed by the scene manager.
+ */
 #define INVALID_SCENE_ID ((unsigned)-1)
 
 /*
- * Manager typedefs
+ * Typedefs for the type of lists/arrays that can be returned by the scene
+ * manager.
  */
-LS_DECLARE_CLASS_TYPE(meshManager, manager, unsigned, mesh);
-LS_DECLARE_CLASS_TYPE(textureManager, manager, unsigned, texture);
-LS_DECLARE_CLASS_TYPE(atlasManager, manager, unsigned, textureAtlas);
-LS_DECLARE_CLASS_TYPE(textManager, manager, unsigned, text);
+typedef std::deque<mesh*>      meshList;
+typedef std::deque<text*>      textList;
+typedef std::deque<texture*>   textureList;
+typedef std::deque<atlas*>     atlasList;
 
 /**
  * Scene manager class
@@ -35,10 +40,10 @@ class sceneManager {
     private:
         texture defaultTex;
     
-        textureManager texMgr;
-        meshManager meshMgr;
-        atlasManager atlasMgr;
-        textManager stringMgr;
+        textureList texMgr;
+        meshList meshMgr;
+        atlasList atlasMgr;
+        textList stringMgr;
         
         bool initDefaultTexture();
         
@@ -59,25 +64,25 @@ class sceneManager {
         
         void clear();
         
-        meshManager::map_t& getMeshManager();
-        textureManager::map_t& getTextureManager();
-        atlasManager::map_t& getAtlasManager();
-        textManager::map_t& getTextManager();
+        meshList& getMeshList();
+        textureList& getTextureList();
+        atlasList& getAtlasList();
+        textList& getTextManager();
         
-        const meshManager::map_t& getMeshManager() const;
-        const textureManager::map_t& getTextureManager() const;
-        const atlasManager::map_t& getAtlasManager() const;
-        const textManager::map_t& getTextManager() const;
+        const meshList& getMeshList() const;
+        const textureList& getTextureList() const;
+        const atlasList& getAtlasList() const;
+        const textList& getTextManager() const;
         
-        mesh* getMesh(unsigned id) const;
-        texture* getTexture(unsigned id) const;
-        textureAtlas* getAtlas(unsigned id) const;
-        text* getText(unsigned id) const;
+        mesh* getMesh(unsigned index) const;
+        texture* getTexture(unsigned index) const;
+        atlas* getAtlas(unsigned index) const;
+        text* getText(unsigned index) const;
         
-        void eraseMesh(unsigned id);
-        void eraseTexture(unsigned id);
-        void eraseAtlas(unsigned id);
-        void eraseText(unsigned id);
+        void eraseMesh(unsigned index);
+        void eraseTexture(unsigned index);
+        void eraseAtlas(unsigned index);
+        void eraseText(unsigned index);
         
         unsigned getNumMeshes() const;
         unsigned getNumTextures() const;
@@ -86,17 +91,17 @@ class sceneManager {
         
         unsigned manageMesh(mesh* const);
         unsigned manageTexture(texture* const);
-        unsigned manageAtlas(textureAtlas* const);
+        unsigned manageAtlas(atlas* const);
         unsigned manageText(text* const);
         
-        mesh* unManageMesh(unsigned id);
-        texture* unManageTexture(unsigned id);
-        textureAtlas* unManageAtlas(unsigned id);
-        text* unManageText(unsigned id);
+        mesh* unManageMesh(unsigned index);
+        texture* unManageTexture(unsigned index);
+        atlas* unManageAtlas(unsigned index);
+        text* unManageText(unsigned index);
         
         bool containsMesh(const mesh* const) const;
         bool containsTexture(const texture* const) const;
-        bool containsAtlas(const textureAtlas* const) const;
+        bool containsAtlas(const atlas* const) const;
         bool containsText(const text* const) const;
 };
 

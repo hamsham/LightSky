@@ -134,7 +134,9 @@ class bufferObject {
          * @return true if the buffer was successfully created, false if not.
          */
         inline bool init() {
-            glGenBuffers(1, &vbo);
+            if (!vbo) {
+                glGenBuffers(1, &vbo);
+            }
             return vbo != 0;
         }
         

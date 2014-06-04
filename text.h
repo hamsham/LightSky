@@ -13,7 +13,7 @@
 #include "renderer.h"
 #include "vertexArray.h"
 #include "vertex.h"
-#include "textureAtlas.h"
+#include "atlas.h"
 
 enum text_properties {
     SPACES_PER_TAB      = 4,
@@ -124,7 +124,7 @@ class text {
          * A string that should be loaded from the texture Atlas (containing a
          * table of font bitmaps).
          */
-        bool init(const textureAtlas& ta, const std::string& str);
+        bool init(const atlas& ta, const std::string& str);
         
         /**
          * Unload all GPU-based resource that are used by *this;

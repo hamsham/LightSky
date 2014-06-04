@@ -12,7 +12,7 @@
 #include "main.h"
 #include "resource.h"
 #include "vertex.h"
-#include "textureAtlas.h"
+#include "atlas.h"
 
 /**
  * The mesh resource can be used to load a mesh or meshes from a file. It can

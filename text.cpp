@@ -136,7 +136,7 @@ void text::setVertexAttribs() {
 /*
  * Text/String initialization
  */
-bool text::init(const textureAtlas& ta, const std::string& str) {
+bool text::init(const atlas& ta, const std::string& str) {
     LOG_MSG("Attempting to load a text mesh.");
     
     // determine the number of non-whitespace characters

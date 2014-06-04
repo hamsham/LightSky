@@ -44,7 +44,7 @@ struct glyph {
  * to "const glyph*".
  */
 class fontResource final : public resource {
-    friend class textureAtlas;
+    friend class atlas;
     
     private:
         /**

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/atlas.o \
 	${OBJECTDIR}/bufferObject.o \
 	${OBJECTDIR}/color.o \
 	${OBJECTDIR}/dataResource.o \
@@ -57,7 +58,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/testState.o \
 	${OBJECTDIR}/text.o \
 	${OBJECTDIR}/texture.o \
-	${OBJECTDIR}/textureAtlas.o \
 	${OBJECTDIR}/util.o \
 	${OBJECTDIR}/vertex.o \
 	${OBJECTDIR}/vertexArray.o
@@ -88,6 +88,11 @@ bin/lightsky.exe: ../hamlibs/HamLibs_NetBeans/../bin/WIN32/libhamlibs.a
 bin/lightsky.exe: ${OBJECTFILES}
 	${MKDIR} -p bin
 	${LINK.cc} -o bin/lightsky ${OBJECTFILES} ${LDLIBSOPTIONS} -s
+
+${OBJECTDIR}/atlas.o: atlas.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/atlas.o atlas.cpp
 
 ${OBJECTDIR}/bufferObject.o: bufferObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -198,11 +203,6 @@ ${OBJECTDIR}/texture.o: texture.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/texture.o texture.cpp
-
-${OBJECTDIR}/textureAtlas.o: textureAtlas.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/textureAtlas.o textureAtlas.cpp
 
 ${OBJECTDIR}/util.o: util.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>atlas.h</itemPath>
       <itemPath>bufferObject.h</itemPath>
       <itemPath>color.h</itemPath>
       <itemPath>dataResource.h</itemPath>
@@ -26,7 +27,6 @@
       <itemPath>testState.h</itemPath>
       <itemPath>text.h</itemPath>
       <itemPath>texture.h</itemPath>
-      <itemPath>textureAtlas.h</itemPath>
       <itemPath>util.h</itemPath>
       <itemPath>vertex.h</itemPath>
       <itemPath>vertexArray.h</itemPath>
@@ -38,6 +38,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>atlas.cpp</itemPath>
       <itemPath>bufferObject.cpp</itemPath>
       <itemPath>color.cpp</itemPath>
       <itemPath>dataResource.cpp</itemPath>
@@ -60,7 +61,6 @@
       <itemPath>testState.cpp</itemPath>
       <itemPath>text.cpp</itemPath>
       <itemPath>texture.cpp</itemPath>
-      <itemPath>textureAtlas.cpp</itemPath>
       <itemPath>util.cpp</itemPath>
       <itemPath>vertex.cpp</itemPath>
       <itemPath>vertexArray.cpp</itemPath>
@@ -95,6 +95,7 @@
           </incDir>
           <commandLine>-ggdb -Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
           <preprocessorList>
+            <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
           </preprocessorList>
           <warningLevel>2</warningLevel>
@@ -135,6 +136,10 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <item path="atlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="atlas.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="bufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="bufferObject.h" ex="false" tool="3" flavor2="0">
@@ -222,10 +227,6 @@
       <item path="texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="texture.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="textureAtlas.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="textureAtlas.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="util.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -305,6 +306,10 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <item path="atlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="atlas.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="bufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="bufferObject.h" ex="false" tool="3" flavor2="0">
@@ -392,10 +397,6 @@
       <item path="texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="texture.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="textureAtlas.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="textureAtlas.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="util.cpp" ex="false" tool="1" flavor2="0">
       </item>

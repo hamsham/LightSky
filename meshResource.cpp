@@ -181,3 +181,131 @@ bool meshResource::loadPolygon(unsigned numPoints) {
     resultDrawMode = draw_mode::LS_TRIANGLE_FAN;
     return true;
 }
+
+/*
+ * Load a cube
+ */
+bool meshResource::loadCube() {
+    LOG_MSG("Attempting to load a cube mesh.");
+    
+    if (!initVertices(26)) {
+        LOG_ERR("\tAn error occurred while initializing a cube mesh.\n");
+        return false;
+    }
+
+    /*
+     * POSITIONS
+     */
+    // front face
+    pVertices[0].pos = math::vec3{-1.f, -1.f, 1.f};
+    pVertices[1].pos = math::vec3{1.f, -1.f, 1.f};
+    pVertices[2].pos = math::vec3{-1.f, 1.f, 1.f};
+    pVertices[3].pos = math::vec3{1.f, 1.f, 1.f};
+
+    // right
+    pVertices[4].pos = math::vec3{1.f, 1.f, 1.f};
+    pVertices[5].pos = math::vec3{1.f, -1.f, 1.f};
+    pVertices[6].pos = math::vec3{1.f, 1.f, -1.f};
+    pVertices[7].pos = math::vec3{1.f, -1.f, -1.f};
+
+    // back face
+    pVertices[8].pos = math::vec3{1.f, -1.f, -1.f};
+    pVertices[9].pos = math::vec3{-1.f, -1.f, -1.f};
+    pVertices[10].pos = math::vec3{1.f, 1.f, -1.f};
+    pVertices[11].pos = math::vec3{-1.f, 1.f, -1.f};
+
+    // left
+    pVertices[12].pos = math::vec3{-1.f, 1.f, -1.f};
+    pVertices[13].pos = math::vec3{-1.f, -1.f, -1.f};
+    pVertices[14].pos = math::vec3{-1.f, 1.f, 1.f};
+    pVertices[15].pos = math::vec3{-1.f, -1.f, 1.f};
+
+    // bottom
+    pVertices[16].pos = math::vec3{-1.f, -1.f, 1.f};
+    pVertices[17].pos = math::vec3{-1.f, -1.f, -1.f};
+    pVertices[18].pos = math::vec3{1.f, -1.f, 1.f};
+    pVertices[19].pos = math::vec3{1.f, -1.f, -1.f};
+
+    // top
+    pVertices[20].pos = math::vec3{1.f, -1.f, -1.f};
+    pVertices[21].pos = math::vec3{-1.f, 1.f, 1.f};
+    pVertices[22].pos = math::vec3{-1.f, 1.f, 1.f};
+    pVertices[23].pos = math::vec3{1.f, 1.f, 1.f};
+    pVertices[24].pos = math::vec3{-1.f, 1.f, -1.f};
+    pVertices[25].pos = math::vec3{1.f, 1.f, -1.f};
+
+    /*
+     *  UV
+     */
+    pVertices[0].uv = math::vec2{0.f, 0.f};
+    pVertices[1].uv = math::vec2{1.f, 0.f};
+    pVertices[2].uv = math::vec2{0.f, 1.f};
+    pVertices[3].uv = math::vec2{1.f, 1.f};
+
+    pVertices[4].uv = math::vec2{0.f, 1.f};
+    pVertices[5].uv = math::vec2{0.f, 0.f};
+    pVertices[6].uv = math::vec2{1.f, 1.f};
+    pVertices[7].uv = math::vec2{1.f, 0.f};
+
+    pVertices[8].uv = math::vec2{0.f, 0.f};
+    pVertices[9].uv = math::vec2{1.f, 0.f};
+    pVertices[10].uv = math::vec2{0.f, 1.f};
+    pVertices[11].uv = math::vec2{1.f, 1.f};
+
+    pVertices[12].uv = math::vec2{0.f, 1.f};
+    pVertices[13].uv = math::vec2{0.f, 0.f};
+    pVertices[14].uv = math::vec2{1.f, 1.f};
+    pVertices[15].uv = math::vec2{1.f, 0.f};
+
+    pVertices[16].uv = math::vec2{0.f, 1.f};
+    pVertices[17].uv = math::vec2{0.f, 0.f};
+    pVertices[18].uv = math::vec2{1.f, 1.f};
+    pVertices[19].uv = math::vec2{1.f, 0.f};
+
+    pVertices[20].uv = math::vec2{1.f, 0.f};
+    pVertices[21].uv = math::vec2{0.f, 0.f};
+    pVertices[22].uv = math::vec2{0.f, 0.f};
+    pVertices[23].uv = math::vec2{1.f, 0.f};
+    pVertices[24].uv = math::vec2{0.f, 1.f};
+    pVertices[25].uv = math::vec2{1.f, 1.f};
+
+    /*
+     * NORMALS
+     */
+    pVertices[0].norm =
+        pVertices[1].norm =
+            pVertices[2].norm =
+                pVertices[3].norm = math::vec3{0.f, 0.f, 1.f};
+
+    pVertices[4].norm =
+        pVertices[5].norm =
+            pVertices[6].norm =
+                pVertices[7].norm = math::vec3{1.f, 0.f, 0.f};
+
+    pVertices[8].norm =
+        pVertices[9].norm =
+            pVertices[10].norm =
+                pVertices[11].norm = math::vec3{0.f, 0.f, -1.f};
+
+    pVertices[12].norm =
+        pVertices[13].norm =
+            pVertices[14].norm =
+                pVertices[15].norm = math::vec3{-1.f, 0.f, 0.f};
+
+    pVertices[16].norm =
+        pVertices[17].norm =
+            pVertices[18].norm =
+                pVertices[19].norm = math::vec3{0.f, -1.f, 0.f};
+
+    pVertices[20].norm =
+        pVertices[21].norm = math::vec3{-1.f, 0.f, 0.f};
+    
+    pVertices[22].norm =
+        pVertices[23].norm =
+            pVertices[24].norm =
+                pVertices[25].norm = math::vec3{0.f, 1.f, 0.f};
+    
+    LOG_MSG("\tSuccessfully loaded a cube mesh.\n");
+    resultDrawMode = draw_mode::LS_TRIANGLE_STRIP;
+    return true;
+}

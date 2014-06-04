@@ -172,11 +172,34 @@ class meshResource final : public resource {
             return loadPolygon(3);
         }
         
+        /**
+         * Load a set of vertices representing a square/quad.
+         * 
+         * @return
+         * TRUE if the function loaded the mesh correctly, or
+         * FALSE if an error occurred during the load.
+         */
         bool loadQuad();
         
+        /**
+         * Load a set of vertices representing a circle.
+         * 
+         * @return
+         * TRUE if the function loaded the mesh correctly, or
+         * FALSE if an error occurred during the load.
+         */
         bool loadCircle(unsigned numPoints = 5) {
             return loadPolygon(numPoints);
         }
+        
+        /**
+         * Load a set of vertices representing a cube.
+         * 
+         * @return
+         * TRUE if the function loaded the mesh correctly, or
+         * FALSE if an error occurred during the load.
+         */
+        bool loadCube();
 };
 
 #endif	/* __LS_MESH_RESOURCE_H__ */

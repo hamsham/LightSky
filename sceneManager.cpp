@@ -290,7 +290,7 @@ bool sceneManager::containsMesh(const mesh* const pMesh) const {
     else {
         meshList::const_iterator iter = meshMgr.begin();
         while (iter != meshMgr.end()) {
-            if (pMesh->getId() == iter->getId()) {
+            if (pMesh->getId() == (*iter)->getId()) {
                 return true;
             }
             
@@ -308,7 +308,7 @@ bool sceneManager::containsTexture(const texture* const pTex) const {
     else {
         textureList::const_iterator iter = texMgr.begin();
         while (iter != texMgr.end()) {
-            if (pTex->getId() == iter->getId()) {
+            if (pTex->getId() == (*iter)->getId()) {
                 return true;
             }
             
@@ -326,7 +326,7 @@ bool sceneManager::containsAtlas(const atlas* const pAtlas) const {
     else {
         atlasList::const_iterator iter = atlasMgr.begin();
         while (iter != atlasMgr.end()) {
-            if (pAtlas->getId() == iter->getId()) {
+            if (pAtlas->getId() == (*iter)->getId()) {
                 return true;
             }
             
@@ -344,7 +344,7 @@ bool sceneManager::containsText(const text* const pText) const {
     else {
         textList::const_iterator iter = stringMgr.begin();
         while (iter != stringMgr.end()) {
-            if (pText->getId() == iter->getId()) {
+            if (pText->getId() == (*iter)->getId()) {
                 return true;
             }
             

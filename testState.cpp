@@ -111,7 +111,7 @@ void main() {
 const char fontFS[] = R"***(
 #version 330
 
-//precision lowp float;
+precision lowp float;
 
 in vec2 uvCoords;
 out vec4 outFragCol;

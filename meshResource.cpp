@@ -91,7 +91,8 @@ void meshResource::unload() {
     
     resultDrawMode = draw_mode::DEFAULT_DRAW_MODE;
     
-    meshBounds = boundingBox{};
+    meshBounds.setTopFrontLeft(math::vec3{HL_EPSILON, HL_EPSILON, -HL_EPSILON});
+    meshBounds.setBotRearRight(math::vec3{-HL_EPSILON, -HL_EPSILON, HL_EPSILON});
 }
 
 /*

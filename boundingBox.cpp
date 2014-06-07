@@ -18,7 +18,8 @@ boundingBox::boundingBox(boundingBox&& bb) :
     topFrontLeft{std::move(bb.topFrontLeft)},
     botRearRight{std::move(bb.botRearRight)}
 {
-    bb = boundingBox{};
+    bb.setTopFrontLeft(math::vec3{HL_EPSILON, HL_EPSILON, -HL_EPSILON});
+    bb.setBotRearRight(math::vec3{-HL_EPSILON, -HL_EPSILON, HL_EPSILON});
 }
 
 boundingBox& boundingBox::operator=(const boundingBox& bb) {
@@ -32,7 +33,8 @@ boundingBox& boundingBox::operator =(boundingBox&& bb) {
     topFrontLeft = std::move(bb.topFrontLeft);
     botRearRight = std::move(bb.botRearRight);
     
-    bb = boundingBox{};
+    bb.setTopFrontLeft(math::vec3{HL_EPSILON, HL_EPSILON, -HL_EPSILON});
+    bb.setBotRearRight(math::vec3{-HL_EPSILON, -HL_EPSILON, HL_EPSILON});
     
     return *this;
 }

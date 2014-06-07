@@ -304,7 +304,7 @@ bool testState::onStart() {
     text* pText = new text{};
     
     if (    pLoader == nullptr
-    ||      !pLoader->loadQuad()
+    ||      !pLoader->loadCone(5)
     ||      !pMesh->init(*pLoader)
     ||      matStack == nullptr
     ||      !imgFile.loadFile("test_img.jpg")

@@ -7,6 +7,7 @@
 
 #include <functional>
 #include <utility>
+
 #include "mesh.h"
 #include "geometry.h"
 #include "meshResource.h"
@@ -307,5 +308,144 @@ bool meshResource::loadCube() {
     
     LOG_MSG("\tSuccessfully loaded a cube mesh.\n");
     resultDrawMode = draw_mode::LS_TRIANGLE_STRIP;
+    return true;
+}
+
+/*
+ * Load a cylinder
+ */
+bool meshResource::loadCylinder(unsigned numSides) {
+    // make sure there are enough points for a minimal cylinder
+    if (numSides < 2) {
+        numSides = 2;
+    }
+    
+    LOG_MSG("Attempting to load a ", numSides, "-sided cylinder.");
+    
+    if (!initVertices(numSides*12)) {
+        LOG_ERR("\tAn error occurred while initializing a ", numSides, "-sided cylinder.\n");
+        return false;
+    }
+    
+    int iNumSides = (int)numSides;
+    vertex* pCapVert = pVertices;
+    vertex* pSideVert = pVertices+(numSides*6);
+        
+    // Make the cylinder caps using the "makePolygon()" algorithm
+    for (int i = -iNumSides; i < iNumSides; ++i) {
+        const float topBot  = (i < 0) ? 1.f : -1.f;
+        
+        const float theta1  = HL_TWO_PI * ((float)i / (float)iNumSides) * topBot;
+        const float bc1     = std::cos(theta1);
+        const float bs1     = std::sin(theta1);
+
+        const float theta2  = HL_TWO_PI * ((float)(i-1) / (float)iNumSides) * topBot;
+        const float bc2     = std::cos(theta2);
+        const float bs2     = std::sin(theta2);
+        
+        // center
+        pCapVert->pos       = math::vec3{0.f, topBot, 0.f};
+        pCapVert->uv        = math::vec2{0.5f, 0.5f};
+        pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
+        ++pCapVert;
+
+        // cap, first triangle leg
+        pCapVert->pos       = math::vec3{bc1, topBot, bs1};
+        pCapVert->uv        = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
+        pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
+        ++pCapVert;
+
+        // cap, second triangle leg
+        pCapVert->pos       = math::vec3{bc2, topBot, bs2};
+        pCapVert->uv        = math::vec2{(bs2*0.5f)+0.5f, (bc2*0.5f)+0.5f};
+        pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
+        ++pCapVert;
+        
+        // Cylinder Side, apex
+        pSideVert->pos      = math::vec3{bc1, -topBot, bs1};
+        pSideVert->uv       = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
+        pSideVert->norm     = math::vec3{bc1, 0.f, bs1};
+        ++pSideVert;
+        
+        // Cylinder Side, leg 1
+        pSideVert->pos      = math::vec3{bc2, topBot, bs2};
+        pSideVert->uv       = math::vec2{(bs2*0.5f)+0.5f, (bc2*0.5f)+0.5f};
+        pSideVert->norm     = math::vec3{bc2, 0.f, bs2};
+        ++pSideVert;
+        
+        // Cylinder Side, leg 2
+        pSideVert->pos      = math::vec3{bc1, topBot, bs1};
+        pSideVert->uv       = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
+        pSideVert->norm     = math::vec3{bc1, 0.f, bs1};
+        ++pSideVert;
+    }
+    
+    
+    LOG_MSG("\tSuccessfully loaded a ", numSides, "-sided cylinder.\n");
+    resultDrawMode = draw_mode::LS_TRIANGLES;
+    return true;
+}
+
+/*
+ * Load a Cone
+ */
+bool meshResource::loadCone(unsigned numSides) {
+    // make sure there are enough points for a minimal pyramid
+    if (numSides < 2) {
+        numSides = 2;
+    }
+    
+    LOG_MSG("Attempting to load a ", numSides, "-sided cone.");
+    
+    if (!initVertices(numSides*6)) {
+        LOG_ERR("\tAn error occurred while initializing a ", numSides, "-sided cone.\n");
+        return false;
+    }
+    
+    int iNumSides = (int)numSides;
+    vertex* pCapVert = pVertices;
+        
+    // Make the cylinder caps using the "makePolygon()" algorithm
+    for (int i = -iNumSides; i < iNumSides; ++i) {
+        const float topBot  = (i < 0) ? 1.f : -1.f;
+        
+        // center
+        {
+            pCapVert->pos       = math::vec3{0.f, topBot, 0.f};
+            pCapVert->uv        = math::vec2{0.5f, 0.5f};
+            pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
+            ++pCapVert;
+        }
+
+        // cap, first triangle leg
+        {
+            const float theta1  = HL_TWO_PI * ((float)i / (float)iNumSides) * topBot;
+            const float bc1     = std::cos(theta1);
+            const float bs1     = std::sin(theta1);
+            pCapVert->pos       = math::vec3{bc1, -1.f, bs1};
+            pCapVert->uv        = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
+            pCapVert->norm      = i < 0
+                                ? math::normalize(math::vec3{bc1, 1.f, bs1})
+                                : math::vec3{0.f, topBot, 0.f};
+            ++pCapVert;
+        }
+
+        // cap, second triangle leg
+        {
+            const float theta2  = HL_TWO_PI * ((float)(i-1) / (float)iNumSides) * topBot;
+            const float bc2     = std::cos(theta2);
+            const float bs2     = std::sin(theta2);
+            pCapVert->pos       = math::vec3{bc2, -1.f, bs2};
+            pCapVert->uv        = math::vec2{(bs2*0.5f)+0.5f, (bc2*0.5f)+0.5f};
+            pCapVert->norm      = i < 0
+                                ? math::normalize(math::vec3{bc2, 1.f, bs2})
+                                : math::vec3{0.f, topBot, 0.f};
+            ++pCapVert;
+        }
+    }
+    
+    
+    LOG_MSG("\tSuccessfully loaded a ", numSides, "-sided cone.\n");
+    resultDrawMode = draw_mode::LS_TRIANGLES;
     return true;
 }

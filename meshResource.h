@@ -135,10 +135,6 @@ class meshResource final : public resource {
         /**
          * N-Sided polygon primitive loading method
          * 
-         * @param vertTypes
-         * A bit-field of different vertex types that should be loaded.
-         * @see vertex_desc_t from mesh.h
-         * 
          * @param numPoints
          * The number of points that the polygon should contain. This number
          * must be greater than 1.
@@ -152,10 +148,6 @@ class meshResource final : public resource {
         /**
          * Triangle primitive loading method
          * 
-         * @param vertTypes
-         * A bit-field of different vertex types that should be loaded.
-         * @see vertex_desc_t from mesh.h
-         * 
          * @return
          * TRUE if the function loaded the mesh correctly, or
          * FALSE if an error occurred during the load.
@@ -168,7 +160,7 @@ class meshResource final : public resource {
          * | /    \ |
          * 0/______\2
          */
-        bool loadTriangle() {
+        inline bool loadTriangle() {
             return loadPolygon(3);
         }
         
@@ -188,7 +180,7 @@ class meshResource final : public resource {
          * TRUE if the function loaded the mesh correctly, or
          * FALSE if an error occurred during the load.
          */
-        bool loadCircle(unsigned numPoints = 5) {
+        inline bool loadCircle(unsigned numPoints = 5) {
             return loadPolygon(numPoints);
         }
         
@@ -200,6 +192,24 @@ class meshResource final : public resource {
          * FALSE if an error occurred during the load.
          */
         bool loadCube();
+        
+        /**
+         * Load a set of vertices representing a cylinder.
+         * 
+         * @return
+         * TRUE if the function loaded the mesh correctly, or
+         * FALSE if an error occurred during the load.
+         */
+        bool loadCylinder(unsigned numSides = 2);
+        
+        /**
+         * Load a set of vertices representing a cone.
+         * 
+         * @return
+         * TRUE if the function loaded the mesh correctly, or
+         * FALSE if an error occurred during the load.
+         */
+        bool loadCone(unsigned numSides = 2);
 };
 
 #endif	/* __LS_MESH_RESOURCE_H__ */

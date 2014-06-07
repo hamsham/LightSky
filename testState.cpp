@@ -304,7 +304,7 @@ bool testState::onStart() {
     text* pText = new text{};
     
     if (    pLoader == nullptr
-    ||      !pLoader->loadCube()
+    ||      !pLoader->loadQuad()
     ||      !pMesh->init(*pLoader)
     ||      matStack == nullptr
     ||      !imgFile.loadFile("test_img.jpg")
@@ -365,7 +365,7 @@ bool testState::onStart() {
     LOG_GL_ERR();
     
     glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
     
     return true;
 }

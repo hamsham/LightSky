@@ -10,8 +10,9 @@
 
 #include <cstdint>
 
-#include "main.h"
+#include "boundingBox.h"
 #include "bufferObject.h"
+#include "main.h"
 #include "renderer.h"
 #include "vertexArray.h"
 #include "vertex.h"
@@ -22,6 +23,9 @@ class meshResource;
  * A mesh object contains information about the layout of vertex data located on
  * the GPU.
  * 
+ * These classes are rather large. It is reccomended to instanciate them with
+ * dynamic allocation.
+ * 
  * Designed to be used directly with OpenGL.
  */
 class mesh {
@@ -29,21 +33,22 @@ class mesh {
      * Allow the mesh resource class to load vertices directly into a mesh.
      */
     friend class meshResource;
+    
     private:
         /**
          * Vertex array to be used with this mesh object
          */
-        vertexArray vao;
+        vertexArray vao = {};
         
         /**
          * Vertex Buffer Object to be used with this mesh
          */
-        vertexBuffer vbo;
+        vertexBuffer vbo = {};
         
         /**
          * Vertex Buffer that will be used specifically for model matrices.
          */
-        vertexBuffer modelVbo;
+        vertexBuffer modelVbo = {};
         
         /**
          * Member to help determine the number of vertices contained within a
@@ -64,6 +69,11 @@ class mesh {
         draw_mode drawMode = draw_mode::DEFAULT_DRAW_MODE;
         
         /**
+         * Allow the mesh class to contain some sort of bounding area.
+         */
+        boundingBox bounds = {};
+        
+        /**
          * Helper function to ensure that the vao/vbo combos are loaded.
          */
         bool initVertices(unsigned numVerts);
@@ -77,13 +87,7 @@ class mesh {
         /**
          * Constructor
          */
-        constexpr mesh() :
-            vao{},
-            vbo{},
-            numVertices{},
-            numInstances{},
-            drawMode{}
-        {}
+        constexpr mesh() {}
         
         /**
          * Copy Constructor -- DELETED
@@ -191,6 +195,10 @@ class mesh {
          */
         void setDrawMode(draw_mode dm) {
             drawMode = dm;
+        }
+        
+        const boundingBox& getBounds() const {
+            return bounds;
         }
         
         /**

@@ -19,7 +19,8 @@ mesh::mesh(mesh&& m) :
     vbo{std::move(m.vbo)},
     modelVbo{std::move(m.modelVbo)},
     numVertices{m.numVertices},
-    drawMode{m.drawMode}
+    drawMode{m.drawMode},
+    bounds{std::move(m.bounds)}
 {
     m.numVertices = 0;
     m.numInstances = 0;
@@ -42,6 +43,8 @@ mesh& mesh::operator=(mesh&& m) {
     
     drawMode = m.drawMode;
     m.drawMode = draw_mode::DEFAULT_DRAW_MODE;
+    
+    bounds = std::move(m.bounds);
     
     return *this;
 }
@@ -154,6 +157,7 @@ bool mesh::init(const meshResource& ml) {
     
     numVertices = ml.getNumVertices();
     drawMode = ml.getDrawMode();
+    bounds = ml.getBoundingBox();
     
     LOG_MSG("\tSuccessfully sent a mesh of ", numVertices, " vertices to the GPU.\n");
     

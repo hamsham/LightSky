@@ -17,7 +17,9 @@ boundingBox::boundingBox(const boundingBox& bb) :
 boundingBox::boundingBox(boundingBox&& bb) :
     topFrontLeft{std::move(bb.topFrontLeft)},
     botRearRight{std::move(bb.botRearRight)}
-{}
+{
+    bb = boundingBox{};
+}
 
 boundingBox& boundingBox::operator=(const boundingBox& bb) {
     topFrontLeft = bb.topFrontLeft;
@@ -30,12 +32,7 @@ boundingBox& boundingBox::operator =(boundingBox&& bb) {
     topFrontLeft = std::move(bb.topFrontLeft);
     botRearRight = std::move(bb.botRearRight);
     
+    bb = boundingBox{};
+    
     return *this;
-}
-
-bool boundingBox::isInBox(const math::vec3& v) const {
-    return
-    v[0] <= topFrontLeft[0] && v[1] <= topFrontLeft[1] && v[2] >= topFrontLeft[2]
-    &&
-    v[0] >= botRearRight[0] && v[1] >= botRearRight[1] && v[2] <= botRearRight[2];
 }

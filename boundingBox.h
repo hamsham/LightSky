@@ -12,8 +12,8 @@
 
 class boundingBox {
     private:
-        math::vec3 topFrontLeft = math::vec3{1.f, 1.f, -1.f};
-        math::vec3 botRearRight = {-1.f, -1.f, 1.f};
+        math::vec3 topFrontLeft = {HL_EPSILON, HL_EPSILON, -HL_EPSILON};
+        math::vec3 botRearRight = {-HL_EPSILON, -HL_EPSILON, HL_EPSILON};
         
     public:
         constexpr boundingBox() {}
@@ -25,33 +25,40 @@ class boundingBox {
         boundingBox& operator=(const boundingBox&);
         boundingBox& operator=(boundingBox&&);
         
-        bool isInBox(const math::vec3&) const;
-        bool isColliding(const boundingBox&) const;
+        constexpr bool isInBox(const math::vec3&) const;
+        constexpr bool isColliding(const boundingBox&) const;
         
-        void setTopFrontLeft(const math::vec3&);
-        math::vec3& getTopFrontLeft() const;
+        constexpr void setTopFrontLeft(const math::vec3&);
+        constexpr math::vec3& getTopFrontLeft() const;
         
-        void getBotRearRight(const math::vec3&);
-        math::vec3& getBotRearRight() const;
+        constexpr void setBotRearRight(const math::vec3&);
+        constexpr math::vec3& getBotRearRight() const;
 };
 
-inline bool boundingBox::isColliding(const boundingBox& bb) const {
+constexpr bool boundingBox::isInBox(const math::vec3& v) const {
+    return
+    v[0] <= topFrontLeft[0] && v[1] <= topFrontLeft[1] && v[2] >= topFrontLeft[2]
+    &&
+    v[0] >= botRearRight[0] && v[1] >= botRearRight[1] && v[2] <= botRearRight[2];
+}
+
+constexpr bool boundingBox::isColliding(const boundingBox& bb) const {
     return isInBox(bb.topFrontLeft) || isInBox(bb.botRearRight);
 }
 
-inline void boundingBox::setTopFrontLeft(const math::vec3& v) {
+constexpr void boundingBox::setTopFrontLeft(const math::vec3& v) {
     topFrontLeft = v;
 }
 
-inline math::vec3& boundingBox::getTopFrontLeft() const {
+constexpr math::vec3& boundingBox::getTopFrontLeft() const {
     return topFrontLeft;
 }
 
-inline void boundingBox::getBotRearRight(const math::vec3& v) {
+constexpr void boundingBox::setBotRearRight(const math::vec3& v) {
     botRearRight = v;
 }
 
-inline math::vec3& boundingBox::getBotRearRight() const {
+constexpr math::vec3& boundingBox::getBotRearRight() const {
     return botRearRight;
 }
 

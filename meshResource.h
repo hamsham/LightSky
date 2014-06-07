@@ -14,6 +14,7 @@
 #include "vertex.h"
 #include "atlas.h"
 #include "renderer.h"
+#include "boundingBox.h"
 
 /**
  * The mesh resource can be used to load a mesh or meshes from a file. It can
@@ -38,13 +39,19 @@ class meshResource final : public resource {
          */
         draw_mode resultDrawMode = draw_mode::DEFAULT_DRAW_MODE;
         
+        /**
+         * Allow the ability to generate the bounding area for a mesh
+         */
+        boundingBox meshBounds = {};
+        
         bool initVertices(unsigned vertCount);
+        void updateBounds(const math::vec3&);
         
     public:
         /**
          * Constructor
          */
-        constexpr meshResource() {}
+        constexpr meshResource();
         
         /**
          * Copy Constructor -- DELETED
@@ -130,6 +137,10 @@ class meshResource final : public resource {
          */
         draw_mode getDrawMode() const {
             return resultDrawMode;
+        }
+        
+        const boundingBox& getBoundingBox() const {
+            return meshBounds;
         }
         
         /**

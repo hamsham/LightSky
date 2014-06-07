@@ -36,3 +36,11 @@ boundingBox& boundingBox::operator =(boundingBox&& bb) {
     
     return *this;
 }
+
+bool boundingBox::isInBox(const math::vec3& v) const {
+    return
+    v[0] <= topFrontLeft[0] && v[1] <= topFrontLeft[1] && v[2] >= topFrontLeft[2]
+    &&
+    v[0] >= botRearRight[0] && v[1] >= botRearRight[1] && v[2] <= botRearRight[2];
+}
+

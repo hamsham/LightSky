@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/atlas.o \
+	${OBJECTDIR}/boundingBox.o \
 	${OBJECTDIR}/bufferObject.o \
 	${OBJECTDIR}/color.o \
 	${OBJECTDIR}/dataResource.o \
@@ -93,6 +94,11 @@ ${OBJECTDIR}/atlas.o: atlas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/atlas.o atlas.cpp
+
+${OBJECTDIR}/boundingBox.o: boundingBox.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/boundingBox.o boundingBox.cpp
 
 ${OBJECTDIR}/bufferObject.o: bufferObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}

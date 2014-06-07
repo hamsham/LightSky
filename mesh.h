@@ -87,7 +87,7 @@ class mesh {
         /**
          * Constructor
          */
-        constexpr mesh() {}
+        mesh() {}
         
         /**
          * Copy Constructor -- DELETED

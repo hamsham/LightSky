@@ -51,7 +51,7 @@ class meshResource final : public resource {
         /**
          * Constructor
          */
-        constexpr meshResource();
+        constexpr meshResource() {}
         
         /**
          * Copy Constructor -- DELETED

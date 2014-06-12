@@ -31,27 +31,9 @@ using math::vec3;
 using math::mat4;
 using math::quat;
 
-template <typename numType>
-math::quat_t<numType> lookAt(const math::vec3_t<numType>& v1, const math::vec3_t<numType>& v2){
-    const math::vec3_t<numType>&& a = math::normalize<numType>(v1);
-    const math::vec3_t<numType>&& b = math::normalize<numType>(v2);
-    
-    const math::vec3_t<numType>&& w = math::cross<numType>(a, b);
-    
-    const math::quat_t<numType> q{
-        w[0], w[1], w[2], numType{1} + math::dot<numType>(a, b)
-    };
-    
-	return math::normalize<numType>(q);
-}
+static const char testTextFile[] = "FiraSans-Italic.otf";
 
-const char testTextFile[] = {
-    //"FiraSans-Bold.otf"
-    //"FiraSans-Italic.otf"
-    "FiraSans-Regular.otf"
-};
-
-const char testTextString[] = R"***(x
+static const char testTextString[] = R"***(x
 abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 01234    56789
@@ -68,7 +50,7 @@ jumped over the slow, lazy dog! :)
  * This shader uses a Logarithmic Z-Buffer, thanks to
  * http://www.gamasutra.com/blogs/BranoKemen/20090812/2725/Logarithmic_Depth_Buffer.php
  */
-const char vertShaderData[] = R"***(
+static const char vertShaderData[] = R"***(
 #version 330 core
 
 layout (location = 0) in vec3 inPos;
@@ -93,7 +75,7 @@ void main() {
 }
 )***";
 
-const char fragShaderData[] = R"***(
+static const char fragShaderData[] = R"***(
 #version 330 core
 
 uniform sampler2D tex;
@@ -107,7 +89,7 @@ void main() {
 )***";
 
 // Testing Alpha Masking for font rendering.
-const char fontFS[] = R"***(
+static const char fontFS[] = R"***(
 #version 330
 
 precision lowp float;
@@ -345,7 +327,7 @@ bool testState::onStart() {
     if (!pMeshLoader
     ||  !pImgLoader
     ||  !pFontLoader
-    ||  !pMeshLoader->loadCone(5)
+    ||  !pMeshLoader->loadQuad()
     ||  !pMesh->init(*pMeshLoader)
     ||  !pImgLoader->loadFile("test_img.jpg")
     ||  !pTex->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
@@ -446,12 +428,14 @@ void testState::onPause(float dt) {
 /******************************************************************************
  * Drawing a scene
 ******************************************************************************/
+static mat4 modelMatrices[2] = {mat4{1.f}, mat4{1.f}};
+
 void testState::drawScene() {
     LOG_GL_ERR();
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack.
-    const mat4& viewMat = matStack->getMatrix(VIEW_MATRIX)*matStack->getMatrix(PROJECTION_MATRIX);
+    const mat4& alignedView = matStack->getMatrix(VIEW_MATRIX);
     matStack->pushMatrix(VIEW_MATRIX, math::quatToMat4(orientation));
     matStack->constructVp();
     
@@ -466,11 +450,13 @@ void testState::drawScene() {
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         
         // billboard setup
-        const vec3 camPos{-viewMat[3][0], 0.f, -viewMat[3][2]};
-        const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
-        pModel = pScene->getModelList()[0];
-        pModel->setNumInstances(1, &modelMat);
+        const mat4& orientedView = matStack->getMatrix(VIEW_MATRIX);
+        const vec3& camPos{alignedView[3][0], 0.f, -alignedView[3][2]};
+        modelMatrices[0] = math::translate(math::quatToMat4(math::lookAt(camPos, vec3{0.f, 0.f, 1.f})), vec3{0.f, 0.f, 0.f});
+        modelMatrices[1] = math::translate(math::billboard(vec3{0.f, 0.f, 0.f}, orientedView), vec3{10.f, 0.f, 0.f});
         
+        pModel = pScene->getModelList()[0];
+        pModel->setNumInstances(2, modelMatrices);
         pModel->draw();
     }
     
@@ -488,6 +474,7 @@ void testState::drawScene() {
         
         pModel = pScene->getModelList()[1];
         pModel->draw();
+        
         glDisable(GL_BLEND);
     }
     

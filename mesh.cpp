@@ -75,18 +75,18 @@ bool mesh::initVertices(unsigned numVerts) {
     }
     
     if (vbo.isValid() == false) {
-        if (!vbo.init()) {
+        if (vbo.init() == false) {
             LOG_ERR("\tUnable to initialize a mesh VBO.");
             terminate();
             return false;
         }
     }
-    else {
-        vbo.setData(numVerts*sizeof(vertex), nullptr, buffer_usage_t::STREAM_DRAW);
-        bounds = boundingBox{};
-    }
     
-    LOG_MSG("\tVertex Count: ", numVerts);
+    vbo.bind();
+    vbo.setData(numVerts*sizeof(vertex), nullptr, buffer_usage_t::STREAM_DRAW);
+    bounds.resetSize();
+    
+    LOG_MSG("\tInitialized a mesh VBO with ", numVerts, " vertices.");
     return true;
 }
 
@@ -109,6 +109,7 @@ bool mesh::init(const meshResource& ml) {
     bounds = ml.getBoundingBox();
     
     LOG_MSG("\tSuccessfully sent a mesh of ", numVertices, " vertices to the GPU.\n");
+    vbo.unbind();
     
     return true;
 }
@@ -129,7 +130,6 @@ bool mesh::init(const atlas& ta, const std::string& str) {
         return false;
     }
     
-    vbo.bind();
     LOG_GL_ERR();
     
     // Attempt to get a pointer to an unsynchronized memory buffer
@@ -140,7 +140,7 @@ bool mesh::init(const atlas& ta, const std::string& str) {
     LOG_GL_ERR();
     
     if (pVerts == nullptr) {
-        LOG_ERR("\tUnable to send text data to the GPU through a DMA transfer.");
+        LOG_ERR("\tUnable to send text data to the GPU through a DMA transfer.\n");
         terminate();
         return false;
     }
@@ -184,13 +184,15 @@ bool mesh::init(const atlas& ta, const std::string& str) {
     
     if (!vbo.unmapData()) {
         LOG_ERR(
-            "\tAn error occurred while attempting to end a DMA transmission of text."
+            "\tAn error occurred while attempting to end a DMA transmission of text.\n"
         );
+        vbo.unbind();
         terminate();
         return false;
     }
     LOG_GL_ERR();
     
+    vbo.unbind();
     numVertices = numVerts;
     drawMode = draw_mode::LS_TRIANGLES;
     

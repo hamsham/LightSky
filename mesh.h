@@ -10,6 +10,7 @@
 
 #include <cstdint>
 
+#include "atlas.h"
 #include "boundingBox.h"
 #include "bufferObject.h"
 #include "main.h"
@@ -74,6 +75,8 @@ class mesh {
         
         /**
          * Helper function to ensure that the vao/vbo combos are loaded.
+         * This function will cause the VBO member to be bound to the active
+         * OpenGL rendering context.
          */
         bool initVertices(unsigned numVerts);
         

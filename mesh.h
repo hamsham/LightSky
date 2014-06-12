@@ -14,10 +14,21 @@
 #include "bufferObject.h"
 #include "main.h"
 #include "renderer.h"
-#include "vertexArray.h"
 #include "vertex.h"
 
+/*
+ * Forward declarations
+ */
 class meshResource;
+class drawModel;
+
+/**
+ * Text/String mesh properties
+ */
+enum text_properties : int {
+    VERTICES_PER_GLYPH = 6,
+    SPACES_PER_TAB = 4
+};
 
 /**
  * A mesh object contains information about the layout of vertex data located on
@@ -34,34 +45,22 @@ class mesh {
      */
     friend class meshResource;
     
+    /**
+     * Allow the draw model to access data held within this object's VBO.
+     */
+    friend class drawModel;
+    
     private:
-        /**
-         * Vertex array to be used with this mesh object
-         */
-        vertexArray vao = {};
-        
         /**
          * Vertex Buffer Object to be used with this mesh
          */
         vertexBuffer vbo = {};
         
         /**
-         * Vertex Buffer that will be used specifically for model matrices.
-         */
-        vertexBuffer modelVbo = {};
-        
-        /**
          * Member to help determine the number of vertices contained within a
          * mesh object.
          */
         unsigned numVertices = 0;
-        
-        /**
-         * Counter of the number of instances that are currently reserved for
-         * drawing in the vao & vbo. This is also a cound of the number of model
-         * matrices that are held within the vbo.
-         */
-        unsigned numInstances = 1;
         
         /**
          * Draw mode for each mesh
@@ -79,9 +78,25 @@ class mesh {
         bool initVertices(unsigned numVerts);
         
         /**
-         * Helper function to ensure all vertex attributes are setup properly.
+         * Private helper function to upload a set of text vertices (or one
+         * glyph) to the GPU.
+         * When using a font atlas, a total number of VERTICES_PER_GLYPH will be
+         * sent to the array pointed at by the parameter pVerts.
+         * 
+         * @param xOffset
+         * The current x-offset of all the vertices to be uploaded.
+         * 
+         * @param yOffset
+         * The current y-offset of all the vertices to be uploaded.
+         * 
+         * @param rGlyph
+         * The particular atlas glyph to be sent to the GPU at the x/y offsets.
+         * 
+         * @param pVerts
+         * A pointer to the DMA-mapped buffer of vertices where the current
+         * glyph is to be sent.
          */
-        void setVertexAttribs();
+        void uploadTextGlyph(float xOffset, float yOffset, const atlasEntry& rGlyph, vertex* pVerts);
         
     public:
         /**
@@ -130,53 +145,46 @@ class mesh {
         
         /**
          * Send a loaded mesh to the GPU
+         * 
          * @param ml
          * A mesh loader that contains raw vertex data in memory.
+         * 
+         * @return
+         * TRUE if the data was successfully sent to the GPU, or FALSE if an
+         * error occurred.
          */
         bool init(const meshResource& mr);
+        
+        /**
+         * Sent text/string data to the GPU
+         * 
+         * @param textureAtlas
+         * A texture Atlas containing pre-loaded font glyphs and their offsets.
+         * 
+         * @param std::string
+         * A character string that contains data which is to be loaded onto the GPU.
+         * 
+         * @return
+         * TRUE if the data was successfully sent to the GPU, or FALSE if an
+         * error occurred.
+         */
+        bool init(const atlas&, const std::string&);
         
         /**
          * Unload all GPU-based resource that are used by *this;
          */
         void terminate() {
-            vao.terminate();
             vbo.terminate();
-            modelVbo.terminate();
             numVertices = 0;
-            numInstances = 1;
         }
         
         /**
-         * All meshes support instanced draws by default. This will set the
-         * number of instances that will appear when drawing a mesh.
+         * Get the number of vertices contained within this mesh object's VBO.
          * 
-         * @param instanceCount
-         * The number of instances (and modelMatrices) that will be drawn by
-         * this mesh.
-         * 
-         * @param modelMatrices
-         * A pointer to an array of model matrices that will be applied to each
-         * mesh instance.
+         * @return The number of vertices used to draw this mesh.
          */
-        void setNumInstances(int instanceCount, const math::mat4* const modelMatrices);
-        
-        /**
-         * Change the model matrix for a single instance
-         * 
-         * @param index
-         * @param modelMatrix
-         */
-        void modifyInstance(int index, const math::mat4& modelMatrix);
-        
-        /**
-         * Get the number of instances that will be rendered when a call to
-         * "draw()" is made.
-         * 
-         * @return the number of meshes/model matrices rendered by/with this
-         * mesh.
-         */
-        unsigned getNumInstances() const {
-            return numInstances;
+        unsigned getNumVertices() const {
+            return numVertices;
         }
         
         /**
@@ -200,39 +208,6 @@ class mesh {
         const boundingBox& getBounds() const {
             return bounds;
         }
-        
-        /**
-         * Draw a mesh
-         * 
-         * This method renders a mesh to the currently bound framebuffer.
-         */
-        void draw() const;
-        
-        /**
-         * Draw a single part of the total sub-meshes contained within *this.
-         * This function already takes the vertex counts into account.
-         * 
-         * @param startPos
-         * indicates the starting offset to the the mesh contained within *this
-         * that should be drawn.
-         * 
-         * @param endPos
-         * indicates the offset to the final sub-mesh contained within *this
-         * that should be drawn.
-         */
-        void drawSubMesh(int startPos, int endPos) const;
 };
-
-inline void mesh::draw() const {
-    vao.bind();
-    glDrawArraysInstanced(drawMode, 0, numVertices, numInstances);
-    vao.unbind();
-}
-
-inline void mesh::drawSubMesh(int startPos, int endPos) const {
-    vao.bind();
-    glDrawArraysInstanced(drawMode, startPos, endPos, numInstances);
-    vao.unbind();
-}
 
 #endif	/* __LS_MESH_H__ */

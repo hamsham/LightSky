@@ -12,26 +12,6 @@
 #include "geometry.h"
 #include "meshResource.h"
 
-/**
- * Utility function to get all of the non-whitespace characters in a string
- */
-unsigned getDrawableCharCount(const char* const str) {
-    unsigned charCount = 0;
-    
-    for(unsigned i = 0; str[i]; ++i) {
-        switch(str[i]) {
-            case '\n':
-            case '\v':
-            case '\f':
-            case '\r':
-            case '\t':
-            case ' ': continue;
-            default: ++charCount;
-        }
-    }
-    return charCount;
-}
-
 
 /*
  * MeshLoader Move Constructor
@@ -91,8 +71,7 @@ void meshResource::unload() {
     
     resultDrawMode = draw_mode::DEFAULT_DRAW_MODE;
     
-    meshBounds.setTopFrontLeft(math::vec3{HL_EPSILON, HL_EPSILON, -HL_EPSILON});
-    meshBounds.setBotRearRight(math::vec3{-HL_EPSILON, -HL_EPSILON, HL_EPSILON});
+    meshBounds.resetSize();
 }
 
 /*
@@ -116,32 +95,6 @@ bool meshResource::initVertices(unsigned vertCount) {
     }
     
     return true;
-}
-
-void meshResource::updateBounds(const math::vec3& v) {
-    math::vec3 tfl = meshBounds.getTopFrontLeft();
-    if (v[0] > tfl[0]) {
-        tfl[0] = v[0];
-    }
-    if (v[1] > tfl[1]) {
-        tfl[1] = v[1];
-    }
-    if (v[2] < tfl[2]) {
-        tfl[2] = v[2];
-    }
-    meshBounds.setTopFrontLeft(tfl);
-    
-    math::vec3 brr = meshBounds.getBotRearRight();
-    if (v[0] < brr[0]) {
-        brr[0] = v[0];
-    }
-    if (v[1] < brr[1]) {
-        brr[1] = v[1];
-    }
-    if (v[2] > brr[2]) {
-        brr[2] = v[2];
-    }
-    meshBounds.setBotRearRight(brr);
 }
 
 /**
@@ -181,8 +134,8 @@ bool meshResource::loadQuad() {
     pVertices[3].uv = math::vec2{1.f, 0.f};
     pVertices[3].norm = math::vec3{0.f, 0.f, 1.f};
     
-    meshBounds.setTopFrontLeft(math::vec3{1.f, 1.f, -HL_EPSILON});
-    meshBounds.setBotRearRight(math::vec3{-1.f, -1.f, HL_EPSILON});
+    meshBounds.setTopRearRight(math::vec3{1.f, 1.f, HL_EPSILON});
+    meshBounds.setBotFrontLeft(math::vec3{-1.f, -1.f, -HL_EPSILON});
     
     LOG_MSG("\tSuccessfully loaded a quad mesh.\n");
     resultDrawMode = draw_mode::LS_TRIANGLE_FAN;
@@ -214,7 +167,7 @@ bool meshResource::loadPolygon(unsigned numPoints) {
         pVert->uv = math::vec2{(bs*0.5f)+0.5f, (bc*0.5f)+0.5f};
         pVert->norm = math::vec3{0.f, 0.f, 1.f};
         
-        updateBounds(pVert->pos);
+        meshBounds.compareAndUpdate(pVert->pos);
     }
     
     LOG_MSG("\tSuccessfully loaded a ", numPoints, "-sided polygon.\n");
@@ -345,8 +298,8 @@ bool meshResource::loadCube() {
             pVertices[24].norm =
                 pVertices[25].norm = math::vec3{0.f, 1.f, 0.f};
     
-    meshBounds.setTopFrontLeft(math::vec3{1.f, 1.f, -1.f});
-    meshBounds.setBotRearRight(math::vec3{-1.f, -1.f, 1.f});
+    meshBounds.setTopRearRight(math::vec3{1.f, 1.f, 1.f});
+    meshBounds.setBotFrontLeft(math::vec3{-1.f, -1.f, -1.f});
     
     LOG_MSG("\tSuccessfully loaded a cube mesh.\n");
     resultDrawMode = draw_mode::LS_TRIANGLE_STRIP;
@@ -389,42 +342,42 @@ bool meshResource::loadCylinder(unsigned numSides) {
         pCapVert->pos       = math::vec3{0.f, topBot, 0.f};
         pCapVert->uv        = math::vec2{0.5f, 0.5f};
         pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
-        updateBounds(pCapVert->pos);
+        meshBounds.compareAndUpdate(pCapVert->pos);
         ++pCapVert;
 
         // cap, first triangle leg
         pCapVert->pos       = math::vec3{bc1, topBot, bs1};
         pCapVert->uv        = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
         pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
-        updateBounds(pCapVert->pos);
+        meshBounds.compareAndUpdate(pCapVert->pos);
         ++pCapVert;
 
         // cap, second triangle leg
         pCapVert->pos       = math::vec3{bc2, topBot, bs2};
         pCapVert->uv        = math::vec2{(bs2*0.5f)+0.5f, (bc2*0.5f)+0.5f};
         pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
-        updateBounds(pCapVert->pos);
+        meshBounds.compareAndUpdate(pCapVert->pos);
         ++pCapVert;
         
         // Cylinder Side, apex
         pSideVert->pos      = math::vec3{bc1, -topBot, bs1};
         pSideVert->uv       = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
         pSideVert->norm     = math::vec3{bc1, 0.f, bs1};
-        updateBounds(pSideVert->pos);
+        meshBounds.compareAndUpdate(pSideVert->pos);
         ++pSideVert;
         
         // Cylinder Side, leg 1
         pSideVert->pos      = math::vec3{bc2, topBot, bs2};
         pSideVert->uv       = math::vec2{(bs2*0.5f)+0.5f, (bc2*0.5f)+0.5f};
         pSideVert->norm     = math::vec3{bc2, 0.f, bs2};
-        updateBounds(pSideVert->pos);
+        meshBounds.compareAndUpdate(pSideVert->pos);
         ++pSideVert;
         
         // Cylinder Side, leg 2
         pSideVert->pos      = math::vec3{bc1, topBot, bs1};
         pSideVert->uv       = math::vec2{(bs1*0.5f)+0.5f, (bc1*0.5f)+0.5f};
         pSideVert->norm     = math::vec3{bc1, 0.f, bs1};
-        updateBounds(pSideVert->pos);
+        meshBounds.compareAndUpdate(pSideVert->pos);
         ++pSideVert;
     }
     
@@ -462,7 +415,7 @@ bool meshResource::loadCone(unsigned numSides) {
             pCapVert->pos       = math::vec3{0.f, topBot, 0.f};
             pCapVert->uv        = math::vec2{0.5f, 0.5f};
             pCapVert->norm      = math::vec3{0.f, topBot, 0.f};
-            updateBounds(pCapVert->pos);
+            meshBounds.compareAndUpdate(pCapVert->pos);
             ++pCapVert;
         }
 
@@ -476,7 +429,7 @@ bool meshResource::loadCone(unsigned numSides) {
             pCapVert->norm      = i < 0
                                 ? math::normalize(math::vec3{bc1, 1.f, bs1})
                                 : math::vec3{0.f, topBot, 0.f};
-            updateBounds(pCapVert->pos);
+            meshBounds.compareAndUpdate(pCapVert->pos);
             ++pCapVert;
         }
 
@@ -490,7 +443,7 @@ bool meshResource::loadCone(unsigned numSides) {
             pCapVert->norm      = i < 0
                                 ? math::normalize(math::vec3{bc2, 1.f, bs2})
                                 : math::vec3{0.f, topBot, 0.f};
-            updateBounds(pCapVert->pos);
+            meshBounds.compareAndUpdate(pCapVert->pos);
             ++pCapVert;
         }
     }

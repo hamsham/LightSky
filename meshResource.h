@@ -45,7 +45,6 @@ class meshResource final : public resource {
         boundingBox meshBounds = {};
         
         bool initVertices(unsigned vertCount);
-        void updateBounds(const math::vec3&);
         
     public:
         /**

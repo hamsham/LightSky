@@ -10,6 +10,7 @@
       <itemPath>color.h</itemPath>
       <itemPath>dataResource.h</itemPath>
       <itemPath>display.h</itemPath>
+      <itemPath>drawModel.h</itemPath>
       <itemPath>fontResource.h</itemPath>
       <itemPath>gameState.h</itemPath>
       <itemPath>geometry.h</itemPath>
@@ -26,7 +27,6 @@
       <itemPath>shaderProgram.h</itemPath>
       <itemPath>system.h</itemPath>
       <itemPath>testState.h</itemPath>
-      <itemPath>text.h</itemPath>
       <itemPath>texture.h</itemPath>
       <itemPath>util.h</itemPath>
       <itemPath>vertex.h</itemPath>
@@ -45,6 +45,7 @@
       <itemPath>color.cpp</itemPath>
       <itemPath>dataResource.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
+      <itemPath>drawModel.cpp</itemPath>
       <itemPath>fontResource.cpp</itemPath>
       <itemPath>gameState.cpp</itemPath>
       <itemPath>geometry.cpp</itemPath>
@@ -61,7 +62,6 @@
       <itemPath>shaderProgram.cpp</itemPath>
       <itemPath>system.cpp</itemPath>
       <itemPath>testState.cpp</itemPath>
-      <itemPath>text.cpp</itemPath>
       <itemPath>texture.cpp</itemPath>
       <itemPath>util.cpp</itemPath>
       <itemPath>vertex.cpp</itemPath>
@@ -162,6 +162,10 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="drawModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="drawModel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="fontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fontResource.h" ex="false" tool="3" flavor2="0">
@@ -225,10 +229,6 @@
       <item path="testState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="testState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="text.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="text.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -336,6 +336,10 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="drawModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="drawModel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="fontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fontResource.h" ex="false" tool="3" flavor2="0">
@@ -399,10 +403,6 @@
       <item path="testState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="testState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="text.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="text.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="texture.cpp" ex="false" tool="1" flavor2="0">
       </item>

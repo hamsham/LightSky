@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/color.o \
 	${OBJECTDIR}/dataResource.o \
 	${OBJECTDIR}/display.o \
+	${OBJECTDIR}/drawModel.o \
 	${OBJECTDIR}/fontResource.o \
 	${OBJECTDIR}/gameState.o \
 	${OBJECTDIR}/geometry.o \
@@ -57,7 +58,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/shaderProgram.o \
 	${OBJECTDIR}/system.o \
 	${OBJECTDIR}/testState.o \
-	${OBJECTDIR}/text.o \
 	${OBJECTDIR}/texture.o \
 	${OBJECTDIR}/util.o \
 	${OBJECTDIR}/vertex.o \
@@ -119,6 +119,11 @@ ${OBJECTDIR}/display.o: display.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
+
+${OBJECTDIR}/drawModel.o: drawModel.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drawModel.o drawModel.cpp
 
 ${OBJECTDIR}/fontResource.o: fontResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -199,11 +204,6 @@ ${OBJECTDIR}/testState.o: testState.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testState.o testState.cpp
-
-${OBJECTDIR}/text.o: text.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -I../hamlibs/include -I/C/mingw/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/text.o text.cpp
 
 ${OBJECTDIR}/texture.o: texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}

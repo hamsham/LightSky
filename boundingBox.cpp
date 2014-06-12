@@ -10,39 +10,48 @@
 #include "boundingBox.h"
 
 boundingBox::boundingBox(const boundingBox& bb) :
-    topFrontLeft{bb.topFrontLeft},
-    botRearRight{bb.botRearRight}
+    topRearRight{bb.topRearRight},
+    botFrontLeft{bb.botFrontLeft}
 {}
 
 boundingBox::boundingBox(boundingBox&& bb) :
-    topFrontLeft{std::move(bb.topFrontLeft)},
-    botRearRight{std::move(bb.botRearRight)}
+    topRearRight{std::move(bb.topRearRight)},
+    botFrontLeft{std::move(bb.botFrontLeft)}
 {
-    bb.setTopFrontLeft(math::vec3{HL_EPSILON, HL_EPSILON, -HL_EPSILON});
-    bb.setBotRearRight(math::vec3{-HL_EPSILON, -HL_EPSILON, HL_EPSILON});
+    bb.resetSize();
 }
 
 boundingBox& boundingBox::operator=(const boundingBox& bb) {
-    topFrontLeft = bb.topFrontLeft;
-    botRearRight = bb.botRearRight;
+    topRearRight = bb.topRearRight;
+    botFrontLeft = bb.botFrontLeft;
     
     return *this;
 }
 
 boundingBox& boundingBox::operator =(boundingBox&& bb) {
-    topFrontLeft = std::move(bb.topFrontLeft);
-    botRearRight = std::move(bb.botRearRight);
+    topRearRight = std::move(bb.topRearRight);
+    botFrontLeft = std::move(bb.botFrontLeft);
     
-    bb.setTopFrontLeft(math::vec3{HL_EPSILON, HL_EPSILON, -HL_EPSILON});
-    bb.setBotRearRight(math::vec3{-HL_EPSILON, -HL_EPSILON, HL_EPSILON});
+    bb.resetSize();
     
     return *this;
 }
 
 bool boundingBox::isInBox(const math::vec3& v) const {
     return
-    v[0] <= topFrontLeft[0] && v[1] <= topFrontLeft[1] && v[2] >= topFrontLeft[2]
+    v[0] <= topRearRight[0] && v[1] <= topRearRight[1] && v[2] <= topRearRight[2]
     &&
-    v[0] >= botRearRight[0] && v[1] >= botRearRight[1] && v[2] <= botRearRight[2];
+    v[0] >= botFrontLeft[0] && v[1] >= botFrontLeft[1] && v[2] >= botFrontLeft[2];
 }
 
+void boundingBox::compareAndUpdate(const math::vec3& point) {
+    math::vec3& trr = topRearRight;
+    if (point[0] > trr[0]) {trr[0] = point[0];}
+    if (point[1] > trr[1]) {trr[1] = point[1];}
+    if (point[2] > trr[2]) {trr[2] = point[2];}
+    
+    math::vec3& bfl = botFrontLeft;
+    if (point[0] < bfl[0]) {bfl[0] = point[0];}
+    if (point[1] < bfl[1]) {bfl[1] = point[1];}
+    if (point[2] < bfl[2]) {bfl[2] = point[2];}
+}

@@ -105,6 +105,15 @@ class vertexArray {
         }
         
         /**
+         * Get the GPU-assigned ID for this VAO
+         * 
+         * @return an unsigned integral type representing this VAO.
+         */
+        inline unsigned getId() const {
+            return vao;
+        }
+        
+        /**
          * Enable an attribute contained within the vertex array.
          * @param index
          */

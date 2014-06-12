@@ -11,7 +11,7 @@
 #include "drawModel.h"
 
 drawModel::drawModel(const drawModel&) {
-    HL_ASSERT(false, "Draw-Model copy constructor is not yet implemented.");
+    HL_ASSERT(false);
 }
 
 drawModel::drawModel(drawModel&& dm) :
@@ -27,7 +27,7 @@ drawModel::drawModel(drawModel&& dm) :
 }
 
 drawModel& drawModel::operator=(const drawModel&) {
-    HL_ASSERT(false, "Draw-Model copy operator is not yet implemented.");
+    HL_ASSERT(false);
     return *this;
 }
 
@@ -50,8 +50,8 @@ drawModel& drawModel::operator=(drawModel&& dm) {
 /*
  * Helper function to ensure all vertex attributes are setup properly.
  */
-void drawModel::setVertexAttribs(const mesh& m) {
-    vertexBuffer& vbo = m.vbo;
+void drawModel::setVertexAttribs() {
+    const vertexBuffer& vbo = pMesh->vbo;
     
     vao.bind();
     vbo.bind();
@@ -133,9 +133,14 @@ bool drawModel::setMesh(const mesh* const m) {
         }
     }
     
-    setVertexAttribs(*m);
+    pMesh = m;
+    setVertexAttribs();
     
     return true;
+}
+
+void drawModel::setTexture(const texture* const pTex) {
+    pTexture = pTex;
 }
 
 void drawModel::setNumInstances(int instanceCount, const math::mat4* const modelMatrices) {
@@ -150,7 +155,7 @@ void drawModel::setNumInstances(int instanceCount, const math::mat4* const model
 }
 
 void drawModel::modifyInstance(int index, const math::mat4& modelMatrix) {
-    HL_ASSERT(instanceCount >= 0 && instanceCount < numInstances);
+    HL_ASSERT(index >= 0 && index < numInstances);
     modelVbo.bind();
     modelVbo.setSubData(sizeof(math::mat4)*index, sizeof(math::mat4), &modelMatrix);
     modelVbo.unbind();

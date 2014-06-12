@@ -15,8 +15,18 @@
 
 class drawModel final {
     private:
-        mesh* pMesh;
-        texture* pTexture;
+        /**
+         * A pointer to the mesh that should be drawn using this model.
+         * The "draw" methods should NOT be called if this is null.
+         */
+        const mesh* pMesh = nullptr;
+        
+        /**
+         * A pointer to the texture that should be applied when rendering this
+         * model's mesh.
+         * The "draw" methods should NOT be called if this is null.
+         */
+        const texture* pTexture = nullptr;
         
         /**
          * Counter of the number of instances that are currently reserved for
@@ -38,10 +48,10 @@ class drawModel final {
         /**
          * Helper function to ensure all vertex attributes are setup properly.
          */
-        void setVertexAttribs(const mesh* const);
+        void setVertexAttribs();
         
     public:
-        constexpr drawModel() {}
+        drawModel() {}
         drawModel(const drawModel&);
         drawModel(drawModel&&);
         
@@ -70,7 +80,7 @@ class drawModel final {
          * @return a pointer to the mesh used by *this.
          * The return value can be NULL.
          */
-        inline mesh* getMesh() const {
+        inline const mesh* getMesh() const {
             return pMesh;
         }
         
@@ -79,24 +89,24 @@ class drawModel final {
          * 
          * @param a const pointer to a const mesh
          */
-        inline bool setMesh(const mesh* const);
+        bool setMesh(const mesh* const);
         
         /**
          * Get the texture that is currently used by this model
          * 
-         * @return a pointer to the texture used by *this.
-         * The return value can be NULL.
+         * @return the ID of the texture used by *this.
+         * The return value can be 0.
          */
-        inline texture* getTexture() const {
-            return pMesh;
+        inline const texture* getTexture() const {
+            return pTexture;
         }
         
         /**
-         * Set the texture to be used by this object during a draw operation.
+         * Set the texture ID to be used by this object during a draw operation.
          * 
          * @param a const pointer to a const texture
          */
-        inline void setTexture(const texture* const);
+        void setTexture(const texture* const);
         
         /**
          * Get the number of instances that will be rendered when a call to
@@ -132,6 +142,16 @@ class drawModel final {
         void modifyInstance(int index, const math::mat4& modelMatrix);
         
         /**
+         * Determine if this current model is able to be rendered.
+         * 
+         * @return TRUE if both the current mesh and current texture point to
+         * non-null, objects.
+         */
+        bool canDraw() const {
+            return pMesh != nullptr && pTexture != nullptr;
+        }
+        
+        /**
          * Draw a mesh
          * 
          * This method renders a mesh to the currently bound framebuffer.
@@ -157,15 +177,19 @@ inline void drawModel::draw() const {
     const draw_mode dm = pMesh->getDrawMode();
     const unsigned numVerts = pMesh->getNumVertices();
     
+    pTexture->bind();
     vao.bind();
     glDrawArraysInstanced(dm, 0, numVerts, numInstances);
     vao.unbind();
+    pTexture->unbind();
 }
 
 inline void drawModel::drawSubMesh(int startPos, int endPos) const {
+    pTexture->bind();
     vao.bind();
     glDrawArraysInstanced(pMesh->getDrawMode(), startPos, endPos, numInstances);
     vao.unbind();
+    pTexture->unbind();
 }
 
 #endif	/* __LS_DRAWMODEL_H__ */

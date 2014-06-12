@@ -97,9 +97,24 @@ void sceneManager::terminate() {
  * Management release
  */
 void sceneManager::clear() {
-    texMgr.clear();
+    for (mesh* pMesh : meshMgr) {
+        delete pMesh;
+    }
     meshMgr.clear();
+    
+    for (texture* pTex : texMgr) {
+        delete pTex;
+    }
+    texMgr.clear();
+    
+    for (atlas* pAtlas : atlasMgr) {
+        delete pAtlas;
+    }
     atlasMgr.clear();
+    
+    for (drawModel* pModel : drawMgr) {
+        delete pModel;
+    }
     drawMgr.clear();
 }
 
@@ -168,18 +183,26 @@ drawModel* sceneManager::getModel(unsigned index) const {
 // Resource deletion methods
 ///////////////////////////////////////////////////////////////////////////////
 void sceneManager::eraseMesh(unsigned index) {
+    mesh* pMesh = meshMgr[index];
+    delete pMesh;
     meshMgr.erase(meshMgr.begin()+index);
 }
 
 void sceneManager::eraseTexture(unsigned index) {
+    texture* pTex = texMgr[index];
+    delete pTex;
     texMgr.erase(texMgr.begin()+index);
 }
 
 void sceneManager::eraseAtlas(unsigned index) {
+    atlas* pAtlas = atlasMgr[index];
+    delete pAtlas;
     atlasMgr.erase(atlasMgr.begin()+index);
 }
 
 void sceneManager::eraseModel(unsigned index) {
+    drawModel* pDrawModel = drawMgr[index];
+    delete pDrawModel;
     drawMgr.erase(drawMgr.begin()+index);
 }
 

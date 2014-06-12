@@ -8,10 +8,6 @@
 #include <algorithm>
 #include <utility>
 
-#include "mesh.h"
-#include "text.h"
-#include "texture.h"
-#include "atlas.h"
 #include "sceneManager.h"
 
 static const unsigned char checkeredCol[] = {
@@ -32,7 +28,7 @@ sceneManager::sceneManager() :
     texMgr{},
     meshMgr{},
     atlasMgr{},
-    stringMgr{}
+    drawMgr{}
 {}
 
 /*
@@ -43,7 +39,7 @@ sceneManager::sceneManager(sceneManager&& sm) :
     texMgr{std::move(sm.texMgr)},
     meshMgr{std::move(sm.meshMgr)},
     atlasMgr{std::move(sm.atlasMgr)},
-    stringMgr{std::move(sm.stringMgr)}
+    drawMgr{std::move(sm.drawMgr)}
 {}
 
 /*
@@ -53,7 +49,7 @@ sceneManager& sceneManager::operator =(sceneManager&& sm) {
     texMgr = std::move(sm.texMgr);
     meshMgr = std::move(sm.meshMgr);
     atlasMgr = std::move(sm.atlasMgr);
-    stringMgr = std::move(sm.stringMgr);
+    drawMgr = std::move(sm.drawMgr);
     
     return *this;
 }
@@ -104,7 +100,7 @@ void sceneManager::clear() {
     texMgr.clear();
     meshMgr.clear();
     atlasMgr.clear();
-    stringMgr.clear();
+    drawMgr.clear();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -122,8 +118,8 @@ atlasList& sceneManager::getAtlasList() {
     return atlasMgr;
 }
 
-textList& sceneManager::getTextManager() {
-    return stringMgr;
+drawList& sceneManager::getModelManager() {
+    return drawMgr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -141,8 +137,8 @@ const atlasList& sceneManager::getAtlasList() const {
     return atlasMgr;
 }
 
-const textList& sceneManager::getTextManager() const {
-    return stringMgr;
+const drawList& sceneManager::getModelManager() const {
+    return drawMgr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -163,9 +159,9 @@ atlas* sceneManager::getAtlas(unsigned index) const {
     return atlasMgr[index];
 }
 
-text* sceneManager::getText(unsigned index) const {
-    HL_DEBUG_ASSERT(index < stringMgr.size());
-    return stringMgr[index];
+drawModel* sceneManager::getModel(unsigned index) const {
+    HL_DEBUG_ASSERT(index < drawMgr.size());
+    return drawMgr[index];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -183,8 +179,8 @@ void sceneManager::eraseAtlas(unsigned index) {
     atlasMgr.erase(atlasMgr.begin()+index);
 }
 
-void sceneManager::eraseText(unsigned index) {
-    stringMgr.erase(stringMgr.begin()+index);
+void sceneManager::eraseModel(unsigned index) {
+    drawMgr.erase(drawMgr.begin()+index);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -202,8 +198,8 @@ unsigned sceneManager::getNumAtlases() const {
     return atlasMgr.size();
 }
 
-unsigned sceneManager::getNumTexts() const {
-    return stringMgr.size();
+unsigned sceneManager::getNumModels() const {
+    return drawMgr.size();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -239,10 +235,10 @@ unsigned sceneManager::manageAtlas(atlas* const pAtlas) {
     return INVALID_SCENE_ID;
 }
 
-unsigned sceneManager::manageText(text* const pText) {
-    if (pText != nullptr && this->containsText(pText) == false) {
+unsigned sceneManager::manageModel(drawModel* const pText) {
+    if (pText != nullptr && this->containsModel(pText) == false) {
         const unsigned index = pText->getId();
-        stringMgr.push_back(pText);
+        drawMgr.push_back(pText);
         return index;
     }
     
@@ -273,10 +269,10 @@ atlas* sceneManager::unManageAtlas(unsigned index) {
     return pAtlas;
 }
 
-text* sceneManager::unManageText(unsigned index) {
-    HL_DEBUG_ASSERT(index < stringMgr.size());
-    text* const pText = stringMgr[index];
-    stringMgr.erase(stringMgr.begin() + index);
+drawModel* sceneManager::unManageModel(unsigned index) {
+    HL_DEBUG_ASSERT(index < drawMgr.size());
+    drawModel* const pText = drawMgr[index];
+    drawMgr.erase(drawMgr.begin() + index);
     return pText;
 }
 
@@ -337,13 +333,13 @@ bool sceneManager::containsAtlas(const atlas* const pAtlas) const {
     return false;
 }
 
-bool sceneManager::containsText(const text* const pText) const {
+bool sceneManager::containsModel(const drawModel* const pText) const {
     if (pText == nullptr) {
         return false;
     }
     else {
-        textList::const_iterator iter = stringMgr.begin();
-        while (iter != stringMgr.end()) {
+        drawList::const_iterator iter = drawMgr.begin();
+        while (iter != drawMgr.end()) {
             if (pText->getId() == (*iter)->getId()) {
                 return true;
             }

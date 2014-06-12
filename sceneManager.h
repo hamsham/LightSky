@@ -10,9 +10,9 @@
 
 #include <deque>
 
+#include "drawModel.h"
 #include "main.h"
 #include "mesh.h"
-#include "text.h"
 #include "texture.h"
 #include "atlas.h"
 
@@ -26,7 +26,7 @@
  * manager.
  */
 typedef std::deque<mesh*>      meshList;
-typedef std::deque<text*>      textList;
+typedef std::deque<drawModel*> drawList;
 typedef std::deque<texture*>   textureList;
 typedef std::deque<atlas*>     atlasList;
 
@@ -43,7 +43,7 @@ class sceneManager {
         textureList texMgr;
         meshList meshMgr;
         atlasList atlasMgr;
-        textList stringMgr;
+        drawList drawMgr;
         
         bool initDefaultTexture();
         
@@ -67,42 +67,42 @@ class sceneManager {
         meshList& getMeshList();
         textureList& getTextureList();
         atlasList& getAtlasList();
-        textList& getTextManager();
+        drawList& getModelManager();
         
         const meshList& getMeshList() const;
         const textureList& getTextureList() const;
         const atlasList& getAtlasList() const;
-        const textList& getTextManager() const;
+        const drawList& getModelManager() const;
         
         mesh* getMesh(unsigned index) const;
         texture* getTexture(unsigned index) const;
         atlas* getAtlas(unsigned index) const;
-        text* getText(unsigned index) const;
+        drawModel* getModel(unsigned index) const;
         
         void eraseMesh(unsigned index);
         void eraseTexture(unsigned index);
         void eraseAtlas(unsigned index);
-        void eraseText(unsigned index);
+        void eraseModel(unsigned index);
         
         unsigned getNumMeshes() const;
         unsigned getNumTextures() const;
         unsigned getNumAtlases() const;
-        unsigned getNumTexts() const;
+        unsigned getNumModels() const;
         
         unsigned manageMesh(mesh* const);
         unsigned manageTexture(texture* const);
         unsigned manageAtlas(atlas* const);
-        unsigned manageText(text* const);
+        unsigned manageModel(drawModel* const);
         
         mesh* unManageMesh(unsigned index);
         texture* unManageTexture(unsigned index);
         atlas* unManageAtlas(unsigned index);
-        text* unManageText(unsigned index);
+        drawModel* unManageModel(unsigned index);
         
         bool containsMesh(const mesh* const) const;
         bool containsTexture(const texture* const) const;
         bool containsAtlas(const atlas* const) const;
-        bool containsText(const text* const) const;
+        bool containsModel(const drawModel* const) const;
 };
 
 #endif	/* __LS_SCENE_MANAGER_H__ */

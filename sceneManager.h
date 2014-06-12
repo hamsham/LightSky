@@ -67,12 +67,12 @@ class sceneManager {
         meshList& getMeshList();
         textureList& getTextureList();
         atlasList& getAtlasList();
-        drawList& getModelManager();
+        drawList& getModelList();
         
         const meshList& getMeshList() const;
         const textureList& getTextureList() const;
         const atlasList& getAtlasList() const;
-        const drawList& getModelManager() const;
+        const drawList& getModelList() const;
         
         mesh* getMesh(unsigned index) const;
         texture* getTexture(unsigned index) const;

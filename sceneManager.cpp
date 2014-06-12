@@ -118,7 +118,7 @@ atlasList& sceneManager::getAtlasList() {
     return atlasMgr;
 }
 
-drawList& sceneManager::getModelManager() {
+drawList& sceneManager::getModelList() {
     return drawMgr;
 }
 
@@ -137,7 +137,7 @@ const atlasList& sceneManager::getAtlasList() const {
     return atlasMgr;
 }
 
-const drawList& sceneManager::getModelManager() const {
+const drawList& sceneManager::getModelList() const {
     return drawMgr;
 }
 

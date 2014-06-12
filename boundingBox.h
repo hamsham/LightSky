@@ -73,10 +73,5 @@ inline const math::vec3& boundingBox::getBotFrontLeft() const {
     return botFrontLeft;
 }
 
-inline void boundingBox::resetSize() {
-    setTopRearRight(math::vec3{HL_EPSILON, HL_EPSILON, HL_EPSILON});
-    setBotFrontLeft(math::vec3{-HL_EPSILON, -HL_EPSILON, -HL_EPSILON});
-}
-
 #endif	/* __LS_BOUNDINGBOX_H__ */
 

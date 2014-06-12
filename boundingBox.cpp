@@ -55,3 +55,8 @@ void boundingBox::compareAndUpdate(const math::vec3& point) {
     if (point[1] < bfl[1]) {bfl[1] = point[1];}
     if (point[2] < bfl[2]) {bfl[2] = point[2];}
 }
+
+void boundingBox::resetSize() {
+    setTopRearRight(math::vec3{HL_EPSILON, HL_EPSILON, HL_EPSILON});
+    setBotFrontLeft(math::vec3{-HL_EPSILON, -HL_EPSILON, -HL_EPSILON});
+}

@@ -20,7 +20,6 @@
 #include "mesh.h"
 #include "meshResource.h"
 #include "testState.h"
-#include "text.h"
 #include "texture.h"
 #include "atlas.h"
 
@@ -193,9 +192,9 @@ void testState::updateKeyStates() {
         math::dot(math::getAxisZ(orientation), pos)
     };
     
-    const mat4& viewMatrix = matStack->getMatrix(matrix_type::VIEW_MATRIX);
+    const mat4& viewMatrix = matStack->getMatrix(VIEW_MATRIX);
     const mat4&& movement = math::translate(viewMatrix, translation);
-    matStack->loadMatrix(matrix_type::VIEW_MATRIX, movement);
+    matStack->loadMatrix(VIEW_MATRIX, movement);
 }
 
 /******************************************************************************
@@ -283,6 +282,45 @@ void testState::terminate() {
 }
 
 /******************************************************************************
+ * Create the draw models that will be used for rendering
+******************************************************************************/
+bool testState::generateDrawModels() {
+    atlas* pAtlas = nullptr;
+    mesh* pMesh = nullptr;
+    texture* pTexture = nullptr;
+    
+    // test model 1
+    drawModel* const pMeshModel = new drawModel{};
+    if (pMeshModel == nullptr) {
+        LOG_ERR("Unable to generate test draw model 1");
+        return false;
+    }
+    else {
+        pScene->manageModel(pMeshModel);
+        pMesh = pScene->getMeshList()[0];
+        pTexture = pScene->getTextureList()[0];
+        pMeshModel->setMesh(pMesh);
+        pMeshModel->setTexture(pTexture);
+    }
+    
+    // test model 2
+    drawModel* const pTextModel = new drawModel{};
+    if (pTextModel == nullptr) {
+        LOG_ERR("Unable to generate test draw model 2");
+        return false;
+    }
+    else {
+        pScene->manageModel(pTextModel);
+        pMesh = pScene->getMeshList()[1];
+        pAtlas = pScene->getAtlasList()[0];
+        pTextModel->setMesh(pMesh);
+        pTextModel->setTexture(&(pAtlas->getTexture()));
+    }
+    
+    return true;
+}
+
+/******************************************************************************
  * Starting state
 ******************************************************************************/
 bool testState::onStart() {
@@ -295,36 +333,45 @@ bool testState::onStart() {
         return false;
     }
     
-    meshResource* pLoader = new meshResource{};
-    imageResource imgFile;
-    fontResource font;
-    mesh* pMesh = new mesh{};
-    texture* pTex = new texture{tex_desc::TEX_2D};
-    atlas* pAtlas = new atlas{};
-    text* pText = new text{};
+    meshResource* pMeshLoader   = new meshResource{};
+    imageResource* pImgLoader   = new imageResource{};
+    fontResource* pFontLoader   = new fontResource{};
+    mesh* pMesh                 = new mesh{};
+    mesh* pText                 = new mesh{};
+    texture* pTex               = new texture{TEX_2D};
+    atlas* pAtlas               = new atlas{};
+    bool ret                    = true;
     
-    if (    pLoader == nullptr
-    ||      !pLoader->loadCone(5)
-    ||      !pMesh->init(*pLoader)
-    ||      matStack == nullptr
-    ||      !imgFile.loadFile("test_img.jpg")
-    ||      !pTex->init(0, GL_RGB, imgFile.getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, imgFile.getData())
-    ||      !font.loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
-    ||      !pAtlas->load(font)
-    ||      !pText->init(*pAtlas, testTextString)
+    if (!pMeshLoader
+    ||  !pImgLoader
+    ||  !pFontLoader
+    ||  !pMeshLoader->loadCone(5)
+    ||  !pMesh->init(*pMeshLoader)
+    ||  !pImgLoader->loadFile("test_img.jpg")
+    ||  !pTex->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
+    ||  !pFontLoader->loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
+    ||  !pAtlas->load(*pFontLoader)
+    ||  !pText->init(*pAtlas, testTextString)
     ) {
-        delete pLoader;
+        ret = false;
+    }
+    
+    if (ret) {
+        pScene->manageMesh(pMesh); // test data at the mesh index 0
+        pScene->manageMesh(pText);  // test data at the mesh index 1
+        pScene->manageTexture(pTex);  // test texture at the mesh index 0
+        pScene->manageAtlas(pAtlas);  // test atlas at the mesh index 0
+    }
+    
+    delete pMeshLoader;
+    delete pImgLoader;
+    delete pFontLoader;
+    
+    if (!ret || !generateDrawModels()) {
+        LOG_ERR("An error occurred while initializing the test state's resources");
         terminate();
         return false;
     }
-    else {
-        pScene->manageMesh(pMesh);
-        pScene->manageTexture(pTex);
-        pScene->manageText(pText);
-        pScene->manageAtlas(pAtlas);
-    }
-    
-    delete pLoader;
     
     pTex->bind();
     pTex->setParameter(TEX_MAG_FILTER, LINEAR_FILTER);
@@ -348,8 +395,8 @@ bool testState::onStart() {
         fontProgram.link();
 
         // Initialize the matrix stacks
-        matStack->loadMatrix(matrix_type::PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 100.f));
-        matStack->loadMatrix(matrix_type::VIEW_MATRIX, math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f)));
+        matStack->loadMatrix(PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 100.f));
+        matStack->loadMatrix(VIEW_MATRIX, math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f)));
         matStack->constructVp();
         
         meshProgram.bind();
@@ -404,43 +451,45 @@ void testState::drawScene() {
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack.
-    //const mat4& viewMat =
-        //matStack->getMatrix(matrix_type::VIEW_MATRIX) *
-        //matStack->getMatrix(matrix_type::PROJECTION_MATRIX);
-    matStack->pushMatrix(matrix_type::VIEW_MATRIX, math::quatToMat4(orientation));
+    const mat4& viewMat = matStack->getMatrix(VIEW_MATRIX)*matStack->getMatrix(PROJECTION_MATRIX);
+    matStack->pushMatrix(VIEW_MATRIX, math::quatToMat4(orientation));
     matStack->constructVp();
     
+    drawModel* pModel = nullptr;
+    GLuint mvpId = 0;
+    
+    // first draw model
     {
-        /* Billboarding Test */
-        //const vec3 camPos{-viewMat[3][0], 0.f, -viewMat[3][2]};
-        //const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
-        mesh* const pMesh = pScene->getMeshList()[0];
-        //pMesh->setNumInstances(1, &modelMat);
-
+        // shader setup
         meshProgram.bind();
-        GLuint mvpId = 0;
         mvpId = meshProgram.getUniformLocation("vpMatrix");
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         
-        texture* const pTex = pScene->getTextureList()[0];
-        pTex->bind();
-        pMesh->draw();
-        pTex->unbind();
-
-        /* Premultiplied alpha */
+        // billboard setup
+        const vec3 camPos{-viewMat[3][0], 0.f, -viewMat[3][2]};
+        const mat4&& modelMat = math::lookAt(vec3{0.f}, camPos, vec3{0.f, 1.f, 0.f});
+        pModel = pScene->getModelList()[0];
+        pModel->setNumInstances(1, &modelMat);
+        
+        pModel->draw();
+    }
+    
+    // second draw model
+    {
+        // shader setup
+        fontProgram.bind();
+        mvpId = fontProgram.getUniformLocation("vpMatrix");
+        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
+        
+        // blending setup
         glEnable(GL_BLEND);
         glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
         glBlendFuncSeparate(GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
         
-        fontProgram.bind();
-        mvpId = fontProgram.getUniformLocation("vpMatrix");
-        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
-        atlas* const pAtlas = pScene->getAtlasList()[0];
-        text* const pText = pScene->getTextManager()[0];
-        pAtlas->getTexture().bind();
-        pText->draw();
-        pAtlas->getTexture().unbind();
+        pModel = pScene->getModelList()[1];
+        pModel->draw();
         glDisable(GL_BLEND);
     }
-    matStack->popMatrix(matrix_type::VIEW_MATRIX);
+    
+    matStack->popMatrix(VIEW_MATRIX);
 }

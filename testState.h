@@ -41,6 +41,7 @@ class testState final : virtual public gameState {
         virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent*) override;
         virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent*) override;
         
+        bool generateDrawModels();
         void drawScene();
         void terminate();
         

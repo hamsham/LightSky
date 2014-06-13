@@ -31,6 +31,7 @@ using math::vec3;
 using math::mat4;
 using math::quat;
 
+static const char testImageFile[] = "test_img.jpg";
 static const char testTextFile[] = "FiraSans-Italic.otf";
 
 static const char testTextString[] = R"***(x
@@ -327,9 +328,10 @@ bool testState::onStart() {
     if (!pMeshLoader
     ||  !pImgLoader
     ||  !pFontLoader
-    ||  !pMeshLoader->loadQuad()
+    //||  !pMeshLoader->loadQuad()
+    ||  !pMeshLoader->loadSphere(32)
     ||  !pMesh->init(*pMeshLoader)
-    ||  !pImgLoader->loadFile("test_img.jpg")
+    ||  !pImgLoader->loadFile(testImageFile)
     ||  !pTex->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
     ||  !pFontLoader->loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
     ||  !pAtlas->load(*pFontLoader)
@@ -428,14 +430,13 @@ void testState::onPause(float dt) {
 /******************************************************************************
  * Drawing a scene
 ******************************************************************************/
-static mat4 modelMatrices[2] = {mat4{1.f}, mat4{1.f}};
+static mat4 modelMatrices[3] = {mat4{1.f}, mat4{1.f}, mat4{1.f}};
 
 void testState::drawScene() {
     LOG_GL_ERR();
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack.
-    const mat4& alignedView = matStack->getMatrix(VIEW_MATRIX);
     matStack->pushMatrix(VIEW_MATRIX, math::quatToMat4(orientation));
     matStack->constructVp();
     
@@ -451,12 +452,12 @@ void testState::drawScene() {
         
         // billboard setup
         const mat4& orientedView = matStack->getMatrix(VIEW_MATRIX);
-        const vec3& camPos{alignedView[3][0], 0.f, -alignedView[3][2]};
-        modelMatrices[0] = math::translate(math::quatToMat4(math::lookAt(camPos, vec3{0.f, 0.f, 1.f})), vec3{0.f, 0.f, 0.f});
-        modelMatrices[1] = math::translate(math::billboard(vec3{0.f, 0.f, 0.f}, orientedView), vec3{10.f, 0.f, 0.f});
+        modelMatrices[0] = mat4{1.f};
+        modelMatrices[1] = math::billboard(vec3{5.f, 0.f, 0.f}, orientedView);
+        modelMatrices[2] = math::billboard(vec3{10.f, 0.f, 0.f}, orientedView);
         
         pModel = pScene->getModelList()[0];
-        pModel->setNumInstances(2, modelMatrices);
+        pModel->setNumInstances(3, modelMatrices);
         pModel->draw();
     }
     

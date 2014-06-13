@@ -220,6 +220,15 @@ class meshResource final : public resource {
          * FALSE if an error occurred during the load.
          */
         bool loadCone(unsigned numSides = 2);
+        
+        /**
+         * Load a set of vertices representing a sphere.
+         * 
+         * @return
+         * TRUE if the function loaded the mesh correctly, or
+         * FALSE if an error occurred during the load.
+         */
+        bool loadSphere(unsigned resolution);
 };
 
 #endif	/* __LS_MESH_RESOURCE_H__ */

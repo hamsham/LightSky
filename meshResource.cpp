@@ -448,8 +448,69 @@ bool meshResource::loadCone(unsigned numSides) {
         }
     }
     
-    
     LOG_MSG("\tSuccessfully loaded a ", numSides, "-sided cone.\n");
     resultDrawMode = draw_mode::LS_TRIANGLES;
+    return true;
+}
+
+/*
+ * Load a Sphere
+ * 
+ * I found this method on the website by Kevin Harris:
+ * http://www.codesampler.com/oglsrc/oglsrc_8.htm#ogl_textured_sphere
+ * 
+ * This loading method was originally found here:
+ * http://astronomy.swin.edu.au/~pbourke/opengl/sphere/
+ */
+bool meshResource::loadSphere(unsigned res) {
+    // Only load an even number of vertices
+    if (res % 2 == 1) {
+        ++res;
+    }
+    
+    // calculate the exact number of vertices to load
+    unsigned totalVertCount = res*(res+1); // more trial and error
+    
+    LOG_MSG("Attempting to load a ", totalVertCount, "-point sphere (", res, "x).");
+    
+    if (!initVertices(totalVertCount)) {
+        LOG_ERR("\tAn error occurred while initializing a ", totalVertCount, "-point sphere.\n");
+        return false;
+    }
+    
+    const int iNumSides = (int)res;
+    const float fNumSides = (float)res;
+    vertex* pVert = pVertices;
+
+    for(int i = 0; i < iNumSides/2; ++i) {
+        float theta1 = i * HL_TWO_PI / fNumSides - HL_PI_OVER_2;
+        float theta2 = (i + 1) * HL_TWO_PI / fNumSides - HL_PI_OVER_2;
+        
+        for(int j = 0; j <= iNumSides; ++j) {
+            const float theta3 = j * HL_TWO_PI / fNumSides;
+            
+            {
+                const float ex  = HL_COS(theta2) * HL_SIN(theta3);
+                const float ey  = HL_SIN(theta2);
+                const float ez  = HL_COS(theta2) * HL_COS(theta3);
+                pVert->pos      = math::vec3{ex, ey, ez};
+                pVert->uv       = math::vec2{-(j/fNumSides) , 2.f*(i+1)/fNumSides};
+                pVert->norm     = math::vec3{ex, ey, ez};
+                ++pVert;
+            }
+            {
+                const float ex  = HL_COS(theta1) * HL_SIN(theta3);
+                const float ey  = HL_SIN(theta1);
+                const float ez  = HL_COS(theta1) * HL_COS(theta3);
+                pVert->pos      = math::vec3{ex, ey, ez};
+                pVert->uv       = math::vec2{-(j/fNumSides), 2.f*i/fNumSides};
+                pVert->norm     = math::vec3{ex, ey, ez};
+                ++pVert;
+            }
+        }
+    }
+    
+    LOG_MSG("\tSuccessfully loaded a ", totalVertCount, "-point sphere.\n");
+    resultDrawMode = draw_mode::LS_TRIANGLE_STRIP;
     return true;
 }

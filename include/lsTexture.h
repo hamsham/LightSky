@@ -56,7 +56,7 @@ class lsTexture {
         /**
          * Constructor
          */
-        lsTexture(ls_tex_desc_t td) :
+        lsTexture(ls_tex_desc_t td = LS_TEX_2D) :
             dimensions{td}
         {}
         

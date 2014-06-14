@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="HeaderFiles"
-                   displayName="Header Files"
-                   projectFiles="true">
-      <itemPath>atlas.h</itemPath>
-      <itemPath>boundingBox.h</itemPath>
-      <itemPath>bufferObject.h</itemPath>
-      <itemPath>color.h</itemPath>
-      <itemPath>dataResource.h</itemPath>
-      <itemPath>display.h</itemPath>
-      <itemPath>drawModel.h</itemPath>
-      <itemPath>fontResource.h</itemPath>
-      <itemPath>gameState.h</itemPath>
-      <itemPath>geometry.h</itemPath>
-      <itemPath>imageResource.h</itemPath>
-      <itemPath>main.h</itemPath>
-      <itemPath>manager.h</itemPath>
-      <itemPath>matrixStack.h</itemPath>
-      <itemPath>mesh.h</itemPath>
-      <itemPath>meshResource.h</itemPath>
-      <itemPath>renderer.h</itemPath>
-      <itemPath>resource.h</itemPath>
-      <itemPath>sceneManager.h</itemPath>
-      <itemPath>shaderObject.h</itemPath>
-      <itemPath>shaderProgram.h</itemPath>
-      <itemPath>system.h</itemPath>
-      <itemPath>testState.h</itemPath>
-      <itemPath>texture.h</itemPath>
-      <itemPath>util.h</itemPath>
-      <itemPath>vertex.h</itemPath>
-      <itemPath>vertexArray.h</itemPath>
+    <logicalFolder name="include" displayName="include" projectFiles="true">
+      <itemPath>include/lightSky.h</itemPath>
+      <itemPath>include/lsAtlas.h</itemPath>
+      <itemPath>include/lsBoundingBox.h</itemPath>
+      <itemPath>include/lsBufferObject.h</itemPath>
+      <itemPath>include/lsColor.h</itemPath>
+      <itemPath>include/lsDataResource.h</itemPath>
+      <itemPath>include/lsDisplay.h</itemPath>
+      <itemPath>include/lsDrawModel.h</itemPath>
+      <itemPath>include/lsFontResource.h</itemPath>
+      <itemPath>include/lsGameState.h</itemPath>
+      <itemPath>include/lsGeometry.h</itemPath>
+      <itemPath>include/lsImageResource.h</itemPath>
+      <itemPath>include/lsManager.h</itemPath>
+      <itemPath>include/lsMatrixStack.h</itemPath>
+      <itemPath>include/lsMesh.h</itemPath>
+      <itemPath>include/lsMeshResource.h</itemPath>
+      <itemPath>include/lsRenderer.h</itemPath>
+      <itemPath>include/lsResource.h</itemPath>
+      <itemPath>include/lsSceneManager.h</itemPath>
+      <itemPath>include/lsSetup.h</itemPath>
+      <itemPath>include/lsShaderObject.h</itemPath>
+      <itemPath>include/lsShaderProgram.h</itemPath>
+      <itemPath>include/lsSystem.h</itemPath>
+      <itemPath>include/lsTexture.h</itemPath>
+      <itemPath>include/lsUtil.h</itemPath>
+      <itemPath>include/lsVertex.h</itemPath>
+      <itemPath>include/lsVertexArray.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
     </logicalFolder>
-    <logicalFolder name="SourceFiles"
-                   displayName="Source Files"
-                   projectFiles="true">
-      <itemPath>atlas.cpp</itemPath>
-      <itemPath>boundingBox.cpp</itemPath>
-      <itemPath>bufferObject.cpp</itemPath>
-      <itemPath>color.cpp</itemPath>
-      <itemPath>dataResource.cpp</itemPath>
-      <itemPath>display.cpp</itemPath>
-      <itemPath>drawModel.cpp</itemPath>
-      <itemPath>fontResource.cpp</itemPath>
-      <itemPath>gameState.cpp</itemPath>
-      <itemPath>geometry.cpp</itemPath>
-      <itemPath>imageResource.cpp</itemPath>
-      <itemPath>main.cpp</itemPath>
-      <itemPath>manager.cpp</itemPath>
-      <itemPath>matrixStack.cpp</itemPath>
-      <itemPath>mesh.cpp</itemPath>
-      <itemPath>meshResource.cpp</itemPath>
-      <itemPath>renderer.cpp</itemPath>
-      <itemPath>resource.cpp</itemPath>
-      <itemPath>sceneManager.cpp</itemPath>
-      <itemPath>shaderObject.cpp</itemPath>
-      <itemPath>shaderProgram.cpp</itemPath>
-      <itemPath>system.cpp</itemPath>
-      <itemPath>testState.cpp</itemPath>
-      <itemPath>texture.cpp</itemPath>
-      <itemPath>util.cpp</itemPath>
-      <itemPath>vertex.cpp</itemPath>
-      <itemPath>vertexArray.cpp</itemPath>
+    <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>src/lsAtlas.cpp</itemPath>
+      <itemPath>src/lsBoundingBox.cpp</itemPath>
+      <itemPath>src/lsBufferObject.cpp</itemPath>
+      <itemPath>src/lsColor.cpp</itemPath>
+      <itemPath>src/lsDataResource.cpp</itemPath>
+      <itemPath>src/lsDisplay.cpp</itemPath>
+      <itemPath>src/lsDrawModel.cpp</itemPath>
+      <itemPath>src/lsFontResource.cpp</itemPath>
+      <itemPath>src/lsGameState.cpp</itemPath>
+      <itemPath>src/lsGeometry.cpp</itemPath>
+      <itemPath>src/lsImageResource.cpp</itemPath>
+      <itemPath>src/lsManager.cpp</itemPath>
+      <itemPath>src/lsMatrixStack.cpp</itemPath>
+      <itemPath>src/lsMesh.cpp</itemPath>
+      <itemPath>src/lsMeshResource.cpp</itemPath>
+      <itemPath>src/lsRenderer.cpp</itemPath>
+      <itemPath>src/lsResource.cpp</itemPath>
+      <itemPath>src/lsSceneManager.cpp</itemPath>
+      <itemPath>src/lsSetup.cpp</itemPath>
+      <itemPath>src/lsShaderObject.cpp</itemPath>
+      <itemPath>src/lsShaderProgram.cpp</itemPath>
+      <itemPath>src/lsSystem.cpp</itemPath>
+      <itemPath>src/lsTexture.cpp</itemPath>
+      <itemPath>src/lsUtil.cpp</itemPath>
+      <itemPath>src/lsVertex.cpp</itemPath>
+      <itemPath>src/lsVertexArray.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -78,7 +73,15 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>main.cpp</itemPath>
+    <itemPath>main.h</itemPath>
+    <itemPath>testState.cpp</itemPath>
+    <itemPath>testState.h</itemPath>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>include</Elem>
+    <Elem>src</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -94,11 +97,13 @@
           <incDir>
             <pElem>../hamlibs/include</pElem>
             <pElem>C:/mingw/include/freetype2</pElem>
+            <pElem>include</pElem>
           </incDir>
           <commandLine>-ggdb -Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
           <preprocessorList>
             <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
+            <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
@@ -110,7 +115,6 @@
             <linkerLibLibItem>FreeImage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
@@ -138,113 +142,140 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="atlas.cpp" ex="false" tool="1" flavor2="0">
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tests</pElem>
+          </incDir>
+          <commandLine>-lSDL2main</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="atlas.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="boundingBox.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="boundingBox.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsBufferObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="bufferObject.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsColor.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="bufferObject.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="color.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="color.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsDrawModel.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="dataResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsFontResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="dataResource.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsGameState.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsGeometry.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="display.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsImageResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drawModel.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsManager.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drawModel.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsMatrixStack.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="fontResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsMesh.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="fontResource.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="gameState.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="gameState.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="geometry.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsSceneManager.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="geometry.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsSetup.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="imageResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsShaderObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="imageResource.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsShaderProgram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsTexture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="manager.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="manager.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="matrixStack.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsBufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="matrixStack.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsColor.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mesh.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mesh.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="meshResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsDrawModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="meshResource.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsFontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="renderer.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsGameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="renderer.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsGeometry.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="resource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsImageResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="resource.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sceneManager.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsMatrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sceneManager.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderObject.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderObject.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsRenderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderProgram.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsSceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="system.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsSetup.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="system.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsShaderObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsShaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsTexture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsUtil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="testState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="testState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="texture.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="texture.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="util.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="util.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="vertex.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="vertex.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="vertexArray.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="vertexArray.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -265,8 +296,12 @@
           <incDir>
             <pElem>../hamlibs/include</pElem>
             <pElem>C:/mingw/include/freetype2</pElem>
+            <pElem>include</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
+          <preprocessorList>
+            <Elem>SDL_MAIN_HANDLED</Elem>
+          </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -284,7 +319,6 @@
             <linkerLibLibItem>FreeImage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
@@ -312,113 +346,140 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="atlas.cpp" ex="false" tool="1" flavor2="0">
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tests</pElem>
+          </incDir>
+          <commandLine>-lSDL2main</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="atlas.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="boundingBox.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="boundingBox.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsBufferObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="bufferObject.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsColor.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="bufferObject.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="color.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="color.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsDrawModel.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="dataResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsFontResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="dataResource.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsGameState.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsGeometry.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="display.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsImageResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drawModel.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsManager.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drawModel.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsMatrixStack.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="fontResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsMesh.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="fontResource.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="gameState.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="gameState.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsResource.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="geometry.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsSceneManager.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="geometry.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsSetup.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="imageResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/lsShaderObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="imageResource.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsShaderProgram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsTexture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="manager.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="manager.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="matrixStack.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsBufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="matrixStack.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsColor.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mesh.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mesh.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="meshResource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsDrawModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="meshResource.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsFontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="renderer.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsGameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="renderer.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsGeometry.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="resource.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsImageResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="resource.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sceneManager.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsMatrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sceneManager.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderObject.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderObject.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsRenderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="shaderProgram.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsSceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="system.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsSetup.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="system.h" ex="false" tool="3" flavor2="0">
+      <item path="src/lsShaderObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsShaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsTexture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsUtil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="testState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="testState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="texture.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="texture.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="util.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="util.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="vertex.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="vertex.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="vertexArray.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="vertexArray.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

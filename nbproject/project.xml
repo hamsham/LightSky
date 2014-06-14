@@ -11,7 +11,10 @@
             <make-dep-projects>
                 <make-dep-project>../hamlibs/HamLibs_NetBeans</make-dep-project>
             </make-dep-projects>
-            <sourceRootList/>
+            <sourceRootList>
+                <sourceRootElem>include</sourceRootElem>
+                <sourceRootElem>src</sourceRootElem>
+            </sourceRootList>
             <confList>
                 <confElem>
                     <name>Debug</name>

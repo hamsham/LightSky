@@ -1,34 +1,27 @@
 /* 
  * File:   testState.h
- * Author: hammy
+ * Author: miles
  *
- * Created on January 19, 2014, 4:19 PM
+ * Created on June 13, 2014, 11:26 PM
  */
 
-#ifndef __STATE_TESTSTATE_H__
-#define	__STATE_TESTSTATE_H__
+#ifndef __TESTSTATE_H__
+#define	__TESTSTATE_H__
 
-#include <GL/glew.h>
-
-#include "bufferObject.h"
-#include "gameState.h"
 #include "main.h"
-#include "matrixStack.h"
-#include "sceneManager.h"
-#include "shaderProgram.h"
 
-class testState final : virtual public gameState {
+class testState final : virtual public lsGameState {
     /*
      * Event Management
      */
     private:
         int             mouseX = 0;
         int             mouseY = 0;
-        shaderProgram   meshProgram = {};
-        shaderProgram   fontProgram = {};
-        matrixStack*    matStack = nullptr;
+        lsShaderProgram   meshProgram = {};
+        lsShaderProgram   fontProgram = {};
+        lsMatrixStack*    matStack = nullptr;
         math::quat      orientation = {};
-        sceneManager*   pScene = nullptr;
+        lsSceneManager*   pScene = nullptr;
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent*) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent*) override;
@@ -63,5 +56,5 @@ class testState final : virtual public gameState {
         void onStop() override;
 };
 
-#endif	/* __STATE_TESTSTATE_H__ */
+#endif	/* __TESTSTATE_H__ */
 

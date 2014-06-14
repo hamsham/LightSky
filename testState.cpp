@@ -1,27 +1,12 @@
 /* 
  * File:   testState.cpp
- * Author: hammy
- * 
- * Created on January 19, 2014, 4:19 PM
+ * Author: miles
+ *
+ * Created on Jun 13, 2014, 11:13:51 PM
  */
 
-#include <string>
-#include <utility>
-#include <GL/glew.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_keyboard.h>
-#include <cmath>
-
-#include "display.h"
-#include "fontResource.h"
-#include "imageResource.h"
-#include "mesh.h"
-#include "meshResource.h"
+#include "main.h"
 #include "testState.h"
-#include "texture.h"
-#include "atlas.h"
 
 bool GAME_KEYS[512] = {false};
 
@@ -129,7 +114,7 @@ void testState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
     }
     
     if (key == SDLK_ESCAPE) {
-        this->setState(state_type::GAME_STOPPED);
+        this->setState(LS_GAME_STOPPED);
     }
     else {
         GAME_KEYS[key] = false;
@@ -175,9 +160,9 @@ void testState::updateKeyStates() {
         math::dot(math::getAxisZ(orientation), pos)
     };
     
-    const mat4& viewMatrix = matStack->getMatrix(VIEW_MATRIX);
+    const mat4& viewMatrix = matStack->getMatrix(LS_VIEW_MATRIX);
     const mat4&& movement = math::translate(viewMatrix, translation);
-    matStack->loadMatrix(VIEW_MATRIX, movement);
+    matStack->loadMatrix(LS_VIEW_MATRIX, movement);
 }
 
 /******************************************************************************
@@ -192,7 +177,7 @@ void testState::onKeyboardTextEvent(const SDL_TextInputEvent*) {
 void testState::onWindowEvent(const SDL_WindowEvent* pEvent) {
     switch (pEvent->event) {
         case SDL_WINDOWEVENT_CLOSE:
-            this->setState(state_type::GAME_STOPPED);
+            this->setState(LS_GAME_STOPPED);
             break;
         default:
             break;
@@ -219,8 +204,7 @@ void testState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
     // be LERPed without the need for multiplying it by the last time delta.
     // As a result, the camera's movement becomes as smooth and natural as possible.
     
-    const vec2i& res        = global::pDisplay->getResolution();
-    const vec2&& fRes       = {(float)res[0], (float)res[1]};
+    const vec2&& fRes       = (vec2)lsGlobal::pDisplay->getResolution();
     const vec2&& mouseDelta = vec2{(float)mouseX, (float)mouseY} / fRes;
     
     // Always lerp to the 
@@ -268,14 +252,14 @@ void testState::terminate() {
  * Create the draw models that will be used for rendering
 ******************************************************************************/
 bool testState::generateDrawModels() {
-    atlas* pAtlas = nullptr;
-    mesh* pMesh = nullptr;
-    texture* pTexture = nullptr;
+    lsAtlas* pAtlas = nullptr;
+    lsMesh* pMesh = nullptr;
+    lsTexture* pTexture = nullptr;
     
     // test model 1
-    drawModel* const pMeshModel = new drawModel{};
+    lsDrawModel* const pMeshModel = new lsDrawModel{};
     if (pMeshModel == nullptr) {
-        LOG_ERR("Unable to generate test draw model 1");
+        LS_LOG_ERR("Unable to generate test draw model 1");
         return false;
     }
     else {
@@ -287,9 +271,9 @@ bool testState::generateDrawModels() {
     }
     
     // test model 2
-    drawModel* const pTextModel = new drawModel{};
+    lsDrawModel* const pTextModel = new lsDrawModel{};
     if (pTextModel == nullptr) {
-        LOG_ERR("Unable to generate test draw model 2");
+        LS_LOG_ERR("Unable to generate test draw model 2");
         return false;
     }
     else {
@@ -307,22 +291,22 @@ bool testState::generateDrawModels() {
  * Starting state
 ******************************************************************************/
 bool testState::onStart() {
-    matStack = new matrixStack{};
-    pScene = new sceneManager{};
+    matStack = new lsMatrixStack{};
+    pScene = new lsSceneManager{};
     
     if (!matStack || !pScene) {
-        LOG_ERR("An error occurred while initializing the scene.");
+        LS_LOG_ERR("An error occurred while initializing the scene.");
         terminate();
         return false;
     }
     
-    meshResource* pMeshLoader   = new meshResource{};
-    imageResource* pImgLoader   = new imageResource{};
-    fontResource* pFontLoader   = new fontResource{};
-    mesh* pMesh                 = new mesh{};
-    mesh* pText                 = new mesh{};
-    texture* pTex               = new texture{TEX_2D};
-    atlas* pAtlas               = new atlas{};
+    lsMeshResource* pMeshLoader = new lsMeshResource{};
+    lsImageResource* pImgLoader = new lsImageResource{};
+    lsFontResource* pFontLoader = new lsFontResource{};
+    lsMesh* pMesh               = new lsMesh{};
+    lsMesh* pText               = new lsMesh{};
+    lsTexture* pTex             = new lsTexture{LS_TEX_2D};
+    lsAtlas* pAtlas             = new lsAtlas{};
     bool ret                    = true;
     
     if (!pMeshLoader
@@ -342,9 +326,9 @@ bool testState::onStart() {
     
     if (ret) {
         pScene->manageMesh(pMesh); // test data at the mesh index 0
-        pScene->manageMesh(pText);  // test data at the mesh index 1
-        pScene->manageTexture(pTex);  // test texture at the mesh index 0
-        pScene->manageAtlas(pAtlas);  // test atlas at the mesh index 0
+        pScene->manageMesh(pText); // test data at the mesh index 1
+        pScene->manageTexture(pTex); // test texture at the mesh index 0
+        pScene->manageAtlas(pAtlas); // test atlas at the mesh index 0
     }
     
     delete pMeshLoader;
@@ -352,14 +336,14 @@ bool testState::onStart() {
     delete pFontLoader;
     
     if (!ret || !generateDrawModels()) {
-        LOG_ERR("An error occurred while initializing the test state's resources");
+        LS_LOG_ERR("An error occurred while initializing the test state's resources");
         terminate();
         return false;
     }
     
     pTex->bind();
-    pTex->setParameter(TEX_MAG_FILTER, LINEAR_FILTER);
-    pTex->setParameter(TEX_MIN_FILTER, NEAREST_FILTER);
+    pTex->setParameter(LS_TEX_MAG_FILTER, LS_LINEAR_FILTER);
+    pTex->setParameter(LS_TEX_MIN_FILTER, LS_NEAREST_FILTER);
     
     LOG_GL_ERR();
     
@@ -377,22 +361,21 @@ bool testState::onStart() {
         fragShader.compile(fontFS);
         fontProgram.attachShaders(vertShader, fragShader);
         fontProgram.link();
-
-        // Initialize the matrix stacks
-        matStack->loadMatrix(PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 100.f));
-        matStack->loadMatrix(VIEW_MATRIX, math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f)));
-        matStack->constructVp();
-        
-        meshProgram.bind();
-        GLuint mvpId = meshProgram.getUniformLocation("vpMatrix");
-        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
-        LOG_GL_ERR();
-        
-        fontProgram.bind();
-        mvpId = fontProgram.getUniformLocation("vpMatrix");
-        meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
-        LOG_GL_ERR();
     }
+
+    // Initialize the matrix stacks
+    matStack->loadMatrix(LS_PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 100.f));
+    matStack->loadMatrix(LS_VIEW_MATRIX, math::lookAt(vec3(3.f), vec3(2.f, -2.f, -2.f), vec3(0.f, 1.f, 0.f)));
+    matStack->constructVp();
+
+    meshProgram.bind();
+    GLuint mvpId = meshProgram.getUniformLocation("vpMatrix");
+    meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
+    LOG_GL_ERR();
+
+    fontProgram.bind();
+    mvpId = fontProgram.getUniformLocation("vpMatrix");
+    meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
     LOG_GL_ERR();
     
     glEnable(GL_DEPTH_TEST);
@@ -437,10 +420,10 @@ void testState::drawScene() {
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack.
-    matStack->pushMatrix(VIEW_MATRIX, math::quatToMat4(orientation));
+    matStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     matStack->constructVp();
     
-    drawModel* pModel = nullptr;
+    lsDrawModel* pModel = nullptr;
     GLuint mvpId = 0;
     
     // first draw model
@@ -451,7 +434,7 @@ void testState::drawScene() {
         meshProgram.setUniformValue(mvpId, matStack->getVpMatrix());
         
         // billboard setup
-        const mat4& orientedView = matStack->getMatrix(VIEW_MATRIX);
+        const mat4& orientedView = matStack->getMatrix(LS_VIEW_MATRIX);
         modelMatrices[0] = mat4{1.f};
         modelMatrices[1] = math::billboard(vec3{5.f, 0.f, 0.f}, orientedView);
         modelMatrices[2] = math::billboard(vec3{10.f, 0.f, 0.f}, orientedView);
@@ -479,5 +462,5 @@ void testState::drawScene() {
         glDisable(GL_BLEND);
     }
     
-    matStack->popMatrix(VIEW_MATRIX);
+    matStack->popMatrix(LS_VIEW_MATRIX);
 }

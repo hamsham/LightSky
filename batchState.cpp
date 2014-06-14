@@ -271,26 +271,31 @@ bool batchState::generateDrawModels() {
         LS_LOG_ERR("Unable to generate test draw model 1");
         return false;
     }
-    else {
-        const int instanceCount = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS;
-        pScene->manageModel(pModel);
-        pMesh = pScene->getMeshList()[0];
-        pTexture = pScene->getTextureList()[0];
-        pModel->setMesh(pMesh);
-        pModel->setTexture(pTexture);
-        pModel->setNumInstances(instanceCount, pModelMatrices);
-    }
+    
+    const int instanceCount = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS;
+    pScene->manageModel(pModel);
+    pMesh = pScene->getMeshList()[0];
+    pTexture = pScene->getTextureList()[0];
+    pModel->setMesh(pMesh);
+    pModel->setTexture(pTexture);
     
     unsigned matIter = 0;
     const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
     for (int i = -numObjects; i < numObjects; ++i) {
         for (int j = -numObjects; j < numObjects; ++j) {
             for (int k = -numObjects; k < numObjects; ++k) {
-                pModelMatrices[matIter] = math::translate(mat4{1.f}, vec3{(float)i,(float)j,(float)k});
+                pModelMatrices[matIter] = math::translate(
+                    math::scale(mat4{1.f}, vec3{0.25f, 0.25f, 0.25f}),
+                    vec3{(float)i,(float)j,(float)k}
+                );
                 ++matIter;
             }
         }
     }
+    
+    
+     // lights, camera, batch!
+    pModel->setNumInstances(instanceCount, pModelMatrices);
     
     return true;
 }
@@ -315,7 +320,7 @@ bool batchState::onStart() {
     || !pImgLoader->loadFile(testImageFile)
     || !pTexture->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
     || !pMeshLoader
-    || !pMeshLoader->loadSphere(32)
+    || !pMeshLoader->loadSphere(16)
     || !paddleMesh->init(*pMeshLoader)
     ) {
         ret = false;
@@ -404,35 +409,17 @@ void batchState::drawScene() {
     LOG_GL_ERR();
     
     // Meshes all contain their own model matrices. no need to use the ones in
-    // the matrix stack.
+    // the matrix stack. Just greab the view matrix
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
-    // text draw model
     // shader setup
     shaderProg.bind();
     const GLuint mvpId = shaderProg.getUniformLocation("vpMatrix");
     shaderProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
     
-    // model matrix setup
-    unsigned matIter = 0;
-    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
-    for (int i = -numObjects; i < numObjects; ++i) {
-        for (int j = -numObjects; j < numObjects; ++j) {
-            for (int k = -numObjects; k < numObjects; ++k) {
-                const vec3 instancePos = vec3{(float)i,(float)j,(float)k};
-                const mat4& vpMat = pMatStack->getMatrix(LS_VIEW_MATRIX);
-                pModelMatrices[matIter] = math::billboard(instancePos, vpMat);
-                ++matIter;
-            }
-        }
-    }
-    
-    lsDrawModel* pModel;
-
-    pModel = pScene->getModelList()[0];
-    const int instanceCount = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS;
-    pModel->setNumInstances(instanceCount, pModelMatrices);
+    // render!
+    const lsDrawModel* const pModel = pScene->getModelList()[0];
     pModel->draw();
     
     pMatStack->popMatrix(LS_VIEW_MATRIX);

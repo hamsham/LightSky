@@ -145,9 +145,8 @@ void lsDrawModel::setTexture(const lsTexture* const pTex) {
 
 void lsDrawModel::setNumInstances(int instanceCount, const math::mat4* const modelMatrices) {
     HL_ASSERT(instanceCount > 0);
-    HL_ASSERT(modelMatrices != nullptr);
     modelVbo.bind();
-    modelVbo.setData(sizeof(math::mat4)*instanceCount, modelMatrices, ls_buffer_usage_t::LS_DYNAMIC_DRAW);
+    modelVbo.setData(sizeof(math::mat4)*instanceCount, modelMatrices, LS_DYNAMIC_DRAW);
     modelVbo.unbind();
     LOG_GL_ERR();
     

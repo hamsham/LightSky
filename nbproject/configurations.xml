@@ -73,6 +73,8 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>batchState.cpp</itemPath>
+    <itemPath>batchState.h</itemPath>
     <itemPath>main.cpp</itemPath>
     <itemPath>main.h</itemPath>
     <itemPath>testState.cpp</itemPath>
@@ -91,6 +93,11 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
         <ccTool>
           <architecture>1</architecture>
           <standard>8</standard>
@@ -98,8 +105,10 @@
             <pElem>../hamlibs/include</pElem>
             <pElem>C:/mingw/include/freetype2</pElem>
             <pElem>include</pElem>
+            <pElem>.</pElem>
+            <pElem>tests</pElem>
           </incDir>
-          <commandLine>-ggdb -Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
+          <commandLine>-lSDL2main</commandLine>
           <preprocessorList>
             <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
@@ -108,7 +117,7 @@
           <warningLevel>2</warningLevel>
         </ccTool>
         <linkerTool>
-          <output>bin/lightsky_d</output>
+          <output>bin/lightsky_d.exe</output>
           <linkerLibItems>
             <linkerLibLibItem>glew32</linkerLibLibItem>
             <linkerLibLibItem>opengl32</linkerLibLibItem>
@@ -127,6 +136,8 @@
                             OP="../bin/WIN32/libhamlibs.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
@@ -142,27 +153,10 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-            <pElem>tests</pElem>
-          </incDir>
-          <commandLine>-lSDL2main</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-          <linkerLibItems>
-            <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
+      <item path="batchState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="batchState.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
@@ -287,6 +281,9 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>6</developmentMode>
@@ -297,8 +294,10 @@
             <pElem>../hamlibs/include</pElem>
             <pElem>C:/mingw/include/freetype2</pElem>
             <pElem>include</pElem>
+            <pElem>.</pElem>
+            <pElem>tests</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -flto</commandLine>
+          <commandLine>-lSDL2main</commandLine>
           <preprocessorList>
             <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>
@@ -311,7 +310,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <linkerTool>
-          <output>bin/lightsky</output>
+          <output>bin/lightsky.exe</output>
           <stripSymbols>true</stripSymbols>
           <linkerLibItems>
             <linkerLibLibItem>glew32</linkerLibLibItem>
@@ -331,6 +330,8 @@
                             OP="../bin/WIN32/libhamlibs.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
@@ -346,27 +347,10 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-            <pElem>tests</pElem>
-          </incDir>
-          <commandLine>-lSDL2main</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-          <linkerLibItems>
-            <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
+      <item path="batchState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="batchState.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">

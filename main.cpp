@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "testState.h"
+#include "batchState.h"
 
 bool lsInit(int argc, char** argv);
 void lsTerminate();
@@ -16,7 +17,8 @@ int main(int argc, char* argv[]) {
         return false;
     }
     
-    if (!lsGlobal::pSystem->pushGameState(new(std::nothrow) testState())) {
+    if (!lsGlobal::pSystem->pushGameState(new(std::nothrow) batchState())) {
+    //if (!lsGlobal::pSystem->pushGameState(new(std::nothrow) testState())) {
         lsTerminate();
         return -1;
     }

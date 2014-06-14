@@ -13,8 +13,8 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=bin/lightsky
-OUTPUT_BASENAME=lightsky
+OUTPUT_PATH=bin/lightsky.exe
+OUTPUT_BASENAME=lightsky.exe
 PACKAGE_TOP_DIR=lightsky/
 
 # Functions

@@ -18,7 +18,7 @@ enum {
     TEST_MAX_KEYBORD_STATES = 512
 };
 
-static const char testImageFile[] = "test_img.jpg";
+static const char testImageFile[] = "light.jpg";
 
 /*
  * This shader uses a Logarithmic Z-Buffer, thanks to
@@ -285,14 +285,12 @@ bool batchState::generateDrawModels() {
         for (int j = -numObjects; j < numObjects; ++j) {
             for (int k = -numObjects; k < numObjects; ++k) {
                 pModelMatrices[matIter] = math::translate(
-                    math::scale(mat4{1.f}, vec3{0.25f, 0.25f, 0.25f}),
-                    vec3{(float)i,(float)j,(float)k}
+                    mat4{0.5f}, vec3{(float)i,(float)j,(float)k}
                 );
                 ++matIter;
             }
         }
     }
-    
     
      // lights, camera, batch!
     pModel->setNumInstances(instanceCount, pModelMatrices);
@@ -418,8 +416,26 @@ void batchState::drawScene() {
     const GLuint mvpId = shaderProg.getUniformLocation("vpMatrix");
     shaderProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
     
+    // get the mesh to draw
+    lsDrawModel* const pModel = pScene->getModelList()[0];
+    
+    unsigned matIter = 0;
+    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
+    for (int i = -numObjects; i < numObjects; ++i) {
+        for (int j = -numObjects; j < numObjects; ++j) {
+            for (int k = -numObjects; k < numObjects; ++k) {
+                // scale the view matrix so no spheres overlap
+                pModelMatrices[matIter] = math::billboard(
+                    vec3{(float)i,(float)j,(float)k}, mat4{0.5f}*pMatStack->getMatrix(LS_VIEW_MATRIX)
+                );
+                ++matIter;
+            }
+        }
+    }
+    
     // render!
-    const lsDrawModel* const pModel = pScene->getModelList()[0];
+    pModel->setNumInstances(matIter, pModelMatrices);
+   
     pModel->draw();
     
     pMatStack->popMatrix(LS_VIEW_MATRIX);

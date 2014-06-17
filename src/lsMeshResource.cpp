@@ -495,7 +495,7 @@ bool lsMeshResource::loadSphere(unsigned res) {
                 const float ez  = HL_COS(theta1) * HL_COS(theta3);
                 pVert->pos      = math::vec3{ex, ey, -ez};
                 pVert->uv       = math::vec2{-j/fNumSides, 2.f*i/fNumSides};
-                pVert->norm     = math::vec3{ex, ey, ez};
+                pVert->norm     = pVert->pos;
                 
                 meshBounds.compareAndUpdate(pVert->pos);
                 ++pVert;
@@ -506,7 +506,7 @@ bool lsMeshResource::loadSphere(unsigned res) {
                 const float ez  = HL_COS(theta2) * HL_COS(theta3);
                 pVert->pos      = math::vec3{ex, ey, -ez};
                 pVert->uv       = math::vec2{-j/fNumSides , 2.f*(i+1)/fNumSides};
-                pVert->norm     = math::vec3{ex, ey, ez};
+                pVert->norm     = pVert->pos;
                 
                 meshBounds.compareAndUpdate(pVert->pos);
                 ++pVert;

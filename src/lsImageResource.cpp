@@ -50,14 +50,6 @@ int getImageFlags(FREE_IMAGE_FORMAT inFormat) {
 }
 
 /*
- * Get the bits per pixel of an image, 0, 1, 4, 8, 16, 24, or 32
- */
-inline unsigned getBitsPerPixel(FIBITMAP* pImg) {
-    int bpp = FreeImage_GetBPP(pImg);
-    return bpp != -1 ? (unsigned)bpp : 0;
-}
-
-/*
  * Get an image's pixel format, combined with its bits per pixel
  */
 unsigned getBitmapSize(FIBITMAP* pImg) {
@@ -82,23 +74,23 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
         // 16-bit short
         case FIT_INT16:
             dataType = GL_SHORT;
-            LS_LOG_MSG("\tImage pixel type: UNSIGNED SHORT");
-                break;
+            LS_LOG_MSG("\tImage pixel type: SHORT");
+            break;
                 
         case FIT_UINT16:
             dataType = GL_UNSIGNED_SHORT;
-            LS_LOG_MSG("\tImage pixel type: SHORT");
+            LS_LOG_MSG("\tImage pixel type: UNSIGNED SHORT");
             break;
         
         // 32-bit int
         case FIT_INT32:
             dataType = GL_INT;
-            LS_LOG_MSG("\tImage pixel type: UNSIGNED INT");
+            LS_LOG_MSG("\tImage pixel type: INT");
             break;
                 
         case FIT_UINT32:
-            dataType = GL_INT;
-            LS_LOG_MSG("\tImage pixel type: INT");
+            dataType = GL_UNSIGNED_INT;
+            LS_LOG_MSG("\tImage pixel type: UNSIGNED INT");
             break;
         
         // 96-bit float
@@ -219,9 +211,9 @@ bool lsImageResource::loadFile(const char* filename) {
     this->pData = reinterpret_cast<char*>(fileData);
     this->imgSize[0] = (int)FreeImage_GetWidth(fileData);
     this->imgSize[1] = (int)FreeImage_GetHeight(fileData);
+    this->bitsPerPixel = (unsigned)FreeImage_GetBPP(fileData);
     this->pixelSize = dataType;
     this->dataSize = this->imgSize[0] * this->imgSize[1];
-    this->bitsPerPixel = getBitsPerPixel(fileData);
     
     return true;
 }

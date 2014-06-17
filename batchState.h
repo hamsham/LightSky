@@ -20,7 +20,6 @@ class batchState final : virtual public lsGameState {
         lsShaderProgram shaderProg              = {};
         lsMatrixStack*  pMatStack               = nullptr;
         lsSceneManager* pScene                  = nullptr;
-        math::vec3*     pPositions              = nullptr; // array of 3 vec3's
         bool*           pKeyStates              = nullptr;
         math::mat4*     pModelMatrices          = nullptr;
         math::quat      orientation             = {};
@@ -37,10 +36,10 @@ class batchState final : virtual public lsGameState {
         
         void            updateKeyStates         ();
         
-        bool initMemory();
-        bool generateDrawModels();
-        void drawScene();
-        void terminate();
+        bool            initMemory              ();
+        bool            generateDrawModels      ();
+        void            drawScene               ();
+        void            terminate               ();
         
     public:
         batchState();

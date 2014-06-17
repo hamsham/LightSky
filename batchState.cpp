@@ -15,10 +15,13 @@ using math::quat;
 
 enum {
     TEST_MAX_SCENE_OBJECTS = 50,
+    TEST_MAX_SCENE_INSTANCES = 50*50*50,
     TEST_MAX_KEYBORD_STATES = 512
 };
 
-static const char testImageFile[] = "light.jpg";
+#define TEST_INSTANCE_RADIUS 0.5f
+
+static const char testImageFile[] = "test_img.jpg";
 
 /*
  * This shader uses a Logarithmic Z-Buffer, thanks to
@@ -34,6 +37,7 @@ layout (location = 3) in mat4 inModelMat;
 
 uniform mat4 vpMatrix;
 
+out vec3 nrmCoords;
 out vec2 uvCoords;
 
 void main() {
@@ -45,6 +49,8 @@ void main() {
     
     gl_Position = vec4(p.xy, pz, p.w);
     
+    //nrmCoords = vec4(inModelMat * vec4(inNorm, 0.0)).xyz;
+    nrmCoords = inNorm;
     uvCoords = inUv;
 }
 )***";
@@ -55,11 +61,14 @@ static const char meshFragShader[] = R"***(
 
 uniform sampler2D tex;
 
+in vec3 nrmCoords;
 in vec2 uvCoords;
+
 out vec4 outFragCol;
 
 void main() {
-    outFragCol = texture(tex, uvCoords);
+    float lightCol = dot(vec3(0.0, 0.0, 1.0), nrmCoords);
+    outFragCol = texture(tex, uvCoords) * lightCol;
 }
 )***";
 
@@ -224,9 +233,6 @@ void batchState::terminate() {
     delete pScene;
     pScene = nullptr;
 
-    delete [] pPositions;
-    pPositions = nullptr;
-
     delete [] pKeyStates;
     pKeyStates = nullptr;
 
@@ -238,21 +244,30 @@ void batchState::terminate() {
  * Allocate internal class memory
 ******************************************************************************/
 bool batchState::initMemory() {
-    const int instanceCount = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS;
     pMatStack       = new lsMatrixStack{};
     pScene          = new lsSceneManager{};
-    pPositions      = new vec3[instanceCount];
     pKeyStates      = new bool[TEST_MAX_KEYBORD_STATES];
-    pModelMatrices  = new mat4[instanceCount];
+    pModelMatrices  = new mat4[TEST_MAX_SCENE_INSTANCES];
     
     if (pMatStack == nullptr
     ||  pScene == nullptr
-    ||  pPositions == nullptr
     ||  pKeyStates == nullptr
     ||  pModelMatrices == nullptr
     ) {
         terminate();
         return false;
+    }
+    
+    // initialize the ball translations and velocities
+    unsigned matIter = 0;
+    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
+    for (int i = -numObjects; i < numObjects; ++i) {
+        for (int j = -numObjects; j < numObjects; ++j) {
+            for (int k = -numObjects; k < numObjects; ++k) {
+                pModelMatrices[matIter] = math::translate(mat4{TEST_INSTANCE_RADIUS}, vec3{(float)i,(float)j,(float)k});
+                ++matIter;
+            }
+        }
     }
     
     return true;
@@ -272,28 +287,14 @@ bool batchState::generateDrawModels() {
         return false;
     }
     
-    const int instanceCount = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS;
     pScene->manageModel(pModel);
     pMesh = pScene->getMeshList()[0];
     pTexture = pScene->getTextureList()[0];
     pModel->setMesh(pMesh);
     pModel->setTexture(pTexture);
     
-    unsigned matIter = 0;
-    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
-    for (int i = -numObjects; i < numObjects; ++i) {
-        for (int j = -numObjects; j < numObjects; ++j) {
-            for (int k = -numObjects; k < numObjects; ++k) {
-                pModelMatrices[matIter] = math::translate(
-                    mat4{0.5f}, vec3{(float)i,(float)j,(float)k}
-                );
-                ++matIter;
-            }
-        }
-    }
-    
      // lights, camera, batch!
-    pModel->setNumInstances(instanceCount, pModelMatrices);
+    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
     
     return true;
 }
@@ -388,6 +389,7 @@ void batchState::onStop() {
 void batchState::onRun(float dt) {
     (void)dt;
     updateKeyStates();
+    //updatePhysics();
     drawScene();
 }
 
@@ -426,7 +428,8 @@ void batchState::drawScene() {
             for (int k = -numObjects; k < numObjects; ++k) {
                 // scale the view matrix so no spheres overlap
                 pModelMatrices[matIter] = math::billboard(
-                    vec3{(float)i,(float)j,(float)k}, mat4{0.5f}*pMatStack->getMatrix(LS_VIEW_MATRIX)
+                    vec3{(float)i,(float)j,(float)k},
+                    mat4{TEST_INSTANCE_RADIUS}*pMatStack->getMatrix(LS_VIEW_MATRIX)
                 );
                 ++matIter;
             }
@@ -434,10 +437,9 @@ void batchState::drawScene() {
     }
     
     // render!
-    pModel->setNumInstances(matIter, pModelMatrices);
+    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
    
     pModel->draw();
     
     pMatStack->popMatrix(LS_VIEW_MATRIX);
 }
-

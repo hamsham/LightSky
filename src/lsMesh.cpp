@@ -83,7 +83,7 @@ bool lsMesh::initVertices(unsigned numVerts) {
     }
     
     vbo.bind();
-    vbo.setData(numVerts*sizeof(lsVertex), nullptr, ls_buffer_usage_t::STREAM_DRAW);
+    vbo.setData(numVerts*sizeof(lsVertex), nullptr, ls_buffer_usage_t::LS_STREAM_DRAW);
     bounds.resetSize();
     
     LS_LOG_MSG("\tInitialized a mesh VBO with ", numVerts, " vertices.");
@@ -135,7 +135,7 @@ bool lsMesh::init(const lsAtlas& ta, const std::string& str) {
     // Attempt to get a pointer to an unsynchronized memory buffer
     lsVertex* pVerts = (lsVertex*)vbo.mapData(
         0, numBytes,
-        (ls_buffer_access_t)(LS_MAP_INVALIDATE_RANGE_BIT | MAP_WRITE_BIT | MAP_UNSYNCHRONIZED_BIT)
+        (ls_buffer_access_t)(LS_MAP_INVALIDATE_RANGE_BIT | LS_MAP_WRITE_BIT | LS_MAP_UNSYNCHRONIZED_BIT)
     );
     LOG_GL_ERR();
     

@@ -22,9 +22,9 @@
 enum ls_buffer_t : GLenum {
     LS_ARRAY_BUFFER                 = GL_ARRAY_BUFFER,
     LS_ELEMENT_BUFFER               = GL_ELEMENT_ARRAY_BUFFER,
-    TEXTURE_BUFFER                  = GL_TEXTURE_BUFFER,
+    LS_TEXTURE_BUFFER               = GL_TEXTURE_BUFFER,
     LS_TRANSFORM_FEEDBACK_BUFFER    = GL_TRANSFORM_FEEDBACK_BUFFER,
-    UNIFORM_BUFFER                  = GL_UNIFORM_BUFFER
+    LS_UNIFORM_BUFFER               = GL_UNIFORM_BUFFER
 };
 
 /**
@@ -36,7 +36,7 @@ enum ls_buffer_usage_t : GLenum {
     LS_STATIC_COPY  = GL_STATIC_COPY,
     
     LS_STREAM_READ  = GL_STREAM_READ,
-    STREAM_DRAW     = GL_STREAM_DRAW,
+    LS_STREAM_DRAW  = GL_STREAM_DRAW,
     LS_STREAM_COPY  = GL_STREAM_COPY,
     
     LS_DYNAMIC_READ = GL_DYNAMIC_READ,
@@ -49,13 +49,13 @@ enum ls_buffer_usage_t : GLenum {
  */
 enum ls_buffer_access_t : GLbitfield {
     LS_MAP_READ_BIT                 = GL_MAP_READ_BIT,
-    MAP_WRITE_BIT                   = GL_MAP_WRITE_BIT,
+    LS_MAP_WRITE_BIT                = GL_MAP_WRITE_BIT,
     LS_MAP_INVALIDATE_RANGE_BIT     = GL_MAP_INVALIDATE_RANGE_BIT,
     LS_MAP_INVALIDATE_BUFFER_BIT    = GL_MAP_INVALIDATE_BUFFER_BIT,
     LS_MAP_FLUSH_EXPLICIT_BIT       = GL_MAP_FLUSH_EXPLICIT_BIT,
-    MAP_UNSYNCHRONIZED_BIT          = GL_MAP_UNSYNCHRONIZED_BIT,
+    LS_MAP_UNSYNCHRONIZED_BIT       = GL_MAP_UNSYNCHRONIZED_BIT,
     LS_MAP_PERSISTENT_BIT           = GL_MAP_PERSISTENT_BIT,
-    MAP_COHERENT_BIT                = GL_MAP_COHERENT_BIT
+    LS_MAP_COHERENT_BIT             = GL_MAP_COHERENT_BIT
 };
 
 /******************************************************************************

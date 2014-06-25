@@ -34,7 +34,7 @@ class batchState final : virtual public lsGameState {
         virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent*) override;
         virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent*) override;
         
-        void            updateKeyStates         ();
+        void            updateKeyStates         (float);
         
         bool            initMemory              ();
         bool            generateDrawModels      ();

@@ -67,7 +67,7 @@ in vec2 uvCoords;
 out vec4 outFragCol;
 
 void main() {
-    float lightCol = dot(vec3(0.0, 0.0, 1.0), nrmCoords);
+    float lightCol = dot(vec3(0.0, 0.0, 1.0), normalize(nrmCoords));
     outFragCol = texture(tex, uvCoords) * lightCol;
 }
 )***";
@@ -111,14 +111,23 @@ void batchState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
         return;
     }
     
+    if (key == SDLK_SPACE) {
+        if (getState() == LS_GAME_RUNNING) {
+            setState(LS_GAME_PAUSED);
+        }
+        else  {
+            setState(LS_GAME_RUNNING);
+        }
+    }
+    
     pKeyStates[key] = true;
 }
 
 /******************************************************************************
  * Keyboard States
 ******************************************************************************/
-void batchState::updateKeyStates() {
-    const float moveSpeed = 0.5f;
+void batchState::updateKeyStates(float dt) {
+    const float moveSpeed = 0.05f * dt;
     vec3 pos = {0.f};
     
     if (pKeyStates[SDLK_w]) {
@@ -387,19 +396,49 @@ void batchState::onStop() {
  * Running state
 ******************************************************************************/
 void batchState::onRun(float dt) {
-    (void)dt;
-    updateKeyStates();
-    //updatePhysics();
+    updateKeyStates(dt);
+    
+    // Meshes all contain their own model matrices. no need to use the ones in
+    // the matrix stack. Just greab the view matrix
+    pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
+    pMatStack->constructVp();
+    const mat4& viewMat = pMatStack->getMatrix(LS_VIEW_MATRIX);
+    
+    unsigned matIter = 0;
+    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
+    for (int i = -numObjects; i < numObjects; ++i) {
+        for (int j = -numObjects; j < numObjects; ++j) {
+            for (int k = -numObjects; k < numObjects; ++k) {
+                // scale the view matrix so no spheres overlap
+                pModelMatrices[matIter] = math::billboard(vec3{(float)i,(float)j,(float)k}, mat4{TEST_INSTANCE_RADIUS}*viewMat);
+                ++matIter;
+            }
+        }
+    }
+    
+    // get the mesh to draw
+    lsDrawModel* const pModel = pScene->getModelList()[0];
+    
+    // render!
+    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
+    
     drawScene();
+    
+    pMatStack->popMatrix(LS_VIEW_MATRIX);
 }
 
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
 void batchState::onPause(float dt) {
-    (void)dt;
+    updateKeyStates(dt);
+    
+    pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
+    pMatStack->constructVp();
     
     drawScene();
+    
+    pMatStack->popMatrix(LS_VIEW_MATRIX);
 }
 
 /******************************************************************************
@@ -408,38 +447,16 @@ void batchState::onPause(float dt) {
 void batchState::drawScene() {
     LOG_GL_ERR();
     
-    // Meshes all contain their own model matrices. no need to use the ones in
-    // the matrix stack. Just greab the view matrix
-    pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
-    pMatStack->constructVp();
-    
     // shader setup
     shaderProg.bind();
     const GLuint mvpId = shaderProg.getUniformLocation("vpMatrix");
     shaderProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
     
     // get the mesh to draw
-    lsDrawModel* const pModel = pScene->getModelList()[0];
-    
-    unsigned matIter = 0;
-    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
-    for (int i = -numObjects; i < numObjects; ++i) {
-        for (int j = -numObjects; j < numObjects; ++j) {
-            for (int k = -numObjects; k < numObjects; ++k) {
-                // scale the view matrix so no spheres overlap
-                pModelMatrices[matIter] = math::billboard(
-                    vec3{(float)i,(float)j,(float)k},
-                    mat4{TEST_INSTANCE_RADIUS}*pMatStack->getMatrix(LS_VIEW_MATRIX)
-                );
-                ++matIter;
-            }
-        }
-    }
+    const lsDrawModel* const pModel = pScene->getModelList()[0];
     
     // render!
-    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
+    //pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
    
     pModel->draw();
-    
-    pMatStack->popMatrix(LS_VIEW_MATRIX);
 }

@@ -70,8 +70,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-m32 -lSDL2main
-CXXFLAGS=-m32 -lSDL2main
+CCFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main
+CXXFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -95,147 +95,147 @@ bin/lightsky_d.exe: ${OBJECTFILES}
 ${OBJECTDIR}/batchState.o: batchState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/batchState.o batchState.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/batchState.o batchState.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/src/lsAtlas.o: src/lsAtlas.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsAtlas.o src/lsAtlas.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsAtlas.o src/lsAtlas.cpp
 
 ${OBJECTDIR}/src/lsBoundingBox.o: src/lsBoundingBox.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBoundingBox.o src/lsBoundingBox.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBoundingBox.o src/lsBoundingBox.cpp
 
 ${OBJECTDIR}/src/lsBufferObject.o: src/lsBufferObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBufferObject.o src/lsBufferObject.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBufferObject.o src/lsBufferObject.cpp
 
 ${OBJECTDIR}/src/lsColor.o: src/lsColor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsColor.o src/lsColor.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsColor.o src/lsColor.cpp
 
 ${OBJECTDIR}/src/lsDataResource.o: src/lsDataResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDataResource.o src/lsDataResource.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDataResource.o src/lsDataResource.cpp
 
 ${OBJECTDIR}/src/lsDisplay.o: src/lsDisplay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDisplay.o src/lsDisplay.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDisplay.o src/lsDisplay.cpp
 
 ${OBJECTDIR}/src/lsDrawModel.o: src/lsDrawModel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDrawModel.o src/lsDrawModel.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDrawModel.o src/lsDrawModel.cpp
 
 ${OBJECTDIR}/src/lsFontResource.o: src/lsFontResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsFontResource.o src/lsFontResource.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsFontResource.o src/lsFontResource.cpp
 
 ${OBJECTDIR}/src/lsGameState.o: src/lsGameState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsGameState.o src/lsGameState.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsGameState.o src/lsGameState.cpp
 
 ${OBJECTDIR}/src/lsGeometry.o: src/lsGeometry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsGeometry.o src/lsGeometry.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsGeometry.o src/lsGeometry.cpp
 
 ${OBJECTDIR}/src/lsImageResource.o: src/lsImageResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsImageResource.o src/lsImageResource.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsImageResource.o src/lsImageResource.cpp
 
 ${OBJECTDIR}/src/lsManager.o: src/lsManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsManager.o src/lsManager.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsManager.o src/lsManager.cpp
 
 ${OBJECTDIR}/src/lsMatrixStack.o: src/lsMatrixStack.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMatrixStack.o src/lsMatrixStack.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMatrixStack.o src/lsMatrixStack.cpp
 
 ${OBJECTDIR}/src/lsMesh.o: src/lsMesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMesh.o src/lsMesh.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMesh.o src/lsMesh.cpp
 
 ${OBJECTDIR}/src/lsMeshResource.o: src/lsMeshResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMeshResource.o src/lsMeshResource.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMeshResource.o src/lsMeshResource.cpp
 
 ${OBJECTDIR}/src/lsRenderer.o: src/lsRenderer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsRenderer.o src/lsRenderer.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsRenderer.o src/lsRenderer.cpp
 
 ${OBJECTDIR}/src/lsResource.o: src/lsResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsResource.o src/lsResource.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsResource.o src/lsResource.cpp
 
 ${OBJECTDIR}/src/lsSceneManager.o: src/lsSceneManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsSceneManager.o src/lsSceneManager.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsSceneManager.o src/lsSceneManager.cpp
 
 ${OBJECTDIR}/src/lsSetup.o: src/lsSetup.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsSetup.o src/lsSetup.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsSetup.o src/lsSetup.cpp
 
 ${OBJECTDIR}/src/lsShaderObject.o: src/lsShaderObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsShaderObject.o src/lsShaderObject.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsShaderObject.o src/lsShaderObject.cpp
 
 ${OBJECTDIR}/src/lsShaderProgram.o: src/lsShaderProgram.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsShaderProgram.o src/lsShaderProgram.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsShaderProgram.o src/lsShaderProgram.cpp
 
 ${OBJECTDIR}/src/lsSystem.o: src/lsSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsSystem.o src/lsSystem.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsSystem.o src/lsSystem.cpp
 
 ${OBJECTDIR}/src/lsTexture.o: src/lsTexture.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsTexture.o src/lsTexture.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsTexture.o src/lsTexture.cpp
 
 ${OBJECTDIR}/src/lsUtil.o: src/lsUtil.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsUtil.o src/lsUtil.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsUtil.o src/lsUtil.cpp
 
 ${OBJECTDIR}/src/lsVertex.o: src/lsVertex.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsVertex.o src/lsVertex.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsVertex.o src/lsVertex.cpp
 
 ${OBJECTDIR}/src/lsVertexArray.o: src/lsVertexArray.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsVertexArray.o src/lsVertexArray.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsVertexArray.o src/lsVertexArray.cpp
 
 ${OBJECTDIR}/testState.o: testState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -I/C/mingw/include/freetype2 -Iinclude -I. -Itests -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testState.o testState.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testState.o testState.cpp
 
 # Subprojects
 .build-subprojects:

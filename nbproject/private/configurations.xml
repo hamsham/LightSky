@@ -63,7 +63,7 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>"${OUTPUT_PATH}"</runcommand>
-        <rundir></rundir>
+        <rundir>C:\Users\miles\C++\projects\LightSky\bin</rundir>
         <buildfirst>false</buildfirst>
         <console-type>2</console-type>
         <terminal-type>0</terminal-type>

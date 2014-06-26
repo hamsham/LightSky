@@ -18,13 +18,17 @@
 /*
  * FreeImage error handler message
  */
-void printImageLoadError(FREE_IMAGE_FORMAT fif, const char* msg) {
-	LS_LOG_ERR(
-        "\tAn image file error has occurred:",
-        "\n\tFormat: ", FreeImage_GetFormatFromFIF(fif),
-        "\n\t", msg, "."
-    );
-}
+#ifdef LS_DEBUG
+    void printImageLoadError(FREE_IMAGE_FORMAT fif, const char* msg) {
+        LS_LOG_ERR(
+            "\tAn image file error has occurred:",
+            "\n\tFormat: ", FreeImage_GetFormatFromFIF(fif),
+            "\n\t", msg, "."
+        );
+    }
+#else
+    void printImageLoadError(FREE_IMAGE_FORMAT, const char*) {}
+#endif
 
 /*
  * Deduce an image's file format

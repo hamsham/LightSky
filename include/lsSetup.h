@@ -105,36 +105,48 @@ namespace math = hamLibs::math;
 /******************************************************************************
  * GAME LOGGING
 ******************************************************************************/
-template <typename Arg>
-void LS_LOG_MSG(const Arg& arg) {
-    std::cout << arg << '\n';
-    std::cout.flush();
-}
-
-template <typename Arg, typename... Args>
-void LS_LOG_MSG(const Arg& arg, const Args&... args) {
-    std::cout << arg;
-    LS_LOG_MSG(args...);
-}
-
-template <typename Arg>
-void LS_LOG_ERR(const Arg& arg) {
-    std::cerr << arg << '\n';
-    std::cerr.flush();
-}
-
-template <typename Arg, typename... Args>
-void LS_LOG_ERR(const Arg& arg, const Args&... args) {
-    std::cerr << arg;
-    LS_LOG_ERR(args...);
-}
-
-void lsPrintGlError(int line, const char* file);
-
 #ifdef LS_DEBUG
-    #define LOG_GL_ERR() lsPrintGlError(__LINE__, __FILE__)
+    template <typename Arg>
+    void LS_LOG_MSG(const Arg& arg) {
+        std::cout << arg << '\n';
+        std::cout.flush();
+    }
+
+    template <typename Arg, typename... Args>
+    void LS_LOG_MSG(const Arg& arg, const Args&... args) {
+        std::cout << arg;
+        LS_LOG_MSG(args...);
+    }
+
+    template <typename Arg>
+    void LS_LOG_ERR(const Arg& arg) {
+        std::cerr << arg << '\n';
+        std::cerr.flush();
+    }
+
+    template <typename Arg, typename... Args>
+    void LS_LOG_ERR(const Arg& arg, const Args&... args) {
+        std::cerr << arg;
+        LS_LOG_ERR(args...);
+    }
+
+    void lsPrintGlError(int line, const char* file);
+    
+    #ifndef LOG_GL_ERR
+        #define LOG_GL_ERR() lsPrintGlError(__LINE__, __FILE__)
+    #endif
 #else
-    #define LOG_GL_ERR()
+    #ifndef LS_LOG_MSG
+        #define LS_LOG_MSG(...)
+    #endif
+    
+    #ifndef LS_LOG_ERR
+        #define LS_LOG_ERR(...)
+    #endif
+    
+    #ifndef LOG_GL_ERR
+        #define LOG_GL_ERR()
+    #endif
 #endif
 
 

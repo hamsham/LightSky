@@ -49,7 +49,6 @@ void main() {
     
     gl_Position = vec4(p.xy, pz, p.w);
     
-    //nrmCoords = vec4(inModelMat * vec4(inNorm, 0.0)).xyz;
     nrmCoords = inNorm;
     uvCoords = inUv;
 }
@@ -67,8 +66,8 @@ in vec2 uvCoords;
 out vec4 outFragCol;
 
 void main() {
-    float lightCol = dot(vec3(0.0, 0.0, 1.0), normalize(nrmCoords));
-    outFragCol = texture(tex, uvCoords) * lightCol;
+    float lightIntensity = dot(vec3(0.0, 0.0, 1.0), normalize(nrmCoords));
+    outFragCol = texture(tex, uvCoords) * lightIntensity;
 }
 )***";
 
@@ -402,6 +401,7 @@ void batchState::onRun(float dt) {
     // the matrix stack. Just greab the view matrix
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
+    /*
     const mat4& viewMat = pMatStack->getMatrix(LS_VIEW_MATRIX);
     
     unsigned matIter = 0;
@@ -421,7 +421,7 @@ void batchState::onRun(float dt) {
     
     // render!
     pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
-    
+    */
     drawScene();
     
     pMatStack->popMatrix(LS_VIEW_MATRIX);

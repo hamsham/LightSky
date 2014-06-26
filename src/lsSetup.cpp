@@ -12,7 +12,11 @@
  * OpenGL Errors
 ******************************************************************************/
 void lsPrintGlError(int line, const char* file) {
-    GLenum errorCode = glGetError();
+#ifndef LS_DEBUG
+    (void)line;
+    (void)file;
+#else
+    const GLenum errorCode = glGetError();
     
     switch(errorCode) {
         case GL_INVALID_ENUM:
@@ -40,6 +44,7 @@ void lsPrintGlError(int line, const char* file) {
         default:
             break;
     }
+#endif
 }
 
 /**
@@ -66,8 +71,9 @@ bool lsInit(int argc, char** argv) {
     );
     
     for (int argCount = 0; argCount < argc; ++argCount) {
-        LS_LOG_MSG('\t', argCount, ":\t", argv[argCount]);
+        std::cout << '\t' << argCount << ":\t" << argv[argCount] << '\n';
     }
+    std::cout << std::endl;
     
     lsGlobal::pSystem = new(std::nothrow) lsSubsystem();
     if (!lsGlobal::pSystem || !lsGlobal::pSystem->init()) {

@@ -70,7 +70,7 @@ void lsMatrixStack::pushMatrix(ls_matrix_t mt, const math::mat4& m) {
         }
     #endif
     
-    stacks[mt].emplace(stacks[mt].top() * m);
+    stacks[mt].push(stacks[mt].top() * m);
 }
 
 /**
@@ -85,7 +85,7 @@ void lsMatrixStack::pushIdentity(ls_matrix_t mt) {
         }
     #endif
     
-    stacks[mt].emplace(math::mat4{1.f});
+    stacks[mt].push(math::mat4{1.f});
 }
 
 /**
@@ -132,6 +132,6 @@ void lsMatrixStack::popMatrix(ls_matrix_t mt) {
     stacks[mt].pop();
     
     if (stacks[mt].size() == 0) {
-        stacks[mt].emplace(math::mat4{1.f});
+        stacks[mt].push(math::mat4{1.f});
     }
 }

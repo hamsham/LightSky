@@ -83,7 +83,7 @@ bool lsInit(int argc, char** argv) {
     
     lsGlobal::pDisplay = new(std::nothrow) lsDisplay{};
     if (!lsGlobal::pDisplay || !lsGlobal::pDisplay->init(
-            math::vec2i{LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT}, false, true)
+            math::vec2i{LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT}, false, false)
     ) {
         LS_LOG_ERR("\tFailed to initialize the LightSky global display.\n.");
         return false;

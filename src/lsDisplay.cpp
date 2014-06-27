@@ -14,11 +14,9 @@
  * Display move constructor
  */
 lsDisplay::lsDisplay(lsDisplay&& d) :
-    useVsync{d.useVsync},
     pWindow{d.pWindow},
     renderContext{std::move(d.renderContext)}
 {
-    d.useVsync = false;
     d.pWindow = nullptr;
 }
 
@@ -26,9 +24,6 @@ lsDisplay::lsDisplay(lsDisplay&& d) :
  * Display move operator
  */
 lsDisplay& lsDisplay::operator=(lsDisplay&& d) {
-    useVsync = d.useVsync;
-    d.useVsync = false;
-    
     pWindow = d.pWindow;
     d.pWindow = nullptr;
     
@@ -58,13 +53,6 @@ bool lsDisplay::init(const math::vec2i inResolution, bool isFullScreen, bool vsy
         LS_LOG_MSG("\tFullscreen: FALSE.");
     }
     
-    if (vsync) {
-        LS_LOG_MSG("\tV-Sync: TRUE.");
-    }
-    else {
-        LS_LOG_MSG("\tV-Sync: FALSE.");
-    }
-    
     /*
      * Create the window
      */
@@ -89,6 +77,13 @@ bool lsDisplay::init(const math::vec2i inResolution, bool isFullScreen, bool vsy
     
     setVsync(vsync);
     
+    if (getVsync()) {
+        LS_LOG_MSG("\tV-Sync: TRUE.");
+    }
+    else {
+        LS_LOG_MSG("\tV-Sync: FALSE.");
+    }
+    
     LS_LOG_MSG("\tSuccessfully created an OpenGL 3.3-compatible display window.\n");
     
     return true;
@@ -98,8 +93,6 @@ bool lsDisplay::init(const math::vec2i inResolution, bool isFullScreen, bool vsy
  * Display Termination
 ******************************************************************************/
 void lsDisplay::terminate() {
-    useVsync = false;
-    
     renderContext.terminate();
     
     if (pWindow != nullptr) {

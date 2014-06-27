@@ -20,7 +20,6 @@ class lsDisplay {
     friend class lsRenderer;
     
     private:
-        int useVsync = false;
         SDL_Window* pWindow = nullptr;
         lsRenderer renderContext = {};
 
@@ -72,12 +71,11 @@ class lsDisplay {
         }
         
         inline void setVsync(bool vsync) {
-            useVsync = (vsync == true) ? 1 : 0;
-            SDL_GL_SetSwapInterval(useVsync);
+            SDL_GL_SetSwapInterval((int)vsync);
         }
         
         inline bool getVsync() const {
-            return useVsync;
+            return SDL_GL_GetSwapInterval() != 0;
         }
         
         inline void flip() {

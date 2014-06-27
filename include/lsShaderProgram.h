@@ -84,6 +84,13 @@ class lsShaderProgram {
             glUseProgram(programId);
         }
         
+        /**
+         * Unbind this program from the context.
+         */
+        inline void unbind() const {
+            glUseProgram(0);
+        }
+        
         ///////////////////////////////////////////////////////////////////////
         //                      Shader Attributes
         ///////////////////////////////////////////////////////////////////////
@@ -167,21 +174,21 @@ class lsShaderProgram {
         /**
          * Set a uniform 2d vector of integers
          */
-        inline void setUniformValue(GLint uniformId, hamLibs::math::vec2_t<int>& val) const {
+        inline void setUniformValue(GLint uniformId, const hamLibs::math::vec2_t<int>& val) const {
             glUniform2iv(uniformId, 1, val.v);
         }
         
         /**
          * Set a uniform 3d vector of integers
          */
-        inline void setUniformValue(GLint uniformId, hamLibs::math::vec3_t<int>& val) const {
+        inline void setUniformValue(GLint uniformId, const hamLibs::math::vec3_t<int>& val) const {
             glUniform3iv(uniformId, 1, val.v);
         }
         
         /**
          * Set a uniform 4d vector of integers
          */
-        inline void setUniformValue(GLint uniformId, hamLibs::math::vec4_t<int>& val) const {
+        inline void setUniformValue(GLint uniformId, const hamLibs::math::vec4_t<int>& val) const {
             glUniform4iv(uniformId, 1, val.v);
         }
         

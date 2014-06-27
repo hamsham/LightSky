@@ -36,19 +36,24 @@ layout (location = 2) in vec3 inNorm;
 layout (location = 3) in mat4 inModelMat;
 
 uniform mat4 vpMatrix;
+uniform vec3 camPos = vec3(0.0, 0.0, 1.0);
 
+out vec3 eyeDir;
 out vec3 nrmCoords;
 out vec2 uvCoords;
 
+const float NEAR = 1.0;
+const float FAR = 10.0;
+
 void main() {
     mat4 mvpMatrix = vpMatrix * inModelMat;
-    vec4 p = mvpMatrix * vec4(inPos, 1.0);
-    const float C = 1.0;
-    const float FAR = 10.0;
-    float pz = -log(C * p.z + 1.0) / log(C * FAR + 1.0);
+    gl_Position = mvpMatrix * vec4(inPos, 1.0);
+    gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
     
-    gl_Position = vec4(p.xy, pz, p.w);
-    
+    // Use this to make the camera act as either a specular or point light
+    //eyeDir = camPos - inPos;
+
+    eyeDir = camPos;
     nrmCoords = inNorm;
     uvCoords = inUv;
 }
@@ -60,13 +65,15 @@ static const char meshFragShader[] = R"***(
 
 uniform sampler2D tex;
 
+in vec3 eyeDir;
 in vec3 nrmCoords;
 in vec2 uvCoords;
 
 out vec4 outFragCol;
 
 void main() {
-    float lightIntensity = dot(vec3(0.0, 0.0, 1.0), normalize(nrmCoords));
+    //float lightIntensity = dot(vec3(0.0, 0.0, 1.0), normalize(nrmCoords));
+    float lightIntensity = dot(normalize(eyeDir), normalize(nrmCoords));
     outFragCol = texture(tex, uvCoords) * lightIntensity;
 }
 )***";
@@ -142,7 +149,7 @@ void batchState::updateKeyStates(float dt) {
         pos[0] -= moveSpeed;
     }
     
-    const vec3 translation{
+    const vec3 translation = {
         math::dot(math::getAxisX(orientation), pos),
         math::dot(math::getAxisY(orientation), pos),
         math::dot(math::getAxisZ(orientation), pos)
@@ -401,6 +408,30 @@ void batchState::onRun(float dt) {
     // the matrix stack. Just greab the view matrix
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
+    
+    // Use this formula to use the camera's position, making it act as a point light
+    // to work properly, set the eye direction in the shader to "camPos-"vertexPos"
+    //const math::mat4& viewInv = math::inverse(pMatStack->getMatrix(LS_VIEW_MATRIX));
+    //const math::vec3 camPos = vec3{viewInv[3][0], viewInv[3][1], viewInv[3][2]};
+    
+    // Use this formula to use the camera's position to project a specular light onto a surface
+    // to work properly, set the eye direction in the shader to "camPos-"vertexPos"
+    //const math::mat4& viewDir = pMatStack->getMatrix(LS_VIEW_MATRIX);
+    //const math::vec3 camPos = vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
+    
+    // Use this formula to use the camera's position to project a specular light onto a surface
+    // to work properly, set the eye direction in the shader to "camPos"
+    // This method is exactly the same as using the "billboarded lighting" technique below
+    const math::mat4& viewDir = pMatStack->getMatrix(LS_VIEW_MATRIX);
+    const math::vec3 camPos = vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
+    
+    shaderProg.bind();
+    const GLuint mvpId = shaderProg.getUniformLocation("camPos");
+    shaderProg.setUniformValue(mvpId, camPos);
+    
+    // Rotate each sphere so it's acting like a billboard against the camera
+    // Using the lighting shader and instancing, this method will make each sphere
+    // appear like a particle of a surface that receives a light
     /*
     const mat4& viewMat = pMatStack->getMatrix(LS_VIEW_MATRIX);
     

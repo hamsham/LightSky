@@ -5,6 +5,7 @@
  * Created on June 14, 2014, 3:19 AM
  */
 
+#include "lsRenderer.h"
 #include "batchState.h"
 
 using math::vec2i;
@@ -72,8 +73,7 @@ in vec2 uvCoords;
 out vec4 outFragCol;
 
 void main() {
-    //float lightIntensity = dot(vec3(0.0, 0.0, 1.0), normalize(nrmCoords));
-    float lightIntensity = dot(normalize(eyeDir), normalize(nrmCoords));
+    float lightIntensity = dot(eyeDir, normalize(nrmCoords));
     outFragCol = texture(tex, uvCoords) * lightIntensity;
 }
 )***";
@@ -385,8 +385,8 @@ bool batchState::onStart() {
     
     LOG_GL_ERR();
     
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    lsGlobal::pDisplay->getRenderer().setDepthTesting(true);
+    lsGlobal::pDisplay->getRenderer().setFaceCulling(true);
     
     return true;
 }

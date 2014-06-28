@@ -33,10 +33,10 @@ enum ls_tex_param_t : int {
  * Descriptors for different texture types
  */
 enum ls_tex_desc_t : int {
-    LS_TEX_1D   = GL_TEXTURE_1D,
-    LS_TEX_2D   = GL_TEXTURE_2D,
-    LS_TEX_3D   = GL_TEXTURE_3D,
-    LS_TEX_RECT = GL_TEXTURE_RECTANGLE,
+    LS_TEX_1D           = GL_TEXTURE_1D,
+    LS_TEX_2D           = GL_TEXTURE_2D,
+    LS_TEX_3D           = GL_TEXTURE_3D,
+    LS_TEX_RECT         = GL_TEXTURE_RECTANGLE,
 };
 
 /******************************************************************************

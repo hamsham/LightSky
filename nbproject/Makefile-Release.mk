@@ -36,6 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/batchState.o \
+	${OBJECTDIR}/framebuffer.o \
+	${OBJECTDIR}/lightState.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/lsAtlas.o \
 	${OBJECTDIR}/src/lsBoundingBox.o \
@@ -70,8 +72,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -mwindows
-CXXFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -mwindows
+CCFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows
+CXXFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -96,6 +98,16 @@ ${OBJECTDIR}/batchState.o: batchState.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/batchState.o batchState.cpp
+
+${OBJECTDIR}/framebuffer.o: framebuffer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/framebuffer.o framebuffer.cpp
+
+${OBJECTDIR}/lightState.o: lightState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lightState.o lightState.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

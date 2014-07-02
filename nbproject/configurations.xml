@@ -75,6 +75,10 @@
     </logicalFolder>
     <itemPath>batchState.cpp</itemPath>
     <itemPath>batchState.h</itemPath>
+    <itemPath>framebuffer.cpp</itemPath>
+    <itemPath>framebuffer.h</itemPath>
+    <itemPath>lightState.cpp</itemPath>
+    <itemPath>lightState.h</itemPath>
     <itemPath>main.cpp</itemPath>
     <itemPath>main.h</itemPath>
     <itemPath>testState.cpp</itemPath>
@@ -106,7 +110,7 @@
             <pElem>include</pElem>
             <pElem>../../../../../MinGW32/include/freetype2</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O2</commandLine>
           <preprocessorList>
             <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
@@ -154,6 +158,10 @@
       <item path="batchState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="batchState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framebuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="framebuffer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -208,6 +216,10 @@
       <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lightState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lightState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -293,7 +305,7 @@
             <pElem>include</pElem>
             <pElem>../../../../../MinGW32/include/freetype2</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -mwindows</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows</commandLine>
           <preprocessorList>
             <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>
@@ -346,6 +358,10 @@
       <item path="batchState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="batchState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framebuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="framebuffer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -400,6 +416,10 @@
       <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lightState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lightState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

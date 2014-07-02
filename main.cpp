@@ -4,6 +4,7 @@
 #include "main.h"
 #include "testState.h"
 #include "batchState.h"
+#include "lightState.h"
 
 bool lsInit(int argc, char** argv);
 void lsTerminate();
@@ -18,8 +19,9 @@ int main(int argc, char* argv[]) {
     }
     
     if (
-        !lsGlobal::pSystem->pushGameState(new(std::nothrow) batchState())
-    //||  !lsGlobal::pSystem->pushGameState(new(std::nothrow) testState())
+        !lsGlobal::pSystem->pushGameState(new(std::nothrow) lightState())
+        //!lsGlobal::pSystem->pushGameState(new(std::nothrow) batchState())
+        //!lsGlobal::pSystem->pushGameState(new(std::nothrow) testState())
     ) {
         lsTerminate();
         return -1;

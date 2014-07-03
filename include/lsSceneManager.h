@@ -64,6 +64,8 @@ class lsSceneManager {
         
         void clear();
         
+        const lsTexture& getDefaultTexture() const;
+        
         lsMeshList& getMeshList();
         lsTextureList& getTextureList();
         lsAtlasList& getAtlasList();
@@ -104,6 +106,10 @@ class lsSceneManager {
         bool containsAtlas(const lsAtlas* const) const;
         bool containsModel(const lsDrawModel* const) const;
 };
+
+inline const lsTexture& lsSceneManager::getDefaultTexture() const {
+    return defaultTex;
+}
 
 #endif	/* __LS_SCENE_MANAGER_H__ */
 

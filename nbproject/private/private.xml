@@ -9,8 +9,10 @@
         <group>
             <file>file:/C:/Users/miles/C++/projects/LightSky/lightState.h</file>
             <file>file:/C:/Users/miles/C++/projects/LightSky/batchState.cpp</file>
-            <file>file:/C:/Users/miles/C++/projects/LightSky/batchState.h</file>
-            <file>file:/C:/Users/miles/C++/projects/LightSky/main.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsTexture.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/framebuffer.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsTexture.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/framebuffer.cpp</file>
             <file>file:/C:/Users/miles/C++/projects/LightSky/lightState.cpp</file>
         </group>
     </open-files>

@@ -8,13 +8,11 @@
 #include <algorithm>
 #include <utility>
 
+#include "lsColor.h"
 #include "lsSceneManager.h"
 
 static const unsigned char checkeredCol[] = {
-    255,    0,  255,    255,
-    0,      0,  0,      255,
-    255,    0,  255,    255,
-    0,      0,  0,      255
+    0,    0,    0,    255
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -58,9 +56,7 @@ lsSceneManager& lsSceneManager::operator =(lsSceneManager&& sm) {
  * Initialization of the default gray and magic pink textures
  */
 bool lsSceneManager::initDefaultTexture() {
-    if (!defaultTex.init(
-        0, GL_RED, math::vec2i{2, 2}, GL_RED, GL_UNSIGNED_BYTE, (void*)checkeredCol
-    )) {
+    if (!defaultTex.init(0, GL_RED, math::vec2i{1}*sizeof(lsWhite), GL_RED, GL_FLOAT, (void*)&lsWhite)) {
         LS_LOG_ERR("\tUnable to initialize a default texture for the scene manager.");
         return false;
     }

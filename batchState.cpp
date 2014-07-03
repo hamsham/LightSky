@@ -37,10 +37,7 @@ layout (location = 2) in vec3 inNorm;
 layout (location = 3) in mat4 inModelMat;
 
 uniform mat4 vpMatrix;
-uniform vec3 camPos = vec3(0.0, 0.0, 1.0);
 
-out vec3 eyeDir;
-out vec3 nrmCoords;
 out vec2 uvCoords;
 
 const float NEAR = 1.0;
@@ -51,11 +48,6 @@ void main() {
     gl_Position = mvpMatrix * vec4(inPos, 1.0);
     gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
     
-    // Use this to make the camera act as either a specular or point light
-    //eyeDir = camPos - inPos;
-
-    eyeDir = camPos;
-    nrmCoords = inNorm;
     uvCoords = inUv;
 }
 )***";
@@ -66,15 +58,12 @@ static const char meshFragShader[] = R"***(
 
 uniform sampler2D tex;
 
-in vec3 eyeDir;
-in vec3 nrmCoords;
 in vec2 uvCoords;
 
 out vec4 outFragCol;
 
 void main() {
-    float lightIntensity = dot(eyeDir, normalize(nrmCoords));
-    outFragCol = texture(tex, uvCoords) * lightIntensity;
+    outFragCol = texture(tex, uvCoords);
 }
 )***";
 
@@ -326,7 +315,7 @@ bool batchState::onStart() {
     
     lsMeshResource* pMeshLoader = new lsMeshResource{};
     lsImageResource* pImgLoader = new lsImageResource{};
-    lsMesh* paddleMesh          = new lsMesh{};
+    lsMesh* pMesh          = new lsMesh{};
     lsTexture* pTexture         = new lsTexture{};
     bool ret                    = true;
     
@@ -335,7 +324,7 @@ bool batchState::onStart() {
     || !pTexture->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
     || !pMeshLoader
     || !pMeshLoader->loadSphere(16)
-    || !paddleMesh->init(*pMeshLoader)
+    || !pMesh->init(*pMeshLoader)
     ) {
         ret = false;
     }
@@ -346,7 +335,7 @@ bool batchState::onStart() {
         pTexture->setParameter(LS_TEX_MIN_FILTER, LS_NEAREST_FILTER);
         pTexture->unbind();
         
-        pScene->manageMesh(paddleMesh); // test data at the mesh index 0
+        pScene->manageMesh(pMesh); // test data at the mesh index 0
         pScene->manageTexture(pTexture); // test atlas at the mesh index 0
     }
     
@@ -409,50 +398,6 @@ void batchState::onRun(float dt) {
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
-    // Use this formula to use the camera's position, making it act as a point light
-    // to work properly, set the eye direction in the shader to "camPos-"vertexPos"
-    //const math::mat4& viewInv = math::inverse(pMatStack->getMatrix(LS_VIEW_MATRIX));
-    //const math::vec3 camPos = vec3{viewInv[3][0], viewInv[3][1], viewInv[3][2]};
-    
-    // Use this formula to use the camera's position to project a specular light onto a surface
-    // to work properly, set the eye direction in the shader to "camPos-"vertexPos"
-    //const math::mat4& viewDir = pMatStack->getMatrix(LS_VIEW_MATRIX);
-    //const math::vec3 camPos = vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
-    
-    // Use this formula to use the camera's position to project a specular light onto a surface
-    // to work properly, set the eye direction in the shader to "camPos"
-    // This method is exactly the same as using the "billboarded lighting" technique below
-    const math::mat4& viewDir = pMatStack->getMatrix(LS_VIEW_MATRIX);
-    const math::vec3 camPos = vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
-    
-    shaderProg.bind();
-    const GLuint mvpId = shaderProg.getUniformLocation("camPos");
-    shaderProg.setUniformValue(mvpId, camPos);
-    
-    // Rotate each sphere so it's acting like a billboard against the camera
-    // Using the lighting shader and instancing, this method will make each sphere
-    // appear like a particle of a surface that receives a light
-    /*
-    const mat4& viewMat = pMatStack->getMatrix(LS_VIEW_MATRIX);
-    
-    unsigned matIter = 0;
-    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
-    for (int i = -numObjects; i < numObjects; ++i) {
-        for (int j = -numObjects; j < numObjects; ++j) {
-            for (int k = -numObjects; k < numObjects; ++k) {
-                // scale the view matrix so no spheres overlap
-                pModelMatrices[matIter] = math::billboard(vec3{(float)i,(float)j,(float)k}, mat4{TEST_INSTANCE_RADIUS}*viewMat);
-                ++matIter;
-            }
-        }
-    }
-    
-    // get the mesh to draw
-    lsDrawModel* const pModel = pScene->getModelList()[0];
-    
-    // render!
-    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
-    */
     drawScene();
     
     pMatStack->popMatrix(LS_VIEW_MATRIX);
@@ -462,14 +407,8 @@ void batchState::onRun(float dt) {
  * Pausing state
 ******************************************************************************/
 void batchState::onPause(float dt) {
-    updateKeyStates(dt);
-    
-    pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
-    pMatStack->constructVp();
-    
+    (void)dt;
     drawScene();
-    
-    pMatStack->popMatrix(LS_VIEW_MATRIX);
 }
 
 /******************************************************************************

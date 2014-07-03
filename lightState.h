@@ -9,6 +9,7 @@
 #define	LIGHT_STATE_H
 
 #include "main.h"
+#include "framebuffer.h"
 
 class lightState final : virtual public lsGameState {
     /*
@@ -17,7 +18,6 @@ class lightState final : virtual public lsGameState {
     private:
         int             mouseX                  = 0;
         int             mouseY                  = 0;
-        lsTexture       lightVolume             = {LS_TEX_3D};
         lsShaderProgram shaderProg              = {};
         lsMatrixStack*  pMatStack               = nullptr;
         lsSceneManager* pScene                  = nullptr;

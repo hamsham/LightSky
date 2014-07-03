@@ -62,8 +62,6 @@ void main() {
 static const char meshFragShader[] = R"***(
 #version 330 core
 
-uniform sampler2D tex;
-
 in vec3 eyeDir;
 in vec3 nrmCoords;
 in vec2 uvCoords;
@@ -72,7 +70,7 @@ out vec4 outFragCol;
 
 void main() {
     float lightIntensity = dot(eyeDir, normalize(nrmCoords));
-    outFragCol = texture(tex, uvCoords) * lightIntensity;
+    outFragCol = vec4(1.0, 1.0, 1.0, 0.0) * lightIntensity;
 }
 )***";
 
@@ -237,8 +235,9 @@ void lightState::onMouseWheelEvent(const SDL_MouseWheelEvent*) {
 void lightState::terminate() {
     mouseX = 0;
     mouseY = 0;
-    lightVolume.terminate();
+    
     shaderProg.terminate();
+    
     orientation = quat{0.f, 0.f, 0.f, 1.f};
 
     delete pMatStack;
@@ -267,7 +266,6 @@ bool lightState::initMemory() {
     ||  pScene == nullptr
     ||  pKeyStates == nullptr
     ||  pModelMatrices == nullptr
-    ||  !lightVolume.init(0, GL_RGB, math::vec3i{1024}, GL_BGR, GL_UNSIGNED_BYTE, nullptr)
     ) {
         terminate();
         return false;
@@ -292,7 +290,6 @@ bool lightState::initMemory() {
  * Create the draw models that will be used for rendering
 ******************************************************************************/
 bool lightState::generateDrawModels() {
-    lsTexture* pTexture = nullptr;
     lsMesh* pMesh = nullptr;
     
     // test model 1
@@ -304,9 +301,8 @@ bool lightState::generateDrawModels() {
     
     pScene->manageModel(pModel);
     pMesh = pScene->getMeshList()[0];
-    pTexture = pScene->getTextureList()[0];
     pModel->setMesh(pMesh);
-    pModel->setTexture(pTexture);
+    pModel->setTexture(&pScene->getDefaultTexture());
     
      // lights, camera, batch!
     pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
@@ -325,12 +321,10 @@ bool lightState::onStart() {
     }
     
     lsMeshResource* pMeshLoader = new lsMeshResource{};
-    lsImageResource* pImgLoader = new lsImageResource{};
     lsMesh* paddleMesh          = new lsMesh{};
     bool ret                    = true;
     
-    if (!pImgLoader
-    || !pMeshLoader
+    if (!pMeshLoader
     || !pMeshLoader->loadSphere(16)
     || !paddleMesh->init(*pMeshLoader)
     ) {
@@ -342,7 +336,6 @@ bool lightState::onStart() {
     }
     
     delete pMeshLoader;
-    delete pImgLoader;
     
     if (!ret || !generateDrawModels()) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");

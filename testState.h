@@ -25,7 +25,7 @@ class testState final : virtual public lsGameState {
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent*) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent*) override;
-        void            updateKeyStates         ();
+        void            updateKeyStates         (float dt);
         virtual void    onKeyboardTextEvent     (const SDL_TextInputEvent*) override;
         virtual void    onWindowEvent           (const SDL_WindowEvent*) override;
         

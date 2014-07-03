@@ -136,8 +136,8 @@ void testState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
 /******************************************************************************
  * Keyboard States
 ******************************************************************************/
-void testState::updateKeyStates() {
-    const float moveSpeed = 0.1f;
+void testState::updateKeyStates(float dt) {
+    const float moveSpeed = 0.05f * dt;
     vec3 pos = {0.f};
     
     if (GAME_KEYS[SDLK_w]) {
@@ -395,7 +395,7 @@ void testState::onStop() {
 void testState::onRun(float dt) {
     (void)dt;
     
-    updateKeyStates();
+    updateKeyStates(dt);
     drawScene();
 }
 

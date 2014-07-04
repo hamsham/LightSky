@@ -321,7 +321,7 @@ bool batchState::onStart() {
     
     if (!pImgLoader
     || !pImgLoader->loadFile(testImageFile)
-    || !pTexture->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
+    || !pTexture->init(0, pImgLoader->getPixelSize(), *pImgLoader)
     || !pMeshLoader
     || !pMeshLoader->loadSphere(16)
     || !pMesh->init(*pMeshLoader)

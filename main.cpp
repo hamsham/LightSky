@@ -19,8 +19,8 @@ int main(int argc, char* argv[]) {
     }
     
     if (
-        !lsGlobal::pSystem->pushGameState(new(std::nothrow) lightState())
-        //!lsGlobal::pSystem->pushGameState(new(std::nothrow) batchState())
+        //!lsGlobal::pSystem->pushGameState(new(std::nothrow) lightState())
+        !lsGlobal::pSystem->pushGameState(new(std::nothrow) batchState())
         //!lsGlobal::pSystem->pushGameState(new(std::nothrow) testState())
     ) {
         lsTerminate();

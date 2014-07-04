@@ -11,6 +11,7 @@
 #include <GL/glew.h>
 
 #include "lsSetup.h"
+#include "lsImageResource.h"
 
 /**
  * Parameters for creating or modifying texture objects.
@@ -118,24 +119,57 @@ class lsTexture {
         
         /**
          * Create an OpenGL texture by using preexisting image data.
+         * 
          * @see OpenGL's documentation for glTexImage()
+         * 
          * @return true if the operation was successful. False if otherwise.
          */
         bool init(int mipmapLevel, int internalFormat, int size, int format, int dataType, void* data);
         
         /**
          * Create an OpenGL texture by using preexisting image data.
+         * 
          * @see OpenGL's documentation for glTexImage()
+         * 
          * @return true if the operation was successful. False if otherwise.
          */
         bool init(int mipmapLevel, int internalFormat, math::vec2i size, int format, int dataType, void* data);
         
         /**
          * Create an OpenGL texture by using preexisting image data.
+         * 
          * @see OpenGL's documentation for glTexImage()
+         * 
          * @return true if the operation was successful. False if otherwise.
          */
         bool init(int mipmapLevel, int internalFormat, math::vec3i size, int format, int dataType, void* data);
+        
+        /**
+         * Create an OpenGL texture by using preexisting image data.
+         * 
+         * @see OpenGL's documentation for glTexImage()
+         * 
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init(int mipmapLevel, int size, const lsImageResource&);
+        
+        /**
+         * Create an OpenGL texture by using preexisting image data.
+         * 
+         * @see OpenGL's documentation for glTexImage()
+         * 
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init(int mipmapLevel, math::vec2i size, const lsImageResource&);
+        
+        /**
+         * Create an OpenGL texture by using preexisting image data.
+         * 
+         * @see OpenGL's documentation for glTexImage()
+         * 
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init(int mipmapLevel, math::vec3i size, const lsImageResource&);
         
         /**
          * Modify the internal data of a texture.
@@ -218,6 +252,36 @@ inline void lsTexture::setParameter(int paramName, int param) const {
 
 inline void lsTexture::setParameter(int paramName, float param) const {
     glTexParameterf(dimensions, paramName, param);
+}
+
+/*
+ * Create an OpenGL texture by using preexisting image data.
+ */
+inline bool lsTexture::init(int mipmapLevel, int size, const lsImageResource& resource) {
+    return init(
+        mipmapLevel, resource.getInternalFormat()[0], size,
+        resource.getInternalFormat()[1], resource.getFormat(), resource.getData()
+    );
+}
+
+/*
+ * Create an OpenGL texture by using preexisting image data.
+ */
+inline bool lsTexture::init(int mipmapLevel, math::vec2i size, const lsImageResource& resource) {
+    return init(
+        mipmapLevel, resource.getInternalFormat()[0], size,
+        resource.getInternalFormat()[1], resource.getFormat(), resource.getData()
+    );
+}
+
+/*
+ * Create an OpenGL texture by using preexisting image data.
+ */
+inline bool lsTexture::init(int mipmapLevel, math::vec3i size, const lsImageResource& resource) {
+    return init(
+        mipmapLevel, resource.getInternalFormat()[0], size,
+        resource.getInternalFormat()[1], resource.getFormat(), resource.getData()
+    );
 }
 
 /**

@@ -5,10 +5,12 @@
  * Created on February 2, 2014, 1:42 PM
  */
 
+#include <unordered_map>
 #include <utility> // std::move
 #include <Gl/glew.h>
 #include <FreeImage.h>
 #include <string>
+
 #include "lsSetup.h"
 #include "lsImageResource.h"
 
@@ -72,7 +74,7 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
         // n-bit char
         case FIT_BITMAP:
             LS_LOG_MSG("\tImage pixel type: BYTE");
-            dataType = GL_BYTE;
+            dataType = GL_UNSIGNED_BYTE;
             break;
             
         // 16-bit short
@@ -115,6 +117,41 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
     return dataType;
 }
 
+math::vec2i getPixelFormat(unsigned dataType, unsigned bpp) {
+    LS_LOG_MSG("\tImage Bits Per Pixel: ", bpp);
+    
+    if (dataType == GL_UNSIGNED_BYTE) {
+        if (bpp <= 8)   return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
+        if (bpp <= 16)  return math::vec2i{GL_RG, GL_RG};
+        if (bpp <= 24)  return math::vec2i{GL_RGB, GL_BGR};
+        
+        return math::vec2i{GL_RGBA, GL_BGRA};
+    }
+    else if (dataType == GL_SHORT || dataType == GL_UNSIGNED_SHORT) {
+        if (bpp <= 16)  return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
+        if (bpp <= 32)  return math::vec2i{GL_RG, GL_RG};
+        if (bpp <= 48)  return math::vec2i{GL_RGB, GL_BGR};
+        
+        return math::vec2i{GL_RGBA, GL_BGRA};
+    }
+    else if (dataType == GL_INT || dataType == GL_UNSIGNED_INT) {
+        if (bpp <= 32)  return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
+        if (bpp <= 64)  return math::vec2i{GL_RG, GL_RG};
+        if (bpp <= 96)  return math::vec2i{GL_RGB, GL_BGR};
+        
+        return math::vec2i{GL_RGBA, GL_BGRA};
+    }
+    else if (dataType == GL_FLOAT) {
+        if (bpp <= 32)  return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
+        if (bpp <= 64)  return math::vec2i{GL_RG, GL_RG};
+        if (bpp <= 96)  return math::vec2i{GL_RGB32F, GL_RGB32F};
+        
+        return math::vec2i{GL_RGBA32F, GL_RGBA32F};
+    }
+    
+    return math::vec2i{0,0};
+}
+
 /******************************************************************************
  * Construction, moving, and Copying
 *******************************************************************************/
@@ -151,6 +188,9 @@ lsImageResource& lsImageResource::operator =(lsImageResource&& img) {
     
     bitsPerPixel = img.bitsPerPixel;
     img.bitsPerPixel = 0;
+    
+    imgFormat = img.imgFormat;
+    img.imgFormat = math::vec2i{0,0};
     
     return *this;
 }
@@ -210,30 +250,17 @@ bool lsImageResource::loadFile(const char* filename) {
         return false;
     }
     
+    this->pData         = reinterpret_cast<char*>(fileData);
+    this->imgSize[0]    = (int)FreeImage_GetWidth(fileData);
+    this->imgSize[1]    = (int)FreeImage_GetHeight(fileData);
+    this->bitsPerPixel  = (unsigned)FreeImage_GetBPP(fileData);
+    this->pixelSize     = dataType;
+    this->dataSize      = this->imgSize[0] * this->imgSize[1];
+    this->imgFormat     = getPixelFormat(this->pixelSize, this->bitsPerPixel);
+    
     LS_LOG_MSG("\tSuccessfully loaded ", filename, ".\n");
     
-    this->pData = reinterpret_cast<char*>(fileData);
-    this->imgSize[0] = (int)FreeImage_GetWidth(fileData);
-    this->imgSize[1] = (int)FreeImage_GetHeight(fileData);
-    this->bitsPerPixel = (unsigned)FreeImage_GetBPP(fileData);
-    this->pixelSize = dataType;
-    this->dataSize = this->imgSize[0] * this->imgSize[1];
-    
     return true;
-}
-
-/*
- * saving
- */
-bool lsImageResource::saveFile(const char* filename) const {
-    if (this->pData == nullptr || filename == nullptr) {
-        return false;
-    }
-    
-    std::string outFile = filename;
-    outFile.append(".png");
-    
-    return FreeImage_Save(FIF_PNG, reinterpret_cast<FIBITMAP*>(pData), outFile.c_str());
 }
 
 /*
@@ -251,12 +278,6 @@ void lsImageResource::unload() {
     imgSize = math::vec2i{0};
     pixelSize = 0;
     bitsPerPixel = 0;
-}
-
-/*
- * Get the data stored in pData
- */
-void* lsImageResource::getData() const {
-    return (char*) FreeImage_GetBits(reinterpret_cast<FIBITMAP*>(pData));
+    imgFormat = math::vec2i{0,0};
 }
 

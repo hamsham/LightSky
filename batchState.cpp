@@ -364,7 +364,7 @@ bool batchState::onStart() {
     LOG_GL_ERR();
 
     // Initialize the matrix stacks
-    pMatStack->loadMatrix(LS_PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 10.f));
+    pMatStack->loadMatrix(LS_PROJECTION_MATRIX, math::infinitePerspective(60.f, 4.f/3.f, 0.01f));
     pMatStack->loadMatrix(LS_VIEW_MATRIX, math::lookAt(vec3(50.f), vec3(0.f), vec3(0.f, 1.f, 0.f)));
     pMatStack->constructVp();
     

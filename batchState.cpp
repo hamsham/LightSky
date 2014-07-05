@@ -398,6 +398,27 @@ void batchState::onRun(float dt) {
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
+    // Rotate each sphere so it's acting like a billboard against the camera
+    const mat4& viewMat = pMatStack->getMatrix(LS_VIEW_MATRIX);
+    
+    unsigned matIter = 0;
+    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
+    for (int i = -numObjects; i < numObjects; ++i) {
+        for (int j = -numObjects; j < numObjects; ++j) {
+            for (int k = -numObjects; k < numObjects; ++k) {
+                // scale the view matrix so no spheres overlap
+                pModelMatrices[matIter] = math::billboard(vec3{(float)i,(float)j,(float)k}, mat4{TEST_INSTANCE_RADIUS}*viewMat);
+                ++matIter;
+            }
+        }
+    }
+    
+    // get the mesh to draw
+    lsDrawModel* const pModel = pScene->getModelList()[0];
+    
+    // render!
+    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
+    
     drawScene();
     
     pMatStack->popMatrix(LS_VIEW_MATRIX);
@@ -424,9 +445,6 @@ void batchState::drawScene() {
     
     // get the mesh to draw
     const lsDrawModel* const pModel = pScene->getModelList()[0];
-    
-    // render!
-    //pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
    
     pModel->draw();
 }

@@ -117,36 +117,59 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
     return dataType;
 }
 
-math::vec2i getPixelFormat(unsigned dataType, unsigned bpp) {
+math::vec2i getPixelFormat(FIBITMAP* pImg, unsigned bpp) {
     LS_LOG_MSG("\tImage Bits Per Pixel: ", bpp);
     
-    if (dataType == GL_UNSIGNED_BYTE) {
-        if (bpp <= 8)   return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
-        if (bpp <= 16)  return math::vec2i{GL_RG, GL_RG};
-        if (bpp <= 24)  return math::vec2i{GL_RGB, GL_BGR};
-        
-        return math::vec2i{GL_RGBA, GL_BGRA};
+    // Get the data type of the image. Convert to an internal format
+    const FREE_IMAGE_TYPE dataType = FreeImage_GetImageType(pImg);
+    
+    if (dataType == FIT_BITMAP) {
+        if (bpp == 8)   return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
+        if (bpp == 16)  return math::vec2i{GL_RG8, GL_RG};
+        if (bpp == 24)  return math::vec2i{GL_RGB8, GL_BGR};
+        if (bpp == 32)  return math::vec2i{GL_RGBA8, GL_BGRA};
     }
-    else if (dataType == GL_SHORT || dataType == GL_UNSIGNED_SHORT) {
-        if (bpp <= 16)  return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
-        if (bpp <= 32)  return math::vec2i{GL_RG, GL_RG};
-        if (bpp <= 48)  return math::vec2i{GL_RGB, GL_BGR};
-        
-        return math::vec2i{GL_RGBA, GL_BGRA};
+    else if (dataType == FIT_INT16) {
+        if (bpp == 16)  return math::vec2i{GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT};
+        if (bpp == 32)  return math::vec2i{GL_RG16I, GL_RG};
+        if (bpp == 48)  return math::vec2i{GL_RGB16I, GL_BGR};
+        if (bpp == 64)  return math::vec2i{GL_RGBA16I, GL_BGRA};
     }
-    else if (dataType == GL_INT || dataType == GL_UNSIGNED_INT) {
-        if (bpp <= 32)  return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
-        if (bpp <= 64)  return math::vec2i{GL_RG, GL_RG};
-        if (bpp <= 96)  return math::vec2i{GL_RGB, GL_BGR};
-        
-        return math::vec2i{GL_RGBA, GL_BGRA};
+    else if (dataType == FIT_UINT16) {
+        if (bpp == 16)  return math::vec2i{GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT};
+        if (bpp == 32)  return math::vec2i{GL_RG16UI, GL_RG};
+        if (bpp == 48)  return math::vec2i{GL_RGB16UI, GL_BGR};
+        if (bpp == 64)  return math::vec2i{GL_RGBA16UI, GL_BGRA};
     }
-    else if (dataType == GL_FLOAT) {
-        if (bpp <= 32)  return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
-        if (bpp <= 64)  return math::vec2i{GL_RG, GL_RG};
-        if (bpp <= 96)  return math::vec2i{GL_RGB32F, GL_RGB32F};
-        
-        return math::vec2i{GL_RGBA32F, GL_RGBA32F};
+    else if (dataType == FIT_INT32) {
+        if (bpp == 32)  return math::vec2i{GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT};
+        if (bpp == 64)  return math::vec2i{GL_RG32I, GL_RG};
+        if (bpp == 96)  return math::vec2i{GL_RGB32I, GL_BGR};
+        if (bpp == 128) return math::vec2i{GL_RGBA32I, GL_BGRA};
+    }
+    else if (dataType == FIT_UINT32) {
+        if (bpp == 32)  return math::vec2i{GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT};
+        if (bpp == 64)  return math::vec2i{GL_RG32UI, GL_RG};
+        if (bpp == 96)  return math::vec2i{GL_RGB32UI, GL_BGR};
+        if (bpp == 128) return math::vec2i{GL_RGBA32UI, GL_BGRA};
+    }
+    else if (dataType == FIT_FLOAT) {
+        if (bpp == 32)  return math::vec2i{GL_DEPTH_COMPONENT32F, GL_DEPTH_COMPONENT};
+        if (bpp == 64)  return math::vec2i{GL_RG32F, GL_RG};
+        if (bpp == 96)  return math::vec2i{GL_RGB32F, GL_BGR};
+        if (bpp == 128) return math::vec2i{GL_RGBA32F, GL_BGRA};
+    }
+    else if (dataType == FIT_RGB16) {
+        return math::vec2i{GL_RGB16F, GL_BGR};
+    }
+    else if (dataType == FIT_RGBA16) {
+        return math::vec2i{GL_RGBA16F, GL_BGRA};
+    }
+    else if (dataType == FIT_RGBF) {
+        return math::vec2i{GL_RGB32F, GL_BGR};
+    }
+    else if (dataType == FIT_RGBAF) {
+        return math::vec2i{GL_RGBA32F, GL_BGRA};
     }
     
     return math::vec2i{0,0};
@@ -256,7 +279,7 @@ bool lsImageResource::loadFile(const char* filename) {
     this->bitsPerPixel  = (unsigned)FreeImage_GetBPP(fileData);
     this->pixelSize     = dataType;
     this->dataSize      = this->imgSize[0] * this->imgSize[1];
-    this->imgFormat     = getPixelFormat(this->pixelSize, this->bitsPerPixel);
+    this->imgFormat     = getPixelFormat(fileData, this->bitsPerPixel);
     
     LS_LOG_MSG("\tSuccessfully loaded ", filename, ".\n");
     

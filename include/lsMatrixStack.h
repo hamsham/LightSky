@@ -160,7 +160,7 @@ class lsMatrixStack {
  * Multiply the selected matrix with the one passed into the function.
  */
 inline void lsMatrixStack::multMatrix(ls_matrix_t mt, const math::mat4& m) {
-    stacks[mt].top() *= m;
+    stacks[mt].top() = m * stacks[mt].top();
 }
 
 /**
@@ -168,14 +168,14 @@ inline void lsMatrixStack::multMatrix(ls_matrix_t mt, const math::mat4& m) {
  */
 inline void lsMatrixStack::constructMvp() {
     this->constructVp();
-    mvpMatrix = stacks[LS_MODEL_MATRIX].top() * vpMatrix;
+    mvpMatrix = vpMatrix * stacks[LS_MODEL_MATRIX].top();
 }
 
 /**
  * Multiply the view and projection stacks
  */
 inline void lsMatrixStack::constructVp() {
-    vpMatrix = stacks[LS_VIEW_MATRIX].top() * stacks[LS_PROJECTION_MATRIX].top();
+    vpMatrix = stacks[LS_PROJECTION_MATRIX].top() * stacks[LS_VIEW_MATRIX].top();
 }
 
 #endif	/* __LS_MATRIX_STACK_H__ */

@@ -70,7 +70,7 @@ void lsMatrixStack::pushMatrix(ls_matrix_t mt, const math::mat4& m) {
         }
     #endif
     
-    stacks[mt].push(stacks[mt].top() * m);
+    stacks[mt].push(m * stacks[mt].top());
 }
 
 /**

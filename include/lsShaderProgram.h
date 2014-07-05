@@ -303,21 +303,21 @@ class lsShaderProgram {
          * Set a uniform 2d matrix
          */
         inline void setUniformValue(GLint uniformId, const hamLibs::math::mat2_t<float>& val, bool transpose = false) const {
-            glUniformMatrix2fv(uniformId, 1, transpose, val.m[0]);
+            glUniformMatrix2fv(uniformId, 1, transpose, &val[0]);
         }
         
         /**
          * Set a uniform 3d matrix
          */
         inline void setUniformValue(GLint uniformId, const hamLibs::math::mat3_t<float>& val, bool transpose = false) const {
-            glUniformMatrix3fv(uniformId, 1, transpose, val.m[0]);
+            glUniformMatrix3fv(uniformId, 1, transpose, &val[0]);
         }
         
         /**
          * Set a uniform 4d matrix
          */
         inline void setUniformValue(GLint uniformId, const hamLibs::math::mat4_t<float>& val, bool transpose = false) const {
-            glUniformMatrix4fv(uniformId, 1, transpose, val.m[0]);
+            glUniformMatrix4fv(uniformId, 1, transpose, &val[0]);
         }
         
         ///////////////////////////////////////////////////////////////////////

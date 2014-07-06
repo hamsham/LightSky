@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lsMatrixStack.o \
 	${OBJECTDIR}/src/lsMesh.o \
 	${OBJECTDIR}/src/lsMeshResource.o \
+	${OBJECTDIR}/src/lsRandom.o \
 	${OBJECTDIR}/src/lsRenderer.o \
 	${OBJECTDIR}/src/lsResource.o \
 	${OBJECTDIR}/src/lsSceneManager.o \
@@ -188,6 +189,11 @@ ${OBJECTDIR}/src/lsMeshResource.o: src/lsMeshResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMeshResource.o src/lsMeshResource.cpp
+
+${OBJECTDIR}/src/lsRandom.o: src/lsRandom.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsRandom.o src/lsRandom.cpp
 
 ${OBJECTDIR}/src/lsRenderer.o: src/lsRenderer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

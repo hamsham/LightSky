@@ -71,6 +71,7 @@
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>.gitignore</itemPath>
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>batchState.cpp</itemPath>
@@ -79,8 +80,9 @@
     <itemPath>framebuffer.h</itemPath>
     <itemPath>lightState.cpp</itemPath>
     <itemPath>lightState.h</itemPath>
+    <itemPath>src/lsRandom.cpp</itemPath>
+    <itemPath>include/lsRandom.h</itemPath>
     <itemPath>main.cpp</itemPath>
-    <itemPath>main.h</itemPath>
     <itemPath>testState.cpp</itemPath>
     <itemPath>testState.h</itemPath>
   </logicalFolder>
@@ -195,6 +197,8 @@
       </item>
       <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/lsRandom.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsResource.h" ex="false" tool="3" flavor2="0">
@@ -222,8 +226,6 @@
       <item path="lightState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -254,6 +256,8 @@
       <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsRandom.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsRenderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -395,6 +399,8 @@
       </item>
       <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/lsRandom.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsResource.h" ex="false" tool="3" flavor2="0">
@@ -422,8 +428,6 @@
       <item path="lightState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -454,6 +458,8 @@
       <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsRandom.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsRenderer.cpp" ex="false" tool="1" flavor2="0">
       </item>

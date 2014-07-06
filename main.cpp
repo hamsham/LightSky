@@ -18,16 +18,17 @@ namespace {
 /*
  * Main
  */
-int main(int argc, char* argv[]) {
-    LS_LOG_MSG("Initializing LightSky.");
+int main(int argc, char** argv) {
+    std::cout << "Initializing LightSky.\n";
     
     /*
      * Game Initialization
      */
-    LS_LOG_MSG("Parameter count: ", argc);
+    std::cout << "Parameter count: " << argc;
     for (int argCount = 0; argCount < argc; ++argCount) {
-        LS_LOG_MSG('\t', argCount, ":\t", argv[argCount], '\n');
+        std::cout << '\t' << argCount << ":\t" << argv[argCount] << '\n';
     }
+    std::cout << std::endl;
     
     if (!initLs()) {
         terminateLs();
@@ -57,11 +58,11 @@ bool initLs() {
     
     pSystem = new(std::nothrow) lsSubsystem();
     if (!pSystem || !pSystem->init()) {
-        LS_LOG_ERR("\tFailed to initialize the LightSky system manager.\n.");
+        std::cerr << "Failed to initialize the LightSky system manager.\n." << std::endl;
         return false;
     }
     
-    LS_LOG_MSG("LightSky Successfully initialized.\n");
+    std::cout << "LightSky Successfully initialized.\n" << std::endl;;
     return true;
 }
 
@@ -75,7 +76,7 @@ void terminateLs() {
     delete pSystem;
     pSystem = nullptr;
     
-    LS_LOG_MSG("LightSky successfully terminated.\n");
+    std::cout << "LightSky successfully terminated.\n" << std::endl;;
     
     return;
 }

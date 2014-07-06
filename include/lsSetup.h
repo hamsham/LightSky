@@ -14,9 +14,7 @@
 #include <SDL2/SDL.h>
 
 #include "utils/assert.h"
-#include "utils/timeObject.h"
 #include "utils/hash.h"
-#include "utils/randomNum.h"
 #include "math/math.h"
 
 /******************************************************************************
@@ -148,29 +146,6 @@ namespace math = hamLibs::math;
         #define LOG_GL_ERR()
     #endif
 #endif
-
-
-/******************************************************************************
- * FORWARD DECLARATIONS
-******************************************************************************/
-/*
- * Subsystems
- */
-class lsGameState;
-class lsDisplay;
-class lsSubsystem;
-
-/******************************************************************************
- * GAME GLOBALS
-******************************************************************************/
-namespace lsGlobal {
-    extern lsDisplay* pDisplay; // main.cpp
-    extern lsSubsystem* pSystem; // main.cpp
-    extern hamLibs::utils::randomNum* pRandGen; // main.cpp
-}
-
-bool lsInit(int argc, char** argv);
-void lsTerminate();
 
 #endif	/* __LS_SETUP_H__ */
 

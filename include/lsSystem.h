@@ -13,9 +13,13 @@
 
 #include "lsSetup.h"
 #include "lsDisplay.h"
-#include "lsGameState.h"
+#include "lsRandom.h"
 
+/*
+ * Forward declarations
+ */
 union SDL_Event;
+class lsGameState;
 
 /**
  * subsystem
@@ -29,6 +33,8 @@ class lsSubsystem {
     private:
         bool gameIsRunning = false;
         std::vector<lsGameState*> gameStack;
+        lsDisplay display = {};
+        lsRandom* prng = nullptr;
         
         void passHardwareEvents(const SDL_Event*, lsGameState*);
         void updateGameStates(float tickTime);
@@ -48,6 +54,7 @@ class lsSubsystem {
         
         /**
          * Move constructor
+         * 
          * @param A subsystem object to be moved.
          */
         lsSubsystem(lsSubsystem&&);
@@ -68,17 +75,37 @@ class lsSubsystem {
         
         /**
          * Move operator
+         * 
          * @param A subSystem to be moved.
+         * 
          * @return A reference to *this.
          */
         lsSubsystem& operator=(lsSubsystem&&);
         
         /**
          * SubSystem initialization
+         * 
+         * @see lsDisplay::init for the parameters used.
+         * 
+         * @param inResolution
+         * The desired window resolution, in pixels.
+         * 
+         * @param isFullScreen
+         * Determine if the window should be made full-screen.
+         * 
+         * @param useVsync
+         * Determine if the display should have VSync enabled.
+         * 
          * @return True if this object was successfully initialized. False if
          * something went wrong.
          */
-        bool init();
+        bool init(
+            const math::vec2i inResolution = math::vec2i{
+                LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT
+            },
+            bool isFullScreen = false,
+            bool useVsync = true
+        );
         
         /**
          * Terminate.
@@ -105,6 +132,7 @@ class lsSubsystem {
         /**
          * Push a game state onto the state stack. All prior states will be
          * paused, allowing the topmost state to receive hardware events.
+         * 
          * @param A pointer to a gameState object allocated with "new."
          */
         bool pushGameState(lsGameState*);
@@ -118,19 +146,23 @@ class lsSubsystem {
         
         /**
          * Search for a game state in the stack and remove it if it exists.
+         * 
          * @param A pointer to the desired game state.
          */
         void popGameState(lsGameState*);
         
         /**
          * Search for a game state in the stack and remove it if it exists.
+         * 
          * @param An index of the desired game state.
          */
         void popGameState(unsigned index);
         
         /**
          * Get a game state using an index.
+         * 
          * @param index
+         * 
          * @return a pointer to the desired game state. Null if the index was
          * out of bounds.
          */
@@ -138,7 +170,9 @@ class lsSubsystem {
         
         /**
          * Get the index of a game state.
+         * 
          * @param A pointer to the desired game state.
+         * 
          * @return The index of the game state held within the game stack.
          * GAME_INVALID if the state was not found.
          */
@@ -148,7 +182,63 @@ class lsSubsystem {
          * @return The number of states managed by this system.
          */
         unsigned getGameStackSize() const { return gameStack.size(); }
+        
+        /**
+         * Get a reference to the current display object.
+         * 
+         * @return const lsDisplay&
+         */
+        const lsDisplay& getDisplay() const;
+        
+        /**
+         * Get a reference to the current display object.
+         * 
+         * @return lsDisplay&
+         */
+        lsDisplay& getDisplay();
+        
+        /**
+         * Get a reference to the system prng (pseudo-random number generator).
+         * 
+         * @return const lsRandom&
+         */
+        const lsRandom& getPrng() const;
+        
+        /**
+         * Get a reference to the system prng (pseudo-random number generator).
+         * 
+         * @return lsRandom&
+         */
+        lsRandom& getPrng();
 };
+
+/*
+ * Get a reference to the current display object.
+ */
+inline const lsDisplay& lsSubsystem::getDisplay() const {
+    return display;
+}
+
+/*
+ * Get a reference to the current display object.
+ */
+inline lsDisplay& lsSubsystem::getDisplay() {
+    return display;
+}
+
+/*
+ * Get a reference to the system prng (pseudo-random number generator).
+ */
+inline const lsRandom& lsSubsystem::getPrng() const {
+    return *prng;
+}
+
+/*
+ * Get a reference to the system prng (pseudo-random number generator).
+ */
+inline lsRandom& lsSubsystem::getPrng() {
+    return *prng;
+}
 
 #endif	/* __LS_SYSTEM_H__ */
 

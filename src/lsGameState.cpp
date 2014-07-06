@@ -10,3 +10,6 @@
 lsGameState::~lsGameState() {
 }
 
+void lsGameState::setParentSystem(lsSubsystem& pSys) {
+    pSystem = &pSys;
+}

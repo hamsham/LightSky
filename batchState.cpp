@@ -188,7 +188,7 @@ void batchState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
     // be LERPed without the need for multiplying it by the last time delta.
     // As a result, the camera's movement becomes as smooth and natural as possible.
     
-    const vec2&& fRes       = (vec2)lsGlobal::pDisplay->getResolution();
+    const vec2&& fRes       = (vec2)getParentSystem().getDisplay().getResolution();
     const vec2&& mouseDelta = vec2{(float)mouseX, (float)mouseY} / fRes;
     
     // Always lerp to the 
@@ -374,8 +374,9 @@ bool batchState::onStart() {
     
     LOG_GL_ERR();
     
-    lsGlobal::pDisplay->getRenderer().setDepthTesting(true);
-    lsGlobal::pDisplay->getRenderer().setFaceCulling(true);
+    lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
+    renderer.setDepthTesting(true);
+    renderer.setFaceCulling(true);
     
     return true;
 }

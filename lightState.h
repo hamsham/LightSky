@@ -8,7 +8,8 @@
 #ifndef LIGHT_STATE_H
 #define	LIGHT_STATE_H
 
-#include "main.h"
+#include "lightSky.h"
+
 #include "framebuffer.h"
 
 class lightState final : virtual public lsGameState {

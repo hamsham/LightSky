@@ -8,6 +8,8 @@
 #ifndef __LS_GAME_STATE_H__
 #define	__LS_GAME_STATE_H__
 
+#include "lsSystem.h"
+
 // Forward declarations
 struct SDL_WindowEvent;
 struct SDL_KeyboardEvent;
@@ -15,6 +17,7 @@ struct SDL_TextInputEvent;
 struct SDL_MouseMotionEvent;
 struct SDL_MouseButtonEvent;
 struct SDL_MouseWheelEvent;
+
 class lsSubsystem;
 
 enum ls_state_t : unsigned {
@@ -32,7 +35,10 @@ class lsGameState {
      * Event Management
      */
     private:
+        mutable lsSubsystem* pSystem; // set by an lsSubsystem upon initialization
         ls_state_t currentState = LS_GAME_STOPPED;
+        
+        void setParentSystem(lsSubsystem&);
         
     protected:
         // The hardware and OnFoo methods are called by their associated system,
@@ -63,7 +69,13 @@ class lsGameState {
         
         ls_state_t getState() const {return currentState;}
         void setState(ls_state_t s) {currentState = s;}
+        
+        lsSubsystem& getParentSystem() const;
 };
+
+inline lsSubsystem& lsGameState::getParentSystem() const {
+    return *pSystem;
+}
 
 #endif	/* __LS_GAME_STATE_H__ */
 

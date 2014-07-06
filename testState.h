@@ -8,7 +8,7 @@
 #ifndef __TESTSTATE_H__
 #define	__TESTSTATE_H__
 
-#include "main.h"
+#include "lightSky.h"
 
 class testState final : virtual public lsGameState {
     /*

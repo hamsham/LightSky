@@ -8,7 +8,7 @@
 #ifndef BATCH_STATE_H
 #define	BATCH_STATE_H
 
-#include "main.h"
+#include "lightSky.h"
 
 class batchState final : virtual public lsGameState {
     /*

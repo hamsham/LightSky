@@ -5,10 +5,13 @@
  * Created on November 15, 2013, 9:53 PM
  */
 
-#include <utility>
+#include <new> // std::nothrow
+#include <utility> // std::move
+
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 
+#include "lsGameState.h"
 #include "lsSetup.h"
 #include "lsSystem.h"
 #include "lsDisplay.h"
@@ -24,8 +27,12 @@ lsSubsystem::lsSubsystem() {
 ******************************************************************************/
 lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
     gameIsRunning{ss.gameIsRunning},
-    gameStack{std::move(ss.gameStack)}
-{}
+    gameStack{std::move(ss.gameStack)},
+    display{std::move(ss.display)},
+    prng{ss.prng}
+{
+    ss.prng = nullptr;
+}
 
 /******************************************************************************
  * SubSystem Move Operator
@@ -36,13 +43,29 @@ lsSubsystem& lsSubsystem::operator=(lsSubsystem&& ss) {
     
     gameStack = std::move(ss.gameStack);
     
+    display = std::move(ss.display);
+    
+    prng = ss.prng;
+    ss.prng = nullptr;
+    
     return *this;
 }
 
 /******************************************************************************
  * SubSystem Initialization
 ******************************************************************************/
-bool lsSubsystem::init() {
+bool lsSubsystem::init(
+    const math::vec2i inResolution,
+    bool isFullScreen,
+    bool useVsync
+) {
+    terminate();
+    
+    LS_LOG_MSG(
+        "----------------------------------------\n",
+        "Initializing a LightSky Sub-System at ", this, "\n",
+        "----------------------------------------"
+    );
     SDL_SetMainReady();
     
     /*
@@ -53,6 +76,7 @@ bool lsSubsystem::init() {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS,
         SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG
 #ifdef LS_DEBUG
@@ -60,20 +84,37 @@ bool lsSubsystem::init() {
 #endif
     );
     
-    if (SDL_Init(SDL_INIT_EVERYTHING)) {
-        LS_LOG_MSG("SDL successfully initialized.\n");
-    }
-    else {
+    if (!SDL_Init(SDL_INIT_EVERYTHING)) {
         LS_LOG_ERR(
             "Unable to initialize SDL.\n", SDL_GetError(), '\n',
             "Complain to your local programmer.\n"
         );
         return false;
     }
+    LS_LOG_MSG(
+        "Successfully initialized the game hardware interface through SDL.\n",
+        SDL_GetError(), '\n'
+    );
+    
+    if (!display.init(inResolution, isFullScreen, useVsync)) {
+        LS_LOG_ERR("Failed to initialize the display for ", this, ".\n");
+        terminate();
+        return false;
+    }
+    LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
+    
+    prng = new(std::nothrow) lsRandom(SDL_GetPerformanceCounter());
+    if (prng == nullptr) {
+        LS_LOG_ERR("Failed to initialize the random number generator for ", this, ".\n");
+        terminate();
+        return false;
+    }
+    LS_LOG_ERR("Successfully initialized the random number generator for ", this, ".\n");
     
     LS_LOG_MSG(
-        "Successfully initialized the game hardware interface.\n",
-        SDL_GetError(), '\n'
+        "----------------------------------------\n",
+        "Successfully initialized the Sub-System ", this, "\n",
+        "----------------------------------------\n"
     );
     
     return true;
@@ -100,6 +141,10 @@ void lsSubsystem::terminate() {
     }
     
     gameStack.clear();
+    display.terminate();
+    
+    delete prng;
+    prng = nullptr;
 }
 
 /******************************************************************************
@@ -112,7 +157,7 @@ void lsSubsystem::run() {
     
     while (gameIsRunning && gameStack.size()) {
         // Ensure the display is still open
-        if (!lsGlobal::pDisplay->isRunning()) {
+        if (!display.isRunning()) {
             LS_LOG_ERR("The display is no longer running!\n", SDL_GetError(), '\n');
             gameIsRunning = false;
         }
@@ -133,7 +178,7 @@ void lsSubsystem::run() {
         updateGameStates(tickTime);
         
         // Render to the screen after all events have been processed
-        lsGlobal::pDisplay->flip();
+        display.flip();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 }
@@ -194,6 +239,7 @@ bool lsSubsystem::pushGameState(lsGameState* pState) {
         gameStack.back()->setState(LS_GAME_PAUSED);
     }
     
+    pState->setParentSystem(*this);
     pState->setState(LS_GAME_RUNNING);
     gameStack.push_back(pState);
     

@@ -32,6 +32,7 @@ class lsGameState;
 class lsSubsystem {
     private:
         bool gameIsRunning = false;
+        float tickTime = 0.f;
         std::vector<lsGameState*> gameStack;
         lsDisplay display = {};
         lsRandom* prng = nullptr;
@@ -127,7 +128,7 @@ class lsSubsystem {
          * This method will prevent the game loop from running, thereby
          * returning control back to this object's caller.
          */
-        void stop() { gameIsRunning = false; }
+        void stop() { gameIsRunning = false; tickTime = 0.f; }
         
         /**
          * Push a game state onto the state stack. All prior states will be
@@ -210,6 +211,14 @@ class lsSubsystem {
          * @return lsRandom&
          */
         lsRandom& getPrng();
+        
+        /**
+         * Get the current number of ticks per frame (in milliseconds).
+         * 
+         * @return A floating point integer that represents the number of
+         * milliseconds which have passed since the last complete update.
+         */
+        float getTickTime() const;
 };
 
 /*
@@ -238,6 +247,13 @@ inline const lsRandom& lsSubsystem::getPrng() const {
  */
 inline lsRandom& lsSubsystem::getPrng() {
     return *prng;
+}
+
+/*
+ * Get the current number of ticks per frame (in milliseconds).
+ */
+inline float lsSubsystem::getTickTime() const {
+    return tickTime;
 }
 
 #endif	/* __LS_SYSTEM_H__ */

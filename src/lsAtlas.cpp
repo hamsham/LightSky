@@ -42,8 +42,8 @@ lsAtlas& lsAtlas::operator =(lsAtlas&& fa) {
 /*
  * Store a fontFile's texture data on OpenGL server memory
  */
-bool lsAtlas::load(const lsFontResource& ff) {
-    unload();
+bool lsAtlas::init(const lsFontResource& ff) {
+    terminate();
     
     // calculate the size of the atlas. Cast like crazy.
     // Dimensions is the number of entries in the x/y directions

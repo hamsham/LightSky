@@ -171,7 +171,7 @@ void lsSubsystem::run() {
         
         // Frame Time Management
         const float currTime = (float)SDL_GetTicks(); // SDL uses millisecond timing.
-        const float tickTime = currTime-prevTime;
+        tickTime = currTime-prevTime;
         prevTime = currTime;
         
         // Game state management

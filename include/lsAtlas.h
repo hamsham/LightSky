@@ -84,7 +84,7 @@ class lsAtlas {
          * Releases all data used by *this.
          */
         ~lsAtlas() {
-            unload();
+            terminate();
         }
         
         /**
@@ -116,12 +116,12 @@ class lsAtlas {
          * @return True if the data was sent to OpenGL. False if an error
          * occurred.
          */
-        bool load(const lsFontResource&);
+        bool init(const lsFontResource&);
         
         /**
          * Frees all memory used by *this.
          */
-        void unload() {
+        void terminate() {
             atlasTex.terminate();
             
             delete [] entries;

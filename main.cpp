@@ -7,6 +7,7 @@
 #include "testState.h"
 #include "batchState.h"
 #include "lightState.h"
+#include "fbState.h"
 
 bool initLs();
 void terminateLs();
@@ -36,8 +37,9 @@ int main(int argc, char** argv) {
     }
     
     if (
+        !pSystem->pushGameState(new(std::nothrow) fbState())
         //!pSystem->pushGameState(new(std::nothrow) lightState())
-        !pSystem->pushGameState(new(std::nothrow) batchState())
+        //!pSystem->pushGameState(new(std::nothrow) batchState())
         //!pSystem->pushGameState(new(std::nothrow) testState())
     ) {
         terminateLs();

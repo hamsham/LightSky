@@ -26,6 +26,13 @@ enum ls_tex_param_t : int {
     LS_TEX_MIN_FILTER   = GL_TEXTURE_MIN_FILTER,
     LS_TEX_MAG_FILTER   = GL_TEXTURE_MAG_FILTER,
 
+    LS_TEX_WRAP_S       = GL_TEXTURE_WRAP_S,
+    LS_TEX_WRAP_T       = GL_TEXTURE_WRAP_T,
+    LS_TEX_WRAP_R       = GL_TEXTURE_WRAP_R,
+    
+    LS_TEX_CLAMP        = GL_CLAMP,
+    LS_TEX_REPEAT       = GL_REPEAT,
+
     LS_LINEAR_FILTER    = GL_LINEAR,
     LS_NEAREST_FILTER   = GL_NEAREST
 };

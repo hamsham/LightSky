@@ -316,7 +316,7 @@ bool testState::onStart() {
     ||  !pImgLoader->loadFile(testImageFile)
     ||  !pTex->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
     ||  !pFontLoader->loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
-    ||  !pAtlas->load(*pFontLoader)
+    ||  !pAtlas->init(*pFontLoader)
     ||  !pText->init(*pAtlas, testTextString)
     ) {
         ret = false;

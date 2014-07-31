@@ -10,8 +10,6 @@
 
 #include "lightSky.h"
 
-#include "framebuffer.h"
-
 class lightState final : virtual public lsGameState {
     /*
      * Event Management
@@ -19,7 +17,8 @@ class lightState final : virtual public lsGameState {
     private:
         int             mouseX                  = 0;
         int             mouseY                  = 0;
-        lsShaderProgram shaderProg              = {};
+        lsShaderProgram meshProg                = {};
+        lsShaderProgram fontProg                = {};
         lsMatrixStack*  pMatStack               = nullptr;
         lsSceneManager* pScene                  = nullptr;
         bool*           pKeyStates              = nullptr;
@@ -42,6 +41,9 @@ class lightState final : virtual public lsGameState {
         bool            generateDrawModels      ();
         void            drawScene               ();
         void            terminate               ();
+        
+        std::string     getTimingStr            () const;
+        math::mat4      get2dViewport           () const;
         
     public:
         lightState();

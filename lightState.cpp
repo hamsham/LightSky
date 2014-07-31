@@ -21,12 +21,13 @@ enum {
 };
 
 #define TEST_INSTANCE_RADIUS 0.5f
+#define TEST_FONT_FILE "FiraSans-Regular.otf"
 
 /*
  * This shader uses a Logarithmic Z-Buffer, thanks to
  * http://www.gamasutra.com/blogs/BranoKemen/20090812/2725/Logarithmic_Depth_Buffer.php
  */
-static const char meshVertShader[] = R"***(
+static const char meshVSData[] = R"***(
 #version 330 core
 
 layout (location = 0) in vec3 inPos;
@@ -59,7 +60,7 @@ void main() {
 )***";
 
 // Testing Alpha Masking for font rendering.
-static const char meshFragShader[] = R"***(
+static const char meshFSData[] = R"***(
 #version 330 core
 
 in vec3 eyeDir;
@@ -71,6 +72,24 @@ out vec4 outFragCol;
 void main() {
     float lightIntensity = dot(eyeDir, normalize(nrmCoords));
     outFragCol = vec4(1.0, 1.0, 1.0, 0.0) * lightIntensity;
+}
+)***";
+
+// Testing Alpha Masking for font rendering.
+static const char fontFSData[] = R"***(
+#version 330
+
+precision lowp float;
+
+in vec2 uvCoords;
+out vec4 outFragCol;
+
+uniform sampler2DRect texSampler;
+uniform vec4 fontColor = vec4(0.0, 1.0, 1.0, 1.0);
+
+void main() {
+    float mask = texture(texSampler, uvCoords).r;
+    outFragCol = fontColor*step(0.5, mask);
 }
 )***";
 
@@ -236,7 +255,8 @@ void lightState::terminate() {
     mouseX = 0;
     mouseY = 0;
     
-    shaderProg.terminate();
+    meshProg.terminate();
+    fontProg.terminate();
     
     orientation = quat{0.f, 0.f, 0.f, 1.f};
 
@@ -290,22 +310,40 @@ bool lightState::initMemory() {
  * Create the draw models that will be used for rendering
 ******************************************************************************/
 bool lightState::generateDrawModels() {
-    lsMesh* pMesh = nullptr;
-    
     // test model 1
     lsDrawModel* const pModel = new lsDrawModel{};
+    lsMesh* pMesh = nullptr;
     if (pModel == nullptr) {
         LS_LOG_ERR("Unable to generate test draw model 1");
         return false;
     }
+    else {
+        pScene->manageModel(pModel);
+        pMesh = pScene->getMeshList()[0];
+        pModel->setMesh(pMesh);
+        pModel->setTexture(&pScene->getDefaultTexture());
+
+         // lights, camera, batch!
+        pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
+    }
     
-    pScene->manageModel(pModel);
-    pMesh = pScene->getMeshList()[0];
-    pModel->setMesh(pMesh);
-    pModel->setTexture(&pScene->getDefaultTexture());
+    // font/text model
+    lsDrawModel* const pTextModel = new lsDrawModel{};
+    lsMesh* pTextMesh = nullptr;
+    if (pTextModel == nullptr) {
+        LS_LOG_ERR("Unable to generate test draw model 1");
+        return false;
+    }
+    else {
+        pScene->manageModel(pTextModel);
+        pTextMesh = pScene->getMeshList()[1];
+        pTextModel->setMesh(pTextMesh);
+        pTextModel->setTexture(&(pScene->getAtlas(0)->getTexture()));
+
+        mat4 modelMat = {1.f};
+        pTextModel->setNumInstances(1, &modelMat);
+    }
     
-     // lights, camera, batch!
-    pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
     
     return true;
 }
@@ -321,21 +359,34 @@ bool lightState::onStart() {
     }
     
     lsMeshResource* pMeshLoader = new lsMeshResource{};
-    lsMesh* paddleMesh          = new lsMesh{};
+    lsFontResource* pFontLoader = new lsFontResource{};
+    lsMesh* pSphereMesh         = new lsMesh{};
+    lsMesh* pFontMesh           = new lsMesh{};
+    lsAtlas* pAtlas             = new lsAtlas{};
     bool ret                    = true;
     
     if (!pMeshLoader
+    || !pFontLoader
+    || !pSphereMesh
+    || !pFontMesh
+    || !pAtlas
     || !pMeshLoader->loadSphere(16)
-    || !paddleMesh->init(*pMeshLoader)
+    || !pSphereMesh->init(*pMeshLoader)
+    || !pFontLoader->loadFile(TEST_FONT_FILE)
+    || !pAtlas->init(*pFontLoader)
+    || !pFontMesh->init(*pAtlas, "Hello World")
     ) {
         ret = false;
     }
     
     if (ret) {
-        pScene->manageMesh(paddleMesh); // test data at the mesh index 0
+        pScene->manageMesh(pSphereMesh); // test data at the mesh index 0
+        pScene->manageMesh(pFontMesh);
+        pScene->manageAtlas(pAtlas);
     }
     
     delete pMeshLoader;
+    delete pFontLoader;
     
     if (!ret || !generateDrawModels()) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
@@ -349,11 +400,15 @@ bool lightState::onStart() {
     {
         vertexShader vertShader;
         fragmentShader fragShader;
+        fragmentShader fontFragShader;
         
-        vertShader.compile(meshVertShader);
-        fragShader.compile(meshFragShader);
-        shaderProg.attachShaders(vertShader, fragShader);
-        shaderProg.link();
+        vertShader.compile(meshVSData);
+        fragShader.compile(meshFSData);
+        fontFragShader.compile(fontFSData);
+        meshProg.attachShaders(vertShader, fragShader);
+        meshProg.link();
+        fontProg.attachShaders(vertShader, fontFragShader);
+        fontProg.link();
     }
     
     LOG_GL_ERR();
@@ -363,9 +418,9 @@ bool lightState::onStart() {
     pMatStack->loadMatrix(LS_VIEW_MATRIX, math::lookAt(vec3(50.f), vec3(0.f), vec3(0.f, 1.f, 0.f)));
     pMatStack->constructVp();
     
-    shaderProg.bind();
-    const GLuint mvpId = shaderProg.getUniformLocation("vpMatrix");
-    shaderProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
+    meshProg.bind();
+    const GLuint mvpId = meshProg.getUniformLocation("vpMatrix");
+    meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
     
     LOG_GL_ERR();
     
@@ -410,9 +465,9 @@ void lightState::onRun(float dt) {
     const math::mat4& viewDir = pMatStack->getMatrix(LS_VIEW_MATRIX);
     const math::vec3 camPos = vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
     
-    shaderProg.bind();
-    const GLuint mvpId = shaderProg.getUniformLocation("camPos");
-    shaderProg.setUniformValue(mvpId, camPos);
+    meshProg.bind();
+    const GLuint mvpId = meshProg.getUniformLocation("camPos");
+    meshProg.setUniformValue(mvpId, camPos);
     
     drawScene();
     
@@ -434,21 +489,65 @@ void lightState::onPause(float dt) {
 }
 
 /******************************************************************************
+ * Get a string representing the current Ms/s and F/s
+******************************************************************************/
+std::string lightState::getTimingStr() const {
+    const float tickTime = getParentSystem().getTickTime() * 0.001f;
+    return util::toString(tickTime) + "MS\n" + util::toString(1.f/tickTime) + "FPS";
+}
+
+/******************************************************************************
+ * get a 2d viewport for 2d/gui drawing
+******************************************************************************/
+mat4 lightState::get2dViewport() const {
+    return math::ortho(
+        0.f, (float)getParentSystem().getDisplay().getResolution()[0],
+        0.f, (float)getParentSystem().getDisplay().getResolution()[1],
+        -1.f, 1.f
+    );
+}
+
+
+/******************************************************************************
  * Drawing a scene
 ******************************************************************************/
 void lightState::drawScene() {
     LOG_GL_ERR();
+    const mat4& vpMat = pMatStack->getVpMatrix();
+    lsDrawModel* pModel = nullptr;
     
     // shader setup
-    shaderProg.bind();
-    const GLuint mvpId = shaderProg.getUniformLocation("vpMatrix");
-    shaderProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
+    {
+        meshProg.bind();
+        const GLuint mvpId = meshProg.getUniformLocation("vpMatrix");
+        meshProg.setUniformValue(mvpId, vpMat);
+        
+        // get the mesh to draw
+        pModel = pScene->getModelList()[0];
+        pModel->draw();
+    }
     
-    // get the mesh to draw
-    const lsDrawModel* const pModel = pScene->getModelList()[0];
-    
-    // render!
-    //pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
-   
-    pModel->draw();
+    {
+        fontProg.bind();
+        const GLuint fontMvpId = meshProg.getUniformLocation("vpMatrix");
+        const mat4 orthoProj = get2dViewport();
+        meshProg.setUniformValue(fontMvpId, orthoProj);
+        
+        const float screenResY = (float)getParentSystem().getDisplay().getResolution()[1];
+        mat4 modelMat = math::translate(mat4{1.f}, vec3{0.f, screenResY, 0.f});
+        modelMat = math::scale(modelMat, vec3{10.f});
+        
+        pScene->getMesh(1)->init(*pScene->getAtlas(0), getTimingStr());
+        pModel = pScene->getModelList()[1];
+        pModel->setNumInstances(1, &modelMat);
+        
+        lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
+        renderer.setDepthTesting(false);
+        renderer.setBlending(true);
+        renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);
+        renderer.setBlendFunctionSeparate(LS_ONE, LS_ONE_MINUS_SRC_ALPHA, LS_ONE, LS_ZERO);
+        pModel->draw();
+        renderer.setBlending(false);
+        renderer.setDepthTesting(true);
+    }
 }

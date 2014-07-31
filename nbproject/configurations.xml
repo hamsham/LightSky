@@ -11,6 +11,7 @@
       <itemPath>include/lsDisplay.h</itemPath>
       <itemPath>include/lsDrawModel.h</itemPath>
       <itemPath>include/lsFontResource.h</itemPath>
+      <itemPath>include/lsFramebuffer.h</itemPath>
       <itemPath>include/lsGameState.h</itemPath>
       <itemPath>include/lsGeometry.h</itemPath>
       <itemPath>include/lsImageResource.h</itemPath>
@@ -18,6 +19,7 @@
       <itemPath>include/lsMatrixStack.h</itemPath>
       <itemPath>include/lsMesh.h</itemPath>
       <itemPath>include/lsMeshResource.h</itemPath>
+      <itemPath>include/lsRandom.h</itemPath>
       <itemPath>include/lsRenderer.h</itemPath>
       <itemPath>include/lsResource.h</itemPath>
       <itemPath>include/lsSceneManager.h</itemPath>
@@ -43,6 +45,7 @@
       <itemPath>src/lsDisplay.cpp</itemPath>
       <itemPath>src/lsDrawModel.cpp</itemPath>
       <itemPath>src/lsFontResource.cpp</itemPath>
+      <itemPath>src/lsFramebuffer.cpp</itemPath>
       <itemPath>src/lsGameState.cpp</itemPath>
       <itemPath>src/lsGeometry.cpp</itemPath>
       <itemPath>src/lsImageResource.cpp</itemPath>
@@ -50,6 +53,7 @@
       <itemPath>src/lsMatrixStack.cpp</itemPath>
       <itemPath>src/lsMesh.cpp</itemPath>
       <itemPath>src/lsMeshResource.cpp</itemPath>
+      <itemPath>src/lsRandom.cpp</itemPath>
       <itemPath>src/lsRenderer.cpp</itemPath>
       <itemPath>src/lsResource.cpp</itemPath>
       <itemPath>src/lsSceneManager.cpp</itemPath>
@@ -76,12 +80,10 @@
     </logicalFolder>
     <itemPath>batchState.cpp</itemPath>
     <itemPath>batchState.h</itemPath>
-    <itemPath>framebuffer.cpp</itemPath>
-    <itemPath>framebuffer.h</itemPath>
+    <itemPath>fbState.cpp</itemPath>
+    <itemPath>fbState.h</itemPath>
     <itemPath>lightState.cpp</itemPath>
     <itemPath>lightState.h</itemPath>
-    <itemPath>src/lsRandom.cpp</itemPath>
-    <itemPath>include/lsRandom.h</itemPath>
     <itemPath>main.cpp</itemPath>
     <itemPath>testState.cpp</itemPath>
     <itemPath>testState.h</itemPath>
@@ -161,9 +163,9 @@
       </item>
       <item path="batchState.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="framebuffer.cpp" ex="false" tool="1" flavor2="0">
+      <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="framebuffer.h" ex="false" tool="3" flavor2="0">
+      <item path="fbState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -182,6 +184,8 @@
       <item path="include/lsDrawModel.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsFontResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsFramebuffer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsGameState.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -242,6 +246,8 @@
       <item path="src/lsDrawModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsFontResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsFramebuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsGameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -363,9 +369,9 @@
       </item>
       <item path="batchState.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="framebuffer.cpp" ex="false" tool="1" flavor2="0">
+      <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="framebuffer.h" ex="false" tool="3" flavor2="0">
+      <item path="fbState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -384,6 +390,8 @@
       <item path="include/lsDrawModel.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsFontResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsFramebuffer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsGameState.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -444,6 +452,8 @@
       <item path="src/lsDrawModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsFontResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsFramebuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsGameState.cpp" ex="false" tool="1" flavor2="0">
       </item>

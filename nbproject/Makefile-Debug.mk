@@ -36,7 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/batchState.o \
-	${OBJECTDIR}/framebuffer.o \
+	${OBJECTDIR}/fbState.o \
 	${OBJECTDIR}/lightState.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/lsAtlas.o \
@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lsDisplay.o \
 	${OBJECTDIR}/src/lsDrawModel.o \
 	${OBJECTDIR}/src/lsFontResource.o \
+	${OBJECTDIR}/src/lsFramebuffer.o \
 	${OBJECTDIR}/src/lsGameState.o \
 	${OBJECTDIR}/src/lsGeometry.o \
 	${OBJECTDIR}/src/lsImageResource.o \
@@ -100,10 +101,10 @@ ${OBJECTDIR}/batchState.o: batchState.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/batchState.o batchState.cpp
 
-${OBJECTDIR}/framebuffer.o: framebuffer.cpp 
+${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/framebuffer.o framebuffer.cpp
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
 
 ${OBJECTDIR}/lightState.o: lightState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -154,6 +155,11 @@ ${OBJECTDIR}/src/lsFontResource.o: src/lsFontResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsFontResource.o src/lsFontResource.cpp
+
+${OBJECTDIR}/src/lsFramebuffer.o: src/lsFramebuffer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsFramebuffer.o src/lsFramebuffer.cpp
 
 ${OBJECTDIR}/src/lsGameState.o: src/lsGameState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

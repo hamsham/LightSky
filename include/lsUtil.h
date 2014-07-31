@@ -10,9 +10,34 @@
 
 #include <utility>
 #include <vector>
+#include <string>
+#include <sstream>
 
 namespace util {
 
+///////////////////////////////////////////////////////////////////////////////
+// LightSky Utility functions
+///////////////////////////////////////////////////////////////////////////////
+/**
+ * toString
+ * MinGW Doesn't currently have std::to_string()
+ * 
+ * @param T
+ * A generic type that can be printed to an std::ostream
+ * 
+ * @return std::string
+ * A string-representation of the input parameter
+ */
+template <typename T>
+std::string toString(const T& data) {
+    std::ostringstream oss;
+    oss << data;
+    return oss.str();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// LightSky Vector Type
+///////////////////////////////////////////////////////////////////////////////
 /**
  * Simplified dynamic array interface that will be used to standardize a vector
  * type within LS.

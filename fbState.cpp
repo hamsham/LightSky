@@ -15,15 +15,23 @@ using math::mat4;
 using math::quat;
 
 enum {
-    TEST_MAX_SCENE_OBJECTS = 50,
-    TEST_MAX_SCENE_INSTANCES = 50*50*50,
+    TEST_MAX_SCENE_OBJECTS = 20,
+    TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS,
     TEST_MAX_KEYBORD_STATES = 512,
     TEST_FRAMEBUFFER_WIDTH = 320,
     TEST_FRAMEBUFFER_HEIGHT = 240
 };
 
+#define TEST_PROJECTION_FOV 60.f
+#define TEST_PROJECTION_NEAR 0.01f
+#define TEST_PROJECTION_FAR 10.f
+
 #define TEST_INSTANCE_RADIUS 0.5f
+
 #define TEST_FONT_FILE "FiraSans-Regular.otf"
+
+#define VP_MATRIX_UNIFORM "vpMatrix"
+#define CAMERA_POSITION_UNIFORM "camPos"
 
 /*
  * This shader uses a Logarithmic Z-Buffer, thanks to
@@ -61,7 +69,9 @@ void main() {
 }
 )***";
 
-// Testing Alpha Masking for font rendering.
+/*
+ * Testing Alpha Masking for font rendering.
+ */
 static const char meshFSData[] = R"***(
 #version 330 core
 
@@ -77,7 +87,9 @@ void main() {
 }
 )***";
 
-// Testing Alpha Masking for font rendering.
+/*
+ * Testing Alpha Masking for font rendering.
+ */
 static const char fontFSData[] = R"***(
 #version 330
 
@@ -101,6 +113,10 @@ void main() {
 fbState::fbState() {
     SDL_StopTextInput();
     SDL_SetRelativeMouseMode(SDL_TRUE);
+}
+
+fbState::~fbState() {
+    terminate();
 }
 
 /******************************************************************************
@@ -137,9 +153,13 @@ void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
     if (key == SDLK_SPACE) {
         if (getState() == LS_GAME_RUNNING) {
             setState(LS_GAME_PAUSED);
+            
+            // testing mouse capture for framebuffer/window resizing
+            SDL_SetRelativeMouseMode(SDL_FALSE);
         }
         else  {
             setState(LS_GAME_RUNNING);
+            SDL_SetRelativeMouseMode(SDL_TRUE);
         }
     }
     
@@ -191,6 +211,10 @@ void fbState::onWindowEvent(const SDL_WindowEvent* pEvent) {
         case SDL_WINDOWEVENT_CLOSE:
             this->setState(LS_GAME_STOPPED);
             break;
+        case SDL_WINDOWEVENT_RESIZED:
+            resetGlViewport();
+            pMatStack->loadMatrix(LS_PROJECTION_MATRIX, get3dViewport());
+            break;
         default:
             break;
     }
@@ -201,7 +225,9 @@ void fbState::onWindowEvent(const SDL_WindowEvent* pEvent) {
 ******************************************************************************/
 void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
-    if (mouseX == e->xrel && mouseY == e->yrel) {
+    if (this->getState() == LS_GAME_PAUSED
+    || (mouseX == e->xrel && mouseY == e->yrel)
+    ) {
         // I would rather quit the function than have unnecessary LERPs and
         // quaternion multiplications.
         return;
@@ -216,7 +242,7 @@ void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
     // be LERPed without the need for multiplying it by the last time delta.
     // As a result, the camera's movement becomes as smooth and natural as possible.
     
-    const vec2&& fRes       = (vec2)getParentSystem().getDisplay().getResolution();
+    const vec2&& fRes = (vec2)getParentSystem().getDisplay().getResolution();
     const vec2&& mouseDelta = vec2{(float)mouseX, (float)mouseY} / fRes;
     
     // Always lerp to the 
@@ -296,7 +322,82 @@ bool fbState::initMemory() {
         return false;
     }
     
-    // initialize the ball translations and velocities
+    return true;
+}
+
+/******************************************************************************
+ * Initialize resources from files
+******************************************************************************/
+bool fbState::initFileData() {
+    
+    lsMeshResource* pMeshLoader = new lsMeshResource{};
+    lsFontResource* pFontLoader = new lsFontResource{};
+    lsMesh* pSphereMesh         = new lsMesh{};
+    lsMesh* pFontMesh           = new lsMesh{};
+    lsAtlas* pAtlas             = new lsAtlas{};
+    lsTexture* fbDepthTex       = new lsTexture{};
+    lsTexture* fbColorTex       = new lsTexture{};
+    bool ret                    = true;
+    
+    if (!pMeshLoader
+    || !pFontLoader
+    || !pSphereMesh
+    || !pFontMesh
+    || !pAtlas
+    || !pMeshLoader->loadSphere(16)
+    || !pSphereMesh->init(*pMeshLoader)
+    || !pFontLoader->loadFile(TEST_FONT_FILE)
+    || !pAtlas->init(*pFontLoader)
+    || !pFontMesh->init(*pAtlas, "Hello World")
+    || !fbDepthTex->init(0, GL_DEPTH_COMPONENT, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr)
+    || !fbColorTex->init(0, GL_RGB, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, GL_BGR, GL_UNSIGNED_BYTE, nullptr)
+    ) {
+        ret = false;
+    }
+    else {
+        pScene->manageMesh(pSphereMesh); // test data at the mesh index 0
+        pScene->manageMesh(pFontMesh);
+        pScene->manageAtlas(pAtlas);
+        pScene->manageTexture(fbDepthTex);
+        pScene->manageTexture(fbColorTex);
+    }
+    
+    delete pMeshLoader;
+    delete pFontLoader;
+    
+    return ret;
+}
+
+/******************************************************************************
+ * Initialize the model, view, and projection matrices
+******************************************************************************/
+bool fbState::initMatrices() {
+    // setup the matrix stacks
+    pMatStack->loadMatrix(
+        LS_PROJECTION_MATRIX,
+        math::perspective(
+            TEST_PROJECTION_FOV, 4.f/3.f,
+            TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
+        )
+    );
+    pMatStack->loadMatrix(
+        LS_VIEW_MATRIX,
+        math::lookAt(vec3((float)TEST_MAX_SCENE_OBJECTS), vec3(0.f), vec3(0.f, 1.f, 0.f))
+    );
+    pMatStack->constructVp();
+    
+    meshProg.bind();
+    const GLint mvpId = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
+    LOG_GL_ERR();
+    
+    if (mvpId == -1) {
+        return false;
+    }
+    else {
+        meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
+    }
+    
+    // initialize the test mesh translations
     unsigned matIter = 0;
     const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
     for (int i = -numObjects; i < numObjects; ++i) {
@@ -325,15 +426,20 @@ bool fbState::initShaders() {
     ) {
         return false;
     }
+    else {
+        LOG_GL_ERR();
+    }
     
-    LOG_GL_ERR();
-    
-    meshProg.attachShaders(vertShader, fragShader);
-    meshProg.link();
-    fontProg.attachShaders(vertShader, fontFragShader);
-    fontProg.link();
-    
-    LOG_GL_ERR();
+    if (!meshProg.attachShaders(vertShader, fragShader)
+    ||  !meshProg.link()
+    ||  !fontProg.attachShaders(vertShader, fontFragShader)
+    ||  !fontProg.link()
+    ) {
+        return false;
+    }
+    else {
+        LOG_GL_ERR();
+    }
     
     return true;
 }
@@ -344,14 +450,13 @@ bool fbState::initShaders() {
 bool fbState::initDrawModels() {
     // test model 1
     lsDrawModel* const pModel = new lsDrawModel{};
-    lsMesh* pMesh = nullptr;
     if (pModel == nullptr) {
         LS_LOG_ERR("Unable to generate test draw model 1");
         return false;
     }
     else {
         pScene->manageModel(pModel);
-        pMesh = pScene->getMeshList()[0];
+        lsMesh* pMesh = pScene->getMeshList()[0];
         pModel->setMesh(pMesh);
         pModel->setTexture(&pScene->getDefaultTexture());
 
@@ -361,14 +466,13 @@ bool fbState::initDrawModels() {
     
     // font/text model
     lsDrawModel* const pTextModel = new lsDrawModel{};
-    lsMesh* pTextMesh = nullptr;
     if (pTextModel == nullptr) {
-        LS_LOG_ERR("Unable to generate test draw model 1");
+        LS_LOG_ERR("Unable to generate test draw model 2");
         return false;
     }
     else {
         pScene->manageModel(pTextModel);
-        pTextMesh = pScene->getMeshList()[1];
+        lsMesh* pTextMesh = pScene->getMeshList()[1];
         pTextModel->setMesh(pTextMesh);
         pTextModel->setTexture(&(pScene->getAtlas(0)->getTexture()));
 
@@ -382,7 +486,7 @@ bool fbState::initDrawModels() {
 }
 
 /******************************************************************************
- * Initialize the framebuffesr
+ * Initialize the framebuffers
 ******************************************************************************/
 bool fbState::initFramebuffers() {
     lsTexture* const pDepthTex = pScene->getTexture(0);
@@ -423,6 +527,15 @@ bool fbState::initFramebuffers() {
 }
 
 /******************************************************************************
+ * Post-Initialization renderer parameters
+******************************************************************************/
+void fbState::setRendererParams() {
+    lsRenderer& pRenderer = getParentSystem().getDisplay().getRenderer();
+    pRenderer.setDepthTesting(true);
+    pRenderer.setFaceCulling(true);
+}
+
+/******************************************************************************
  * Starting state
 ******************************************************************************/
 bool fbState::onStart() {
@@ -432,64 +545,19 @@ bool fbState::onStart() {
         return false;
     }
     
-    lsMeshResource* pMeshLoader = new lsMeshResource{};
-    lsFontResource* pFontLoader = new lsFontResource{};
-    lsMesh* pSphereMesh         = new lsMesh{};
-    lsMesh* pFontMesh           = new lsMesh{};
-    lsAtlas* pAtlas             = new lsAtlas{};
-    lsTexture* fbDepthTex       = new lsTexture{};
-    lsTexture* fbColorTex       = new lsTexture{};
-    bool ret                    = true;
-    
-    if (!pMeshLoader
-    || !pFontLoader
-    || !pSphereMesh
-    || !pFontMesh
-    || !pAtlas
-    || !pMeshLoader->loadSphere(16)
-    || !pSphereMesh->init(*pMeshLoader)
-    || !pFontLoader->loadFile(TEST_FONT_FILE)
-    || !pAtlas->init(*pFontLoader)
-    || !pFontMesh->init(*pAtlas, "Hello World")
-    || !fbDepthTex->init(0, GL_DEPTH_COMPONENT, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr)
-    || !fbColorTex->init(0, GL_RGB, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, GL_BGR, GL_UNSIGNED_BYTE, nullptr)
+    if (!initFileData()
+    ||  !initShaders()
+    ||  !initFramebuffers()
+    ||  !initMatrices()
+    ||  !initDrawModels()
     ) {
-        ret = false;
-    }
-    
-    if (ret) {
-        pScene->manageMesh(pSphereMesh); // test data at the mesh index 0
-        pScene->manageMesh(pFontMesh);
-        pScene->manageAtlas(pAtlas);
-        pScene->manageTexture(fbDepthTex);
-        pScene->manageTexture(fbColorTex);
-    }
-    
-    delete pMeshLoader;
-    delete pFontLoader;
-    
-    if (!ret || !initDrawModels() || !initFramebuffers() || !initShaders()) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
         terminate();
         return false;
     }
-    
-    LOG_GL_ERR();
-
-    // Initialize the matrix stacks
-    pMatStack->loadMatrix(LS_PROJECTION_MATRIX, math::perspective(60.f, 4.f/3.f, 0.01f, 10.f));
-    pMatStack->loadMatrix(LS_VIEW_MATRIX, math::lookAt(vec3(50.f), vec3(0.f), vec3(0.f, 1.f, 0.f)));
-    pMatStack->constructVp();
-    
-    meshProg.bind();
-    const GLuint mvpId = meshProg.getUniformLocation("vpMatrix");
-    meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
-    
-    LOG_GL_ERR();
-    
-    lsRenderer& pRenderer = getParentSystem().getDisplay().getRenderer();
-    pRenderer.setDepthTesting(true);
-    pRenderer.setFaceCulling(true);
+    else {
+        setRendererParams();
+    }
     
     return true;
 }
@@ -516,7 +584,7 @@ void fbState::onRun(float dt) {
     const math::vec3 camPos = vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
     
     meshProg.bind();
-    const GLuint mvpId = meshProg.getUniformLocation("camPos");
+    const GLuint mvpId = meshProg.getUniformLocation(CAMERA_POSITION_UNIFORM);
     meshProg.setUniformValue(mvpId, camPos);
     
     drawScene();
@@ -528,8 +596,7 @@ void fbState::onRun(float dt) {
  * Pausing state
 ******************************************************************************/
 void fbState::onPause(float dt) {
-    updateKeyStates(dt);
-    
+    (void)dt;
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
@@ -550,77 +617,123 @@ std::string fbState::getTimingStr() const {
  * get a 2d viewport for 2d/gui drawing
 ******************************************************************************/
 mat4 fbState::get2dViewport() const {
+    const vec2&& displayRes = (vec2)getParentSystem().getDisplay().getResolution();
     return math::ortho(
-        0.f, (float)getParentSystem().getDisplay().getResolution()[0],
-        0.f, (float)getParentSystem().getDisplay().getResolution()[1],
+        0.f, displayRes[0],
+        0.f, displayRes[1],
         -1.f, 1.f
     );
 }
 
+/******************************************************************************
+ * get a 2d viewport for 2d/gui drawing
+******************************************************************************/
+mat4 fbState::get3dViewport() const {
+    const vec2i displayRes = getParentSystem().getDisplay().getResolution();
+    return math::perspective(
+        TEST_PROJECTION_FOV, (float)displayRes[0]/displayRes[1],
+        TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
+    );
+}
+
+/******************************************************************************
+ * Update the renderer's viewport with the current window resolution
+******************************************************************************/
+void fbState::resetGlViewport() {
+    lsDisplay& disp = getParentSystem().getDisplay();
+    lsRenderer& rend = disp.getRenderer();
+    
+    rend.setViewport(vec2i{0}, disp.getResolution());
+}
 
 /******************************************************************************
  * Drawing a scene
 ******************************************************************************/
 void fbState::drawScene() {
     LOG_GL_ERR();
-    const mat4& vpMat = pMatStack->getVpMatrix();
-    lsDrawModel* pModel = nullptr;
     
-    // shader setup
-    {
-        lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
-        renderer.setViewport(vec2i{0,0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT});
-        
-        static ls_fbo_attach_t fboDrawAttachments[] = {LS_COLOR_ATTACHMENT0};
-        
-        testFb.setAccessType(LS_DRAW_FRAMEBUFFER);
-        testFb.bind();
-        testFb.setDrawTargets(1, fboDrawAttachments);
-        testFb.clear((ls_fbo_mask_t)(LS_DEPTH_MASK | LS_COLOR_MASK));
-        
-        meshProg.bind();
-        const GLuint mvpId = meshProg.getUniformLocation("vpMatrix");
-        meshProg.setUniformValue(mvpId, vpMat);
-        
-        // get the mesh to draw
-        pModel = pScene->getModelList()[0];
-        pModel->draw();
-        
-        testFb.unbind(); // restore draw operations to the default framebuffer
-        testFb.setAccessType(LS_READ_FRAMEBUFFER);
-        testFb.bind();
-        
-        // blit the rendered framebuffer to the screen
-        testFb.blit(
-            vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, vec2i{0,0},
-            this->getParentSystem().getDisplay().getResolution(), vec2i{0,0},
-            LS_COLOR_MASK
-        );
-        testFb.unbind();
-        renderer.setViewport(vec2i{0,0}, getParentSystem().getDisplay().getResolution());
-    }
+    drawMeshes();
+    drawStrings();
+}
+
+/******************************************************************************
+ * Drawing the scene's opaque meshes
+******************************************************************************/
+void fbState::drawMeshes() {
+    // setup a viewport for a custom framebuffer
+    lsDisplay& display = getParentSystem().getDisplay();
+    lsRenderer& renderer = display.getRenderer();
+    renderer.setViewport(vec2i{0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT});
+
+    // use render to the framebuffer's color attachment
+    static const ls_fbo_attach_t fboDrawAttachments[] = {LS_COLOR_ATTACHMENT0};
+
+    // setup the framebuffer for draw operations
+    testFb.setAccessType(LS_DRAW_FRAMEBUFFER);
+    testFb.bind();
+    testFb.setDrawTargets(1, fboDrawAttachments);
+    testFb.clear((ls_fbo_mask_t)(LS_DEPTH_MASK | LS_COLOR_MASK));
     
-    {
-        fontProg.bind();
-        const GLuint fontMvpId = meshProg.getUniformLocation("vpMatrix");
-        const mat4 orthoProj = get2dViewport();
-        meshProg.setUniformValue(fontMvpId, orthoProj);
-        
-        const float screenResY = (float)getParentSystem().getDisplay().getResolution()[1];
-        mat4 modelMat = math::translate(mat4{1.f}, vec3{0.f, screenResY, 0.f});
-        modelMat = math::scale(modelMat, vec3{10.f});
-        
-        pScene->getMesh(1)->init(*pScene->getAtlas(0), getTimingStr());
-        pModel = pScene->getModelList()[1];
-        pModel->setNumInstances(1, &modelMat);
-        
-        lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
-        renderer.setDepthTesting(false);
-        renderer.setBlending(true);
-        renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);
-        renderer.setBlendFunctionSeparate(LS_ONE, LS_ONE_MINUS_SRC_ALPHA, LS_ONE, LS_ZERO);
-        pModel->draw();
-        renderer.setBlending(false);
-        renderer.setDepthTesting(true);
-    }
+    // setup a view matrix for the opaque mesh shader
+    meshProg.bind();
+    const GLuint mvpId = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
+    meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
+    
+    // draw a test mesh
+    lsDrawModel* const pTestModel = pScene->getModelList()[0];
+    pTestModel->draw();
+    
+    // restore draw operations to the default GL framebuffer
+    testFb.unbind();
+    
+    // setup the custom framebuffer for read operations
+    testFb.setAccessType(LS_READ_FRAMEBUFFER);
+    testFb.bind();
+
+    // blit the custom framebuffer to OpenGL's backbuffer
+    testFb.blit(
+        vec2i{0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT},
+        vec2i{0}, this->getParentSystem().getDisplay().getResolution(),
+        LS_COLOR_MASK
+    );
+    
+    // restore framebuffer reads to OpenGL's backbuffer
+    testFb.unbind();
+    
+    // reset the GL viewport back to normal
+    resetGlViewport();
+}
+
+/******************************************************************************
+ * Drawing the scene's string models
+******************************************************************************/
+void fbState::drawStrings() {
+    fontProg.bind();
+    const GLint fontMvpId   = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
+    const mat4&& orthoProj  = get2dViewport();
+    meshProg.setUniformValue(fontMvpId, orthoProj);
+    
+    // setup some UI parameters
+    const float screenResY  = (float)getParentSystem().getDisplay().getResolution()[1];
+    mat4 modelMat           = math::translate(mat4{1.f}, vec3{0.f, screenResY, 0.f});
+    modelMat                = math::scale(modelMat, vec3{10.f});
+    
+    // Regenerate a string mesh using the frame's timing information.
+    lsAtlas* const pStringAtlas     = pScene->getAtlas(0);
+    lsMesh* const pStringMesh       = pScene->getMesh(1);
+    pStringMesh->init(*pStringAtlas, getTimingStr());
+    
+    // model 1 has the string mesh already bound
+    lsDrawModel* const pStringModel = pScene->getModelList()[1];
+    pStringModel->setNumInstances(1, &modelMat);
+
+    // setup parameters to draw a transparent mesh as a screen overlay/UI
+    lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
+    renderer.setDepthTesting(false);
+    renderer.setBlending(true);
+    renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);
+    renderer.setBlendFunctionSeparate(LS_ONE, LS_ONE_MINUS_SRC_ALPHA, LS_ONE, LS_ZERO);
+    pStringModel->draw();
+    renderer.setBlending(false);
+    renderer.setDepthTesting(true);
 }

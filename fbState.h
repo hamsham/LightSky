@@ -40,32 +40,39 @@ class fbState final : virtual public lsGameState {
         void            updateKeyStates         (float);
         
         bool            initMemory              ();
+        bool            initFileData            ();
         bool            initShaders             ();
+        bool            initMatrices            ();
         bool            initDrawModels          ();
         bool            initFramebuffers        ();
+        void            setRendererParams       ();
         
-        void            drawScene               ();
         void            terminate               ();
         
         std::string     getTimingStr            () const;
+        math::mat4      get3dViewport           () const;
         math::mat4      get2dViewport           () const;
         
+        void            resetGlViewport          ();
+        
+        void            drawScene               ();
+        void            drawMeshes              ();
+        void            drawStrings             ();
+        
     public:
-        fbState();
-        fbState(const fbState&) = delete;
-        fbState(fbState&&) = delete;
+        fbState         ();
+        fbState         (const fbState&)        = delete;
+        fbState         (fbState&&)             = delete;
         
-        ~fbState() {
-            terminate();
-        }
+        ~fbState        ();
         
-        fbState& operator=(const fbState&) = delete;
-        fbState& operator=(fbState&&) = delete;
+        fbState&        operator=               (const fbState&) = delete;
+        fbState&        operator=               (fbState&&) = delete;
         
-        bool onStart() override;
-        void onRun(float) override;
-        void onPause(float) override;
-        void onStop() override;
+        bool            onStart                 () override;
+        void            onRun                   (float) override;
+        void            onPause                 (float) override;
+        void            onStop                  () override;
 };
 
 #endif	/* FRAMEBUFFER_STATE_H */

@@ -43,6 +43,7 @@ bool lsDisplay::init(const math::vec2i inResolution, bool isFullScreen, bool vsy
         SDL_WINDOW_SHOWN        |
         SDL_WINDOW_INPUT_FOCUS  |
         SDL_WINDOW_MOUSE_FOCUS  |
+        SDL_WINDOW_RESIZABLE    |
         0;
     
     if (isFullScreen) {

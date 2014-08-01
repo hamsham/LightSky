@@ -84,7 +84,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2 ../hamlibs/HamLibs_NetBeans/../bin/WIN32/libhamlibs.a -lSDL2 -lSDL2main
+LDLIBSOPTIONS=-lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2 -lSDL2main ../hamlibs/HamLibs_NetBeans/../bin/WIN32/libhamlibs.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

@@ -130,31 +130,30 @@
             <linkerLibLibItem>FreeImage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
-                            CN="Release_Win32"
-                            AC="false"
+                            CN="Release"
+                            AC="true"
                             BL="false"
                             WD="../hamlibs/HamLibs_NetBeans"
-                            BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
-                            CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
                             OP="../bin/WIN32/libhamlibs.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                         CT="3"
-                        CN="Release_Win32"
-                        AC="false"
+                        CN="Release"
+                        AC="true"
                         BL="false"
                         WD="../hamlibs/HamLibs_NetBeans"
-                        BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
-                        CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
                         OP="../bin/WIN32/libhamlibs.a">
           </makeArtifact>
         </requiredProjects>
@@ -336,31 +335,30 @@
             <linkerLibLibItem>FreeImage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
-                            CN="Release_Win32"
-                            AC="false"
+                            CN="Release"
+                            AC="true"
                             BL="false"
                             WD="../hamlibs/HamLibs_NetBeans"
-                            BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
-                            CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
                             OP="../bin/WIN32/libhamlibs.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                         CT="3"
-                        CN="Release_Win32"
-                        AC="false"
+                        CN="Release"
+                        AC="true"
                         BL="false"
                         WD="../hamlibs/HamLibs_NetBeans"
-                        BC="${MAKE} -j12 -f Makefile CONF=Release_Win32"
-                        CC="${MAKE} -j12 -f Makefile CONF=Release_Win32 clean"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
                         OP="../bin/WIN32/libhamlibs.a">
           </makeArtifact>
         </requiredProjects>

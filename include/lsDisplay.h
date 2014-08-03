@@ -8,11 +8,7 @@
 #ifndef __LS_DISPLAY_H__
 #define	__LS_DISPLAY_H__
 
-#include <SDL2/SDL_video.h>
-#include <SDL2/SDL_render.h>
-
 #include "lsSetup.h"
-#include "lsRenderer.h"
 
 struct SDL_Window;
 
@@ -23,8 +19,6 @@ struct SDL_Window;
  * drawing in OpenGL.
  */
 class lsDisplay {
-    friend class lsRenderer;
-    
     private:
         /**
          * Internal handle to the device context created by SDL.
@@ -32,15 +26,15 @@ class lsDisplay {
         SDL_Window* pWindow = nullptr;
         
         /**
-         * Internal OpenGL 3.3 renderer.
+         * Keep track of whether a native hardware handle is being used.
          */
-        lsRenderer renderContext = {};
+        bool windowIsNative = false;
 
     public:
         /**
          * Constructor
          */
-        lsDisplay() {}
+        lsDisplay();
         
         /**
          * Copy Constructor - DELETED
@@ -61,7 +55,7 @@ class lsDisplay {
          * 
          * Closes the window and frees all resources used by *this.
          */
-        ~lsDisplay() {terminate();}
+        ~lsDisplay();
         
         /**
          * Copy Operator - DELETED
@@ -78,6 +72,21 @@ class lsDisplay {
         lsDisplay& operator=(lsDisplay&&);
         
         /**
+         * Create an lsDisplay object from a native OS hardware handle.
+         * 
+         * @param hwnd
+         * A pointer to the operating systen's native window type.
+         * 
+         * @param isFullScreen
+         * Determine if the window should be made full-screen.
+         * 
+         * @return bool
+         * TRUE if a window could be successfully created, or
+         * FALSE if otherwise.
+         */
+        bool init(void* const hwnd);
+        
+        /**
          * Initialize/Open a window within the OS.
          * 
          * @param inResolution
@@ -86,18 +95,9 @@ class lsDisplay {
          * @param isFullScreen
          * Determine if the window should be made full-screen.
          * 
-         * @param useVsync
-         * Determine if the display should have VSync enabled.
-         * 
          * @return TRUE if the display initialized properly, FALSE is not.
          */
-        bool init(
-            const math::vec2i inResolution = math::vec2i{
-                LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT
-            },
-            bool isFullScreen = false,
-            bool useVsync = true
-        );
+        bool init(const math::vec2i inResolution, bool isFullScreen = false);
         
         /**
          * Close the window and free all memory/resources used by *this.
@@ -150,48 +150,18 @@ class lsDisplay {
         SDL_Window* getWindow() const;
         
         /**
-         * Get a reference to the object responsible for managing the OpenGL
-         * render context.
+         * Determine if the current display is using a native window handle.
          * 
-         * @return lsRenderer&
+         * @return bool
+         * TRUE if this display was created using a previously existing OS
+         * window handle, or FALSE if the display was created using an internal
+         * method.
          */
-        lsRenderer& getRenderer();
-        
-        /**
-         * Get a pointer to the SDL_GLContext that is used by the active
-         * renderer.
-         * 
-         * @return A void pointer that can be safely casted to a SDL_GLContext.
-         */
-        void* getGlContext() const;
-        
-        /**
-         * Activate the render context used in this window.
-         */
-        void makeContextCurrent() const;
-        
-        /**
-         * Enable/Disable VSync
-         * 
-         * @param TRUE if vsync is desired, FALSE to disable it.
-         */
-        void setVsync(bool vsync);
-        
-        /**
-         * Determine if VSync is enabled or disabled within the current window.
-         * 
-         * @return TRUE if VSync is enabled, FALSE if not.
-         */
-        bool getVsync() const;
-        
-        /**
-         * Swap the current display's front and back buffers.
-         */
-        void flip();
+        bool usingNativeWindow() const;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-// Inlined Display Method
+// Inlined Display Methods
 ///////////////////////////////////////////////////////////////////////////////
 /*
  * Determine if this object holds a handle to an open window.
@@ -201,56 +171,12 @@ inline bool lsDisplay::isRunning() const {
 }
 
 /*
- * Get a handle to the SDL_Window responsible for the window that this
- * object references.
+ * Determine if the current display is using a native window handle.
  */
-inline SDL_Window* lsDisplay::getWindow() const {
-    return pWindow;
+inline bool lsDisplay::usingNativeWindow() const {
+    return windowIsNative;
 }
 
-/*
- * Get a reference to the object responsible for managing the OpenGL
- * render context.
- */
-inline lsRenderer& lsDisplay::getRenderer() {
-    return renderContext;
-}
-
-/*
- * Get a pointer to the SDL_GLContext that is used by the active
- * renderer.
- */
-inline void* lsDisplay::getGlContext() const {
-    return renderContext.pContext;
-}
-
-/*
- * Activate the render context used in this window.
- */
-inline void lsDisplay::makeContextCurrent() const {
-    SDL_GL_MakeCurrent(pWindow, renderContext.pContext);
-}
-
-/*
- * Enable/Disable VSync
- */
-inline void lsDisplay::setVsync(bool vsync) {
-    SDL_GL_SetSwapInterval((int)vsync);
-}
-
-/*
- * Determine if VSync is enabled or disabled within the current window.
- */
-inline bool lsDisplay::getVsync() const {
-    return SDL_GL_GetSwapInterval() != 0;
-}
-
-/*
- * Swap the current display's front and back buffers.
- */
-inline void lsDisplay::flip() {
-    SDL_GL_SwapWindow(pWindow);
-}
 
 #endif	/* __LS_DISPLAY_H__ */
 

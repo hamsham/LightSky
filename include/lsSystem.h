@@ -13,6 +13,7 @@
 
 #include "lsSetup.h"
 #include "lsDisplay.h"
+#include "lsRenderer.h"
 #include "lsRandom.h"
 
 /*
@@ -35,8 +36,10 @@ class lsSubsystem {
         float tickTime = 0.f;
         std::vector<lsGameState*> gameStack;
         lsDisplay display = {};
+        lsRenderer renderer = {};
         lsRandom* prng = nullptr;
         
+        bool initSdlParams();
         void passHardwareEvents(const SDL_Event*, lsGameState*);
         void updateGameStates(float tickTime);
     
@@ -65,7 +68,7 @@ class lsSubsystem {
          * The subsystem destructor will call "terminate()," releasing the memory
          * of all gameState objects held within the gameStack.
          */
-        ~lsSubsystem() { terminate(); }
+        ~lsSubsystem();
         
         /**
          * Copy operator
@@ -82,6 +85,21 @@ class lsSubsystem {
          * @return A reference to *this.
          */
         lsSubsystem& operator=(lsSubsystem&&);
+        
+        /**
+         * Initialize Light Sky using a preexisting OpenGL-3.3 compatible
+         * display from the underlying OS.
+         * 
+         * @param hwnd
+         * A pointer to native OS window that can use OpenGL 3.3
+         * 
+         * @param useVsync
+         * Attempt to enable vsync while attaching to the display.
+         * 
+         * @return True if this object was successfully initialized. False if
+         * something went wrong.
+         */
+        bool init(void* const hwnd, bool useVsync);
         
         /**
          * SubSystem initialization
@@ -101,9 +119,7 @@ class lsSubsystem {
          * something went wrong.
          */
         bool init(
-            const math::vec2i inResolution = math::vec2i{
-                LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT
-            },
+            const math::vec2i inResolution,
             bool isFullScreen = false,
             bool useVsync = true
         );
@@ -128,7 +144,7 @@ class lsSubsystem {
          * This method will prevent the game loop from running, thereby
          * returning control back to this object's caller.
          */
-        void stop() { gameIsRunning = false; tickTime = 0.f; }
+        void stop();
         
         /**
          * Push a game state onto the state stack. All prior states will be
@@ -182,7 +198,7 @@ class lsSubsystem {
         /**
          * @return The number of states managed by this system.
          */
-        unsigned getGameStackSize() const { return gameStack.size(); }
+        unsigned getGameStackSize() const;
         
         /**
          * Get a reference to the current display object.
@@ -197,6 +213,22 @@ class lsSubsystem {
          * @return lsDisplay&
          */
         lsDisplay& getDisplay();
+        
+        /**
+         * Get a constant reference to the object responsible for managing the
+         * OpenGL render context.
+         * 
+         * @return lsRenderer&
+         */
+        const lsRenderer& getRenderer() const;
+        
+        /**
+         * Get a reference to the object responsible for managing the OpenGL
+         * render context.
+         * 
+         * @return lsRenderer&
+         */
+        lsRenderer& getRenderer();
         
         /**
          * Get a reference to the system prng (pseudo-random number generator).
@@ -220,6 +252,21 @@ class lsSubsystem {
          */
         float getTickTime() const;
 };
+        
+/*
+ * This method will prevent the game loop from running, thereby
+ * returning control back to this object's caller.
+ */
+inline void lsSubsystem::stop() {
+    gameIsRunning = false; tickTime = 0.f;
+}
+  
+/*
+ * Return The number of states managed by this system.
+ */
+inline unsigned lsSubsystem::getGameStackSize() const {
+    return gameStack.size();
+}
 
 /*
  * Get a reference to the current display object.
@@ -233,6 +280,20 @@ inline const lsDisplay& lsSubsystem::getDisplay() const {
  */
 inline lsDisplay& lsSubsystem::getDisplay() {
     return display;
+}
+
+/*
+ * Get a reference to the current renderer.
+ */
+inline const lsRenderer& lsSubsystem::getRenderer() const {
+    return renderer;
+}
+
+/*
+ * Get a reference to the current renderer.
+ */
+inline lsRenderer& lsSubsystem::getRenderer() {
+    return renderer;
 }
 
 /*

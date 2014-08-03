@@ -374,7 +374,7 @@ bool batchState::onStart() {
     
     LOG_GL_ERR();
     
-    lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
+    lsRenderer& renderer = getParentSystem().getRenderer();
     renderer.setDepthTesting(true);
     renderer.setFaceCulling(true);
     
@@ -428,8 +428,7 @@ void batchState::onRun(float dt) {
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
-void batchState::onPause(float dt) {
-    (void)dt;
+void batchState::onPause(float) {
     drawScene();
 }
 

@@ -126,8 +126,7 @@ class lsMeshResource final : public lsResource {
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char* filename) const {
-            (void)filename;
+        virtual bool saveFile(const char*) const {
             return false;
         }
         

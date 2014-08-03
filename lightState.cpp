@@ -424,7 +424,7 @@ bool lightState::onStart() {
     
     LOG_GL_ERR();
     
-    lsRenderer& pRenderer = getParentSystem().getDisplay().getRenderer();
+    lsRenderer& pRenderer = getParentSystem().getRenderer();
     pRenderer.setDepthTesting(true);
     pRenderer.setFaceCulling(true);
     
@@ -541,7 +541,7 @@ void lightState::drawScene() {
         pModel = pScene->getModelList()[1];
         pModel->setNumInstances(1, &modelMat);
         
-        lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
+        lsRenderer& renderer = getParentSystem().getRenderer();
         renderer.setDepthTesting(false);
         renderer.setBlending(true);
         renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);

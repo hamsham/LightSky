@@ -129,22 +129,28 @@ namespace math = hamLibs::math;
     }
 
     void lsPrintGlError(int line, const char* file);
-    
-    #ifndef LOG_GL_ERR
-        #define LOG_GL_ERR() lsPrintGlError(__LINE__, __FILE__)
-    #endif
 #else
-    #ifndef LS_LOG_MSG
-        #define LS_LOG_MSG(...)
-    #endif
-    
-    #ifndef LS_LOG_ERR
-        #define LS_LOG_ERR(...)
-    #endif
-    
-    #ifndef LOG_GL_ERR
-        #define LOG_GL_ERR()
-    #endif
+    template <typename Arg>
+    void LS_LOG_MSG(const Arg&) {
+    }
+
+    template <typename Arg, typename... Args>
+    void LS_LOG_MSG(const Arg&, const Args&...) {
+    }
+
+    template <typename Arg>
+    void LS_LOG_ERR(const Arg&) {
+    }
+
+    template <typename Arg, typename... Args>
+    void LS_LOG_ERR(const Arg&, const Args&...) {
+    }
+
+    inline void lsPrintGlError(int, const char*) {}
+#endif
+
+#ifndef LOG_GL_ERR
+    #define LOG_GL_ERR() lsPrintGlError(__LINE__, __FILE__)
 #endif
 
 #endif	/* __LS_SETUP_H__ */

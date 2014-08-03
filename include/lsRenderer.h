@@ -12,6 +12,7 @@
 
 #include "lsSetup.h"
 #include "lsColor.h"
+#include "lsDisplay.h"
 
 /**
  * Draw modes for renderable types.
@@ -142,28 +143,127 @@ class lsRenderer final {
     friend class lsDisplay;
     
     private:
-        const lsDisplay* pDisplay = nullptr;
         void* pContext = nullptr;
     
     public:
-        constexpr lsRenderer() {}
+        /**
+         * Constructor
+         */
+        lsRenderer();
         
+        /**
+         * Copy Constructor -- DELETED
+         */
         lsRenderer(const lsRenderer&) = delete;
+        
+        /**
+         * Move Constructor.
+         * Moves all renderer data from the input parameter into *this. No
+         * copies are performed.
+         * 
+         * @param lsRenderer&&
+         * An R-Value reference to an lsRenderer.
+         */
         lsRenderer(lsRenderer&&);
         
-        ~lsRenderer() {
-            terminate();
-        }
+        /**
+         * Destructor.
+         * Frees all hardware handles and memory resources used by *this. This
+         * effectively does the same thing as "terminate()."
+         * Make sure the display object that this was created with has not yet
+         * been destroyed.
+         */
+        ~lsRenderer();
         
+        /**
+         * Copy Operator -- DELETED
+         */
         lsRenderer& operator=(const lsRenderer&) = delete;
+        
+        /**
+         * Move Operator.
+         * Moves all renderer data from the input parameter into *this. No
+         * copies are performed.
+         * 
+         * @param lsRenderer&&
+         * An R-Value reference to an lsRenderer.
+         */
         lsRenderer& operator=(lsRenderer&&);
         
-        bool init(const lsDisplay&);
+        /**
+         * Initializer method for *this.
+         * 
+         * @param lsDisplay&
+         * A reference to a constant lsDisplay object. This display object must
+         * have already been initialized and created with OpenGL 3.3 core
+         * attributes.
+         * 
+         * @return bool
+         * TRUE if a renderer was able to be created from the input display
+         * object, FALSE if not.
+         */
+        bool init(const lsDisplay&, bool useVsync = true);
+        
+        /**
+         * Destructor.
+         * Frees all hardware handles and memory resources used by *this.
+         * Make sure the display object that this was created with has not yet
+         * been destroyed.
+         */
         void terminate();
         
-        inline void setViewport(const math::vec2i& pos, const math::vec2i& size) {
-            glViewport(pos[0], pos[1], size[0], size[1]);
-        }
+        /**
+         * Bind this render context to the active display
+         */
+        void makeCurrent(const lsDisplay&) const;
+        
+        /**
+         * Get a pointer to the SDL_GLContext that is used by the active
+         * renderer.
+         * This renderer must have been made current in order to be used.
+         * 
+         * @return A void pointer that can be safely casted to a SDL_GLContext.
+         */
+        void* getContext() const;
+        
+        /**
+         * Enable/Disable VSync
+         * This renderer must have been made current in order to be used.
+         * 
+         * @param TRUE if vsync is desired, FALSE to disable it.
+         */
+        void setVsync(bool vsync);
+        
+        /**
+         * Determine if VSync is enabled or disabled within the current window.
+         * This renderer must have been made current in order to be used.
+         * 
+         * @return TRUE if VSync is enabled, FALSE if not.
+         */
+        bool getVsync() const;
+        
+        /**
+         * Swap the current display's front and back buffers.
+         * 
+         * This renderer must have been made current in order to be used.
+         */
+        void flip(const lsDisplay& display) const;
+        
+        ///////////////////////////////////////////////////////////////////////
+        // FIXME:
+        // Move these into a more appropriate class
+        ///////////////////////////////////////////////////////////////////////
+        /**
+         * Set the size of the active viewport within the currently bound
+         * framebuffer.
+         * 
+         * @param pos
+         * The lower-left hand cornet of the active framebuffer.
+         * 
+         * @param size
+         * The width and height of the desired viewport.
+         */
+        void setViewport(const math::vec2i& pos, const math::vec2i& size);
         
         void setWindingOrder(ls_winding_t);
         ls_winding_t getWindingOrder() const;
@@ -196,6 +296,34 @@ class lsRenderer final {
         
         int getMaxTextureSize() const;
 };
+
+///////////////////////////////////////////////////////////////////////////////
+//      Renderer Management
+///////////////////////////////////////////////////////////////////////////////
+/*
+ * Activate the render context used in this window.
+ */
+inline void lsRenderer::makeCurrent(const lsDisplay& display) const {
+    SDL_GL_MakeCurrent(display.getWindow(), pContext);
+}
+
+/*
+ * Get a pointer to the SDL_GLContext that is used by the active
+ * renderer.
+ */
+inline void* lsRenderer::getContext() const {
+    return pContext;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//      Viewport Management
+///////////////////////////////////////////////////////////////////////////////
+/*
+ * Set the active viewport size
+ */        
+inline void lsRenderer::setViewport(const math::vec2i& pos, const math::vec2i& size) {
+    glViewport(pos[0], pos[1], size[0], size[1]);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 //      Polygon winding order

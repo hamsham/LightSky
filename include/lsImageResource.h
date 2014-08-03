@@ -8,27 +8,26 @@
 #ifndef __LS_IMAGE_RESOURCE_H__
 #define	__LS_IMAGE_RESOURCE_H__
 
-#include <FreeImage.h>
-
 #include "lsSetup.h"
 #include "lsResource.h"
 
-enum img_file_t : int {
-    LS_IMG_BMP              = FIF_BMP,
-    LS_IMG_EXR              = FIF_EXR,
-    LS_IMG_GIF              = FIF_GIF,
-    LS_IMG_HDR              = FIF_HDR,
-    LS_IMG_ICO              = FIF_ICO,
-    LS_IMG_JPG              = FIF_JPEG,
-    LS_IMG_J2K              = FIF_J2K,
-    LS_IMG_PNG              = FIF_PNG,
-    LS_IMG_PPM              = FIF_PPM,
-    LS_IMG_TGA              = FIF_TARGA,
-    LS_IMG_TIF              = FIF_TIFF,
-    LS_IMG_WBP              = FIF_WEBP,
-    LS_IMG_XPM              = FIF_XPM,
-    
-    LS_IMG_DEFAULT_FORMAT   = LS_IMG_PNG
+/**
+ * Enumerations for saving image files.
+ */
+enum class img_file_t {
+    LS_IMG_BMP,
+    LS_IMG_EXR,
+    LS_IMG_GIF,
+    LS_IMG_HDR,
+    LS_IMG_ICO,
+    LS_IMG_JPG,
+    LS_IMG_J2K,
+    LS_IMG_PNG, // default
+    LS_IMG_PPM,
+    LS_IMG_TGA,
+    LS_IMG_TIF,
+    LS_IMG_WBP,
+    LS_IMG_XPM
 };
 
 /**
@@ -192,29 +191,8 @@ class lsImageResource final : public lsResource {
 /*
  * saving
  */
-inline bool lsImageResource::saveFile(const char* filename, img_file_t format) const {
-    if (this->pData == nullptr || filename == nullptr) {
-        return false;
-    }
-    return 0 != FreeImage_Save(
-        (FREE_IMAGE_FORMAT)format,
-        reinterpret_cast<FIBITMAP*>(pData),
-        filename
-    );
-}
-
-/*
- * Get the data stored in pData
- */
-inline void* lsImageResource::getData() const {
-    return (void*) FreeImage_GetBits(reinterpret_cast<FIBITMAP*>(pData));
-}
-
-/*
- * saving
- */
 inline bool lsImageResource::saveFile(const char* filename) const {
-    return this->saveFile(filename, LS_IMG_DEFAULT_FORMAT);
+    return this->saveFile(filename, img_file_t::LS_IMG_PNG);
 }
 
 #endif	/* __LS_IMAGE_RESOURCE_H__ */

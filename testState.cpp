@@ -393,8 +393,6 @@ void testState::onStop() {
  * Running state
 ******************************************************************************/
 void testState::onRun(float dt) {
-    (void)dt;
-    
     updateKeyStates(dt);
     drawScene();
 }
@@ -402,9 +400,7 @@ void testState::onRun(float dt) {
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
-void testState::onPause(float dt) {
-    (void)dt;
-    
+void testState::onPause(float) {
     drawScene();
 }
 

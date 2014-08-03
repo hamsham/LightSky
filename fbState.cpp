@@ -15,7 +15,7 @@ using math::mat4;
 using math::quat;
 
 enum {
-    TEST_MAX_SCENE_OBJECTS = 20,
+    TEST_MAX_SCENE_OBJECTS = 50,
     TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS,
     TEST_MAX_KEYBORD_STATES = 512,
     TEST_FRAMEBUFFER_WIDTH = 320,
@@ -530,7 +530,7 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 ******************************************************************************/
 void fbState::setRendererParams() {
-    lsRenderer& pRenderer = getParentSystem().getDisplay().getRenderer();
+    lsRenderer& pRenderer = getParentSystem().getRenderer();
     pRenderer.setDepthTesting(true);
     pRenderer.setFaceCulling(true);
 }
@@ -641,7 +641,7 @@ mat4 fbState::get3dViewport() const {
 ******************************************************************************/
 void fbState::resetGlViewport() {
     lsDisplay& disp = getParentSystem().getDisplay();
-    lsRenderer& rend = disp.getRenderer();
+    lsRenderer& rend = getParentSystem().getRenderer();
     
     rend.setViewport(vec2i{0}, disp.getResolution());
 }
@@ -661,8 +661,7 @@ void fbState::drawScene() {
 ******************************************************************************/
 void fbState::drawMeshes() {
     // setup a viewport for a custom framebuffer
-    lsDisplay& display = getParentSystem().getDisplay();
-    lsRenderer& renderer = display.getRenderer();
+    lsRenderer& renderer = getParentSystem().getRenderer();
     renderer.setViewport(vec2i{0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT});
 
     // use render to the framebuffer's color attachment
@@ -728,7 +727,7 @@ void fbState::drawStrings() {
     pStringModel->setNumInstances(1, &modelMat);
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI
-    lsRenderer& renderer = getParentSystem().getDisplay().getRenderer();
+    lsRenderer& renderer = getParentSystem().getRenderer();
     renderer.setDepthTesting(false);
     renderer.setBlending(true);
     renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);

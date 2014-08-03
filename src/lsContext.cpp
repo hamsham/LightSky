@@ -115,7 +115,9 @@ bool lsContext::init(const lsDisplay& display, bool useVsync) {
  * Renderer resource termination
  */
 void lsContext::terminate() {
-    SDL_GL_DeleteContext(pContext);
+    if (pContext) {
+        SDL_GL_DeleteContext(pContext);
+    }
     pContext = nullptr;
 }
 

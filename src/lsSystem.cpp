@@ -27,10 +27,11 @@ lsSubsystem::lsSubsystem() {
 lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
     prevTime{ss.prevTime},
     gameStack{std::move(ss.gameStack)},
-    display{std::move(ss.display)},
+    pDisplay{std::move(ss.pDisplay)},
     context{std::move(ss.context)},
     prng{ss.prng}
 {
+    ss.pDisplay = nullptr;
     ss.prng = nullptr;
 }
 
@@ -43,7 +44,8 @@ lsSubsystem& lsSubsystem::operator=(lsSubsystem&& ss) {
     
     gameStack = std::move(ss.gameStack);
     
-    display = std::move(ss.display);
+    pDisplay = pDisplay;
+    ss.pDisplay = nullptr;
     
     context = std::move(ss.context);
     
@@ -64,93 +66,9 @@ lsSubsystem::~lsSubsystem() {
  * SubSystem Initialization
 ******************************************************************************/
 /*
- * Initialize SDL
- */
-bool lsSubsystem::initSdlParams() {
-    SDL_SetMainReady();
-    
-    /*
-     * Setup the necessary parameters for OpenGL 3.3
-     */
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS,
-        SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG
-#ifdef LS_DEBUG
-        | SDL_GL_CONTEXT_DEBUG_FLAG
-#endif
-    );
-    
-    if (!SDL_Init(SDL_INIT_EVERYTHING)) {
-        LS_LOG_ERR(
-            "Unable to initialize SDL.\n", SDL_GetError(), '\n',
-            "Complain to your local programmer.\n"
-        );
-        return false;
-    }
-    LS_LOG_MSG(
-        "Successfully initialized SDL.\n",
-        SDL_GetError(), '\n'
-    );
-    SDL_ClearError();
-    
-    return true;
-}
-
-/*
- * Initialize the subsystem using a native display interface
- */
-bool lsSubsystem::init(void* const hwnd, bool useVsync) {
-    terminate();
-    
-    LS_LOG_MSG(
-        "----------------------------------------\n",
-        "Initializing a LightSky Sub-System at ", this, "\n",
-        "----------------------------------------"
-    );
-    
-    if (!initSdlParams()) {
-        return false;
-    }
-    
-    if (!display.init(hwnd)) {
-        LS_LOG_ERR("Failed to initialize the display for ", this, ".\n");
-        terminate();
-        return false;
-    }
-    LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
-    
-    if (!context.init(display, useVsync)) {
-        LS_LOG_ERR("\tUnable to create an OpenGL context for the current display.\n");
-        terminate();
-        return false;
-    }
-    
-    prng = new(std::nothrow) lsRandom(SDL_GetPerformanceCounter());
-    if (prng == nullptr) {
-        LS_LOG_ERR("Failed to initialize the random number generator for ", this, ".\n");
-        terminate();
-        return false;
-    }
-    LS_LOG_ERR("Successfully initialized the random number generator for ", this, ".\n");
-    
-    LS_LOG_MSG(
-        "----------------------------------------\n",
-        "Successfully initialized the Sub-System ", this, "\n",
-        "----------------------------------------\n"
-    );
-    
-    return true;
-}
-
-/*
  * Initialize the subsystem using LightSky's own display system
  */
-bool lsSubsystem::init(const math::vec2i inResolution, bool isFullScreen, bool useVsync) {
+bool lsSubsystem::init(lsDisplay& disp, bool useVsync) {
     terminate();
     
     LS_LOG_MSG(
@@ -159,18 +77,20 @@ bool lsSubsystem::init(const math::vec2i inResolution, bool isFullScreen, bool u
         "----------------------------------------"
     );
     
-    if (!initSdlParams()) {
-        return false;
+    // make sure there's a display object running
+    if (!disp.isRunning()) {
+        const math::vec2i res = {LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT};
+        if (!disp.init(res, false)) {
+            LS_LOG_ERR("Failed to initialize the display for ", this, ".\n");
+            terminate();
+            return false;
+        }
+        LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
     }
     
-    if (!display.init(inResolution, isFullScreen)) {
-        LS_LOG_ERR("Failed to initialize the display for ", this, ".\n");
-        terminate();
-        return false;
-    }
-    LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
+    pDisplay = &disp;
     
-    if (!context.init(display, useVsync)) {
+    if (!context.init(disp, useVsync)) {
         LS_LOG_ERR("\tUnable to create an OpenGL context for the current display.\n");
         terminate();
         return false;
@@ -197,25 +117,16 @@ bool lsSubsystem::init(const math::vec2i inResolution, bool isFullScreen, bool u
  * SubSystem Termination
 ******************************************************************************/
 void lsSubsystem::terminate() {
-    if (SDL_WasInit(0)) {
-        SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
-        SDL_Quit();
-    }
-    
     prevTime = 0.f;
     
-    if (gameStack.size() == 0) {
-        return;
-    }
-    
-    unsigned i = gameStack.size();
-    while (--i) {
-        gameStack[i]->setState(LS_GAME_STOPPED);
+    for (lsGameState* state : gameStack) {
+        state->setState(LS_GAME_STOPPED);
+        state->onStop();
     }
     
     gameStack.clear();
     context.terminate();
-    display.terminate();
+    pDisplay = nullptr;
     
     delete prng;
     prng = nullptr;
@@ -226,19 +137,21 @@ void lsSubsystem::terminate() {
 ******************************************************************************/
 void lsSubsystem::run() {
     if (!gameStack.size()) {
+        LS_LOG_ERR("No game states are available!\n", SDL_GetError(), '\n');
         return;
     }
     
     // Ensure the display is still open
-    if (!display.isRunning()) {
+    if (!pDisplay || !pDisplay->isRunning()) {
         LS_LOG_ERR("The display is no longer running!\n", SDL_GetError(), '\n');
+        return;
     }
     
     SDL_Event pEvent = {0};
     while (SDL_PollEvent(&pEvent)) {
     // Hardware events passed through SDL
         lsGameState* const pState = gameStack.back();
-        passHardwareEvents(&pEvent, pState);
+        passHardwareEvents(pEvent, pState);
     }
 
     // Frame Time Management
@@ -250,6 +163,7 @@ void lsSubsystem::run() {
     updateGameStates(tickTime);
 
     // Render to the screen after all events have been processed
+    lsDisplay& display = *pDisplay;
     context.makeCurrent(display);
     context.flip(display);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -258,17 +172,17 @@ void lsSubsystem::run() {
 /******************************************************************************
  * Update Game States
  *****************************************************************************/
-void lsSubsystem::passHardwareEvents(const SDL_Event* pEvent, lsGameState* pState) {
-    switch (pEvent->type) {
-        case SDL_QUIT:              stop();                                          break;
-        case SDL_WINDOWEVENT:       pState->onWindowEvent(&pEvent->window);          break;
-        case SDL_KEYUP:             pState->onKeyboardUpEvent(&pEvent->key);         break;
-        case SDL_KEYDOWN:           pState->onKeyboardDownEvent(&pEvent->key);       break;
-        case SDL_TEXTINPUT:         pState->onKeyboardTextEvent(&pEvent->text);      break;
-        case SDL_MOUSEMOTION:       pState->onMouseMoveEvent(&pEvent->motion);       break;
-        case SDL_MOUSEBUTTONUP:     pState->onMouseButtonUpEvent(&pEvent->button);   break;
-        case SDL_MOUSEBUTTONDOWN:   pState->onMouseButtonDownEvent(&pEvent->button); break;
-        case SDL_MOUSEWHEEL:        pState->onMouseWheelEvent(&pEvent->wheel);       break;
+void lsSubsystem::passHardwareEvents(const SDL_Event& event, lsGameState* const pState) {
+    switch (event.type) {
+        case SDL_QUIT:              stop();                                         break;
+        case SDL_WINDOWEVENT:       pState->onWindowEvent(event.window);            break;
+        case SDL_KEYUP:             pState->onKeyboardUpEvent(event.key);           break;
+        case SDL_KEYDOWN:           pState->onKeyboardDownEvent(event.key);         break;
+        case SDL_TEXTINPUT:         pState->onKeyboardTextEvent(event.text);        break;
+        case SDL_MOUSEMOTION:       pState->onMouseMoveEvent(event.motion);         break;
+        case SDL_MOUSEBUTTONUP:     pState->onMouseButtonUpEvent(event.button);     break;
+        case SDL_MOUSEBUTTONDOWN:   pState->onMouseButtonDownEvent(event.button);   break;
+        case SDL_MOUSEWHEEL:        pState->onMouseWheelEvent(event.wheel);         break;
     }
 }
 

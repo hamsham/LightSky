@@ -10,11 +10,10 @@
 
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 
 #include "lsGameState.h"
-#include "lsSetup.h"
 #include "lsSystem.h"
-#include "lsDisplay.h"
 
 /******************************************************************************
  * SubSystem Constructor
@@ -26,10 +25,10 @@ lsSubsystem::lsSubsystem() {
  * SubSystem Move Construction
 ******************************************************************************/
 lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
-    gameIsRunning{ss.gameIsRunning},
+    prevTime{ss.prevTime},
     gameStack{std::move(ss.gameStack)},
     display{std::move(ss.display)},
-    renderer{std::move(ss.renderer)},
+    context{std::move(ss.context)},
     prng{ss.prng}
 {
     ss.prng = nullptr;
@@ -39,14 +38,14 @@ lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
  * SubSystem Move Operator
 ******************************************************************************/
 lsSubsystem& lsSubsystem::operator=(lsSubsystem&& ss) {
-    gameIsRunning = ss.gameIsRunning;
-    ss.gameIsRunning = false;
+    prevTime = ss.prevTime;
+    ss.prevTime = 0.f;
     
     gameStack = std::move(ss.gameStack);
     
     display = std::move(ss.display);
     
-    renderer = std::move(ss.renderer);
+    context = std::move(ss.context);
     
     prng = ss.prng;
     ss.prng = nullptr;
@@ -125,8 +124,8 @@ bool lsSubsystem::init(void* const hwnd, bool useVsync) {
     }
     LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
     
-    if (!renderer.init(display, useVsync)) {
-        LS_LOG_ERR("\tUnable to create an OpenGL renderer for the current display.\n");
+    if (!context.init(display, useVsync)) {
+        LS_LOG_ERR("\tUnable to create an OpenGL context for the current display.\n");
         terminate();
         return false;
     }
@@ -171,7 +170,7 @@ bool lsSubsystem::init(const math::vec2i inResolution, bool isFullScreen, bool u
     }
     LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
     
-    if (!renderer.init(display, useVsync)) {
+    if (!context.init(display, useVsync)) {
         LS_LOG_ERR("\tUnable to create an OpenGL context for the current display.\n");
         terminate();
         return false;
@@ -203,7 +202,7 @@ void lsSubsystem::terminate() {
         SDL_Quit();
     }
     
-    gameIsRunning = false;
+    prevTime = 0.f;
     
     if (gameStack.size() == 0) {
         return;
@@ -215,7 +214,7 @@ void lsSubsystem::terminate() {
     }
     
     gameStack.clear();
-    renderer.terminate();
+    context.terminate();
     display.terminate();
     
     delete prng;
@@ -226,37 +225,34 @@ void lsSubsystem::terminate() {
  * SubSystem Running
 ******************************************************************************/
 void lsSubsystem::run() {
-    float prevTime = 0;
-    gameIsRunning = true;
-    SDL_Event pEvent = {0};
-    
-    while (gameIsRunning && gameStack.size()) {
-        // Ensure the display is still open
-        if (!display.isRunning()) {
-            LS_LOG_ERR("The display is no longer running!\n", SDL_GetError(), '\n');
-            gameIsRunning = false;
-        }
-        
-        // Hardware events passed through SDL
-        lsGameState* const pState = gameStack.back();
-        if (SDL_PollEvent(&pEvent)) {
-            passHardwareEvents(&pEvent, pState);
-            continue;
-        }
-        
-        // Frame Time Management
-        const float currTime = (float)SDL_GetTicks(); // SDL uses millisecond timing.
-        tickTime = currTime-prevTime;
-        prevTime = currTime;
-        
-        // Game state management
-        updateGameStates(tickTime);
-        
-        // Render to the screen after all events have been processed
-        renderer.makeCurrent(display);
-        renderer.flip(display);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    if (!gameStack.size()) {
+        return;
     }
+    
+    // Ensure the display is still open
+    if (!display.isRunning()) {
+        LS_LOG_ERR("The display is no longer running!\n", SDL_GetError(), '\n');
+    }
+    
+    SDL_Event pEvent = {0};
+    while (SDL_PollEvent(&pEvent)) {
+    // Hardware events passed through SDL
+        lsGameState* const pState = gameStack.back();
+        passHardwareEvents(&pEvent, pState);
+    }
+
+    // Frame Time Management
+    const float currTime = (float)SDL_GetTicks(); // SDL uses millisecond timing.
+    tickTime = currTime-prevTime;
+    prevTime = currTime;
+
+    // Game state management
+    updateGameStates(tickTime);
+
+    // Render to the screen after all events have been processed
+    context.makeCurrent(display);
+    context.flip(display);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 /******************************************************************************
@@ -264,7 +260,7 @@ void lsSubsystem::run() {
  *****************************************************************************/
 void lsSubsystem::passHardwareEvents(const SDL_Event* pEvent, lsGameState* pState) {
     switch (pEvent->type) {
-        case SDL_QUIT:              gameIsRunning = false;                           break;
+        case SDL_QUIT:              stop();                                          break;
         case SDL_WINDOWEVENT:       pState->onWindowEvent(&pEvent->window);          break;
         case SDL_KEYUP:             pState->onKeyboardUpEvent(&pEvent->key);         break;
         case SDL_KEYDOWN:           pState->onKeyboardDownEvent(&pEvent->key);       break;
@@ -358,9 +354,7 @@ void lsSubsystem::popGameState(unsigned index) {
     gameStack.erase(gameStack.begin() + index);
     
     // Only resume the last state if it was paused. Leave it alone otherwise
-    if (    gameStack.size() > 0
-    &&      gameStack.back()->getState() == LS_GAME_PAUSED
-    ) {
+    if (gameStack.size() > 0 && gameStack.back()->getState() == LS_GAME_PAUSED) {
         gameStack.back()->setState(LS_GAME_RUNNING);
     }
 }
@@ -389,4 +383,17 @@ unsigned lsSubsystem::getGameStateIndex(lsGameState* pState) {
     }
     
     return LS_GAME_INVALID;
+}
+
+
+/******************************************************************************
+ * This method will stop all game states from running, thereby clearing them
+ * all off of the stack.
+******************************************************************************/
+inline void lsSubsystem::stop() {
+    tickTime = 0.f;
+    
+    for (lsGameState* state : gameStack) {
+        state->setState(LS_GAME_STOPPED);
+    }
 }

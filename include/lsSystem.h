@@ -9,12 +9,11 @@
 #define	__LS_SYSTEM_H__
 
 #include <vector>
-#include <SDL2/SDL_timer.h>
 
-#include "lsSetup.h"
+#include "lsContext.h"
 #include "lsDisplay.h"
-#include "lsRenderer.h"
 #include "lsRandom.h"
+#include "lsSetup.h"
 
 /*
  * Forward declarations
@@ -32,11 +31,38 @@ class lsGameState;
  */
 class lsSubsystem {
     private:
-        bool gameIsRunning = false;
+        /**
+         * Stores the previous hardware time since the last update.
+         */
+        float prevTime = 0;
+        
+        /**
+         * Duration of the last "tick," or the last time that the "run()"
+         * function had been called.
+         */
         float tickTime = 0.f;
+        
+        /**
+         * A vector of game states. The game will stop running when there are
+         * no more states left in the stack.
+         * Push a state into *this, then call "run()" in a loop in order to keep
+         * a game running.
+         */
         std::vector<lsGameState*> gameStack;
+        
+        /**
+         * Display object owned by *this.
+         */
         lsDisplay display = {};
-        lsRenderer renderer = {};
+        
+        /**
+         * OpenGL render context owned by *this.
+         */
+        lsContext context = {};
+        
+        /**
+         * Pseudo-Random Number Generator.
+         */
         lsRandom* prng = nullptr;
         
         bool initSdlParams();
@@ -218,17 +244,17 @@ class lsSubsystem {
          * Get a constant reference to the object responsible for managing the
          * OpenGL render context.
          * 
-         * @return lsRenderer&
+         * @return const lsContext&
          */
-        const lsRenderer& getRenderer() const;
+        const lsContext& getContext() const;
         
         /**
          * Get a reference to the object responsible for managing the OpenGL
          * render context.
          * 
-         * @return lsRenderer&
+         * @return lsContext&
          */
-        lsRenderer& getRenderer();
+        lsContext& getContext();
         
         /**
          * Get a reference to the system prng (pseudo-random number generator).
@@ -251,15 +277,17 @@ class lsSubsystem {
          * milliseconds which have passed since the last complete update.
          */
         float getTickTime() const;
-};
         
-/*
- * This method will prevent the game loop from running, thereby
- * returning control back to this object's caller.
- */
-inline void lsSubsystem::stop() {
-    gameIsRunning = false; tickTime = 0.f;
-}
+        /**
+         * Determine if *this system is still running and operational.
+         * This function has the same effect as querying
+         * this->getGameStackSize() > 0
+         * 
+         * @return bool
+         * TRUE if the gamestack has something pushed onto it, FALSE if not.
+         */
+        bool isRunning() const;
+};
   
 /*
  * Return The number of states managed by this system.
@@ -283,17 +311,17 @@ inline lsDisplay& lsSubsystem::getDisplay() {
 }
 
 /*
- * Get a reference to the current renderer.
+ * Get a reference to the current render context.
  */
-inline const lsRenderer& lsSubsystem::getRenderer() const {
-    return renderer;
+inline const lsContext& lsSubsystem::getContext() const {
+    return context;
 }
 
 /*
- * Get a reference to the current renderer.
+ * Get a reference to the current render context.
  */
-inline lsRenderer& lsSubsystem::getRenderer() {
-    return renderer;
+inline lsContext& lsSubsystem::getContext() {
+    return context;
 }
 
 /*
@@ -315,6 +343,13 @@ inline lsRandom& lsSubsystem::getPrng() {
  */
 inline float lsSubsystem::getTickTime() const {
     return tickTime;
+}
+
+/*
+ * Determine if *this is still running
+ */
+inline bool lsSubsystem::isRunning() const {
+    return gameStack.size() > 0;
 }
 
 #endif	/* __LS_SYSTEM_H__ */

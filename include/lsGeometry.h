@@ -1,5 +1,5 @@
 /* 
- * File:   geometry.h
+ * File:   lsGeometry.h
  * Author: miles
  *
  * Created on April 6, 2014, 5:08 PM
@@ -10,6 +10,9 @@
 
 #include "lsSetup.h"
 
+/**
+ * Namespace for general geometric operations used within LightSky.
+ */
 namespace lsGeometry {
     /**
      * Helper function to calculate a vertex normal from 3 vertices.

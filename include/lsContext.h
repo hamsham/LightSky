@@ -10,8 +10,17 @@
 
 #include "lsDisplay.h"
 
+/**
+ * lsContext is a wrapper class for an SDL_GLContext structure. This class
+ * helps to provide RAII to the OpenGL context created from a display.
+ * If is also useful in providing information about the currently loaded OpenGL
+ * resource handle.
+ */
 class lsContext final {
     private:
+        /**
+         * pContext is a void pointer to an SDL_GLContext structure.
+         */
         void* pContext = nullptr;
     
     public:
@@ -119,9 +128,9 @@ class lsContext final {
         void flip(const lsDisplay& display) const;
 };
 
-///////////////////////////////////////////////////////////////////////////////
-//      Inline methods
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Inlined methods
+//-----------------------------------------------------------------------------
 /*
  * Activate the render context used in this window.
  */

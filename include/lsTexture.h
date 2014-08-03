@@ -1,5 +1,5 @@
 /* 
- * File:   texture.h
+ * File:   lsTexture.h
  * Author: hammy
  *
  * Created on January 27, 2014, 8:35 PM
@@ -10,8 +10,9 @@
 
 #include <GL/glew.h>
 
-#include "lsSetup.h"
+#include "lsColor.h"
 #include "lsImageResource.h"
+#include "lsSetup.h"
 
 //-----------------------------------------------------------------------------
 //      Enumerations
@@ -34,6 +35,7 @@ enum ls_tex_param_t : int {
     LS_TEX_WRAP_R       = GL_TEXTURE_WRAP_R,
     
     LS_TEX_CLAMP        = GL_CLAMP,
+    LS_TEX_CLAMP_BORDER = GL_CLAMP_TO_BORDER,
     LS_TEX_REPEAT       = GL_REPEAT,
 
     LS_LINEAR_FILTER    = GL_LINEAR,
@@ -58,7 +60,7 @@ enum ls_tex_desc_t : int {
  */
 class lsTexture {
     private:
-        const ls_tex_desc_t dimensions;
+        ls_tex_desc_t dimensions;
         
         /**
          * Texture ID
@@ -137,7 +139,14 @@ class lsTexture {
          * 
          * @return true if the operation was successful. False if otherwise.
          */
-        bool init(int mipmapLevel, int internalFormat, int size, int format, int dataType, void* data);
+        bool init(
+            int                 mipmapLevel,
+            ls_pixel_format_t   internalFormat,
+            int                 size,
+            ls_pixel_layout_t   format,
+            ls_color_type_t     dataType,
+            void* const         data
+        );
         
         /**
          * Create an OpenGL texture by using preexisting image data.
@@ -146,7 +155,14 @@ class lsTexture {
          * 
          * @return true if the operation was successful. False if otherwise.
          */
-        bool init(int mipmapLevel, int internalFormat, math::vec2i size, int format, int dataType, void* data);
+        bool init(
+            int                 mipmapLevel,
+            ls_pixel_format_t   internalFormat,
+            math::vec2i         size,
+            ls_pixel_layout_t   format,
+            ls_color_type_t     dataType,
+            void* const         data
+        );
         
         /**
          * Create an OpenGL texture by using preexisting image data.
@@ -155,7 +171,14 @@ class lsTexture {
          * 
          * @return true if the operation was successful. False if otherwise.
          */
-        bool init(int mipmapLevel, int internalFormat, math::vec3i size, int format, int dataType, void* data);
+        bool init(
+            int                 mipmapLevel,
+            ls_pixel_format_t   internalFormat,
+            math::vec3i         size,
+            ls_pixel_layout_t   format,
+            ls_color_type_t     dataType,
+            void* const         data
+        );
         
         /**
          * Create an OpenGL texture by using preexisting image data.
@@ -232,7 +255,7 @@ class lsTexture {
 
 //-----------------------------------------------------------------------------
 //      Inlined Methods
- //----------------------------------------------------------------------------        
+ //----------------------------------------------------------------------------
 /**
  * Get the GPU-Assigned ID used by *this.
  */
@@ -275,8 +298,12 @@ inline void lsTexture::setParameter(int paramName, float param) const {
  */
 inline bool lsTexture::init(int mipmapLevel, int size, const lsImageResource& resource) {
     return init(
-        mipmapLevel, resource.getInternalFormat()[0], size,
-        resource.getInternalFormat()[1], resource.getFormat(), resource.getData()
+        mipmapLevel,
+        resource.getInternalFormat(),
+        size,
+        resource.getExternalFormat(),
+        resource.getPixelType(),
+        resource.getData()
     );
 }
 
@@ -285,8 +312,12 @@ inline bool lsTexture::init(int mipmapLevel, int size, const lsImageResource& re
  */
 inline bool lsTexture::init(int mipmapLevel, math::vec2i size, const lsImageResource& resource) {
     return init(
-        mipmapLevel, resource.getInternalFormat()[0], size,
-        resource.getInternalFormat()[1], resource.getFormat(), resource.getData()
+        mipmapLevel,
+        resource.getInternalFormat(),
+        size,
+        resource.getExternalFormat(),
+        resource.getPixelType(),
+        resource.getData()
     );
 }
 
@@ -295,8 +326,12 @@ inline bool lsTexture::init(int mipmapLevel, math::vec2i size, const lsImageReso
  */
 inline bool lsTexture::init(int mipmapLevel, math::vec3i size, const lsImageResource& resource) {
     return init(
-        mipmapLevel, resource.getInternalFormat()[0], size,
-        resource.getInternalFormat()[1], resource.getFormat(), resource.getData()
+        mipmapLevel,
+        (ls_pixel_format_t)resource.getInternalFormat(),
+        size,
+        (ls_pixel_layout_t)resource.getExternalFormat(),
+        (ls_color_type_t)resource.getPixelType(),
+        resource.getData()
     );
 }
 

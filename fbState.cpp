@@ -349,8 +349,8 @@ bool fbState::initFileData() {
     || !pFontLoader->loadFile(TEST_FONT_FILE)
     || !pAtlas->init(*pFontLoader)
     || !pFontMesh->init(*pAtlas, "Hello World")
-    || !fbDepthTex->init(0, GL_DEPTH_COMPONENT, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr)
-    || !fbColorTex->init(0, GL_RGB, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, GL_BGR, GL_UNSIGNED_BYTE, nullptr)
+    || !fbDepthTex->init(0, LS_GRAY_8, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, LS_GRAY, LS_UNSIGNED_BYTE, nullptr)
+    || !fbColorTex->init(0, LS_RGB_8, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, LS_RGB, LS_UNSIGNED_BYTE, nullptr)
     ) {
         ret = false;
     }
@@ -457,8 +457,7 @@ bool fbState::initDrawModels() {
     else {
         pScene->manageModel(pModel);
         lsMesh* pMesh = pScene->getMeshList()[0];
-        pModel->setMesh(pMesh);
-        pModel->setTexture(&pScene->getDefaultTexture());
+        pModel->init(*pMesh);
 
          // lights, camera, batch!
         pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
@@ -473,8 +472,8 @@ bool fbState::initDrawModels() {
     else {
         pScene->manageModel(pTextModel);
         lsMesh* pTextMesh = pScene->getMeshList()[1];
-        pTextModel->setMesh(pTextMesh);
-        pTextModel->setTexture(&(pScene->getAtlas(0)->getTexture()));
+        pTextModel->init(*pTextMesh);
+        pTextModel->setTexture(pScene->getAtlas(0)->getTexture());
 
         mat4 modelMat = {1.f};
         pTextModel->setNumInstances(1, &modelMat);

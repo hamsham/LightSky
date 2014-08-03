@@ -1,5 +1,5 @@
 /* 
- * File:   manager.h
+ * File:   lsManager.h
  * Author: miles
  *
  * Created on May 25, 2014, 9:07 PM

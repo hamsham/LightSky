@@ -1,5 +1,5 @@
 /*
- * File:   mesh.cpp
+ * File:   lsMesh.cpp
  * Author: miles
  * 
  * Created on April 6, 2014, 12:36 AM

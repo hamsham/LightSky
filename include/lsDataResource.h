@@ -1,5 +1,5 @@
 /* 
- * File:   dataResource.h
+ * File:   lsDataResource.h
  * Author: hammy
  *
  * Created on February 1, 2014, 11:09 PM
@@ -26,19 +26,13 @@ class lsDataResource final : public lsResource {
         /**
          * Constructor
          */
-        lsDataResource() :
-            lsResource{}
-        {}
+        lsDataResource();
 
         /**
          * Copy constructor
          * Attempts to copy all data from the source operand into *this.
          */
-        lsDataResource(const lsDataResource& f) :
-            lsResource{}
-        {
-            setData(const_cast<char*>(f.pData), f.dataSize, true);
-        }
+        lsDataResource(const lsDataResource&);
 
         /**
          * Move constructor
@@ -51,9 +45,7 @@ class lsDataResource final : public lsResource {
          * Destructor.
          * Calls "unload()" and releases all memory from *this.
          */
-        virtual ~lsDataResource() {
-            unload();
-        }
+        virtual ~lsDataResource();
 
         /**
          * Copy operator
@@ -61,10 +53,7 @@ class lsDataResource final : public lsResource {
          * 
          * @return a reference to *this.
          */
-        lsDataResource& operator =(const lsDataResource& f) {
-            setData(const_cast<char*>(f.pData), f.dataSize, true);
-            return *this;
-        }
+        lsDataResource& operator =(const lsDataResource& f);
         
         /**
          * Move operator

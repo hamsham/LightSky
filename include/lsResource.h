@@ -1,5 +1,5 @@
 /* 
- * File:   resource.h
+ * File:   lsResource.h
  * Author: hammy
  *
  * Created on February 1, 2014, 11:09 PM

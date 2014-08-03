@@ -1,5 +1,5 @@
 /* 
- * File:   dataResource.cpp
+ * File:   lsDataResource.cpp
  * Author: hammy
  * 
  * Created on February 1, 2014, 11:09 PM
@@ -12,21 +12,41 @@
 
 #include "lsDataResource.h"
 
-/******************************************************************************
- * Data Resource Construction
-*******************************************************************************/
-/**
+/*
+ * Constructor
+ */
+lsDataResource::lsDataResource() :
+    lsResource{}
+{}
+
+/*
+ * Copy Constructor
+ */
+lsDataResource::lsDataResource(const lsDataResource& f) :
+    lsResource{}
+{
+    setData(const_cast<char*>(f.pData), f.dataSize, true);
+}
+
+/*
  * Move Constructor
  */
 lsDataResource::lsDataResource(lsDataResource&& f) :
     lsResource{}
 {
-    this->operator =(std::move(f));
+    pData = f.pData;
+    f.pData = nullptr;
+    dataSize = f.dataSize;
+    f.dataSize = 0l;
 }
 
-/******************************************************************************
- * Data Resource Unloading
-*******************************************************************************/
+/*
+ * Destructor
+ */
+lsDataResource::~lsDataResource() {
+    unload();
+}
+
 /*
  * Unload a resource
  */
@@ -37,9 +57,17 @@ void lsDataResource::unload() {
     dataSize = 0l;
 }
 
-/******************************************************************************
- * Moving
-******************************************************************************/
+/*
+ * Copy Operator
+ */
+lsDataResource& lsDataResource::operator=(const lsDataResource& f) {
+    setData(const_cast<char*>(f.pData), f.dataSize, true);
+    return *this;
+}
+
+/*
+ * Move Operator
+ */
 lsDataResource& lsDataResource::operator =(lsDataResource&& f) {
     unload();
     
@@ -51,12 +79,8 @@ lsDataResource& lsDataResource::operator =(lsDataResource&& f) {
     return *this;
 }
 
-/******************************************************************************
- * Opening files
-*******************************************************************************/
 /*
- * Open a file
- * ANSI
+ * Open a file using UTF-8
  */
 bool lsDataResource::loadFile(const char* filename) {
     LS_LOG_MSG("Attempting to load the file ", filename, '.');
@@ -112,11 +136,8 @@ bool lsDataResource::loadFile(const char* filename) {
     return true;
 }
 
-/******************************************************************************
- * Saving files
-*******************************************************************************/
 /*
- * Save with an ANSI filename
+ * Save with a UTF-8 filename
  */
 bool lsDataResource::saveFile(const char* filename) const {
     std::ofstream fout;
@@ -148,9 +169,6 @@ bool lsDataResource::saveFile(const char* filename) const {
     return true;
 }
 
-/******************************************************************************
- * Data manipulation
-*******************************************************************************/
 /*
  * Set a resource's data
  */

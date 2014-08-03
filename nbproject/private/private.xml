@@ -2,12 +2,31 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
         <activeConfTypeElem>1</activeConfTypeElem>
-        <activeConfIndexElem>1</activeConfIndexElem>
+        <activeConfIndexElem>0</activeConfIndexElem>
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/miles/C++/projects/LightSky/main.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsBoundingBox.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsBoundingBox.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsContext.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsSceneManager.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsAtlas.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsBufferObject.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsContext.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsAtlas.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsDrawModel.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsColor.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lightSky.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsDisplay.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsDataResource.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsDrawModel.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lightSky.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsDataResource.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsDisplay.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsBufferObject.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsColor.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsVertexArray.cpp</file>
         </group>
     </open-files>
 </project-private>

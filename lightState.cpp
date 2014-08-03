@@ -320,8 +320,7 @@ bool lightState::generateDrawModels() {
     else {
         pScene->manageModel(pModel);
         pMesh = pScene->getMeshList()[0];
-        pModel->setMesh(pMesh);
-        pModel->setTexture(&pScene->getDefaultTexture());
+        pModel->init(*pMesh);
 
          // lights, camera, batch!
         pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
@@ -337,8 +336,8 @@ bool lightState::generateDrawModels() {
     else {
         pScene->manageModel(pTextModel);
         pTextMesh = pScene->getMeshList()[1];
-        pTextModel->setMesh(pTextMesh);
-        pTextModel->setTexture(&(pScene->getAtlas(0)->getTexture()));
+        pTextModel->init(*pTextMesh);
+        pTextModel->setTexture(pScene->getAtlas(0)->getTexture());
 
         mat4 modelMat = {1.f};
         pTextModel->setNumInstances(1, &modelMat);

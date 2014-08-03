@@ -1,5 +1,5 @@
 /* 
- * File:   meshResource.cpp
+ * File:   lsMeshResource.cpp
  * Author: miles
  * 
  * Created on April 2, 2014, 9:04 PM

@@ -1,12 +1,12 @@
 /* 
- * File:   texAtlas2d.h
+ * File:   lsAtlas.h
  * Author: miles
  *
  * Created on February 16, 2014, 2:36 PM
  */
 
-#ifndef __LS_GLYPH_ATLAS__
-#define	__LS_GLYPH_ATLAS__
+#ifndef __LS_ATLAS_H__
+#define	__LS_ATLAS_H__
 
 #include "lsFontResource.h"
 #include "lsTexture.h"
@@ -64,8 +64,7 @@ class lsAtlas {
         /**
          * Constructor
          */
-        lsAtlas() {
-        }
+        lsAtlas();
         
         /**
          * Copy constructor - DELETED
@@ -83,9 +82,7 @@ class lsAtlas {
          * Destructor.
          * Releases all data used by *this.
          */
-        ~lsAtlas() {
-            terminate();
-        }
+        ~lsAtlas();
         
         /**
          * Copy Operator - DELETED
@@ -102,10 +99,11 @@ class lsAtlas {
         
         /**
          * Get a runtime ID associated with this object
+         * 
+         * @return The GPU-Assigned ID that is used by this object's internal
+         * texture atlas.
          */
-        inline unsigned getId() const {
-            return atlasTex.getId();
-        }
+        unsigned getId() const;
         
         /**
          * Stores the bitmap data located within a font file in *this as a
@@ -121,28 +119,21 @@ class lsAtlas {
         /**
          * Frees all memory used by *this.
          */
-        void terminate() {
-            atlasTex.terminate();
-            
-            delete [] entries;
-            entries = nullptr;
-            
-            numEntries = 0;
-        }
+        void terminate();
         
         /**
          * Retrieve the texture rectangle used by *this.
+         * 
+         * @return A constant reference to the internal texture used by *this.
          */
-        const lsTexture& getTexture() const {
-            return atlasTex;
-        }
+        const lsTexture& getTexture() const;
         
         /**
          * Get the texture object associated with *this
+         * 
+         * @return A reference to the internal texture used by *this.
          */
-        lsTexture& getTexture() {
-            return atlasTex;
-        }
+        lsTexture& getTexture();
         
         /**
          * Retrieve the atlas entry specified by at a specific index.
@@ -150,25 +141,69 @@ class lsAtlas {
          * 
          * Depending on the font loaded, this function will correspond to either
          * ASCII codes of UTF codes
+         * 
+         * @return A constant reference to a single glyph within the texture
+         * atlas.
          */
-        lsAtlasEntry& getEntry(unsigned index) const {
-            return entries[index];
-        }
+        const lsAtlasEntry& getEntry(unsigned index) const;
         
         /**
-         * Retrieve the array of atlas entries contained within *this. 
+         * Retrieve the array of atlas entries contained within *this.
+         * 
+         * @return A constant pointer to the the internal array of atlas glyphs
          */
-        lsAtlasEntry* getEntries() const {
-            return entries;
-        }
+        const lsAtlasEntry* getEntries() const;
         
         /**
          * get the number of atlas entries currently loaded
          */
-        unsigned getNumEntries() const {
-            return numEntries;
-        }
+        unsigned getNumEntries() const;
 };
 
-#endif	/* __LS_GLYPH_ATLAS__ */
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Get a runtime ID associated with this object
+ */
+inline unsigned lsAtlas::getId() const {
+    return atlasTex.getId();
+}
+        
+/*
+ * Retrieve the texture rectangle used by *this.
+ */
+inline const lsTexture& lsAtlas::getTexture() const {
+    return atlasTex;
+}
+
+/*
+ * Get the texture object associated with *this
+ */
+inline lsTexture& lsAtlas::getTexture() {
+    return atlasTex;
+}
+
+/*
+ * Retrieve the atlas entry specified by at a specific index.
+ */
+inline const lsAtlasEntry& lsAtlas::getEntry(unsigned index) const {
+    return entries[index];
+}
+
+/*
+ * Retrieve the array of atlas entries contained within *this. 
+ */
+inline const lsAtlasEntry* lsAtlas::getEntries() const {
+    return entries;
+}
+
+/*
+ * get the number of atlas entries currently loaded
+ */
+inline unsigned lsAtlas::getNumEntries() const {
+    return numEntries;
+}
+
+#endif	/* __LS_ATLAS_H__ */
 

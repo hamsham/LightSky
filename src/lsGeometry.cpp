@@ -1,5 +1,5 @@
 /* 
- * File:   geometry.cpp
+ * File:   lsGeometry.cpp
  * Author: miles
  * 
  * Created on April 6, 2014, 5:08 PM

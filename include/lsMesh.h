@@ -1,5 +1,5 @@
 /* 
- * File:   mesh.h
+ * File:   lsMesh.h
  * Author: miles
  *
  * Created on April 6, 2014, 12:36 AM
@@ -7,8 +7,6 @@
 
 #ifndef __LS_MESH_H__
 #define	__LS_MESH_H__
-
-#include <cstdint>
 
 #include "lsAtlas.h"
 #include "lsBoundingBox.h"

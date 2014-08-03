@@ -1,5 +1,5 @@
 /* 
- * File:   drawModel.cpp
+ * File:   lsDrawModel.cpp
  * Author: miles
  * 
  * Created on June 10, 2014, 10:07 PM
@@ -7,13 +7,58 @@
 
 #include <utility>
 
-#include "assert.h"
+#include "utils/assert.h"
+
+#include "lsColor.h"
 #include "lsDrawModel.h"
 
-lsDrawModel::lsDrawModel(const lsDrawModel&) {
-    HL_ASSERT(false);
+//-----------------------------------------------------------------------------
+//      Static Implementations
+//-----------------------------------------------------------------------------
+// Default Texture color
+static constexpr lsColor checkeredCol[] = {
+    lsMagenta,
+    lsBlack,
+    lsMagenta,
+    lsBlack
+};
+
+lsTexture lsDrawModel::defaultTex{ls_tex_desc_t::LS_TEX_2D};
+
+/*
+ * Initialization of the default gray and magic pink textures
+ */
+bool lsDrawModel::initDefaultTexture() {
+    if (defaultTex.getId()) {
+        return true;
+    }
+    
+    if (!defaultTex.init(
+        0, LS_RGB_8, sizeof(checkeredCol), LS_RGB, LS_FLOAT, (void*)&checkeredCol[0])
+    ) {
+        LS_LOG_ERR("\tUnable to initialize a default texture for the scene manager.");
+        return false;
+    }
+    
+    return true;
 }
 
+//-----------------------------------------------------------------------------
+//      Class Implementations
+//-----------------------------------------------------------------------------
+/*
+ * Constructor
+ */
+lsDrawModel::lsDrawModel() {
+    // Ensuring that there is always a texture to draw with
+    if (initDefaultTexture()) {
+        pTexture = &defaultTex;
+    }
+}
+
+/*
+ * Move Constructor
+ */
 lsDrawModel::lsDrawModel(lsDrawModel&& dm) :
     pMesh{dm.pMesh},
     pTexture{dm.pTexture},
@@ -22,13 +67,15 @@ lsDrawModel::lsDrawModel(lsDrawModel&& dm) :
     vao{std::move(dm.vao)}
 {
     dm.pMesh = nullptr;
-    dm.pTexture = nullptr;
+    dm.pTexture = &defaultTex;
     dm.numInstances = 1;
 }
 
-lsDrawModel& lsDrawModel::operator=(const lsDrawModel&) {
-    HL_ASSERT(false);
-    return *this;
+/*
+ * Destructor
+ */
+lsDrawModel::~lsDrawModel() {
+    terminate();
 }
 
 lsDrawModel& lsDrawModel::operator=(lsDrawModel&& dm) {
@@ -36,7 +83,7 @@ lsDrawModel& lsDrawModel::operator=(lsDrawModel&& dm) {
     dm.pMesh = nullptr;
     
     pTexture = dm.pTexture;
-    dm.pTexture = nullptr;
+    dm.pTexture = &defaultTex;
     
     numInstances = dm.numInstances;
     dm.numInstances = 1;
@@ -51,7 +98,7 @@ lsDrawModel& lsDrawModel::operator=(lsDrawModel&& dm) {
  * Helper function to ensure all vertex attributes are setup properly.
  */
 void lsDrawModel::setVertexAttribs() {
-    const lsVertexBuffer& vbo = pMesh->vbo;
+    lsVertexBuffer& vbo = pMesh->vbo;
     
     vao.bind();
     vbo.bind();
@@ -99,31 +146,37 @@ void lsDrawModel::setVertexAttribs() {
     LOG_GL_ERR();
 }
 
-void lsDrawModel::reset() {
+void lsDrawModel::terminate() {
     pMesh = nullptr;
-    pTexture = nullptr;
+    pTexture = &defaultTex;
     numInstances = 1;
     vao.terminate();
     modelVbo.terminate();
 }
 
-bool lsDrawModel::setMesh(const lsMesh* const m) {
-    if (m == nullptr) {
-        reset();
+/*
+ * Set the mesh to be used by this object during a draw operation.
+ */
+bool lsDrawModel::init(lsMesh& m) {
+    // Ensure the default texture is up and running
+    if (!defaultTex.getId() && !initDefaultTexture()) {
+        LS_LOG_ERR("\tUnable to initialize the default draw model texture.");
         return false;
     }
     
+    // there's no telling what data might be pushed into the VAO. Get rid of it.
     vao.terminate();
     if (!vao.init()) {
-        LS_LOG_ERR("Unable to create a drawModel for mesh ", m->getId(), '.');
-        reset();
+        LS_LOG_ERR("Unable to create a drawModel for mesh ", m.getId(), '.');
+        terminate();
         return false;
     }
     
+    // vbos are resized when any new data is pushed into them
     if (modelVbo.isValid() == false) {
         if (!modelVbo.init()) {
             LS_LOG_ERR("\tUnable to initialize a model matrix buffer.");
-            reset();
+            terminate();
             return false;
         }
         else {
@@ -133,16 +186,18 @@ bool lsDrawModel::setMesh(const lsMesh* const m) {
         }
     }
     
-    pMesh = m;
+    pMesh = &m;
+    
     setVertexAttribs();
+    setTexture(defaultTex);
     
     return true;
 }
 
-void lsDrawModel::setTexture(const lsTexture* const pTex) {
-    pTexture = pTex;
-}
-
+/*
+ * All meshes support instanced draws by default. This will set the
+ * number of instances that will appear when drawing a mesh.
+ */
 void lsDrawModel::setNumInstances(int instanceCount, const math::mat4* const modelMatrices) {
     HL_ASSERT(instanceCount > 0);
     modelVbo.bind();
@@ -153,6 +208,9 @@ void lsDrawModel::setNumInstances(int instanceCount, const math::mat4* const mod
     numInstances = instanceCount;
 }
 
+/*
+ * Change the model matrix for a single instance
+ */
 void lsDrawModel::modifyInstance(int index, const math::mat4& modelMatrix) {
     HL_ASSERT(index >= 0 && index < numInstances);
     modelVbo.bind();

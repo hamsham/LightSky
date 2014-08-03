@@ -265,8 +265,8 @@ bool testState::generateDrawModels() {
         pScene->manageModel(pMeshModel);
         pMesh = pScene->getMeshList()[0];
         pTexture = pScene->getTextureList()[0];
-        pMeshModel->setMesh(pMesh);
-        pMeshModel->setTexture(pTexture);
+        pMeshModel->init(*pMesh);
+        pMeshModel->setTexture(*pTexture);
     }
     
     // test model 2
@@ -279,8 +279,8 @@ bool testState::generateDrawModels() {
         pScene->manageModel(pTextModel);
         pMesh = pScene->getMeshList()[1];
         pAtlas = pScene->getAtlasList()[0];
-        pTextModel->setMesh(pMesh);
-        pTextModel->setTexture(&(pAtlas->getTexture()));
+        pTextModel->init(*pMesh);
+        pTextModel->setTexture(pAtlas->getTexture());
     }
     
     return true;
@@ -314,7 +314,7 @@ bool testState::onStart() {
     ||  !pMeshLoader->loadSphere(32)
     ||  !pMesh->init(*pMeshLoader)
     ||  !pImgLoader->loadFile(testImageFile)
-    ||  !pTex->init(0, GL_RGB, pImgLoader->getPixelSize(), GL_BGR, GL_UNSIGNED_BYTE, pImgLoader->getData())
+    ||  !pTex->init(0, LS_RGB_8, pImgLoader->getPixelSize(), LS_RGB, LS_UNSIGNED_BYTE, pImgLoader->getData())
     ||  !pFontLoader->loadFile(testTextFile, LS_DEFAULT_FONT_SIZE)
     ||  !pAtlas->init(*pFontLoader)
     ||  !pText->init(*pAtlas, testTextString)

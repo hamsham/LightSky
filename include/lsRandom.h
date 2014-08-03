@@ -10,7 +10,9 @@
 
 #include "utils/randomNum.h"
 
-// bringing the hamLibs prng into the local namespace.
+/**
+ *  Internal Pseudo-Random number generator used by LightSky
+ */
 typedef hamLibs::utils::randomNum lsRandom;
 
 #endif	/* LSRANDOM_H */

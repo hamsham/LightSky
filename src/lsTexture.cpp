@@ -1,5 +1,5 @@
 /* 
- * File:   texture.cpp
+ * File:   lsTexture.cpp
  * Author: hammy
  * 
  * Created on January 27, 2014, 8:35 PM
@@ -70,8 +70,12 @@ lsTexture& lsTexture::operator=(lsTexture&& t) {
  * Load 1D Textures
  */
 bool lsTexture::init(
-    int mipmapLevel, int internalFormat,
-    int size, int format, int dataType, void* data
+    int                 mipmapLevel,
+    ls_pixel_format_t   internalFormat,
+    int                 size,
+    ls_pixel_layout_t   format,
+    ls_color_type_t     dataType,
+    void* const         data
 ) {
     if (!getGpuHandle(texId)) {
         return false;
@@ -90,8 +94,12 @@ bool lsTexture::init(
  * Load 2D Textures
  */
 bool lsTexture::init(
-    int mipmapLevel, int internalFormat,
-    math::vec2i size, int format, int dataType, void* data
+    int                 mipmapLevel,
+    ls_pixel_format_t   internalFormat,
+    math::vec2i         size,
+    ls_pixel_layout_t   format,
+    ls_color_type_t     dataType,
+    void* const         data
 ) {
     if (!getGpuHandle(texId)) {
         return false;
@@ -113,8 +121,12 @@ bool lsTexture::init(
  * Load 3D Textures
  */
 bool lsTexture::init(
-    int mipmapLevel, int internalFormat,
-    math::vec3i size, int format, int dataType, void* data
+    int                 mipmapLevel,
+    ls_pixel_format_t   internalFormat,
+    math::vec3i         size,
+    ls_pixel_layout_t   format,
+    ls_color_type_t     dataType,
+    void* const         data
 ) {
     if (!getGpuHandle(texId)) {
         return false;

@@ -1,5 +1,5 @@
 /* 
- * File:   display.cpp
+ * File:   lsDisplay.cpp
  * Author: hammy
  * 
  * Created on November 15, 2013, 8:50 PM
@@ -15,6 +15,14 @@
 #include "lsDisplay.h"
 #include "lsUtil.h"
 
+/**
+ * Print SDL window flags to the console.
+ * This is primarily used for debugging.
+ * 
+ * @param flags
+ * A bit field of difference SDL flags., see https://wiki.libsdl.org/ for more
+ * information.
+ */
 void printWindowFlags(uint32_t flags) {
     LS_LOG_MSG(
         "\tWindow Flags:\n",
@@ -198,6 +206,9 @@ const math::vec2i lsDisplay::getResolution() const {
     return math::vec2i{x, y};
 }
 
+/*
+ * Set the current display's resolution, in pixels.
+ */
 void lsDisplay::setResolution(const math::vec2i inResolution) {
     SDL_SetWindowSize(pWindow, inResolution[0], inResolution[1]);
 }

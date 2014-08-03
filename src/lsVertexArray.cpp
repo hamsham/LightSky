@@ -1,5 +1,5 @@
 /* 
- * File:   vertexArray.cpp
+ * File:   lsVertexArray.cpp
  * Author: hammy
  * 
  * Created on February 7, 2014, 8:01 PM
@@ -7,6 +7,9 @@
 
 #include "lsVertexArray.h"
 
+/*
+ * Constructor
+ */
 lsVertexArray::lsVertexArray() {
 }
         

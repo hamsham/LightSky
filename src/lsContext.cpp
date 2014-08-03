@@ -92,7 +92,7 @@ bool lsContext::init(const lsDisplay& display, bool useVsync) {
     tempRenderer.setViewport(math::vec2i{0, 0}, display.getResolution());
     
     // Set the default back buffer color
-    const lsColor& mgcPnk = lsMagicPink;
+    const lsColor& mgcPnk = lsMagenta;
     glClearColor(mgcPnk[0], mgcPnk[1], mgcPnk[2], mgcPnk[3]);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     

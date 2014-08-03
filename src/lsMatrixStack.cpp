@@ -1,5 +1,5 @@
 /* 
- * File:   matrixStack.cpp
+ * File:   lsMatrixStack.cpp
  * Author: hammy
  * 
  * Created on January 25, 2014, 12:00 PM

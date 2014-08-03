@@ -1,5 +1,5 @@
 /* 
- * File:   sceneManager.h
+ * File:   lsSceneManager.h
  * Author: miles
  *
  * Created on May 26, 2014, 11:22 AM
@@ -49,14 +49,10 @@ typedef std::deque<lsAtlas*>     lsAtlasList;
  */
 class lsSceneManager {
     private:
-        lsTexture defaultTex;
-    
         lsTextureList texMgr;
         lsMeshList meshMgr;
         lsAtlasList atlasMgr;
         lsDrawList drawMgr;
-        
-        bool initDefaultTexture();
         
     public:
         lsSceneManager();
@@ -70,10 +66,6 @@ class lsSceneManager {
         
         bool init();
         void terminate();
-        
-        void clear();
-        
-        const lsTexture& getDefaultTexture() const;
         
         lsMeshList& getMeshList();
         lsTextureList& getTextureList();
@@ -115,10 +107,6 @@ class lsSceneManager {
         bool containsAtlas(const lsAtlas* const) const;
         bool containsModel(const lsDrawModel* const) const;
 };
-
-inline const lsTexture& lsSceneManager::getDefaultTexture() const {
-    return defaultTex;
-}
 
 #endif	/* __LS_SCENE_MANAGER_H__ */
 

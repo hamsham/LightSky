@@ -1,12 +1,12 @@
 /* 
- * File:   vertexArray.h
+ * File:   lsVertexArray.h
  * Author: hammy
  *
  * Created on February 7, 2014, 8:01 PM
  */
 
-#ifndef __LS_VERTEX_ARRAY__
-#define	__LS_VERTEX_ARRAY__
+#ifndef __LS_VERTEX_ARRAY_H__
+#define	__LS_VERTEX_ARRAY_H__
 
 #include <Gl/glew.h>
 
@@ -255,4 +255,4 @@ inline void lsVertexArray::unbind() const {
     glBindVertexArray(0);
 }
 
-#endif	/* __LS_VERTEX_ARRAY__ */
+#endif	/* __LS_VERTEX_ARRAY_H__ */

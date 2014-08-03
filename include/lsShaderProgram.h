@@ -1,5 +1,5 @@
 /* 
- * File:   shaderProgram.h
+ * File:   lsShaderProgram.h
  * Author: hammy
  *
  * Created on January 21, 2014, 6:54 PM

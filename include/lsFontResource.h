@@ -1,5 +1,5 @@
 /* 
- * File:   fontResource.h
+ * File:   lsFontResource.h
  * Author: miles
  *
  * Created on February 16, 2014, 2:36 PM

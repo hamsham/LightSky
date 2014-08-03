@@ -1,5 +1,5 @@
 /* 
- * File:   resource.cpp
+ * File:   lsResource.cpp
  * Author: hammy
  * 
  * Created on February 1, 2014, 11:09 PM

@@ -294,8 +294,7 @@ bool batchState::generateDrawModels() {
     pScene->manageModel(pModel);
     pMesh = pScene->getMeshList()[0];
     pTexture = pScene->getTextureList()[0];
-    pModel->setMesh(pMesh);
-    pModel->setTexture(pTexture);
+    pModel->init(*pMesh, *pTexture);
     
      // lights, camera, batch!
     pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);

@@ -1,5 +1,5 @@
 /* 
- * File:   imageResource.cpp
+ * File:   lsImageResource.cpp
  * Author: hammy
  * 
  * Created on February 2, 2014, 1:42 PM
@@ -8,7 +8,6 @@
 #include <utility> // std::move
 #include <string>
 
-#include <Gl/glew.h>
 #include <FreeImage.h>
 
 #include "lsSetup.h"
@@ -58,44 +57,44 @@ int getImageFlags(FREE_IMAGE_FORMAT inFormat) {
 /*
  * Get an image's pixel format, combined with its bits per pixel
  */
-unsigned getBitmapSize(FIBITMAP* pImg) {
+ls_color_type_t getBitmapSize(FIBITMAP* pImg) {
     // Get the data type of the image. Convert to an internal format
     const int storageType = FreeImage_GetImageType(pImg);
-    unsigned dataType = 0;
+    ls_color_type_t dataType = LS_DEFAULT_COLOR_TYPE;
     
     if (storageType == FIT_UNKNOWN
     ||  storageType == FIT_DOUBLE
     ||  storageType == FIT_COMPLEX
     ) {
-        return 0;
+        return LS_INVALID_COLOR_TYPE;
     }
     
     switch(storageType) {
         // n-bit char
         case FIT_BITMAP:
             LS_LOG_MSG("\tImage pixel type: BYTE");
-            dataType = GL_UNSIGNED_BYTE;
+            dataType = LS_UNSIGNED_BYTE;
             break;
             
         // 16-bit short
         case FIT_INT16:
-            dataType = GL_SHORT;
+            dataType = LS_SHORT;
             LS_LOG_MSG("\tImage pixel type: SHORT");
             break;
                 
         case FIT_UINT16:
-            dataType = GL_UNSIGNED_SHORT;
+            dataType = LS_UNSIGNED_SHORT;
             LS_LOG_MSG("\tImage pixel type: UNSIGNED SHORT");
             break;
         
         // 32-bit int
         case FIT_INT32:
-            dataType = GL_INT;
+            dataType = LS_INT;
             LS_LOG_MSG("\tImage pixel type: INT");
             break;
                 
         case FIT_UINT32:
-            dataType = GL_UNSIGNED_INT;
+            dataType = LS_UNSIGNED_INT;
             LS_LOG_MSG("\tImage pixel type: UNSIGNED INT");
             break;
         
@@ -103,13 +102,13 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
         case FIT_RGBF:
         // 128-bit float
         case FIT_RGBAF:
-            dataType = GL_FLOAT;
+            dataType = LS_FLOAT;
             LS_LOG_MSG("\tImage pixel type: FLOAT");
             break;
         
         // unknown
         default:
-            return 0;
+            return LS_INVALID_COLOR_TYPE;
             LS_LOG_MSG("\tImage pixel type: INVALID");
             break;
     }
@@ -117,62 +116,73 @@ unsigned getBitmapSize(FIBITMAP* pImg) {
     return dataType;
 }
 
-math::vec2i getPixelFormat(FIBITMAP* pImg, unsigned bpp) {
+void getPixelFormat(
+    FIBITMAP* pImg,
+    unsigned bpp,
+    ls_pixel_format_t& intFmt,
+    ls_pixel_layout_t& extFmt
+) {
     LS_LOG_MSG("\tImage Bits Per Pixel: ", bpp);
+    
+    // setup some default values in case nothing below returns.
+    intFmt = LS_INVALID_PIXEL_FORMAT;
+    extFmt = LS_INVALID_PIXEL_LAYOUT;
     
     // Get the data type of the image. Convert to an internal format
     const FREE_IMAGE_TYPE dataType = FreeImage_GetImageType(pImg);
     
     if (dataType == FIT_BITMAP) {
-        if (bpp == 8)   return math::vec2i{GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT};
-        if (bpp == 16)  return math::vec2i{GL_RG8, GL_RG};
-        if (bpp == 24)  return math::vec2i{GL_RGB8, GL_BGR};
-        if (bpp == 32)  return math::vec2i{GL_RGBA8, GL_BGRA};
+        if (bpp == 8)   intFmt = LS_GRAY_8;     extFmt = LS_GRAY;
+        if (bpp == 16)  intFmt = LS_RG_8;       extFmt = LS_RG;
+        if (bpp == 24)  intFmt = LS_RGB_8;      extFmt = LS_RGB;
+        if (bpp == 32)  intFmt = LS_RGBA_8;     extFmt = LS_RGBA;
     }
     else if (dataType == FIT_INT16) {
-        if (bpp == 16)  return math::vec2i{GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT};
-        if (bpp == 32)  return math::vec2i{GL_RG16I, GL_RG};
-        if (bpp == 48)  return math::vec2i{GL_RGB16I, GL_BGR};
-        if (bpp == 64)  return math::vec2i{GL_RGBA16I, GL_BGRA};
+        if (bpp == 16)  intFmt = LS_GRAY_16I;   extFmt = LS_GRAY;
+        if (bpp == 32)  intFmt = LS_RG_16I;     extFmt = LS_RG;
+        if (bpp == 48)  intFmt = LS_RGB_16I;    extFmt = LS_RGB;
+        if (bpp == 64)  intFmt = LS_RGBA_16I;   extFmt = LS_RGBA;
     }
     else if (dataType == FIT_UINT16) {
-        if (bpp == 16)  return math::vec2i{GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT};
-        if (bpp == 32)  return math::vec2i{GL_RG16UI, GL_RG};
-        if (bpp == 48)  return math::vec2i{GL_RGB16UI, GL_BGR};
-        if (bpp == 64)  return math::vec2i{GL_RGBA16UI, GL_BGRA};
+        if (bpp == 16)  intFmt = LS_GRAY_16U;   extFmt = LS_GRAY;
+        if (bpp == 32)  intFmt = LS_RG_16U;     extFmt = LS_RG;
+        if (bpp == 48)  intFmt = LS_RGB_16U;    extFmt = LS_RGB;
+        if (bpp == 64)  intFmt = LS_RGBA_16U;   extFmt = LS_RGBA;
     }
     else if (dataType == FIT_INT32) {
-        if (bpp == 32)  return math::vec2i{GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT};
-        if (bpp == 64)  return math::vec2i{GL_RG32I, GL_RG};
-        if (bpp == 96)  return math::vec2i{GL_RGB32I, GL_BGR};
-        if (bpp == 128) return math::vec2i{GL_RGBA32I, GL_BGRA};
+        if (bpp == 32)  intFmt = LS_GRAY_32I;   extFmt = LS_GRAY;
+        if (bpp == 64)  intFmt = LS_RG_32I;     extFmt = LS_RG;
+        if (bpp == 96)  intFmt = LS_RGB_32I;    extFmt = LS_RGB;
+        if (bpp == 128) intFmt = LS_RGBA_32I;   extFmt = LS_RGBA;
     }
     else if (dataType == FIT_UINT32) {
-        if (bpp == 32)  return math::vec2i{GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT};
-        if (bpp == 64)  return math::vec2i{GL_RG32UI, GL_RG};
-        if (bpp == 96)  return math::vec2i{GL_RGB32UI, GL_BGR};
-        if (bpp == 128) return math::vec2i{GL_RGBA32UI, GL_BGRA};
+        if (bpp == 32)  intFmt = LS_GRAY_32U;   extFmt = LS_GRAY;
+        if (bpp == 64)  intFmt = LS_RG_32U;     extFmt = LS_RG;
+        if (bpp == 96)  intFmt = LS_RGB_32U;    extFmt = LS_RGB;
+        if (bpp == 128) intFmt = LS_RGBA_32U;   extFmt = LS_RGBA;
     }
     else if (dataType == FIT_FLOAT) {
-        if (bpp == 32)  return math::vec2i{GL_DEPTH_COMPONENT32F, GL_DEPTH_COMPONENT};
-        if (bpp == 64)  return math::vec2i{GL_RG32F, GL_RG};
-        if (bpp == 96)  return math::vec2i{GL_RGB32F, GL_BGR};
-        if (bpp == 128) return math::vec2i{GL_RGBA32F, GL_BGRA};
+        if (bpp == 32)  intFmt = LS_GRAY_32F;   extFmt = LS_GRAY;
+        if (bpp == 64)  intFmt = LS_RG_32F;     extFmt = LS_RG;
+        if (bpp == 96)  intFmt = LS_RGB_32F;    extFmt = LS_RGB;
+        if (bpp == 128) intFmt = LS_RGBA_32F;   extFmt = LS_RGBA;
     }
     else if (dataType == FIT_RGB16) {
-        return math::vec2i{GL_RGB16F, GL_BGR};
+        intFmt = LS_RGB_16F;
+        extFmt = LS_RGB;
     }
     else if (dataType == FIT_RGBA16) {
-        return math::vec2i{GL_RGBA16F, GL_BGRA};
+        intFmt = LS_RGBA_16F;
+        extFmt = LS_RGBA;
     }
     else if (dataType == FIT_RGBF) {
-        return math::vec2i{GL_RGB32F, GL_BGR};
+        intFmt = LS_RGB_32F;
+        extFmt = LS_RGB;
     }
     else if (dataType == FIT_RGBAF) {
-        return math::vec2i{GL_RGBA32F, GL_BGRA};
+        intFmt = LS_RGBA_32F;
+        extFmt = LS_RGBA;
     }
-    
-    return math::vec2i{0,0};
 }
 
 //-----------------------------------------------------------------------------
@@ -219,14 +229,17 @@ lsImageResource& lsImageResource::operator =(lsImageResource&& img) {
     imgSize = img.imgSize;
     img.imgSize = math::vec2i{0};
     
-    pixelSize = img.pixelSize;
-    img.pixelSize = 0;
+    pixelType = img.pixelType;
+    img.pixelType = LS_DEFAULT_COLOR_TYPE;
     
     bitsPerPixel = img.bitsPerPixel;
     img.bitsPerPixel = 0;
     
-    imgFormat = img.imgFormat;
-    img.imgFormat = math::vec2i{0,0};
+    intFormat = img.intFormat;
+    img.intFormat = LS_DEFAULT_PIXEL_FORMAT;
+    
+    extFormat = img.extFormat;
+    img.extFormat = LS_DEFAULT_PIXEL_LAYOUT;
     
     return *this;
 }
@@ -279,8 +292,8 @@ bool lsImageResource::loadFile(const char* filename) {
         return false;
     }
     
-    const int dataType = getBitmapSize(fileData);
-    if (dataType == 0) {
+    const ls_color_type_t dataType = getBitmapSize(fileData);
+    if (dataType == LS_INVALID_COLOR_TYPE) {
         LS_LOG_ERR('\t', filename, " contains an unsupported pixel format.\n");
         FreeImage_Unload(fileData);
         return false;
@@ -290,9 +303,10 @@ bool lsImageResource::loadFile(const char* filename) {
     this->imgSize[0]    = (int)FreeImage_GetWidth(fileData);
     this->imgSize[1]    = (int)FreeImage_GetHeight(fileData);
     this->bitsPerPixel  = (unsigned)FreeImage_GetBPP(fileData);
-    this->pixelSize     = dataType;
+    this->pixelType     = dataType;
     this->dataSize      = this->imgSize[0] * this->imgSize[1];
-    this->imgFormat     = getPixelFormat(fileData, this->bitsPerPixel);
+    
+    getPixelFormat(fileData, this->bitsPerPixel, intFormat, extFormat);
     
     LS_LOG_MSG("\tSuccessfully loaded ", filename, ".\n");
     
@@ -312,9 +326,10 @@ void lsImageResource::unload() {
     pData = nullptr;
     dataSize = 0;
     imgSize = math::vec2i{0};
-    pixelSize = 0;
+    pixelType = LS_DEFAULT_COLOR_TYPE;
     bitsPerPixel = 0;
-    imgFormat = math::vec2i{0,0};
+    intFormat = LS_DEFAULT_PIXEL_FORMAT;
+    extFormat = LS_DEFAULT_PIXEL_LAYOUT;
 }
 
 /*

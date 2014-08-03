@@ -11,11 +11,6 @@
 #include "lsColor.h"
 #include "lsSceneManager.h"
 
-// Default Texture color
-static const unsigned char checkeredCol[] = {
-    0,    0,    0,    255
-};
-
 //-----------------------------------------------------------------------------
 //      Scene Manager Class
 //-----------------------------------------------------------------------------
@@ -30,7 +25,6 @@ lsSceneManager::~lsSceneManager() {
  * Constructor
  */
 lsSceneManager::lsSceneManager() :
-    defaultTex{ls_tex_desc_t::LS_TEX_2D},
     texMgr{},
     meshMgr{},
     atlasMgr{},
@@ -41,7 +35,6 @@ lsSceneManager::lsSceneManager() :
  * Move Constructor
  */
 lsSceneManager::lsSceneManager(lsSceneManager&& sm) :
-    defaultTex{std::move(sm.defaultTex)},
     texMgr{std::move(sm.texMgr)},
     meshMgr{std::move(sm.meshMgr)},
     atlasMgr{std::move(sm.atlasMgr)},
@@ -61,30 +54,13 @@ lsSceneManager& lsSceneManager::operator =(lsSceneManager&& sm) {
 }
 
 /*
- * Initialization of the default gray and magic pink textures
- */
-bool lsSceneManager::initDefaultTexture() {
-    if (!defaultTex.init(0, GL_RED, math::vec2i{1}*sizeof(lsWhite), GL_RED, GL_FLOAT, (void*)&lsWhite)) {
-        LS_LOG_ERR("\tUnable to initialize a default texture for the scene manager.");
-        return false;
-    }
-    
-    return true;
-}
-
-/*
  * Scene initialization
+ * 
+ * There used to be more here.
  */
 bool lsSceneManager::init() {
-    terminate();
-    
     LS_LOG_MSG("Attempting to initialize a scene manager.");
-    
-    if (!initDefaultTexture()) {
-        LS_LOG_ERR("\tUnable to initialize a scene manager.");
-        return false;
-    }
-    
+    terminate();
     LS_LOG_MSG("\tSuccessfully initialized a scene manager.");
     return true;
 }
@@ -93,14 +69,6 @@ bool lsSceneManager::init() {
  * Resource termination
  */
 void lsSceneManager::terminate() {
-    clear();
-    defaultTex.terminate();
-}
-
-/*
- * Management release
- */
-void lsSceneManager::clear() {
     for (lsMesh* pMesh : meshMgr) {
         delete pMesh;
     }

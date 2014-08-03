@@ -1,5 +1,5 @@
 /* 
- * File:   imageResource.h
+ * File:   lsImageResource.h
  * Author: hammy
  *
  * Created on February 2, 2014, 1:42 PM
@@ -8,8 +8,9 @@
 #ifndef __LS_IMAGE_RESOURCE_H__
 #define	__LS_IMAGE_RESOURCE_H__
 
-#include "lsSetup.h"
+#include "lsColor.h"
 #include "lsResource.h"
+#include "lsSetup.h"
 
 //-----------------------------------------------------------------------------
 //      Enumerations
@@ -55,7 +56,7 @@ class lsImageResource final : public lsResource {
         /**
          * Pixel format of the loaded image
          */
-        unsigned pixelSize = 0;
+        ls_color_type_t pixelType = LS_DEFAULT_COLOR_TYPE;
         
         /**
          * Number of bits per pixel in the image
@@ -63,17 +64,34 @@ class lsImageResource final : public lsResource {
         unsigned bitsPerPixel = 0;
         
         /**
-         * Internal format of an image
+         * CPU-Side format of an image
          * 
-         * This can be a pair of:
-         * GL_R/GL_R
-         * GL_RG/GL_RG
-         * GL_RGB/GL_BGR
-         * GL_RGBA/GL_BGRA
-         * GL_RGB32F/GL_RGB32f
-         * GL_RGBA32f/GL_RGBA32f
+         * This can be any of the following:
+         * LS_GRAY_N
+         * LS_RG_N
+         * LS_RGB_N
+         * LS_RGBA_N
+         * LS_RGB_32F
+         * LS_RGBA_32F
+         * where N is 8, 16, or 32
          */
-        math::vec2i imgFormat = 0;
+        ls_pixel_format_t intFormat = LS_DEFAULT_PIXEL_FORMAT;
+        
+        
+        /**
+         * CPU-Side format of an image
+         * 
+         * This can be any of the following:
+         * LS_GRAY
+         * LS_RG
+         * LS_RGB
+         * LS_RGBA
+         * LS_RGB16F
+         * LS_RGBA32F
+         * LS_RGB16F
+         * LS_RGBA32F
+         */
+        ls_pixel_layout_t extFormat = LS_DEFAULT_PIXEL_LAYOUT;
 
     public:
         /**
@@ -165,28 +183,36 @@ class lsImageResource final : public lsResource {
          * @return a 2D integer vector containing the width and height of the
          * loaded image, in pixels.
          */
-        inline math::vec2i getPixelSize() const;
+        math::vec2i getPixelSize() const;
         
         /**
          * Get the format of the currently loaded image.
-         * For example, GL_UNSIGNED_BYTE, GL_INT, GL_FLOAT, etc.
+         * For example, LS_UNSIGNED_BYTE, LS_INT, LS_FLOAT, etc.
          */
-        inline unsigned getFormat() const;
+        ls_color_type_t getPixelType() const;
         
         /**
          * Get the number of bits per pixel in the image.
          * 
          * @return 0, 1, 2, 4, 8, 16, 24, 32, 48, 64, 96, or 128
          */
-        inline unsigned getBpp() const;
+        unsigned getBpp() const;
+        
+        /**
+         * Get the OpenGL-compatible CPU-Side image format.
+         * 
+         * @return An enumeration containing image format information that can
+         * be used when setting up textures in OpenGL.
+         */
+        ls_pixel_format_t getInternalFormat() const;
         
         /**
          * Get the OpenGL-compatible CPU-Side/GPU-Side image format pair.
          * 
-         * @return A vec2 containing image format information that can be used
-         * when setting up textures in OpenGL.
+         * @return An enumeration containing image format information that can
+         * be used when setting up textures in OpenGL.
          */
-        inline math::vec2i getInternalFormat() const;
+        ls_pixel_layout_t getExternalFormat() const;
 };
 
 //-----------------------------------------------------------------------------
@@ -209,8 +235,8 @@ inline math::vec2i lsImageResource::getPixelSize() const {
 /*
  * Get the GPU-compatible format of the currently loaded image
  */
-inline unsigned lsImageResource::getFormat() const {
-    return pixelSize;
+inline ls_color_type_t lsImageResource::getPixelType() const {
+    return pixelType;
 }
 
 /*
@@ -221,10 +247,17 @@ inline unsigned lsImageResource::getBpp() const {
 }
 
 /*
- * Get the OpenGL-compatible CPU-Side/GPU-Side image format pair.
+ * Get the OpenGL-compatible CPU-Side image format.
  */
-inline math::vec2i lsImageResource::getInternalFormat() const {
-    return imgFormat;
+inline ls_pixel_format_t lsImageResource::getInternalFormat() const {
+    return intFormat;
+}
+
+/*
+ * Get the OpenGL-compatible GPU-Side image format.
+ */
+inline ls_pixel_layout_t lsImageResource::getExternalFormat() const {
+    return extFormat;
 }
 
 #endif	/* __LS_IMAGE_RESOURCE_H__ */

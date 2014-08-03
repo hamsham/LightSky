@@ -1,5 +1,5 @@
 /* 
- * File:   shaderObject.cpp
+ * File:   lsShaderObject.cpp
  * Author: hammy
  * 
  * Created on January 21, 2014, 6:54 PM

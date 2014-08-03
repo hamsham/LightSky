@@ -1,5 +1,5 @@
 /* 
- * File:   textureAtlas.cpp
+ * File:   lsAtlas.cpp
  * Author: miles
  * 
  * Created on February 16, 2014, 2:36 PM
@@ -8,9 +8,23 @@
 #include <utility>
 
 #include "lsAtlas.h"
+#include "lsColor.h"
 
 using math::vec2;
 using math::vec2i;
+
+/*
+ * Destructor
+ */
+lsAtlas::~lsAtlas() {
+    terminate();
+}
+
+/*
+ * Constructor
+ */
+lsAtlas::lsAtlas() {
+}
 
 /*
  * Font Atlas Move constructor
@@ -66,7 +80,7 @@ bool lsAtlas::init(const lsFontResource& ff) {
         return false;
     }
     
-    if (!atlasTex.init(0, GL_RED, maxGlyphSize*dimensions, GL_RED, GL_UNSIGNED_BYTE, nullptr)) {
+    if (!atlasTex.init(0, LS_GRAY_8, maxGlyphSize*dimensions, LS_GRAY, LS_UNSIGNED_BYTE, nullptr)) {
         LOG_GL_ERR();
         LS_LOG_ERR("\tAn error occurred while allocating space for a font atlas.\n");
         delete [] entries;
@@ -74,7 +88,7 @@ bool lsAtlas::init(const lsFontResource& ff) {
         return false;
     }
     
-    // Let OpenGL know that fonts only use 1-bytes per pixel
+    // Let OpenGL know that fonts only use 1-byte per pixel
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     
     LOG_GL_ERR();
@@ -91,7 +105,7 @@ bool lsAtlas::init(const lsFontResource& ff) {
             
             atlasTex.modify(
                 vec2i{x*maxGlyphSize[0], y*maxGlyphSize[1]},
-                pGlyph.size, GL_RED, GL_UNSIGNED_BYTE, pGlyph.pData
+                pGlyph.size, LS_GRAY, LS_UNSIGNED_BYTE, pGlyph.pData
             );
             
             const float fDimension = (float)dimensions;
@@ -117,8 +131,8 @@ bool lsAtlas::init(const lsFontResource& ff) {
         }
     }
     
-    atlasTex.setParameter(GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    atlasTex.setParameter(GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    atlasTex.setParameter(LS_TEX_WRAP_S, LS_TEX_CLAMP_BORDER);
+    atlasTex.setParameter(LS_TEX_WRAP_T, LS_TEX_CLAMP_BORDER);
     atlasTex.unbind();
     LOG_GL_ERR();
     
@@ -129,4 +143,16 @@ bool lsAtlas::init(const lsFontResource& ff) {
     LS_LOG_MSG("\tSuccessfully loaded a font atlas.\n");
     
     return true;
+}
+        
+/*
+ * Frees all memory used by *this.
+ */
+void lsAtlas::terminate() {
+    atlasTex.terminate();
+
+    delete [] entries;
+    entries = nullptr;
+
+    numEntries = 0;
 }

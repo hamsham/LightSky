@@ -38,5 +38,19 @@
 #include "lsVertex.h"
 #include "lsVertexArray.h"
 
+/**
+ * LightSky Initialization
+ * 
+ * @return bool
+ * TRUE if the framework was able to initialize properly, or FALSE if not.
+ */
+bool lsInit();
+
+/**
+ * LightSky termination.
+ * Frees all extra resources used by the framework.
+ */
+void lsTerminate();
+
 #endif	/* __LIGHT_SKY_H__ */
 

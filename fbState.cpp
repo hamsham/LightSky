@@ -125,8 +125,8 @@ fbState::~fbState() {
 /******************************************************************************
  * Key Up Event
 ******************************************************************************/
-void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
         return;
@@ -143,8 +143,8 @@ void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
 /******************************************************************************
  * Key Down Event
 ******************************************************************************/
-void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
         return;
@@ -200,14 +200,14 @@ void fbState::updateKeyStates(float dt) {
 /******************************************************************************
  * Text Events
 ******************************************************************************/
-void fbState::onKeyboardTextEvent(const SDL_TextInputEvent*) {
+void fbState::onKeyboardTextEvent(const SDL_TextInputEvent&) {
 }
 
 /******************************************************************************
  * Window Event
 ******************************************************************************/
-void fbState::onWindowEvent(const SDL_WindowEvent* pEvent) {
-    switch (pEvent->event) {
+void fbState::onWindowEvent(const SDL_WindowEvent& e) {
+    switch (e.event) {
         case SDL_WINDOWEVENT_CLOSE:
             this->setState(LS_GAME_STOPPED);
             break;
@@ -223,18 +223,18 @@ void fbState::onWindowEvent(const SDL_WindowEvent* pEvent) {
 /******************************************************************************
  * Mouse Move Event
 ******************************************************************************/
-void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
+void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
     if (this->getState() == LS_GAME_PAUSED
-    || (mouseX == e->xrel && mouseY == e->yrel)
+    || (mouseX == e.xrel && mouseY == e.yrel)
     ) {
         // I would rather quit the function than have unnecessary LERPs and
         // quaternion multiplications.
         return;
     }
     
-    mouseX = e->xrel;
-    mouseY = e->yrel;
+    mouseX = e.xrel;
+    mouseY = e.yrel;
     
     // Get the current mouse position and LERP from the previous mouse position.
     // The mouse position is divided by the window's resolution in order to normalize
@@ -261,19 +261,19 @@ void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
 /******************************************************************************
  * Mouse Button Up Event
 ******************************************************************************/
-void fbState::onMouseButtonUpEvent(const SDL_MouseButtonEvent*) {
+void fbState::onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Button Down Event
 ******************************************************************************/
-void fbState::onMouseButtonDownEvent(const SDL_MouseButtonEvent*) {
+void fbState::onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Wheel Event
 ******************************************************************************/
-void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent*) {
+void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent&) {
 }
 
 /******************************************************************************
@@ -530,9 +530,9 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 ******************************************************************************/
 void fbState::setRendererParams() {
-    lsRenderer& pRenderer = getParentSystem().getRenderer();
-    pRenderer.setDepthTesting(true);
-    pRenderer.setFaceCulling(true);
+    lsRenderer renderer;
+    renderer.setDepthTesting(true);
+    renderer.setFaceCulling(true);
 }
 
 /******************************************************************************
@@ -641,9 +641,9 @@ mat4 fbState::get3dViewport() const {
 ******************************************************************************/
 void fbState::resetGlViewport() {
     lsDisplay& disp = getParentSystem().getDisplay();
-    lsRenderer& rend = getParentSystem().getRenderer();
+    lsRenderer renderer;
     
-    rend.setViewport(vec2i{0}, disp.getResolution());
+    renderer.setViewport(vec2i{0}, disp.getResolution());
 }
 
 /******************************************************************************
@@ -661,7 +661,7 @@ void fbState::drawScene() {
 ******************************************************************************/
 void fbState::drawMeshes() {
     // setup a viewport for a custom framebuffer
-    lsRenderer& renderer = getParentSystem().getRenderer();
+    lsRenderer renderer;
     renderer.setViewport(vec2i{0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT});
 
     // use render to the framebuffer's color attachment
@@ -727,7 +727,7 @@ void fbState::drawStrings() {
     pStringModel->setNumInstances(1, &modelMat);
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI
-    lsRenderer& renderer = getParentSystem().getRenderer();
+    lsRenderer renderer;
     renderer.setDepthTesting(false);
     renderer.setBlending(true);
     renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);

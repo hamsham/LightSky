@@ -107,8 +107,8 @@ lightState::lightState() {
 /******************************************************************************
  * Key Up Event
 ******************************************************************************/
-void lightState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void lightState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
         return;
@@ -125,8 +125,8 @@ void lightState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
 /******************************************************************************
  * Key Down Event
 ******************************************************************************/
-void lightState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void lightState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
         return;
@@ -178,14 +178,14 @@ void lightState::updateKeyStates(float dt) {
 /******************************************************************************
  * Text Events
 ******************************************************************************/
-void lightState::onKeyboardTextEvent(const SDL_TextInputEvent*) {
+void lightState::onKeyboardTextEvent(const SDL_TextInputEvent&) {
 }
 
 /******************************************************************************
  * Window Event
 ******************************************************************************/
-void lightState::onWindowEvent(const SDL_WindowEvent* pEvent) {
-    switch (pEvent->event) {
+void lightState::onWindowEvent(const SDL_WindowEvent& e) {
+    switch (e.event) {
         case SDL_WINDOWEVENT_CLOSE:
             this->setState(LS_GAME_STOPPED);
             break;
@@ -197,16 +197,16 @@ void lightState::onWindowEvent(const SDL_WindowEvent* pEvent) {
 /******************************************************************************
  * Mouse Move Event
 ******************************************************************************/
-void lightState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
+void lightState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
-    if (mouseX == e->xrel && mouseY == e->yrel) {
+    if (mouseX == e.xrel && mouseY == e.yrel) {
         // I would rather quit the function than have unnecessary LERPs and
         // quaternion multiplications.
         return;
     }
     
-    mouseX = e->xrel;
-    mouseY = e->yrel;
+    mouseX = e.xrel;
+    mouseY = e.yrel;
     
     // Get the current mouse position and LERP from the previous mouse position.
     // The mouse position is divided by the window's resolution in order to normalize
@@ -233,19 +233,19 @@ void lightState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
 /******************************************************************************
  * Mouse Button Up Event
 ******************************************************************************/
-void lightState::onMouseButtonUpEvent(const SDL_MouseButtonEvent*) {
+void lightState::onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Button Down Event
 ******************************************************************************/
-void lightState::onMouseButtonDownEvent(const SDL_MouseButtonEvent*) {
+void lightState::onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Wheel Event
 ******************************************************************************/
-void lightState::onMouseWheelEvent(const SDL_MouseWheelEvent*) {
+void lightState::onMouseWheelEvent(const SDL_MouseWheelEvent&) {
 }
 
 /******************************************************************************
@@ -424,9 +424,9 @@ bool lightState::onStart() {
     
     LOG_GL_ERR();
     
-    lsRenderer& pRenderer = getParentSystem().getRenderer();
-    pRenderer.setDepthTesting(true);
-    pRenderer.setFaceCulling(true);
+    lsRenderer renderer;
+    renderer.setDepthTesting(true);
+    renderer.setFaceCulling(true);
     
     return true;
 }
@@ -541,7 +541,7 @@ void lightState::drawScene() {
         pModel = pScene->getModelList()[1];
         pModel->setNumInstances(1, &modelMat);
         
-        lsRenderer& renderer = getParentSystem().getRenderer();
+        lsRenderer renderer;
         renderer.setDepthTesting(false);
         renderer.setBlending(true);
         renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);

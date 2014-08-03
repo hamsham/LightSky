@@ -105,8 +105,8 @@ testState::testState() {
 /******************************************************************************
  * Key Up Event
 ******************************************************************************/
-void testState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void testState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= LS_ARRAY_SIZE(GAME_KEYS)) {
         return;
@@ -123,8 +123,8 @@ void testState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
 /******************************************************************************
  * Key Down Event
 ******************************************************************************/
-void testState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void testState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= LS_ARRAY_SIZE(GAME_KEYS)) {
         return;
@@ -167,14 +167,14 @@ void testState::updateKeyStates(float dt) {
 /******************************************************************************
  * Text Events
 ******************************************************************************/
-void testState::onKeyboardTextEvent(const SDL_TextInputEvent*) {
+void testState::onKeyboardTextEvent(const SDL_TextInputEvent&) {
 }
 
 /******************************************************************************
  * Window Event
 ******************************************************************************/
-void testState::onWindowEvent(const SDL_WindowEvent* pEvent) {
-    switch (pEvent->event) {
+void testState::onWindowEvent(const SDL_WindowEvent& e) {
+    switch (e.event) {
         case SDL_WINDOWEVENT_CLOSE:
             this->setState(LS_GAME_STOPPED);
             break;
@@ -186,16 +186,16 @@ void testState::onWindowEvent(const SDL_WindowEvent* pEvent) {
 /******************************************************************************
  * Mouse Move Event
 ******************************************************************************/
-void testState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
+void testState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
-    if (mouseX == e->xrel && mouseY == e->yrel) {
+    if (mouseX == e.xrel && mouseY == e.yrel) {
         // I would rather quit the function than have unnecessary LERPs and
         // quaternion multiplications.
         return;
     }
     
-    mouseX = e->xrel;
-    mouseY = e->yrel;
+    mouseX = e.xrel;
+    mouseY = e.yrel;
     
     // Get the current mouse position and LERP from the previous mouse position.
     // The mouse position is divided by the window's resolution in order to normalize
@@ -222,19 +222,19 @@ void testState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
 /******************************************************************************
  * Mouse Button Up Event
 ******************************************************************************/
-void testState::onMouseButtonUpEvent(const SDL_MouseButtonEvent*) {
+void testState::onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Button Down Event
 ******************************************************************************/
-void testState::onMouseButtonDownEvent(const SDL_MouseButtonEvent*) {
+void testState::onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Wheel Event
 ******************************************************************************/
-void testState::onMouseWheelEvent(const SDL_MouseWheelEvent*) {
+void testState::onMouseWheelEvent(const SDL_MouseWheelEvent&) {
 }
 
 /******************************************************************************

@@ -17,22 +17,22 @@ class testState final : virtual public lsGameState {
     private:
         int             mouseX = 0;
         int             mouseY = 0;
-        lsShaderProgram   meshProgram = {};
-        lsShaderProgram   fontProgram = {};
-        lsMatrixStack*    matStack = nullptr;
+        lsShaderProgram meshProgram = {};
+        lsShaderProgram fontProgram = {};
+        lsMatrixStack*  matStack = nullptr;
         math::quat      orientation = {};
-        lsSceneManager*   pScene = nullptr;
+        lsSceneManager* pScene = nullptr;
         
-        virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent*) override;
-        virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent*) override;
+        virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
+        virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;
         void            updateKeyStates         (float dt);
-        virtual void    onKeyboardTextEvent     (const SDL_TextInputEvent*) override;
-        virtual void    onWindowEvent           (const SDL_WindowEvent*) override;
+        virtual void    onKeyboardTextEvent     (const SDL_TextInputEvent&) override;
+        virtual void    onWindowEvent           (const SDL_WindowEvent&) override;
         
-        virtual void    onMouseMoveEvent        (const SDL_MouseMotionEvent*) override;
-        virtual void    onMouseButtonUpEvent    (const SDL_MouseButtonEvent*) override;
-        virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent*) override;
-        virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent*) override;
+        virtual void    onMouseMoveEvent        (const SDL_MouseMotionEvent&) override;
+        virtual void    onMouseButtonUpEvent    (const SDL_MouseButtonEvent&) override;
+        virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent&) override;
+        virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent&) override;
         
         bool generateDrawModels();
         void drawScene();
@@ -48,7 +48,7 @@ class testState final : virtual public lsGameState {
         }
         
         testState& operator=(const testState&) = delete;
-        testState& operator=(testState&&) = delete;
+        testState& operator=(testState&&);
         
         bool onStart() override;
         void onRun(float) override;

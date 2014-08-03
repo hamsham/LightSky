@@ -81,8 +81,8 @@ batchState::batchState() {
 /******************************************************************************
  * Key Up Event
 ******************************************************************************/
-void batchState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void batchState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
         return;
@@ -99,8 +99,8 @@ void batchState::onKeyboardUpEvent(const SDL_KeyboardEvent* e) {
 /******************************************************************************
  * Key Down Event
 ******************************************************************************/
-void batchState::onKeyboardDownEvent(const SDL_KeyboardEvent* e) {
-    const SDL_Keycode key = e->keysym.sym;
+void batchState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
+    const SDL_Keycode key = e.keysym.sym;
     
     if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
         return;
@@ -152,14 +152,14 @@ void batchState::updateKeyStates(float dt) {
 /******************************************************************************
  * Text Events
 ******************************************************************************/
-void batchState::onKeyboardTextEvent(const SDL_TextInputEvent*) {
+void batchState::onKeyboardTextEvent(const SDL_TextInputEvent&) {
 }
 
 /******************************************************************************
  * Window Event
 ******************************************************************************/
-void batchState::onWindowEvent(const SDL_WindowEvent* pEvent) {
-    switch (pEvent->event) {
+void batchState::onWindowEvent(const SDL_WindowEvent& e) {
+    switch (e.event) {
         case SDL_WINDOWEVENT_CLOSE:
             this->setState(LS_GAME_STOPPED);
             break;
@@ -171,16 +171,16 @@ void batchState::onWindowEvent(const SDL_WindowEvent* pEvent) {
 /******************************************************************************
  * Mouse Move Event
 ******************************************************************************/
-void batchState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
+void batchState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
-    if (mouseX == e->xrel && mouseY == e->yrel) {
+    if (mouseX == e.xrel && mouseY == e.yrel) {
         // I would rather quit the function than have unnecessary LERPs and
         // quaternion multiplications.
         return;
     }
     
-    mouseX = e->xrel;
-    mouseY = e->yrel;
+    mouseX = e.xrel;
+    mouseY = e.yrel;
     
     // Get the current mouse position and LERP from the previous mouse position.
     // The mouse position is divided by the window's resolution in order to normalize
@@ -207,19 +207,19 @@ void batchState::onMouseMoveEvent(const SDL_MouseMotionEvent* e) {
 /******************************************************************************
  * Mouse Button Up Event
 ******************************************************************************/
-void batchState::onMouseButtonUpEvent(const SDL_MouseButtonEvent*) {
+void batchState::onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Button Down Event
 ******************************************************************************/
-void batchState::onMouseButtonDownEvent(const SDL_MouseButtonEvent*) {
+void batchState::onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {
 }
 
 /******************************************************************************
  * Mouse Wheel Event
 ******************************************************************************/
-void batchState::onMouseWheelEvent(const SDL_MouseWheelEvent*) {
+void batchState::onMouseWheelEvent(const SDL_MouseWheelEvent&) {
 }
 
 /******************************************************************************
@@ -374,7 +374,7 @@ bool batchState::onStart() {
     
     LOG_GL_ERR();
     
-    lsRenderer& renderer = getParentSystem().getRenderer();
+    lsRenderer renderer;
     renderer.setDepthTesting(true);
     renderer.setFaceCulling(true);
     

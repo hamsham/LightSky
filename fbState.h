@@ -27,15 +27,15 @@ class fbState final : virtual public lsGameState {
         math::mat4*     pModelMatrices          = nullptr;
         math::quat      orientation             = {};
         
-        virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent*) override;
-        virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent*) override;
-        virtual void    onKeyboardTextEvent     (const SDL_TextInputEvent*) override;
-        virtual void    onWindowEvent           (const SDL_WindowEvent*) override;
+        virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
+        virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;
+        virtual void    onKeyboardTextEvent     (const SDL_TextInputEvent&) override;
+        virtual void    onWindowEvent           (const SDL_WindowEvent&) override;
         
-        virtual void    onMouseMoveEvent        (const SDL_MouseMotionEvent*) override;
-        virtual void    onMouseButtonUpEvent    (const SDL_MouseButtonEvent*) override;
-        virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent*) override;
-        virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent*) override;
+        virtual void    onMouseMoveEvent        (const SDL_MouseMotionEvent&) override;
+        virtual void    onMouseButtonUpEvent    (const SDL_MouseButtonEvent&) override;
+        virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent&) override;
+        virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent&) override;
         
         void            updateKeyStates         (float);
         

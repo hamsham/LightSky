@@ -14,7 +14,6 @@
 #include "lsResource.h"
 #include "lsVertex.h"
 #include "lsAtlas.h"
-#include "lsRenderer.h"
 #include "lsBoundingBox.h"
 
 /**

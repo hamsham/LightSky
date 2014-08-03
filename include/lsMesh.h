@@ -13,8 +13,8 @@
 #include "lsAtlas.h"
 #include "lsBoundingBox.h"
 #include "lsBufferObject.h"
-#include "lsSetup.h"
 #include "lsRenderer.h"
+#include "lsSetup.h"
 #include "lsVertex.h"
 
 /*

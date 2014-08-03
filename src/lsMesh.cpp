@@ -48,6 +48,12 @@ lsMesh::lsMesh(lsMesh&& m) :
 }
 
 /*
+ * Constructor
+ */
+lsMesh::lsMesh() {
+}
+
+/*
  * Move Operator
  */
 lsMesh& lsMesh::operator=(lsMesh&& m) {
@@ -62,6 +68,13 @@ lsMesh& lsMesh::operator=(lsMesh&& m) {
     bounds = std::move(m.bounds);
     
     return *this;
+}
+
+/*
+ * Destructor
+ */
+lsMesh::~lsMesh() {
+    terminate();
 }
 
 /*

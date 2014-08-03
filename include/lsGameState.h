@@ -10,7 +10,9 @@
 
 #include "lsSystem.h"
 
-// Forward declarations
+//-----------------------------------------------------------------------------
+//      Forward declarations
+//-----------------------------------------------------------------------------
 struct SDL_WindowEvent;
 struct SDL_KeyboardEvent;
 struct SDL_TextInputEvent;
@@ -18,6 +20,9 @@ struct SDL_MouseMotionEvent;
 struct SDL_MouseButtonEvent;
 struct SDL_MouseWheelEvent;
 
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
 /**
  * Enumeration to help manage interactions between the lsSubsystem and different
  * game state objects.
@@ -30,14 +35,17 @@ enum ls_state_t : unsigned {
     LS_GAME_STOPPED = 2,
 };
 
-/******************************************************************************
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
+/**
  * lsGameState
  * 
  * An Abstract base class that can be overridden to organize games onto stacks
  * within an lsSubsystem. lsGameState objects are pushed onto a "stack" managed
  * by the lsSubsystem. Game states are passed hardware events by subsystems when
  * they are running.
-******************************************************************************/
+ */
 class lsGameState {
     friend class lsSubsystem;
     
@@ -75,7 +83,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_KeyboardEvent*
          */
-        virtual void onKeyboardUpEvent(const SDL_KeyboardEvent&) {}
+        virtual void onKeyboardUpEvent(const SDL_KeyboardEvent&);
         
         /**
          * Event which allows a game state to input events when a keyboard key
@@ -83,7 +91,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_KeyboardEvent*
          */
-        virtual void onKeyboardDownEvent(const SDL_KeyboardEvent&) {}
+        virtual void onKeyboardDownEvent(const SDL_KeyboardEvent&);
         
         /**
          * Event which allows a game state to input events when a keyboard key
@@ -91,7 +99,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_TextInputEvent*
          */
-        virtual void onKeyboardTextEvent(const SDL_TextInputEvent&) {}
+        virtual void onKeyboardTextEvent(const SDL_TextInputEvent&);
         
         /**
          * Event which allows a game state to input events when the current
@@ -99,7 +107,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_WindowEvent*
          */
-        virtual void onWindowEvent(const SDL_WindowEvent&) {}
+        virtual void onWindowEvent(const SDL_WindowEvent&);
         
         /**
          * Event which allows a game state to input events when the mouse has
@@ -107,7 +115,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_MouseMotionEvent*
          */
-        virtual void onMouseMoveEvent(const SDL_MouseMotionEvent&) {}
+        virtual void onMouseMoveEvent(const SDL_MouseMotionEvent&);
         
         /**
          * Event which allows a game state to input events when a button on the
@@ -115,7 +123,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_MouseButtonEvent*
          */
-        virtual void onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {}
+        virtual void onMouseButtonUpEvent(const SDL_MouseButtonEvent&);
         
         /**
          * Event which allows a game state to input events when a button on the
@@ -123,7 +131,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_MouseButtonEvent*
          */
-        virtual void onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {}
+        virtual void onMouseButtonDownEvent(const SDL_MouseButtonEvent&);
         
         /**
          * Event which allows a game state to input events when the scroll wheel
@@ -131,7 +139,7 @@ class lsGameState {
          * 
          * @param A reference to an SDL_MouseWheelEvent*
          */
-        virtual void onMouseWheelEvent(const SDL_MouseWheelEvent&) {}
+        virtual void onMouseWheelEvent(const SDL_MouseWheelEvent&);
         
         /**
          * The onStart method is called by the parent subsystem when *this
@@ -141,13 +149,13 @@ class lsGameState {
          * TRUE to indicate that *this has successfully initialized, FALSE if
          * otherwise.
          */
-        virtual bool onStart() { return true; }
+        virtual bool onStart();
         
         /**
          * The onStop method is used by the parent subsystem to indicate that
          * *this game state should terminate. Place all memory cleanup here.
          */
-        virtual void onStop() {}
+        virtual void onStop();
         
         /**
          * This method is used to tell the current game state that it should
@@ -156,7 +164,7 @@ class lsGameState {
          * @param A floating-point number to indicate how many milliseconds
          * have passed since the last parent system update.
          */
-        virtual void onRun(float) {}
+        virtual void onRun(float);
         
         /**
          * This method is used by the parent subsystem to tell *this game state
@@ -165,13 +173,13 @@ class lsGameState {
          * @param A floating-point number to indicate how many milliseconds
          * have passed since the last parent system update.
          */
-        virtual void onPause(float) {}
+        virtual void onPause(float);
         
     public:
         /**
          * Default Constructor.
          */
-        lsGameState() {}
+        lsGameState();
         
         /**
          * Copy Constructor -- DELETED

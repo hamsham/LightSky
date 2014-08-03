@@ -12,6 +12,18 @@
 #include "lsGeometry.h"
 #include "lsMeshResource.h"
 
+/*
+ * Destructor
+ */
+lsMeshResource::~lsMeshResource() {
+    unload();
+}
+
+/*
+ * Constructor
+ */
+lsMeshResource::lsMeshResource() {
+}
 
 /*
  * MeshLoader Move Constructor
@@ -97,12 +109,19 @@ bool lsMeshResource::initVertices(unsigned vertCount) {
     return true;
 }
 
-/**
+/*
  * Load a set of meshes from a file
  * TODO
  */
 bool lsMeshResource::loadFile(const char*) {
     unload();
+    return false;
+}
+
+/*
+ * Save a mesh to a file.
+ */
+bool lsMeshResource::saveFile(const char*) const {
     return false;
 }
 

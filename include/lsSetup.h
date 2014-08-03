@@ -17,14 +17,9 @@
 #include "utils/hash.h"
 #include "math/math.h"
 
-/******************************************************************************
- * NAMESPACE SETUP
-******************************************************************************/
-namespace math = hamLibs::math;
-
-/******************************************************************************
- * GLOBAL MACROS
-******************************************************************************/
+//-----------------------------------------------------------------------------
+//      Global Macros
+//-----------------------------------------------------------------------------
 #ifndef LS_APP_NAME
     #define LS_APP_NAME "Light Sky"
 #endif
@@ -63,8 +58,8 @@ namespace math = hamLibs::math;
  */
 #ifndef LS_DECLARE_CLASS_TYPE
     #define LS_DECLARE_CLASS_TYPE(nickName, name, ...)\
-        extern template class name <__VA_ARGS__>;\
-        typedef name<__VA_ARGS__> nickName
+        typedef name<__VA_ARGS__> nickName;\
+        extern template class name <__VA_ARGS__>
 #endif
 
 /**
@@ -73,6 +68,21 @@ namespace math = hamLibs::math;
 #ifndef LS_DEFINE_CLASS_TYPE
     #define LS_DEFINE_CLASS_TYPE(name, ...) template class name<__VA_ARGS__>
 #endif
+
+//-----------------------------------------------------------------------------
+//      Namespace Setup
+//-----------------------------------------------------------------------------
+namespace math {
+    using namespace hamLibs::math;
+    
+    // hamLibs doesn't have typedefs for unsigned vectors or matrices
+    typedef vec2_t<unsigned> vec2ui;
+    typedef vec3_t<unsigned> vec3ui;
+    typedef vec4_t<unsigned> vec4ui;
+    typedef mat2_t<unsigned> mat2ui;
+    typedef mat3_t<unsigned> mat3ui;
+    typedef mat4_t<unsigned> mat4ui;
+}
 
 /*
  * Debugging
@@ -100,9 +110,9 @@ namespace math = hamLibs::math;
     
 #endif
 
-/******************************************************************************
- * GAME LOGGING
-******************************************************************************/
+//-----------------------------------------------------------------------------
+//      Simple Logging for Debugging
+//-----------------------------------------------------------------------------
 #ifdef LS_DEBUG
     template <typename Arg>
     void LS_LOG_MSG(const Arg& arg) {

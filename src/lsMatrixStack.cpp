@@ -8,7 +8,7 @@
 #include <utility>
 #include "lsMatrixStack.h"
 
-/**
+/*
  * Constructor
  */
 lsMatrixStack::lsMatrixStack() :
@@ -25,7 +25,7 @@ lsMatrixStack::lsMatrixStack() :
     stacks[LS_MODEL_MATRIX].push(math::mat4(1.f));
 }
 
-/**
+/*
  * Move Constructor
  */
 lsMatrixStack::lsMatrixStack(lsMatrixStack&& ms) :
@@ -38,13 +38,13 @@ lsMatrixStack::lsMatrixStack(lsMatrixStack&& ms) :
     vpMatrix{std::move(ms.vpMatrix)}
 {}
 
-/**
+/*
  * Destructor
  */
 lsMatrixStack::~lsMatrixStack() {
 }
 
-/**
+/*
  * Move Operator
  */
 lsMatrixStack& lsMatrixStack::operator =(lsMatrixStack&& ms) {
@@ -58,7 +58,7 @@ lsMatrixStack& lsMatrixStack::operator =(lsMatrixStack&& ms) {
     return *this;
 }
 
-/**
+/*
  * Push a matrix onto the stack, multiplying it by the current matrix
  */
 void lsMatrixStack::pushMatrix(ls_matrix_t mt, const math::mat4& m) {
@@ -73,7 +73,7 @@ void lsMatrixStack::pushMatrix(ls_matrix_t mt, const math::mat4& m) {
     stacks[mt].push(m * stacks[mt].top());
 }
 
-/**
+/*
  * Push the identity matrix onto the stack
  */
 void lsMatrixStack::pushIdentity(ls_matrix_t mt) {
@@ -88,7 +88,7 @@ void lsMatrixStack::pushIdentity(ls_matrix_t mt) {
     stacks[mt].push(math::mat4{1.f});
 }
 
-/**
+/*
  * Push a matrix onto the stack without multiplying it by the current matrix.
  */
 void lsMatrixStack::emplaceMatrix(ls_matrix_t mt, const math::mat4& m) {
@@ -103,21 +103,21 @@ void lsMatrixStack::emplaceMatrix(ls_matrix_t mt, const math::mat4& m) {
     stacks[mt].push(m);
 }
 
-/**
+/*
  * Set the matrix on top of the stack to the one passed into the function.
  */
 void lsMatrixStack::loadMatrix(ls_matrix_t mt, const math::mat4& m) {
     stacks[mt].top() = m;
 }
 
-/**
+/*
  * Set the current matrix at the top of the stack to the identity matrix.
  */
 void lsMatrixStack::loadIdentity(ls_matrix_t mt) {
     stacks[mt].top() = math::mat4(1.f);
 }
 
-/**
+/*
  * Pop a matrix from the stack.
  */
 void lsMatrixStack::popMatrix(ls_matrix_t mt) {

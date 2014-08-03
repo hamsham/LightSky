@@ -14,6 +14,9 @@
 #include "lsColor.h"
 #include "lsDisplay.h"
 
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
 /**
  * Draw modes for renderable types.
  */
@@ -127,11 +130,14 @@ enum ls_test_t : int {
     LS_STENCIL_TEST             = GL_STENCIL_TEST
 };
 
-/*
- * Forward declarations
- */
+//-----------------------------------------------------------------------------
+//      Forward declarations
+//-----------------------------------------------------------------------------
 class lsDisplay;
 
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
 /**
  * Renderer Object
  * On desktop platforms, this object strictly represents an OpenGL 3.3 context.
@@ -185,9 +191,9 @@ class lsRenderer final {
         int getMaxTextureSize() const;
 };
 
-///////////////////////////////////////////////////////////////////////////////
-//      Viewport Management
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
 /*
  * Set the active viewport size
  */        
@@ -195,9 +201,6 @@ inline void lsRenderer::setViewport(const math::vec2i& pos, const math::vec2i& s
     glViewport(pos[0], pos[1], size[0], size[1]);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//      Polygon winding order
-///////////////////////////////////////////////////////////////////////////////
 inline void lsRenderer::setWindingOrder(ls_winding_t wo) {
     glFrontFace(wo);
     LOG_GL_ERR();
@@ -209,9 +212,6 @@ inline ls_winding_t lsRenderer::getWindingOrder() const {
     return (ls_winding_t)wo;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//      Face Culling
-///////////////////////////////////////////////////////////////////////////////
 inline void lsRenderer::setFaceCulling(bool fc) {
     fc == true ? glEnable(LS_CULL_FACE) : glDisable(LS_CULL_FACE);
     LOG_GL_ERR();
@@ -224,9 +224,6 @@ inline bool lsRenderer::getFaceCulling() const {
     return faceCull;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//      Depth Testing
-///////////////////////////////////////////////////////////////////////////////
 inline void lsRenderer::setDepthTesting(bool dt) {
     dt == true ? glEnable(LS_DEPTH_TEST) : glDisable(LS_DEPTH_TEST);
 }
@@ -238,9 +235,6 @@ inline bool lsRenderer::getDepthTesting() const {
     return depthTest;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Blending
-///////////////////////////////////////////////////////////////////////////////
 /*
  * Determine the blending state
  */
@@ -331,15 +325,6 @@ inline lsColor lsRenderer::getBlendColor() const {
     lsColor col;
     glGetFloatv(LS_BLEND_COLOR, col.v);
     return col;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-//      Textures
-///////////////////////////////////////////////////////////////////////////////
-inline int lsRenderer::getMaxTextureSize() const {
-    int maxTexSize;
-    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTexSize);
-    return maxTexSize;
 }
 
 #endif	/* __LS_RENDERER_H__ */

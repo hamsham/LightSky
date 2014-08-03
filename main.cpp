@@ -8,20 +8,12 @@
 #include "lightState.h"
 #include "fbState.h"
 
-#define GLFW_EXPOSE_NATIVE_WIN32
-#define GLFW_EXPOSE_NATIVE_WGL
-
-#include <GLFW/glfw3.h>
-#include <GLFW/glfw3native.h>
-#include <windef.h>
-
 bool initLs();
 void terminateLs();
 
 namespace {
     lsSubsystem* pSystem = nullptr;
     lsDisplay* pDisplay = nullptr;
-    GLFWwindow* pWindow = nullptr;
 }
 
 /*
@@ -74,21 +66,8 @@ bool initLs() {
         return false;
     }
     
-    if (!glfwInit()) {
-        std::cerr
-            << "Unable to initialize GLFW for a native window handle test"
-            << std::endl;
-        return false;
-    }
-    
-    pWindow = glfwCreateWindow(800, 600, "Native Window Test", nullptr, nullptr);
-    if (pWindow == nullptr) {
-        std::cerr << "Unable to create a native window to test with." << std::endl;
-        return false;
-    }
-    
     pDisplay = new(std::nothrow) lsDisplay{};
-    if (!pDisplay || !pDisplay->init(glfwGetWin32Window(pWindow))) {
+    if (!pDisplay || !pDisplay->init(math::vec2i{800, 600})) {
         std::cerr << "Unable to create a display object for LightSky." << std::endl;
         return false;
     }
@@ -115,10 +94,6 @@ void terminateLs() {
     
     delete pDisplay;
     pDisplay = nullptr;
-    
-    glfwDestroyWindow(pWindow);
-    glfwTerminate();
-    pWindow = nullptr;
     
     lsTerminate();
     

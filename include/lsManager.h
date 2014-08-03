@@ -43,9 +43,7 @@ class lsManager {
         /**
          * Constructor
          */
-        lsManager() :
-            dataMap{}
-        {}
+        lsManager();
         
         /**
          * Copy Constructor -- DELETED
@@ -59,18 +57,14 @@ class lsManager {
          * @param m
          * An r-value reference to a manager object
          */
-        lsManager(lsManager&& m) :
-            dataMap{std::move(m.dataMap)}
-        {}
+        lsManager(lsManager&& m);
         
         /**
          * Destructor
          * Deletes all managed objects contained within *this, freeing all
          * memory.
          */
-        ~lsManager() {
-            clear();
-        }
+        ~lsManager();
         
         /**
          * Copy Operator -- DELETED
@@ -85,11 +79,7 @@ class lsManager {
          * 
          * @return A reference to *this.
          */
-        lsManager& operator=(lsManager&& m) {
-            clear();
-            dataMap = std::move(m.dataMap);
-            return *this;
-        }
+        lsManager& operator=(lsManager&& m);
         
         /**
          * Manage the dynamic memory of an object, given an ID that it can be
@@ -104,11 +94,7 @@ class lsManager {
          * @param id
          * The ID that *this object should be referenced by *this.
          */
-        inline void manage(const hash_t& id, data_t* const pData) {
-            if (this->contains(id) == false) {
-                dataMap[id] = pData;
-            }
-        }
+        void manage(const hash_t& id, data_t* const pData);
         
         /**
          * Remove an object from the list of things managed by *this. This
@@ -121,16 +107,7 @@ class lsManager {
          * @return data_t*
          * A pointer to an object (previously) managed by *this.
          */
-        inline data_t* unmanage(const hash_t& id) {
-            data_t* pData = nullptr;
-            
-            if (this->contains(id)) {
-                pData = dataMap.at(id);
-                dataMap.erase(id);
-            }
-            
-            return pData;
-        }
+        data_t* unmanage(const hash_t& id);
         
         /**
          * Free the memory used by an object that's managed by *this.
@@ -139,13 +116,7 @@ class lsManager {
          * @param id
          * The ID that is used to reference an object contained within *this.
          */
-        inline void erase(const hash_t& id) {
-            if (this->contains(id) == true) {
-                data_t* const pData = dataMap.at(id);
-                dataMap.erase(id);
-                delete pData;
-            }
-        }
+        void erase(const hash_t& id);
         
         /**
          * Determine if an object, referenced by ID, is managed by *this.
@@ -157,9 +128,7 @@ class lsManager {
          * TRUE if an object is referenced by *this.
          * FALSE if this object is not managing something at ID.
          */
-        inline bool contains(const hash_t& id) const {
-            return dataMap.find(id) != dataMap.end();
-        }
+        bool contains(const hash_t& id) const;
         
         /**
          * Retrieve the raw pointer to an object that is currently managed by
@@ -171,9 +140,7 @@ class lsManager {
          * @return
          * A const pointer to a managed object, or NULL if nothing at ID exists.
          */
-        inline data_t* get(const hash_t& id) const {
-            return this->contains(id) ? dataMap.at(id) : nullptr;
-        }
+        data_t* get(const hash_t& id) const;
         
         /**
          * Retrieve the raw pointer to an object that is currently managed by
@@ -185,9 +152,7 @@ class lsManager {
          * @return
          * A pointer to a managed object, or NULL if nothing at ID exists.
          */
-        inline data_t* get(const hash_t& id) {
-            return this->contains(id) ? dataMap.at(id) : nullptr;
-        }
+        data_t* get(const hash_t& id);
         
         /**
          * Get a managed object using an index offset, rather tan an ID. This
@@ -199,26 +164,12 @@ class lsManager {
          * 
          * @return A pointer to an object managed by *this.
          */
-        inline data_t* elementAt(unsigned index) {
-            if (index >= dataMap.size()) {
-                return nullptr;
-            }
-
-            typename ls_map_t::iterator iter = dataMap.begin();
-            std::advance(iter, index);
-            return iter->second;
-        }
+        data_t* elementAt(unsigned index);
         
         /**
          * Release the memory of all objects managed by *this.
          */
-        inline void clear() {
-            typename ls_map_t::iterator iter;
-            for (iter = dataMap.begin(); iter != dataMap.end(); ++iter) {
-                delete iter->second;
-            }
-            dataMap.clear();
-        }
+        void clear();
         
         /**
          * Get the number of objects that are currently managed by *this.
@@ -226,9 +177,7 @@ class lsManager {
          * @return A unsigned integer, representing the number of objects
          * managed by *this.
          */
-        inline unsigned size() const {
-            return dataMap.size();
-        }
+        unsigned size() const;
         
         /**
          * Retrieve the implementing hash table that is used internally by this
@@ -236,9 +185,7 @@ class lsManager {
          * 
          * @return A reference to the internal std::unordered_map used by *this.
          */
-        inline const ls_map_t& getDataMap() const {
-            return dataMap;
-        }
+        const ls_map_t& getDataMap() const;
         
         /**
          * Retrieve the implementing hash table that is used internally by this
@@ -246,9 +193,163 @@ class lsManager {
          * 
          * @return A reference to the internal std::unordered_map used by *this.
          */
-        inline ls_map_t& getDataMap() {
-            return dataMap;
-        }
+        ls_map_t& getDataMap();
 };
+
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Constructor
+ */
+template <typename hash_t, typename data_t>
+lsManager<hash_t, data_t>::lsManager() :
+    dataMap{}
+{}
+
+/*
+ * Move Constructor
+ */
+template <typename hash_t, typename data_t>
+lsManager<hash_t, data_t>::lsManager(lsManager&& m) :
+    dataMap{std::move(m.dataMap)}
+{}
+
+/*
+ * Destructor
+ */
+template <typename hash_t, typename data_t>
+lsManager<hash_t, data_t>::~lsManager() {
+    clear();
+}
+
+/*
+ * Move Operator
+ */
+template <typename hash_t, typename data_t>
+lsManager<hash_t, data_t>& lsManager<hash_t, data_t>::operator=(lsManager&& m) {
+    clear();
+    dataMap = std::move(m.dataMap);
+    return *this;
+}
+
+/*
+ * Manage the dynamic memory of an object, given an ID that it can be
+ * referenced by.
+ */
+template <typename hash_t, typename data_t>
+inline void lsManager<hash_t, data_t>::manage(const hash_t& id, data_t* const pData) {
+    if (this->contains(id) == false) {
+        dataMap[id] = pData;
+    }
+}
+
+/*
+ * Remove an object from the list of things managed by *this.
+ */
+template <typename hash_t, typename data_t>
+data_t* lsManager<hash_t, data_t>::unmanage(const hash_t& id) {
+    data_t* pData = nullptr;
+
+    if (this->contains(id)) {
+        pData = dataMap.at(id);
+        dataMap.erase(id);
+    }
+
+    return pData;
+}
+
+/*
+ * Free the memory used by an object that's managed by *this.
+ */
+template <typename hash_t, typename data_t>
+void lsManager<hash_t, data_t>::erase(const hash_t& id) {
+    if (this->contains(id) == true) {
+        data_t* const pData = dataMap.at(id);
+        dataMap.erase(id);
+        delete pData;
+    }
+}
+
+/*
+ * Determine if an object, referenced by ID, is managed by *this.
+ */
+template <typename hash_t, typename data_t>
+inline bool lsManager<hash_t, data_t>::contains(const hash_t& id) const {
+    return dataMap.find(id) != dataMap.end();
+}
+
+/*
+ * Retrieve the raw pointer to an object that is currently managed by
+ * *this.
+ */
+template <typename hash_t, typename data_t>
+inline data_t* lsManager<hash_t, data_t>::get(const hash_t& id) const {
+    return this->contains(id) ? dataMap.at(id) : nullptr;
+}
+
+/*
+ * Retrieve the raw pointer to an object that is currently managed by
+ * *this.
+ */
+template <typename hash_t, typename data_t>
+inline data_t* lsManager<hash_t, data_t>::get(const hash_t& id) {
+    return this->contains(id) ? dataMap.at(id) : nullptr;
+}
+
+/*
+ * Get a managed object using an index offset, rather tan an ID.
+ */
+template <typename hash_t, typename data_t>
+data_t* lsManager<hash_t, data_t>::elementAt(unsigned index) {
+    if (index >= dataMap.size()) {
+        return nullptr;
+    }
+
+    typename ls_map_t::iterator iter = dataMap.begin();
+    std::advance(iter, index);
+    return iter->second;
+}
+
+/*
+ * Release the memory of all objects managed by *this.
+ */
+template <typename hash_t, typename data_t>
+void lsManager<hash_t, data_t>::clear() {
+    typename ls_map_t::iterator iter;
+    for (iter = dataMap.begin(); iter != dataMap.end(); ++iter) {
+        delete iter->second;
+    }
+    dataMap.clear();
+}
+
+/*
+ * Get the number of objects that are currently managed by *this.
+ * managed by *this.
+ */
+template <typename hash_t, typename data_t>
+inline unsigned lsManager<hash_t, data_t>::size() const {
+    return dataMap.size();
+}
+
+/*
+ * Retrieve the implementing hash table that is used internally by this
+ * object.
+ */
+template <typename hash_t, typename data_t>
+inline const typename lsManager<hash_t, data_t>::ls_map_t&
+lsManager<hash_t, data_t>::getDataMap() const {
+    return dataMap;
+}
+
+/*
+ * Retrieve the implementing hash table that is used internally by this
+ * object.
+ */
+template <typename hash_t, typename data_t>
+inline typename lsManager<hash_t, data_t>::ls_map_t&
+lsManager<hash_t, data_t>::getDataMap() {
+    return dataMap;
+}
 
 #endif	/* __LS_MANAGER_H__ */

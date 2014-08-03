@@ -9,9 +9,9 @@
 
 #include "lsSetup.h"
 
-/******************************************************************************
+/*
  * OpenGL Errors
-******************************************************************************/
+ */
 #ifdef LS_DEBUG
 void lsPrintGlError(int line, const char* file) {
     const GLenum errorCode = glGetError();

@@ -14,9 +14,9 @@
 #include "lsSetup.h"
 #include "lsImageResource.h"
 
-/******************************************************************************
- * Utilities
-*******************************************************************************/
+//-----------------------------------------------------------------------------
+//      Utilities
+//-----------------------------------------------------------------------------
 /*
  * FreeImage error handler message
  */
@@ -175,22 +175,35 @@ math::vec2i getPixelFormat(FIBITMAP* pImg, unsigned bpp) {
     return math::vec2i{0,0};
 }
 
-/******************************************************************************
- * Construction, moving, and Copying
-*******************************************************************************/
+//-----------------------------------------------------------------------------
+//      Construction, moving, and Copying
+//-----------------------------------------------------------------------------
+/*
+ * Constructor
+ */
+lsImageResource::lsImageResource() :
+    lsResource{}
+{}
+
 /*
  * Move Constructor
- * Delegates data pointer movement to the parent class
  */
 lsImageResource::lsImageResource(lsImageResource&& img) :
     lsResource{}
 {
     this->operator =(std::move(img));
 }
+    
+/*
+ * Destructor
+ */
+lsImageResource::~lsImageResource() {
+    unload();
+}
 
-/******************************************************************************
- * Overloaded Operators
-*******************************************************************************/
+//-----------------------------------------------------------------------------
+//      Overloaded Operators
+//-----------------------------------------------------------------------------
 /*
  * Move operator
  */
@@ -218,9 +231,9 @@ lsImageResource& lsImageResource::operator =(lsImageResource&& img) {
     return *this;
 }
 
-/******************************************************************************
- * File handling
-*******************************************************************************/
+//-----------------------------------------------------------------------------
+//      File handling
+//-----------------------------------------------------------------------------
 /*
  * Loading
  */
@@ -307,8 +320,8 @@ void lsImageResource::unload() {
 /*
  * saving
  */
-inline bool lsImageResource::saveFile(const char* filename, img_file_t format) const {
-    FREE_IMAGE_FORMAT fiFormat;
+bool lsImageResource::saveFile(const char* filename, img_file_t format) const {
+    FREE_IMAGE_FORMAT fiFormat = FIF_PNG;
     
     switch(format) {
         case img_file_t::LS_IMG_BMP:    fiFormat = FIF_BMP; break;
@@ -324,6 +337,7 @@ inline bool lsImageResource::saveFile(const char* filename, img_file_t format) c
         case img_file_t::LS_IMG_TIF:    fiFormat = FIF_TIFF; break;
         case img_file_t::LS_IMG_WBP:    fiFormat = FIF_WEBP; break;
         case img_file_t::LS_IMG_XPM:    fiFormat = FIF_XPM; break;
+        default:                        fiFormat = FIF_PNG;
     }
     
     if (this->pData == nullptr || filename == nullptr) {
@@ -336,7 +350,7 @@ inline bool lsImageResource::saveFile(const char* filename, img_file_t format) c
 /*
  * Get the data stored in pData
  */
-inline void* lsImageResource::getData() const {
+void* lsImageResource::getData() const {
     return (void*) FreeImage_GetBits(reinterpret_cast<FIBITMAP*>(pData));
 }
 

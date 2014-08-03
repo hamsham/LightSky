@@ -26,7 +26,7 @@ class lsDataResource final : public lsResource {
         /**
          * Constructor
          */
-        constexpr lsDataResource() :
+        lsDataResource() :
             lsResource{}
         {}
 

@@ -12,6 +12,12 @@
 
 #include "lsSetup.h"
 
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
+/**
+ * Enumeration to facilitate matrix manipulations within the matrix stack,
+ */
 enum ls_matrix_t : unsigned {
     LS_INVALID_MATRIX       = (unsigned)-1,
     LS_PROJECTION_MATRIX    = 0,
@@ -21,6 +27,16 @@ enum ls_matrix_t : unsigned {
     LS_MAX_MATRIX_STACKS    = 3
 };
 
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
+/**
+ * The Matrix Stack
+ * 
+ * This object can be used to make life MUCH easier when dealing with matrices
+ * within OpenGL. Usage was designed to be fairly close to the original OpenGL
+ * 1.0 spec.
+ */
 class lsMatrixStack {
     private:
         std::stack<math::mat4> stacks[3]; // model, view, & projection
@@ -120,9 +136,7 @@ class lsMatrixStack {
         /**
          * Get the current model matrix
          */
-        const math::mat4& getMatrix(ls_matrix_t mt) const {
-            return stacks[mt].top();
-        }
+        const math::mat4& getMatrix(ls_matrix_t mt) const;
         
         /**
          * Multiply the model, view, and projection stacks together
@@ -137,25 +151,22 @@ class lsMatrixStack {
         /**
          * Get the MVP Matrix
          */
-        const math::mat4& getMvpMatrix() const {
-            return mvpMatrix;
-        }
+        const math::mat4& getMvpMatrix() const;
         
         /**
          * Get the VP Matrix
          */
-        const math::mat4& getVpMatrix() const {
-            return vpMatrix;
-        }
+        const math::mat4& getVpMatrix() const;
         
         /**
          * Clear a specific Stack
          */
-        unsigned size(ls_matrix_t mt) {
-            return stacks[mt].size();
-        }
+        unsigned size(ls_matrix_t);
 };
 
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
 /**
  * Multiply the selected matrix with the one passed into the function.
  */
@@ -176,6 +187,34 @@ inline void lsMatrixStack::constructMvp() {
  */
 inline void lsMatrixStack::constructVp() {
     vpMatrix = stacks[LS_PROJECTION_MATRIX].top() * stacks[LS_VIEW_MATRIX].top();
+}
+
+/*
+ * Get the current model matrix
+ */
+inline const math::mat4& lsMatrixStack::getMatrix(ls_matrix_t mt) const {
+    return stacks[mt].top();
+}
+
+/*
+ * Get the MVP Matrix
+ */
+inline const math::mat4& lsMatrixStack::getMvpMatrix() const {
+    return mvpMatrix;
+}
+
+/*
+ * Get the VP Matrix
+ */
+inline const math::mat4& lsMatrixStack::getVpMatrix() const {
+    return vpMatrix;
+}
+
+/*
+ * Clear a specific Stack
+ */
+inline unsigned lsMatrixStack::size(ls_matrix_t mt) {
+    return stacks[mt].size();
 }
 
 #endif	/* __LS_MATRIX_STACK_H__ */

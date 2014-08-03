@@ -10,6 +10,11 @@
 
 #include <Gl/glew.h>
 
+/**
+ * Vertex Array Object
+ * 
+ * Represents a single VAO within OpenGL.
+ */
 class lsVertexArray {
     private:
         /**
@@ -21,7 +26,7 @@ class lsVertexArray {
         /**
          * Constructor.
          */
-        constexpr lsVertexArray() {}
+        lsVertexArray();
         
         /**
          * Copy Constructor - DELETED
@@ -36,19 +41,13 @@ class lsVertexArray {
          * @param va
          * A vertexArray object whose data will be moved into *this.
          */
-        lsVertexArray(lsVertexArray&& va) :
-            vao{va.vao}
-        {
-            va.vao = 0;
-        }
+        lsVertexArray(lsVertexArray&&);
         
         /**
          * Destructor
          * Releases all resources used by *this.
          */
-        ~lsVertexArray() {
-            terminate();
-        }
+        ~lsVertexArray();
         
         /**
          * Copy Operator - DELETED
@@ -63,11 +62,7 @@ class lsVertexArray {
          * @param va
          * A vertexArray object whose data will be moved into *this.
          */
-        lsVertexArray& operator=(lsVertexArray&& va) {
-            vao = va.vao;
-            va.vao = 0;
-            return *this;
-        }
+        lsVertexArray& operator=(lsVertexArray&&);
         
         /**
          * Array initialization.
@@ -76,23 +71,13 @@ class lsVertexArray {
          * 
          * @return true if the buffer was successfully created, false if not.
          */
-        inline bool init() {
-            if (vao != 0) {
-                terminate();
-            }
-            
-            glGenVertexArrays(1, &vao);
-            return vao != 0;
-        }
+        bool init();
         
         /**
          * Terminate the vertex array and release all of its resources back to
          * the GPU.
          */
-        inline void terminate() {
-            glDeleteVertexArrays(1, &vao);
-            vao = 0;
-        }
+        void terminate();
         
         /**
          * Determine if there is data used by this object
@@ -100,34 +85,26 @@ class lsVertexArray {
          * @returns true if this object has data residing on GPU memory, false
          * if not.
          */
-        inline bool isValid() const {
-            return vao != 0;
-        }
+        bool isValid() const;
         
         /**
          * Get the GPU-assigned ID for this VAO
          * 
          * @return an unsigned integral type representing this VAO.
          */
-        inline unsigned getId() const {
-            return vao;
-        }
+        unsigned getId() const;
         
         /**
          * Enable an attribute contained within the vertex array.
          * @param index
          */
-        inline void enableAttrib(int index) const {
-            glEnableVertexAttribArray(index);
-        }
+        void enableAttrib(int index);
         
         /**
          * Disable an attribute contained in the array.
          * @param index
          */
-        inline void disableAttrib(int index) const {
-            glDisableVertexAttribArray(index);
-        }
+        void disableAttrib(int index);
         
         /**
          * Set the memory layout/offset of an attribute in the vertex array.
@@ -150,16 +127,14 @@ class lsVertexArray {
          * A byte-offset from the start of each vertex.
          * 
          */
-        inline void setAttribOffset(
+        void setAttribOffset(
             unsigned index,
             unsigned elementsPerVert,
             int type,
             bool normalize,
             int vertexOffset,
             const void* elementOffset
-        ) const {
-            glVertexAttribPointer(index, elementsPerVert, type, normalize, vertexOffset, elementOffset);
-        }
+        );
         
         /**
          * Get the byte-offset to an element in the array.
@@ -169,11 +144,7 @@ class lsVertexArray {
          * 
          * @return a byte-indexed offset to the attribute.
          */
-        inline void* getAttribOffset(int index) const {
-            void* offset;
-            glGetVertexAttribPointerv(index, GL_VERTEX_ATTRIB_ARRAY_POINTER, &offset);
-            return offset;
-        }
+        void* getAttribOffset(int index) const;
         
         /**
          * Set the rate at which an attribute should repeat during instanced
@@ -186,23 +157,102 @@ class lsVertexArray {
          * The number of instances that should be drawn before repeating
          * another render of the array attribute.
          */
-        inline void setAttribInstanceRate(int index, int instancesPerAttrib) const {
-            glVertexAttribDivisor(index, instancesPerAttrib);
-        }
+        void setAttribInstanceRate(int index, int instancesPerAttrib);
         
         /**
          * Bind this vertex array to the current global rendering context.
          */
-        inline void bind() const {
-            glBindVertexArray(vao);
-        }
+        void bind() const;
         
         /**
          * Unbind this vertex array object from the current render context.
          */
-        inline void unbind() const {
-            glBindVertexArray(0);
-        }
+        void unbind() const;
 };
+
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Terminate the vertex array and release all of its resources back to
+ * the GPU.
+ */
+inline void lsVertexArray::terminate() {
+    glDeleteVertexArrays(1, &vao);
+    vao = 0;
+}
+
+/*
+ * Determine if there is data used by this object
+ */
+inline bool lsVertexArray::isValid() const {
+    return vao != 0;
+}
+
+/*
+ * Get the GPU-assigned ID for this VAO
+ */
+inline unsigned lsVertexArray::getId() const {
+    return vao;
+}
+
+/*
+ * Enable an attribute contained within the vertex array.
+ */
+inline void lsVertexArray::enableAttrib(int index) {
+    glEnableVertexAttribArray(index);
+}
+
+/*
+ * Disable an attribute contained in the array.
+ */
+inline void lsVertexArray::disableAttrib(int index) {
+    glDisableVertexAttribArray(index);
+}
+
+/*
+ * Set the memory layout/offset of an attribute in the vertex array.
+ */
+inline void lsVertexArray::setAttribOffset(
+    unsigned index,
+    unsigned elementsPerVert,
+    int type,
+    bool normalize,
+    int vertexOffset,
+    const void* elementOffset
+) {
+    glVertexAttribPointer(index, elementsPerVert, type, normalize, vertexOffset, elementOffset);
+}
+
+/*
+ * Get the byte-offset to an element in the array.
+ */
+inline void* lsVertexArray::getAttribOffset(int index) const {
+    void* offset;
+    glGetVertexAttribPointerv(index, GL_VERTEX_ATTRIB_ARRAY_POINTER, &offset);
+    return offset;
+}
+
+/*
+ * Set the rate at which an attribute should repeat during instanced
+ * draw calls on the GPU.
+ */
+inline void lsVertexArray::setAttribInstanceRate(int index, int instancesPerAttrib) {
+    glVertexAttribDivisor(index, instancesPerAttrib);
+}
+
+/*
+ * Bind this vertex array to the current global rendering context.
+ */
+inline void lsVertexArray::bind() const {
+    glBindVertexArray(vao);
+}
+
+/*
+ * Unbind this vertex array object from the current render context.
+ */
+inline void lsVertexArray::unbind() const {
+    glBindVertexArray(0);
+}
 
 #endif	/* __LS_VERTEX_ARRAY__ */

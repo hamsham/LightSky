@@ -13,9 +13,9 @@
 #include "lsSetup.h"
 #include "lsTexture.h"
 
-///////////////////////////////////////////////////////////////////////////////
-//      Enumerations used by LightSky Framebuffer Objects.
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
 /**
  * Draw buffers for fbo render targets
  */
@@ -105,9 +105,9 @@ enum ls_fbo_filter_t : int {
     LS_FBO_NEAREST              = GL_NEAREST
 };
 
-///////////////////////////////////////////////////////////////////////////////
-//      Framebuffer Class
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
 /**
  * Framebuffer Objects
  */
@@ -154,11 +154,11 @@ class lsFramebuffer final {
         unsigned fboId = 0;
         
     public:
-        lsFramebuffer() {}
+        lsFramebuffer();
         lsFramebuffer(const lsFramebuffer&) = delete;
         lsFramebuffer(lsFramebuffer&&);
         
-        ~lsFramebuffer() {terminate();}
+        ~lsFramebuffer();
         
         lsFramebuffer& operator=(const lsFramebuffer&) = delete;
         lsFramebuffer& operator=(lsFramebuffer&&);
@@ -170,27 +170,35 @@ class lsFramebuffer final {
          * framebuffer object represented by this object.
          * This value returns 0 if nothing is referenced by *this.
          */
-        inline unsigned getId() const {
-            return fboId;
-        }
+        unsigned getId() const;
         
-        ls_fbo_access_t getAccessType() const {
-            return access;
-        }
+        /**
+         * Get the framebuffer acccess type.
+         * 
+         * @return ls_fbo_access_t
+         * An enumeration that can help make perform framebuffer read/write
+         * operations
+         */
+        ls_fbo_access_t getAccessType() const;
         
-        void setAccessType(ls_fbo_access_t a) {
-            access = a;
-        }
+        /**
+         * Set the framebuffer access type.
+         * 
+         * @param ls_fbo_access_t
+         * An enumeration that can help make perform framebuffer read/write
+         * operations.
+         */
+        void setAccessType(ls_fbo_access_t a);
         
         /**
          * Bind the current framebuffer to OpenGL
          */
-        inline void bind() const;
+        void bind() const;
         
         /**
          * Unbind the current framebuffer to OpenGL
          */
-        inline void unbind() const;
+        void unbind() const;
         
         /**
          * Initialize an empty framebuffer.
@@ -264,9 +272,30 @@ class lsFramebuffer final {
         );
 };
 
-///////////////////////////////////////////////////////////////////////////////
-//      Implementations
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Get the GPU-Assigned ID that this object references.
+ */
+inline unsigned lsFramebuffer::getId() const {
+    return fboId;
+}
+
+/*
+ * Get the framebuffer acccess type.
+ */
+inline ls_fbo_access_t lsFramebuffer::getAccessType() const {
+    return access;
+}
+
+/*
+ * Set the framebuffer access type.
+ */
+inline void lsFramebuffer::setAccessType(ls_fbo_access_t a) {
+    access = a;
+}
+
 /*
  * Get the maximum number of supported color attachments.
  */
@@ -332,33 +361,6 @@ inline void lsFramebuffer::clear(ls_fbo_mask_t mask) const {
  */
 inline void lsFramebuffer::setDrawTargets(unsigned numTargets, const ls_fbo_attach_t* targets) {
     glDrawBuffers(numTargets, (const GLenum*)targets);
-}
-
-/*
- * Attach a texture to the currently bound framebuffer
- */
-inline void lsFramebuffer::attachTexture(
-    ls_fbo_attach_t attachment,
-    ls_texture_target_t target,
-    const lsTexture& tex,
-    int mipmapLevel,
-    int layer
-) {
-    const ls_tex_desc_t desc = tex.getTextType();
-    const unsigned texId = tex.getId();
-    
-    if (desc == LS_TEX_1D) {
-        glFramebufferTexture1D(access, attachment, target, texId, mipmapLevel);
-    }
-    else if (desc == LS_TEX_2D || desc == LS_TEX_RECT) {
-        glFramebufferTexture2D(access, attachment, target, texId, mipmapLevel);
-    }
-    else if (desc == LS_TEX_3D) {
-        glFramebufferTexture3D(access, attachment, target, texId, mipmapLevel, layer);
-    }
-    else {
-        LS_LOG_ERR("Attempting to load an unsupported texture type into a framebuffer.");
-    }
 }
 
 #endif	/* __LS_FRAMEBUFFER_H__ */

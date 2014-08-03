@@ -610,7 +610,7 @@ void fbState::onPause(float dt) {
 ******************************************************************************/
 std::string fbState::getTimingStr() const {
     const float tickTime = getParentSystem().getTickTime() * 0.001f;
-    return util::toString(tickTime) + "MS\n" + util::toString(1.f/tickTime) + "FPS";
+    return lsUtil::toString(tickTime) + "MS\n" + lsUtil::toString(1.f/tickTime) + "FPS";
 }
 
 /******************************************************************************

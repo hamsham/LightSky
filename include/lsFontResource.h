@@ -11,15 +11,21 @@
 #include "lsSetup.h"
 #include "lsResource.h"
 
-#ifndef LS_DEFAULT_FONT_SIZE
-    #define LS_DEFAULT_FONT_SIZE 72
-#endif
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
+enum : int {
+    LS_DEFAULT_FONT_SIZE = 72
+};
 
-/*
- * Forward Declarations for FreeType structures
- */
+//-----------------------------------------------------------------------------
+//      Forward Declarations
+//-----------------------------------------------------------------------------
 struct FT_FaceRec_;
 
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
 /**
  * Font Metrics
  * 
@@ -72,9 +78,7 @@ class lsFontResource final : public lsResource {
          * Constructor
          * Initialized all variables to 0 values.
          */
-        constexpr lsFontResource() :
-            lsResource{}
-        {}
+        lsFontResource();
         
         /**
          * Copy Constructor
@@ -93,9 +97,7 @@ class lsFontResource final : public lsResource {
          * Destructor
          * Calls "unload()" and releases all memory used by *this.
          */
-        virtual ~lsFontResource() {
-            unload();
-        }
+        virtual ~lsFontResource();
         
         /**
          * Copy Operator
@@ -133,9 +135,7 @@ class lsFontResource final : public lsResource {
          * 
          * @return true if the font was successfully loaded. False if not.
          */
-        virtual bool loadFile(const char* filename) override {
-            return loadFile(filename, LS_DEFAULT_FONT_SIZE);
-        }
+        virtual bool loadFile(const char* filename) override;
 
         /**
          * Save a file
@@ -145,9 +145,7 @@ class lsFontResource final : public lsResource {
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const override {
-            return false;
-        }
+        virtual bool saveFile(const char*) const override;
 
         /**
          * Unload
@@ -158,31 +156,61 @@ class lsFontResource final : public lsResource {
         /**
          * Get the size of the currently loaded fonts
          */
-        unsigned getFontSize() const {
-            return glyphSize;
-        }
+        unsigned getFontSize() const;
         
         /**
          * Get the array of glyphs used by *this
          */
-        const lsGlyph* getGlyphs() const {
-            return reinterpret_cast<lsGlyph*>(pData);
-        }
+        const lsGlyph* getGlyphs() const;
         
         /**
          * Get the number of glyphs that have been loaded
          */
-        unsigned getNumGlyphs() const {
-            return numGlyphs;
-        }
+        unsigned getNumGlyphs() const;
         
         /**
          * Get the size of the widest glyph
          */
-        math::vec2i getMaxGlyphSize() const {
-            return maxGlyphSize;
-        }
+        math::vec2i getMaxGlyphSize() const;
 };
+
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Load a font file using the default font size.
+ */
+inline bool lsFontResource::loadFile(const char* filename) {
+    return loadFile(filename, LS_DEFAULT_FONT_SIZE);
+}
+
+/*
+ * Get the size of the currently loaded fonts
+ */
+inline unsigned lsFontResource::getFontSize() const {
+    return glyphSize;
+}
+
+/*
+ * Get the array of glyphs used by *this
+ */
+inline const lsGlyph* lsFontResource::getGlyphs() const {
+    return reinterpret_cast<lsGlyph*>(pData);
+}
+
+/*
+ * Get the number of glyphs that have been loaded
+ */
+inline unsigned lsFontResource::getNumGlyphs() const {
+    return numGlyphs;
+}
+
+/*
+ * Get the size of the widest glyph
+ */
+inline math::vec2i lsFontResource::getMaxGlyphSize() const {
+    return maxGlyphSize;
+}
 
 #endif	/* __LS_FONT_RESOURCE_H__ */
 

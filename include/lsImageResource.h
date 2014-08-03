@@ -11,6 +11,9 @@
 #include "lsSetup.h"
 #include "lsResource.h"
 
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
 /**
  * Enumerations for saving image files.
  */
@@ -30,6 +33,9 @@ enum class img_file_t {
     LS_IMG_XPM
 };
 
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
 /**
  * An image resource is a derivative of a resource object.
  * 
@@ -73,9 +79,7 @@ class lsImageResource final : public lsResource {
         /**
          * Constructor
          */
-        constexpr lsImageResource() :
-            lsResource{}
-        {}
+        lsImageResource();
         
         /**
          * Copy Constructor
@@ -94,9 +98,7 @@ class lsImageResource final : public lsResource {
          * Destructor
          * Calls "unload()" and releases all memory from *this.
          */
-        virtual ~lsImageResource() {
-            unload();
-        }
+        virtual ~lsImageResource();
         
         /**
          * Copy Operator
@@ -163,36 +165,66 @@ class lsImageResource final : public lsResource {
          * @return a 2D integer vector containing the width and height of the
          * loaded image, in pixels.
          */
-        inline math::vec2i getPixelSize() const {
-            return imgSize;
-        }
+        inline math::vec2i getPixelSize() const;
         
         /**
-         * Get the format of the currently loaded image
+         * Get the format of the currently loaded image.
+         * For example, GL_UNSIGNED_BYTE, GL_INT, GL_FLOAT, etc.
          */
-        inline unsigned getFormat() const {
-            return pixelSize;
-        }
+        inline unsigned getFormat() const;
         
         /**
          * Get the number of bits per pixel in the image.
          * 
          * @return 0, 1, 2, 4, 8, 16, 24, 32, 48, 64, 96, or 128
          */
-        inline unsigned getBpp() const {
-            return bitsPerPixel;
-        }
+        inline unsigned getBpp() const;
         
-        inline math::vec2i getInternalFormat() const {
-            return imgFormat;
-        }
+        /**
+         * Get the OpenGL-compatible CPU-Side/GPU-Side image format pair.
+         * 
+         * @return A vec2 containing image format information that can be used
+         * when setting up textures in OpenGL.
+         */
+        inline math::vec2i getInternalFormat() const;
 };
 
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
 /*
- * saving
+ * Saving Data
  */
 inline bool lsImageResource::saveFile(const char* filename) const {
     return this->saveFile(filename, img_file_t::LS_IMG_PNG);
+}
+
+/*
+ * Get the pixel size of the currently loaded image
+ */
+inline math::vec2i lsImageResource::getPixelSize() const {
+    return imgSize;
+}
+
+/*
+ * Get the GPU-compatible format of the currently loaded image
+ */
+inline unsigned lsImageResource::getFormat() const {
+    return pixelSize;
+}
+
+/*
+ * Get the number of bits per pixel in the image.
+ */
+inline unsigned lsImageResource::getBpp() const {
+    return bitsPerPixel;
+}
+
+/*
+ * Get the OpenGL-compatible CPU-Side/GPU-Side image format pair.
+ */
+inline math::vec2i lsImageResource::getInternalFormat() const {
+    return imgFormat;
 }
 
 #endif	/* __LS_IMAGE_RESOURCE_H__ */

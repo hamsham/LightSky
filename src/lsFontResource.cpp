@@ -11,6 +11,9 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+/*
+ * Freetype Error Handling
+ */
 #undef __FTERRORS_H__
 #define FT_ERRORDEF( e, v, s )  { e, s },
 #define FT_ERROR_START_LIST     {
@@ -25,7 +28,10 @@ void foo() {
 }
 
 #include "lsFontResource.h"
-        
+
+//-----------------------------------------------------------------------------
+//      Utilities
+//-----------------------------------------------------------------------------
 /**
  * Helper function to load a glyph
  */
@@ -47,6 +53,16 @@ void copyGlyph(lsGlyph& pGlyph, const FT_GlyphSlot ftGlyph) {
     memcpy(pGlyph.pData, ftBitmap.buffer, ftBitmap.width*ftBitmap.rows);
 }
 
+//-----------------------------------------------------------------------------
+//      Font Resource Implementation
+//-----------------------------------------------------------------------------
+/*
+ * Constructor
+ */
+lsFontResource::lsFontResource() :
+    lsResource{}
+{}
+
 /*
  * Move Constructor
  */
@@ -54,6 +70,13 @@ lsFontResource::lsFontResource(lsFontResource&& f) :
     lsResource{}
 {
     this->operator =(std::move(f));
+}
+
+/*
+ * Destructor
+ */
+lsFontResource::~lsFontResource() {
+    unload();
 }
 
 /*
@@ -258,3 +281,9 @@ bool lsFontResource::loadGlyphs(FT_FaceRec_* ftFace) {
     return true;
 }
 
+/*
+ * Save a file
+ */
+bool lsFontResource::saveFile(const char*) const {
+    return false;
+}

@@ -17,12 +17,15 @@
 #include "lsSetup.h"
 #include "lsVertex.h"
 
-/*
- * Forward declarations
- */
+//-----------------------------------------------------------------------------
+//      Forward declarations
+//-----------------------------------------------------------------------------
 class lsMeshResource;
 class lsDrawModel;
 
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
 /**
  * Text/String mesh properties
  */
@@ -31,6 +34,9 @@ enum : int {
     LS_TEXT_SPACES_PER_TAB = 4
 };
 
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
 /**
  * A mesh object contains information about the layout of vertex data located on
  * the GPU.
@@ -105,7 +111,7 @@ class lsMesh {
         /**
          * Constructor
          */
-        lsMesh() {}
+        lsMesh();
         
         /**
          * Copy Constructor -- DELETED
@@ -123,9 +129,7 @@ class lsMesh {
          * Destructor
          * Unloads all resources used by *this.
          */
-        ~lsMesh() {
-            terminate();
-        }
+        ~lsMesh();
         
         /**
          * Copy Operator -- DELETED
@@ -142,9 +146,7 @@ class lsMesh {
         /**
          * Get an general identification to be used for this object
          */
-        inline unsigned getId() const {
-            return vbo.getId();
-        }
+        inline unsigned getId() const;
         
         /**
          * Send a loaded mesh to the GPU
@@ -156,7 +158,7 @@ class lsMesh {
          * TRUE if the data was successfully sent to the GPU, or FALSE if an
          * error occurred.
          */
-        bool init(const lsMeshResource& mr);
+        bool init(const lsMeshResource&);
         
         /**
          * Sent text/string data to the GPU
@@ -176,41 +178,81 @@ class lsMesh {
         /**
          * Unload all GPU-based resource that are used by *this;
          */
-        void terminate() {
-            vbo.terminate();
-            numVertices = 0;
-        }
+        void terminate();
         
         /**
          * Get the number of vertices contained within this mesh object's VBO.
          * 
          * @return The number of vertices used to draw this mesh.
          */
-        unsigned getNumVertices() const {
-            return numVertices;
-        }
+        unsigned getNumVertices() const;
         
         /**
          * Get the current Draw Mode for this mesh.
          * 
          * @return draw_mode
          */
-        ls_draw_t getDrawMode() const {
-            return drawMode;
-        }
+        ls_draw_t getDrawMode() const;
         
         /**
          * Set the method of drawing that should be used for this mesh.
          * 
          * @param dm
          */
-        void setDrawMode(ls_draw_t dm) {
-            drawMode = dm;
-        }
+        void setDrawMode(ls_draw_t dm);
         
-        const lsBoundingBox& getBounds() const {
-            return bounds;
-        }
+        /**
+         * Get the maximum vertex bounds for this mesh object.
+         * 
+         * @return a constant reference to a lsBoundingBox objext.
+         */
+        const lsBoundingBox& getBounds() const;
 };
+
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Get an general identification to be used for this object
+ */
+inline unsigned lsMesh::getId() const {
+    return vbo.getId();
+}
+        
+/*
+ * Unload all GPU-based resource that are used by *this;
+ */
+inline void lsMesh::terminate() {
+    vbo.terminate();
+    numVertices = 0;
+}
+
+/*
+ * Get the number of vertices contained within this mesh object's VBO.
+ */
+inline unsigned lsMesh::getNumVertices() const {
+    return numVertices;
+}
+
+/*
+ * Get the current Draw Mode for this mesh.
+ */
+inline ls_draw_t lsMesh::getDrawMode() const {
+    return drawMode;
+}
+
+/*
+ * Set the method of drawing that should be used for this mesh.
+ */
+inline void lsMesh::setDrawMode(ls_draw_t dm) {
+    drawMode = dm;
+}
+
+/*
+ * Get the maximum vertex bounds for this mesh.
+ */
+inline const lsBoundingBox& lsMesh::getBounds() const {
+    return bounds;
+}
 
 #endif	/* __LS_MESH_H__ */

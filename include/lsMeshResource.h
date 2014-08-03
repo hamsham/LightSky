@@ -50,7 +50,7 @@ class lsMeshResource final : public lsResource {
         /**
          * Constructor
          */
-        constexpr lsMeshResource() {}
+        lsMeshResource();
         
         /**
          * Copy Constructor -- DELETED
@@ -69,9 +69,7 @@ class lsMeshResource final : public lsResource {
          * Destructor
          * Unloads all data contain within *this.
          */
-        virtual ~lsMeshResource() {
-            unload();
-        }
+        virtual ~lsMeshResource();
         
         /**
          * Copy Constructor -- DELETED
@@ -88,16 +86,12 @@ class lsMeshResource final : public lsResource {
         /**
          * Get the number of loaded vertex variables in a mesh
          */
-        inline unsigned getNumVertices() const {
-            return numVertices;
-        }
+        unsigned getNumVertices() const;
         
         /**
          * Get the array of standard vertex types of a loaded mesh
          */
-        inline lsVertex* getVertices() const {
-            return pVertices;
-        }
+        lsVertex* getVertices() const;
         
         /**
          * Unload
@@ -125,22 +119,21 @@ class lsMeshResource final : public lsResource {
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const {
-            return false;
-        }
+        virtual bool saveFile(const char*) const;
         
         /**
          * Get the draw mode that was generated while loading a mesh.
          * 
          * @return The target draw mode for the currently loaded mesh.
          */
-        ls_draw_t getDrawMode() const {
-            return resultDrawMode;
-        }
+        ls_draw_t getDrawMode() const;
         
-        const lsBoundingBox& getBoundingBox() const {
-            return meshBounds;
-        }
+        /**
+         * Get the maximum bounds of a loaded mesh.
+         * 
+         * @return A constant reference to an lsBoundingBox object.
+         */
+        const lsBoundingBox& getBoundingBox() const;
         
         /**
          * N-Sided polygon primitive loading method
@@ -170,9 +163,7 @@ class lsMeshResource final : public lsResource {
          * | /    \ |
          * 0/______\2
          */
-        inline bool loadTriangle() {
-            return loadPolygon(3);
-        }
+        bool loadTriangle();
         
         /**
          * Load a set of vertices representing a square/quad.
@@ -190,9 +181,7 @@ class lsMeshResource final : public lsResource {
          * TRUE if the function loaded the mesh correctly, or
          * FALSE if an error occurred during the load.
          */
-        inline bool loadCircle(unsigned numPoints = 5) {
-            return loadPolygon(numPoints);
-        }
+        bool loadCircle(unsigned numPoints = 5);
         
         /**
          * Load a set of vertices representing a cube.
@@ -230,6 +219,51 @@ class lsMeshResource final : public lsResource {
          */
         bool loadSphere(unsigned resolution);
 };
+
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Get the number of loaded vertex variables in a mesh
+ */
+inline unsigned lsMeshResource::getNumVertices() const {
+    return numVertices;
+}
+
+/*
+ * Get the array of standard vertex types of a loaded mesh
+ */
+inline lsVertex* lsMeshResource::getVertices() const {
+    return pVertices;
+}
+
+/*
+ * Get the draw mode that was generated while loading a mesh.
+ */
+inline ls_draw_t lsMeshResource::getDrawMode() const {
+    return resultDrawMode;
+}
+
+/*
+ * Get a mesh object's maximum dimensions
+ */
+inline const lsBoundingBox& lsMeshResource::getBoundingBox() const {
+    return meshBounds;
+}
+        
+/*
+ * Triangle primitive loading method
+ */
+inline bool lsMeshResource::loadTriangle() {
+    return loadPolygon(3);
+}
+        
+/*
+ * Load a set of vertices representing a circle.
+ */
+inline bool lsMeshResource::loadCircle(unsigned numPoints) {
+    return loadPolygon(numPoints);
+}
 
 #endif	/* __LS_MESH_RESOURCE_H__ */
 

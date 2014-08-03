@@ -7,9 +7,9 @@
 
 #include "lsShaderObject.h"
 
-/******************************************************************************
- * Typedefs and external templates
- *****************************************************************************/
+//-----------------------------------------------------------------------------
+//      Typedefs and external templates
+//-----------------------------------------------------------------------------
 LS_DEFINE_CLASS_TYPE(lsShaderObject, LS_VERTEX_SHADER);
 LS_DEFINE_CLASS_TYPE(lsShaderObject, LS_GEOMETRY_SHADER);
 LS_DEFINE_CLASS_TYPE(lsShaderObject, LS_FRAGMENT_SHADER);

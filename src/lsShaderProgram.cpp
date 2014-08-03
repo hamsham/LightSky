@@ -1,5 +1,5 @@
 /* 
- * File:   shaderProgram.cpp
+ * File:   lsShaderProgram.cpp
  * Author: hammy
  * 
  * Created on January 21, 2014, 6:54 PM
@@ -8,35 +8,49 @@
 #include <utility>
 #include "lsShaderProgram.h"
 
-/******************************************************************************
+/*
+ * Constructor
+ */
+lsShaderProgram::lsShaderProgram() :
+    programId{0}
+{}
+
+/*
  * Move Constructor
- *****************************************************************************/
+ */
 lsShaderProgram::lsShaderProgram(lsShaderProgram&& tempProgram) :
     programId{tempProgram.programId}
 {
     tempProgram.programId = 0;
 }
 
-/******************************************************************************
+/*
+ * Destructor
+ */
+lsShaderProgram::~lsShaderProgram() {
+    terminate();
+}
+
+/*
  * Move Operator
- *****************************************************************************/
+ */
 lsShaderProgram& lsShaderProgram::operator=(lsShaderProgram&& tempProgram) {
     programId = tempProgram.programId;
     tempProgram.programId = 0;
     return *this;
 }
 
-/******************************************************************************
+/*
  * Termination
- *****************************************************************************/
+ */
 void lsShaderProgram::terminate() {
     glDeleteProgram(programId);
     programId = 0;
 }
 
-/******************************************************************************
+/*
  * Attaching Shaders
- *****************************************************************************/
+ */
 bool lsShaderProgram::attachShaders(
     const vertexShader& vs,
     const fragmentShader& fs
@@ -58,9 +72,9 @@ bool lsShaderProgram::attachShaders(
     return true;
 }
 
-/******************************************************************************
+/*
  * Attaching Shaders
- *****************************************************************************/
+ */
 bool lsShaderProgram::attachShaders(
     const vertexShader& vs,
     const geometryShader& gs,
@@ -84,9 +98,9 @@ bool lsShaderProgram::attachShaders(
     return true;
 }
 
-/******************************************************************************
+/*
  * Linking
- *****************************************************************************/
+ */
 bool lsShaderProgram::link() {
     GLint linkResult = 0;
     

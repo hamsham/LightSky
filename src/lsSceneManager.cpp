@@ -11,13 +11,21 @@
 #include "lsColor.h"
 #include "lsSceneManager.h"
 
+// Default Texture color
 static const unsigned char checkeredCol[] = {
     0,    0,    0,    255
 };
 
-///////////////////////////////////////////////////////////////////////////////
-// Scene Manager Class
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Scene Manager Class
+//-----------------------------------------------------------------------------
+/*
+ * Destructor
+ */
+lsSceneManager::~lsSceneManager() {
+    terminate();
+}
+
 /*
  * Constructor
  */
@@ -231,7 +239,7 @@ unsigned lsSceneManager::manageMesh(lsMesh* const pMesh) {
         return index;
     }
     
-    return INVALID_SCENE_ID;
+    return LS_INVALID_SCENE_ID;
 }
 
 unsigned lsSceneManager::manageTexture(lsTexture* const pTexture) {
@@ -241,7 +249,7 @@ unsigned lsSceneManager::manageTexture(lsTexture* const pTexture) {
         return index;
     }
     
-    return INVALID_SCENE_ID;
+    return LS_INVALID_SCENE_ID;
 }
 
 unsigned lsSceneManager::manageAtlas(lsAtlas* const pAtlas) {
@@ -251,7 +259,7 @@ unsigned lsSceneManager::manageAtlas(lsAtlas* const pAtlas) {
         return index;
     }
     
-    return INVALID_SCENE_ID;
+    return LS_INVALID_SCENE_ID;
 }
 
 unsigned lsSceneManager::manageModel(lsDrawModel* const pText) {
@@ -261,7 +269,7 @@ unsigned lsSceneManager::manageModel(lsDrawModel* const pText) {
         return index;
     }
     
-    return INVALID_SCENE_ID;
+    return LS_INVALID_SCENE_ID;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -13,6 +13,9 @@
 #include "lsSetup.h"
 #include "lsImageResource.h"
 
+//-----------------------------------------------------------------------------
+//      Enumerations
+ //----------------------------------------------------------------------------   
 /**
  * Parameters for creating or modifying texture objects.
  */
@@ -47,9 +50,12 @@ enum ls_tex_desc_t : int {
     LS_TEX_RECT         = GL_TEXTURE_RECTANGLE,
 };
 
-/******************************************************************************
- * Texture Template
-******************************************************************************/
+//-----------------------------------------------------------------------------
+//      Classes
+ //----------------------------------------------------------------------------   
+/**
+ * Texture Objects
+ */
 class lsTexture {
     private:
         const ls_tex_desc_t dimensions;
@@ -64,9 +70,7 @@ class lsTexture {
         /**
          * Constructor
          */
-        lsTexture(ls_tex_desc_t td = LS_TEX_2D) :
-            dimensions{td}
-        {}
+        lsTexture(ls_tex_desc_t td = LS_TEX_2D);
         
         /**
          * Copy Constructor -- DELETED
@@ -84,9 +88,7 @@ class lsTexture {
          * Destructor
          * Releases all memory referenced by texId
          */
-        ~lsTexture() {
-            terminate();
-        }
+        ~lsTexture();
         
         /**
          * Copy Operator -- DELETED
@@ -98,9 +100,13 @@ class lsTexture {
          */
         lsTexture& operator=(lsTexture&& t);
         
-        inline unsigned getId() const {
-            return texId;
-        }
+        /**
+         * Get the GPU-Assigned ID used by *this.
+         * 
+         * @return An unsigned integral type that correlates to a texture on
+         * the GPU.
+         */
+        inline unsigned getId() const;
         
         /**
          * Bind the current texture to OpenGL
@@ -114,13 +120,13 @@ class lsTexture {
         
         /**
          * Set a integer texture parameter.
-         * Make sure that "bind()" has been called before using this method.
+         * Make sure that "bind() const" has been called before using this method.
          */
         inline void setParameter(int paramName, int param) const;
         
         /**
          * Set a float texture parameter.
-         * Make sure that "bind()" has been called before using this method.
+         * Make sure that "bind() const" has been called before using this method.
          */
         inline void setParameter(int paramName, float param) const;
         
@@ -224,13 +230,19 @@ class lsTexture {
         static int getMaxTextureSize();
 };
 
-/******************************************************************************
- * Texture Data
- *****************************************************************************/
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+ //----------------------------------------------------------------------------        
+/**
+ * Get the GPU-Assigned ID used by *this.
+ */
+inline unsigned lsTexture::getId() const {
+    return texId;
+}
+
 /**
  * Bind the current texture to OpenGL
  */
-
 inline void lsTexture::bind() const {
     glBindTexture(dimensions, texId);
 }
@@ -238,25 +250,22 @@ inline void lsTexture::bind() const {
 /**
  * Unbind the current texture to OpenGL
  */
-
 inline void lsTexture::unbind() const {
     glBindTexture(dimensions, 0);
 }
 
 /**
  * Set a integer texture parameter.
- * Make sure that "bind()" has been called before using this method.
+ * Make sure that "bind() const" has been called before using this method.
  */
-
 inline void lsTexture::setParameter(int paramName, int param) const {
     glTexParameteri(dimensions, paramName, param);
 }
 
 /**
  * Set a float texture parameter.
- * Make sure that "bind()" has been called before using this method.
+ * Make sure that "bind() const" has been called before using this method.
  */
-
 inline void lsTexture::setParameter(int paramName, float param) const {
     glTexParameterf(dimensions, paramName, param);
 }
@@ -294,7 +303,6 @@ inline bool lsTexture::init(int mipmapLevel, math::vec3i size, const lsImageReso
 /**
  * Modify the internal data of a texture.
  */
-
 inline void lsTexture::modify(int offset, int size, int format, int dataType, void* data) {
     glTexSubImage1D(getTextType(), 0, offset, size, format, dataType, data);
     LOG_GL_ERR();
@@ -303,7 +311,6 @@ inline void lsTexture::modify(int offset, int size, int format, int dataType, vo
 /**
  * Modify the internal data of a texture.
  */
-
 inline void lsTexture::modify(math::vec2i offset, math::vec2i size, int format, int dataType, void* data) {
     glTexSubImage2D(getTextType(), 0, offset[0], offset[1], size[0], size[1], format, dataType, data);
     LOG_GL_ERR();
@@ -312,7 +319,6 @@ inline void lsTexture::modify(math::vec2i offset, math::vec2i size, int format, 
 /**
  * Modify the internal data of a texture.
  */
-
 inline void lsTexture::modify(math::vec3i offset, math::vec3i size, int format, int dataType, void* data) {
     glTexSubImage3D(getTextType(), 0, offset[0], offset[1], offset[2], size[0], size[1], size[2], format, dataType, data);
     LOG_GL_ERR();
@@ -321,7 +327,6 @@ inline void lsTexture::modify(math::vec3i offset, math::vec3i size, int format, 
 /**
  * Release all memory referenced by *this.
  */
-
 inline void lsTexture::terminate() {
     glDeleteTextures(1, &texId);
     texId = 0;
@@ -330,7 +335,6 @@ inline void lsTexture::terminate() {
 /**
  * Get the width of the texture referenced by texId
  */
-
 inline unsigned lsTexture::getWidth() const {
     int w = 0;
     glGetTexLevelParameteriv(dimensions, 0, LS_TEX_WIDTH, &w);
@@ -340,7 +344,6 @@ inline unsigned lsTexture::getWidth() const {
 /**
  * Get the height of the texture referenced by texId
  */
-
 inline unsigned lsTexture::getHeight() const {
     int h = 0;
     glGetTexLevelParameteriv(dimensions, 0, LS_TEX_HEIGHT, &h);
@@ -350,7 +353,6 @@ inline unsigned lsTexture::getHeight() const {
 /**
  * Get the depth of the texture referenced by texId
  */
-
 inline unsigned lsTexture::getDepth() const {
     int d = 0;
     glGetTexLevelParameteriv(dimensions, 0, LS_TEX_DEPTH, &d);
@@ -360,7 +362,6 @@ inline unsigned lsTexture::getDepth() const {
 /**
  * Get the texture type of that this texture uses in OpenGL
  */
-
 inline ls_tex_desc_t lsTexture::getTextType() const {
     return dimensions;
 }
@@ -368,7 +369,6 @@ inline ls_tex_desc_t lsTexture::getTextType() const {
 /**
  * Get the maximum texture size supported by OpenGL
  */
-
 inline int lsTexture::getMaxTextureSize() {
     int maxTexSize;
     glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTexSize);

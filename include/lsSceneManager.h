@@ -16,11 +16,19 @@
 #include "lsTexture.h"
 #include "lsAtlas.h"
 
-/*
- * Macros for types needed by the scene manager.
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
+/**
+ * Enums for types needed by the scene manager.
  */
-#define INVALID_SCENE_ID ((unsigned)-1)
+enum : unsigned {
+    LS_INVALID_SCENE_ID = ((unsigned)-1)
+};
 
+//-----------------------------------------------------------------------------
+//      Typedefs
+//-----------------------------------------------------------------------------
 /*
  * Typedefs for the type of lists/arrays that can be returned by the scene
  * manager.
@@ -30,6 +38,9 @@ typedef std::deque<lsDrawModel*> lsDrawList;
 typedef std::deque<lsTexture*>   lsTextureList;
 typedef std::deque<lsAtlas*>     lsAtlasList;
 
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
 /**
  * Scene manager class
  * 
@@ -52,9 +63,7 @@ class lsSceneManager {
         lsSceneManager(const lsSceneManager&) = delete;
         lsSceneManager(lsSceneManager&&);
         
-        ~lsSceneManager() {
-            terminate();
-        }
+        ~lsSceneManager();
         
         lsSceneManager& operator=(const lsSceneManager&) = delete;
         lsSceneManager& operator=(lsSceneManager&&);

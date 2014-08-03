@@ -7,7 +7,7 @@
 
 #include "lsGeometry.h"
 
-/*
+/**
  * Calculate the normal vector of a triangle
  */
 math::vec3 lsGeometry::calcNormal(
@@ -25,7 +25,7 @@ math::vec3 lsGeometry::calcNormal(
     });
 }
 
-/*
+/**
  * Calculate the tangents for a set of triangles (placed in a vertex array).
  */
 void lsGeometry::calcTangents(

@@ -134,7 +134,6 @@
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibLibItem>glfw3dll</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
@@ -346,7 +345,6 @@
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibLibItem>glfw3dll</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"

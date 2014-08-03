@@ -37,8 +37,7 @@ class lsResource {
         /**
          * Constructor
          */
-        constexpr lsResource() {
-        }
+        lsResource();
 
         /**
          * Copy constructor
@@ -51,7 +50,7 @@ class lsResource {
          * Move all memory from the source object into *this. No copies
          * are performed during this operation.
          */
-        lsResource(lsResource&& f) = delete;
+        lsResource(lsResource&&) = delete;
 
         /**
          * Destructor.
@@ -128,17 +127,30 @@ class lsResource {
         /**
          * Get the size, in bytes, of the current file loaded into memory.
          */
-        virtual long getByteSize() const {
-            return dataSize;
-        }
+        virtual long getByteSize() const;
 
         /**
          * Get the raw, loaded, data contained within *this.
          */
-        virtual void* getData() const {
-            return pData;
-        }
+        virtual void* getData() const;
 };
+
+//-----------------------------------------------------------------------------
+//      Inlined Methods
+//-----------------------------------------------------------------------------
+/*
+ * Get the size, in bytes, of the current file loaded into memory.
+ */
+inline long lsResource::getByteSize() const {
+    return dataSize;
+}
+
+/*
+ * Get the raw, loaded, data contained within *this.
+ */
+inline void* lsResource::getData() const {
+    return pData;
+}
 
 #endif	/* __LS_RESOURCE_H__ */
 

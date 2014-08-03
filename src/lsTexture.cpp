@@ -9,10 +9,36 @@
 #include "lsSetup.h"
 #include "lsTexture.h"
 
+
 /**
+ * Simple helper function that can help reduce a few lines of code
+ * during texture initialization.
+ * 
+ * @return TRUE if the texture was created properly, FALSE if not.
+ */
+bool getGpuHandle(unsigned& texId) {
+    if (!texId) {
+        glGenTextures(1, &texId);
+        LOG_GL_ERR();
+        
+        if (texId == 0) {
+            LS_LOG_ERR("Unable to generate a texture object");
+            return false;
+        }
+    }
+    return true;
+}
+
+/*
+ * Constructor
+ */
+lsTexture::lsTexture(ls_tex_desc_t td) :
+    dimensions{td},
+    texId{0}
+{}
+
+/*
  * Move Constructor
- * Reassigns the texture ID at *this to the one referenced by the
- * source operand. Resets the source operand to 0.
  */
 lsTexture::lsTexture(lsTexture&& t) :
     dimensions{t.dimensions},
@@ -20,8 +46,15 @@ lsTexture::lsTexture(lsTexture&& t) :
 {
     t.texId = 0;
 }
-
+        
 /**
+ * Destructor
+ */
+lsTexture::~lsTexture() {
+    terminate();
+}
+
+/*
  * Move Operator
  */
 lsTexture& lsTexture::operator=(lsTexture&& t) {
@@ -40,13 +73,7 @@ bool lsTexture::init(
     int mipmapLevel, int internalFormat,
     int size, int format, int dataType, void* data
 ) {
-    if (!texId) {
-        glGenTextures(1, &texId);
-        LOG_GL_ERR();
-    }
-    
-    if (texId == 0) {
-        LS_LOG_ERR("Unable to generate a texture object");
+    if (!getGpuHandle(texId)) {
         return false;
     }
     
@@ -66,13 +93,7 @@ bool lsTexture::init(
     int mipmapLevel, int internalFormat,
     math::vec2i size, int format, int dataType, void* data
 ) {
-    if (!texId) {
-        glGenTextures(1, &texId);
-        LOG_GL_ERR();
-    }
-    
-    if (texId == 0) {
-        LS_LOG_ERR("Unable to generate a texture object");
+    if (!getGpuHandle(texId)) {
         return false;
     }
     
@@ -95,13 +116,7 @@ bool lsTexture::init(
     int mipmapLevel, int internalFormat,
     math::vec3i size, int format, int dataType, void* data
 ) {
-    if (!texId) {
-        glGenTextures(1, &texId);
-        LOG_GL_ERR();
-    }
-    
-    if (texId == 0) {
-        LS_LOG_ERR("Unable to generate a texture object");
+    if (!getGpuHandle(texId)) {
         return false;
     }
     

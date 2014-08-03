@@ -9,9 +9,9 @@
 
 #include "lsFramebuffer.h"
 
-///////////////////////////////////////////////////////////////////////////////
-// FBO Error handling
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      FBO Error handling
+//-----------------------------------------------------------------------------
 void lsFramebuffer::printStatus(const lsFramebuffer& fbo) {
     LOG_GL_ERR();
     
@@ -60,6 +60,19 @@ lsFramebuffer::lsFramebuffer(lsFramebuffer&& fb) :
 }
 
 /*
+ * Destructor
+ */
+lsFramebuffer::~lsFramebuffer() {
+    terminate();
+}
+
+/*
+ * constructor
+ */
+lsFramebuffer::lsFramebuffer() {
+}
+
+/*
  * Move operator
  */
 lsFramebuffer& lsFramebuffer::operator=(lsFramebuffer&& fb) {
@@ -88,4 +101,31 @@ void lsFramebuffer::terminate() {
     access = LS_DRAW_FRAMEBUFFER;
     glDeleteFramebuffers(1, &fboId);
     fboId = 0;
+}
+
+/*
+ * Attach a texture to the currently bound framebuffer
+ */
+void lsFramebuffer::attachTexture(
+    ls_fbo_attach_t attachment,
+    ls_texture_target_t target,
+    const lsTexture& tex,
+    int mipmapLevel,
+    int layer
+) {
+    const ls_tex_desc_t desc = tex.getTextType();
+    const unsigned texId = tex.getId();
+    
+    if (desc == LS_TEX_1D) {
+        glFramebufferTexture1D(access, attachment, target, texId, mipmapLevel);
+    }
+    else if (desc == LS_TEX_2D || desc == LS_TEX_RECT) {
+        glFramebufferTexture2D(access, attachment, target, texId, mipmapLevel);
+    }
+    else if (desc == LS_TEX_3D) {
+        glFramebufferTexture3D(access, attachment, target, texId, mipmapLevel, layer);
+    }
+    else {
+        LS_LOG_ERR("Attempting to load an unsupported texture type into a framebuffer.");
+    }
 }

@@ -13,31 +13,41 @@
 
 #include "lsSetup.h"
 
-/******************************************************************************
- * Shader types
- *****************************************************************************/
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
+/**
+ * Enumeration to determine the type of shader that should be created on the GPU
+ */
 enum ls_shader_t : unsigned {
     LS_VERTEX_SHADER    = GL_VERTEX_SHADER,
     LS_GEOMETRY_SHADER  = GL_GEOMETRY_SHADER,
     LS_FRAGMENT_SHADER  = GL_FRAGMENT_SHADER
 };
 
-/******************************************************************************
+//-----------------------------------------------------------------------------
+//      Classes
+//-----------------------------------------------------------------------------
+/**
  * Shader Object Base Class
+ * 
  * Shader objects are attached to programs in order to manipulate the GPU
- *****************************************************************************/
+ */
 template <ls_shader_t shaderType>
 class lsShaderObject {
     friend class lsShaderProgram;
     
     private:
+        /**
+         * Handle to the GPU-side shader object.
+         */
         GLuint objectId = 0;
         
     public:
         /**
          * Constructor
          */
-        lsShaderObject() {}
+        lsShaderObject();
         
         /**
          * Copy Constructor -- Deleted
@@ -49,11 +59,7 @@ class lsShaderObject {
          * Copy the handle to the shader object owned by the input argument,
          * reset the moved object's shader handle to 0.
          */
-        lsShaderObject(lsShaderObject&& tempShader) :
-            objectId{tempShader.objectId}
-        {
-            tempShader.objectId = 0;
-        }
+        lsShaderObject(lsShaderObject&&);
         
         /**
          * Copy Operator -- Deleted
@@ -67,24 +73,17 @@ class lsShaderObject {
          * @param A shaderObject to move
          * @return A reference to *this
          */
-        lsShaderObject& operator=(lsShaderObject&& tempShader) {
-            objectId = tempShader.objectId;
-            tempShader.objectId = 0;
-            return *this;
-        }
+        lsShaderObject& operator=(lsShaderObject&&);
         
         /**
          * Destroy this object and free any GPU memory it uses.
          */
-        ~lsShaderObject() {terminate();}
+        ~lsShaderObject();
         
         /**
          * Free all memory used by this shader object.
          */
-        void terminate() {
-            glDeleteShader(objectId);
-            objectId = 0;
-        }
+        void terminate();
         
         /**
          * Compile a shader and put it into GPU memory.
@@ -102,14 +101,62 @@ class lsShaderObject {
         bool compile(const char* data, int size = 0);
         
         /**
-         * Get a shader's ID
+         * Get a shader's GPU-assigned ID
          */
-        inline GLuint getId() const {
-            return objectId;
-        }
+        GLuint getId() const;
 };
 
-/**
+//-----------------------------------------------------------------------------
+//      Template Definitions
+//-----------------------------------------------------------------------------
+/*
+ * Constructor
+ */
+template <ls_shader_t shaderType>
+lsShaderObject<shaderType>::lsShaderObject() {
+}
+        
+/*
+ * Move Constructor
+ */
+template <ls_shader_t shaderType>
+lsShaderObject<shaderType>::lsShaderObject(lsShaderObject&& tempShader) :
+    objectId{tempShader.objectId}
+{
+    tempShader.objectId = 0;
+}
+    
+/*
+ * Destructor
+ */
+template <ls_shader_t shaderType>
+lsShaderObject<shaderType>::~lsShaderObject() {
+    terminate();
+}
+        
+/*
+ * Move the values of the input argument and reset the moved object's
+ * values to 0.
+ */
+template <ls_shader_t shaderType>
+lsShaderObject<shaderType>& lsShaderObject<shaderType>::operator=(
+    lsShaderObject&& tempShader
+) {
+    objectId = tempShader.objectId;
+    tempShader.objectId = 0;
+    return *this;
+}
+        
+/*
+ * Free all memory used by this shader object.
+ */
+template <ls_shader_t shaderType>
+inline void lsShaderObject<shaderType>::terminate() {
+    glDeleteShader(objectId);
+    objectId = 0;
+}
+
+/*
  * Shader Loading
  */
 template <ls_shader_t shaderType>
@@ -159,9 +206,17 @@ bool lsShaderObject<shaderType>::compile(const char* data, int size) {
     return true;
 }
 
-/******************************************************************************
- * Typedefs and external templates
- *****************************************************************************/
+/*
+ * Get a shader's GPU-assigned ID
+ */
+template <ls_shader_t shaderType>
+inline GLuint lsShaderObject<shaderType>::getId() const {
+    return objectId;
+}
+
+//-----------------------------------------------------------------------------
+//      Typedefs and external templates
+//-----------------------------------------------------------------------------
 LS_DECLARE_CLASS_TYPE(vertexShader, lsShaderObject, LS_VERTEX_SHADER);
 LS_DECLARE_CLASS_TYPE(geometryShader, lsShaderObject, LS_GEOMETRY_SHADER);
 LS_DECLARE_CLASS_TYPE(fragmentShader, lsShaderObject, LS_FRAGMENT_SHADER);

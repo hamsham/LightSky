@@ -12,11 +12,8 @@
 /******************************************************************************
  * OpenGL Errors
 ******************************************************************************/
+#ifdef LS_DEBUG
 void lsPrintGlError(int line, const char* file) {
-#ifndef LS_DEBUG
-    (void)line;
-    (void)file;
-#else
     const GLenum errorCode = glGetError();
     
     switch(errorCode) {
@@ -45,5 +42,5 @@ void lsPrintGlError(int line, const char* file) {
         default:
             break;
     }
-#endif
 }
+#endif

@@ -101,8 +101,7 @@ bool lsMeshResource::initVertices(unsigned vertCount) {
  * Load a set of meshes from a file
  * TODO
  */
-bool lsMeshResource::loadFile(const char* filename) {
-    (void)filename;
+bool lsMeshResource::loadFile(const char*) {
     unload();
     return false;
 }

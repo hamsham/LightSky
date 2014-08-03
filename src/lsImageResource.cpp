@@ -5,11 +5,11 @@
  * Created on February 2, 2014, 1:42 PM
  */
 
-#include <unordered_map>
 #include <utility> // std::move
+#include <string>
+
 #include <Gl/glew.h>
 #include <FreeImage.h>
-#include <string>
 
 #include "lsSetup.h"
 #include "lsImageResource.h"
@@ -302,5 +302,41 @@ void lsImageResource::unload() {
     pixelSize = 0;
     bitsPerPixel = 0;
     imgFormat = math::vec2i{0,0};
+}
+
+/*
+ * saving
+ */
+inline bool lsImageResource::saveFile(const char* filename, img_file_t format) const {
+    FREE_IMAGE_FORMAT fiFormat;
+    
+    switch(format) {
+        case img_file_t::LS_IMG_BMP:    fiFormat = FIF_BMP; break;
+        case img_file_t::LS_IMG_EXR:    fiFormat = FIF_EXR; break;
+        case img_file_t::LS_IMG_GIF:    fiFormat = FIF_GIF; break;
+        case img_file_t::LS_IMG_HDR:    fiFormat = FIF_HDR; break;
+        case img_file_t::LS_IMG_ICO:    fiFormat = FIF_ICO; break;
+        case img_file_t::LS_IMG_JPG:    fiFormat = FIF_JPEG; break;
+        case img_file_t::LS_IMG_J2K:    fiFormat = FIF_J2K; break;
+        case img_file_t::LS_IMG_PNG:    fiFormat = FIF_PNG; break;
+        case img_file_t::LS_IMG_PPM:    fiFormat = FIF_PPM; break;
+        case img_file_t::LS_IMG_TGA:    fiFormat = FIF_TARGA; break;
+        case img_file_t::LS_IMG_TIF:    fiFormat = FIF_TIFF; break;
+        case img_file_t::LS_IMG_WBP:    fiFormat = FIF_WEBP; break;
+        case img_file_t::LS_IMG_XPM:    fiFormat = FIF_XPM; break;
+    }
+    
+    if (this->pData == nullptr || filename == nullptr) {
+        return false;
+    }
+    
+    return 0 != FreeImage_Save(fiFormat, reinterpret_cast<FIBITMAP*>(pData), filename);
+}
+
+/*
+ * Get the data stored in pData
+ */
+inline void* lsImageResource::getData() const {
+    return (void*) FreeImage_GetBits(reinterpret_cast<FIBITMAP*>(pData));
 }
 

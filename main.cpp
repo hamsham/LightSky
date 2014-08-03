@@ -1,6 +1,5 @@
 
 #include <new> // std::nothrow
-#include <SDL2/SDL.h>
 
 #include "lightSky.h"
 
@@ -9,11 +8,20 @@
 #include "lightState.h"
 #include "fbState.h"
 
+#define GLFW_EXPOSE_NATIVE_WIN32
+#define GLFW_EXPOSE_NATIVE_WGL
+
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
+#include <windef.h>
+
 bool initLs();
 void terminateLs();
 
 namespace {
-    static lsSubsystem* pSystem;
+    lsSubsystem* pSystem = nullptr;
+    lsDisplay* pDisplay = nullptr;
+    GLFWwindow* pWindow = nullptr;
 }
 
 /*
@@ -46,7 +54,9 @@ int main(int argc, char** argv) {
         return -1;
     }
     
-    pSystem->run();
+    while (pSystem->isRunning()) {
+        pSystem->run();
+    }
     
     terminateLs();
     
@@ -57,10 +67,35 @@ int main(int argc, char** argv) {
  * Initialize Light Sky
  */
 bool initLs() {
+    if (!lsInit()) {
+        std::cerr
+            << "Unable to initialize LightSky."
+            << std::endl;
+        return false;
+    }
+    
+    if (!glfwInit()) {
+        std::cerr
+            << "Unable to initialize GLFW for a native window handle test"
+            << std::endl;
+        return false;
+    }
+    
+    pWindow = glfwCreateWindow(800, 600, "Native Window Test", nullptr, nullptr);
+    if (pWindow == nullptr) {
+        std::cerr << "Unable to create a native window to test with." << std::endl;
+        return false;
+    }
+    
+    pDisplay = new(std::nothrow) lsDisplay{};
+    if (!pDisplay || !pDisplay->init(glfwGetWin32Window(pWindow))) {
+        std::cerr << "Unable to create a display object for LightSky." << std::endl;
+        return false;
+    }
     
     pSystem = new(std::nothrow) lsSubsystem();
-    if (!pSystem || !pSystem->init()) {
-        std::cerr << "Failed to initialize the LightSky system manager.\n." << std::endl;
+    if (!pSystem || !pSystem->init(*pDisplay, true)) {
+        std::cerr << "Failed to initialize the LightSky system manager.\n" << std::endl;
         return false;
     }
     
@@ -78,7 +113,14 @@ void terminateLs() {
     delete pSystem;
     pSystem = nullptr;
     
-    std::cout << "LightSky successfully terminated.\n" << std::endl;;
+    delete pDisplay;
+    pDisplay = nullptr;
     
-    return;
+    glfwDestroyWindow(pWindow);
+    glfwTerminate();
+    pWindow = nullptr;
+    
+    lsTerminate();
+    
+    std::cout << "LightSky successfully terminated.\n" << std::endl;
 }

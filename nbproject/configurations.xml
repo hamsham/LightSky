@@ -7,6 +7,7 @@
       <itemPath>include/lsBoundingBox.h</itemPath>
       <itemPath>include/lsBufferObject.h</itemPath>
       <itemPath>include/lsColor.h</itemPath>
+      <itemPath>include/lsContext.h</itemPath>
       <itemPath>include/lsDataResource.h</itemPath>
       <itemPath>include/lsDisplay.h</itemPath>
       <itemPath>include/lsDrawModel.h</itemPath>
@@ -37,10 +38,12 @@
                    projectFiles="true">
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>src/lightSky.cpp</itemPath>
       <itemPath>src/lsAtlas.cpp</itemPath>
       <itemPath>src/lsBoundingBox.cpp</itemPath>
       <itemPath>src/lsBufferObject.cpp</itemPath>
       <itemPath>src/lsColor.cpp</itemPath>
+      <itemPath>src/lsContext.cpp</itemPath>
       <itemPath>src/lsDataResource.cpp</itemPath>
       <itemPath>src/lsDisplay.cpp</itemPath>
       <itemPath>src/lsDrawModel.cpp</itemPath>
@@ -131,6 +134,7 @@
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibLibItem>glfw3dll</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
@@ -175,6 +179,8 @@
       <item path="include/lsBufferObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsColor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsContext.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -230,6 +236,8 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
@@ -237,6 +245,8 @@
       <item path="src/lsBufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsColor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsContext.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -336,6 +346,7 @@
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibLibItem>glfw3dll</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                             CT="3"
@@ -380,6 +391,8 @@
       <item path="include/lsBufferObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsColor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsContext.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -435,6 +448,8 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
@@ -442,6 +457,8 @@
       <item path="src/lsBufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsColor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsContext.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
       </item>

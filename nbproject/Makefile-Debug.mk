@@ -39,10 +39,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/fbState.o \
 	${OBJECTDIR}/lightState.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/src/lightSky.o \
 	${OBJECTDIR}/src/lsAtlas.o \
 	${OBJECTDIR}/src/lsBoundingBox.o \
 	${OBJECTDIR}/src/lsBufferObject.o \
 	${OBJECTDIR}/src/lsColor.o \
+	${OBJECTDIR}/src/lsContext.o \
 	${OBJECTDIR}/src/lsDataResource.o \
 	${OBJECTDIR}/src/lsDisplay.o \
 	${OBJECTDIR}/src/lsDrawModel.o \
@@ -84,7 +86,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2 -lSDL2main ../hamlibs/HamLibs_NetBeans/../bin/WIN32/libhamlibs.a
+LDLIBSOPTIONS=-lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2 -lSDL2main -lglfw3dll ../hamlibs/HamLibs_NetBeans/../bin/WIN32/libhamlibs.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -116,6 +118,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/src/lightSky.o: src/lightSky.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lightSky.o src/lightSky.cpp
+
 ${OBJECTDIR}/src/lsAtlas.o: src/lsAtlas.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
@@ -135,6 +142,11 @@ ${OBJECTDIR}/src/lsColor.o: src/lsColor.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsColor.o src/lsColor.cpp
+
+${OBJECTDIR}/src/lsContext.o: src/lsContext.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsContext.o src/lsContext.cpp
 
 ${OBJECTDIR}/src/lsDataResource.o: src/lsDataResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

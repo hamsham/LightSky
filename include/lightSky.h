@@ -9,6 +9,7 @@
 #define	__LIGHT_SKY_H__
 
 #include "lsAtlas.h"
+#include "lsBlender.h"
 #include "lsBoundingBox.h"
 #include "lsBufferObject.h"
 #include "lsColor.h"

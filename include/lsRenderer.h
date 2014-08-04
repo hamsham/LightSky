@@ -49,71 +49,6 @@ enum ls_winding_t : int {
 };
 
 /**
- * Blending equations that can be used when rendering.
- */
-enum : int {
-    LS_BLEND                    = GL_BLEND
-};
-
-/**
- * Blending colors
- */
-enum ls_blend_color_t : int {
-    LS_BLEND_COLOR              = GL_BLEND_COLOR
-};
-
-/**
- * Blending equations
- */
-enum ls_blend_eq_t : int {
-    LS_BLEND_ADD                = GL_FUNC_ADD,
-    LS_BLEND_SUB                = GL_FUNC_SUBTRACT,
-    LS_BLEND_REV_SUB            = GL_FUNC_REVERSE_SUBTRACT,
-    LS_BLEND_MIN                = GL_MIN,
-    LS_BLEND_MAX                = GL_MAX,
-    LS_DEFAULT_BLEND_EQU        = GL_FUNC_ADD
-};
-
-/**
- * Blending Equation Color
- */
-enum ls_blend_equ_color_t : int {
-    LS_BLEND_EQUATION_RGB       = GL_BLEND_EQUATION_RGB,
-    LS_BLEND_EQUATION_ALPHA     = GL_BLEND_EQUATION_ALPHA
-};
-
-/**
- * Blend functions which help determine the type of blending that's applied to
- * a renderable object.
- */
-enum ls_blend_func_t : int {
-    LS_ZERO                     = GL_ZERO,
-    LS_ONE                      = GL_ONE,
-    LS_SRC_COLOR                = GL_SRC_COLOR,
-    LS_ONE_MINUS_SRC_COLOR      = GL_ONE_MINUS_SRC_COLOR,
-    LS_DST_COLOR                = GL_DST_COLOR,
-    LS_ONE_MINUS_DST_COLOR      = GL_ONE_MINUS_DST_COLOR,
-    LS_SRC_ALPHA                = GL_SRC_ALPHA,
-    LS_ONE_MINUS_SRC_ALPHA      = GL_ONE_MINUS_SRC_ALPHA,
-    LS_DST_ALPHA                = GL_DST_ALPHA,
-    LS_ONE_MINUS_DST_ALPHA      = GL_ONE_MINUS_DST_ALPHA,
-    LS_CONST_COLOR              = GL_CONSTANT_COLOR,
-    LS_ONE_MINUS_CONST_COLOR    = GL_ONE_MINUS_CONSTANT_COLOR,
-    LS_CONST_ALPHA              = GL_CONSTANT_ALPHA,
-    LS_ONE_MINUS_CONST_ALPHA    = GL_ONE_MINUS_CONSTANT_ALPHA
-};
-
-/**
- * Blending Function Color
- */
-enum ls_blend_func_color_t : int {
-    LS_BLEND_SRC_RGB            = GL_BLEND_SRC_RGB,
-    LS_BLEND_DST_RGB            = GL_BLEND_DST_RGB,
-    LS_BLEND_SRC_ALPHA          = GL_BLEND_SRC_ALPHA,
-    LS_BLEND_DST_ALPHA          = GL_BLEND_DST_ALPHA
-};
-
-/**
  * Face culling modes for polygons.
  */
 enum ls_cull_t : int {
@@ -167,28 +102,6 @@ class lsRenderer final {
         
         void setDepthTesting(bool dt);
         bool getDepthTesting() const;
-        
-        void setBlending(bool d);
-        bool getBlending() const;
-        
-        void setBlendEquation(ls_blend_eq_t);
-        void setBlendEquationSeparate(ls_blend_eq_t rgbMode, ls_blend_eq_t alphaMode);
-        ls_blend_eq_t getBlendEquationRgb() const;
-        ls_blend_eq_t getBlendEquationAlpha() const;
-        
-        void setBlendFunction(ls_blend_func_t srcFactor, ls_blend_func_t dstFactor);
-        void setBlendFunctionSeparate(
-            ls_blend_func_t srcRgb, ls_blend_func_t dstRgb, ls_blend_func_t srcAlpha, ls_blend_func_t dstAlpha
-        );
-        ls_blend_func_t getBlendFunctionSrcRgb() const;
-        ls_blend_func_t getBlendFunctionSrcAlpha() const;
-        ls_blend_func_t getBlendFunctionDstRgb() const;
-        ls_blend_func_t getBlendFunctionDstAlpha() const;
-        
-        void setBlendColor(const lsColor& rgba = lsBlank);
-        lsColor getBlendColor() const;
-        
-        int getMaxTextureSize() const;
 };
 
 //-----------------------------------------------------------------------------
@@ -233,98 +146,6 @@ inline bool lsRenderer::getDepthTesting() const {
     glGetBooleanv(LS_DEPTH_TEST, (GLboolean*)&depthTest);
     LOG_GL_ERR();
     return depthTest;
-}
-
-/*
- * Determine the blending state
- */
-inline void lsRenderer::setBlending(bool b) {
-    b == true ? glEnable(LS_BLEND) : glDisable(LS_BLEND);
-}
-
-inline bool lsRenderer::getBlending() const {
-    bool blend;
-    glGetBooleanv(LS_BLEND, (GLboolean*)&blend);
-    LOG_GL_ERR();
-    return blend;
-}
-
-/*
- * Determine the blend Equation
- */
-inline void lsRenderer::setBlendEquation(ls_blend_eq_t be) {
-    glBlendEquation(be);
-}
-
-inline void lsRenderer::setBlendEquationSeparate(
-    ls_blend_eq_t rgbMode, ls_blend_eq_t alphaMode
-) {
-    glBlendEquationSeparate(rgbMode, alphaMode);
-}
-
-inline ls_blend_eq_t lsRenderer::getBlendEquationRgb() const {
-    int blendRgb;
-    glGetIntegerv(LS_BLEND_EQUATION_RGB, &blendRgb);
-    return (ls_blend_eq_t)blendRgb;
-}
-
-inline ls_blend_eq_t lsRenderer::getBlendEquationAlpha() const {
-    int blendAlpha;
-    glGetIntegerv(LS_BLEND_EQUATION_ALPHA, &blendAlpha);
-    return (ls_blend_eq_t)blendAlpha;
-}
-
-/*
- * Determine the blending function
- */
-inline void lsRenderer::setBlendFunction(
-    ls_blend_func_t srcFactor, ls_blend_func_t dstFactor
-) {
-    glBlendFunc(srcFactor, dstFactor);
-}
-
-inline void lsRenderer::setBlendFunctionSeparate(
-    ls_blend_func_t srcRgb, ls_blend_func_t dstRgb,
-    ls_blend_func_t srcAlpha, ls_blend_func_t dstAlpha
-) {
-    glBlendFuncSeparate(srcRgb, dstRgb, srcAlpha, dstAlpha);
-}
-
-inline ls_blend_func_t lsRenderer::getBlendFunctionSrcRgb() const {
-    int srcRgbFunc;
-    glGetIntegerv(LS_BLEND_SRC_RGB, &srcRgbFunc);
-    return (ls_blend_func_t)srcRgbFunc;
-}
-
-inline ls_blend_func_t lsRenderer::getBlendFunctionSrcAlpha() const {
-    int srcAlphaFunc;
-    glGetIntegerv(LS_BLEND_SRC_ALPHA, &srcAlphaFunc);
-    return (ls_blend_func_t)srcAlphaFunc;
-}
-
-inline ls_blend_func_t lsRenderer::getBlendFunctionDstRgb() const {
-    int dstRgbFunc;
-    glGetIntegerv(LS_BLEND_DST_RGB, &dstRgbFunc);
-    return (ls_blend_func_t)dstRgbFunc;
-}
-
-inline ls_blend_func_t lsRenderer::getBlendFunctionDstAlpha() const {
-    int dstAlphaFunc;
-    glGetIntegerv(LS_BLEND_DST_ALPHA, &dstAlphaFunc);
-    return (ls_blend_func_t)dstAlphaFunc;
-}
-
-/*
- * Determine the blending color
- */
-inline void lsRenderer::setBlendColor(const lsColor& rgba) {
-    glBlendColor(rgba[0], rgba[1], rgba[2], rgba[3]);
-}
-
-inline lsColor lsRenderer::getBlendColor() const {
-    lsColor col;
-    glGetFloatv(LS_BLEND_COLOR, col.v);
-    return col;
 }
 
 #endif	/* __LS_RENDERER_H__ */

@@ -303,6 +303,9 @@ void fbState::terminate() {
 
     delete [] pModelMatrices;
     pModelMatrices = nullptr;
+    
+    delete pBlender;
+    pBlender = nullptr;
 }
 
 /******************************************************************************
@@ -313,6 +316,7 @@ bool fbState::initMemory() {
     pScene          = new lsSceneManager{};
     pKeyStates      = new bool[TEST_MAX_KEYBORD_STATES];
     pModelMatrices  = new mat4[TEST_MAX_SCENE_INSTANCES];
+    pBlender        = new lsBlender{};
     
     if (pMatStack == nullptr
     ||  pScene == nullptr
@@ -320,6 +324,7 @@ bool fbState::initMemory() {
     ||  pKeyStates == nullptr
     ||  pModelMatrices == nullptr
     ||  !testFb.init()
+    ||  !pBlender
     ) {
         terminate();
         return false;
@@ -534,6 +539,8 @@ void fbState::setRendererParams() {
     lsRenderer renderer;
     renderer.setDepthTesting(true);
     renderer.setFaceCulling(true);
+    pBlender->setBlendEquation(LS_BLEND_ADD, LS_BLEND_ADD);
+    pBlender->setBlendFunction(LS_ONE, LS_ONE_MINUS_SRC_ALPHA, LS_ONE, LS_ZERO);
 }
 
 /******************************************************************************
@@ -730,10 +737,8 @@ void fbState::drawStrings() {
     // setup parameters to draw a transparent mesh as a screen overlay/UI
     lsRenderer renderer;
     renderer.setDepthTesting(false);
-    renderer.setBlending(true);
-    renderer.setBlendEquationSeparate(LS_BLEND_ADD, LS_BLEND_ADD);
-    renderer.setBlendFunctionSeparate(LS_ONE, LS_ONE_MINUS_SRC_ALPHA, LS_ONE, LS_ZERO);
+    pBlender->bind();
     pStringModel->draw();
-    renderer.setBlending(false);
+    pBlender->unbind();
     renderer.setDepthTesting(true);
 }

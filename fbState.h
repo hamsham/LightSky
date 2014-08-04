@@ -20,12 +20,13 @@ class fbState final : virtual public lsGameState {
         int             mouseY                  = 0;
         lsShaderProgram meshProg                = {};
         lsShaderProgram fontProg                = {};
-        lsFramebuffer   testFb             = {};
+        lsFramebuffer   testFb                  = {};
         lsMatrixStack*  pMatStack               = nullptr;
         lsSceneManager* pScene                  = nullptr;
         bool*           pKeyStates              = nullptr;
         math::mat4*     pModelMatrices          = nullptr;
         math::quat      orientation             = {};
+        lsBlender*      pBlender                = {};
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;

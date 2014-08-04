@@ -49,6 +49,21 @@ typedef std::deque<lsAtlas*>     lsAtlasList;
  */
 class lsSceneManager {
     private:
+    private:
+        /**
+         * The default texture for a mesh. This texture is used upon
+         * initializing a mesh so that it can be rendered without error.
+         */
+        lsTexture defaultTex;
+        
+        /**
+         * Initialization method for the default texture.
+         * 
+         * @return TRUE if the default texture was initialized properly, FALSE
+         * if not.
+         */
+        bool initDefaultTexture();
+        
         lsTextureList texMgr;
         lsMeshList meshMgr;
         lsAtlasList atlasMgr;
@@ -66,6 +81,13 @@ class lsSceneManager {
         
         bool init();
         void terminate();
+        
+        /**
+         * Get the default texture used by freshly loaded models.
+         * 
+         * @return A constant reference to the default model texture
+         */
+        const lsTexture& getDefaultTexture() const;
         
         lsMeshList& getMeshList();
         lsTextureList& getTextureList();
@@ -107,6 +129,16 @@ class lsSceneManager {
         bool containsAtlas(const lsAtlas* const) const;
         bool containsModel(const lsDrawModel* const) const;
 };
+
+//-----------------------------------------------------------------------------
+//      Static Implementations
+//-----------------------------------------------------------------------------
+/*
+ * Get the default texture used by freshly loaded models.
+ */
+inline const lsTexture& lsSceneManager::getDefaultTexture() const {
+    return defaultTex;
+}
 
 #endif	/* __LS_SCENE_MANAGER_H__ */
 

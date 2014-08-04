@@ -22,33 +22,10 @@
 class lsDrawModel final {
     private:
         /**
-         * The default texture for a mesh. This texture is used upon
-         * initializing a mesh so that it can be rendered without error.
-         */
-        static lsTexture defaultTex;
-        
-        /**
-         * Initialization method for the default texture.
-         * 
-         * @return TRUE if the default texture was initialized properly, FALSE
-         * if not.
-         */
-        static bool initDefaultTexture();
-        
-    public:
-        /**
-         * Get the default texture used by freshly loaded models.
-         * 
-         * @return A constant reference to the default model texture
-         */
-        const lsTexture& getDefaultTexture() const;
-        
-    private:
-        /**
          * A pointer to the mesh that should be drawn using this model.
          * The "draw" methods should NOT be called if this is null.
          */
-        lsMesh* pMesh = nullptr;
+        const lsMesh* pMesh = nullptr;
         
         /**
          * A pointer to the texture that should be applied when rendering this
@@ -136,16 +113,6 @@ class lsDrawModel final {
         unsigned getId() const;
         
         /**
-         * Set the mesh to be used by this object during a draw operation.
-         * 
-         * @param a const reference to an lsMesh
-         * 
-         * @return TRUE if the mesh was successfully loaded with a VBO assigned
-         * to handle model matrices, FALSE if otherwise.
-         */
-        bool init(lsMesh&);
-        
-        /**
          * Set the mesh and texture to be used by this object during a draw
          * operation.
          * 
@@ -156,7 +123,7 @@ class lsDrawModel final {
          * @return TRUE if the mesh was successfully loaded with a VBO assigned
          * to handle model matrices, FALSE if otherwise.
          */
-        bool init(lsMesh&, lsTexture&);
+        bool init(const lsMesh&, const lsTexture&);
         
         /**
          * Clear all draw parameters to their default, null values and free any
@@ -253,29 +220,10 @@ class lsDrawModel final {
 //      Inlined Methods
 //-----------------------------------------------------------------------------
 /*
- * Get the default texture used by freshly loaded models.
- */
-inline const lsTexture& lsDrawModel::getDefaultTexture() const {
-    return defaultTex;
-}
-
-/*
  * Get the GPU-Assigned ID associated with this draw model.
  */
 inline unsigned lsDrawModel::getId() const {
     return vao.getId();
-}
-
-/*
- * Set the mesh and texture to be used by this object during a draw
- * operation.
- */
-inline bool lsDrawModel::init(lsMesh& m, lsTexture& t) {
-    if (!init(m)) {
-        return false;
-    }
-    pTexture = &t;
-    return true;
 }
 
 /*

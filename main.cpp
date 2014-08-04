@@ -3,9 +3,6 @@
 
 #include "lightSky.h"
 
-#include "testState.h"
-#include "batchState.h"
-#include "lightState.h"
 #include "fbState.h"
 
 bool initLs();
@@ -36,12 +33,7 @@ int main(int argc, char** argv) {
         return false;
     }
     
-    if (
-        !pSystem->pushGameState(new(std::nothrow) fbState())
-        //!pSystem->pushGameState(new(std::nothrow) lightState())
-        //!pSystem->pushGameState(new(std::nothrow) batchState())
-        //!pSystem->pushGameState(new(std::nothrow) testState())
-    ) {
+    if (!pSystem->pushGameState(new(std::nothrow) fbState())) {
         terminateLs();
         return -1;
     }

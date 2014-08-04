@@ -80,16 +80,16 @@ bool lsAtlas::init(const lsFontResource& ff) {
         return false;
     }
     
-    if (!atlasTex.init(0, LS_GRAY_8, maxGlyphSize*dimensions, LS_GRAY, LS_UNSIGNED_BYTE, nullptr)) {
+    // Let OpenGL know that fonts only use 1-byte per pixel
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    
+    if (!atlasTex.init(0, LS_R_8, maxGlyphSize*dimensions, LS_R, LS_UNSIGNED_BYTE, nullptr)) {
         LOG_GL_ERR();
         LS_LOG_ERR("\tAn error occurred while allocating space for a font atlas.\n");
         delete [] entries;
         entries = nullptr;
         return false;
     }
-    
-    // Let OpenGL know that fonts only use 1-byte per pixel
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     
     LOG_GL_ERR();
     

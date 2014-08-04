@@ -25,6 +25,7 @@ lsSceneManager::~lsSceneManager() {
  * Constructor
  */
 lsSceneManager::lsSceneManager() :
+    defaultTex{ls_tex_desc_t::LS_TEX_2D},
     texMgr{},
     meshMgr{},
     atlasMgr{},
@@ -35,6 +36,7 @@ lsSceneManager::lsSceneManager() :
  * Move Constructor
  */
 lsSceneManager::lsSceneManager(lsSceneManager&& sm) :
+defaultTex{std::move(sm.defaultTex)},
     texMgr{std::move(sm.texMgr)},
     meshMgr{std::move(sm.meshMgr)},
     atlasMgr{std::move(sm.atlasMgr)},
@@ -45,6 +47,7 @@ lsSceneManager::lsSceneManager(lsSceneManager&& sm) :
  * Move Operator
  */
 lsSceneManager& lsSceneManager::operator =(lsSceneManager&& sm) {
+    defaultTex = std::move(sm.defaultTex);
     texMgr = std::move(sm.texMgr);
     meshMgr = std::move(sm.meshMgr);
     atlasMgr = std::move(sm.atlasMgr);
@@ -55,12 +58,17 @@ lsSceneManager& lsSceneManager::operator =(lsSceneManager&& sm) {
 
 /*
  * Scene initialization
- * 
- * There used to be more here.
  */
 bool lsSceneManager::init() {
     LS_LOG_MSG("Attempting to initialize a scene manager.");
     terminate();
+    
+    // Ensuring that there is always a texture to draw with
+    if (!initDefaultTexture()) {
+        LS_LOG_ERR("Unable to initialize a default texture for the sene manager.");
+        return false;
+    }
+    
     LS_LOG_MSG("\tSuccessfully initialized a scene manager.");
     return true;
 }
@@ -69,6 +77,8 @@ bool lsSceneManager::init() {
  * Resource termination
  */
 void lsSceneManager::terminate() {
+    defaultTex.terminate();
+    
     for (lsMesh* pMesh : meshMgr) {
         delete pMesh;
     }
@@ -90,9 +100,48 @@ void lsSceneManager::terminate() {
     drawMgr.clear();
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Manager retrieval
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Static Implementations
+//-----------------------------------------------------------------------------
+// Default Texture color
+static constexpr lsColor checkeredCol[] = {
+    lsMagenta,  lsBlack,
+    lsBlack,    lsMagenta
+};
+
+/*
+ * Initialization of the default gray and magic pink textures
+ */
+bool lsSceneManager::initDefaultTexture() {
+    if (defaultTex.getId()) {
+        return true;
+    }
+    
+    if (!defaultTex.init(
+        0, LS_RGBA_32F,
+        math::vec2i{2},
+        LS_RGBA, LS_FLOAT,
+        (void*)checkeredCol)
+    ) {
+        LS_LOG_ERR("\tUnable to initialize a default texture for draw models.");
+        LOG_GL_ERR();
+        
+        return false;
+    }
+    else {
+        defaultTex.setParameter(LS_TEX_MIN_FILTER, LS_FILTER_NEAREST);
+        defaultTex.setParameter(LS_TEX_MAG_FILTER, LS_FILTER_NEAREST);
+        defaultTex.setParameter(LS_TEX_WRAP_S, LS_TEX_REPEAT);
+        defaultTex.setParameter(LS_TEX_WRAP_T, LS_TEX_REPEAT);
+        LOG_GL_ERR();
+    }
+    
+    return true;
+}
+
+//-----------------------------------------------------------------------------
+//      Manager retrieval
+//-----------------------------------------------------------------------------
 lsMeshList& lsSceneManager::getMeshList() {
     return meshMgr;
 }
@@ -109,9 +158,9 @@ lsDrawList& lsSceneManager::getModelList() {
     return drawMgr;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Manager retrieval (const)
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Manager retrieval (const)
+//-----------------------------------------------------------------------------
 const lsMeshList& lsSceneManager::getMeshList() const {
     return meshMgr;
 }
@@ -128,9 +177,9 @@ const lsDrawList& lsSceneManager::getModelList() const {
     return drawMgr;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Resource "get" methods
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Resource "get" methods
+//-----------------------------------------------------------------------------
 lsMesh* lsSceneManager::getMesh(unsigned index) const {
     HL_DEBUG_ASSERT(index < meshMgr.size());
     return meshMgr[index];
@@ -151,9 +200,9 @@ lsDrawModel* lsSceneManager::getModel(unsigned index) const {
     return drawMgr[index];
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Resource deletion methods
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Resource deletion methods
+//-----------------------------------------------------------------------------
 void lsSceneManager::eraseMesh(unsigned index) {
     lsMesh* pMesh = meshMgr[index];
     delete pMesh;
@@ -178,9 +227,9 @@ void lsSceneManager::eraseModel(unsigned index) {
     drawMgr.erase(drawMgr.begin()+index);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Resource counts
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Resource counts
+//-----------------------------------------------------------------------------
 unsigned lsSceneManager::getNumMeshes() const {
     return meshMgr.size();
 }
@@ -197,9 +246,9 @@ unsigned lsSceneManager::getNumModels() const {
     return drawMgr.size();
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Resource management
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Resource management
+//-----------------------------------------------------------------------------
 unsigned lsSceneManager::manageMesh(lsMesh* const pMesh) {
     if (pMesh != nullptr && this->containsMesh(pMesh) == false) {
         const unsigned index = pMesh->getId();
@@ -240,9 +289,9 @@ unsigned lsSceneManager::manageModel(lsDrawModel* const pText) {
     return LS_INVALID_SCENE_ID;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Resource un-management
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Resource un-management
+//-----------------------------------------------------------------------------
 lsMesh* lsSceneManager::unManageMesh(unsigned index) {
     HL_DEBUG_ASSERT(index < meshMgr.size());
     lsMesh* const pMesh = meshMgr[index];
@@ -271,9 +320,9 @@ lsDrawModel* lsSceneManager::unManageModel(unsigned index) {
     return pText;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Resource queries
-///////////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
+//      Resource queries
+//-----------------------------------------------------------------------------
 bool lsSceneManager::containsMesh(const lsMesh* const pMesh) const {
     if (pMesh == nullptr) {
         return false;

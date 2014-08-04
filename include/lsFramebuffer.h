@@ -97,14 +97,6 @@ enum ls_fbo_mask_t : int {
     LS_COLOR_MASK               = GL_COLOR_BUFFER_BIT,
 };
 
-/**
- * Framebuffer filtering specifiers
-*/
-enum ls_fbo_filter_t : int {
-    LS_FBO_LINEAR               = GL_LINEAR,
-    LS_FBO_NEAREST              = GL_NEAREST
-};
-
 //-----------------------------------------------------------------------------
 //      Classes
 //-----------------------------------------------------------------------------
@@ -228,7 +220,7 @@ class lsFramebuffer final {
         void blit(
             const math::vec2i& srcOrig, const math::vec2i& srcSize,
             const math::vec2i& dstOrig, const math::vec2i& dstSize,
-            ls_fbo_mask_t, ls_fbo_filter_t = LS_FBO_LINEAR
+            ls_fbo_mask_t, ls_tex_filter_t = LS_FILTER_LINEAR
         ) const;
         
         /**
@@ -340,7 +332,7 @@ inline void lsFramebuffer::unbind() const {
 inline void lsFramebuffer::blit(
     const math::vec2i& srcOrig, const math::vec2i& srcSize,
     const math::vec2i& dstOrig, const math::vec2i& dstSize,
-    ls_fbo_mask_t mask, ls_fbo_filter_t filter
+    ls_fbo_mask_t mask, ls_tex_filter_t filter
 ) const {
     glBlitFramebuffer(
         srcOrig[0], srcOrig[1], srcSize[0], srcSize[1],

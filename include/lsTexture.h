@@ -34,12 +34,23 @@ enum ls_tex_param_t : int {
     LS_TEX_WRAP_T       = GL_TEXTURE_WRAP_T,
     LS_TEX_WRAP_R       = GL_TEXTURE_WRAP_R,
     
-    LS_TEX_CLAMP        = GL_CLAMP,
+    LS_TEX_CLAMP_EDGE   = GL_CLAMP_TO_EDGE,
     LS_TEX_CLAMP_BORDER = GL_CLAMP_TO_BORDER,
     LS_TEX_REPEAT       = GL_REPEAT,
+};
 
-    LS_LINEAR_FILTER    = GL_LINEAR,
-    LS_NEAREST_FILTER   = GL_NEAREST
+/**
+ * Framebuffer filtering specifiers
+*/
+enum ls_tex_filter_t : int {
+    LS_FILTER_LINEAR            = GL_LINEAR,
+    LS_FILTER_NEAREST           = GL_NEAREST,
+    
+    LS_FILTER_LINEAR_NEAREST    = GL_LINEAR_MIPMAP_NEAREST,
+    LS_FILTER_NEAREST_NEAREST   = GL_NEAREST_MIPMAP_NEAREST,
+    
+    LS_FILTER_LINEAR_LINEAR     = GL_LINEAR_MIPMAP_LINEAR,
+    LS_FILTER_NEAREST_LINEAR    = GL_NEAREST_MIPMAP_LINEAR
 };
 
 /**
@@ -122,13 +133,13 @@ class lsTexture {
         
         /**
          * Set a integer texture parameter.
-         * Make sure that "bind() const" has been called before using this method.
+         * Make sure that "bind()" has been called before using this method.
          */
         inline void setParameter(int paramName, int param) const;
         
         /**
          * Set a float texture parameter.
-         * Make sure that "bind() const" has been called before using this method.
+         * Make sure that "bind()" has been called before using this method.
          */
         inline void setParameter(int paramName, float param) const;
         

@@ -265,8 +265,7 @@ bool testState::generateDrawModels() {
         pScene->manageModel(pMeshModel);
         pMesh = pScene->getMeshList()[0];
         pTexture = pScene->getTextureList()[0];
-        pMeshModel->init(*pMesh);
-        pMeshModel->setTexture(*pTexture);
+        pMeshModel->init(*pMesh, *pTexture);
     }
     
     // test model 2
@@ -279,8 +278,7 @@ bool testState::generateDrawModels() {
         pScene->manageModel(pTextModel);
         pMesh = pScene->getMeshList()[1];
         pAtlas = pScene->getAtlasList()[0];
-        pTextModel->init(*pMesh);
-        pTextModel->setTexture(pAtlas->getTexture());
+        pTextModel->init(*pMesh, pAtlas->getTexture());
     }
     
     return true;
@@ -340,8 +338,8 @@ bool testState::onStart() {
     }
     
     pTex->bind();
-    pTex->setParameter(LS_TEX_MAG_FILTER, LS_LINEAR_FILTER);
-    pTex->setParameter(LS_TEX_MIN_FILTER, LS_NEAREST_FILTER);
+    pTex->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_LINEAR);
+    pTex->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_NEAREST);
     
     LOG_GL_ERR();
     

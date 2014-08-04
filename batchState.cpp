@@ -330,8 +330,8 @@ bool batchState::onStart() {
     
     if (ret) {
         pTexture->bind();
-        pTexture->setParameter(LS_TEX_MAG_FILTER, LS_LINEAR_FILTER);
-        pTexture->setParameter(LS_TEX_MIN_FILTER, LS_NEAREST_FILTER);
+        pTexture->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_LINEAR);
+        pTexture->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_NEAREST);
         pTexture->unbind();
         
         pScene->manageMesh(pMesh); // test data at the mesh index 0

@@ -79,11 +79,13 @@ in vec3 eyeDir;
 in vec3 nrmCoords;
 in vec2 uvCoords;
 
+uniform sampler2D tex;
+
 out vec4 outFragCol;
 
 void main() {
     float lightIntensity = dot(eyeDir, normalize(nrmCoords));
-    outFragCol = vec4(1.0, 1.0, 1.0, 0.0) * lightIntensity;
+    outFragCol = texture(tex, uvCoords) * lightIntensity;
 }
 )***";
 
@@ -314,6 +316,7 @@ bool fbState::initMemory() {
     
     if (pMatStack == nullptr
     ||  pScene == nullptr
+    ||  !pScene->init()
     ||  pKeyStates == nullptr
     ||  pModelMatrices == nullptr
     ||  !testFb.init()
@@ -457,7 +460,7 @@ bool fbState::initDrawModels() {
     else {
         pScene->manageModel(pModel);
         lsMesh* pMesh = pScene->getMeshList()[0];
-        pModel->init(*pMesh);
+        pModel->init(*pMesh, pScene->getDefaultTexture());
 
          // lights, camera, batch!
         pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
@@ -472,8 +475,7 @@ bool fbState::initDrawModels() {
     else {
         pScene->manageModel(pTextModel);
         lsMesh* pTextMesh = pScene->getMeshList()[1];
-        pTextModel->init(*pTextMesh);
-        pTextModel->setTexture(pScene->getAtlas(0)->getTexture());
+        pTextModel->init(*pTextMesh, pScene->getAtlas(0)->getTexture());
 
         mat4 modelMat = {1.f};
         pTextModel->setNumInstances(1, &modelMat);
@@ -493,20 +495,20 @@ bool fbState::initFramebuffers() {
     
     // setup the test framebuffer depth texture
     pDepthTex->bind();
-        pDepthTex->setParameter(LS_TEX_MIN_FILTER, LS_LINEAR_FILTER);
-        pDepthTex->setParameter(LS_TEX_MAG_FILTER, LS_LINEAR_FILTER);
-        pDepthTex->setParameter(LS_TEX_WRAP_S, LS_TEX_CLAMP);
-        pDepthTex->setParameter(LS_TEX_WRAP_T, LS_TEX_CLAMP);
+        pDepthTex->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_LINEAR);
+        pDepthTex->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_LINEAR);
+        pDepthTex->setParameter(LS_TEX_WRAP_S, LS_TEX_CLAMP_EDGE);
+        pDepthTex->setParameter(LS_TEX_WRAP_T, LS_TEX_CLAMP_EDGE);
     pDepthTex->unbind();
     
     LOG_GL_ERR();
     
     // framebuffer color texture
     pColorTex->bind();
-        pColorTex->setParameter(LS_TEX_MIN_FILTER, LS_LINEAR_FILTER);
-        pColorTex->setParameter(LS_TEX_MAG_FILTER, LS_LINEAR_FILTER);
-        pColorTex->setParameter(LS_TEX_WRAP_S, LS_TEX_CLAMP);
-        pColorTex->setParameter(LS_TEX_WRAP_T, LS_TEX_CLAMP);
+        pColorTex->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_LINEAR);
+        pColorTex->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_LINEAR);
+        pColorTex->setParameter(LS_TEX_WRAP_S, LS_TEX_CLAMP_EDGE);
+        pColorTex->setParameter(LS_TEX_WRAP_T, LS_TEX_CLAMP_EDGE);
     pColorTex->unbind();
     
     LOG_GL_ERR();
@@ -707,18 +709,18 @@ void fbState::drawMeshes() {
 ******************************************************************************/
 void fbState::drawStrings() {
     fontProg.bind();
-    const GLint fontMvpId   = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
-    const mat4&& orthoProj  = get2dViewport();
+    const GLint fontMvpId = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
+    const mat4&& orthoProj = get2dViewport();
     meshProg.setUniformValue(fontMvpId, orthoProj);
     
     // setup some UI parameters
-    const float screenResY  = (float)getParentSystem().getDisplay().getResolution()[1];
-    mat4 modelMat           = math::translate(mat4{1.f}, vec3{0.f, screenResY, 0.f});
-    modelMat                = math::scale(modelMat, vec3{10.f});
+    const float screenResY = (float)getParentSystem().getDisplay().getResolution()[1];
+    mat4 modelMat = math::translate(mat4{1.f}, vec3{0.f, screenResY, 0.f});
+    modelMat = math::scale(modelMat, vec3{10.f});
     
     // Regenerate a string mesh using the frame's timing information.
-    lsAtlas* const pStringAtlas     = pScene->getAtlas(0);
-    lsMesh* const pStringMesh       = pScene->getMesh(1);
+    lsAtlas* const pStringAtlas = pScene->getAtlas(0);
+    lsMesh* const pStringMesh = pScene->getMesh(1);
     pStringMesh->init(*pStringAtlas, getTimingStr());
     
     // model 1 has the string mesh already bound

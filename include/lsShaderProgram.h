@@ -91,12 +91,12 @@ class lsShaderProgram {
         /**
          * Bind this program to the current context
          */
-        void bind();
+        void bind() const;
         
         /**
          * Unbind this program from the context.
          */
-        void unbind();
+        void unbind() const;
         
         /**
          * Bind a vertex attribute to a shader
@@ -282,14 +282,14 @@ class lsShaderProgram {
 /*
  * Bind this program to the current context
  */
-inline void lsShaderProgram::bind() {
+inline void lsShaderProgram::bind() const {
     glUseProgram(programId);
 }
 
 /*
  * Unbind this program from the context.
  */
-inline void lsShaderProgram::unbind() {
+inline void lsShaderProgram::unbind() const {
     glUseProgram(0);
 }
 

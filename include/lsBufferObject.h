@@ -150,12 +150,12 @@ class lsBufferObject {
         /**
          * Bind this vertex buffer to the current global rendering context.
          */
-        void bind();
+        void bind() const;
         
         /**
          * Unbind this vertex buffer object from the current render context.
          */
-        void unbind();
+        void unbind() const;
         
         /**
          * Set the data within the buffer to whatever is set at "pData."
@@ -308,7 +308,7 @@ inline bool lsBufferObject<bufferType>::isValid() const {
  * Bind this vertex buffer to the current global rendering context.
  */
 template <ls_buffer_t bufferType>
-inline void lsBufferObject<bufferType>::bind() {
+inline void lsBufferObject<bufferType>::bind() const {
     glBindBuffer(bufferType, vbo);
 }
 
@@ -316,7 +316,7 @@ inline void lsBufferObject<bufferType>::bind() {
  * Unbind this vertex buffer object from the current render context.
  */
 template <ls_buffer_t bufferType>
-inline void lsBufferObject<bufferType>::unbind() {
+inline void lsBufferObject<bufferType>::unbind() const {
     glBindBuffer(bufferType, 0);
 }
 

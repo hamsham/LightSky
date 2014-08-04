@@ -4,6 +4,7 @@
     <logicalFolder name="include" displayName="include" projectFiles="true">
       <itemPath>include/lightSky.h</itemPath>
       <itemPath>include/lsAtlas.h</itemPath>
+      <itemPath>include/lsBlender.h</itemPath>
       <itemPath>include/lsBoundingBox.h</itemPath>
       <itemPath>include/lsBufferObject.h</itemPath>
       <itemPath>include/lsColor.h</itemPath>
@@ -40,6 +41,7 @@
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <itemPath>src/lightSky.cpp</itemPath>
       <itemPath>src/lsAtlas.cpp</itemPath>
+      <itemPath>src/lsBlender.cpp</itemPath>
       <itemPath>src/lsBoundingBox.cpp</itemPath>
       <itemPath>src/lsBufferObject.cpp</itemPath>
       <itemPath>src/lsColor.cpp</itemPath>
@@ -81,15 +83,9 @@
       <itemPath>.gitignore</itemPath>
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>batchState.cpp</itemPath>
-    <itemPath>batchState.h</itemPath>
     <itemPath>fbState.cpp</itemPath>
     <itemPath>fbState.h</itemPath>
-    <itemPath>lightState.cpp</itemPath>
-    <itemPath>lightState.h</itemPath>
     <itemPath>main.cpp</itemPath>
-    <itemPath>testState.cpp</itemPath>
-    <itemPath>testState.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>include</Elem>
@@ -161,10 +157,6 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="batchState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="batchState.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
@@ -172,6 +164,8 @@
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsBlender.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -229,15 +223,13 @@
       </item>
       <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="lightState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="lightState.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsBlender.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -294,10 +286,6 @@
       <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="testState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="testState.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -372,10 +360,6 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="batchState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="batchState.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
@@ -383,6 +367,8 @@
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsBlender.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -440,15 +426,13 @@
       </item>
       <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="lightState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="lightState.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsBlender.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -505,10 +489,6 @@
       <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="testState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="testState.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

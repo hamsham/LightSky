@@ -35,12 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/batchState.o \
 	${OBJECTDIR}/fbState.o \
-	${OBJECTDIR}/lightState.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/lightSky.o \
 	${OBJECTDIR}/src/lsAtlas.o \
+	${OBJECTDIR}/src/lsBlender.o \
 	${OBJECTDIR}/src/lsBoundingBox.o \
 	${OBJECTDIR}/src/lsBufferObject.o \
 	${OBJECTDIR}/src/lsColor.o \
@@ -68,8 +67,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lsTexture.o \
 	${OBJECTDIR}/src/lsUtil.o \
 	${OBJECTDIR}/src/lsVertex.o \
-	${OBJECTDIR}/src/lsVertexArray.o \
-	${OBJECTDIR}/testState.o
+	${OBJECTDIR}/src/lsVertexArray.o
 
 
 # C Compiler Flags
@@ -98,20 +96,10 @@ bin/lightsky_d.exe: ${OBJECTFILES}
 	${MKDIR} -p bin
 	${LINK.cc} -o bin/lightsky_d.exe ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/batchState.o: batchState.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/batchState.o batchState.cpp
-
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
-
-${OBJECTDIR}/lightState.o: lightState.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lightState.o lightState.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -127,6 +115,11 @@ ${OBJECTDIR}/src/lsAtlas.o: src/lsAtlas.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsAtlas.o src/lsAtlas.cpp
+
+${OBJECTDIR}/src/lsBlender.o: src/lsBlender.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBlender.o src/lsBlender.cpp
 
 ${OBJECTDIR}/src/lsBoundingBox.o: src/lsBoundingBox.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -267,11 +260,6 @@ ${OBJECTDIR}/src/lsVertexArray.o: src/lsVertexArray.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsVertexArray.o src/lsVertexArray.cpp
-
-${OBJECTDIR}/testState.o: testState.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testState.o testState.cpp
 
 # Subprojects
 .build-subprojects:

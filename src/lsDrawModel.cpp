@@ -13,47 +13,12 @@
 #include "lsDrawModel.h"
 
 //-----------------------------------------------------------------------------
-//      Static Implementations
-//-----------------------------------------------------------------------------
-// Default Texture color
-static constexpr lsColor checkeredCol[] = {
-    lsMagenta,
-    lsBlack,
-    lsMagenta,
-    lsBlack
-};
-
-lsTexture lsDrawModel::defaultTex{ls_tex_desc_t::LS_TEX_2D};
-
-/*
- * Initialization of the default gray and magic pink textures
- */
-bool lsDrawModel::initDefaultTexture() {
-    if (defaultTex.getId()) {
-        return true;
-    }
-    
-    if (!defaultTex.init(
-        0, LS_RGB_8, sizeof(checkeredCol), LS_RGB, LS_FLOAT, (void*)&checkeredCol[0])
-    ) {
-        LS_LOG_ERR("\tUnable to initialize a default texture for the scene manager.");
-        return false;
-    }
-    
-    return true;
-}
-
-//-----------------------------------------------------------------------------
 //      Class Implementations
 //-----------------------------------------------------------------------------
 /*
  * Constructor
  */
 lsDrawModel::lsDrawModel() {
-    // Ensuring that there is always a texture to draw with
-    if (initDefaultTexture()) {
-        pTexture = &defaultTex;
-    }
 }
 
 /*
@@ -67,7 +32,7 @@ lsDrawModel::lsDrawModel(lsDrawModel&& dm) :
     vao{std::move(dm.vao)}
 {
     dm.pMesh = nullptr;
-    dm.pTexture = &defaultTex;
+    dm.pTexture = nullptr;
     dm.numInstances = 1;
 }
 
@@ -83,7 +48,7 @@ lsDrawModel& lsDrawModel::operator=(lsDrawModel&& dm) {
     dm.pMesh = nullptr;
     
     pTexture = dm.pTexture;
-    dm.pTexture = &defaultTex;
+    dm.pTexture = nullptr;
     
     numInstances = dm.numInstances;
     dm.numInstances = 1;
@@ -98,7 +63,7 @@ lsDrawModel& lsDrawModel::operator=(lsDrawModel&& dm) {
  * Helper function to ensure all vertex attributes are setup properly.
  */
 void lsDrawModel::setVertexAttribs() {
-    lsVertexBuffer& vbo = pMesh->vbo;
+    const lsVertexBuffer& vbo = pMesh->vbo;
     
     vao.bind();
     vbo.bind();
@@ -148,7 +113,7 @@ void lsDrawModel::setVertexAttribs() {
 
 void lsDrawModel::terminate() {
     pMesh = nullptr;
-    pTexture = &defaultTex;
+    pTexture = nullptr;
     numInstances = 1;
     vao.terminate();
     modelVbo.terminate();
@@ -157,13 +122,7 @@ void lsDrawModel::terminate() {
 /*
  * Set the mesh to be used by this object during a draw operation.
  */
-bool lsDrawModel::init(lsMesh& m) {
-    // Ensure the default texture is up and running
-    if (!defaultTex.getId() && !initDefaultTexture()) {
-        LS_LOG_ERR("\tUnable to initialize the default draw model texture.");
-        return false;
-    }
-    
+bool lsDrawModel::init(const lsMesh& m, const lsTexture& t) {
     // there's no telling what data might be pushed into the VAO. Get rid of it.
     vao.terminate();
     if (!vao.init()) {
@@ -189,7 +148,7 @@ bool lsDrawModel::init(lsMesh& m) {
     pMesh = &m;
     
     setVertexAttribs();
-    setTexture(defaultTex);
+    setTexture(t);
     
     return true;
 }

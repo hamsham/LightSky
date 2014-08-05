@@ -39,12 +39,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/lightSky.o \
 	${OBJECTDIR}/src/lsAtlas.o \
-	${OBJECTDIR}/src/lsBlender.o \
+	${OBJECTDIR}/src/lsBlendObject.o \
 	${OBJECTDIR}/src/lsBoundingBox.o \
 	${OBJECTDIR}/src/lsBufferObject.o \
 	${OBJECTDIR}/src/lsColor.o \
 	${OBJECTDIR}/src/lsContext.o \
 	${OBJECTDIR}/src/lsDataResource.o \
+	${OBJECTDIR}/src/lsDepthObject.o \
 	${OBJECTDIR}/src/lsDisplay.o \
 	${OBJECTDIR}/src/lsDrawModel.o \
 	${OBJECTDIR}/src/lsFontResource.o \
@@ -116,10 +117,10 @@ ${OBJECTDIR}/src/lsAtlas.o: src/lsAtlas.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsAtlas.o src/lsAtlas.cpp
 
-${OBJECTDIR}/src/lsBlender.o: src/lsBlender.cpp 
+${OBJECTDIR}/src/lsBlendObject.o: src/lsBlendObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBlender.o src/lsBlender.cpp
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsBlendObject.o src/lsBlendObject.cpp
 
 ${OBJECTDIR}/src/lsBoundingBox.o: src/lsBoundingBox.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -145,6 +146,11 @@ ${OBJECTDIR}/src/lsDataResource.o: src/lsDataResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDataResource.o src/lsDataResource.cpp
+
+${OBJECTDIR}/src/lsDepthObject.o: src/lsDepthObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsDepthObject.o src/lsDepthObject.cpp
 
 ${OBJECTDIR}/src/lsDisplay.o: src/lsDisplay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

@@ -4,12 +4,13 @@
     <logicalFolder name="include" displayName="include" projectFiles="true">
       <itemPath>include/lightSky.h</itemPath>
       <itemPath>include/lsAtlas.h</itemPath>
-      <itemPath>include/lsBlender.h</itemPath>
+      <itemPath>include/lsBlendObject.h</itemPath>
       <itemPath>include/lsBoundingBox.h</itemPath>
       <itemPath>include/lsBufferObject.h</itemPath>
       <itemPath>include/lsColor.h</itemPath>
       <itemPath>include/lsContext.h</itemPath>
       <itemPath>include/lsDataResource.h</itemPath>
+      <itemPath>include/lsDepthObject.h</itemPath>
       <itemPath>include/lsDisplay.h</itemPath>
       <itemPath>include/lsDrawModel.h</itemPath>
       <itemPath>include/lsFontResource.h</itemPath>
@@ -41,12 +42,13 @@
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <itemPath>src/lightSky.cpp</itemPath>
       <itemPath>src/lsAtlas.cpp</itemPath>
-      <itemPath>src/lsBlender.cpp</itemPath>
+      <itemPath>src/lsBlendObject.cpp</itemPath>
       <itemPath>src/lsBoundingBox.cpp</itemPath>
       <itemPath>src/lsBufferObject.cpp</itemPath>
       <itemPath>src/lsColor.cpp</itemPath>
       <itemPath>src/lsContext.cpp</itemPath>
       <itemPath>src/lsDataResource.cpp</itemPath>
+      <itemPath>src/lsDepthObject.cpp</itemPath>
       <itemPath>src/lsDisplay.cpp</itemPath>
       <itemPath>src/lsDrawModel.cpp</itemPath>
       <itemPath>src/lsFontResource.cpp</itemPath>
@@ -165,7 +167,7 @@
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/lsBlender.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsBlendObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -176,6 +178,8 @@
       <item path="include/lsContext.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsDepthObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -229,7 +233,7 @@
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/lsBlender.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsBlendObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -240,6 +244,8 @@
       <item path="src/lsContext.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsDepthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -368,7 +374,7 @@
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/lsBlender.h" ex="false" tool="3" flavor2="0">
+      <item path="include/lsBlendObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -379,6 +385,8 @@
       <item path="include/lsContext.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsDepthObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -432,7 +440,7 @@
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/lsBlender.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/lsBlendObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -443,6 +451,8 @@
       <item path="src/lsContext.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsDepthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>

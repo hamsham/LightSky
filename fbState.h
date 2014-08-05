@@ -9,7 +9,6 @@
 #define	FRAMEBUFFER_STATE_H
 
 #include "lightSky.h"
-#include "lsFramebuffer.h"
 
 class fbState final : virtual public lsGameState {
     /*
@@ -26,7 +25,7 @@ class fbState final : virtual public lsGameState {
         bool*           pKeyStates              = nullptr;
         math::mat4*     pModelMatrices          = nullptr;
         math::quat      orientation             = {};
-        lsBlender*      pBlender                = {};
+        lsBlendObject*  pBlender                = {};
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;

@@ -67,9 +67,9 @@ enum ls_texture_target_t : int {
  * Draw/Read access control for framebuffer objects.
  */
 enum ls_fbo_access_t : unsigned {
-    LS_FRAMEBUFFER              = GL_FRAMEBUFFER,
-    LS_DRAW_FRAMEBUFFER         = GL_DRAW_FRAMEBUFFER,
-    LS_READ_FRAMEBUFFER         = GL_READ_FRAMEBUFFER
+    LS_FRAMEBUFFER          = GL_FRAMEBUFFER,
+    LS_DRAW_FRAMEBUFFER     = GL_DRAW_FRAMEBUFFER,
+    LS_READ_FRAMEBUFFER     = GL_READ_FRAMEBUFFER
 };
 
 /**
@@ -92,9 +92,9 @@ enum ls_fbo_status_t : int {
  * modified during read/draw calls.
  */
 enum ls_fbo_mask_t : int {
-    LS_DEPTH_MASK               = GL_DEPTH_BUFFER_BIT,
-    LS_STENCIL_MASK             = GL_STENCIL_BUFFER_BIT,
-    LS_COLOR_MASK               = GL_COLOR_BUFFER_BIT,
+    LS_DEPTH_MASK       = GL_DEPTH_BUFFER_BIT,
+    LS_STENCIL_MASK     = GL_STENCIL_BUFFER_BIT,
+    LS_COLOR_MASK       = GL_COLOR_BUFFER_BIT,
 };
 
 //-----------------------------------------------------------------------------

@@ -9,7 +9,7 @@
 #define	__LIGHT_SKY_H__
 
 #include "lsAtlas.h"
-#include "lsBlender.h"
+#include "lsBlendObject.h"
 #include "lsBoundingBox.h"
 #include "lsBufferObject.h"
 #include "lsColor.h"
@@ -17,6 +17,7 @@
 #include "lsDataResource.h"
 #include "lsDisplay.h"
 #include "lsDrawModel.h"
+#include "lsDepthObject.h"
 #include "lsFontResource.h"
 #include "lsFramebuffer.h"
 #include "lsGameState.h"

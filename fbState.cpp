@@ -316,7 +316,7 @@ bool fbState::initMemory() {
     pScene          = new lsSceneManager{};
     pKeyStates      = new bool[TEST_MAX_KEYBORD_STATES];
     pModelMatrices  = new mat4[TEST_MAX_SCENE_INSTANCES];
-    pBlender        = new lsBlender{};
+    pBlender        = new lsBlendObject{};
     
     if (pMatStack == nullptr
     ||  pScene == nullptr

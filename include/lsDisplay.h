@@ -10,6 +10,13 @@
 
 #include "lsSetup.h"
 
+enum ls_fullscreen_t : int {
+    LS_FULLSCREEN_DISPLAY,
+    LS_FULLSCREEN_WINDOW,
+    
+    LS_DEFAULT_FULLSCREEN_MODE = LS_FULLSCREEN_DISPLAY
+};
+
 //-----------------------------------------------------------------------------
 //      Forward Declarations
 //-----------------------------------------------------------------------------
@@ -35,6 +42,13 @@ class lsDisplay {
          * Keep track of whether a native hardware handle is being used.
          */
         bool windowIsNative = false;
+        
+        /**
+         * Member to keep track of whether the display should use the default
+         * fullscreen mode, or present the render context in a borderless
+         * window that matches the user's display resolution.
+         */
+        int fullScreenMode;
 
     public:
         /**
@@ -131,14 +145,32 @@ class lsDisplay {
          * TRUE to enable a fullscreen window, FALSE to reduce the display down
          * to a simple window.
          */
-        void setFullscreen(bool fs);
+        void setFullScreenState(bool fs);
         
         /**
          * Determine if the current display is in fullscreen mode.
          * 
          * @return TRUE if the display is in fullscreen mode, FALSE if not.
          */
-        bool isFullscreen() const;
+        bool getFullScreenState() const;
+        
+        /**
+         * Set how the window should handle the full resolution of the current
+         * display.
+         * 
+         * @param ls_fullscreen_t
+         * Set to LS_FULLSCREEN_DISPLAY in order to use the default fullscreen
+         * mode, or use LS_FULLSCREEN_WINDOW in order to make the window become
+         * borderless and use the entire available resolution.
+         */
+        void setFullScreenMode(ls_fullscreen_t = LS_DEFAULT_FULLSCREEN_MODE);
+        
+        /**
+         * Get the current fullscreen-handling method.
+         * 
+         * @return ls_fullscreen_t
+         */
+        ls_fullscreen_t getFullScreenMode() const;
         
         /**
          * Determine if this object holds a handle to an open window.

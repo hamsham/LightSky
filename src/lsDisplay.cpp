@@ -48,6 +48,7 @@ void printWindowFlags(uint32_t flags) {
  * Display constructor
  */
 lsDisplay::lsDisplay() {
+    fullScreenMode = SDL_WINDOW_FULLSCREEN;
 }
 
 /*
@@ -216,9 +217,9 @@ void lsDisplay::setResolution(const math::vec2i inResolution) {
 /*
  * Fullscreen management
  */
-void lsDisplay::setFullscreen(bool fs) {
+void lsDisplay::setFullScreenState(bool fs) {
     if (fs == true) {
-        SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
+        SDL_SetWindowFullscreen(pWindow, fullScreenMode);
         SDL_DisableScreenSaver();
     }
     else {
@@ -226,6 +227,46 @@ void lsDisplay::setFullscreen(bool fs) {
         SDL_EnableScreenSaver();
     }
 }
+
+/*
+ * Query Fullscreen
+ */
+bool lsDisplay::getFullScreenState() const {
+    return pWindow != nullptr
+    && (SDL_GetWindowFlags(pWindow) & SDL_WINDOW_FULLSCREEN) != 0;
+}
+
+/*
+ * Set how the window should handle the full resolution of the current
+ * display.
+ */
+void lsDisplay::setFullScreenMode(ls_fullscreen_t fsType) {
+    HL_ASSERT(fsType == LS_FULLSCREEN_DISPLAY || fsType == LS_FULLSCREEN_WINDOW);
+    
+    fullScreenMode = fsType;
+    
+    if (fsType == LS_FULLSCREEN_DISPLAY) {
+        fullScreenMode = SDL_WINDOW_FULLSCREEN;
+    }
+    else {
+        fullScreenMode = SDL_WINDOW_FULLSCREEN_DESKTOP;
+    }
+    
+    // apply the current fullscreen mode if requested
+    if (getFullScreenState() == true) {
+        setFullScreenState(true);
+    }
+}
+
+/*
+ * Get the current fullscreen-handling method.
+ */
+ls_fullscreen_t lsDisplay::getFullScreenMode() const {
+    return fullScreenMode == SDL_WINDOW_FULLSCREEN
+        ? LS_FULLSCREEN_DISPLAY
+        : LS_FULLSCREEN_WINDOW;
+}
+
 
 /*
  * Get a handle to the SDL_Window responsible for the window that this

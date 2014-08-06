@@ -3,13 +3,15 @@
 
 #include "lightSky.h"
 
+#include "controlState.h"
 #include "fbState.h"
+#include "uiState.h"
 
 bool initLs();
 void terminateLs();
 
 namespace {
-    lsSubsystem* pSystem = nullptr;
+    lsSystem* pSystem = nullptr;
     lsDisplay* pDisplay = nullptr;
 }
 
@@ -33,7 +35,12 @@ int main(int argc, char** argv) {
         return false;
     }
     
-    if (!pSystem->pushGameState(new(std::nothrow) fbState())) {
+    // push some states and run the game
+    if (
+        !pSystem->pushGameState(new(std::nothrow) controlState())
+    ||  !pSystem->pushGameState(new(std::nothrow) fbState())
+    ||  !pSystem->pushGameState(new(std::nothrow) uiState())
+    ) {
         terminateLs();
         return -1;
     }
@@ -64,7 +71,7 @@ bool initLs() {
         return false;
     }
     
-    pSystem = new(std::nothrow) lsSubsystem();
+    pSystem = new(std::nothrow) lsSystem();
     if (!pSystem || !pSystem->init(*pDisplay, true)) {
         std::cerr << "Failed to initialize the LightSky system manager.\n" << std::endl;
         return false;

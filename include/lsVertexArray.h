@@ -8,7 +8,7 @@
 #ifndef __LS_VERTEX_ARRAY_H__
 #define	__LS_VERTEX_ARRAY_H__
 
-#include <Gl/glew.h>
+#include <GL/glew.h>
 
 /**
  * Vertex Array Object

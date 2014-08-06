@@ -8,7 +8,7 @@
 #ifndef __LS_BUFFER_OBJECT__
 #define	__LS_BUFFER_OBJECT__
 
-#include <Gl/glew.h>
+#include <GL/glew.h>
 
 #include "lsSetup.h"
 

@@ -8,7 +8,7 @@
 #ifndef __LS_RENDERER_H__
 #define	__LS_RENDERER_H__
 
-#include <Gl/glew.h>
+#include <GL/glew.h>
 
 #include "lsSetup.h"
 #include "lsColor.h"

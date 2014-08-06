@@ -8,8 +8,6 @@
 #ifndef __LS_MESH_RESOURCE_H__
 #define	__LS_MESH_RESOURCE_H__
 
-#include <cstdint>
-
 #include "lsSetup.h"
 #include "lsResource.h"
 #include "lsVertex.h"

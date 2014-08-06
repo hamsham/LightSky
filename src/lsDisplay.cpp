@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <utility>
 
+#include <SDL2/SDL_hints.h>
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 

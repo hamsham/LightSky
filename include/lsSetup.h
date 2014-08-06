@@ -9,9 +9,6 @@
 #define	__LS_SETUP_H__
 
 #include <iostream>
-#include <cstdint>
-
-#include <SDL2/SDL.h>
 
 #include "utils/assert.h"
 #include "utils/hash.h"

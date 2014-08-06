@@ -108,9 +108,6 @@ bool lsContext::init(const lsDisplay& display, bool useVsync) {
     return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//      Render Context Management
-///////////////////////////////////////////////////////////////////////////////
 /*
  * Renderer resource termination
  */
@@ -119,6 +116,13 @@ void lsContext::terminate() {
         SDL_GL_DeleteContext(pContext);
     }
     pContext = nullptr;
+}
+
+/*
+ * Activate the render context used in this window.
+ */
+void lsContext::makeCurrent(const lsDisplay& display) const {
+    SDL_GL_MakeCurrent(display.getWindow(), pContext);
 }
 
 /*

@@ -5,7 +5,7 @@
  * Created on January 27, 2014, 8:35 PM
  */
 
-#include <Gl/glew.h>
+#include <GL/glew.h>
 #include "lsSetup.h"
 #include "lsTexture.h"
 

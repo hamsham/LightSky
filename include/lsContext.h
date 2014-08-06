@@ -132,13 +132,6 @@ class lsContext final {
 //      Inlined methods
 //-----------------------------------------------------------------------------
 /*
- * Activate the render context used in this window.
- */
-inline void lsContext::makeCurrent(const lsDisplay& display) const {
-    SDL_GL_MakeCurrent(display.getWindow(), pContext);
-}
-
-/*
  * Get a pointer to the SDL_GLContext that is used by the active
  * renderer.
  */

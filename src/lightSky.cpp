@@ -5,6 +5,8 @@
  * Created on August 2, 2014, 10:27 PM
  */
 
+#include <SDL2/SDL.h>
+
 #include "lightSky.h"
 
 /*

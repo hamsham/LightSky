@@ -6,6 +6,9 @@
  */
 
 #include <utility>
+
+#include <SDL2/SDL_events.h>
+
 #include "fbState.h"
 
 enum {

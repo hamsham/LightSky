@@ -32,7 +32,7 @@ class lsGameState;
  * when this object gets destroyed, therefore, all gameState objects managed by
  * a subSystem must be created using the "new" operator.
  */
-class lsSubsystem {
+class lsSystem {
     private:
         /**
          * Stores the previous hardware time since the last update.
@@ -91,35 +91,35 @@ class lsSubsystem {
         /**
          * Constructor
          */
-        lsSubsystem();
+        lsSystem();
         
         /**
          * Copy Constructor
          * Deleted as this would require a copy of all game states held by this
          * object.
          */
-        lsSubsystem(const lsSubsystem&) = delete;
+        lsSystem(const lsSystem&) = delete;
         
         /**
          * Move constructor
          * 
          * @param A subsystem object to be moved.
          */
-        lsSubsystem(lsSubsystem&&);
+        lsSystem(lsSystem&&);
         
         /**
          * Destructor
          * The subsystem destructor will call "terminate()," releasing the memory
          * of all gameState objects held within the gameStack.
          */
-        ~lsSubsystem();
+        ~lsSystem();
         
         /**
          * Copy operator
          * This method has been deleted in order to avoid a copy of all
          * gameStates managed by this container.
          */
-        lsSubsystem& operator=(const lsSubsystem&) = delete;
+        lsSystem& operator=(const lsSystem&) = delete;
         
         /**
          * Move operator
@@ -128,7 +128,7 @@ class lsSubsystem {
          * 
          * @return A reference to *this.
          */
-        lsSubsystem& operator=(lsSubsystem&&);
+        lsSystem& operator=(lsSystem&&);
         
         /**
          * SubSystem initialization
@@ -290,63 +290,63 @@ class lsSubsystem {
 /*
  * Return The number of states managed by this system.
  */
-inline unsigned lsSubsystem::getGameStackSize() const {
+inline unsigned lsSystem::getGameStackSize() const {
     return gameList.size();
 }
 
 /*
  * Get a reference to the current display object.
  */
-inline const lsDisplay& lsSubsystem::getDisplay() const {
+inline const lsDisplay& lsSystem::getDisplay() const {
     return *pDisplay;
 }
 
 /*
  * Get a reference to the current display object.
  */
-inline lsDisplay& lsSubsystem::getDisplay() {
+inline lsDisplay& lsSystem::getDisplay() {
     return *pDisplay;
 }
 
 /*
  * Get a reference to the current render context.
  */
-inline const lsContext& lsSubsystem::getContext() const {
+inline const lsContext& lsSystem::getContext() const {
     return context;
 }
 
 /*
  * Get a reference to the current render context.
  */
-inline lsContext& lsSubsystem::getContext() {
+inline lsContext& lsSystem::getContext() {
     return context;
 }
 
 /*
  * Get a reference to the system prng (pseudo-random number generator).
  */
-inline const lsRandom& lsSubsystem::getPrng() const {
+inline const lsRandom& lsSystem::getPrng() const {
     return *prng;
 }
 
 /*
  * Get a reference to the system prng (pseudo-random number generator).
  */
-inline lsRandom& lsSubsystem::getPrng() {
+inline lsRandom& lsSystem::getPrng() {
     return *prng;
 }
 
 /*
  * Get the current number of ticks per frame (in milliseconds).
  */
-inline float lsSubsystem::getTickTime() const {
+inline float lsSystem::getTickTime() const {
     return tickTime;
 }
 
 /*
  * Determine if *this is still running
  */
-inline bool lsSubsystem::isRunning() const {
+inline bool lsSystem::isRunning() const {
     return gameList.size() > 0;
 }
 

@@ -48,7 +48,7 @@ enum ls_state_t : unsigned {
  * they are running.
  */
 class lsGameState {
-    friend class lsSubsystem;
+    friend class lsSystem;
     
     /*
      * Event Management
@@ -59,7 +59,7 @@ class lsGameState {
          * this pointer is assigned automatically when a system is pushed onto
          * the subsystem's stack. Do not try to modify this.
          */
-        mutable lsSubsystem* pSystem; // set by an lsSubsystem upon initialization
+        mutable lsSystem* pSystem; // set by an lsSubsystem upon initialization
         
         /**
          * The current state that is used by *this. This variable is also
@@ -72,7 +72,7 @@ class lsGameState {
          * 
          * @param A reference to the parent subsystem.
          */
-        void setParentSystem(lsSubsystem&);
+        void setParentSystem(lsSystem&);
         
     protected:
         // All hardware and "on###()" methods are called by their parent
@@ -247,7 +247,7 @@ class lsGameState {
          * 
          * @return A reference to *this object's managing lsSubsystem.
          */
-        lsSubsystem& getParentSystem() const;
+        lsSystem& getParentSystem() const;
 };
 
 //-----------------------------------------------------------------------------
@@ -270,7 +270,7 @@ inline void lsGameState::setState(ls_state_t s) {
 /*
  * Get the parent subsystem that manages *this.
  */
-inline lsSubsystem& lsGameState::getParentSystem() const {
+inline lsSystem& lsGameState::getParentSystem() const {
     return *pSystem;
 }
 

@@ -1,4 +1,4 @@
-build/Release/MinGW-Windows/main.o: main.cpp include/lightSky.h \
+build/Debug/MinGW-Windows/src/lsAtlas.o: src/lsAtlas.cpp \
  include/lsAtlas.h include/lsFontResource.h include/lsSetup.h \
  ../hamlibs/include/utils/assert.h \
  ../hamlibs/include/utils/../defs/preprocessor.h \
@@ -12,18 +12,7 @@ build/Release/MinGW-Windows/main.o: main.cpp include/lightSky.h \
  ../hamlibs/include/math/quat_utils.h ../hamlibs/include/math/vec_utils.h \
  ../hamlibs/include/math/mat_utils.h include/lsResource.h \
  include/lsTexture.h include/lsColor.h include/lsImageResource.h \
- include/lsBlendObject.h include/lsBoundingBox.h include/lsBufferObject.h \
- include/lsContext.h include/lsDisplay.h include/lsDataResource.h \
- include/lsDrawModel.h include/lsMesh.h include/lsRenderer.h \
- include/lsVertex.h include/lsVertexArray.h include/lsDepthObject.h \
- include/lsFramebuffer.h include/lsGameState.h include/lsSystem.h \
- include/lsRandom.h ../hamlibs/include/utils/randomNum.h \
- include/lsGeometry.h include/lsManager.h include/lsMatrixStack.h \
- include/lsMeshResource.h include/lsSceneManager.h \
- include/lsShaderObject.h include/lsShaderProgram.h include/lsUtil.h \
- fbState.h
-
-include/lightSky.h:
+ include/lsColor.h
 
 include/lsAtlas.h:
 
@@ -75,54 +64,4 @@ include/lsColor.h:
 
 include/lsImageResource.h:
 
-include/lsBlendObject.h:
-
-include/lsBoundingBox.h:
-
-include/lsBufferObject.h:
-
-include/lsContext.h:
-
-include/lsDisplay.h:
-
-include/lsDataResource.h:
-
-include/lsDrawModel.h:
-
-include/lsMesh.h:
-
-include/lsRenderer.h:
-
-include/lsVertex.h:
-
-include/lsVertexArray.h:
-
-include/lsDepthObject.h:
-
-include/lsFramebuffer.h:
-
-include/lsGameState.h:
-
-include/lsSystem.h:
-
-include/lsRandom.h:
-
-../hamlibs/include/utils/randomNum.h:
-
-include/lsGeometry.h:
-
-include/lsManager.h:
-
-include/lsMatrixStack.h:
-
-include/lsMeshResource.h:
-
-include/lsSceneManager.h:
-
-include/lsShaderObject.h:
-
-include/lsShaderProgram.h:
-
-include/lsUtil.h:
-
-fbState.h:
+include/lsColor.h:

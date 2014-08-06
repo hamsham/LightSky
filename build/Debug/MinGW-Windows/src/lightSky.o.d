@@ -1,6 +1,6 @@
-build/Release/MinGW-Windows/main.o: main.cpp include/lightSky.h \
- include/lsAtlas.h include/lsFontResource.h include/lsSetup.h \
- ../hamlibs/include/utils/assert.h \
+build/Debug/MinGW-Windows/src/lightSky.o: src/lightSky.cpp \
+ include/lightSky.h include/lsAtlas.h include/lsFontResource.h \
+ include/lsSetup.h ../hamlibs/include/utils/assert.h \
  ../hamlibs/include/utils/../defs/preprocessor.h \
  ../hamlibs/include/utils/hash.h ../hamlibs/include/math/math.h \
  ../hamlibs/include/math/fixed.h ../hamlibs/include/math/scalar_utils.h \
@@ -20,8 +20,7 @@ build/Release/MinGW-Windows/main.o: main.cpp include/lightSky.h \
  include/lsRandom.h ../hamlibs/include/utils/randomNum.h \
  include/lsGeometry.h include/lsManager.h include/lsMatrixStack.h \
  include/lsMeshResource.h include/lsSceneManager.h \
- include/lsShaderObject.h include/lsShaderProgram.h include/lsUtil.h \
- fbState.h
+ include/lsShaderObject.h include/lsShaderProgram.h include/lsUtil.h
 
 include/lightSky.h:
 
@@ -124,5 +123,3 @@ include/lsShaderObject.h:
 include/lsShaderProgram.h:
 
 include/lsUtil.h:
-
-fbState.h:

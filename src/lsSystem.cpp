@@ -26,7 +26,7 @@ lsSubsystem::lsSubsystem() {
  */
 lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
     prevTime{ss.prevTime},
-    gameStack{std::move(ss.gameStack)},
+    gameList{std::move(ss.gameList)},
     pDisplay{std::move(ss.pDisplay)},
     context{std::move(ss.context)},
     prng{ss.prng}
@@ -42,7 +42,7 @@ lsSubsystem& lsSubsystem::operator=(lsSubsystem&& ss) {
     prevTime = ss.prevTime;
     ss.prevTime = 0.f;
     
-    gameStack = std::move(ss.gameStack);
+    gameList = std::move(ss.gameList);
     
     pDisplay = pDisplay;
     ss.pDisplay = nullptr;
@@ -118,12 +118,12 @@ bool lsSubsystem::init(lsDisplay& disp, bool useVsync) {
 void lsSubsystem::terminate() {
     prevTime = 0.f;
     
-    for (lsGameState* state : gameStack) {
+    for (lsGameState* state : gameList) {
         state->setState(LS_GAME_STOPPED);
         state->onStop();
     }
     
-    gameStack.clear();
+    gameList.clear();
     context.terminate();
     pDisplay = nullptr;
     
@@ -135,7 +135,7 @@ void lsSubsystem::terminate() {
  * SubSystem Running
  */
 void lsSubsystem::run() {
-    if (!gameStack.size()) {
+    if (!gameList.size()) {
         LS_LOG_ERR("No game states are available!\n", SDL_GetError(), '\n');
         return;
     }
@@ -146,7 +146,7 @@ void lsSubsystem::run() {
     SDL_Event pEvent;
     while (SDL_PollEvent(&pEvent)) {
         // Hardware events passed through SDL
-        for (lsGameState* const pState : gameStack) {
+        for (lsGameState* const pState : gameList) {
             passHardwareEvents(pEvent, pState);
         }
     }
@@ -187,15 +187,15 @@ void lsSubsystem::passHardwareEvents(const SDL_Event& event, lsGameState* const 
  * Update the states in the game stack
  */
 void lsSubsystem::updateGameStates(float tickTime) {
-    for(unsigned i = 0; i < gameStack.size(); ++i) {
-        switch(gameStack[i]->getState()) {
+    for(unsigned i = 0; i < gameList.size(); ++i) {
+        switch(gameList[i]->getState()) {
             
             case LS_GAME_RUNNING:
-                gameStack[i]->onRun(tickTime);
+                gameList[i]->onRun(tickTime);
                 break;
             
             case LS_GAME_PAUSED:
-                gameStack[i]->onPause(tickTime);
+                gameList[i]->onPause(tickTime);
                 break;
             
             case LS_GAME_STOPPED:
@@ -204,12 +204,12 @@ void lsSubsystem::updateGameStates(float tickTime) {
                 break;
             
             case LS_GAME_INIT:
-                if (gameStack[i]->onStart() == true) {
-                    gameStack[i]->setState(LS_GAME_RUNNING);
+                if (gameList[i]->onStart() == true) {
+                    gameList[i]->setState(LS_GAME_RUNNING);
                 }
                 else {
                     LS_LOG_ERR("ERROR: A new gameState was unable to start.");
-                    gameStack[i]->setState(LS_GAME_STOPPED);
+                    gameList[i]->setState(LS_GAME_STOPPED);
                 }
             
             default:
@@ -229,7 +229,7 @@ bool lsSubsystem::pushGameState(lsGameState* pState) {
     
     pState->setParentSystem(*this);
     pState->setState(LS_GAME_INIT);
-    gameStack.push_back(pState);
+    gameList.push_back(pState);
     
     return true;
 }
@@ -238,8 +238,8 @@ bool lsSubsystem::pushGameState(lsGameState* pState) {
  * SubSystem State Addition
  */
 void lsSubsystem::popGameState() {
-    if (gameStack.size() > 0) {
-        popGameState(gameStack.size()-1);
+    if (gameList.size() > 0) {
+        popGameState(gameList.size()-1);
     }
 }
 
@@ -247,8 +247,8 @@ void lsSubsystem::popGameState() {
  * SubSystem State Removal
  */
 void lsSubsystem::popGameState(lsGameState* pState) {
-    for (unsigned i = 0; i < gameStack.size(); ++i) {
-        if (gameStack[i] == pState) {
+    for (unsigned i = 0; i < gameList.size(); ++i) {
+        if (gameList[i] == pState) {
             popGameState(i);
             break;
         }
@@ -259,12 +259,12 @@ void lsSubsystem::popGameState(lsGameState* pState) {
  * SubSystem State Removal
  */
 void lsSubsystem::popGameState(unsigned index) {
-    HL_DEBUG_ASSERT(index < gameStack.size());
+    HL_DEBUG_ASSERT(index < gameList.size());
     
     // onStop() was moved to here in order to terminate states in a consistent manner.
-    gameStack[index]->onStop();
-    delete gameStack[index]; // no guarantee that onStop() is in a state's destructor.
-    gameStack.erase(gameStack.begin() + index);
+    gameList[index]->onStop();
+    delete gameList[index]; // no guarantee that onStop() is in a state's destructor.
+    gameList.erase(gameList.begin() + index);
 }
 
 /*
@@ -272,20 +272,20 @@ void lsSubsystem::popGameState(unsigned index) {
  */
 lsGameState const* lsSubsystem::getGameState(unsigned index) const {
 #ifdef LS_DEBUG
-    if (index >= gameStack.size()) {
+    if (index >= gameList.size()) {
         return nullptr;
     }
 #endif
     
-    return gameStack[index];
+    return gameList[index];
 }
 
 /*
  * SubSystem State Indexing
  */
 unsigned lsSubsystem::getGameStateIndex(lsGameState* pState) {
-    for (unsigned i = 0; i < gameStack.size(); ++i) {
-        if (gameStack[i] == pState) {
+    for (unsigned i = 0; i < gameList.size(); ++i) {
+        if (gameList[i] == pState) {
             return i;
         }
     }
@@ -300,7 +300,7 @@ unsigned lsSubsystem::getGameStateIndex(lsGameState* pState) {
 void lsSubsystem::stop() {
     tickTime = 0.f;
     
-    for (lsGameState* state : gameStack) {
+    for (lsGameState* state : gameList) {
         state->setState(LS_GAME_STOPPED);
     }
 }

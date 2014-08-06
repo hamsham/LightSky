@@ -125,22 +125,22 @@ typedef lsColorf lsColor;
 //-----------------------------------------------------------------------------
 //      Color Types
 //-----------------------------------------------------------------------------
-#define lsBlank         lsColor{0.f, 0.f, 0.f, 0.f}
+static constexpr lsColor lsBlank    = lsColor{0.f, 0.f, 0.f, 0.f};
 
 // Primary Colors
-#define lsRed           lsColor{1.f, 0.f, 0.f, 1.f}
-#define lsGreen         lsColor{0.f, 1.f, 0.f, 1.f}
-#define lsBlue          lsColor{0.f, 0.f, 1.f, 1.f}
+static constexpr lsColor lsRed      = lsColor{1.f, 0.f, 0.f, 1.f};
+static constexpr lsColor lsGreen    = lsColor{0.f, 1.f, 0.f, 1.f};
+static constexpr lsColor lsBlue     = lsColor{0.f, 0.f, 1.f, 1.f};
 
 //Secondary Colors
-#define lsMagenta       lsColor{1.f, 0.f, 1.f, 1.f}
-#define lsYellow        lsColor{1.f, 1.f, 0.f, 1.f}
-#define lsCyan          lsColor{0.f, 1.f, 1.f, 1.f}
+static constexpr lsColor lsMagenta  = lsColor{1.f, 0.f, 1.f, 1.f};
+static constexpr lsColor lsYellow   = lsColor{1.f, 1.f, 0.f, 1.f};
+static constexpr lsColor lsCyan     = lsColor{0.f, 1.f, 1.f, 1.f};
 
 // Monochrome
-#define lsBlack         lsColor{0.f, 0.f, 0.f, 1.f}
-#define lsWhite         lsColor{1.f, 1.f, 1.f, 1.f}
-#define lsGray          lsColor{0.5f, 0.5f, 0.5f, 1.f}
+static constexpr lsColor lsBlack    = lsColor{0.f, 0.f, 0.f, 1.f};
+static constexpr lsColor lsWhite    = lsColor{1.f, 1.f, 1.f, 1.f};
+static constexpr lsColor lsGray     = lsColor{0.5f, 0.5f, 0.5f, 1.f};
 
 #endif	/* __LS_COLOR_H__ */
 

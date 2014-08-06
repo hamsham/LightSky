@@ -77,6 +77,19 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="Framebuffer Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/Framebuffer_Test/controlState.cpp</itemPath>
+        <itemPath>tests/Framebuffer_Test/controlState.h</itemPath>
+        <itemPath>tests/Framebuffer_Test/fbState.cpp</itemPath>
+        <itemPath>tests/Framebuffer_Test/fbState.h</itemPath>
+        <itemPath>tests/Framebuffer_Test/main.cpp</itemPath>
+        <itemPath>tests/Framebuffer_Test/main.h</itemPath>
+        <itemPath>tests/Framebuffer_Test/uiState.cpp</itemPath>
+        <itemPath>tests/Framebuffer_Test/uiState.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -85,21 +98,13 @@
       <itemPath>.gitignore</itemPath>
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>controlState.cpp</itemPath>
-    <itemPath>controlState.h</itemPath>
-    <itemPath>fbState.cpp</itemPath>
-    <itemPath>fbState.h</itemPath>
-    <itemPath>main.cpp</itemPath>
-    <itemPath>main.h</itemPath>
-    <itemPath>uiState.cpp</itemPath>
-    <itemPath>uiState.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="1">
+    <conf name="Debug" type="3">
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
@@ -127,29 +132,9 @@
           </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
-        <linkerTool>
-          <output>bin/lightsky_d.exe</output>
-          <linkerLibItems>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>FreeImage</linkerLibLibItem>
-            <linkerLibLibItem>freetype</linkerLibLibItem>
-            <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
-                            CT="3"
-                            CN="Release"
-                            AC="true"
-                            BL="false"
-                            WD="../hamlibs/HamLibs_NetBeans"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../bin/WIN32/libhamlibs.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-          </linkerLibItems>
-        </linkerTool>
+        <archiverTool>
+          <output>bin/liblightsky_d.a</output>
+        </archiverTool>
         <requiredProjects>
           <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                         CT="3"
@@ -163,14 +148,23 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="controlState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="controlState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="fbState.h" ex="false" tool="3" flavor2="0">
-      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>tests\Framebuffer_Test\fbTest_debug</output>
+        </linkerTool>
+      </folder>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
@@ -234,10 +228,6 @@
       <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -303,12 +293,30 @@
       </item>
       <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="uiState.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/Framebuffer_Test/controlState.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="uiState.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/Framebuffer_Test/controlState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/fbState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/fbState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/uiState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/uiState.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
-    <conf name="Release" type="1">
+    <conf name="Release" type="3">
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
@@ -343,30 +351,9 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
-        <linkerTool>
-          <output>bin/lightsky.exe</output>
-          <stripSymbols>true</stripSymbols>
-          <linkerLibItems>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>FreeImage</linkerLibLibItem>
-            <linkerLibLibItem>freetype</linkerLibLibItem>
-            <linkerLibLibItem>SDL2</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
-                            CT="3"
-                            CN="Release"
-                            AC="true"
-                            BL="false"
-                            WD="../hamlibs/HamLibs_NetBeans"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../bin/WIN32/libhamlibs.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-          </linkerLibItems>
-        </linkerTool>
+        <archiverTool>
+          <output>bin/liblightsky.a</output>
+        </archiverTool>
         <requiredProjects>
           <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
                         CT="3"
@@ -380,14 +367,24 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="controlState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="controlState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="fbState.h" ex="false" tool="3" flavor2="0">
-      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>tests\Framebuffer_Test\fbTest</output>
+          <stripSymbols>true</stripSymbols>
+        </linkerTool>
+      </folder>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
@@ -451,10 +448,6 @@
       <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -520,9 +513,27 @@
       </item>
       <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="uiState.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/Framebuffer_Test/controlState.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="uiState.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/Framebuffer_Test/controlState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/fbState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/fbState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/uiState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/Framebuffer_Test/uiState.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

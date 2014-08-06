@@ -107,6 +107,8 @@ bool lsSubsystem::init(lsDisplay& disp, bool useVsync) {
         "----------------------------------------\n"
     );
     
+    context.makeCurrent(*pDisplay);
+    
     return true;
 }
 
@@ -139,16 +141,14 @@ void lsSubsystem::run() {
     }
     
     // Ensure the display is still open
-    if (!pDisplay || !pDisplay->isRunning()) {
-        LS_LOG_ERR("The display is no longer running!\n", SDL_GetError(), '\n');
-        return;
-    }
+    HL_DEBUG_ASSERT(pDisplay != nullptr && pDisplay->isRunning() == true);
     
-    SDL_Event pEvent = {0};
+    SDL_Event pEvent;
     while (SDL_PollEvent(&pEvent)) {
-    // Hardware events passed through SDL
-        lsGameState* const pState = gameStack.back();
-        passHardwareEvents(pEvent, pState);
+        // Hardware events passed through SDL
+        for (lsGameState* const pState : gameStack) {
+            passHardwareEvents(pEvent, pState);
+        }
     }
 
     // Frame Time Management
@@ -189,15 +189,29 @@ void lsSubsystem::passHardwareEvents(const SDL_Event& event, lsGameState* const 
 void lsSubsystem::updateGameStates(float tickTime) {
     for(unsigned i = 0; i < gameStack.size(); ++i) {
         switch(gameStack[i]->getState()) {
+            
             case LS_GAME_RUNNING:
                 gameStack[i]->onRun(tickTime);
                 break;
+            
+            case LS_GAME_PAUSED:
+                gameStack[i]->onPause(tickTime);
+                break;
+            
             case LS_GAME_STOPPED:
                 popGameState(i);
                 i -= 1;
                 break;
-            case LS_GAME_PAUSED:
-                gameStack[i]->onPause(tickTime);
+            
+            case LS_GAME_INIT:
+                if (gameStack[i]->onStart() == true) {
+                    gameStack[i]->setState(LS_GAME_RUNNING);
+                }
+                else {
+                    LS_LOG_ERR("ERROR: A new gameState was unable to start.");
+                    gameStack[i]->setState(LS_GAME_STOPPED);
+                }
+            
             default:
                 break;
         }
@@ -213,17 +227,8 @@ bool lsSubsystem::pushGameState(lsGameState* pState) {
         return false;
     }
     
-    if (!pState->onStart()) {
-        LS_LOG_ERR("ERROR: A new gameState was unable to start.");
-        return false;
-    }
-    
-    if (gameStack.size() > 0) {
-        gameStack.back()->setState(LS_GAME_PAUSED);
-    }
-    
     pState->setParentSystem(*this);
-    pState->setState(LS_GAME_RUNNING);
+    pState->setState(LS_GAME_INIT);
     gameStack.push_back(pState);
     
     return true;
@@ -254,20 +259,12 @@ void lsSubsystem::popGameState(lsGameState* pState) {
  * SubSystem State Removal
  */
 void lsSubsystem::popGameState(unsigned index) {
-#ifdef LS_DEBUG
-    if (index >= gameStack.size()) {
-        return;
-    }
-#endif
+    HL_DEBUG_ASSERT(index < gameStack.size());
     
+    // onStop() was moved to here in order to terminate states in a consistent manner.
     gameStack[index]->onStop();
-    delete gameStack[index];
+    delete gameStack[index]; // no guarantee that onStop() is in a state's destructor.
     gameStack.erase(gameStack.begin() + index);
-    
-    // Only resume the last state if it was paused. Leave it alone otherwise
-    if (gameStack.size() > 0 && gameStack.back()->getState() == LS_GAME_PAUSED) {
-        gameStack.back()->setState(LS_GAME_RUNNING);
-    }
 }
 
 /*

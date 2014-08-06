@@ -8,7 +8,7 @@
 #ifndef FRAMEBUFFER_STATE_H
 #define	FRAMEBUFFER_STATE_H
 
-#include "lightSky.h"
+#include "main.h"
 
 /**
  * Default resolutions for the framebuffer object test.
@@ -29,7 +29,6 @@ class fbState final : virtual public lsGameState {
         int             mouseX                  = 0;
         int             mouseY                  = 0;
         lsShaderProgram meshProg                = {};
-        lsShaderProgram fontProg                = {};
         lsFramebuffer   testFb                  = {};
         lsMatrixStack*  pMatStack               = nullptr;
         lsSceneManager* pScene                  = nullptr;
@@ -37,7 +36,6 @@ class fbState final : virtual public lsGameState {
         math::mat4*     pModelMatrices          = nullptr;
         math::vec2i     fbRes                   = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         math::quat      orientation             = {};
-        lsBlendObject*  pBlender                = {};
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;
@@ -59,27 +57,20 @@ class fbState final : virtual public lsGameState {
         bool            initFramebuffers        ();
         void            setRendererParams       ();
         
-        void            terminate               ();
-        
-        std::string     getTimingStr            () const;
         math::mat4      get3dViewport           () const;
-        math::mat4      get2dViewport           () const;
-        
         void            resetGlViewport          ();
         
         void            drawScene               ();
-        void            drawMeshes              ();
-        void            drawStrings             ();
         
     public:
         fbState         ();
         fbState         (const fbState&)        = delete;
-        fbState         (fbState&&)             = delete;
+        fbState         (fbState&&);
         
         ~fbState        ();
         
         fbState&        operator=               (const fbState&) = delete;
-        fbState&        operator=               (fbState&&) = delete;
+        fbState&        operator=               (fbState&&);
         
         bool            onStart                 () override;
         void            onRun                   (float) override;

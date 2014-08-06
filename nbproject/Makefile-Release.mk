@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/controlState.o \
 	${OBJECTDIR}/fbState.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/lightSky.o \
@@ -68,7 +69,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lsTexture.o \
 	${OBJECTDIR}/src/lsUtil.o \
 	${OBJECTDIR}/src/lsVertex.o \
-	${OBJECTDIR}/src/lsVertexArray.o
+	${OBJECTDIR}/src/lsVertexArray.o \
+	${OBJECTDIR}/uiState.o
 
 
 # C Compiler Flags
@@ -96,6 +98,11 @@ bin/lightsky.exe: ../hamlibs/HamLibs_NetBeans/../bin/WIN32/libhamlibs.a
 bin/lightsky.exe: ${OBJECTFILES}
 	${MKDIR} -p bin
 	${LINK.cc} -o bin/lightsky.exe ${OBJECTFILES} ${LDLIBSOPTIONS} -s
+
+${OBJECTDIR}/controlState.o: controlState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
 
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -266,6 +273,11 @@ ${OBJECTDIR}/src/lsVertexArray.o: src/lsVertexArray.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsVertexArray.o src/lsVertexArray.cpp
+
+${OBJECTDIR}/uiState.o: uiState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -I../hamlibs/include -Iinclude -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
 
 # Subprojects
 .build-subprojects:

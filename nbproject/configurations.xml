@@ -85,13 +85,17 @@
       <itemPath>.gitignore</itemPath>
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>controlState.cpp</itemPath>
+    <itemPath>controlState.h</itemPath>
     <itemPath>fbState.cpp</itemPath>
     <itemPath>fbState.h</itemPath>
     <itemPath>main.cpp</itemPath>
+    <itemPath>main.h</itemPath>
+    <itemPath>uiState.cpp</itemPath>
+    <itemPath>uiState.h</itemPath>
   </logicalFolder>
   <sourceRootList>
-    <Elem>include</Elem>
-    <Elem>src</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -159,6 +163,10 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <item path="controlState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="controlState.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
@@ -229,6 +237,8 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
@@ -292,6 +302,10 @@
       <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="uiState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="uiState.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -366,6 +380,10 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <item path="controlState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="controlState.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
@@ -436,6 +454,8 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
@@ -499,6 +519,10 @@
       <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="uiState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="uiState.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

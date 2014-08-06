@@ -30,9 +30,10 @@ struct SDL_MouseWheelEvent;
 enum ls_state_t : unsigned {
     LS_GAME_INVALID = (unsigned)-1,
     
-    LS_GAME_PAUSED = 0,
+    LS_GAME_PAUSED  = 0,
     LS_GAME_RUNNING = 1,
     LS_GAME_STOPPED = 2,
+    LS_GAME_INIT    = 3
 };
 
 //-----------------------------------------------------------------------------

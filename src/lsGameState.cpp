@@ -44,7 +44,7 @@ lsGameState& lsGameState::operator=(lsGameState&& gs) {
 /*
  * Parent Sub-System Assignment.
  */
-void lsGameState::setParentSystem(lsSubsystem& pSys) {
+void lsGameState::setParentSystem(lsSystem& pSys) {
     pSystem = &pSys;
 }
 

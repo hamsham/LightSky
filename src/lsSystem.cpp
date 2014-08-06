@@ -18,13 +18,13 @@
 /*
  * SubSystem Constructor
  */
-lsSubsystem::lsSubsystem() {
+lsSystem::lsSystem() {
 }
 
 /*
  * SubSystem Move Construction
  */
-lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
+lsSystem::lsSystem(lsSystem&& ss) :
     prevTime{ss.prevTime},
     gameList{std::move(ss.gameList)},
     pDisplay{std::move(ss.pDisplay)},
@@ -38,7 +38,7 @@ lsSubsystem::lsSubsystem(lsSubsystem&& ss) :
 /*
  * SubSystem Move Operator
  */
-lsSubsystem& lsSubsystem::operator=(lsSubsystem&& ss) {
+lsSystem& lsSystem::operator=(lsSystem&& ss) {
     prevTime = ss.prevTime;
     ss.prevTime = 0.f;
     
@@ -58,14 +58,14 @@ lsSubsystem& lsSubsystem::operator=(lsSubsystem&& ss) {
 /*
  * SubSystem Destructor
  */
-lsSubsystem::~lsSubsystem() {
+lsSystem::~lsSystem() {
     terminate();
 }
 
 /*
  * Initialize the subsystem using LightSky's own display system
  */
-bool lsSubsystem::init(lsDisplay& disp, bool useVsync) {
+bool lsSystem::init(lsDisplay& disp, bool useVsync) {
     terminate();
     
     LS_LOG_MSG(
@@ -115,11 +115,10 @@ bool lsSubsystem::init(lsDisplay& disp, bool useVsync) {
 /*
  * SubSystem Termination
  */
-void lsSubsystem::terminate() {
+void lsSystem::terminate() {
     prevTime = 0.f;
     
     for (lsGameState* state : gameList) {
-        state->setState(LS_GAME_STOPPED);
         state->onStop();
     }
     
@@ -134,7 +133,7 @@ void lsSubsystem::terminate() {
 /*
  * SubSystem Running
  */
-void lsSubsystem::run() {
+void lsSystem::run() {
     if (!gameList.size()) {
         LS_LOG_ERR("No game states are available!\n", SDL_GetError(), '\n');
         return;
@@ -169,7 +168,7 @@ void lsSubsystem::run() {
 /*
  * Update Game States
  */
-void lsSubsystem::passHardwareEvents(const SDL_Event& event, lsGameState* const pState) {
+void lsSystem::passHardwareEvents(const SDL_Event& event, lsGameState* const pState) {
     switch (event.type) {
         case SDL_QUIT:              stop();                                         break;
         case SDL_WINDOWEVENT:       pState->onWindowEvent(event.window);            break;
@@ -186,7 +185,7 @@ void lsSubsystem::passHardwareEvents(const SDL_Event& event, lsGameState* const 
 /*
  * Update the states in the game stack
  */
-void lsSubsystem::updateGameStates(float tickTime) {
+void lsSystem::updateGameStates(float tickTime) {
     for(unsigned i = 0; i < gameList.size(); ++i) {
         switch(gameList[i]->getState()) {
             
@@ -221,7 +220,7 @@ void lsSubsystem::updateGameStates(float tickTime) {
 /*
  * SubSystem State Addition
  */
-bool lsSubsystem::pushGameState(lsGameState* pState) {
+bool lsSystem::pushGameState(lsGameState* pState) {
     if (pState == nullptr) {
         LS_LOG_ERR("ERROR: A null pointer was pushed onto the game stack.\n");
         return false;
@@ -237,7 +236,7 @@ bool lsSubsystem::pushGameState(lsGameState* pState) {
 /*
  * SubSystem State Addition
  */
-void lsSubsystem::popGameState() {
+void lsSystem::popGameState() {
     if (gameList.size() > 0) {
         popGameState(gameList.size()-1);
     }
@@ -246,7 +245,7 @@ void lsSubsystem::popGameState() {
 /*
  * SubSystem State Removal
  */
-void lsSubsystem::popGameState(lsGameState* pState) {
+void lsSystem::popGameState(lsGameState* pState) {
     for (unsigned i = 0; i < gameList.size(); ++i) {
         if (gameList[i] == pState) {
             popGameState(i);
@@ -258,7 +257,7 @@ void lsSubsystem::popGameState(lsGameState* pState) {
 /*
  * SubSystem State Removal
  */
-void lsSubsystem::popGameState(unsigned index) {
+void lsSystem::popGameState(unsigned index) {
     HL_DEBUG_ASSERT(index < gameList.size());
     
     // onStop() was moved to here in order to terminate states in a consistent manner.
@@ -270,7 +269,7 @@ void lsSubsystem::popGameState(unsigned index) {
 /*
  * SubSystem State Retrieval
  */
-lsGameState const* lsSubsystem::getGameState(unsigned index) const {
+lsGameState const* lsSystem::getGameState(unsigned index) const {
 #ifdef LS_DEBUG
     if (index >= gameList.size()) {
         return nullptr;
@@ -283,7 +282,7 @@ lsGameState const* lsSubsystem::getGameState(unsigned index) const {
 /*
  * SubSystem State Indexing
  */
-unsigned lsSubsystem::getGameStateIndex(lsGameState* pState) {
+unsigned lsSystem::getGameStateIndex(lsGameState* pState) {
     for (unsigned i = 0; i < gameList.size(); ++i) {
         if (gameList[i] == pState) {
             return i;
@@ -297,7 +296,7 @@ unsigned lsSubsystem::getGameStateIndex(lsGameState* pState) {
  * This method will stop all game states from running, thereby clearing them
  * all off of the stack.
  */
-void lsSubsystem::stop() {
+void lsSystem::stop() {
     tickTime = 0.f;
     
     for (lsGameState* state : gameList) {

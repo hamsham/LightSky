@@ -17,9 +17,7 @@ using math::quat;
 enum {
     TEST_MAX_SCENE_OBJECTS = 50,
     TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS,
-    TEST_MAX_KEYBORD_STATES = 512,
-    TEST_FRAMEBUFFER_WIDTH = 320,
-    TEST_FRAMEBUFFER_HEIGHT = 240
+    TEST_MAX_KEYBORD_STATES = 282, // according to https://wiki.libsdl.org/SDLScancodeLookup
 };
 
 #define TEST_PROJECTION_FOV 60.f
@@ -128,14 +126,14 @@ fbState::~fbState() {
  * Key Up Event
 ******************************************************************************/
 void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
-    const SDL_Keycode key = e.keysym.sym;
+    const SDL_Keycode key = e.keysym.scancode;
     
-    if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
-        return;
-    }
-    
-    if (key == SDLK_ESCAPE) {
+    if (key == SDL_SCANCODE_ESCAPE) {
         this->setState(LS_GAME_STOPPED);
+    }
+    else if (key == SDL_SCANCODE_F11) {
+        bool fullscreen = getParentSystem().getDisplay().getFullScreenState();
+        getParentSystem().getDisplay().setFullScreenState(!fullscreen);
     }
     else {
         pKeyStates[key] = false;
@@ -146,22 +144,14 @@ void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
  * Key Down Event
 ******************************************************************************/
 void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
-    const SDL_Keycode key = e.keysym.sym;
+    const SDL_Keycode key = e.keysym.scancode;
     
-    if (key < 0 || (unsigned)key >= TEST_MAX_KEYBORD_STATES) {
-        return;
-    }
-    
-    if (key == SDLK_SPACE) {
+    if (key == SDL_SCANCODE_SPACE) {
         if (getState() == LS_GAME_RUNNING) {
             setState(LS_GAME_PAUSED);
-            
-            // testing mouse capture for framebuffer/window resizing
-            SDL_SetRelativeMouseMode(SDL_FALSE);
         }
         else  {
             setState(LS_GAME_RUNNING);
-            SDL_SetRelativeMouseMode(SDL_TRUE);
         }
     }
     
@@ -175,16 +165,16 @@ void fbState::updateKeyStates(float dt) {
     const float moveSpeed = 0.05f * dt;
     vec3 pos = {0.f};
     
-    if (pKeyStates[SDLK_w]) {
+    if (pKeyStates[SDL_SCANCODE_W]) {
         pos[2] += moveSpeed;
     }
-    if (pKeyStates[SDLK_s]) {
+    if (pKeyStates[SDL_SCANCODE_S]) {
         pos[2] -= moveSpeed;
     }
-    if (pKeyStates[SDLK_a]) {
+    if (pKeyStates[SDL_SCANCODE_A]) {
         pos[0] += moveSpeed;
     }
-    if (pKeyStates[SDLK_d]) {
+    if (pKeyStates[SDL_SCANCODE_D]) {
         pos[0] -= moveSpeed;
     }
     
@@ -269,13 +259,33 @@ void fbState::onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {
 /******************************************************************************
  * Mouse Button Down Event
 ******************************************************************************/
-void fbState::onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {
+void fbState::onMouseButtonDownEvent(const SDL_MouseButtonEvent& e) {
+    // Allow the mouse to enter/exit the window when the user pleases.
+    if (e.button == SDL_BUTTON_LEFT) {
+        // testing mouse capture for framebuffer/window resizing
+        SDL_SetRelativeMouseMode(SDL_TRUE);
+    }
+    else if (e.button == SDL_BUTTON_RIGHT) {
+        SDL_SetRelativeMouseMode(SDL_FALSE);
+    }
 }
 
 /******************************************************************************
  * Mouse Wheel Event
 ******************************************************************************/
-void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent&) {
+void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
+    fbRes += e.y * 10;
+    
+    const vec2i displayRes = getParentSystem().getDisplay().getResolution();
+    fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
+    fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
+    
+    lsTexture* fbDepthTex = pScene->getTexture(0);
+    lsTexture* fbColorTex = pScene->getTexture(1);
+    
+    fbDepthTex->init(0, LS_GRAY_8, fbRes, LS_GRAY, LS_UNSIGNED_BYTE, nullptr);
+    fbColorTex->init(0, LS_RGB_8, fbRes, LS_RGB, LS_UNSIGNED_BYTE, nullptr);
+    
 }
 
 /******************************************************************************
@@ -306,6 +316,8 @@ void fbState::terminate() {
     
     delete pBlender;
     pBlender = nullptr;
+    
+    fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
 }
 
 /******************************************************************************
@@ -328,6 +340,10 @@ bool fbState::initMemory() {
     ) {
         terminate();
         return false;
+    }
+    
+    for (int i = 0;  i < TEST_MAX_KEYBORD_STATES; ++i) {
+        pKeyStates[i] = false;
     }
     
     return true;
@@ -536,9 +552,13 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 ******************************************************************************/
 void fbState::setRendererParams() {
+    constexpr lsColor gray = lsGray;
+    glClearColor(gray[0], gray[1], gray[2], gray[3]);
+    
     lsRenderer renderer;
     renderer.setDepthTesting(true);
     renderer.setFaceCulling(true);
+    pBlender->setState(true);
     pBlender->setBlendEquation(LS_BLEND_ADD, LS_BLEND_ADD);
     pBlender->setBlendFunction(LS_ONE, LS_ONE_MINUS_SRC_ALPHA, LS_ONE, LS_ZERO);
 }
@@ -565,6 +585,7 @@ bool fbState::onStart() {
     }
     else {
         setRendererParams();
+        getParentSystem().getDisplay().setFullScreenMode(LS_FULLSCREEN_WINDOW);
     }
     
     return true;
@@ -604,7 +625,8 @@ void fbState::onRun(float dt) {
  * Pausing state
 ******************************************************************************/
 void fbState::onPause(float dt) {
-    (void)dt;
+    updateKeyStates(dt);
+    
     pMatStack->pushMatrix(LS_VIEW_MATRIX, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
@@ -648,9 +670,8 @@ mat4 fbState::get3dViewport() const {
  * Update the renderer's viewport with the current window resolution
 ******************************************************************************/
 void fbState::resetGlViewport() {
-    lsDisplay& disp = getParentSystem().getDisplay();
+    const lsDisplay& disp = getParentSystem().getDisplay();
     lsRenderer renderer;
-    
     renderer.setViewport(vec2i{0}, disp.getResolution());
 }
 
@@ -670,7 +691,7 @@ void fbState::drawScene() {
 void fbState::drawMeshes() {
     // setup a viewport for a custom framebuffer
     lsRenderer renderer;
-    renderer.setViewport(vec2i{0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT});
+    renderer.setViewport(vec2i{0}, fbRes);
 
     // use render to the framebuffer's color attachment
     static const ls_fbo_attach_t fboDrawAttachments[] = {LS_COLOR_ATTACHMENT0};
@@ -699,7 +720,7 @@ void fbState::drawMeshes() {
 
     // blit the custom framebuffer to OpenGL's backbuffer
     testFb.blit(
-        vec2i{0}, vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT},
+        vec2i{0}, fbRes,
         vec2i{0}, this->getParentSystem().getDisplay().getResolution(),
         LS_COLOR_MASK
     );

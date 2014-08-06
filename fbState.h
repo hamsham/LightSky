@@ -10,6 +10,17 @@
 
 #include "lightSky.h"
 
+/**
+ * Default resolutions for the framebuffer object test.
+ */
+enum fb_test_res_t : int {
+    TEST_FRAMEBUFFER_WIDTH = 320,
+    TEST_FRAMEBUFFER_HEIGHT = 240
+};
+
+/**
+ * Framebuffer testing state
+ */
 class fbState final : virtual public lsGameState {
     /*
      * Event Management
@@ -24,6 +35,7 @@ class fbState final : virtual public lsGameState {
         lsSceneManager* pScene                  = nullptr;
         bool*           pKeyStates              = nullptr;
         math::mat4*     pModelMatrices          = nullptr;
+        math::vec2i     fbRes                   = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         math::quat      orientation             = {};
         lsBlendObject*  pBlender                = {};
         

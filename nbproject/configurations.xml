@@ -124,7 +124,7 @@
             <pElem>include</pElem>
             <pElem>../../../../../MinGW32/include/freetype2</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O2</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O2 -static-libgcc -static-libstdc++</commandLine>
           <preprocessorList>
             <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
@@ -339,7 +339,7 @@
             <pElem>include</pElem>
             <pElem>../../../../../MinGW32/include/freetype2</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows -static-libgcc -static-libstdc++</commandLine>
           <preprocessorList>
             <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>

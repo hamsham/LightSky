@@ -79,8 +79,8 @@ TESTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows
-CXXFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows
+CCFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows -static-libgcc -static-libstdc++
+CXXFLAGS=-m32 -Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows -static-libgcc -static-libstdc++
 
 # Fortran Compiler Flags
 FFLAGS=

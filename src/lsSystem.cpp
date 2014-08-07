@@ -92,6 +92,7 @@ bool lsSystem::init(lsDisplay& disp, bool useVsync) {
         terminate();
         return false;
     }
+    LS_LOG_MSG("Successfully initialized OpenGL context for ", this, ".\n");
     
     prng = new(std::nothrow) lsRandom(SDL_GetPerformanceCounter());
     if (prng == nullptr) {
@@ -99,7 +100,7 @@ bool lsSystem::init(lsDisplay& disp, bool useVsync) {
         terminate();
         return false;
     }
-    LS_LOG_ERR("Successfully initialized the random number generator for ", this, ".\n");
+    LS_LOG_MSG("Successfully initialized the random number generator for ", this, ".\n");
     
     LS_LOG_MSG(
         "----------------------------------------\n",
@@ -136,11 +137,17 @@ void lsSystem::terminate() {
 void lsSystem::run() {
     if (!gameList.size()) {
         LS_LOG_ERR("No game states are available!\n", SDL_GetError(), '\n');
+        this->stop();
         return;
     }
     
     // Ensure the display is still open
-    HL_DEBUG_ASSERT(pDisplay != nullptr && pDisplay->isRunning() == true);
+#ifdef LS_DEBUG
+    if (!pDisplay || !pDisplay->isRunning()) {
+        return;
+        this->stop();
+    }
+#endif
     
     SDL_Event pEvent;
     while (SDL_PollEvent(&pEvent)) {

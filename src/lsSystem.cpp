@@ -144,16 +144,16 @@ void lsSystem::run() {
     // Ensure the display is still open
 #ifdef LS_DEBUG
     if (!pDisplay || !pDisplay->isRunning()) {
-        return;
         this->stop();
+        return;
     }
 #endif
     
     SDL_Event pEvent;
     while (SDL_PollEvent(&pEvent)) {
         // Hardware events passed through SDL
-        for (lsGameState* const pState : gameList) {
-            passHardwareEvents(pEvent, pState);
+        for (unsigned i = 0; i < gameList.size(); ++i) {
+            passHardwareEvents(pEvent, gameList[i]);
         }
     }
 

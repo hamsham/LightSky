@@ -120,11 +120,11 @@
           <architecture>1</architecture>
           <standard>8</standard>
           <incDir>
-            <pElem>../hamlibs/include</pElem>
             <pElem>include</pElem>
+            <pElem>../HamLibs/include</pElem>
             <pElem>../../../../../MinGW32/include/freetype2</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O2 -static-libgcc -static-libstdc++</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -flto -O2 -static-libgcc -static-libstdc++ -ggdb</commandLine>
           <preprocessorList>
             <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
@@ -136,18 +136,42 @@
           <output>bin/liblightsky_d.a</output>
         </archiverTool>
         <requiredProjects>
-          <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
+          <makeArtifact PL="../HamLibs"
                         CT="3"
                         CN="Release"
                         AC="true"
                         BL="false"
-                        WD="../hamlibs/HamLibs_NetBeans"
+                        WD="../HamLibs"
                         BC="${MAKE}  -f Makefile CONF=Release"
                         CC="${MAKE}  -f Makefile CONF=Release clean"
-                        OP="../bin/WIN32/libhamlibs.a">
+                        OP="./bin/libhamlibs.a">
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../HamLibs"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="false"
+                            WD="../HamLibs"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="./bin/libhamlibs.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibLibItem>FreeImage</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -162,7 +186,7 @@
           </incDir>
         </ccTool>
         <linkerTool>
-          <output>tests\Framebuffer_Test\fbTest_debug</output>
+          <output>tests/Framebuffer_Test/fbTest_debug</output>
         </linkerTool>
       </folder>
       <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
@@ -335,11 +359,11 @@
           <architecture>1</architecture>
           <standard>8</standard>
           <incDir>
-            <pElem>../hamlibs/include</pElem>
             <pElem>include</pElem>
+            <pElem>../HamLibs/include</pElem>
             <pElem>../../../../../MinGW32/include/freetype2</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -lSDL2main -flto -O3 -mwindows -static-libgcc -static-libstdc++</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -flto -O3 -mwindows -static-libgcc -static-libstdc++</commandLine>
           <preprocessorList>
             <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>
@@ -355,18 +379,42 @@
           <output>bin/liblightsky.a</output>
         </archiverTool>
         <requiredProjects>
-          <makeArtifact PL="../hamlibs/HamLibs_NetBeans"
+          <makeArtifact PL="../HamLibs"
                         CT="3"
                         CN="Release"
                         AC="true"
                         BL="false"
-                        WD="../hamlibs/HamLibs_NetBeans"
+                        WD="../HamLibs"
                         BC="${MAKE}  -f Makefile CONF=Release"
                         CC="${MAKE}  -f Makefile CONF=Release clean"
-                        OP="../bin/WIN32/libhamlibs.a">
+                        OP="./bin/libhamlibs.a">
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../HamLibs"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="false"
+                            WD="../HamLibs"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="./bin/libhamlibs.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibLibItem>FreeImage</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>

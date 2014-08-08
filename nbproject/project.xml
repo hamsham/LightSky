@@ -9,7 +9,7 @@
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
-                <make-dep-project>../hamlibs/HamLibs_NetBeans</make-dep-project>
+                <make-dep-project>../HamLibs</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>

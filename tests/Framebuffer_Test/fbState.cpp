@@ -22,8 +22,6 @@ enum {
 
 #define TEST_INSTANCE_RADIUS 0.5f
 
-#define TEST_FONT_FILE "FiraSans-Regular.otf"
-
 #define VP_MATRIX_UNIFORM "vpMatrix"
 #define CAMERA_POSITION_UNIFORM "camPos"
 

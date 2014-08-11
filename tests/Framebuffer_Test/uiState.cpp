@@ -8,7 +8,7 @@
 #include <utility>
 #include "uiState.h"
 
-#define TEST_FONT_FILE "FiraSans-Regular.otf"
+#define TEST_FONT_FILE L"FiraSans-Regular.otf"
 
 /*
  * This shader uses a Logarithmic Z-Buffer, thanks to

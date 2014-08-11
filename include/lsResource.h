@@ -8,6 +8,11 @@
 #ifndef __LS_RESOURCE_H__
 #define	__LS_RESOURCE_H__
 
+#include <string>
+
+#include "lsSetup.h"
+#include "lsUtil.h"
+
 /**
  * Basic file/resource abstraction.
  * Resource Objects can open a file by calling either openFile() or saveFile()
@@ -37,7 +42,7 @@ class lsResource {
         /**
          * Constructor
          */
-        lsResource();
+        lsResource() = default;
 
         /**
          * Copy constructor
@@ -76,12 +81,13 @@ class lsResource {
         /**
          * Load a file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be loadable into memory.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
          * 
          * @return true if the file was successfully loaded. False if not.
          */
-        virtual bool loadFile(const char* filename) = 0;
+        virtual bool loadFile(const std::string&) = 0;
 
         /**
          * Load a file using a c-style string of wide (UTF-8) characters
@@ -89,22 +95,24 @@ class lsResource {
          * This method merely converts the filename into a multi-byte string
          * and calls "openFile()" using the ANSI equivalent string.
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be loadable into memory.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
          * 
          * @return true if the file was successfully loaded. False if not.
          */
-        virtual bool loadFile(const wchar_t* filename);
+        virtual bool loadFile(const std::wstring&);
 
         /**
          * Save a file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const = 0;
+        virtual bool saveFile(const std::string&) const = 0;
 
         /**
          * Save a file using a c-style string of wide (UTF-8) characters
@@ -112,11 +120,13 @@ class lsResource {
          * This method merely converts the filename into a multi-byte string
          * and calls "saveFile()" using the ANSI equivalent string.
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
+         * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const wchar_t*) const;
+        virtual bool saveFile(const std::wstring&) const;
 
         /**
          * Unload
@@ -150,6 +160,22 @@ inline long lsResource::getByteSize() const {
  */
 inline void* lsResource::getData() const {
     return pData;
+}
+
+/*
+ * Open a file with UTF-8
+ */
+inline bool lsResource::loadFile(const std::wstring& filename) {
+    // attempt to load the file
+    return loadFile(lsUtil::convertWtoMb(filename));
+}
+
+/*
+ * Save with an UTF-8 filename
+ */
+inline bool lsResource::saveFile(const std::wstring& filename) const {
+    // attempt to save the file
+    return saveFile(lsUtil::convertWtoMb(filename));
 }
 
 #endif	/* __LS_RESOURCE_H__ */

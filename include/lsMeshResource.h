@@ -8,6 +8,8 @@
 #ifndef __LS_MESH_RESOURCE_H__
 #define	__LS_MESH_RESOURCE_H__
 
+#include <string>
+
 #include "lsSetup.h"
 #include "lsResource.h"
 #include "lsVertex.h"
@@ -67,7 +69,7 @@ class lsMeshResource final : public lsResource {
          * Destructor
          * Unloads all data contain within *this.
          */
-        virtual ~lsMeshResource();
+        virtual ~lsMeshResource() override;
         
         /**
          * Copy Constructor -- DELETED
@@ -95,29 +97,31 @@ class lsMeshResource final : public lsResource {
          * Unload
          * Free all memory used by *this.
          */
-        virtual void unload();
+        virtual void unload() override;
 
         /**
          * Load a 3D mesh file.
          * Not yet implemented
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be loadable into memory.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
          * 
          * @return true if the file was successfully loaded. False if not.
          */
-        bool loadFile(const char* filename) override;
+        bool loadFile(const std::string& filename) override;
 
         /**
          * Save a mesh to a file.
          * Not yet implemented.
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const;
+        virtual bool saveFile(const std::string&) const override;
         
         /**
          * Get the draw mode that was generated while loading a mesh.

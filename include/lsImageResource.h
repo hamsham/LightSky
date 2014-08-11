@@ -8,6 +8,8 @@
 #ifndef __LS_IMAGE_RESOURCE_H__
 #define	__LS_IMAGE_RESOURCE_H__
 
+#include <string>
+
 #include "lsColor.h"
 #include "lsResource.h"
 #include "lsSetup.h"
@@ -136,32 +138,35 @@ class lsImageResource final : public lsResource {
         /**
          * Load an image file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be loadable into memory.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
          * 
          * @return true if the file was successfully loaded. False if not.
          */
-        virtual bool loadFile(const char* filename) override;
+        virtual bool loadFile(const std::string& filename) override;
 
         /**
          * Save an image file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const override;
+        virtual bool saveFile(const std::string& filename) const override;
 
         /**
          * Save an image file in a specific format
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        bool saveFile(const char*, img_file_t) const;
+        bool saveFile(const std::string&, img_file_t) const;
 
         /**
          * Unload
@@ -221,8 +226,8 @@ class lsImageResource final : public lsResource {
 /*
  * Saving Data
  */
-inline bool lsImageResource::saveFile(const char* filename) const {
-    return this->saveFile(filename, img_file_t::LS_IMG_PNG);
+inline bool lsImageResource::saveFile(const std::string& filename) const {
+    return saveFile(filename, img_file_t::LS_IMG_PNG);
 }
 
 /*

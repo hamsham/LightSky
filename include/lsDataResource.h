@@ -8,6 +8,8 @@
 #ifndef __LS_DATA_RESOURCE_H__
 #define	__LS_DATA_RESOURCE_H__
 
+#include <string>
+
 #include "lsSetup.h"
 #include "lsResource.h"
 
@@ -45,7 +47,7 @@ class lsDataResource final : public lsResource {
          * Destructor.
          * Calls "unload()" and releases all memory from *this.
          */
-        virtual ~lsDataResource();
+        virtual ~lsDataResource() override;
 
         /**
          * Copy operator
@@ -67,22 +69,24 @@ class lsDataResource final : public lsResource {
         /**
          * Load a file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be loadable into memory.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
          * 
          * @return true if the file was successfully loaded. False if not.
          */
-        virtual bool loadFile(const char* filename) override;
+        virtual bool loadFile(const std::string& filename) override;
 
         /**
          * Save a file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const override;
+        virtual bool saveFile(const std::string&) const override;
 
         /**
          * Unload
@@ -102,7 +106,7 @@ class lsDataResource final : public lsResource {
          * 
          * @return true if the copy was successful. False if otherwise.
          */
-        virtual bool setData(char* data, long size, bool copyMemory);
+        bool setData(char* data, long size, bool copyMemory);
 };
 
 #endif	/* __LS_DATA_RESOURCE_H__ */

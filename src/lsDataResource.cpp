@@ -9,6 +9,7 @@
 #include <new> // std::nothrow
 #include <algorithm> // std::copy
 #include <fstream> // std::fstream
+#include <string>
 
 #include "lsDataResource.h"
 
@@ -82,7 +83,7 @@ lsDataResource& lsDataResource::operator =(lsDataResource&& f) {
 /*
  * Open a file using UTF-8
  */
-bool lsDataResource::loadFile(const char* filename) {
+bool lsDataResource::loadFile(const std::string& filename) {
     LS_LOG_MSG("Attempting to load the file ", filename, '.');
     unload();
     
@@ -139,7 +140,7 @@ bool lsDataResource::loadFile(const char* filename) {
 /*
  * Save with a UTF-8 filename
  */
-bool lsDataResource::saveFile(const char* filename) const {
+bool lsDataResource::saveFile(const std::string& filename) const {
     std::ofstream fout;
     
     LS_LOG_MSG("Attempting to save data to the file", filename, '.');

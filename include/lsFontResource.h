@@ -8,6 +8,8 @@
 #ifndef __LS_FONT_RESOURCE_H__
 #define	__LS_FONT_RESOURCE_H__
 
+#include <string>
+
 #include "lsSetup.h"
 #include "lsResource.h"
 
@@ -97,7 +99,7 @@ class lsFontResource final : public lsResource {
          * Destructor
          * Calls "unload()" and releases all memory used by *this.
          */
-        virtual ~lsFontResource();
+        virtual ~lsFontResource() override;
         
         /**
          * Copy Operator
@@ -119,33 +121,64 @@ class lsFontResource final : public lsResource {
          * @param filename a c-style string containing the relative path name
          * to a file that should be loadable into memory.
          * 
-         * @param the name of the file to be loaded.
+         * @param
+         * A string object containing the relative path name to a file that
+         * to be loaded.
          * 
          * @param the size, in pixels, that each glyph should be.
          * 
          * @return true if the font was successfully loaded. False if not.
          */
-        bool loadFile(const char* filename, unsigned pixelSize);
+        bool loadFile(const std::string&, unsigned pixelSize);
 
         /**
-         * Load a font file using the default font size.
+         * Load a font file
          * 
          * @param filename a c-style string containing the relative path name
          * to a file that should be loadable into memory.
          * 
+         * @param
+         * A wide string object containing the relative path name to a file that
+         * to be loaded.
+         * 
+         * @param the size, in pixels, that each glyph should be.
+         * 
          * @return true if the font was successfully loaded. False if not.
          */
-        virtual bool loadFile(const char* filename) override;
+        bool loadFile(const std::wstring&, unsigned pixelSize);
+
+        /**
+         * Load a font file using the default font size.
+         * 
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
+         * 
+         * @return true if the font was successfully loaded. False if not.
+         */
+        virtual bool loadFile(const std::string& filename) override;
+
+        /**
+         * Load a font file using the default font size.
+         * 
+         * @param filename
+         * A wide string object containing the relative path name to a file that
+         * should be loadable into memory.
+         * 
+         * @return true if the font was successfully loaded. False if not.
+         */
+        virtual bool loadFile(const std::wstring& filename) override;
 
         /**
          * Save a file
          * 
-         * @param filename a c-style string containing the relative path name
-         * to a file that should be saved to the computer.
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
          * 
          * @return true if the file was successfully saved. False if not.
          */
-        virtual bool saveFile(const char*) const override;
+        virtual bool saveFile(const std::string&) const override;
 
         /**
          * Unload
@@ -180,7 +213,21 @@ class lsFontResource final : public lsResource {
 /*
  * Load a font file using the default font size.
  */
-inline bool lsFontResource::loadFile(const char* filename) {
+inline bool lsFontResource::loadFile(const std::wstring& filename, unsigned pixelSize) {
+    return loadFile(lsUtil::convertWtoMb(filename), pixelSize);
+}
+ 
+/*
+ * Load a font file using the default font size.
+ */
+inline bool lsFontResource::loadFile(const std::wstring& filename) {
+    return loadFile(lsUtil::convertWtoMb(filename));
+}
+
+/*
+ * Load a font file using the default font size.
+ */
+inline bool lsFontResource::loadFile(const std::string& filename) {
     return loadFile(filename, LS_DEFAULT_FONT_SIZE);
 }
 

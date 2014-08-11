@@ -7,6 +7,7 @@
 
 #include <functional>
 #include <utility>
+#include <string>
 
 #include "lsMesh.h"
 #include "lsGeometry.h"
@@ -113,7 +114,7 @@ bool lsMeshResource::initVertices(unsigned vertCount) {
  * Load a set of meshes from a file
  * TODO
  */
-bool lsMeshResource::loadFile(const char*) {
+bool lsMeshResource::loadFile(const std::string&) {
     unload();
     return false;
 }
@@ -121,7 +122,7 @@ bool lsMeshResource::loadFile(const char*) {
 /*
  * Save a mesh to a file.
  */
-bool lsMeshResource::saveFile(const char*) const {
+bool lsMeshResource::saveFile(const std::string&) const {
     return false;
 }
 

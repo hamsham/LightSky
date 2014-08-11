@@ -33,6 +33,11 @@ std::string toString(const T& data) {
     return oss.str();
 }
 
+/**
+ * Convert a Wide String to a multibyte-character string
+ */
+std::string convertWtoMb(const std::wstring& wstr);
+
 }
 
 #endif	/* __LS_UTIL_H__ */

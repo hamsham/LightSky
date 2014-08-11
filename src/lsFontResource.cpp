@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <utility> // std::move
+#include <string>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -122,7 +123,7 @@ void lsFontResource::unload() {
 /*
  * Load a font file
  */
-bool lsFontResource::loadFile(const char* filename, unsigned pixelSize) {
+bool lsFontResource::loadFile(const std::string& filename, unsigned pixelSize) {
     FT_Library ftLib;
     FT_Face ftFace;
     FT_Error ftErr;
@@ -144,7 +145,7 @@ bool lsFontResource::loadFile(const char* filename, unsigned pixelSize) {
     }
     
     // Load the font face
-    ftErr = FT_New_Face(ftLib, filename, 0, &ftFace);
+    ftErr = FT_New_Face(ftLib, filename.c_str(), 0, &ftFace);
     if (ftErr) {
         LS_LOG_ERR(
             "\tUnable to load the font ", filename, '.',
@@ -284,6 +285,6 @@ bool lsFontResource::loadGlyphs(FT_FaceRec_* ftFace) {
 /*
  * Save a file
  */
-bool lsFontResource::saveFile(const char*) const {
+bool lsFontResource::saveFile(const std::string&) const {
     return false;
 }

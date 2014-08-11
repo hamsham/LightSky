@@ -17,7 +17,7 @@
 //      Utilities
 //-----------------------------------------------------------------------------
 /*
- * FreeImage error handler message
+ * FreeImage error handler callback
  */
 #ifdef LS_DEBUG
     void printImageLoadError(FREE_IMAGE_FORMAT fif, const char* msg) {
@@ -34,10 +34,10 @@
 /*
  * Deduce an image's file format
  */
-FREE_IMAGE_FORMAT deduceImageFormat(const char* filename) {
-	FREE_IMAGE_FORMAT outFormat = FreeImage_GetFileType(filename, 0);
+FREE_IMAGE_FORMAT deduceImageFormat(const std::string& filename) {
+	FREE_IMAGE_FORMAT outFormat = FreeImage_GetFileType(filename.c_str(), 0);
 	if (outFormat == FIF_UNKNOWN) {
-		outFormat = FreeImage_GetFIFFromFilename(filename);
+		outFormat = FreeImage_GetFIFFromFilename(filename.c_str());
     }
     return outFormat;
 }
@@ -250,11 +250,11 @@ lsImageResource& lsImageResource::operator =(lsImageResource&& img) {
 /*
  * Loading
  */
-bool lsImageResource::loadFile(const char* filename) {
+bool lsImageResource::loadFile(const std::string& filename) {
     LS_LOG_MSG("Attempting to load the image ", filename);
     unload();
     
-    if (!filename) {
+    if (!filename.size()) {
         LS_LOG_ERR("\tFailed to load an image as no filename was provided.\n");
         return false;
     }
@@ -263,7 +263,7 @@ bool lsImageResource::loadFile(const char* filename) {
     FreeImage_SetOutputMessage(&printImageLoadError);
     
     // Determine the file type that should be loaded
-    FREE_IMAGE_FORMAT fileFormat = deduceImageFormat(filename);
+    FREE_IMAGE_FORMAT fileFormat = deduceImageFormat(filename.c_str());
     
     if (fileFormat == FIF_UNKNOWN) {
         LS_LOG_ERR("\tUnable to determine the file type for ", filename, ".\n");
@@ -282,7 +282,7 @@ bool lsImageResource::loadFile(const char* filename) {
     
     // Use some predefined image flags
     const int fileFlags = getImageFlags(fileFormat);
-    FIBITMAP* fileData = FreeImage_Load(fileFormat, filename, fileFlags);
+    FIBITMAP* fileData = FreeImage_Load(fileFormat, filename.c_str(), fileFlags);
     
     if (!fileData) {
         LS_LOG_ERR(
@@ -335,7 +335,11 @@ void lsImageResource::unload() {
 /*
  * saving
  */
-bool lsImageResource::saveFile(const char* filename, img_file_t format) const {
+bool lsImageResource::saveFile(const std::string& filename, img_file_t format) const {
+    if (this->pData == nullptr) {
+        return false;
+    }
+    
     FREE_IMAGE_FORMAT fiFormat = FIF_PNG;
     
     switch(format) {
@@ -355,11 +359,7 @@ bool lsImageResource::saveFile(const char* filename, img_file_t format) const {
         default:                        fiFormat = FIF_PNG;
     }
     
-    if (this->pData == nullptr || filename == nullptr) {
-        return false;
-    }
-    
-    return 0 != FreeImage_Save(fiFormat, reinterpret_cast<FIBITMAP*>(pData), filename);
+    return 0 != FreeImage_Save(fiFormat, reinterpret_cast<FIBITMAP*>(pData), filename.c_str());
 }
 
 /*

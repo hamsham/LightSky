@@ -77,7 +77,7 @@ out vec4 outFragCol;
 
 void main() {
     float lightIntensity = dot(eyeDir, normalize(nrmCoords));
-    outFragCol = texture(tex, uvCoords) * lightIntensity;
+    outFragCol = texture(tex, uvCoords).rrra * lightIntensity;
 }
 )***";
 
@@ -128,6 +128,8 @@ fbState& fbState::operator=(fbState&& state) {
     pModelMatrices = state.pModelMatrices;
     state.pModelMatrices = nullptr;
     
+    noise = std::move(state.noise);
+    
     fbRes = state.fbRes;
     state.fbRes = math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
     
@@ -154,16 +156,6 @@ void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
 ******************************************************************************/
 void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
     const SDL_Keycode key = e.keysym.scancode;
-    
-    if (key == SDL_SCANCODE_SPACE) {
-        if (getState() == LS_GAME_RUNNING) {
-            setState(LS_GAME_PAUSED);
-        }
-        else  {
-            setState(LS_GAME_RUNNING);
-        }
-    }
-    
     pKeyStates[key] = true;
 }
 
@@ -220,6 +212,7 @@ void fbState::onWindowEvent(const SDL_WindowEvent& e) {
 void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
     if (this->getState() == LS_GAME_PAUSED
+    || SDL_GetRelativeMouseMode() == SDL_FALSE
     || (mouseX == e.xrel && mouseY == e.yrel)
     ) {
         // I would rather quit the function than have unnecessary LERPs and
@@ -301,6 +294,7 @@ bool fbState::initMemory() {
         return false;
     }
     
+    // initialize the keybord
     for (int i = 0;  i < TEST_MAX_KEYBORD_STATES; ++i) {
         pKeyStates[i] = false;
     }
@@ -317,6 +311,8 @@ bool fbState::initFileData() {
     lsMesh* pSphereMesh         = new lsMesh{};
     lsTexture* fbDepthTex       = new lsTexture{};
     lsTexture* fbColorTex       = new lsTexture{};
+    float* noiseTable           = new float[1024*1024];
+    lsTexture* noiseTex         = new lsTexture{};
     bool ret                    = true;
     
     if (!pMeshLoader
@@ -325,6 +321,8 @@ bool fbState::initFileData() {
     || !pSphereMesh->init(*pMeshLoader)
     || !fbDepthTex->init(0, LS_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, LS_GRAY, LS_UNSIGNED_BYTE, nullptr)
     || !fbColorTex->init(0, LS_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, LS_RGB, LS_UNSIGNED_BYTE, nullptr)
+    || !noiseTex->init(0, LS_R_32F, math::vec2i{1024}, LS_R, LS_FLOAT, nullptr)
+    || !noiseTable
     ) {
         ret = false;
     }
@@ -332,8 +330,26 @@ bool fbState::initFileData() {
         pScene->manageMesh(pSphereMesh); // test data at the mesh index 0
         pScene->manageTexture(fbDepthTex);
         pScene->manageTexture(fbColorTex);
+        pScene->manageTexture(noiseTex); // test texture at index 2
+        
+         // initialize the perlin noise texture
+        noise.seed();
+        
+        for (unsigned i = 0; i < 1024; ++i) {
+            for (int j = 0; j < 1024; ++j) {
+                const math::vec3 pos = math::vec3{(float)i/1024.f, (float)j/1024.f, 0.8f};
+                const float perlin = noise.getNoise(pos*10.f);
+                noiseTable[i * 1024 + j] = perlin;
+            }
+        }
+        noiseTex->modify(0, math::vec2i{1024}, LS_R, LS_FLOAT, noiseTable);
+        noiseTex->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_NEAREST);
+        noiseTex->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_NEAREST);
+        noiseTex->setParameter(LS_TEX_WRAP_S, LS_TEX_REPEAT);
+        noiseTex->setParameter(LS_TEX_WRAP_T, LS_TEX_REPEAT);
     }
     
+    delete [] noiseTable;
     delete pMeshLoader;
     
     return ret;
@@ -343,11 +359,13 @@ bool fbState::initFileData() {
  * Initialize the model, view, and projection matrices
 ******************************************************************************/
 bool fbState::initMatrices() {
+    const math::vec2&& aspect = (math::vec2)getParentSystem().getDisplay().getResolution();
+    
     // setup the matrix stacks
     pMatStack->loadMatrix(
         LS_PROJECTION_MATRIX,
         math::perspective(
-            TEST_PROJECTION_FOV, 4.f/3.f,
+            TEST_PROJECTION_FOV, aspect[0]/aspect[1],
             TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
         )
     );
@@ -419,12 +437,13 @@ bool fbState::initDrawModels() {
         return false;
     }
     else {
-        pScene->manageModel(pModel);
-        lsMesh* const pMesh = pScene->getMeshList()[0];
-        pModel->init(*pMesh, pScene->getDefaultTexture());
-
-         // lights, camera, batch!
+        lsMesh* const pMesh = pScene->getMesh(0);
+        lsTexture* const pTexture = pScene->getTexture(2);
+        pModel->init(*pMesh, *pTexture);
+        
+        // lights, camera, batch!
         pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
+        pScene->manageModel(pModel);
     }
     
     LOG_GL_ERR();

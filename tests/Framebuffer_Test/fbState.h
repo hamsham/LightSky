@@ -10,6 +10,8 @@
 
 #include "main.h"
 
+#include "lsPerlinNoise.h"
+
 /**
  * Default resolutions for the framebuffer object test.
  */
@@ -34,6 +36,7 @@ class fbState final : virtual public lsGameState {
         lsSceneManager* pScene                  = nullptr;
         bool*           pKeyStates              = nullptr;
         math::mat4*     pModelMatrices          = nullptr;
+        lsPerlinNoise   noise                   = {};
         math::vec2i     fbRes                   = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         math::quat      orientation             = {};
         

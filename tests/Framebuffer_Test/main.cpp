@@ -36,10 +36,9 @@ int main(int argc, char** argv) {
     }
     
     // push some states and run the game
-    if (
-        !pSystem->pushGameState(new(std::nothrow) controlState())
-    ||  !pSystem->pushGameState(new(std::nothrow) fbState())
-    ||  !pSystem->pushGameState(new(std::nothrow) uiState())
+    if (!pSystem->pushGameState(new controlState{})
+    ||  !pSystem->pushGameState(new fbState{})
+    ||  !pSystem->pushGameState(new uiState{})
     ) {
         terminateLs();
         return -1;
@@ -85,9 +84,6 @@ bool initLs() {
  * Terminate lightSky
  */
 void terminateLs() {
-    if (pSystem != nullptr) {
-        pSystem->terminate();
-    }
     delete pSystem;
     pSystem = nullptr;
     

@@ -6,9 +6,10 @@
  */
 
 #include <utility>
+
 #include "uiState.h"
 
-#define TEST_FONT_FILE L"FiraSans-Regular.otf"
+#define TEST_FONT_FILE L"./FiraSans-Regular.otf"
 
 /*
  * This shader uses a Logarithmic Z-Buffer, thanks to
@@ -263,9 +264,8 @@ math::mat4 uiState::get2dViewport() const {
  * Update the renderer's viewport with the current window resolution
 ******************************************************************************/
 void uiState::resetGlViewport() {
-    const lsDisplay& disp = getParentSystem().getDisplay();
     lsRenderer renderer;
-    renderer.setViewport(math::vec2i{0}, disp.getResolution());
+    renderer.setViewport(math::vec2i{0}, getParentSystem().getDisplay().getResolution());
 }
 
 /******************************************************************************
@@ -273,16 +273,18 @@ void uiState::resetGlViewport() {
 ******************************************************************************/
 void uiState::drawScene() {
     LOG_GL_ERR();
+    resetGlViewport();
     
     fontProg.bind();
     const GLint fontMvpId           = fontProg.getUniformLocation("vpMatrix");
     const math::mat4&& orthoProj    = get2dViewport();
     fontProg.setUniformValue(fontMvpId, orthoProj);
     
-    // setup some UI parameters
-    const float screenResY  = (float)getParentSystem().getDisplay().getResolution()[1];
-    math::mat4 modelMat     = math::translate(math::mat4{1.f}, math::vec3{0.f, screenResY, 0.f});
-    modelMat                = math::scale(modelMat, math::vec3{10.f});
+    // setup some UI parameters with a resolution-independent model matrix
+    const lsDisplay& disp   = getParentSystem().getDisplay();
+    const math::vec2&& res  = (math::vec2)disp.getResolution();
+    math::mat4 modelMat     = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
+    modelMat                = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
     
     // Regenerate a string mesh using the frame's timing information.
     lsAtlas* const pStringAtlas     = pScene->getAtlas(0);

@@ -193,9 +193,9 @@ bool lsDisplay::init(const math::vec2i inResolution, bool isFullScreen) {
 void lsDisplay::terminate() {
     if (pWindow != nullptr && windowIsNative == false) {
         SDL_DestroyWindow(pWindow);
-        pWindow = nullptr;
     }
     
+    pWindow = nullptr;
     windowIsNative = false;
 }
 

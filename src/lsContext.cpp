@@ -99,7 +99,7 @@ bool lsContext::init(const lsDisplay& display, bool useVsync) {
     setVsync(useVsync);
     
     LS_LOG_MSG(
-        "\tSuccessfully initialized a OpenGL 3.3-compatible rendere context:"
+        "\tSuccessfully initialized a OpenGL 3.3-compatible render context:"
         "\n\tV-Sync: ", getVsync()
     );
     

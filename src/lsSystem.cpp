@@ -76,16 +76,12 @@ bool lsSystem::init(lsDisplay& disp, bool useVsync) {
     
     // make sure there's a display object running
     if (!disp.isRunning()) {
-        const math::vec2i res = {LS_DEFAULT_DISPLAY_WIDTH, LS_DEFAULT_DISPLAY_HEIGHT};
-        if (!disp.init(res, false)) {
-            LS_LOG_ERR("Failed to initialize the display for ", this, ".\n");
-            terminate();
-            return false;
-        }
-        LS_LOG_ERR("Successfully initialized the display for ", this, ".\n");
+        LS_LOG_ERR("Cannot start the LS subsystem ", this, " with no display running.\n");
+        return false;
     }
-    
-    pDisplay = &disp;
+    else {
+        pDisplay = &disp;
+    }
     
     if (!context.init(disp, useVsync)) {
         LS_LOG_ERR("\tUnable to create an OpenGL context for the current display.\n");
@@ -108,8 +104,6 @@ bool lsSystem::init(lsDisplay& disp, bool useVsync) {
         "----------------------------------------\n"
     );
     
-    context.makeCurrent(*pDisplay);
-    
     return true;
 }
 
@@ -125,6 +119,7 @@ void lsSystem::terminate() {
     
     gameList.clear();
     context.terminate();
+    
     pDisplay = nullptr;
     
     delete prng;

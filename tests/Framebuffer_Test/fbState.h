@@ -10,8 +10,6 @@
 
 #include "main.h"
 
-#include "lsPerlinNoise.h"
-
 /**
  * Default resolutions for the framebuffer object test.
  */
@@ -61,7 +59,9 @@ class fbState final : virtual public lsGameState {
         void            setRendererParams       ();
         
         math::mat4      get3dViewport           () const;
-        void            resetGlViewport          ();
+        void            resetGlViewport         ();
+        
+        void            regenerateNoise         ();
         
         void            drawScene               ();
         

@@ -55,6 +55,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lsMatrixStack.o \
 	${OBJECTDIR}/src/lsMesh.o \
 	${OBJECTDIR}/src/lsMeshResource.o \
+	${OBJECTDIR}/src/lsPerlinNoise.o \
 	${OBJECTDIR}/src/lsRandom.o \
 	${OBJECTDIR}/src/lsRenderer.o \
 	${OBJECTDIR}/src/lsResource.o \
@@ -73,7 +74,7 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	tests\Framebuffer_Test\fbTest
+	tests/Framebuffer_Test/fbTest
 
 # C Compiler Flags
 CFLAGS=
@@ -201,6 +202,11 @@ ${OBJECTDIR}/src/lsMeshResource.o: src/lsMeshResource.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMeshResource.o src/lsMeshResource.cpp
 
+${OBJECTDIR}/src/lsPerlinNoise.o: src/lsPerlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsPerlinNoise.o src/lsPerlinNoise.cpp
+
 ${OBJECTDIR}/src/lsRandom.o: src/lsRandom.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
@@ -266,9 +272,9 @@ ${OBJECTDIR}/src/lsVertexArray.o: src/lsVertexArray.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-tests\Framebuffer_Test\fbTest: ${TESTDIR}/tests/Framebuffer_Test/controlState.o ${TESTDIR}/tests/Framebuffer_Test/fbState.o ${TESTDIR}/tests/Framebuffer_Test/main.o ${TESTDIR}/tests/Framebuffer_Test/uiState.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p tests\Framebuffer_Test
-	${LINK.cc}   -o tests\Framebuffer_Test\fbTest -s $^ ${LDLIBSOPTIONS} ../HamLibs/./bin/libhamlibs.a -lglew32 -lopengl32 -lSDL2 -lSDL2main -lFreeImage -lfreetype 
+tests/Framebuffer_Test/fbTest: ${TESTDIR}/tests/Framebuffer_Test/controlState.o ${TESTDIR}/tests/Framebuffer_Test/fbState.o ${TESTDIR}/tests/Framebuffer_Test/main.o ${TESTDIR}/tests/Framebuffer_Test/uiState.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p tests/Framebuffer_Test
+	${LINK.cc}   -o tests/Framebuffer_Test/fbTest -s $^ ${LDLIBSOPTIONS} ../HamLibs/./bin/libhamlibs.a -lglew32 -lopengl32 -lSDL2 -lSDL2main -lFreeImage -lfreetype 
 
 
 ${TESTDIR}/tests/Framebuffer_Test/controlState.o: tests/Framebuffer_Test/controlState.cpp 
@@ -555,6 +561,19 @@ ${OBJECTDIR}/src/lsMeshResource_nomain.o: ${OBJECTDIR}/src/lsMeshResource.o src/
 	    ${CP} ${OBJECTDIR}/src/lsMeshResource.o ${OBJECTDIR}/src/lsMeshResource_nomain.o;\
 	fi
 
+${OBJECTDIR}/src/lsPerlinNoise_nomain.o: ${OBJECTDIR}/src/lsPerlinNoise.o src/lsPerlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/lsPerlinNoise.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsPerlinNoise_nomain.o src/lsPerlinNoise.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/lsPerlinNoise.o ${OBJECTDIR}/src/lsPerlinNoise_nomain.o;\
+	fi
+
 ${OBJECTDIR}/src/lsRandom_nomain.o: ${OBJECTDIR}/src/lsRandom.o src/lsRandom.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/lsRandom.o`; \
@@ -715,7 +734,7 @@ ${OBJECTDIR}/src/lsVertexArray_nomain.o: ${OBJECTDIR}/src/lsVertexArray.o src/ls
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
-	    tests\Framebuffer_Test\fbTest || true; \
+	    tests/Framebuffer_Test/fbTest || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

@@ -5,7 +5,18 @@
  * Created on August 15, 2014, 9:23 PM
  */
 
+#include <chrono>
+#include <algorithm>
+
 #include "lsPerlinNoise.h"
+
+//-----------------------------------------------------------------------------
+//      Enumerations
+//-----------------------------------------------------------------------------
+enum : unsigned {
+    MAX_PERMUTATIONS = 512
+};
+    
 
 //-----------------------------------------------------------------------------
 //      Class definitions
@@ -189,23 +200,35 @@ double lsPerlinNoise::getNoise(const math::vec3& point) {
     int b1 = permutations[b0    ] + zi;
     int b2 = permutations[b0 + 1] + zi;
     
-    double xl0 = lerp(grad(permutations[a1], xr, yr, zr), grad(permutations[b1], xr-1, yr, zr), u);
-    double xl1 = lerp(grad(permutations[a2], xr, yr-1, zr), grad(permutations[b2], xr-1, yr-1, zr), u);
+    double x10 = lerp(grad(permutations[a1],    xr, yr,     zr),    grad(permutations[b1],      xr-1,   yr,     zr),    u);
+    double x11 = lerp(grad(permutations[a2],    xr, yr-1,   zr),    grad(permutations[b2],      xr-1,   yr-1,   zr),    u);
+    double x12 = lerp(grad(permutations[a1+1],  xr, yr,     zr-1),  grad(permutations[b1+1],    xr-1,   yr,     zr-1),  u);
+    double x13 = lerp(grad(permutations[a2+1],  xr, yr-1,   zr-1),  grad(permutations[b2+1],    xr-1,   yr-1,   zr-1),  u);
     
-    double xl2 = lerp(grad(permutations[a1+1], xr, yr, zr-1), grad(permutations[b1+1], xr-1, yr, zr-1), u);
-    double xl3 = lerp(grad(permutations[a2+1], xr, yr-1, zr-1), grad(permutations[b2+1], xr-1, yr-1, zr-1), u);
+    double y10 = lerp(x10, x11, v);
+    double y11 = lerp(x12, x13, v);
     
-    double yl0 = lerp(xl0, xl1, v);
-    double yl1 = lerp(xl2, xl3, v);
-    
-    double zl0 = lerp(yl0, yl1, w);
-    
-    return 0.5 * zl0 + 0.5;
+    return lerp(y10, y11, w);
 }
 
 /*
  * Generate the noise function with an octave (perturbations).
+ * 
+ * This portion was found here:
+ * http://flafla2.github.io/2014/08/09/perlinnoise.html
  */
-double lsPerlinNoise::getOctaveNoise(const math::vec3& point, unsigned, double) {
-    return getNoise(point);
+double lsPerlinNoise::getOctaveNoise(const math::vec3& point, unsigned octaves, double persistence) {
+    double total = 0.0;
+    double frequency = 1.0;
+    double amplitude = 1.0;
+    double maxValue = 1.0;
+    
+    for (unsigned i = 0; i < octaves; ++i) {
+        total += getNoise(point * frequency * amplitude);
+        maxValue += amplitude;
+        amplitude *= persistence;
+        frequency *= 2.0;
+    }
+    
+    return total/maxValue;
 }

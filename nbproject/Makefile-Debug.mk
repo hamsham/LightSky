@@ -55,6 +55,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lsMatrixStack.o \
 	${OBJECTDIR}/src/lsMesh.o \
 	${OBJECTDIR}/src/lsMeshResource.o \
+	${OBJECTDIR}/src/lsPerlinNoise.o \
 	${OBJECTDIR}/src/lsRandom.o \
 	${OBJECTDIR}/src/lsRenderer.o \
 	${OBJECTDIR}/src/lsResource.o \
@@ -200,6 +201,11 @@ ${OBJECTDIR}/src/lsMeshResource.o: src/lsMeshResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMeshResource.o src/lsMeshResource.cpp
+
+${OBJECTDIR}/src/lsPerlinNoise.o: src/lsPerlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsPerlinNoise.o src/lsPerlinNoise.cpp
 
 ${OBJECTDIR}/src/lsRandom.o: src/lsRandom.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -553,6 +559,19 @@ ${OBJECTDIR}/src/lsMeshResource_nomain.o: ${OBJECTDIR}/src/lsMeshResource.o src/
 	    $(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsMeshResource_nomain.o src/lsMeshResource.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/lsMeshResource.o ${OBJECTDIR}/src/lsMeshResource_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/lsPerlinNoise_nomain.o: ${OBJECTDIR}/src/lsPerlinNoise.o src/lsPerlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/lsPerlinNoise.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -Wall -DHL_DEBUG -DLS_DEBUG -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lsPerlinNoise_nomain.o src/lsPerlinNoise.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/lsPerlinNoise.o ${OBJECTDIR}/src/lsPerlinNoise_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/lsRandom_nomain.o: ${OBJECTDIR}/src/lsRandom.o src/lsRandom.cpp 

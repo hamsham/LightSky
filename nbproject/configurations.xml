@@ -22,6 +22,7 @@
       <itemPath>include/lsMatrixStack.h</itemPath>
       <itemPath>include/lsMesh.h</itemPath>
       <itemPath>include/lsMeshResource.h</itemPath>
+      <itemPath>include/lsPerlinNoise.h</itemPath>
       <itemPath>include/lsRandom.h</itemPath>
       <itemPath>include/lsRenderer.h</itemPath>
       <itemPath>include/lsResource.h</itemPath>
@@ -60,6 +61,7 @@
       <itemPath>src/lsMatrixStack.cpp</itemPath>
       <itemPath>src/lsMesh.cpp</itemPath>
       <itemPath>src/lsMeshResource.cpp</itemPath>
+      <itemPath>src/lsPerlinNoise.cpp</itemPath>
       <itemPath>src/lsRandom.cpp</itemPath>
       <itemPath>src/lsRenderer.cpp</itemPath>
       <itemPath>src/lsResource.cpp</itemPath>
@@ -229,6 +231,8 @@
       </item>
       <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/lsPerlinNoise.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/lsRandom.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
@@ -292,6 +296,8 @@
       <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsPerlinNoise.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsRandom.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -429,7 +435,7 @@
           </incDir>
         </ccTool>
         <linkerTool>
-          <output>tests\Framebuffer_Test\fbTest</output>
+          <output>tests/Framebuffer_Test/fbTest</output>
           <stripSymbols>true</stripSymbols>
         </linkerTool>
       </folder>
@@ -472,6 +478,8 @@
       <item path="include/lsMesh.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/lsPerlinNoise.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lsRandom.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -536,6 +544,8 @@
       <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/lsPerlinNoise.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lsRandom.cpp" ex="false" tool="1" flavor2="0">
       </item>

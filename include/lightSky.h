@@ -27,6 +27,7 @@
 #include "lsMatrixStack.h"
 #include "lsMesh.h"
 #include "lsMeshResource.h"
+#include "lsPerlinNoise.h"
 #include "lsRandom.h"
 #include "lsRenderer.h"
 #include "lsResource.h"

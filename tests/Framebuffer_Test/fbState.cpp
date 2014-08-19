@@ -12,14 +12,15 @@
 #include "fbState.h"
 
 enum {
-    TEST_MAX_SCENE_OBJECTS = 50,
-    TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS
+    TEST_MAX_SCENE_OBJECTS = 32,
+    TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS,
+    TEST_NOISE_RESOLUTION = 1024,
+    TEST_NOISE_SAMPLES = 32
 };
 
 #define TEST_PROJECTION_FOV 60.f
 #define TEST_PROJECTION_NEAR 0.01f
 #define TEST_PROJECTION_FAR 10.f
-
 #define TEST_INSTANCE_RADIUS 0.5f
 
 #define VP_MATRIX_UNIFORM "vpMatrix"
@@ -149,6 +150,10 @@ void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
     const SDL_Keycode key = e.keysym.scancode;
     
     pKeyStates[key] = false;
+    
+    if (key == SDL_SCANCODE_SPACE) {
+        regenerateNoise();
+    }
 }
 
 /******************************************************************************
@@ -311,7 +316,6 @@ bool fbState::initFileData() {
     lsMesh* pSphereMesh         = new lsMesh{};
     lsTexture* fbDepthTex       = new lsTexture{};
     lsTexture* fbColorTex       = new lsTexture{};
-    float* noiseTable           = new float[1024*1024];
     lsTexture* noiseTex         = new lsTexture{};
     bool ret                    = true;
     
@@ -321,8 +325,7 @@ bool fbState::initFileData() {
     || !pSphereMesh->init(*pMeshLoader)
     || !fbDepthTex->init(0, LS_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, LS_GRAY, LS_UNSIGNED_BYTE, nullptr)
     || !fbColorTex->init(0, LS_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, LS_RGB, LS_UNSIGNED_BYTE, nullptr)
-    || !noiseTex->init(0, LS_R_32F, math::vec2i{1024}, LS_R, LS_FLOAT, nullptr)
-    || !noiseTable
+    || !noiseTex->init(0, LS_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, LS_R, LS_FLOAT, nullptr)
     ) {
         ret = false;
     }
@@ -333,26 +336,46 @@ bool fbState::initFileData() {
         pScene->manageTexture(noiseTex); // test texture at index 2
         
          // initialize the perlin noise texture
-        noise.seed();
-        
-        for (unsigned i = 0; i < 1024; ++i) {
-            for (int j = 0; j < 1024; ++j) {
-                const math::vec3 pos = math::vec3{(float)i/1024.f, (float)j/1024.f, 0.8f};
-                const float perlin = noise.getNoise(pos*10.f);
-                noiseTable[i * 1024 + j] = perlin;
-            }
-        }
-        noiseTex->modify(0, math::vec2i{1024}, LS_R, LS_FLOAT, noiseTable);
-        noiseTex->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_NEAREST);
-        noiseTex->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_NEAREST);
-        noiseTex->setParameter(LS_TEX_WRAP_S, LS_TEX_REPEAT);
-        noiseTex->setParameter(LS_TEX_WRAP_T, LS_TEX_REPEAT);
+        regenerateNoise();
     }
     
-    delete [] noiseTable;
     delete pMeshLoader;
     
     return ret;
+}
+
+/******************************************************************************
+ * regenerate a noise texture
+******************************************************************************/
+void fbState::regenerateNoise() {
+    float* noiseTable = new float[TEST_NOISE_RESOLUTION*TEST_NOISE_RESOLUTION];
+    
+    noise.seed();
+    
+    for (unsigned i = 0; i < TEST_NOISE_RESOLUTION; ++i) {
+        for (int j = 0; j < TEST_NOISE_RESOLUTION; ++j) {
+            const math::vec3 pos = math::vec3{
+                (float)i/(float)TEST_NOISE_RESOLUTION,
+                (float)j/(float)TEST_NOISE_RESOLUTION,
+                0.8f
+            };
+            
+            //const float perlin = noise.getNoise(pos*TEST_NOISE_SAMPLES);
+            const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25);
+            noiseTable[i * TEST_NOISE_RESOLUTION + j] = 0.5 * (1.0+perlin);
+        }
+    }
+    
+    lsTexture* const pTexture = pScene->getTexture(2);
+    pTexture->bind();
+    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, LS_R, LS_FLOAT, noiseTable);
+    pTexture->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_LINEAR);
+    pTexture->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_NEAREST);
+    pTexture->setParameter(LS_TEX_WRAP_S, LS_TEX_REPEAT);
+    pTexture->setParameter(LS_TEX_WRAP_T, LS_TEX_REPEAT);
+    pTexture->unbind();
+    
+    delete [] noiseTable;
 }
 
 /******************************************************************************

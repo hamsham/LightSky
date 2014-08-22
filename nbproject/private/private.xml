@@ -7,8 +7,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/miles/C++/projects/LightSky/tests/Framebuffer_Test/fbState.cpp</file>
-            <file>file:/C:/Users/miles/C++/projects/LightSky/tests/Framebuffer_Test/fbState.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsMeshResource.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/include/lsMeshResource.h</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsAtlas.cpp</file>
+            <file>file:/C:/Users/miles/C++/projects/LightSky/src/lsMesh.cpp</file>
         </group>
     </open-files>
 </project-private>

@@ -19,6 +19,14 @@ struct SDL_TextInputEvent;
 struct SDL_MouseMotionEvent;
 struct SDL_MouseButtonEvent;
 struct SDL_MouseWheelEvent;
+struct SDL_ControllerDeviceEvent;
+struct SDL_ControllerAxisEvent;
+struct SDL_ControllerButtonEvent;
+struct SDL_JoyDeviceEvent;
+struct SDL_JoyAxisEvent;
+struct SDL_JoyBallEvent;
+struct SDL_JoyButtonEvent;
+struct SDL_JoyHatEvent;
 
 //-----------------------------------------------------------------------------
 //      Enumerations
@@ -78,11 +86,14 @@ class lsGameState {
         // All hardware and "on###()" methods are called by their parent
         // subsystem.
         
+        //---------------------------------------------------------------------
+        //          Keyboard Events
+        //---------------------------------------------------------------------
         /**
          * Event which allows a game state to input events when a keyboard key
          * is disengaged.
          * 
-         * @param A reference to an SDL_KeyboardEvent*
+         * @param A reference to an SDL_KeyboardEvent
          */
         virtual void onKeyboardUpEvent(const SDL_KeyboardEvent&);
         
@@ -90,7 +101,7 @@ class lsGameState {
          * Event which allows a game state to input events when a keyboard key
          * is pressed.
          * 
-         * @param A reference to an SDL_KeyboardEvent*
+         * @param A reference to an SDL_KeyboardEvent
          */
         virtual void onKeyboardDownEvent(const SDL_KeyboardEvent&);
         
@@ -98,23 +109,29 @@ class lsGameState {
          * Event which allows a game state to input events when a keyboard key
          * is used for text entry.
          * 
-         * @param A reference to an SDL_TextInputEvent*
+         * @param A reference to an SDL_TextInputEvent
          */
         virtual void onKeyboardTextEvent(const SDL_TextInputEvent&);
         
+        //---------------------------------------------------------------------
+        //          Window Events
+        //---------------------------------------------------------------------
         /**
          * Event which allows a game state to input events when the current
          * SDL display has been modified.
          * 
-         * @param A reference to an SDL_WindowEvent*
+         * @param A reference to an SDL_WindowEvent
          */
         virtual void onWindowEvent(const SDL_WindowEvent&);
         
+        //---------------------------------------------------------------------
+        //          Mouse Events
+        //---------------------------------------------------------------------
         /**
          * Event which allows a game state to input events when the mouse has
          * moved.
          * 
-         * @param A reference to an SDL_MouseMotionEvent*
+         * @param A reference to an SDL_MouseMotionEvent
          */
         virtual void onMouseMoveEvent(const SDL_MouseMotionEvent&);
         
@@ -122,7 +139,7 @@ class lsGameState {
          * Event which allows a game state to input events when a button on the
          * user's mouse has been depressed.
          * 
-         * @param A reference to an SDL_MouseButtonEvent*
+         * @param A reference to an SDL_MouseButtonEvent
          */
         virtual void onMouseButtonUpEvent(const SDL_MouseButtonEvent&);
         
@@ -130,7 +147,7 @@ class lsGameState {
          * Event which allows a game state to input events when a button on the
          * user's mouse has been engaged.
          * 
-         * @param A reference to an SDL_MouseButtonEvent*
+         * @param A reference to an SDL_MouseButtonEvent
          */
         virtual void onMouseButtonDownEvent(const SDL_MouseButtonEvent&);
         
@@ -138,10 +155,123 @@ class lsGameState {
          * Event which allows a game state to input events when the scroll wheel
          * on the user's mouse has moved.
          * 
-         * @param A reference to an SDL_MouseWheelEvent*
+         * @param A reference to an SDL_MouseWheelEvent
          */
         virtual void onMouseWheelEvent(const SDL_MouseWheelEvent&);
         
+        //---------------------------------------------------------------------
+        //          Controller Events
+        //---------------------------------------------------------------------
+        /**
+         * Event which allows a game state to input events when a controller
+         * has been plugged in.
+         * 
+         * @param A reference to an SDL_ControllerDeviceEvent
+         */
+        virtual void onControllerAddedEvent(const SDL_ControllerDeviceEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a controller
+         * has disconnected.
+         * 
+         * @param A reference to an SDL_ControllerDeviceEvent
+         */
+        virtual void onControllerRemovedEvent(const SDL_ControllerDeviceEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a controller
+         * has been remapped.
+         * 
+         * @param A reference to an SDL_ControllerDeviceEvent
+         */
+        virtual void onControllerRemappedEvent(const SDL_ControllerDeviceEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a controller
+         * has modified its axes.
+         * 
+         * @param A reference to an SDL_ControllerAxisEvent
+         */
+        virtual void onControllerAxisEvent(const SDL_ControllerAxisEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a controller
+         * had a button released.
+         * 
+         * @param A reference to an SDL_ControllerButtonEvent
+         */
+        virtual void onControllerButtonUpEvent(const SDL_ControllerButtonEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a controller
+         * had a button pressed.
+         * 
+         * @param A reference to an SDL_ControllerButtonEvent
+         */
+        virtual void onControllerButtonDownEvent(const SDL_ControllerButtonEvent&);
+        
+        //---------------------------------------------------------------------
+        //          Joystick Events
+        //---------------------------------------------------------------------
+        /**
+         * Event which allows a game state to input events when a joystick
+         * has been plugged.
+         * 
+         * @param A reference to an SDL_JoyDeviceEvent
+         */
+        virtual void onJoyAddEvent(const SDL_JoyDeviceEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a joystick
+         * has been disconnected.
+         * 
+         * @param A reference to an SDL_JoyDeviceEvent
+         */
+        virtual void onJoyRemoveEvent(const SDL_JoyDeviceEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a joystick
+         * has modified its axes.
+         * 
+         * @param A reference to an SDL_JoyAxisEvent
+         */
+        virtual void onJoyAxisEvent(const SDL_JoyAxisEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a joystick
+         * has changed it's trackball position.
+         * 
+         * @param A reference to an SDL_JoyBallEvent
+         */
+        virtual void onJoyBallEvent(const SDL_JoyBallEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a joystick
+         * had a button pressed.
+         * 
+         * @param A reference to an SDL_JoyButtonEvent
+         */
+        virtual void onJoyButtonDownEvent(const SDL_JoyButtonEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a joystick
+         * had a button released.
+         * 
+         * @param A reference to an SDL_JoyButtonEvent
+         */
+        virtual void onJoyButtonUpEvent(const SDL_JoyButtonEvent&);
+        
+        /**
+         * Event which allows a game state to input events when a joystick
+         * hat button event has occurred.
+         * 
+         * @param A reference to an SDL_JoyHatEvent
+         */
+        virtual void onJoyHatEvent(const SDL_JoyHatEvent&);
+        
+        //---------------------------------------------------------------------
+        //          System Events
+        //---------------------------------------------------------------------
         /**
          * The onStart method is called by the parent subsystem when *this
          * object has been notified to start. Place all memory allocations here.

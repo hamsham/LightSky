@@ -186,6 +186,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
+          <commandLine>-lpthread</commandLine>
         </ccTool>
         <linkerTool>
           <output>tests/Framebuffer_Test/fbTest_debug</output>
@@ -433,6 +434,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
+          <commandLine>-lpthread</commandLine>
         </ccTool>
         <linkerTool>
           <output>tests/Framebuffer_Test/fbTest</output>

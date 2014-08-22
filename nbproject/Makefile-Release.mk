@@ -280,25 +280,25 @@ tests/Framebuffer_Test/fbTest: ${TESTDIR}/tests/Framebuffer_Test/controlState.o 
 ${TESTDIR}/tests/Framebuffer_Test/controlState.o: tests/Framebuffer_Test/controlState.cpp 
 	${MKDIR} -p ${TESTDIR}/tests/Framebuffer_Test
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/controlState.o tests/Framebuffer_Test/controlState.cpp
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -lpthread -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/controlState.o tests/Framebuffer_Test/controlState.cpp
 
 
 ${TESTDIR}/tests/Framebuffer_Test/fbState.o: tests/Framebuffer_Test/fbState.cpp 
 	${MKDIR} -p ${TESTDIR}/tests/Framebuffer_Test
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/fbState.o tests/Framebuffer_Test/fbState.cpp
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -lpthread -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/fbState.o tests/Framebuffer_Test/fbState.cpp
 
 
 ${TESTDIR}/tests/Framebuffer_Test/main.o: tests/Framebuffer_Test/main.cpp 
 	${MKDIR} -p ${TESTDIR}/tests/Framebuffer_Test
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/main.o tests/Framebuffer_Test/main.cpp
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -lpthread -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/main.o tests/Framebuffer_Test/main.cpp
 
 
 ${TESTDIR}/tests/Framebuffer_Test/uiState.o: tests/Framebuffer_Test/uiState.cpp 
 	${MKDIR} -p ${TESTDIR}/tests/Framebuffer_Test
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/uiState.o tests/Framebuffer_Test/uiState.cpp
+	$(COMPILE.cc) -O3 -Wall -s -DSDL_MAIN_HANDLED -Iinclude -I../HamLibs/include -I../../../../../MinGW32/include/freetype2 -I. -I. -std=c++11 -lpthread -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Framebuffer_Test/uiState.o tests/Framebuffer_Test/uiState.cpp
 
 
 ${OBJECTDIR}/src/lightSky_nomain.o: ${OBJECTDIR}/src/lightSky.o src/lightSky.cpp 

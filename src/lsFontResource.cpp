@@ -9,7 +9,7 @@
 #include <utility> // std::move
 #include <string>
 
-#include <ft2build.h>
+#include <freetype2/ft2build.h>
 #include FT_FREETYPE_H
 
 /*
@@ -51,7 +51,7 @@ void copyGlyph(lsGlyph& pGlyph, const FT_GlyphSlot ftGlyph) {
     pGlyph.advance /= 64;
 
     // Copy the data from FreeType into the glyph
-    memcpy(pGlyph.pData, ftBitmap.buffer, ftBitmap.width*ftBitmap.rows);
+    std::copy(ftBitmap.buffer, ftBitmap.buffer+(ftBitmap.width*ftBitmap.rows), pGlyph.pData);
 }
 
 //-----------------------------------------------------------------------------

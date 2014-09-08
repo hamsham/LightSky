@@ -40,8 +40,7 @@ void printWindowFlags(uint32_t flags) {
         "\t\tSDL_WINDOW_INPUT_FOCUS:        ",  0 < (flags & SDL_WINDOW_INPUT_FOCUS), '\n',
         "\t\tSDL_WINDOW_MOUSE_FOCUS:        ",  0 < (flags & SDL_WINDOW_MOUSE_FOCUS), '\n',
         "\t\tSDL_WINDOW_FOREIGN:            ",  0 < (flags & SDL_WINDOW_FOREIGN), '\n',
-        "\t\tSDL_WINDOW_ALLOW_HIGHDPI:      ",  0 < (flags & SDL_WINDOW_ALLOW_HIGHDPI), '\n',
-        "\t\tSDL_WINDOW_MOUSE_CAPTURE:      ",  0 < (flags & SDL_WINDOW_MOUSE_CAPTURE), '\n'
+        "\t\tSDL_WINDOW_ALLOW_HIGHDPI:      ",  0 < (flags & SDL_WINDOW_ALLOW_HIGHDPI), '\n'
     );
 }
 

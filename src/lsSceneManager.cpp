@@ -5,7 +5,6 @@
  * Created on May 26, 2014, 11:22 AM
  */
 
-#include <algorithm>
 #include <utility>
 
 #include "lsColor.h"

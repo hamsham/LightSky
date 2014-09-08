@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=MinGW-Windows
-CND_ARTIFACT_DIR_Debug=bin
+CND_PLATFORM_Debug=MinGW32_Qt-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW32_Qt-Windows
 CND_ARTIFACT_NAME_Debug=liblightsky_d.a
-CND_ARTIFACT_PATH_Debug=bin/liblightsky_d.a
-CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW32_Qt-Windows/liblightsky_d.a
+CND_PACKAGE_DIR_Debug=dist/Debug/MinGW32_Qt-Windows/package
 CND_PACKAGE_NAME_Debug=LightSky.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/LightSky.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW32_Qt-Windows/package/LightSky.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW-Windows
-CND_ARTIFACT_DIR_Release=bin
+CND_PLATFORM_Release=MinGW32_Qt-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/MinGW32_Qt-Windows
 CND_ARTIFACT_NAME_Release=liblightsky.a
-CND_ARTIFACT_PATH_Release=bin/liblightsky.a
-CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW32_Qt-Windows/liblightsky.a
+CND_PACKAGE_DIR_Release=dist/Release/MinGW32_Qt-Windows/package
 CND_PACKAGE_NAME_Release=LightSky.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/LightSky.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW32_Qt-Windows/package/LightSky.tar
 #
 # include compiler specific variables
 #

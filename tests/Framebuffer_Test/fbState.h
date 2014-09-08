@@ -8,6 +8,9 @@
 #ifndef FRAMEBUFFER_STATE_H
 #define	FRAMEBUFFER_STATE_H
 
+#include <future>
+#include <vector>
+
 #include "main.h"
 
 /**
@@ -19,6 +22,19 @@ enum fb_test_res_t : int {
 };
 
 /**
+ * Function to generate a perlin noise texture on another thread.
+ * 
+ * @param w
+ * The width of the texture that should be generated.
+ * 
+ * @param h
+ * The height of the texture that should be generated.
+ * 
+ * @return A greyscale texture containing perlin noise
+ */
+std::vector<float> generateNoiseTexture(int w, int h);
+
+/**
  * Framebuffer testing state
  */
 class fbState final : virtual public lsGameState {
@@ -26,6 +42,7 @@ class fbState final : virtual public lsGameState {
      * Event Management
      */
     private:
+        float           secondTimer             = 0.f;
         int             mouseX                  = 0;
         int             mouseY                  = 0;
         lsShaderProgram meshProg                = {};
@@ -34,9 +51,11 @@ class fbState final : virtual public lsGameState {
         lsSceneManager* pScene                  = nullptr;
         bool*           pKeyStates              = nullptr;
         math::mat4*     pModelMatrices          = nullptr;
-        lsPerlinNoise   noise                   = {};
         math::vec2i     fbRes                   = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         math::quat      orientation             = {};
+        
+        // allows textures to be generated on another thread
+        std::future<std::vector<float>> futureNoise;
         
         virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
         virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;

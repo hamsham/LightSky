@@ -5,6 +5,7 @@
  * Created on July 30, 2014, 9:50 PM
  */
 
+#include <chrono>
 #include <utility>
 
 #include <SDL2/SDL_events.h>
@@ -83,6 +84,32 @@ void main() {
 )***";
 
 /******************************************************************************
+ * Tests for loading perlin noise on another thread
+******************************************************************************/
+std::vector<float> generateNoiseTexture(int w, int h) {
+    std::vector<float> noiseTable;
+    noiseTable.resize(w*h);
+    
+    lsPerlinNoise noise;
+    noise.seed();
+    
+    for (int i = 0; i < h; ++i) {
+        for (int j = 0; j < w; ++j) {
+            const math::vec3 pos = math::vec3{
+                (float)i/(float)h,
+                (float)j/(float)w,
+                0.8f
+            };
+            
+            const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25);
+            noiseTable[i * h + j] = 0.5 * (1.0+perlin);
+        }
+    }
+    
+    return noiseTable;
+}
+
+/******************************************************************************
  * Constructor & Destructor
 ******************************************************************************/
 fbState::fbState() :
@@ -95,10 +122,10 @@ fbState::fbState() :
 fbState::fbState(fbState&& state) :
     lsGameState{}
 {
-    *this = std::move(state);
-    
     SDL_StopTextInput();
     SDL_SetRelativeMouseMode(SDL_TRUE);
+    
+    *this = std::move(state);
 }
 
 fbState::~fbState() {
@@ -129,13 +156,13 @@ fbState& fbState::operator=(fbState&& state) {
     pModelMatrices = state.pModelMatrices;
     state.pModelMatrices = nullptr;
     
-    noise = std::move(state.noise);
-    
     fbRes = state.fbRes;
     state.fbRes = math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
     
     orientation = state.orientation;
     state.orientation = math::quat{};
+    
+    futureNoise = std::move(state.futureNoise);
     
     return *this;
 }
@@ -151,7 +178,11 @@ void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
     
     pKeyStates[key] = false;
     
-    if (key == SDL_SCANCODE_SPACE) {
+    // Allow noise textures to be generated on another thread if one is not
+    // being generated already
+    if (key == SDL_SCANCODE_SPACE
+    && futureNoise.wait_for(std::chrono::seconds{0}) == std::future_status::ready
+    ) {
         regenerateNoise();
     }
 }
@@ -304,6 +335,13 @@ bool fbState::initMemory() {
         pKeyStates[i] = false;
     }
     
+    futureNoise = std::move(std::async(
+        std::launch::async,
+        &generateNoiseTexture,
+        (int)TEST_NOISE_RESOLUTION,
+        (int)TEST_NOISE_RESOLUTION
+    ));
+    
     return true;
 }
 
@@ -348,34 +386,23 @@ bool fbState::initFileData() {
  * regenerate a noise texture
 ******************************************************************************/
 void fbState::regenerateNoise() {
-    float* noiseTable = new float[TEST_NOISE_RESOLUTION*TEST_NOISE_RESOLUTION];
-    
-    noise.seed();
-    
-    for (unsigned i = 0; i < TEST_NOISE_RESOLUTION; ++i) {
-        for (int j = 0; j < TEST_NOISE_RESOLUTION; ++j) {
-            const math::vec3 pos = math::vec3{
-                (float)i/(float)TEST_NOISE_RESOLUTION,
-                (float)j/(float)TEST_NOISE_RESOLUTION,
-                0.8f
-            };
-            
-            //const float perlin = noise.getNoise(pos*TEST_NOISE_SAMPLES);
-            const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25);
-            noiseTable[i * TEST_NOISE_RESOLUTION + j] = 0.5 * (1.0+perlin);
-        }
-    }
+    std::vector<float>&& noiseTable = futureNoise.get();
     
     lsTexture* const pTexture = pScene->getTexture(2);
     pTexture->bind();
-    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, LS_R, LS_FLOAT, noiseTable);
+    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, LS_R, LS_FLOAT, noiseTable.data());
     pTexture->setParameter(LS_TEX_MIN_FILTER, LS_FILTER_LINEAR);
     pTexture->setParameter(LS_TEX_MAG_FILTER, LS_FILTER_NEAREST);
     pTexture->setParameter(LS_TEX_WRAP_S, LS_TEX_REPEAT);
     pTexture->setParameter(LS_TEX_WRAP_T, LS_TEX_REPEAT);
     pTexture->unbind();
     
-    delete [] noiseTable;
+    futureNoise = std::move(std::async(
+        std::launch::async,
+        &generateNoiseTexture,
+        (int)TEST_NOISE_RESOLUTION,
+        (int)TEST_NOISE_RESOLUTION
+    ));
 }
 
 /******************************************************************************
@@ -577,6 +604,8 @@ void fbState::onStop() {
 
     delete [] pModelMatrices;
     pModelMatrices = nullptr;
+    
+    futureNoise.wait();
     
     fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
 }

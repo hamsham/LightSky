@@ -18,6 +18,8 @@ class uiState final : virtual public lsGameState {
      * Event Management
      */
     private:
+        unsigned long   numTicks            = 0;
+        float           secondTimer         = 0.f;
         lsShaderProgram fontProg            = {};
         lsSceneManager* pScene              = nullptr;
         lsBlendObject*  pBlender            = {};
@@ -36,14 +38,14 @@ class uiState final : virtual public lsGameState {
         void            drawScene           ();
         
     public:
-        uiState       ();
-        uiState       (const uiState&)      = delete;
-        uiState       (uiState&&);
+        uiState         ();
+        uiState         (const uiState&)      = delete;
+        uiState         (uiState&&);
         
-        ~uiState      ();
+        ~uiState        ();
         
-        uiState&      operator=             (const uiState&) = delete;
-        uiState&      operator=             (uiState&&);
+        uiState&        operator=             (const uiState&) = delete;
+        uiState&        operator=             (uiState&&);
         
         bool            onStart             () override;
         void            onRun               (float) override;

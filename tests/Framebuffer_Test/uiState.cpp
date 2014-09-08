@@ -217,6 +217,11 @@ bool uiState::onStart() {
  * Stopping state
 ******************************************************************************/
 void uiState::onStop() {
+    numTicks = 0;
+    secondTimer = 0.f;
+    
+    fontProg.terminate();
+    
     delete pScene;
     pScene = nullptr;
     
@@ -227,15 +232,27 @@ void uiState::onStop() {
 /******************************************************************************
  * Running state
 ******************************************************************************/
-void uiState::onRun(float) {
+void uiState::onRun(float dt) {
+    // Regenerate a string mesh using the frame's timing information.
+    ++numTicks;
+    secondTimer += dt;
+    if (secondTimer >= 1000.f) {
+        lsAtlas* const pStringAtlas = pScene->getAtlas(0);
+        lsMesh* const pStringMesh = pScene->getMesh(0);
+        const std::string&& timingStr = getTimingStr();
+        pStringMesh->init(*pStringAtlas, timingStr);
+        numTicks = 0;
+        secondTimer = 0.f;
+    }
+    
     drawScene();
 }
 
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
-void uiState::onPause(float) {
-    drawScene();
+void uiState::onPause(float dt) {
+    onRun(dt);
 }
 
 /******************************************************************************
@@ -243,7 +260,7 @@ void uiState::onPause(float) {
 ******************************************************************************/
 std::string uiState::getTimingStr() const {
     const float tickTime = getParentSystem().getTickTime() * 0.001f;
-    return lsUtil::toString(tickTime) + "MS\n" + lsUtil::toString(1.f/tickTime) + "FPS";
+    return std::to_string(numTicks) + "MS\n" + std::to_string(1.f/tickTime) + "FPS";
 }
 
 /******************************************************************************
@@ -285,12 +302,6 @@ void uiState::drawScene() {
     const math::vec2&& res  = (math::vec2)disp.getResolution();
     math::mat4 modelMat     = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
     modelMat                = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
-    
-    // Regenerate a string mesh using the frame's timing information.
-    lsAtlas* const pStringAtlas     = pScene->getAtlas(0);
-    lsMesh* const pStringMesh       = pScene->getMesh(0);
-    
-    pStringMesh->init(*pStringAtlas, getTimingStr());
     
     // model 1 has the string mesh already bound
     lsDrawModel* const pStringModel = pScene->getModelList()[0];

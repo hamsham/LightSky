@@ -45,7 +45,7 @@
     
 namespace ls {
 namespace draw {
-    void lsPrintGlError(int line, const char* file);
+    void printGlError(int line, const char* file);
 } // end draw namespace
 } // end ls namespace
 
@@ -68,14 +68,14 @@ namespace draw {
     
 namespace ls {
 namespace draw {
-    void lsPrintGlError(int, const char*) {}
+    inline void printGlError(int, const char*) {}
 } // end draw namespace
 } // end ls namespace
 
 #endif
 
 #ifndef LOG_GL_ERR
-    #define LOG_GL_ERR() ls::draw::lsPrintGlError(__LINE__, __FILE__)
+    #define LOG_GL_ERR() ls::draw::printGlError(__LINE__, __FILE__)
 #endif
 
 #endif	/* __LS_DRAW_SETUP_H__ */

@@ -29,7 +29,7 @@ gameState::gameState(gameState&& gs) :
     pSystem{gs.pSystem},
     currentState{gs.currentState}
 {
-    gs.currentState = LS_GAME_STOPPED;
+    gs.currentState = GAME_STOPPED;
 }
 
 /*-------------------------------------
@@ -39,7 +39,7 @@ gameState& gameState::operator=(gameState&& gs) {
     pSystem = gs.pSystem;
     
     currentState = gs.currentState;
-    gs.currentState = LS_GAME_STOPPED;
+    gs.currentState = GAME_STOPPED;
     
     return *this;
 }

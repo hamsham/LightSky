@@ -16,7 +16,7 @@ namespace draw {
  * OpenGL Errors
 -------------------------------------*/
 #ifdef LS_DEBUG
-void lsPrintGlError(int line, const char* file) {
+void printGlError(int line, const char* file) {
     const GLenum errorCode = glGetError();
     
     switch(errorCode) {

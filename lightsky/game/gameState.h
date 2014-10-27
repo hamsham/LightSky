@@ -36,12 +36,12 @@ namespace game {
     ls::game::system objects and different game state objects.
 -----------------------------------------------------------------------------*/
 enum game_state_t : unsigned {
-    LS_GAME_INVALID = (unsigned)-1,
+    GAME_INVALID = (unsigned)-1,
     
-    LS_GAME_PAUSED  = 0,
-    LS_GAME_RUNNING = 1,
-    LS_GAME_STOPPED = 2,
-    LS_GAME_INIT    = 3
+    GAME_PAUSED     = 0,
+    GAME_RUNNING    = 1,
+    GAME_STOPPED    = 2,
+    GAME_INIT       = 3
 };
 
 /**----------------------------------------------------------------------------
@@ -67,7 +67,7 @@ class gameState {
          * The current state that is used by *this. This variable is also
          * assigned by the parent subsystem and should not be modified.
          */
-        game_state_t currentState = LS_GAME_STOPPED;
+        game_state_t currentState = GAME_STOPPED;
         
         /**
          * Used by the parent subsystem to help with gameState management.

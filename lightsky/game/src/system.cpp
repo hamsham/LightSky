@@ -214,26 +214,26 @@ void system::updateGameStates(float tickTime) {
     for(unsigned i = 0; i < gameList.size(); ++i) {
         switch(gameList[i]->getState()) {
             
-            case LS_GAME_RUNNING:
+            case GAME_RUNNING:
                 gameList[i]->onRun(tickTime);
                 break;
             
-            case LS_GAME_PAUSED:
+            case GAME_PAUSED:
                 gameList[i]->onPause(tickTime);
                 break;
             
-            case LS_GAME_STOPPED:
+            case GAME_STOPPED:
                 popGameState(i);
                 i -= 1;
                 break;
             
-            case LS_GAME_INIT:
+            case GAME_INIT:
                 if (gameList[i]->onStart() == true) {
-                    gameList[i]->setState(LS_GAME_RUNNING);
+                    gameList[i]->setState(GAME_RUNNING);
                 }
                 else {
                     LS_LOG_GAME_ERR("ERROR: A new gameState was unable to start.");
-                    gameList[i]->setState(LS_GAME_STOPPED);
+                    gameList[i]->setState(GAME_STOPPED);
                 }
             
             default:
@@ -252,7 +252,7 @@ bool system::pushGameState(gameState* const pState) {
     }
     
     pState->setParentSystem(*this);
-    pState->setState(LS_GAME_INIT);
+    pState->setState(GAME_INIT);
     gameList.push_back(pState);
     
     return true;
@@ -314,7 +314,7 @@ unsigned system::getGameStateIndex(gameState* const pState) {
         }
     }
     
-    return LS_GAME_INVALID;
+    return GAME_INVALID;
 }
 
 /*-------------------------------------
@@ -325,7 +325,7 @@ void system::stop() {
     tickTime = 0.f;
     
     for (gameState* state : gameList) {
-        state->setState(LS_GAME_STOPPED);
+        state->setState(GAME_STOPPED);
     }
 }
 

@@ -41,9 +41,9 @@ bool global::init() {
 #endif
     );
     
-    if (!SDL_Init(SDL_INIT_EVERYTHING)) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         LS_LOG_GAME_ERR(
-            "Unable to initialize SDL.\n", SDL_GetError(), '\n',
+            "Unable to initialize SDL due to error ", (int)SDL_GetError(), '\n',
             "Complain to your local programmer.\n"
         );
         return false;

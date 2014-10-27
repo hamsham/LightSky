@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="generic" displayName="generic" projectFiles="true">
+        <itemPath>../lightsky/draw/generic/atlas_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/blendObject_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/boundingBox_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/bufferObject_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/context_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/depthObject_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/display_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/fontResource_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/framebuffer_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/imageResource_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/matrixStack_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/meshModel_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/meshResource_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/mesh_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/renderer_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/sceneManager_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/shaderObject_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/shaderProgram_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/texture_impl.h</itemPath>
+      </logicalFolder>
+      <itemPath>../lightsky/draw/atlas.h</itemPath>
+      <itemPath>../lightsky/draw/blendObject.h</itemPath>
+      <itemPath>../lightsky/draw/boundingBox.h</itemPath>
+      <itemPath>../lightsky/draw/bufferObject.h</itemPath>
+      <itemPath>../lightsky/draw/color.h</itemPath>
+      <itemPath>../lightsky/draw/context.h</itemPath>
+      <itemPath>../lightsky/draw/depthObject.h</itemPath>
+      <itemPath>../lightsky/draw/display.h</itemPath>
+      <itemPath>../lightsky/draw/draw.h</itemPath>
+      <itemPath>../lightsky/draw/fontResource.h</itemPath>
+      <itemPath>../lightsky/draw/framebuffer.h</itemPath>
+      <itemPath>../lightsky/draw/geometry.h</itemPath>
+      <itemPath>../lightsky/draw/imageResource.h</itemPath>
+      <itemPath>../lightsky/draw/matrixStack.h</itemPath>
+      <itemPath>../lightsky/draw/mesh.h</itemPath>
+      <itemPath>../lightsky/draw/meshModel.h</itemPath>
+      <itemPath>../lightsky/draw/meshResource.h</itemPath>
+      <itemPath>../lightsky/draw/renderer.h</itemPath>
+      <itemPath>../lightsky/draw/sceneManager.h</itemPath>
+      <itemPath>../lightsky/draw/setup.h</itemPath>
+      <itemPath>../lightsky/draw/shaderObject.h</itemPath>
+      <itemPath>../lightsky/draw/shaderProgram.h</itemPath>
+      <itemPath>../lightsky/draw/texture.h</itemPath>
+      <itemPath>../lightsky/draw/vertex.h</itemPath>
+      <itemPath>../lightsky/draw/vertexArray.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../lightsky/draw/src/atlas.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/blendObject.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/boundingBox.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/bufferObject.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/context.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/depthObject.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/display.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/fontResource.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/framebuffer.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/geometry.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/imageResource.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/matrixStack.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/mesh.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/meshModel.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/meshResource.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/sceneManager.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/setup.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/shaderObject.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/shaderProgram.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/texture.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/vertexArray.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../lightsky/draw</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>..</pElem>
+            <pElem>../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2</pElem>
+          </incDir>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
+          <preprocessorList>
+            <Elem>LS_DEBUG</Elem>
+          </preprocessorList>
+        </ccTool>
+        <archiverTool>
+          <output>build/liblightdraw_d.a</output>
+        </archiverTool>
+        <requiredProjects>
+          <makeArtifact PL="../LightSetup"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../LightSetup"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightsetup_d.a">
+          </makeArtifact>
+          <makeArtifact PL="../LightMath"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../LightMath"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightmath_d.a">
+          </makeArtifact>
+          <makeArtifact PL="../LightUtils"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../LightUtils"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightutils_d.a">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="../lightsky/draw/atlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/blendObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/boundingBox.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/bufferObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/context.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/depthObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/draw.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/fontResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/framebuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/atlas_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/blendObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/boundingBox_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/bufferObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/context_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/depthObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/display_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/fontResource_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/framebuffer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/imageResource_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/matrixStack_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/meshModel_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/meshResource_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/mesh_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/renderer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/sceneManager_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/shaderObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/shaderProgram_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/texture_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/imageResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/matrixStack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/meshModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/meshResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/sceneManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/shaderObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/shaderProgram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/atlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/blendObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/boundingBox.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/bufferObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/context.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/depthObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/fontResource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/framebuffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/imageResource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/matrixStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/mesh.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/meshModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/meshResource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/sceneManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/setup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/shaderObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/shaderProgram.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/vertexArray.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/vertex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/vertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
+          <incDir>
+            <pElem>..</pElem>
+            <pElem>../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2</pElem>
+          </incDir>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse</commandLine>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+          <output>build/liblightdraw.a</output>
+        </archiverTool>
+        <requiredProjects>
+          <makeArtifact PL="../LightSetup"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="false"
+                        WD="../LightSetup"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightsetup.a">
+          </makeArtifact>
+          <makeArtifact PL="../LightMath"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="false"
+                        WD="../LightMath"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightmath.a">
+          </makeArtifact>
+          <makeArtifact PL="../LightUtils"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="false"
+                        WD="../LightUtils"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightutils.a">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="../lightsky/draw/atlas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/blendObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/boundingBox.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/bufferObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/context.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/depthObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/draw.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/fontResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/framebuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/atlas_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/blendObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/boundingBox_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/bufferObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/context_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/depthObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/display_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/fontResource_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/framebuffer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/imageResource_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/matrixStack_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/meshModel_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/meshResource_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/mesh_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/renderer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/sceneManager_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/shaderObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/shaderProgram_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/generic/texture_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/imageResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/matrixStack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/meshModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/meshResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/sceneManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/shaderObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/shaderProgram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/atlas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/blendObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/boundingBox.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/bufferObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/context.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/depthObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/fontResource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/framebuffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/imageResource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/matrixStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/mesh.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/meshModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/meshResource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/sceneManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/setup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/shaderObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/shaderProgram.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/src/vertexArray.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/vertex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/vertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

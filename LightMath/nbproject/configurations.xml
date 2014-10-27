@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="generic" displayName="generic" projectFiles="true">
+        <itemPath>../lightsky/math/generic/fixed_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/mat2_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/mat3_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/mat4_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/mat_utils_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/quat_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/quat_utils_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/scalar_utils_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/vec2_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/vec3_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/vec4_impl.h</itemPath>
+        <itemPath>../lightsky/math/generic/vec_utils_impl.h</itemPath>
+      </logicalFolder>
+      <itemPath>../lightsky/math/fixed.h</itemPath>
+      <itemPath>../lightsky/math/mat2.h</itemPath>
+      <itemPath>../lightsky/math/mat3.h</itemPath>
+      <itemPath>../lightsky/math/mat4.h</itemPath>
+      <itemPath>../lightsky/math/mat_utils.h</itemPath>
+      <itemPath>../lightsky/math/math.h</itemPath>
+      <itemPath>../lightsky/math/perlinNoise.h</itemPath>
+      <itemPath>../lightsky/math/quat.h</itemPath>
+      <itemPath>../lightsky/math/quat_utils.h</itemPath>
+      <itemPath>../lightsky/math/scalar_utils.h</itemPath>
+      <itemPath>../lightsky/math/setup.h</itemPath>
+      <itemPath>../lightsky/math/types.h</itemPath>
+      <itemPath>../lightsky/math/vec2.h</itemPath>
+      <itemPath>../lightsky/math/vec3.h</itemPath>
+      <itemPath>../lightsky/math/vec4.h</itemPath>
+      <itemPath>../lightsky/math/vec_utils.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../lightsky/math/src/fixed.cpp</itemPath>
+      <itemPath>../lightsky/math/src/mat2.cpp</itemPath>
+      <itemPath>../lightsky/math/src/mat3.cpp</itemPath>
+      <itemPath>../lightsky/math/src/mat4.cpp</itemPath>
+      <itemPath>../lightsky/math/src/mat_utils.cpp</itemPath>
+      <itemPath>../lightsky/math/src/perlinNoise.cpp</itemPath>
+      <itemPath>../lightsky/math/src/quat.cpp</itemPath>
+      <itemPath>../lightsky/math/src/quat_utils.cpp</itemPath>
+      <itemPath>../lightsky/math/src/scalar_utils.cpp</itemPath>
+      <itemPath>../lightsky/math/src/vec2.cpp</itemPath>
+      <itemPath>../lightsky/math/src/vec3.cpp</itemPath>
+      <itemPath>../lightsky/math/src/vec4.cpp</itemPath>
+      <itemPath>../lightsky/math/src/vec_utils.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../lightsky/math</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>..</pElem>
+          </incDir>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
+          <preprocessorList>
+            <Elem>LS_DEBUG</Elem>
+          </preprocessorList>
+        </ccTool>
+        <archiverTool>
+          <output>build/liblightmath_d.a</output>
+        </archiverTool>
+        <requiredProjects>
+          <makeArtifact PL="../LightSetup"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../LightSetup"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightsetup_d.a">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="../lightsky/math/fixed.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/fixed_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat2_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat3_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat4_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/quat_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/quat_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/scalar_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec2_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec3_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec4_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat4.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/math.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/perlinNoise.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/quat.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/quat_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/scalar_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/fixed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/perlinNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/quat.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/quat_utils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/scalar_utils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/types.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec4.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
+          <incDir>
+            <pElem>..</pElem>
+          </incDir>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse</commandLine>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+          <output>build/liblightmath.a</output>
+        </archiverTool>
+        <requiredProjects>
+          <makeArtifact PL="../LightSetup"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="false"
+                        WD="../LightSetup"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightsetup.a">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="../lightsky/math/fixed.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/fixed_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat2_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat3_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat4_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/mat_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/quat_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/quat_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/scalar_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec2_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec3_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec4_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/generic/vec_utils_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat4.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/mat_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/math.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/perlinNoise.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/quat.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/quat_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/scalar_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/fixed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/mat_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/perlinNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/quat.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/quat_utils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/scalar_utils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/src/vec_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../lightsky/math/types.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec4.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/math/vec_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

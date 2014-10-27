@@ -217,7 +217,6 @@ bool uiState::onStart() {
  * Stopping state
 ******************************************************************************/
 void uiState::onStop() {
-    numTicks = 0;
     secondTimer = 0.f;
     
     fontProg.terminate();
@@ -234,14 +233,12 @@ void uiState::onStop() {
 ******************************************************************************/
 void uiState::onRun(float dt) {
     // Regenerate a string mesh using the frame's timing information.
-    ++numTicks;
     secondTimer += dt;
     if (secondTimer >= 1000.f) {
         lsAtlas* const pStringAtlas = pScene->getAtlas(0);
         lsMesh* const pStringMesh = pScene->getMesh(0);
         const std::string&& timingStr = getTimingStr();
         pStringMesh->init(*pStringAtlas, timingStr);
-        numTicks = 0;
         secondTimer = 0.f;
     }
     
@@ -259,8 +256,8 @@ void uiState::onPause(float dt) {
  * Get a string representing the current Ms/s and F/s
 ******************************************************************************/
 std::string uiState::getTimingStr() const {
-    const float tickTime = getParentSystem().getTickTime() * 0.001f;
-    return std::to_string(numTicks) + "MS\n" + std::to_string(1.f/tickTime) + "FPS";
+    const float tickTime = getParentSystem().getTickTime();// * 0.001f;
+    return std::to_string(tickTime) + "MS\n" + std::to_string(1.f/tickTime) + "FPS";
 }
 
 /******************************************************************************

@@ -89,20 +89,20 @@ void main() {
 std::vector<float> generateNoiseTexture(int w, int h) {
     std::vector<float> noiseTable;
     noiseTable.resize(w*h);
-    
-    lsPerlinNoise noise;
-    noise.seed();
+    const float width = (float)w;
+    const float height = (float)h;
+    lsPerlinNoise noise{1ul};
     
     for (int i = 0; i < h; ++i) {
+        // cache all casts to reduce how many are done per iteration
+        const float hIter = (float)i;
+        
         for (int j = 0; j < w; ++j) {
-            const math::vec3 pos = math::vec3{
-                (float)i/(float)h,
-                (float)j/(float)w,
-                0.8f
-            };
+            const float wIter = (float)j;
             
+            const math::vec3&& pos = math::vec3{wIter/width, hIter/height, 0.5f};
             const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25);
-            noiseTable[i * h + j] = 0.5 * (1.0+perlin);
+            noiseTable[i * h + j] = 0.5f * (0.5f+perlin);
         }
     }
     
@@ -215,7 +215,7 @@ void fbState::updateKeyStates(float dt) {
         pos[0] -= moveSpeed;
     }
     
-    const math::vec3 translation = {
+    const math::vec3&& translation = {
         math::dot(math::getAxisX(orientation), pos),
         math::dot(math::getAxisY(orientation), pos),
         math::dot(math::getAxisZ(orientation), pos)
@@ -421,7 +421,7 @@ bool fbState::initMatrices() {
     );
     pMatStack->loadMatrix(
         LS_VIEW_MATRIX,
-        math::lookAt(math::vec3((float)TEST_MAX_SCENE_OBJECTS), math::vec3(0.f), math::vec3(0.f, 1.f, 0.f))
+        math::lookAt(math::vec3((float)TEST_MAX_SCENE_OBJECTS), math::vec3{0.f}, math::vec3{0.f, 1.f, 0.f})
     );
     pMatStack->constructVp();
     

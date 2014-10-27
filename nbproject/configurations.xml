@@ -1,109 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="94">
+<configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="include" displayName="include" projectFiles="true">
-      <itemPath>include/lightSky.h</itemPath>
-      <itemPath>include/lsAtlas.h</itemPath>
-      <itemPath>include/lsBlendObject.h</itemPath>
-      <itemPath>include/lsBoundingBox.h</itemPath>
-      <itemPath>include/lsBufferObject.h</itemPath>
-      <itemPath>include/lsColor.h</itemPath>
-      <itemPath>include/lsContext.h</itemPath>
-      <itemPath>include/lsDataResource.h</itemPath>
-      <itemPath>include/lsDepthObject.h</itemPath>
-      <itemPath>include/lsDisplay.h</itemPath>
-      <itemPath>include/lsDrawModel.h</itemPath>
-      <itemPath>include/lsFontResource.h</itemPath>
-      <itemPath>include/lsFramebuffer.h</itemPath>
-      <itemPath>include/lsGameState.h</itemPath>
-      <itemPath>include/lsGeometry.h</itemPath>
-      <itemPath>include/lsImageResource.h</itemPath>
-      <itemPath>include/lsManager.h</itemPath>
-      <itemPath>include/lsMatrixStack.h</itemPath>
-      <itemPath>include/lsMesh.h</itemPath>
-      <itemPath>include/lsMeshResource.h</itemPath>
-      <itemPath>include/lsPerlinNoise.h</itemPath>
-      <itemPath>include/lsRandom.h</itemPath>
-      <itemPath>include/lsRenderer.h</itemPath>
-      <itemPath>include/lsResource.h</itemPath>
-      <itemPath>include/lsSceneManager.h</itemPath>
-      <itemPath>include/lsSetup.h</itemPath>
-      <itemPath>include/lsShaderObject.h</itemPath>
-      <itemPath>include/lsShaderProgram.h</itemPath>
-      <itemPath>include/lsSystem.h</itemPath>
-      <itemPath>include/lsTexture.h</itemPath>
-      <itemPath>include/lsUtil.h</itemPath>
-      <itemPath>include/lsVertex.h</itemPath>
-      <itemPath>include/lsVertexArray.h</itemPath>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>lightsky/lightsky.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
     </logicalFolder>
-    <logicalFolder name="src" displayName="src" projectFiles="true">
-      <itemPath>src/lightSky.cpp</itemPath>
-      <itemPath>src/lsAtlas.cpp</itemPath>
-      <itemPath>src/lsBlendObject.cpp</itemPath>
-      <itemPath>src/lsBoundingBox.cpp</itemPath>
-      <itemPath>src/lsBufferObject.cpp</itemPath>
-      <itemPath>src/lsColor.cpp</itemPath>
-      <itemPath>src/lsContext.cpp</itemPath>
-      <itemPath>src/lsDataResource.cpp</itemPath>
-      <itemPath>src/lsDepthObject.cpp</itemPath>
-      <itemPath>src/lsDisplay.cpp</itemPath>
-      <itemPath>src/lsDrawModel.cpp</itemPath>
-      <itemPath>src/lsFontResource.cpp</itemPath>
-      <itemPath>src/lsFramebuffer.cpp</itemPath>
-      <itemPath>src/lsGameState.cpp</itemPath>
-      <itemPath>src/lsGeometry.cpp</itemPath>
-      <itemPath>src/lsImageResource.cpp</itemPath>
-      <itemPath>src/lsManager.cpp</itemPath>
-      <itemPath>src/lsMatrixStack.cpp</itemPath>
-      <itemPath>src/lsMesh.cpp</itemPath>
-      <itemPath>src/lsMeshResource.cpp</itemPath>
-      <itemPath>src/lsPerlinNoise.cpp</itemPath>
-      <itemPath>src/lsRandom.cpp</itemPath>
-      <itemPath>src/lsRenderer.cpp</itemPath>
-      <itemPath>src/lsResource.cpp</itemPath>
-      <itemPath>src/lsSceneManager.cpp</itemPath>
-      <itemPath>src/lsSetup.cpp</itemPath>
-      <itemPath>src/lsShaderObject.cpp</itemPath>
-      <itemPath>src/lsShaderProgram.cpp</itemPath>
-      <itemPath>src/lsSystem.cpp</itemPath>
-      <itemPath>src/lsTexture.cpp</itemPath>
-      <itemPath>src/lsUtil.cpp</itemPath>
-      <itemPath>src/lsVertex.cpp</itemPath>
-      <itemPath>src/lsVertexArray.cpp</itemPath>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>lightsky/src/lightsky.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
-      <logicalFolder name="f1"
-                     displayName="Framebuffer Test"
-                     projectFiles="true"
-                     kind="TEST">
-        <itemPath>tests/Framebuffer_Test/controlState.cpp</itemPath>
-        <itemPath>tests/Framebuffer_Test/controlState.h</itemPath>
-        <itemPath>tests/Framebuffer_Test/fbState.cpp</itemPath>
-        <itemPath>tests/Framebuffer_Test/fbState.h</itemPath>
-        <itemPath>tests/Framebuffer_Test/main.cpp</itemPath>
-        <itemPath>tests/Framebuffer_Test/main.h</itemPath>
-        <itemPath>tests/Framebuffer_Test/uiState.cpp</itemPath>
-        <itemPath>tests/Framebuffer_Test/uiState.h</itemPath>
-      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>.gitignore</itemPath>
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>include</Elem>
-    <Elem>src</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -114,237 +39,85 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
         <ccTool>
           <standard>8</standard>
           <incDir>
-            <pElem>include</pElem>
-            <pElem>../HamLibs/include</pElem>
-            <pElem>../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2</pElem>
+            <pElem>.</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -flto -O2 -static-libgcc -static-libstdc++ -ggdb</commandLine>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
           <preprocessorList>
-            <Elem>HL_DEBUG</Elem>
             <Elem>LS_DEBUG</Elem>
-            <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>
-          <warningLevel>2</warningLevel>
         </ccTool>
         <archiverTool>
-          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblightsky_d.a</output>
+          <output>build/liblightsky_d.a</output>
         </archiverTool>
         <requiredProjects>
-          <makeArtifact PL="../HamLibs"
+          <makeArtifact PL="LightSetup"
                         CT="3"
-                        CN="Release"
+                        CN="Debug"
                         AC="true"
-                        BL="false"
-                        WD="../HamLibs"
-                        BC="${MAKE}  -f Makefile CONF=Release"
-                        CC="${MAKE}  -f Makefile CONF=Release clean"
-                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libhamlibs.a">
+                        BL="true"
+                        WD="LightSetup"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightsetup_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightUtils"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightUtils"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightutils_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightMath"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightMath"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightmath_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightScript"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightScript"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightscript_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightDraw"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightDraw"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightdraw_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightGame"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightGame"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightgame_d.a">
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <folder path="TestFiles">
-        <linkerTool>
-          <linkerLibItems>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>SDL2.dll</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibLibItem>FreeImage</linkerLibLibItem>
-            <linkerLibLibItem>freetype</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../HamLibs"
-                            CT="3"
-                            CN="Release"
-                            AC="true"
-                            BL="false"
-                            WD="../HamLibs"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libhamlibs.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-          </incDir>
-          <commandLine>-lpthread</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>tests/Framebuffer_Test/fbTest_debug</output>
-        </linkerTool>
-      </folder>
-      <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
+      <item path="lightsky/lightsky.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsBlendObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsBufferObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsColor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsContext.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDepthObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDisplay.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDrawModel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsFontResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsFramebuffer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsGameState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsGeometry.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsImageResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsManager.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsMatrixStack.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsMesh.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsPerlinNoise.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsRandom.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsSceneManager.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsSetup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsShaderObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsShaderProgram.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsSystem.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsTexture.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsUtil.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsBlendObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsBufferObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsColor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsContext.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDepthObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDisplay.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDrawModel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsFontResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsFramebuffer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsGameState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsGeometry.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsImageResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsManager.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsMatrixStack.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsPerlinNoise.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsRandom.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsRenderer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsSceneManager.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsSetup.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsShaderObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsShaderProgram.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsSystem.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsTexture.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsUtil.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/controlState.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/controlState.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/fbState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/fbState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/main.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/uiState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/uiState.h" ex="false" tool="3" flavor2="0">
+      <item path="lightsky/src/lightsky.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -356,24 +129,15 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>6</developmentMode>
           <stripSymbols>true</stripSymbols>
           <standard>8</standard>
           <incDir>
-            <pElem>include</pElem>
-            <pElem>../HamLibs/include</pElem>
-            <pElem>../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2</pElem>
+            <pElem>.</pElem>
           </incDir>
-          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -flto -O3 -mwindows -static-libgcc -static-libstdc++</commandLine>
-          <preprocessorList>
-            <Elem>SDL_MAIN_HANDLED</Elem>
-          </preprocessorList>
-          <warningLevel>2</warningLevel>
+          <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -382,216 +146,74 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <archiverTool>
+          <output>build/liblightsky.a</output>
         </archiverTool>
         <requiredProjects>
-          <makeArtifact PL="../HamLibs"
+          <makeArtifact PL="LightSetup"
                         CT="3"
                         CN="Release"
-                        AC="true"
-                        BL="false"
-                        WD="../HamLibs"
+                        AC="false"
+                        BL="true"
+                        WD="LightSetup"
                         BC="${MAKE}  -f Makefile CONF=Release"
                         CC="${MAKE}  -f Makefile CONF=Release clean"
-                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libhamlibs.a">
+                        OP="build/liblightsetup.a">
+          </makeArtifact>
+          <makeArtifact PL="LightUtils"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="LightUtils"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightutils.a">
+          </makeArtifact>
+          <makeArtifact PL="LightMath"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="LightMath"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightmath.a">
+          </makeArtifact>
+          <makeArtifact PL="LightScript"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="LightScript"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightscript.a">
+          </makeArtifact>
+          <makeArtifact PL="LightDraw"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="LightDraw"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightdraw.a">
+          </makeArtifact>
+          <makeArtifact PL="LightGame"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="LightGame"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightgame.a">
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <folder path="TestFiles">
-        <linkerTool>
-          <linkerLibItems>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>SDL2.dll</linkerLibLibItem>
-            <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibLibItem>FreeImage</linkerLibLibItem>
-            <linkerLibLibItem>freetype</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../HamLibs"
-                            CT="3"
-                            CN="Release"
-                            AC="true"
-                            BL="false"
-                            WD="../HamLibs"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libhamlibs.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-          </incDir>
-          <commandLine>-lpthread</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>tests/Framebuffer_Test/fbTest</output>
-          <stripSymbols>true</stripSymbols>
-        </linkerTool>
-      </folder>
-      <item path="include/lightSky.h" ex="false" tool="3" flavor2="0">
+      <item path="lightsky/lightsky.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/lsAtlas.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsBlendObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsBoundingBox.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsBufferObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsColor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsContext.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDataResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDepthObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDisplay.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsDrawModel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsFontResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsFramebuffer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsGameState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsGeometry.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsImageResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsManager.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsMatrixStack.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsMesh.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsMeshResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsPerlinNoise.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsRandom.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsRenderer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsSceneManager.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsSetup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsShaderObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsShaderProgram.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsSystem.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsTexture.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsUtil.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsVertex.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/lsVertexArray.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/lightSky.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsAtlas.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsBlendObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsBoundingBox.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsBufferObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsColor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsContext.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDataResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDepthObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDisplay.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsDrawModel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsFontResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsFramebuffer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsGameState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsGeometry.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsImageResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsManager.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsMatrixStack.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsMesh.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsMeshResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsPerlinNoise.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsRandom.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsRenderer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsSceneManager.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsSetup.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsShaderObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsShaderProgram.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsSystem.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsTexture.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsUtil.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsVertex.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/lsVertexArray.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/controlState.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/controlState.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/fbState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/fbState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/main.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/uiState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/Framebuffer_Test/uiState.h" ex="false" tool="3" flavor2="0">
+      <item path="lightsky/src/lightsky.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

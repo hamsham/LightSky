@@ -18,7 +18,6 @@ class uiState final : virtual public lsGameState {
      * Event Management
      */
     private:
-        unsigned long   numTicks            = 0;
         float           secondTimer         = 0.f;
         lsShaderProgram fontProg            = {};
         lsSceneManager* pScene              = nullptr;

@@ -1,0 +1,3429 @@
+.TH "ls::math" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::math \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBfixed_t\fP"
+.br
+.RI "\fIFixed-Point number Class\&. Utilizes the bits provided by a type from a 'fixed_base_t' in order to store integral values that represent a fixed-precision number\&. \fP"
+.ti -1c
+.RI "struct \fBmat2_t\fP"
+.br
+.RI "\fI2D Matrix Structure recommended for use with non-integral types \fP"
+.ti -1c
+.RI "struct \fBmat3_t\fP"
+.br
+.RI "\fI3D Matrix Structure recommended for use with non-integral types \fP"
+.ti -1c
+.RI "struct \fBmat4_t\fP"
+.br
+.RI "\fI4D Matrix Structure recommended for use with non-integral types \fP"
+.ti -1c
+.RI "class \fBperlinNoise_t\fP"
+.br
+.RI "\fISimple class to generate Perlin noise\&. \fP"
+.ti -1c
+.RI "struct \fBquat_t\fP"
+.br
+.RI "\fIQuaternion Structure\&. \fP"
+.ti -1c
+.RI "struct \fBvec2_t\fP"
+.br
+.RI "\fI2D Vector Structure \fP"
+.ti -1c
+.RI "struct \fBvec3_t\fP"
+.br
+.RI "\fI3D Vector Structure \fP"
+.ti -1c
+.RI "struct \fBvec4_t\fP"
+.br
+.RI "\fI4D Vector Structure \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum : unsigned { \fBMAX_PERMUTATIONS\fP = 512 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (lowp_t, \fBfixed_t\fP, int32_t, 7)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (lowp, \fBfixed_t\fP, \fBLS_INT\fP, 7)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (medp_t, \fBfixed_t\fP, int32_t, 15)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (medp, \fBfixed_t\fP, \fBLS_INT\fP, 15)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (highp_t, \fBfixed_t\fP, int32_t, 23)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (highp, \fBfixed_t\fP, \fBLS_INT\fP, 23)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (long_lowp_t, \fBfixed_t\fP, int64_t, 15)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (long_medp_t, \fBfixed_t\fP, int64_t, 31)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (long_highp_t, \fBfixed_t\fP, int64_t, 47)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (ulowp_t, \fBfixed_t\fP, uint32_t, 8)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (ulowp, \fBfixed_t\fP, \fBLS_UINT\fP, 8)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (umedp_t, \fBfixed_t\fP, uint32_t, 16)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (umedp, \fBfixed_t\fP, \fBLS_UINT\fP, 16)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (uhighp_t, \fBfixed_t\fP, uint32_t, 24)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (uhigh, \fBfixed_t\fP, \fBLS_UINT\fP, 24)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (ulong_lowp_t, \fBfixed_t\fP, uint64_t, 16)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (ulong_medp_t, \fBfixed_t\fP, uint64_t, 32)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (ulong_highp_t, \fBfixed_t\fP, uint64_t, 48)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBquat_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBquat_t\fP< num_t > &q)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBquat_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBquat_t\fP< num_t > &q)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBquat_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBquat_t\fP< num_t > &q)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBquat_t\fP< num_t > \fBoperator/\fP (num_t n, const \fBquat_t\fP< num_t > &q)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec2_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBvec2_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec2_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBvec2_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec2_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBvec2_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec3_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBvec3_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec3_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBvec3_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec3_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBvec3_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec4_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBvec4_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec4_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBvec4_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBvec4_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBvec4_t\fP< num_t > &v)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat2_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBmat2_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat2_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBmat2_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat2_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBmat2_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat2f, \fBmat2_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat2d, \fBmat2_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat2ui, \fBmat2_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat2x, \fBmat2_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat2, \fBmat2_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat3_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBmat3_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat3_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBmat3_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat3_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBmat3_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat3f, \fBmat3_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat3d, \fBmat3_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat3i, \fBmat3_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat3ui, \fBmat3_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat3x, \fBmat3_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat3, \fBmat3_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat4_t\fP< num_t > \fBoperator+\fP (num_t n, const \fBmat4_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat4_t\fP< num_t > \fBoperator-\fP (num_t n, const \fBmat4_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "template<typename num_t > \fBmat4_t\fP< num_t > \fBoperator*\fP (num_t n, const \fBmat4_t\fP< num_t > &m)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat4f, \fBmat4_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat4d, \fBmat4_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat4i, \fBmat4_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat4ui, \fBmat4_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat4x, \fBmat4_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (mat4, \fBmat4_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "template<typename N > constexpr N \fBdeterminant\fP (const \fBmat2_t\fP< N > &m)"
+.br
+.RI "\fIdeterminant Retrieve the determinate for a 2x2 matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat2_t\fP< N > \fBtranspose\fP (const \fBmat2_t\fP< N > &m)"
+.br
+.RI "\fItranspose Flip the values of a matrix around its main diagonal\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat2_t\fP< N > \fBinverse\fP (const \fBmat2_t\fP< N > &m)"
+.br
+.RI "\fIinverse Invert a matrix m so that m * m^i = I \fP"
+.ti -1c
+.RI "template<typename N > \fBmat2_t\fP< N > \fBrotate\fP (const \fBmat2_t\fP< N > &m, N radians)"
+.br
+.RI "\fIrotate Rotate a 2x2 matrix by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat2_t\fP< N > \fBscale\fP (const \fBmat2_t\fP< N > &m, const \fBvec2_t\fP< N > &amount)"
+.br
+.RI "\fIscale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBdeterminant\fP (const \fBmat3_t\fP< N > &m)"
+.br
+.RI "\fIdeterminant Retrieve the determinate for a 3x3 matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat3_t\fP< N > \fBtranspose\fP (const \fBmat3_t\fP< N > &m)"
+.br
+.RI "\fItranspose Flip the values of a matrix around its main diagonal\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat3_t\fP< N > \fBinverse\fP (const \fBmat3_t\fP< N > &m)"
+.br
+.RI "\fIinverse \fP"
+.ti -1c
+.RI "template<typename N > \fBmat3_t\fP< N > \fBrotate\fP (const \fBmat3_t\fP< N > &m, const \fBvec3_t\fP< N > &axis, N radians)"
+.br
+.RI "\fIrotate Rotate a 3x3 matrix by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat3_t\fP< N > \fBscale\fP (const \fBmat3_t\fP< N > &m, const \fBvec3_t\fP< N > &amount)"
+.br
+.RI "\fIscale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat3_t\fP< N > \fBtranslate\fP (const \fBmat3_t\fP< N > &m, const \fBvec2_t\fP< N > &amount)"
+.br
+.RI "\fItranslate Translate a 3x3 matrix along a 2D plane\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBdeterminant\fP (const \fBmat4_t\fP< N > &m)"
+.br
+.RI "\fIdeterminant Retrieve the determinate for a 4x4 matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat4_t\fP< N > \fBtranspose\fP (const \fBmat4_t\fP< N > &m)"
+.br
+.RI "\fItranspose Flip the values of a matrix around its main diagonal\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBinverse\fP (const \fBmat4_t\fP< N > &m)"
+.br
+.RI "\fIinverse \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBrotate\fP (const \fBmat4_t\fP< N > &m, const \fBvec3_t\fP< N > &axis, N radians)"
+.br
+.RI "\fIrotate Rotate a 4x4 matrix by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat4_t\fP< N > \fBscale\fP (const \fBmat4_t\fP< N > &m, const \fBvec3_t\fP< N > &amount)"
+.br
+.RI "\fIscale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBmat4_t\fP< N > \fBtranslate\fP (const \fBmat4_t\fP< N > &m, const \fBvec3_t\fP< N > &amount)"
+.br
+.RI "\fItranslate Translate a 4x4 matrix along a 3D plane\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBperspective\fP (N fov, N aspect, N zNear, N zFar)"
+.br
+.RI "\fIperspective Create a 2D perspective projection matrix in 3D space\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBinfinitePerspective\fP (N fov, N aspect, N zNear)"
+.br
+.RI "\fIinfinitePerspective Create a 2D perspective projection matrix in 3D space with no far-clipping plane\&. This is useful in applications which do not care about the precision of floating-point values far from the projection matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBortho\fP (N left, N right, N top, N bottom)"
+.br
+.RI "\fIortho Create an orthographic-projection matrix in order to project 3D points onto a 2D plane\&. This method will project points without factoring in distance-scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBortho\fP (N left, N right, N top, N bottom, N near, N far)"
+.br
+.RI "\fIortho Create an orthographic-projection matrix in order to project 3D points onto a 2D plane\&. This method will project points without factoring in distance-scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBfrustum\fP (N left, N right, N top, N bottom, N near, N far)"
+.br
+.RI "\fIfrustum Create a viewing frustum in order to project 3D points into 2D space\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBlookAt\fP (const \fBvec3_t\fP< N > &pos, const \fBvec3_t\fP< N > &target, const \fBvec3_t\fP< N > &up)"
+.br
+.RI "\fIlookAt Direct the far-plane of a projection matrix towards a point in 3D space\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBbillboard\fP (const \fBvec3_t\fP< N > &pos, const \fBmat4_t\fP< N > &viewMatrix)"
+.br
+.RI "\fIbillboard Retrieve a model matrix in 3D space so that it is oriented towards a Rotation/View matrix from a certain position\&. \fP"
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (perlinNoisef, \fBperlinNoise_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (perlinNoised, \fBperlinNoise_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (perlinNoisei, \fBperlinNoise_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (perlinNoiseuu, \fBperlinNoise_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (perlinNoisex, \fBperlinNoise_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (quatf, \fBquat_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (quatd, \fBquat_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (quati, \fBquat_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (quatui, \fBquat_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (quatx, \fBquat_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (quat, \fBquat_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "template<typename N > constexpr N \fBdot\fP (const \fBquat_t\fP< N > &, const \fBquat_t\fP< N > &)"
+.br
+.RI "\fIdot Retrieve the dot product of two quaternions\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBlengthSquared\fP (const \fBquat_t\fP< N > &)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a quaternion\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBlength\fP (const \fBquat_t\fP< N > &)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBinverse\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIinverse Retrieve the geometric inverse of the quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBquat_t\fP< N > \fBconjugate\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIconjugate Get the complex-conjugate of a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBnormalize\fP (const \fBquat_t\fP< N > &)"
+.br
+.RI "\fInormalize Normalize the quaternion q so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBquat_t\fP< N > \fBlerp\fP (const \fBquat_t\fP< N > &q1, const \fBquat_t\fP< N > &q2, N percent)"
+.br
+.RI "\fILinearly interpolate a quaternion towards another by some percentage\&. This is the same as calling 'ls::math::mix()' for a vector or scalar\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBquat_t\fP< N > \fBnlerp\fP (const \fBquat_t\fP< N > &q1, const \fBquat_t\fP< N > &q2, N percent)"
+.br
+.RI "\fILinearly interpolate a quaternion towards another by some percentage and normalize the result\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBslerp\fP (const \fBquat_t\fP< N > &, const \fBquat_t\fP< N > &, N)"
+.br
+.RI "\fISLERP Perform a spherical-interpolation of q1 towards q2 by some percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBlookAt\fP (const \fBvec3_t\fP< N > &target, const \fBvec3_t\fP< N > &dir)"
+.br
+.ti -1c
+.RI "template<typename N > \fBmat3_t\fP< N > \fBquatToMat3\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIquatToMat3 Convert a quaternion into a 3x3 rotational matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBmat4_t\fP< N > \fBquatToMat4\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIquatToMat4 Convert a quaternion into a 4x4 rotational matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBmatToQuat\fP (const \fBmat3_t\fP< N > &m)"
+.br
+.RI "\fImatToQuat Convert a 3x3 rotation matrix into a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBmatToQuat\fP (const \fBmat4_t\fP< N > &m)"
+.br
+.RI "\fImatToQuat Convert a 4x4 rotation matrix into a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBgetAxisX\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIgetAxisX Retrieve the 'x-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the x-axis\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBgetAxisY\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIgetAxisY Retrieve the 'y-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the y-axis\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBgetAxisZ\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIgetAxisZ Retrieve the 'z-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the z-axis\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBgetAngle\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fIgetAngle Retrieve the angle of rotation (i\&.e\&. the real-component) of a quaternion, in R^3\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fBtoEuler\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fItoEuler Convert a unit quaternion into 3 Euler angles, pitch, yaw, and roll\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBfromEuler\fP (const \fBvec3_t\fP< N > &pyr)"
+.br
+.RI "\fIfromEuler Convert three Euler angles into a rotational quaternion\&. These angles must be in the order of pitch, yaw, and roll, respectively\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBfromEuler\fP (N pitch, N yaw, N roll)"
+.br
+.RI "\fIfromEuler Convert three Euler angles into a rotational quaternion\&. These angles must be in the order of pitch, yaw, and roll, respectively\&. \fP"
+.ti -1c
+.RI "template<typename N > void \fBtoAxisAngle\fP (const \fBquat_t\fP< N > &q, \fBvec3_t\fP< N > &outAaxis, N &outAngle)"
+.br
+.RI "\fItoAxisAngle Convert a rotational quaternion into Axis-Angle representation\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec4_t\fP< N > \fBtoAxisAngle\fP (const \fBquat_t\fP< N > &q)"
+.br
+.RI "\fItoAxisAngle Convert a rotational quaternion into Axis-Angle representation\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBfromAxisAngle\fP (const \fBvec3_t\fP< N > &axis, N angle)"
+.br
+.RI "\fIfromAxisAngle Convert a 3D axis, plus angle of rotation, into a rotational quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBquat_t\fP< N > \fBfromAxisAngle\fP (const \fBvec4_t\fP< N > &axisAngle)"
+.br
+.RI "\fIfromAxisAngle Convert a 4D axis-angle into a rotational quaternion\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBmin\fP (scalar_t a, scalar_t b)"
+.br
+.RI "\fImax Get the minimum of two single numbers This function can be run at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBmix\fP (scalar_t a, scalar_t b, scalar_t percent)"
+.br
+.RI "\fImix Perform a linear interpolation of x between the two scalars a, b \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBmax\fP (scalar_t a, scalar_t b)"
+.br
+.RI "\fImax Get the maximum of two single numbers\&. This function can be run at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBclamp\fP (scalar_t n, scalar_t minVal, scalar_t maxVal)"
+.br
+.RI "\fIclamp Bind a number to within a certain range\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBsmoothstep\fP (scalar_t a, scalar_t b, scalar_t x)"
+.br
+.RI "\fIsmoothstep Perform a smooth interpolation of a number along the sub-sequence [a, b]\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBfastSqrt\fP (scalar_t)"
+.br
+.RI "\fIfastSqrt Perform a square root on a single number without using the standard library\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<> float \fBfastSqrt< float >\fP (float)"
+.br
+.RI "\fIfastSqrt Perform a square root on a single number without using the standard library\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBfastInvSqrt\fP (scalar_t)"
+.br
+.RI "\fIfastInvSqrt Get the inverse square root of a number\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<> float \fBfastInvSqrt< float >\fP (float)"
+.br
+.RI "\fIfastInvSqrt Get the inverse square root of a number\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBdegToRad\fP (scalar_t)"
+.br
+.RI "\fIdegToRad Convert a number from degrees to radians\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBradToDeg\fP (scalar_t)"
+.br
+.RI "\fIradToDeg Convert a number from radians to degrees\&. This function can be run at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBfastLog2\fP (scalar_t)"
+.br
+.RI "\fIfastLog2 Calculate the log-base2 of a number \fP"
+.ti -1c
+.RI "template<> float \fBfastLog2< float >\fP (float)"
+.br
+.RI "\fIfastLog2 Calculate the log-base2 of a number \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBfastLog\fP (scalar_t)"
+.br
+.RI "\fIfastLog Calculate the log-base10 of a number \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBfastLogN\fP (scalar_t baseN, scalar_t)"
+.br
+.RI "\fIfastLogBase Calculate the log-base2 of a number \fP"
+.ti -1c
+.RI "unsigned \fBnextPow2\fP (unsigned)"
+.br
+.RI "\fInextPow2 Find the next (greater) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "int \fBnextPow2\fP (int)"
+.br
+.RI "\fInextPow2 Find the next (greater) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "unsigned \fBprevPow2\fP (unsigned)"
+.br
+.RI "\fIprevPow2 Find the previous (lesser) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "int \fBprevPow2\fP (int)"
+.br
+.RI "\fIprevPow2 Find the previous (lesser) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "unsigned \fBnearPow2\fP (unsigned)"
+.br
+.RI "\fInearPow2 Find the closest power of two to a number\&. This may either be greater than or less than the input number\&. \fP"
+.ti -1c
+.RI "int \fBnearPow2\fP (int)"
+.br
+.RI "\fInearPow2 Find the closest power of two to a number\&. This may either be greater than or less than the input number\&. \fP"
+.ti -1c
+.RI "constexpr bool \fBisPow2\fP (unsigned)"
+.br
+.RI "\fIisPow2 Determine if a number is a power of two or not\&. \fP"
+.ti -1c
+.RI "constexpr bool \fBisPow2\fP (int)"
+.br
+.RI "\fIisPow2 Determine if a number is a power of two or not\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBfactorial\fP (scalar_t)"
+.br
+.RI "\fIfactorial Retrieve the factorial of a number \fP"
+.ti -1c
+.RI "template<typename scalar_t , typename int_t > constexpr scalar_t \fBpow\fP (scalar_t, int_t)"
+.br
+.RI "\fIpow Evaluate a number to a given power\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBconst_sin\fP (scalar_t)"
+.br
+.RI "\fIconst_sin Evaluate the sine of an angle at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBconst_cos\fP (scalar_t)"
+.br
+.RI "\fIconst_cos Evaluate the cosine of an angle at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBconst_tan\fP (scalar_t)"
+.br
+.RI "\fIconst_tan Evaluate the tangent of an angle at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBsum\fP (const scalar_t &)"
+.br
+.RI "\fIsum Evaluate the sum of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t , typename\&.\&.\&. scalars_t> constexpr scalar_t \fBsum\fP (const scalar_t &num, const scalars_t &\&.\&.\&.nums)"
+.br
+.RI "\fIsum Evaluate the sum of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBaverage\fP ()"
+.br
+.RI "\fIaverage Evaluate the average of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t , typename\&.\&.\&. scalars_t> constexpr scalar_t \fBaverage\fP (const scalar_t &num, const scalars_t &\&.\&.\&.nums)"
+.br
+.RI "\fIaverage Evaluate the average of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, int32_t, 7)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, int32_t, 15)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, int32_t, 23)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, int64_t, 15)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, int64_t, 31)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, int64_t, 47)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, uint32_t, 8)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, uint32_t, 16)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, uint32_t, 24)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, uint64_t, 16)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, uint64_t, 32)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBfixed_t\fP, uint64_t, 48)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat2_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat2_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat2_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat2_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat2_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat3_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat3_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat3_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat3_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat3_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat4_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat4_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat4_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat4_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBmat4_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBperlinNoise_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBperlinNoise_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBperlinNoise_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBperlinNoise_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBperlinNoise_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBquat_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBquat_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBquat_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBquat_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBquat_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec2_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec2_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec2_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec2_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec2_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec3_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec3_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec3_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec3_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec3_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec4_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec4_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec4_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec4_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DEFINE_CLASS_TYPE\fP (\fBvec4_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec2f, \fBvec2_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec2d, \fBvec2_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec2i, \fBvec2_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec2ui, \fBvec2_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec2x, \fBvec2_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec2, \fBvec2_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec3f, \fBvec3_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec3d, \fBvec3_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec3i, \fBvec3_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec3ui, \fBvec3_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec3x, \fBvec3_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec3, \fBvec3_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec4f, \fBvec4_t\fP, float)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec4d, \fBvec4_t\fP, double)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec4i, \fBvec4_t\fP, int)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec4ui, \fBvec4_t\fP, unsigned)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec4x, \fBvec4_t\fP, medp_t)"
+.br
+.ti -1c
+.RI "\fBLS_DECLARE_CLASS_TYPE\fP (vec4, \fBvec4_t\fP, \fBLS_FLOAT\fP)"
+.br
+.ti -1c
+.RI "template<typename N > constexpr N \fBdot\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fIdot Retrieve the dot product of a 2D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBcross\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fIcross Retrieve the cross product of two 2D vectors\&. This method was developed my Allen Chou: http://allenchou.net/2013/07/cross-product-of-2d-vectors/ This is useful in determining if the second vector is on the left or right side of the first\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec2_t\fP< N > \fBnormalize\fP (const \fBvec2_t\fP< N > &v)"
+.br
+.RI "\fInormalize Normalize the vector v so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBlengthSquared\fP (const \fBvec2_t\fP< N > &v)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a 2D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBlength\fP (const \fBvec2_t\fP< N > &v)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a 2D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec2_t\fP< N > \fBrotate\fP (const \fBvec2_t\fP< N > &v, N angle)"
+.br
+.RI "\fIrotate Rotate a 2D vector by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBangleBetween\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two 2D vectors placed around the origin of the Cartesian coordinate plane\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBangleBetween\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2, const \fBvec2_t\fP< N > &origin)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two points in 2D space, with a specified origin\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec2_t\fP< N > \fBmin\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fImin Determine which of two vectors has the smallest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec2_t\fP< N > \fBmix\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2, N percent)"
+.br
+.RI "\fImix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec2_t\fP< N > \fBmax\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fImax Determine which of two vectors has the largest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec2_t\fP< N > \fBproject\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fIproject Project one vector onto another and retrieve the result\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec2_t\fP< N > \fBreflect\fP (const \fBvec2_t\fP< N > &v, const \fBvec2_t\fP< N > &norm)"
+.br
+.RI "\fIreflect Reflect a vector v around a normal vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec2_t\fP< N > \fBmid\fP (const \fBvec2_t\fP< N > &v1, const \fBvec2_t\fP< N > &v2)"
+.br
+.RI "\fImid \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBdot\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &v2)"
+.br
+.RI "\fIdot Retrieve the dot product of a 3D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBcross\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &v2)"
+.br
+.RI "\fIcross Retrieve the cross product of two 3D vectors\&. This result is perpendicular to the two input vectors\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fBnormalize\fP (const \fBvec3_t\fP< N > &v)"
+.br
+.RI "\fInormalize Normalize the vector v so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBlengthSquared\fP (const \fBvec3_t\fP< N > &v)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a 3D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBlength\fP (const \fBvec3_t\fP< N > &v)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a 3D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fBxRotation\fP (N angle)"
+.br
+.RI "\fIxRotation Retrieve a unit vector that has been rotated around the cartesian X-Axis by a certain number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fByRotation\fP (N angle)"
+.br
+.RI "\fIxRotation Retrieve a unit vector that has been rotated around the cartesian Y-Axis by a certain number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fBzRotation\fP (N angle)"
+.br
+.RI "\fIxRotation Retrieve a unit vector that has been rotated around the cartesian Z-Axis by a certain number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBangleBetween\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &v2)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two 3D vectors placed around the origin of the Cartesian coordinate plane\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBangleBetween\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &v2, const \fBvec3_t\fP< N > &origin)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two points in 3D space, with a specified origin\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBmin\fP (const \fBvec3_t\fP< N > &, const \fBvec3_t\fP< N > &)"
+.br
+.RI "\fImin Determine which of two vectors has the smallest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBmix\fP (const \fBvec3_t\fP< N > &, const \fBvec3_t\fP< N > &, N)"
+.br
+.RI "\fImix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBmax\fP (const \fBvec3_t\fP< N > &, const \fBvec3_t\fP< N > &)"
+.br
+.RI "\fImax Determine which of two vectors has the largest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fBproject\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &v2)"
+.br
+.RI "\fIproject Project one vector onto another and retrieve the result\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec3_t\fP< N > \fBreflect\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &norm)"
+.br
+.RI "\fIreflect Reflect a vector v around a normal vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec3_t\fP< N > \fBmid\fP (const \fBvec3_t\fP< N > &v1, const \fBvec3_t\fP< N > &v2)"
+.br
+.RI "\fImid \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBdot\fP (const \fBvec4_t\fP< N > &, const \fBvec4_t\fP< N > &v)"
+.br
+.RI "\fIdot Retrieve the dot product of two 4D vectors\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec4_t\fP< N > \fBnormalize\fP (const \fBvec4_t\fP< N > &v)"
+.br
+.RI "\fInormalize Normalize the vector v so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBlengthSquared\fP (const \fBvec4_t\fP< N > &v)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a 4D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBlength\fP (const \fBvec4_t\fP< N > &v)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a 4D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBangleBetween\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &v2)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two 4D vectors placed around the origin of the Cartesian coordinate plane\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec4_t\fP< N > \fBmin\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &v2)"
+.br
+.RI "\fImin Determine which of two vectors has the smallest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec4_t\fP< N > \fBmix\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &v2, N percent)"
+.br
+.RI "\fImix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec4_t\fP< N > \fBmax\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &v2)"
+.br
+.RI "\fImax Determine which of two vectors has the largest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec4_t\fP< N > \fBproject\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &v2)"
+.br
+.RI "\fIproject Project one vector onto another and retrieve the result\&. \fP"
+.ti -1c
+.RI "template<typename N > \fBvec4_t\fP< N > \fBreflect\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &norm)"
+.br
+.RI "\fIreflect Reflect a vector v around a normal vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr \fBvec4_t\fP< N > \fBmid\fP (const \fBvec4_t\fP< N > &v1, const \fBvec4_t\fP< N > &v2)"
+.br
+.RI "\fImid \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum : unsigned"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMAX_PERMUTATIONS \fP\fP
+.PP
+Definition at line 8 of file perlinNoise_impl\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "template<typename N > N ls::math::angleBetween (const vec2_t< N > &v1, const vec2_t< N > &v2)\fC [inline]\fP"
+
+.PP
+angleBetween Determine the angle, in radians of two 2D vectors placed around the origin of the Cartesian coordinate plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of radians in between v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::angleBetween (const vec2_t< N > &v1, const vec2_t< N > &v2, const vec2_t< N > &origin)\fC [inline]\fP"
+
+.PP
+angleBetween Determine the angle, in radians of two points in 2D space, with a specified origin\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.br
+\fIorigin\fP The point in 2D space that two points use as their origin\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of radians in between v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::angleBetween (const vec3_t< N > &v1, const vec3_t< N > &v2)\fC [inline]\fP"
+
+.PP
+angleBetween Determine the angle, in radians of two 3D vectors placed around the origin of the Cartesian coordinate plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of radians in between v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::angleBetween (const vec3_t< N > &v1, const vec3_t< N > &v2, const vec3_t< N > &origin)\fC [inline]\fP"
+
+.PP
+angleBetween Determine the angle, in radians of two points in 3D space, with a specified origin\&. angleBetween Determine the angle, in radians of two points in 4D space, with a specified origin\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.br
+\fIorigin\fP The point in 3D space that two points use as their origin\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of radians in between v1 & v2\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.br
+\fIorigin\fP The point in 4D space that two points use as their origin\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of radians in between v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::angleBetween (const vec4_t< N > &v1, const vec4_t< N > &v2)\fC [inline]\fP"
+
+.PP
+angleBetween Determine the angle, in radians of two 4D vectors placed around the origin of the Cartesian coordinate plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of radians in between v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::average ()"
+
+.PP
+average Evaluate the average of a series of numbers at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP set of numbers who's values are to be averaged\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The average of a set of numbers\&. 
+.RE
+.PP
+
+.PP
+Definition at line 316 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t , typename\&.\&.\&. scalars_t> constexpr scalar_t ls::math::average (const scalar_t &num, const scalars_t &\&.\&.\&.nums)"
+
+.PP
+average Evaluate the average of a series of numbers at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP set of numbers who's values are to be averaged\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The average of a set of numbers\&. 
+.RE
+.PP
+
+.PP
+Definition at line 324 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::billboard (const vec3_t< N > &pos, const mat4_t< N > &viewMatrix)\fC [inline]\fP"
+
+.PP
+billboard Retrieve a model matrix in 3D space so that it is oriented towards a Rotation/View matrix from a certain position\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP The position in 3D space that the billboard should be placed at\&.
+.br
+\fIviewMatrix\fP A camera's view matrix which represents both the the position and orientation that a billboard should rotate towards\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A model matrix at a specified position, which is oriented towards a camera's view matrix in 3D space\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::clamp (scalar_tn, scalar_tminVal, scalar_tmaxVal)"
+
+.PP
+clamp Bind a number to within a certain range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP A number that should be constrained to be within a specific range\&.
+.br
+\fIminVal\fP The minimum allowable value that 'n' can be\&.
+.br
+\fImaxVal\fP The maximum allowable value that 'n' can be\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a number, such that minVal <= n <= maxVal 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr \fBquat_t\fP<N> ls::math::conjugate (const quat_t< N > &q)"
+
+.PP
+conjugate Get the complex-conjugate of a quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the complex conjugate of the quaternion q\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::const_cos (scalar_tx)"
+
+.PP
+const_cos Evaluate the cosine of an angle at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAn\fP angle, in radians, who's cosine value is to be calculated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The cosine of a given angle\&. 
+.RE
+.PP
+
+.PP
+Definition at line 276 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::const_sin (scalar_tx)"
+
+.PP
+const_sin Evaluate the sine of an angle at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAn\fP angle, in radians, who's sine value is to be calculated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sine of a given angle\&. 
+.RE
+.PP
+
+.PP
+Definition at line 264 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::const_tan (scalar_tx)"
+
+.PP
+const_tan Evaluate the tangent of an angle at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAn\fP angle, in radians, who's tangent value is to be calculated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The tangent of a given angle\&. 
+.RE
+.PP
+
+.PP
+Definition at line 288 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr N ls::math::cross (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+
+.PP
+cross Retrieve the cross product of two 2D vectors\&. This method was developed my Allen Chou: http://allenchou.net/2013/07/cross-product-of-2d-vectors/ This is useful in determining if the second vector is on the left or right side of the first\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a scalar which can determine if v2 is on the left or right side of v1\&. If the returned value is positive, v2 is on the left of v1, if it's negative, v2 is on the right of v1\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::cross (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+
+.PP
+cross Retrieve the cross product of two 3D vectors\&. This result is perpendicular to the two input vectors\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 3D vector which represents the axis of rotation of two 3D vectors\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::degToRad (scalar_tinput)"
+
+.PP
+degToRad Convert a number from degrees to radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIthe\fP value of an angle, in degrees\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value of an angle, in radians\&. 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr N ls::math::determinant (const mat2_t< N > &m)"
+
+.PP
+determinant Retrieve the determinate for a 2x2 matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 2x2 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A scalar of type N, which contains the determinate of a 2x2 matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::determinant (const mat3_t< N > &m)"
+
+.PP
+determinant Retrieve the determinate for a 3x3 matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 3x3 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A scalar of type N, which contains the determinate of a 3x3 matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::determinant (const mat4_t< N > &m)"
+
+.PP
+determinant Retrieve the determinate for a 4x4 matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 4x4 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A scalar of type N, which contains the determinate of a 4x4 matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::dot (const quat_t< N > &, const quat_t< N > &)"
+
+.PP
+dot Retrieve the dot product of two quaternions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq1\fP 
+.br
+\fIq2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the dot product of q1 & q2\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::dot (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+
+.PP
+dot Retrieve the dot product of a 2D vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the 2D dot product of v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::dot (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+
+.PP
+dot Retrieve the dot product of a 3D vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the 3D dot product of v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::dot (const vec4_t< N > &, const vec4_t< N > &v)"
+
+.PP
+dot Retrieve the dot product of two 4D vectors\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the 4D dot product of v1 & v2\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::factorial (scalar_tx)"
+
+.PP
+factorial Retrieve the factorial of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP number who's factorial is to be calculated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The factorial of a given number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 248 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > scalar_t ls::math::fastInvSqrt (scalar_tinput)\fC [inline]\fP"
+
+.PP
+fastInvSqrt Get the inverse square root of a number\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number whose square root should be obtained\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The inverse square root (1/sqrt(x)) of the input number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 59 of file scalar_utils_impl\&.h\&.
+.SS "template<> float \fBls::math::fastInvSqrt\fP< float > (floatx)\fC [inline]\fP"
+
+.PP
+fastInvSqrt Get the inverse square root of a number\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number whose square root should be obtained\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The inverse square root (1/sqrt(x)) of the input number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > scalar_t ls::math::fastLog (scalar_tn)\fC [inline]\fP"
+
+.PP
+fastLog Calculate the log-base10 of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the log-base10 of a number, using IEEE floating point arithmetic 
+.RE
+.PP
+
+.PP
+Definition at line 151 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > scalar_t ls::math::fastLog2 (scalar_tn)\fC [inline]\fP"
+
+.PP
+fastLog2 Calculate the log-base2 of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the log-base2 of a number, using IEEE floating point arithmetic 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file scalar_utils_impl\&.h\&.
+.SS "template<> float \fBls::math::fastLog2\fP< float > (floatn)\fC [inline]\fP"
+
+.PP
+fastLog2 Calculate the log-base2 of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the log-base2 of a number, using IEEE floating point arithmetic 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > scalar_t ls::math::fastLogN (scalar_tbaseN, scalar_tn)\fC [inline]\fP"
+
+.PP
+fastLogBase Calculate the log-base2 of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the log-baseN of a number, using IEEE floating point arithmetic 
+.RE
+.PP
+
+.PP
+Definition at line 159 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > scalar_t ls::math::fastSqrt (scalar_tinput)\fC [inline]\fP"
+
+.PP
+fastSqrt Perform a square root on a single number without using the standard library\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number whose square root should be obtained\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The square root of the input number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file scalar_utils_impl\&.h\&.
+.SS "template<> float \fBls::math::fastSqrt\fP< float > (floatinput)\fC [inline]\fP"
+
+.PP
+fastSqrt Perform a square root on a single number without using the standard library\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP number whose square root should be obtained\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The square root of the input number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::fromAxisAngle (const vec3_t< N > &axis, Nangle)\fC [inline]\fP"
+
+.PP
+fromAxisAngle Convert a 3D axis, plus angle of rotation, into a rotational quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP A 3D vector, representing an axis of rotation\&.
+.br
+\fIangle\fP An angle, in radians, which represents the amount of rotation around the input axis\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a rotational quaternion, converted from the input axis and angle\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::fromAxisAngle (const vec4_t< N > &axisAngle)\fC [inline]\fP"
+
+.PP
+fromAxisAngle Convert a 4D axis-angle into a rotational quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxisAngle\fP A 4D vector in Axis-Angle format\&. The first 3 components of this vector are the X, Y, & Z components of the axis\&. The fourth component represents the angle\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a rotational quaternion, converted from the input axis-angle vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::fromEuler (const vec3_t< N > &pyr)\fC [inline]\fP"
+
+.PP
+fromEuler Convert three Euler angles into a rotational quaternion\&. These angles must be in the order of pitch, yaw, and roll, respectively\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpyr\fP A 3D vector containing the angles of pitch, yaw, and roll\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+q rotational quaternion representing the three input rotation angles\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::fromEuler (Npitch, Nyaw, Nroll)\fC [inline]\fP"
+
+.PP
+fromEuler Convert three Euler angles into a rotational quaternion\&. These angles must be in the order of pitch, yaw, and roll, respectively\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpitch\fP The angle of rotation along a point's X-Axis
+.br
+\fIyaw\fP The angle of rotation along a point's Y-Axis
+.br
+\fIroll\fP The angle of rotation along a point's Z-Axis
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+q rotational quaternion representing the three input rotation angles\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::frustum (Nleft, Nright, Ntop, Nbottom, Nnear, Nfar)\fC [inline]\fP"
+
+.PP
+frustum Create a viewing frustum in order to project 3D points into 2D space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP the leftmost clipping point of the projection\&.
+.br
+\fIright\fP the rightmost clipping point of the projection\&.
+.br
+\fItop\fP the topmost clipping point of the projection\&.
+.br
+\fIbottom\fP the bottommost clipping point of the projection\&.
+.br
+\fIzNear\fP The distance which represents the point at which closely projected points in 3D space will be discarded from the projection\&.
+.br
+\fIzFar\fP The distance which represents the point at which far away points in 3D space will be discarded from the projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 4x4 frustum which allows 3D points to be projected onto a 2D plane\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::getAngle (const quat_t< N > &q)\fC [inline]\fP"
+
+.PP
+getAngle Retrieve the angle of rotation (i\&.e\&. the real-component) of a quaternion, in R^3\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The angle of rotation of a quaternion, clamped to be within 2*PI radians\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::getAxisX (const quat_t< N > &q)"
+
+.PP
+getAxisX Retrieve the 'x-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the x-axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the rotational x-axis of a quaternion in R^3 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::getAxisY (const quat_t< N > &q)"
+
+.PP
+getAxisY Retrieve the 'y-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the y-axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the rotational y-axis of a quaternion in R^3 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::getAxisZ (const quat_t< N > &q)"
+
+.PP
+getAxisZ Retrieve the 'z-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the z-axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the rotational z-axis of a quaternion in R^3 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::infinitePerspective (Nfov, Naspect, NzNear)\fC [inline]\fP"
+
+.PP
+infinitePerspective Create a 2D perspective projection matrix in 3D space with no far-clipping plane\&. This is useful in applications which do not care about the precision of floating-point values far from the projection matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfov\fP The angle, in degrees, representing the field of view of the projection matrix\&.
+.br
+\fIaspect\fP A scalar which represents the aspect ratio of the projection\&.
+.br
+\fIzNear\fP The distance which represents the point at which closely projected points in 3D space will be discarded from the projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 4x4 perspective-projection matrix with no far plane\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat2_t\fP<N> ls::math::inverse (const mat2_t< N > &m)"
+
+.PP
+inverse Invert a matrix m so that m * m^i = I 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 2x2 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The inverse of matrix m\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::inverse (const quat_t< N > &q)\fC [inline]\fP"
+
+.PP
+inverse Retrieve the geometric inverse of the quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the geometric inverse of the quaternion q, within a unit sphere\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat3_t\fP<N> ls::math::inverse (const mat3_t< N > &m)"
+
+.PP
+inverse 
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::inverse (const mat4_t< N > &m)\fC [inline]\fP"
+
+.PP
+inverse 
+.SS "constexpr bool ls::math::isPow2 (unsignedn)"
+
+.PP
+isPow2 Determine if a number is a power of two or not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP number who's value should be evaluated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the number is a poiwer of two\&. False if the number is not a power of two\&. 
+.RE
+.PP
+
+.PP
+Definition at line 233 of file scalar_utils_impl\&.h\&.
+.SS "constexpr bool ls::math::isPow2 (intn)"
+
+.PP
+isPow2 Determine if a number is a power of two or not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP number who's value should be evaluated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the number is a poiwer of two\&. False if the number is not a power of two\&. 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > N ls::math::length (const quat_t< N > &)\fC [inline]\fP"
+
+.PP
+length Retrieve the length/magnitude of a quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The length/magnitude of a quaternion\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::length (const vec2_t< N > &v)\fC [inline]\fP"
+
+.PP
+length Retrieve the length/magnitude of a 2D vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 2D vector\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The length/magnitude of a 2D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::length (const vec3_t< N > &v)\fC [inline]\fP"
+
+.PP
+length Retrieve the length/magnitude of a 3D vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 3D vector\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The length/magnitude of a 3D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > N ls::math::length (const vec4_t< N > &v)\fC [inline]\fP"
+
+.PP
+length Retrieve the length/magnitude of a 4D vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 4D vector\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The length/magnitude of a 4D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::lengthSquared (const quat_t< N > &)"
+
+.PP
+lengthSquared Retrieve the square of the length/magnitude of a quaternion\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The square of the length/magnitude of a quaternion\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::lengthSquared (const vec2_t< N > &v)"
+
+.PP
+lengthSquared Retrieve the square of the length/magnitude of a 2D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 2D vector\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The square of the length/magnitude of a 2D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::lengthSquared (const vec3_t< N > &v)"
+
+.PP
+lengthSquared Retrieve the square of the length/magnitude of a 3D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 3D vector\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The square of the length/magnitude of a 3D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr N ls::math::lengthSquared (const vec4_t< N > &v)"
+
+.PP
+lengthSquared Retrieve the square of the length/magnitude of a 4D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 4D vector\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The square of the length/magnitude of a 4D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBquat_t\fP<N> ls::math::lerp (const quat_t< N > &q1, const quat_t< N > &q2, Npercent)"
+
+.PP
+Linearly interpolate a quaternion towards another by some percentage\&. This is the same as calling 'ls::math::mix()' for a vector or scalar\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq1\fP The quaternion to be interpolated\&.
+.br
+\fIq2\fP The reference quaternion that q1 should interpolate to\&.
+.br
+\fIpercent\fP The percentage that q1 should move towards q2\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a linear interpolation of q1 towards q2 by some percent\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::lookAt (const vec3_t< N > &target, const vec3_t< N > &dir)\fC [inline]\fP"
+Quaternion LookAt
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP A vec3 type used to determine the orientation of the returned quaternion\&.
+.br
+\fIdir\fP A unit vector, giving the axis of rotation for the returned orientation\&. This should typically be vec3{0, 0, 1} to indicate that the returned quaternion should point its forwards axis in the Z-direction\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A quaternion, oriented in the direction of a target\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::lookAt (const vec3_t< N > &pos, const vec3_t< N > &target, const vec3_t< N > &up)\fC [inline]\fP"
+
+.PP
+lookAt Direct the far-plane of a projection matrix towards a point in 3D space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP The position, in 3D space, at which the projection matrix will be placed\&.
+.br
+\fItarget\fP The position of the target point, in 3D space, that the projection matrix will face\&.
+.br
+\fIup\fP The direction of the top of the projection matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A rotation matrix that represents a camera's orientation towards a target in 3D space\&. 
+.RE
+.PP
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (quatf, quat_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (quatd, quat_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (quati, quat_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (quatui, quat_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (quatx, quat_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (quat, quat_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat2f, mat2_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat2d, mat2_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat2ui, mat2_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat2x, mat2_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat3f, mat3_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec2f, vec2_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat2, mat2_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat3d, mat3_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec2d, vec2_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec3f, vec3_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat3i, mat3_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec2i, vec2_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec3d, vec3_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec4f, vec4_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat3ui, mat3_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec2ui, vec2_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec3i, vec3_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec4d, vec4_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat3x, mat3_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec2x, vec2_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec3ui, vec3_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec4i, vec4_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec3x, vec3_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat3, mat3_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat4f, mat4_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec4ui, vec4_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec2, vec2_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat4d, mat4_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec3, vec3_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec4x, vec4_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (vec4, vec4_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat4i, mat4_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat4ui, mat4_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat4x, mat4_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (mat4, mat4_t, \fBLS_FLOAT\fP)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (perlinNoisef, perlinNoise_t, float)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (perlinNoised, perlinNoise_t, double)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (perlinNoisei, perlinNoise_t, int)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (perlinNoiseuu, perlinNoise_t, unsigned)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (perlinNoisex, perlinNoise_t, medp_t)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (lowp_t, fixed_t, int32_t, 7)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (lowp, fixed_t, \fBLS_INT\fP, 7)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (medp_t, fixed_t, int32_t, 15)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (medp, fixed_t, \fBLS_INT\fP, 15)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (highp_t, fixed_t, int32_t, 23)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (highp, fixed_t, \fBLS_INT\fP, 23)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (long_lowp_t, fixed_t, int64_t, 15)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (long_medp_t, fixed_t, int64_t, 31)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (long_highp_t, fixed_t, int64_t, 47)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (ulowp_t, fixed_t, uint32_t, 8)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (ulowp, fixed_t, \fBLS_UINT\fP, 8)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (umedp_t, fixed_t, uint32_t, 16)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (umedp, fixed_t, \fBLS_UINT\fP, 16)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (uhighp_t, fixed_t, uint32_t, 24)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (uhigh, fixed_t, \fBLS_UINT\fP, 24)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (ulong_lowp_t, fixed_t, uint64_t, 16)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (ulong_medp_t, fixed_t, uint64_t, 32)"
+
+.SS "ls::math::LS_DECLARE_CLASS_TYPE (ulong_highp_t, fixed_t, uint64_t, 48)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, int32_t, 7)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat2_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat3_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat4_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (perlinNoise_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (quat_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec2_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec3_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec4_t, float)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat4_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, int32_t, 15)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat2_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat3_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (perlinNoise_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec3_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec2_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec4_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (quat_t, double)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat4_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec3_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, int32_t, 23)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat2_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec4_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (perlinNoise_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (quat_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec2_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat3_t, int)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec3_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (perlinNoise_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec2_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat2_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec4_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat4_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (quat_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat3_t, unsigned)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, int64_t, 15)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat2_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (quat_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec3_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec4_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (perlinNoise_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (vec2_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat4_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (mat3_t, medp_t)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, int64_t, 31)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, int64_t, 47)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, uint32_t, 8)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, uint32_t, 16)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, uint32_t, 24)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, uint64_t, 16)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, uint64_t, 32)"
+
+.SS "ls::math::LS_DEFINE_CLASS_TYPE (fixed_t, uint64_t, 48)"
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::matToQuat (const mat3_t< N > &m)\fC [inline]\fP"
+
+.PP
+matToQuat Convert a 3x3 rotation matrix into a quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a quaternion that represents a 3x3 rotation matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::matToQuat (const mat4_t< N > &m)\fC [inline]\fP"
+
+.PP
+matToQuat Convert a 4x4 rotation matrix into a quaternion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a quaternion that represents a 4x4 rotation matrix\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::max (scalar_ta, scalar_tb)"
+
+.PP
+max Get the maximum of two single numbers\&. This function can be run at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP 
+.br
+\fIb\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The largest number of the two parameters a and b\&. 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr \fBvec2_t\fP<N> ls::math::max (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+
+.PP
+max Determine which of two vectors has the largest length/magnitude\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the greatest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::max (const vec3_t< N > &, const vec3_t< N > &)"
+
+.PP
+max Determine which of two vectors has the largest length/magnitude\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the greatest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec4_t\fP<N> ls::math::max (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+
+.PP
+max Determine which of two vectors has the largest length/magnitude\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the greatest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec2_t\fP<N> ls::math::mid (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+
+.PP
+mid 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the midpoint between v1 and v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::mid (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+
+.PP
+mid 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the midpoint between v1 and v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec4_t\fP<N> ls::math::mid (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+
+.PP
+mid 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the midpoint between v1 and v2\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::min (scalar_ta, scalar_tb)"
+
+.PP
+max Get the minimum of two single numbers This function can be run at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP 
+.br
+\fIb\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The largest number of the two parameters a and b\&. 
+.RE
+.PP
+
+.PP
+Definition at line 11 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr \fBvec2_t\fP<N> ls::math::min (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+
+.PP
+min Determine which of two vectors has the smallest length/magnitude\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the smallest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::min (const vec3_t< N > &, const vec3_t< N > &)"
+
+.PP
+min Determine which of two vectors has the smallest length/magnitude\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the smallest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec4_t\fP<N> ls::math::min (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+
+.PP
+min Determine which of two vectors has the smallest length/magnitude\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the smallest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::mix (scalar_ta, scalar_tb, scalar_tpercent)"
+
+.PP
+mix Perform a linear interpolation of x between the two scalars a, b 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP 
+.br
+\fIb\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The linear 'mix' of a and b\&. 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr \fBvec2_t\fP<N> ls::math::mix (const vec2_t< N > &v1, const vec2_t< N > &v2, Npercent)"
+
+.PP
+mix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.br
+\fIpercent\fP The percentage (clamped from [0, 1]) to which v2 should be interpolated towards v2\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the smallest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec3_t\fP<N> ls::math::mix (const vec3_t< N > &, const vec3_t< N > &, N)"
+
+.PP
+mix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.br
+\fIpercent\fP The percentage (clamped from [0, 1]) to which v2 should be interpolated towards v2\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the smallest length/magnitude\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBvec4_t\fP<N> ls::math::mix (const vec4_t< N > &v1, const vec4_t< N > &v2, Npercent)"
+
+.PP
+mix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.br
+\fIpercent\fP The percentage (clamped from [0, 1]) to which v2 should be interpolated towards v2\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector, either v1 or v2, which has the smallest length/magnitude\&. 
+.RE
+.PP
+
+.SS "unsigned ls::math::nearPow2 (unsignedn)\fC [inline]\fP"
+
+.PP
+nearPow2 Find the closest power of two to a number\&. This may either be greater than or less than the input number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAn\fP unsigned integral type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The closest power of two to a number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file scalar_utils_impl\&.h\&.
+.SS "int ls::math::nearPow2 (intn)\fC [inline]\fP"
+
+.PP
+nearPow2 Find the closest power of two to a number\&. This may either be greater than or less than the input number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP signed integral type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The closest power of two to a number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 226 of file scalar_utils_impl\&.h\&.
+.SS "unsigned ls::math::nextPow2 (unsignedn)\fC [inline]\fP"
+
+.PP
+nextPow2 Find the next (greater) power of two that is closest to the value of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAn\fP unsigned integral type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next greatest power of two\&. 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file scalar_utils_impl\&.h\&.
+.SS "int ls::math::nextPow2 (intn)\fC [inline]\fP"
+
+.PP
+nextPow2 Find the next (greater) power of two that is closest to the value of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP signed integral type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next greatest power of two\&. 
+.RE
+.PP
+
+.PP
+Definition at line 183 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > constexpr \fBquat_t\fP<N> ls::math::nlerp (const quat_t< N > &q1, const quat_t< N > &q2, Npercent)"
+
+.PP
+Linearly interpolate a quaternion towards another by some percentage and normalize the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq1\fP The quaternion to be interpolated\&.
+.br
+\fIq2\fP The reference quaternion that q1 should interpolate to\&.
+.br
+\fIpercent\fP The percentage that q1 should move towards q2\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a normalized linear interpolation of q1 towards q2 by some percent\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec2_t\fP<N> ls::math::normalize (const vec2_t< N > &v)\fC [inline]\fP"
+
+.PP
+normalize Normalize the vector v so that its points lie within a unit-sphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a normalized 2D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::normalize (const quat_t< N > &)\fC [inline]\fP"
+
+.PP
+normalize Normalize the quaternion q so that its points lie within a unit-sphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a normalized quaternion\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::normalize (const vec3_t< N > &v)\fC [inline]\fP"
+
+.PP
+normalize Normalize the vector v so that its points lie within a unit-sphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a normalized 4D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec4_t\fP<N> ls::math::normalize (const vec4_t< N > &v)\fC [inline]\fP"
+
+.PP
+normalize Normalize the vector v so that its points lie within a unit-sphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a normalized 4D vector\&. 
+.RE
+.PP
+
+.SS "template<typename num_t > \fBquat_t\fP< num_t > ls::math::operator* (num_tn, const quat_t< num_t > &q)\fC [inline]\fP"
+
+.PP
+Definition at line 305 of file quat_impl\&.h\&.
+.SS "template<typename num_t > \fBmat2_t\fP<num_t> ls::math::operator* (num_tn, const mat2_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBmat3_t\fP<num_t> ls::math::operator* (num_tn, const mat3_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBmat4_t\fP<num_t> ls::math::operator* (num_tn, const mat4_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBvec2_t\fP< num_t > ls::math::operator* (num_tn, const vec2_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 305 of file vec2_impl\&.h\&.
+.SS "template<typename num_t > \fBvec3_t\fP< num_t > ls::math::operator* (num_tn, const vec3_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 326 of file vec3_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > ls::math::operator* (num_tn, const vec4_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 358 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBquat_t\fP< num_t > ls::math::operator+ (num_tn, const quat_t< num_t > &q)\fC [inline]\fP"
+
+.PP
+Definition at line 295 of file quat_impl\&.h\&.
+.SS "template<typename num_t > \fBmat2_t\fP<num_t> ls::math::operator+ (num_tn, const mat2_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBmat3_t\fP<num_t> ls::math::operator+ (num_tn, const mat3_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBmat4_t\fP<num_t> ls::math::operator+ (num_tn, const mat4_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBvec2_t\fP< num_t > ls::math::operator+ (num_tn, const vec2_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 295 of file vec2_impl\&.h\&.
+.SS "template<typename num_t > \fBvec3_t\fP< num_t > ls::math::operator+ (num_tn, const vec3_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 316 of file vec3_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > ls::math::operator+ (num_tn, const vec4_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 348 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBquat_t\fP< num_t > ls::math::operator- (num_tn, const quat_t< num_t > &q)\fC [inline]\fP"
+
+.PP
+Definition at line 300 of file quat_impl\&.h\&.
+.SS "template<typename num_t > \fBmat2_t\fP<num_t> ls::math::operator- (num_tn, const mat2_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBmat3_t\fP<num_t> ls::math::operator- (num_tn, const mat3_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBmat4_t\fP<num_t> ls::math::operator- (num_tn, const mat4_t< num_t > &m)\fC [inline]\fP"
+
+.SS "template<typename num_t > \fBvec2_t\fP< num_t > ls::math::operator- (num_tn, const vec2_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 300 of file vec2_impl\&.h\&.
+.SS "template<typename num_t > \fBvec3_t\fP< num_t > ls::math::operator- (num_tn, const vec3_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 321 of file vec3_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > ls::math::operator- (num_tn, const vec4_t< num_t > &v)\fC [inline]\fP"
+
+.PP
+Definition at line 353 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBquat_t\fP< num_t > ls::math::operator/ (num_tn, const quat_t< num_t > &q)\fC [inline]\fP"
+
+.PP
+Definition at line 310 of file quat_impl\&.h\&.
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::ortho (Nleft, Nright, Ntop, Nbottom)\fC [inline]\fP"
+
+.PP
+ortho Create an orthographic-projection matrix in order to project 3D points onto a 2D plane\&. This method will project points without factoring in distance-scaling\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP the leftmost clipping point of the projection\&.
+.br
+\fIright\fP the rightmost clipping point of the projection\&.
+.br
+\fItop\fP the topmost clipping point of the projection\&.
+.br
+\fIbottom\fP the bottommost clipping point of the projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 4x4 ortho-projection matrix which allows 3D points to be projected into a 2D representation without distance-scaling\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::ortho (Nleft, Nright, Ntop, Nbottom, Nnear, Nfar)\fC [inline]\fP"
+
+.PP
+ortho Create an orthographic-projection matrix in order to project 3D points onto a 2D plane\&. This method will project points without factoring in distance-scaling\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP the leftmost clipping point of the projection\&.
+.br
+\fIright\fP the rightmost clipping point of the projection\&.
+.br
+\fItop\fP the topmost clipping point of the projection\&.
+.br
+\fIbottom\fP the bottommost clipping point of the projection\&.
+.br
+\fIzNear\fP The distance which represents the point at which closely projected points in 3D space will be discarded from the projection\&.
+.br
+\fIzFar\fP The distance which represents the point at which far away points in 3D space will be discarded from the projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 4x4 orthographic-projection matrix which allows 3D points to be projected into a 2D representation without distance-scaling\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::perspective (Nfov, Naspect, NzNear, NzFar)\fC [inline]\fP"
+
+.PP
+perspective Create a 2D perspective projection matrix in 3D space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfov\fP The angle, in degrees, representing the field of view of the projection matrix\&.
+.br
+\fIaspect\fP A scalar which represents the aspect ratio of the projection\&.
+.br
+\fIzNear\fP The distance which represents the point at which closely projected points in 3D space will be discarded from the projection\&.
+.br
+\fIzFar\fP The distance which represents the point at which far away points in 3D space will be discarded from the projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 4x4 matrix which allows 3D points to be perspective-projected into a 2D plane through multiplication\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t , typename int_t > constexpr scalar_t ls::math::pow (scalar_tx, int_ty)"
+
+.PP
+pow Evaluate a number to a given power\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP number who's power is to be evaluated\&.
+.br
+\fIThe\fP degree to which the first parameter's power should be evaluated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A number, raised to a given power\&. 
+.RE
+.PP
+
+.PP
+Definition at line 256 of file scalar_utils_impl\&.h\&.
+.SS "unsigned ls::math::prevPow2 (unsignedn)\fC [inline]\fP"
+
+.PP
+prevPow2 Find the previous (lesser) power of two that is closest to the value of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAn\fP unsigned integral type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next lesser power of two\&. 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file scalar_utils_impl\&.h\&.
+.SS "int ls::math::prevPow2 (intn)\fC [inline]\fP"
+
+.PP
+prevPow2 Find the previous (lesser) power of two that is closest to the value of a number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP signed integral type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next lesser power of two\&. 
+.RE
+.PP
+
+.PP
+Definition at line 207 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > \fBvec2_t\fP<N> ls::math::project (const vec2_t< N > &v1, const vec2_t< N > &v2)\fC [inline]\fP"
+
+.PP
+project Project one vector onto another and retrieve the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector projection of v1 onto v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::project (const vec3_t< N > &v1, const vec3_t< N > &v2)\fC [inline]\fP"
+
+.PP
+project Project one vector onto another and retrieve the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector projection of v1 onto v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec4_t\fP<N> ls::math::project (const vec4_t< N > &v1, const vec4_t< N > &v2)\fC [inline]\fP"
+
+.PP
+project Project one vector onto another and retrieve the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv1\fP 
+.br
+\fIv2\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The vector projection of v1 onto v2\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat3_t\fP<N> ls::math::quatToMat3 (const quat_t< N > &q)\fC [inline]\fP"
+
+.PP
+quatToMat3 Convert a quaternion into a 3x3 rotational matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 3x3 rotation matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::quatToMat4 (const quat_t< N > &q)\fC [inline]\fP"
+
+.PP
+quatToMat4 Convert a quaternion into a 4x4 rotational matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 4x4 rotation matrix\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::radToDeg (scalar_tinput)"
+
+.PP
+radToDeg Convert a number from radians to degrees\&. This function can be run at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIthe\fP value of an angle, in radians\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value of an angle, in degrees\&. 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > \fBvec2_t\fP<N> ls::math::reflect (const vec2_t< N > &v, const vec2_t< N > &norm)\fC [inline]\fP"
+
+.PP
+reflect Reflect a vector v around a normal vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP 
+.br
+\fInorm\fP The normal vector from which v will be reflected\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The reflection of v around the normal vector 'norm'\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::reflect (const vec3_t< N > &v1, const vec3_t< N > &norm)\fC [inline]\fP"
+
+.PP
+reflect Reflect a vector v around a normal vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP 
+.br
+\fInorm\fP The normal vector from which v will be reflected\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The reflection of v around the normal vector 'norm'\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec4_t\fP<N> ls::math::reflect (const vec4_t< N > &v1, const vec4_t< N > &norm)\fC [inline]\fP"
+
+.PP
+reflect Reflect a vector v around a normal vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP 
+.br
+\fInorm\fP The normal vector from which v will be reflected\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The reflection of v around the normal vector 'norm'\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat2_t\fP<N> ls::math::rotate (const mat2_t< N > &m, Nradians)\fC [inline]\fP"
+
+.PP
+rotate Rotate a 2x2 matrix by a number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 2x2 matrix\&.
+.br
+\fIradians\fP The number of radians to rotate a matrix by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A the rotation of m by a number of radians\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec2_t\fP<N> ls::math::rotate (const vec2_t< N > &v, Nangle)\fC [inline]\fP"
+
+.PP
+rotate Rotate a 2D vector by a number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A 2D vector that is to be rotated\&.
+.br
+\fIangle\fP The number of radians that a 2D vector is to be rotated by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A rotated 2D vector\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat3_t\fP<N> ls::math::rotate (const mat3_t< N > &m, const vec3_t< N > &axis, Nradians)\fC [inline]\fP"
+
+.PP
+rotate Rotate a 3x3 matrix by a number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 3x3 matrix\&.
+.br
+\fIaxis\fP The axis in 3D space around which the matrix will be rotated\&.
+.br
+\fIradians\fP The number of radians to rotate a matrix by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A the rotation of m by a number of radians\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmat4_t\fP<N> ls::math::rotate (const mat4_t< N > &m, const vec3_t< N > &axis, Nradians)\fC [inline]\fP"
+
+.PP
+rotate Rotate a 4x4 matrix by a number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 4x4 matrix\&.
+.br
+\fIaxis\fP The axis in 3D space around which the matrix will be rotated\&.
+.br
+\fIradians\fP The number of radians to rotate a matrix by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A the rotation of m by a number of radians\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat2_t\fP<N> ls::math::scale (const mat2_t< N > &m, const vec2_t< N > &amount)"
+
+.PP
+scale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 2x2 matrix\&.
+.br
+\fIamount\fP the amount of scaling along each axis of matrix m\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat3_t\fP<N> ls::math::scale (const mat3_t< N > &m, const vec3_t< N > &amount)"
+
+.PP
+scale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 3x3 matrix\&.
+.br
+\fIamount\fP the amount of scaling along each axis of matrix m\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat4_t\fP<N> ls::math::scale (const mat4_t< N > &m, const vec3_t< N > &amount)"
+
+.PP
+scale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 4x4 matrix\&.
+.br
+\fIamount\fP the amount of scaling along each axis of matrix m\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBquat_t\fP<N> ls::math::slerp (const quat_t< N > &, const quat_t< N > &, N)\fC [inline]\fP"
+
+.PP
+SLERP Perform a spherical-interpolation of q1 towards q2 by some percentage\&. This method has been adapted from Professor W\&. Randolph Franklin Rensselaer Polytechnic Institute: http://www.ecse.rpi.edu/Homepages/wrf/pmwiki/pmwiki.php http://www.ecse.rpi.edu/~wrf/wiki/ComputerGraphicsFall2012/guha/Code/quaternionAnimation.cpp
+.PP
+Request from the true author must be granted prior to use in commercial products\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq1\fP The quaternion to be interpolated\&.
+.br
+\fIq2\fP The reference quaternion that q1 should interpolate to\&.
+.br
+\fIpercent\fP The percentage that q1 should move towards q2\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a spherical interpolation of q1 towards q2 by some percent\&. 
+.RE
+.PP
+
+.SS "template<typename scalar_t > scalar_t ls::math::smoothstep (scalar_ta, scalar_tb, scalar_tx)\fC [inline]\fP"
+
+.PP
+smoothstep Perform a smooth interpolation of a number along the sub-sequence [a, b]\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP A number within the same sub-sequence that x lies on\&.
+.br
+\fIb\fP A number within the same sub-sequence that x lies on\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The smooth linear interpolation of x in between the interval a and b\&. 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t > constexpr scalar_t ls::math::sum (const scalar_t &num)"
+
+.PP
+sum Evaluate the sum of a series of numbers at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP set of numbers who's values are to be added together\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sum of a set of numbers\&. 
+.RE
+.PP
+
+.PP
+Definition at line 300 of file scalar_utils_impl\&.h\&.
+.SS "template<typename scalar_t , typename\&.\&.\&. scalars_t> constexpr scalar_t ls::math::sum (const scalar_t &num, const scalars_t &\&.\&.\&.nums)"
+
+.PP
+sum Evaluate the sum of a series of numbers at compile-time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP set of numbers who's values are to be added together\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sum of a set of numbers\&. 
+.RE
+.PP
+
+.PP
+Definition at line 308 of file scalar_utils_impl\&.h\&.
+.SS "template<typename N > void ls::math::toAxisAngle (const quat_t< N > &q, vec3_t< N > &outAaxis, N &outAngle)\fC [inline]\fP"
+
+.PP
+toAxisAngle Convert a rotational quaternion into Axis-Angle representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP A rotational quaternion\&.
+.br
+\fIoutAxis\fP A 3D vector which will represent the quaternion's axis of rotation in R^3\&.
+.br
+\fIoutAngle\fP An angle, in radians, representing the quaternion's angle of rotation around a 3D axis in R^3\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec4_t\fP<N> ls::math::toAxisAngle (const quat_t< N > &q)\fC [inline]\fP"
+
+.PP
+toAxisAngle Convert a rotational quaternion into Axis-Angle representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP A rotational quaternion\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 4D vector, representing the quaternion's axis of rotation in R^3 and angle of rotation around the axis\&. The first 3 components are the converted X, Y, & Z points along a unit sphere, the last component of this vector is the angle\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::toEuler (const quat_t< N > &q)\fC [inline]\fP"
+
+.PP
+toEuler Convert a unit quaternion into 3 Euler angles, pitch, yaw, and roll\&. q
+.PP
+\fBReturns:\fP
+.RS 4
+a 3D vector which contains the pitch, yaw, and roll of a quaternion, respectively\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat3_t\fP<N> ls::math::translate (const mat3_t< N > &m, const vec2_t< N > &amount)"
+
+.PP
+translate Translate a 3x3 matrix along a 2D plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 3x3 matrix\&.
+.br
+\fIamount\fP A constant reference to a constant 2D vector, indicating how much to move the matrix by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 3x3 matrix that has been translated\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat4_t\fP<N> ls::math::translate (const mat4_t< N > &m, const vec3_t< N > &amount)"
+
+.PP
+translate Translate a 4x4 matrix along a 3D plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 4x4 matrix\&.
+.br
+\fIamount\fP A constant reference to a constant 3D vector, indicating how much to move the matrix by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a 4x4 matrix that has been translated\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat2_t\fP<N> ls::math::transpose (const mat2_t< N > &m)"
+
+.PP
+transpose Flip the values of a matrix around its main diagonal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 2x2 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the transposition of a matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat3_t\fP<N> ls::math::transpose (const mat3_t< N > &m)"
+
+.PP
+transpose Flip the values of a matrix around its main diagonal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 3x3 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the transposition of a matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > constexpr \fBmat4_t\fP<N> ls::math::transpose (const mat4_t< N > &m)"
+
+.PP
+transpose Flip the values of a matrix around its main diagonal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP A constant reference to a 4x4 matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the transposition of a matrix\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::xRotation (Nangle)\fC [inline]\fP"
+
+.PP
+xRotation Retrieve a unit vector that has been rotated around the cartesian X-Axis by a certain number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIangle\fP The number of radians that a 3D vector is to be rotated by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 3D vector rotated by 'angle' radians around the cartesian X-Axis\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::yRotation (Nangle)\fC [inline]\fP"
+
+.PP
+xRotation Retrieve a unit vector that has been rotated around the cartesian Y-Axis by a certain number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIangle\fP The number of radians that a 3D vector is to be rotated by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 3D vector rotated by 'angle' radians around the cartesian Y-Axis\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBvec3_t\fP<N> ls::math::zRotation (Nangle)\fC [inline]\fP"
+
+.PP
+xRotation Retrieve a unit vector that has been rotated around the cartesian Z-Axis by a certain number of radians\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIangle\fP The number of radians that a 3D vector is to be rotated by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 3D vector rotated by 'angle' radians around the cartesian Z-Axis\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

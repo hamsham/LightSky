@@ -1,0 +1,892 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1game_1_1game_state" kind="class" prot="public" abstract="yes">
+    <compoundname>ls::game::gameState</compoundname>
+    <includes refid="game_state_8h" local="no">gameState.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classls_1_1game_1_1game_state_1a3952580d756e0765f8ee3bba6bc910dd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class system</definition>
+        <argsstring></argsstring>
+        <name>system</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="56" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1game_1_1game_state_1ab18a8cc5717ac91c1aec1d2c019a8104" prot="private" static="no" mutable="yes">
+        <type><ref refid="classls_1_1game_1_1system" kindref="compound">system</ref> *</type>
+        <definition>system* ls::game::gameState::pSystem</definition>
+        <argsstring></argsstring>
+        <name>pSystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A &quot;const&quot; pointer to the parent lsSubsystem which manages *this. this pointer is assigned automatically when a system is pushed onto the subsystem&apos;s stack. Do not try to modify this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="64" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1game_1_1game_state_1a11608b7af73d94f24dabefbc0b9fc0c0" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1game_1ad31ae9f81181eebe18482c08a06435e7" kindref="member">game_state_t</ref></type>
+        <definition>game_state_t ls::game::gameState::currentState</definition>
+        <argsstring></argsstring>
+        <name>currentState</name>
+        <initializer>= <ref refid="namespacels_1_1game_1ad31ae9f81181eebe18482c08a06435e7a00d634b601e5460f0976356bb4922325" kindref="member">LS_GAME_STOPPED</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The current state that is used by *this. This variable is also assigned by the parent subsystem and should not be modified. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="70" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a8e76eea7e98341cee50006b91daa3b9b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::setParentSystem</definition>
+        <argsstring>(system &amp;sys)</argsstring>
+        <name>setParentSystem</name>
+        <param>
+          <type><ref refid="classls_1_1game_1_1system" kindref="compound">system</ref> &amp;</type>
+          <declname>sys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Used by the parent subsystem to help with <ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> management.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to the parent subsystem. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="78" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1aab17b9d465fd254c887d7d145afb7b4e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onKeyboardUpEvent</definition>
+        <argsstring>(const SDL_KeyboardEvent &amp;evt)</argsstring>
+        <name>onKeyboardUpEvent</name>
+        <param>
+          <type>const SDL_KeyboardEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a keyboard key is disengaged.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_KeyboardEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="94" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="61" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a514e460de148b38871e441fc2ab4a10a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onKeyboardDownEvent</definition>
+        <argsstring>(const SDL_KeyboardEvent &amp;evt)</argsstring>
+        <name>onKeyboardDownEvent</name>
+        <param>
+          <type>const SDL_KeyboardEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a keyboard key is pressed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_KeyboardEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="103" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="68" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a454d6237f89ed4b84d62758571e55de0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onKeyboardTextEvent</definition>
+        <argsstring>(const SDL_TextInputEvent &amp;evt)</argsstring>
+        <name>onKeyboardTextEvent</name>
+        <param>
+          <type>const SDL_TextInputEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a keyboard key is used for text entry.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_TextInputEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="112" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="75" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1add4045fb8bb036470b02778ca0bb2d2a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onWindowEvent</definition>
+        <argsstring>(const SDL_WindowEvent &amp;evt)</argsstring>
+        <name>onWindowEvent</name>
+        <param>
+          <type>const SDL_WindowEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when the current SDL display has been modified.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_WindowEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="124" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="85" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a273aafa732af49f9a5d9fe222865178e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onMouseMoveEvent</definition>
+        <argsstring>(const SDL_MouseMotionEvent &amp;evt)</argsstring>
+        <name>onMouseMoveEvent</name>
+        <param>
+          <type>const SDL_MouseMotionEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when the mouse has moved.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_MouseMotionEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="136" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="95" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a7eb643ded7ed93f9e4f3acb5683fca70" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onMouseButtonUpEvent</definition>
+        <argsstring>(const SDL_MouseButtonEvent &amp;evt)</argsstring>
+        <name>onMouseButtonUpEvent</name>
+        <param>
+          <type>const SDL_MouseButtonEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a button on the user&apos;s mouse has been depressed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_MouseButtonEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="145" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="102" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1ac7ae0c492c40a5df58a43f1412d8d015" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onMouseButtonDownEvent</definition>
+        <argsstring>(const SDL_MouseButtonEvent &amp;evt)</argsstring>
+        <name>onMouseButtonDownEvent</name>
+        <param>
+          <type>const SDL_MouseButtonEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a button on the user&apos;s mouse has been engaged.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_MouseButtonEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="154" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="109" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a02c4a855468b188e45a194b3ec5b16b6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onMouseWheelEvent</definition>
+        <argsstring>(const SDL_MouseWheelEvent &amp;evt)</argsstring>
+        <name>onMouseWheelEvent</name>
+        <param>
+          <type>const SDL_MouseWheelEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when the scroll wheel on the user&apos;s mouse has moved.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_MouseWheelEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="163" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="116" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a1ef75eda9a974889b1f0d86cd77594b6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onControllerAddedEvent</definition>
+        <argsstring>(const SDL_ControllerDeviceEvent &amp;evt)</argsstring>
+        <name>onControllerAddedEvent</name>
+        <param>
+          <type>const SDL_ControllerDeviceEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a controller has been plugged in.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_ControllerDeviceEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="175" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="126" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a37418119eead894630ce17951c7590a6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onControllerRemovedEvent</definition>
+        <argsstring>(const SDL_ControllerDeviceEvent &amp;evt)</argsstring>
+        <name>onControllerRemovedEvent</name>
+        <param>
+          <type>const SDL_ControllerDeviceEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a controller has disconnected.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_ControllerDeviceEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="184" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="133" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1aef16f854767358aa7b14075f91bf38c8" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onControllerRemappedEvent</definition>
+        <argsstring>(const SDL_ControllerDeviceEvent &amp;evt)</argsstring>
+        <name>onControllerRemappedEvent</name>
+        <param>
+          <type>const SDL_ControllerDeviceEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a controller has been remapped.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_ControllerDeviceEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="193" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="140" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a9b3457f78f7afc94e956171670ab4024" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onControllerAxisEvent</definition>
+        <argsstring>(const SDL_ControllerAxisEvent &amp;evt)</argsstring>
+        <name>onControllerAxisEvent</name>
+        <param>
+          <type>const SDL_ControllerAxisEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a controller has modified its axes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_ControllerAxisEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="202" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="147" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1ad1990d085e3a674c58e5b1b9be7e5058" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onControllerButtonUpEvent</definition>
+        <argsstring>(const SDL_ControllerButtonEvent &amp;evt)</argsstring>
+        <name>onControllerButtonUpEvent</name>
+        <param>
+          <type>const SDL_ControllerButtonEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a controller had a button released.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_ControllerButtonEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="211" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="154" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a0427e2770ac8e2bcc65034e4cd8f97ef" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onControllerButtonDownEvent</definition>
+        <argsstring>(const SDL_ControllerButtonEvent &amp;evt)</argsstring>
+        <name>onControllerButtonDownEvent</name>
+        <param>
+          <type>const SDL_ControllerButtonEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a controller had a button pressed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_ControllerButtonEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="220" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="161" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1ac9e301d1f5b6de1430966985bc328b8d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyAddEvent</definition>
+        <argsstring>(const SDL_JoyDeviceEvent &amp;evt)</argsstring>
+        <name>onJoyAddEvent</name>
+        <param>
+          <type>const SDL_JoyDeviceEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick has been plugged.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyDeviceEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="232" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="171" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a0d5425b8a474d3e4fe09984aeb222602" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyRemoveEvent</definition>
+        <argsstring>(const SDL_JoyDeviceEvent &amp;evt)</argsstring>
+        <name>onJoyRemoveEvent</name>
+        <param>
+          <type>const SDL_JoyDeviceEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick has been disconnected.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyDeviceEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="241" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="178" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a4e3cb0e960c659c962b216f6da9f05a8" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyAxisEvent</definition>
+        <argsstring>(const SDL_JoyAxisEvent &amp;evt)</argsstring>
+        <name>onJoyAxisEvent</name>
+        <param>
+          <type>const SDL_JoyAxisEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick has modified its axes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyAxisEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="250" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="185" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a465cd8fe2b00d472ca3d218f538476ed" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyBallEvent</definition>
+        <argsstring>(const SDL_JoyBallEvent &amp;evt)</argsstring>
+        <name>onJoyBallEvent</name>
+        <param>
+          <type>const SDL_JoyBallEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick has changed it&apos;s trackball position.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyBallEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="259" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="192" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a797231928314c4c0dfe6f54d5e6dec65" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyButtonDownEvent</definition>
+        <argsstring>(const SDL_JoyButtonEvent &amp;evt)</argsstring>
+        <name>onJoyButtonDownEvent</name>
+        <param>
+          <type>const SDL_JoyButtonEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick had a button pressed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyButtonEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="268" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="199" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1af80f20a506ba0723b60877468f1d8242" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyButtonUpEvent</definition>
+        <argsstring>(const SDL_JoyButtonEvent &amp;evt)</argsstring>
+        <name>onJoyButtonUpEvent</name>
+        <param>
+          <type>const SDL_JoyButtonEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick had a button released.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyButtonEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="277" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="206" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a5e5b9895e5eea44622db761b5c4d6789" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onJoyHatEvent</definition>
+        <argsstring>(const SDL_JoyHatEvent &amp;evt)</argsstring>
+        <name>onJoyHatEvent</name>
+        <param>
+          <type>const SDL_JoyHatEvent &amp;</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Event which allows a game state to input events when a joystick hat button event has occurred.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>evt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an SDL_JoyHatEvent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="286" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="213" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a1be09ea38fce1a006221afb0b3e6336e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ls::game::gameState::onStart</definition>
+        <argsstring>()</argsstring>
+        <name>onStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The onStart method is called by the parent subsystem when *this object has been notified to start. Place all memory allocations here.</para><para><simplesect kind="return"><para>bool TRUE to indicate that *this has successfully initialized, FALSE if otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="299" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="223" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a2c8a62609cb8d575e91a3f255915b466" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onStop</definition>
+        <argsstring>()</argsstring>
+        <name>onStop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The onStop method is used by the parent subsystem to indicate that *this game state should terminate. Place all memory cleanup here. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="305" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="231" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1aa924babe8d6fcc9639296d1725324581" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onRun</definition>
+        <argsstring>(float tickTime)</argsstring>
+        <name>onRun</name>
+        <param>
+          <type>float</type>
+          <declname>tickTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is used to tell the current game state that it should update its child components/variables/state.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tickTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A floating-point number to indicate how many milliseconds have passed since the last parent system update. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="315" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="238" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1aab1767be3d79f0582386e08172e238b1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::onPause</definition>
+        <argsstring>(float tickTime)</argsstring>
+        <name>onPause</name>
+        <param>
+          <type>float</type>
+          <declname>tickTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is used by the parent subsystem to tell *this game state that it&apos;s paused.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tickTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A floating-point number to indicate how many milliseconds have passed since the last parent system update. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="325" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="245" bodyend="246"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a6cc487561f58e012f3f6576892fc6ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::game::gameState::gameState</definition>
+        <argsstring>()</argsstring>
+        <name>gameState</name>
+        <briefdescription>
+<para>Default Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="331" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="22" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1add2879b08c2cfccc779135c19a18e937" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::game::gameState::gameState</definition>
+        <argsstring>(const gameState &amp;)=delete</argsstring>
+        <name>gameState</name>
+        <param>
+          <type>const <ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Constructor <ndash/> DELETED</para><para>LightSky makes no attempts to copy game state objects. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="338" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1ab2fc2d3b97766fcb20c19d8a4bf7afe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::game::gameState::gameState</definition>
+        <argsstring>(gameState &amp;&amp;gs)</argsstring>
+        <name>gameState</name>
+        <param>
+          <type><ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> &amp;&amp;</type>
+          <declname>gs</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all memory allocations from the input parameter into *this. This method may be called at some point by the parent subsystem.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a game state who&apos;s members are to be moved into *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="350" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1ac6f608e1d456a843367384a388b1205d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ls::game::gameState::~gameState</definition>
+        <argsstring>()=0</argsstring>
+        <name>~gameState</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>It is recommended to perform all object cleanup using the &quot;onStop()&quot; method. This should be used as a last-resort. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="358" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="16" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a8a4e936a1a707f7434f6e69f74ea9357" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> &amp;</type>
+        <definition>gameState&amp; ls::game::gameState::operator=</definition>
+        <argsstring>(const gameState &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Operator <ndash/> DELETED. </para>        </briefdescription>
+        <detaileddescription>
+<para>LightSky makes no attempts to copy game state objects. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="365" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a6da557ad136f42097de5335bf6222a03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> &amp;</type>
+        <definition>gameState &amp; ls::game::gameState::operator=</definition>
+        <argsstring>(gameState &amp;&amp;gs)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> &amp;&amp;</type>
+          <declname>gs</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all memory allocations from the input parameter into *this. This method may be called at some point by the parent subsystem.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a game state that&apos;s about to go out of scope and be terminated.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="379" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp" bodystart="38" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1ae978200b6ad7d2c2ba6df99f8c73a13b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1game_1ad31ae9f81181eebe18482c08a06435e7" kindref="member">game_state_t</ref></type>
+        <definition>game_state_t ls::game::gameState::getState</definition>
+        <argsstring>() const </argsstring>
+        <name>getState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current state of *this object. This object&apos;s state is used by the parent subsystem to determine when it should go out of scope and terminate.</para><para><simplesect kind="return"><para>game_state_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="388" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/generic/gameState_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a6fd4f734cedb76f4642724f5022648cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::game::gameState::setState</definition>
+        <argsstring>(game_state_t s)</argsstring>
+        <name>setState</name>
+        <param>
+          <type><ref refid="namespacels_1_1game_1ad31ae9f81181eebe18482c08a06435e7" kindref="member">game_state_t</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the operational state of *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A game_state_t which will be used to set the current runtime state of *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="397" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/generic/gameState_impl.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1game_1_1game_state_1a140dea881b97970a3eb1f77a675d5131" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classls_1_1game_1_1system" kindref="compound">system</ref> &amp;</type>
+        <definition>system &amp; ls::game::gameState::getParentSystem</definition>
+        <argsstring>() const </argsstring>
+        <name>getParentSystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="404" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/generic/gameState_impl.h" bodystart="22" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Game State Base Class. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ An Abstract base class that can be overridden to organize games onto stacks within an lsSubsystem. <ref refid="classls_1_1game_1_1game_state" kindref="compound">gameState</ref> objects are pushed onto a &quot;stack&quot; managed by the lsSubsystem. Game states are passed hardware events by subsystems <heading level="2">when they are running. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" line="55" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h" bodystart="55" bodyend="405"/>
+    <listofallmembers>
+      <member refid="classls_1_1game_1_1game_state_1a11608b7af73d94f24dabefbc0b9fc0c0" prot="private" virt="non-virtual"><scope>ls::game::gameState</scope><name>currentState</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a6cc487561f58e012f3f6576892fc6ff9" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>gameState</name></member>
+      <member refid="classls_1_1game_1_1game_state_1add2879b08c2cfccc779135c19a18e937" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>gameState</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ab2fc2d3b97766fcb20c19d8a4bf7afe7" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>gameState</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a140dea881b97970a3eb1f77a675d5131" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>getParentSystem</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ae978200b6ad7d2c2ba6df99f8c73a13b" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>getState</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a1ef75eda9a974889b1f0d86cd77594b6" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onControllerAddedEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a9b3457f78f7afc94e956171670ab4024" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onControllerAxisEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a0427e2770ac8e2bcc65034e4cd8f97ef" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onControllerButtonDownEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ad1990d085e3a674c58e5b1b9be7e5058" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onControllerButtonUpEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1aef16f854767358aa7b14075f91bf38c8" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onControllerRemappedEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a37418119eead894630ce17951c7590a6" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onControllerRemovedEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ac9e301d1f5b6de1430966985bc328b8d" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyAddEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a4e3cb0e960c659c962b216f6da9f05a8" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyAxisEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a465cd8fe2b00d472ca3d218f538476ed" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyBallEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a797231928314c4c0dfe6f54d5e6dec65" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyButtonDownEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1af80f20a506ba0723b60877468f1d8242" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyButtonUpEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a5e5b9895e5eea44622db761b5c4d6789" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyHatEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a0d5425b8a474d3e4fe09984aeb222602" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onJoyRemoveEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a514e460de148b38871e441fc2ab4a10a" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onKeyboardDownEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a454d6237f89ed4b84d62758571e55de0" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onKeyboardTextEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1aab17b9d465fd254c887d7d145afb7b4e" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onKeyboardUpEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ac7ae0c492c40a5df58a43f1412d8d015" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onMouseButtonDownEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a7eb643ded7ed93f9e4f3acb5683fca70" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onMouseButtonUpEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a273aafa732af49f9a5d9fe222865178e" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onMouseMoveEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a02c4a855468b188e45a194b3ec5b16b6" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onMouseWheelEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1aab1767be3d79f0582386e08172e238b1" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onPause</name></member>
+      <member refid="classls_1_1game_1_1game_state_1aa924babe8d6fcc9639296d1725324581" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onRun</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a1be09ea38fce1a006221afb0b3e6336e" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onStart</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a2c8a62609cb8d575e91a3f255915b466" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onStop</name></member>
+      <member refid="classls_1_1game_1_1game_state_1add4045fb8bb036470b02778ca0bb2d2a" prot="protected" virt="virtual"><scope>ls::game::gameState</scope><name>onWindowEvent</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a8a4e936a1a707f7434f6e69f74ea9357" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>operator=</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a6da557ad136f42097de5335bf6222a03" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>operator=</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ab18a8cc5717ac91c1aec1d2c019a8104" prot="private" virt="non-virtual"><scope>ls::game::gameState</scope><name>pSystem</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a8e76eea7e98341cee50006b91daa3b9b" prot="private" virt="non-virtual"><scope>ls::game::gameState</scope><name>setParentSystem</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a6fd4f734cedb76f4642724f5022648cc" prot="public" virt="non-virtual"><scope>ls::game::gameState</scope><name>setState</name></member>
+      <member refid="classls_1_1game_1_1game_state_1a3952580d756e0765f8ee3bba6bc910dd" prot="private" virt="non-virtual"><scope>ls::game::gameState</scope><name>system</name></member>
+      <member refid="classls_1_1game_1_1game_state_1ac6f608e1d456a843367384a388b1205d" prot="public" virt="pure-virtual"><scope>ls::game::gameState</scope><name>~gameState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

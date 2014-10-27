@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="depth_object_8cpp" kind="file">
+    <compoundname>depthObject.cpp</compoundname>
+    <includes refid="depth_object_8h" local="yes">lightsky/draw/depthObject.h</includes>
+    <incdepgraph>
+      <node id="2410">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2411" relation="include">
+        </childnode>
+      </node>
+      <node id="2389">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="2390" relation="include">
+        </childnode>
+        <childnode refid="2391" relation="include">
+        </childnode>
+      </node>
+      <node id="2395">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="2396" relation="include">
+        </childnode>
+        <childnode refid="2397" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2403" relation="include">
+        </childnode>
+        <childnode refid="2409" relation="include">
+        </childnode>
+        <childnode refid="2413" relation="include">
+        </childnode>
+        <childnode refid="2417" relation="include">
+        </childnode>
+        <childnode refid="2406" relation="include">
+        </childnode>
+        <childnode refid="2410" relation="include">
+        </childnode>
+        <childnode refid="2414" relation="include">
+        </childnode>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2419" relation="include">
+        </childnode>
+        <childnode refid="2420" relation="include">
+        </childnode>
+        <childnode refid="2423" relation="include">
+        </childnode>
+        <childnode refid="2425" relation="include">
+        </childnode>
+      </node>
+      <node id="2418">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="2384">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="2390">
+        <label>cstdint</label>
+      </node>
+      <node id="2386">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="2382">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="2383" relation="include">
+        </childnode>
+        <childnode refid="2388" relation="include">
+        </childnode>
+        <childnode refid="2389" relation="include">
+        </childnode>
+        <childnode refid="2392" relation="include">
+        </childnode>
+        <childnode refid="2395" relation="include">
+        </childnode>
+      </node>
+      <node id="2428">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="2423">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="2420" relation="include">
+        </childnode>
+        <childnode refid="2403" relation="include">
+        </childnode>
+        <childnode refid="2409" relation="include">
+        </childnode>
+        <childnode refid="2413" relation="include">
+        </childnode>
+        <childnode refid="2424" relation="include">
+        </childnode>
+      </node>
+      <node id="2399">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="2400" relation="include">
+        </childnode>
+        <childnode refid="2390" relation="include">
+        </childnode>
+        <childnode refid="2401" relation="include">
+        </childnode>
+        <childnode refid="2396" relation="include">
+        </childnode>
+        <childnode refid="2397" relation="include">
+        </childnode>
+        <childnode refid="2402" relation="include">
+        </childnode>
+      </node>
+      <node id="2402">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="2416">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="2403">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2406" relation="include">
+        </childnode>
+        <childnode refid="2408" relation="include">
+        </childnode>
+      </node>
+      <node id="2398">
+        <label>cmath</label>
+      </node>
+      <node id="2419">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2410" relation="include">
+        </childnode>
+        <childnode refid="2414" relation="include">
+        </childnode>
+        <childnode refid="2409" relation="include">
+        </childnode>
+        <childnode refid="2413" relation="include">
+        </childnode>
+        <childnode refid="2417" relation="include">
+        </childnode>
+        <childnode refid="2420" relation="include">
+        </childnode>
+        <childnode refid="2422" relation="include">
+        </childnode>
+      </node>
+      <node id="2405">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="2430">
+        <label>lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="2381" relation="include">
+        </childnode>
+        <childnode refid="2382" relation="include">
+        </childnode>
+      </node>
+      <node id="2431">
+        <label>lightsky/draw/generic/depthObject_impl.h</label>
+        <link refid="depth_object__impl_8h"/>
+      </node>
+      <node id="2414">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+      </node>
+      <node id="2381">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="2421">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="2412">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="2394">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="2415">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="2387">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="2408">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="2425">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="2426" relation="include">
+        </childnode>
+        <childnode refid="2427" relation="include">
+        </childnode>
+        <childnode refid="2410" relation="include">
+        </childnode>
+        <childnode refid="2428" relation="include">
+        </childnode>
+        <childnode refid="2429" relation="include">
+        </childnode>
+      </node>
+      <node id="2411">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="2396">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="2383" relation="include">
+        </childnode>
+      </node>
+      <node id="2409">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2410" relation="include">
+        </childnode>
+        <childnode refid="2412" relation="include">
+        </childnode>
+      </node>
+      <node id="2391">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="2379">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp</label>
+        <link refid="depthObject.cpp"/>
+        <childnode refid="2380" relation="include">
+        </childnode>
+      </node>
+      <node id="2407">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="2392">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="2393" relation="include">
+        </childnode>
+        <childnode refid="2394" relation="include">
+        </childnode>
+      </node>
+      <node id="2417">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2418" relation="include">
+        </childnode>
+      </node>
+      <node id="2397">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="2398" relation="include">
+        </childnode>
+        <childnode refid="2390" relation="include">
+        </childnode>
+      </node>
+      <node id="2383">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="2384" relation="include">
+        </childnode>
+        <childnode refid="2385" relation="include">
+        </childnode>
+        <childnode refid="2386" relation="include">
+        </childnode>
+        <childnode refid="2387" relation="include">
+        </childnode>
+      </node>
+      <node id="2401">
+        <label>utility</label>
+      </node>
+      <node id="2380">
+        <label>lightsky/draw/depthObject.h</label>
+        <link refid="depth_object_8h"/>
+        <childnode refid="2381" relation="include">
+        </childnode>
+        <childnode refid="2382" relation="include">
+        </childnode>
+        <childnode refid="2430" relation="include">
+        </childnode>
+        <childnode refid="2431" relation="include">
+        </childnode>
+      </node>
+      <node id="2424">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="2420">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="2397" relation="include">
+        </childnode>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2406" relation="include">
+        </childnode>
+        <childnode refid="2410" relation="include">
+        </childnode>
+        <childnode refid="2414" relation="include">
+        </childnode>
+        <childnode refid="2421" relation="include">
+        </childnode>
+      </node>
+      <node id="2413">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2414" relation="include">
+        </childnode>
+        <childnode refid="2416" relation="include">
+        </childnode>
+      </node>
+      <node id="2393">
+        <label>iostream</label>
+      </node>
+      <node id="2406">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+        <childnode refid="2407" relation="include">
+        </childnode>
+      </node>
+      <node id="2404">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="2396" relation="include">
+        </childnode>
+        <childnode refid="2397" relation="include">
+        </childnode>
+        <childnode refid="2405" relation="include">
+        </childnode>
+      </node>
+      <node id="2422">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="2400">
+        <label>climits</label>
+      </node>
+      <node id="2426">
+        <label>chrono</label>
+      </node>
+      <node id="2388">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="2387" relation="include">
+        </childnode>
+      </node>
+      <node id="2427">
+        <label>algorithm</label>
+      </node>
+      <node id="2385">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="2429">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>depthObject.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>August<sp/>4,<sp/>2014,<sp/>8:29<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="depth_object_8h" kindref="compound">lightsky/draw/depthObject.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/><sp/>Depth<sp/>object<sp/>binding</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classls_1_1draw_1_1depth_object_1a2053216c0ded4883db9a0e6e523165b5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1depth_object_1a2053216c0ded4883db9a0e6e523165b5" kindref="member">depthObject::bind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(enabled)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glEnable(GL_DEPTH_TEST);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDisable(GL_DEPTH_TEST);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>glClearDepth(depthClearVal);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>glDepthFunc(depthFunc);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>glDepthMask(depthMask);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>glDepthRange(depthNear,<sp/>depthFar);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/><sp/>Disable<sp/>OpenGL<sp/>depth<sp/>parameters</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classls_1_1draw_1_1depth_object_1acfcbf2317f370450679d6f009b22c663" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1depth_object_1acfcbf2317f370450679d6f009b22c663" kindref="member">depthObject::unbind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>default<sp/>constructor<sp/>already<sp/>has<sp/>default<sp/>OpenGL<sp/>params.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref><sp/>depthObj{};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>depthObj.<ref refid="classls_1_1draw_1_1depth_object_1a2053216c0ded4883db9a0e6e523165b5" kindref="member">bind</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/>Reset<sp/>all<sp/>members<sp/>to<sp/>their<sp/>default<sp/>values.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classls_1_1draw_1_1depth_object_1a3d8cef9f17fe5bc063574fa6d835ae62" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1depth_object_1a3d8cef9f17fe5bc063574fa6d835ae62" kindref="member">depthObject::reset</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/><ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref>{};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,160 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/math/scalar_utils.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/math/scalar_utils.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'lightsky/math/setup\&.h'\fP
+.br
+\fC#include 'lightsky/math/types\&.h'\fP
+.br
+\fC#include 'lightsky/math/generic/scalar_utils_impl\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::math\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::min\fP (scalar_t a, scalar_t b)"
+.br
+.RI "\fImax Get the minimum of two single numbers This function can be run at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::mix\fP (scalar_t a, scalar_t b, scalar_t percent)"
+.br
+.RI "\fImix Perform a linear interpolation of x between the two scalars a, b \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::max\fP (scalar_t a, scalar_t b)"
+.br
+.RI "\fImax Get the maximum of two single numbers\&. This function can be run at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::clamp\fP (scalar_t n, scalar_t minVal, scalar_t maxVal)"
+.br
+.RI "\fIclamp Bind a number to within a certain range\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBls::math::smoothstep\fP (scalar_t a, scalar_t b, scalar_t x)"
+.br
+.RI "\fIsmoothstep Perform a smooth interpolation of a number along the sub-sequence [a, b]\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBls::math::fastSqrt\fP (scalar_t)"
+.br
+.RI "\fIfastSqrt Perform a square root on a single number without using the standard library\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<> float \fBls::math::fastSqrt< float >\fP (float)"
+.br
+.RI "\fIfastSqrt Perform a square root on a single number without using the standard library\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBls::math::fastInvSqrt\fP (scalar_t)"
+.br
+.RI "\fIfastInvSqrt Get the inverse square root of a number\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<> float \fBls::math::fastInvSqrt< float >\fP (float)"
+.br
+.RI "\fIfastInvSqrt Get the inverse square root of a number\&. This method uses IEEE floating point arithmetic\&. Use only if the input argument uses this format\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::degToRad\fP (scalar_t)"
+.br
+.RI "\fIdegToRad Convert a number from degrees to radians\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::radToDeg\fP (scalar_t)"
+.br
+.RI "\fIradToDeg Convert a number from radians to degrees\&. This function can be run at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBls::math::fastLog2\fP (scalar_t)"
+.br
+.RI "\fIfastLog2 Calculate the log-base2 of a number \fP"
+.ti -1c
+.RI "template<> float \fBls::math::fastLog2< float >\fP (float)"
+.br
+.RI "\fIfastLog2 Calculate the log-base2 of a number \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBls::math::fastLog\fP (scalar_t)"
+.br
+.RI "\fIfastLog Calculate the log-base10 of a number \fP"
+.ti -1c
+.RI "template<typename scalar_t > scalar_t \fBls::math::fastLogN\fP (scalar_t baseN, scalar_t)"
+.br
+.RI "\fIfastLogBase Calculate the log-base2 of a number \fP"
+.ti -1c
+.RI "unsigned \fBls::math::nextPow2\fP (unsigned)"
+.br
+.RI "\fInextPow2 Find the next (greater) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "int \fBls::math::nextPow2\fP (int)"
+.br
+.RI "\fInextPow2 Find the next (greater) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "unsigned \fBls::math::prevPow2\fP (unsigned)"
+.br
+.RI "\fIprevPow2 Find the previous (lesser) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "int \fBls::math::prevPow2\fP (int)"
+.br
+.RI "\fIprevPow2 Find the previous (lesser) power of two that is closest to the value of a number \fP"
+.ti -1c
+.RI "unsigned \fBls::math::nearPow2\fP (unsigned)"
+.br
+.RI "\fInearPow2 Find the closest power of two to a number\&. This may either be greater than or less than the input number\&. \fP"
+.ti -1c
+.RI "int \fBls::math::nearPow2\fP (int)"
+.br
+.RI "\fInearPow2 Find the closest power of two to a number\&. This may either be greater than or less than the input number\&. \fP"
+.ti -1c
+.RI "constexpr bool \fBls::math::isPow2\fP (unsigned)"
+.br
+.RI "\fIisPow2 Determine if a number is a power of two or not\&. \fP"
+.ti -1c
+.RI "constexpr bool \fBls::math::isPow2\fP (int)"
+.br
+.RI "\fIisPow2 Determine if a number is a power of two or not\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::factorial\fP (scalar_t)"
+.br
+.RI "\fIfactorial Retrieve the factorial of a number \fP"
+.ti -1c
+.RI "template<typename scalar_t , typename int_t > constexpr scalar_t \fBls::math::pow\fP (scalar_t, int_t)"
+.br
+.RI "\fIpow Evaluate a number to a given power\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::const_sin\fP (scalar_t)"
+.br
+.RI "\fIconst_sin Evaluate the sine of an angle at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::const_cos\fP (scalar_t)"
+.br
+.RI "\fIconst_cos Evaluate the cosine of an angle at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::const_tan\fP (scalar_t)"
+.br
+.RI "\fIconst_tan Evaluate the tangent of an angle at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::sum\fP (const scalar_t &)"
+.br
+.RI "\fIsum Evaluate the sum of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t , typename\&.\&.\&. scalars_t> constexpr scalar_t \fBls::math::sum\fP (const scalar_t &num, const scalars_t &\&.\&.\&.nums)"
+.br
+.RI "\fIsum Evaluate the sum of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t > constexpr scalar_t \fBls::math::average\fP ()"
+.br
+.RI "\fIaverage Evaluate the average of a series of numbers at compile-time\&. \fP"
+.ti -1c
+.RI "template<typename scalar_t , typename\&.\&.\&. scalars_t> constexpr scalar_t \fBls::math::average\fP (const scalar_t &num, const scalars_t &\&.\&.\&.nums)"
+.br
+.RI "\fIaverage Evaluate the average of a series of numbers at compile-time\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

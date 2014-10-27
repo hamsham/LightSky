@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1script_1_1scriptable" kind="class" prot="public" abstract="yes">
+    <compoundname>ls::script::scriptable</compoundname>
+    <derivedcompoundref refid="classls_1_1script_1_1functor" prot="public" virt="non-virtual">ls::script::functor</derivedcompoundref>
+    <derivedcompoundref refid="classls_1_1script_1_1variable" prot="public" virt="non-virtual">ls::script::variable</derivedcompoundref>
+    <includes refid="scriptable_8h" local="no">scriptable.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1a7ac9302b44878e7e1ed78400e3651cde" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ls::script::scriptable::~scriptable</definition>
+        <argsstring>()=0</argsstring>
+        <name>~scriptable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="27" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp" bodystart="10" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::scriptable::scriptable</definition>
+        <argsstring>()</argsstring>
+        <name>scriptable</name>
+        <briefdescription>
+<para>Constructor Does nothing as there are no members in *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="33" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp" bodystart="16" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1a99f50f8744279cbbd954c124b3dbb9f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::scriptable::scriptable</definition>
+        <argsstring>(const scriptable &amp;)</argsstring>
+        <name>scriptable</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Constructor Does nothing as there are no members in *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="39" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp" bodystart="22" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1a7838ffef45488993cbd83305ac2a121b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::scriptable::scriptable</definition>
+        <argsstring>(scriptable &amp;&amp;)</argsstring>
+        <name>scriptable</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move Constructor Does nothing as there are no members in *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp" bodystart="28" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1a0a44fbbc1ef4ebb824a82163257cc490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref> &amp;</type>
+        <definition>scriptable &amp; ls::script::scriptable::operator=</definition>
+        <argsstring>(const scriptable &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Operator Does nothing as there are no members in *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="53" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1ae5ab31974a89ab5b3ce4e5b4c3d51591" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref> &amp;</type>
+        <definition>scriptable &amp; ls::script::scriptable::operator=</definition>
+        <argsstring>(scriptable &amp;&amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move Operator Does nothing as there are no members in *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="61" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1ae53e220ec8827ca3c71e07a78908f03c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1a" kindref="member">script_base_t</ref></type>
+        <definition>virtual script_base_t ls::script::scriptable::getScriptType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScriptType</name>
+        <reimplementedby refid="classls_1_1script_1_1variable_1ad1eb4e04a0319c48238047fbd9497188">getScriptType</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor_1ac47c53ecc1323ad42a22bc1d822ca7ad">getScriptType</reimplementedby>
+        <briefdescription>
+<para>getScriptType Retrieve the type of scripting object *this is. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>script_base_t A hash code indicating the type of scripting object *this is. This may return a hash code which determines that this is either a scripting variable or scripting function. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1ad3f9203567b786571ea408e5dbf556e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>hash_t</type>
+        <definition>virtual hash_t ls::script::scriptable::getScriptSubType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScriptSubType</name>
+        <reimplementedby refid="classls_1_1script_1_1variable_1afb0063d7214481b524024f22261825a1">getScriptSubType</reimplementedby>
+        <reimplementedby refid="singletonls_1_1script_1_1variable__t_1a6cf40cee4f78ca6815963dde5f2bcfde">getScriptSubType</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor_1a4c872e2fd539ac19f8059714c263e30b">getScriptSubType</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a1a794cef9de1a011b506d9e651355c42">getScriptSubType</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a7815911fbd19d04dd799efb38d381829">getScriptSubType</reimplementedby>
+        <briefdescription>
+<para>getScriptSubType Used to determine the run-time-type information about the type of scripting object that *this is. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hash_t A hash code that indicates the specific type of object that *this is at run-time. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1a056218abb0bbf49aa175a20c9e5feb32" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ls::script::scriptable::load</definition>
+        <argsstring>(std::istream &amp;istr, varLoaderMap &amp;varLoader, funcLoaderMap &amp;funcLoader)=0</argsstring>
+        <name>load</name>
+        <reimplementedby refid="singletonls_1_1script_1_1variable__t_1a1772c656c9314ce60629d689ecd36181">load</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor_1affeea1a5c68be54375de86a3d93ec99e">load</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a9750105d975196ff332133c856f9dfb1">load</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a4e39c884f5aaa7c4c6f662945c1cd429">load</reimplementedby>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>istr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" kindref="member">varLoaderMap</ref> &amp;</type>
+          <declname>varLoader</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" kindref="member">funcLoaderMap</ref> &amp;</type>
+          <declname>funcLoader</declname>
+        </param>
+        <briefdescription>
+<para>load A serialization method that will help in reloading data from a standard input stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>istr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a std::istream object which contains scripting data to be loaded into *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>varLoader</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variable-loading factory that will be used to map variable data from the input stream into *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funcLoader</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A function-loading factory that will be used to map functor data from the input stream into *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a boolean value that will determine if data was successfully loaded into *this (TRUE) or not (FALSE). </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="105" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1scriptable_1adf72ecdf5afee754bb57642f4220585c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ls::script::scriptable::save</definition>
+        <argsstring>(std::ostream &amp;ostr) const =0</argsstring>
+        <name>save</name>
+        <reimplementedby refid="singletonls_1_1script_1_1variable__t_1a127692f3be65688a5814f337e8fe717e">save</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor_1a912026d4acf2de9d1e647afb11e881b1">save</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a1f2609b0c5207e65c06ab7690f5ee206">save</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a722036b4ec6ba3e47331958afb416040">save</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>ostr</declname>
+        </param>
+        <briefdescription>
+<para>save Sends all data from *this into an std::ostream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ostr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an std::ostream object. Each scriptable object will have its own save method. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="115" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Script Object Base Class. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ <heading level="2">Defines all common interfaces for derived types. </heading>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="98">
+        <label>ls::script::functor</label>
+        <link refid="classls_1_1script_1_1functor"/>
+        <childnode refid="97" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>ls::script::variable</label>
+        <link refid="classls_1_1script_1_1variable"/>
+        <childnode refid="97" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>ls::script::functor_t&lt; hashId, void &gt;</label>
+        <link refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4"/>
+        <childnode refid="98" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>ls::script::functor_t&lt; hashId, args_t &gt;</label>
+        <link refid="classls_1_1script_1_1functor__t"/>
+        <childnode refid="98" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>ls::script::variable_t&lt; hashId, type &gt;</label>
+        <link refid="singletonls_1_1script_1_1variable__t"/>
+        <childnode refid="101" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>ls::script::scriptable</label>
+        <link refid="classls_1_1script_1_1scriptable"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" line="22" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h" bodystart="22" bodyend="116"/>
+    <listofallmembers>
+      <member refid="classls_1_1script_1_1scriptable_1ad3f9203567b786571ea408e5dbf556e9" prot="public" virt="pure-virtual"><scope>ls::script::scriptable</scope><name>getScriptSubType</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1ae53e220ec8827ca3c71e07a78908f03c" prot="public" virt="pure-virtual"><scope>ls::script::scriptable</scope><name>getScriptType</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a056218abb0bbf49aa175a20c9e5feb32" prot="public" virt="pure-virtual"><scope>ls::script::scriptable</scope><name>load</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a0a44fbbc1ef4ebb824a82163257cc490" prot="public" virt="non-virtual"><scope>ls::script::scriptable</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1ae5ab31974a89ab5b3ce4e5b4c3d51591" prot="public" virt="non-virtual"><scope>ls::script::scriptable</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1adf72ecdf5afee754bb57642f4220585c" prot="public" virt="pure-virtual"><scope>ls::script::scriptable</scope><name>save</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" prot="public" virt="non-virtual"><scope>ls::script::scriptable</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a99f50f8744279cbbd954c124b3dbb9f9" prot="public" virt="non-virtual"><scope>ls::script::scriptable</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a7838ffef45488993cbd83305ac2a121b" prot="public" virt="non-virtual"><scope>ls::script::scriptable</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a7ac9302b44878e7e1ed78400e3651cde" prot="public" virt="pure-virtual"><scope>ls::script::scriptable</scope><name>~scriptable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,512 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1matrix_stack" kind="class" prot="public">
+    <compoundname>ls::draw::matrixStack</compoundname>
+    <includes refid="matrix_stack_8h" local="no">matrixStack.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1matrix_stack_1a92a2f87c03690c47313c6371a4b128d9" prot="private" static="no" mutable="no">
+        <type>std::stack&lt; math::mat4 &gt;</type>
+        <definition>std::stack&lt;math::mat4&gt; ls::draw::matrixStack::stacks[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>stacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="40" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1matrix_stack_1acad0ac32e24e775b980d1f700012f207" prot="private" static="no" mutable="no">
+        <type>math::mat4</type>
+        <definition>math::mat4 ls::draw::matrixStack::mvpMatrix</definition>
+        <argsstring></argsstring>
+        <name>mvpMatrix</name>
+        <initializer>= {1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="41" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1matrix_stack_1a81eebba9c489112dd613249adb663c3f" prot="private" static="no" mutable="no">
+        <type>math::mat4</type>
+        <definition>math::mat4 ls::draw::matrixStack::vpMatrix</definition>
+        <argsstring></argsstring>
+        <name>vpMatrix</name>
+        <initializer>= {1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="42" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1ad79c5e40dfb5dffd4520f917a2f6adca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::matrixStack::matrixStack</definition>
+        <argsstring>()</argsstring>
+        <name>matrixStack</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="48" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/matrixStack.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1aedc2c1dbd1bd3bd1da6f9dfac5e3da86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::matrixStack::matrixStack</definition>
+        <argsstring>(const matrixStack &amp;)=delete</argsstring>
+        <name>matrixStack</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1matrix_stack" kindref="compound">matrixStack</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Constructor <ndash/> DELETED. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1ac5faf444d69240e0b9c95dbff0a2f803" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::matrixStack::matrixStack</definition>
+        <argsstring>(matrixStack &amp;&amp;ms)</argsstring>
+        <name>matrixStack</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1matrix_stack" kindref="compound">matrixStack</ref> &amp;&amp;</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor Moves all data from the input parameter into *this without performing any copies. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a temporary matrix stack object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a0c66a8ed534ced6adc29aa1fd87a1513" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::matrixStack::~matrixStack</definition>
+        <argsstring>()</argsstring>
+        <name>~matrixStack</name>
+        <briefdescription>
+<para>Destructor Frees all memory/resources used by *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="69" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a16f29a03b458686c1fd015d4c4faba77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1matrix_stack" kindref="compound">matrixStack</ref> &amp;</type>
+        <definition>matrixStack&amp; ls::draw::matrixStack::operator=</definition>
+        <argsstring>(const matrixStack &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1matrix_stack" kindref="compound">matrixStack</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Operator <ndash/> DELETED. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a68c6f425b264c78238d8ebd040c3f11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1matrix_stack" kindref="compound">matrixStack</ref> &amp;</type>
+        <definition>matrixStack&amp; ls::draw::matrixStack::operator=</definition>
+        <argsstring>(matrixStack &amp;&amp;ms)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1matrix_stack" kindref="compound">matrixStack</ref> &amp;&amp;</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator Moves all data from the input parameter into *this without performing any copies. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a temporary matrix stack object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a05b0c05d3511211c7efc0b411527d4b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::pushMatrix</definition>
+        <argsstring>(matrix_use_t matrixType, const math::mat4 &amp;m)</argsstring>
+        <name>pushMatrix</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <param>
+          <type>const math::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Push a matrix onto the stack. The current matrix will be copied into a new matrix and pushed onto the stack. This matrix this then multiplied by the one passed into the function.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a 4x4 matrix. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1ab153ea82ca0b1070c12981d0b189d9e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::pushIdentity</definition>
+        <argsstring>(matrix_use_t matrixType)</argsstring>
+        <name>pushIdentity</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Push an identity matrix onto the stack. The current matrix will be stored and an identity matrix will be pushed onto the stack.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="108" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a2158e56884a918698786570707a0cf52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::emplaceMatrix</definition>
+        <argsstring>(matrix_use_t matrixType, const math::mat4 &amp;m)</argsstring>
+        <name>emplaceMatrix</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <param>
+          <type>const math::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Push a matrix onto the stack. This function pushes a pre-constructed matrix onto the stack. Unlike &quot;pushMatrix(...),&quot; this method does not multiply the current matrix with the one being pushed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a 4x4 matrix. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="121" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a7b150612a642d89c0e4d97a34c8267fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::popMatrix</definition>
+        <argsstring>(matrix_use_t matrixType)</argsstring>
+        <name>popMatrix</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a matrix from a specified stack.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="129" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a5c6c8474edbfdea259e0f77fc2c1c25a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::loadMatrix</definition>
+        <argsstring>(matrix_use_t matrixType, const math::mat4 &amp;m)</argsstring>
+        <name>loadMatrix</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <param>
+          <type>const math::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the matrix on top of the stack to the one passed into the function.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>matrix to be used on top of the stack </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="141" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a6e5ff186ee46fdfe36c0872cf45796e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::loadIdentity</definition>
+        <argsstring>(matrix_use_t)</argsstring>
+        <name>loadIdentity</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the selected matrix to an identity matrix</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="149" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1ae0d9503b39bc6d45a8e91e040da16545" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::multMatrix</definition>
+        <argsstring>(matrix_use_t matrixType, const math::mat4 &amp;m)</argsstring>
+        <name>multMatrix</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <param>
+          <type>const math::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiply the selected matrix by the one passed into the function.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to the matrix to multiply against the on on the stack. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="161" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a4316a8caff85f6cc103d6de9006b5ca9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const math::mat4 &amp;</type>
+        <definition>const math::mat4 &amp; ls::draw::matrixStack::getMatrix</definition>
+        <argsstring>(matrix_use_t matrixType) const </argsstring>
+        <name>getMatrix</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <briefdescription>
+<para>Get the current model matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of matrix to be used on the stack. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="169" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a5e892f788f16e974dbccd4ca00098822" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::constructMvp</definition>
+        <argsstring>()</argsstring>
+        <name>constructMvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiply the model, view, and projection stacks together </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="174" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a09a3fce47937a8be54a7f1ad50e7d2cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::matrixStack::constructVp</definition>
+        <argsstring>()</argsstring>
+        <name>constructVp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiply only the view and projection stacks together </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="179" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1af205779f60470ee49c01091e717fadec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const math::mat4 &amp;</type>
+        <definition>const math::mat4 &amp; ls::draw::matrixStack::getMvpMatrix</definition>
+        <argsstring>() const </argsstring>
+        <name>getMvpMatrix</name>
+        <briefdescription>
+<para>Get the MVP Matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="184" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a05d4db6aac4bdbfdfeb5d383ef4353cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const math::mat4 &amp;</type>
+        <definition>const math::mat4 &amp; ls::draw::matrixStack::getVpMatrix</definition>
+        <argsstring>() const </argsstring>
+        <name>getVpMatrix</name>
+        <briefdescription>
+<para>Get the VP Matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="189" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1matrix_stack_1a962d7b8bdf878d362a63c14cf65f55b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::matrixStack::size</definition>
+        <argsstring>(matrix_use_t matrixType)</argsstring>
+        <name>size</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" kindref="member">matrix_use_t</ref></type>
+          <declname>matrixType</declname>
+        </param>
+        <briefdescription>
+<para>Clear a specific Stack. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrixType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stack type who&apos;s size will be queried. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="197" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/matrixStack_impl.h" bodystart="51" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Matrix Stack. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ This object can be used to make life MUCH easier when dealing with matrices within OpenGL. Usage was designed to be fairly close to the original OpenGL <heading level="2">1.0 spec. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="38" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" bodystart="38" bodyend="198"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a5e892f788f16e974dbccd4ca00098822" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>constructMvp</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a09a3fce47937a8be54a7f1ad50e7d2cc" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>constructVp</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a2158e56884a918698786570707a0cf52" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>emplaceMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a4316a8caff85f6cc103d6de9006b5ca9" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>getMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1af205779f60470ee49c01091e717fadec" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>getMvpMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a05d4db6aac4bdbfdfeb5d383ef4353cc" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>getVpMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a6e5ff186ee46fdfe36c0872cf45796e7" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>loadIdentity</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a5c6c8474edbfdea259e0f77fc2c1c25a" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>loadMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1ad79c5e40dfb5dffd4520f917a2f6adca" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>matrixStack</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1aedc2c1dbd1bd3bd1da6f9dfac5e3da86" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>matrixStack</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1ac5faf444d69240e0b9c95dbff0a2f803" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>matrixStack</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1ae0d9503b39bc6d45a8e91e040da16545" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>multMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1acad0ac32e24e775b980d1f700012f207" prot="private" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>mvpMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a16f29a03b458686c1fd015d4c4faba77" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a68c6f425b264c78238d8ebd040c3f11a" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a7b150612a642d89c0e4d97a34c8267fa" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>popMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1ab153ea82ca0b1070c12981d0b189d9e3" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>pushIdentity</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a05b0c05d3511211c7efc0b411527d4b3" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>pushMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a962d7b8bdf878d362a63c14cf65f55b0" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>size</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a92a2f87c03690c47313c6371a4b128d9" prot="private" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>stacks</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a81eebba9c489112dd613249adb663c3f" prot="private" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>vpMatrix</name></member>
+      <member refid="classls_1_1draw_1_1matrix_stack_1a0c66a8ed534ced6adc29aa1fd87a1513" prot="public" virt="non-virtual"><scope>ls::draw::matrixStack</scope><name>~matrixStack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

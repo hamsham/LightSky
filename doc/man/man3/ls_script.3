@@ -1,0 +1,213 @@
+.TH "ls::script" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::script \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBfunctor\fP"
+.br
+.RI "\fIFunctor Base Class\&. \fP"
+.ti -1c
+.RI "singleton \fBfunctor_t\fP"
+.br
+.RI "\fIFunctor Class Template Type\&. \fP"
+.ti -1c
+.RI "class \fBfunctor_t< hashId, void >\fP"
+.br
+.RI "\fI
+.SS "Functor Template Type with Void Parameters "
+\fP"
+.ti -1c
+.RI "class \fBscriptable\fP"
+.br
+.RI "\fIScript Object Base Class\&. \fP"
+.ti -1c
+.RI "class \fBvariable\fP"
+.br
+.ti -1c
+.RI "class \fBvariable_t\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef void(&) \fBfunc_ref_t\fP (\fBvariable\fP **const)"
+.br
+.RI "\fIfunc_ref_t is a reference-to-function typedef to make things easier to understand in-code\&. \fP"
+.ti -1c
+.RI "typedef \fBfunctor_t\fP< 0, void > \fBemptyFunc\fP"
+.br
+.ti -1c
+.RI "typedef \fBvariable\fP *(* \fBvarFactory\fP )()"
+.br
+.ti -1c
+.RI "typedef \fBfunctor\fP *(* \fBfuncFactory\fP )()"
+.br
+.ti -1c
+.RI "typedef std::map< hash_t, 
+.br
+\fBvarFactory\fP > \fBvarFactoryMap\fP"
+.br
+.ti -1c
+.RI "typedef std::map< hash_t, 
+.br
+\fBfuncFactory\fP > \fBfuncFactoryMap\fP"
+.br
+.ti -1c
+.RI "typedef std::map< void 
+.br
+*, \fBvariable\fP * > \fBvarLoaderMap\fP"
+.br
+.ti -1c
+.RI "typedef std::map< void 
+.br
+*, \fBfunctor\fP * > \fBfuncLoaderMap\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBscript_base_t\fP { \fBscript_base_t::SCRIPT_VAR\fP, \fBscript_base_t::SCRIPT_FUNC\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBvariable\fP * \fBcreateScriptVar\fP (hash_t)"
+.br
+.ti -1c
+.RI "\fBfunctor\fP * \fBcreateScriptFunc\fP (hash_t)"
+.br
+.ti -1c
+.RI "\fBvariable\fP * \fBcreateVariable\fP (hash_t h)"
+.br
+.ti -1c
+.RI "\fBfunctor\fP * \fBcreateFunctor\fP (hash_t h)"
+.br
+.ti -1c
+.RI "\fBLS_SCRIPT_DEFINE_FUNC\fP (empty, void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBvarFactoryMap\fP \fBgVarFactory\fP"
+.br
+.ti -1c
+.RI "\fBfuncFactoryMap\fP \fBgFuncFactory\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBfunctor_t\fP<0, void > \fBls::script::emptyFunc\fP"
+
+.PP
+Definition at line 71 of file setup\&.h\&.
+.SS "typedef void(&) ls::script::func_ref_t(\fBvariable\fP **const)"
+
+.PP
+func_ref_t is a reference-to-function typedef to make things easier to understand in-code\&. Use this typedef to instantiate a reference to a scripted function which takes an array of script variables as its parameters\&. 
+.PP
+Definition at line 31 of file functor\&.h\&.
+.SS "typedef \fBfunctor\fP*(* ls::script::funcFactory)()"
+
+.PP
+Definition at line 81 of file setup\&.h\&.
+.SS "typedef std::map<hash_t, \fBfuncFactory\fP> \fBls::script::funcFactoryMap\fP"
+
+.PP
+Definition at line 88 of file setup\&.h\&.
+.SS "typedef std::map<void*, \fBfunctor\fP*> \fBls::script::funcLoaderMap\fP"
+
+.PP
+Definition at line 94 of file setup\&.h\&.
+.SS "typedef \fBvariable\fP*(* ls::script::varFactory)()"
+
+.PP
+Definition at line 79 of file setup\&.h\&.
+.SS "typedef std::map<hash_t, \fBvarFactory\fP> \fBls::script::varFactoryMap\fP"
+
+.PP
+Definition at line 86 of file setup\&.h\&.
+.SS "typedef std::map<void*, \fBvariable\fP*> \fBls::script::varLoaderMap\fP"
+
+.PP
+Definition at line 93 of file setup\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBls::script::script_base_t\fP\fC [strong]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISCRIPT_VAR \fP\fP
+.TP
+\fB\fISCRIPT_FUNC \fP\fP
+.PP
+Definition at line 29 of file setup\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBfunctor\fP* ls::script::createFunctor (hash_th)"
+
+.PP
+Definition at line 70 of file factory\&.cpp\&.
+.SS "\fBfunctor\fP* ls::script::createScriptFunc (hash_t)"
+Create a script function using the global functor factory
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhash_t\fP A hash value that determines the type of functor that should be returned\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the script functor requested\&. This pointer must be destroyed with the 'delete' operator\&. This function will return NULL if the functor requested could not be instantiated\&. 
+.RE
+.PP
+
+.SS "\fBvariable\fP* ls::script::createScriptVar (hash_t)"
+Create a script variable using the global variable factory
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhash_t\fP A hash value that determines the type of variable that should be returned\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the script variable requested\&. This pointer must be destroyed with the 'delete' operator\&. This function will return NULL if the variable requested could not be instantiated\&. 
+.RE
+.PP
+
+.SS "\fBvariable\fP* ls::script::createVariable (hash_th)"
+
+.PP
+Definition at line 61 of file factory\&.cpp\&.
+.SS "ls::script::LS_SCRIPT_DEFINE_FUNC (empty, void)"
+
+.PP
+Definition at line 99 of file functor\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBfuncFactoryMap\fP ls::script::gFuncFactory"
+
+.PP
+Definition at line 23 of file factory\&.cpp\&.
+.SS "\fBvarFactoryMap\fP ls::script::gVarFactory"
+
+.PP
+Definition at line 22 of file factory\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

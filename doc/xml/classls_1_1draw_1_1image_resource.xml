@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1image_resource" kind="class" prot="public" final="yes">
+    <compoundname>ls::draw::imageResource</compoundname>
+    <basecompoundref refid="classls_1_1utils_1_1resource" prot="public" virt="non-virtual">ls::utils::resource</basecompoundref>
+    <includes refid="image_resource_8h" local="no">imageResource.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1image_resource_1a614732769b3e660b65405174c9728218" prot="private" static="no" mutable="no">
+        <type>math::vec2i</type>
+        <definition>math::vec2i ls::draw::imageResource::imgSize</definition>
+        <argsstring></argsstring>
+        <name>imgSize</name>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>imgSize represents the pixel width &amp; height of a loaded image </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="53" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1image_resource_1a9d4f972b80b06da58547528ca2dc7132" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668b" kindref="member">color_type_t</ref></type>
+        <definition>color_type_t ls::draw::imageResource::pixelType</definition>
+        <argsstring></argsstring>
+        <name>pixelType</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668ba6188dade9f826d0393c1362f45630289" kindref="member">COLOR_TYPE_DEFAULT</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pixel format of the loaded image </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="58" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1image_resource_1a5b993356b53a0ddcb2428087923ea5b0" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::imageResource::bitsPerPixel</definition>
+        <argsstring></argsstring>
+        <name>bitsPerPixel</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of bits per pixel in the image </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="63" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1image_resource_1aa3190112464b074d105945dc7abb3b86" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31" kindref="member">pixel_format_t</ref></type>
+        <definition>pixel_format_t ls::draw::imageResource::intFormat</definition>
+        <argsstring></argsstring>
+        <name>intFormat</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ab63d072bcb156131230a3dd2ed2f5930" kindref="member">LS_DEFAULT_PIXEL_FORMAT</ref></initializer>
+        <briefdescription>
+<para>CPU-Side format of an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can be any of the following: LS_GRAY_N LS_RG_N LS_RGB_N LS_RGBA_N LS_RGB_32F LS_RGBA_32F where N is 8, 16, or 32 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="77" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1image_resource_1adcce194f51f3847c28ee26bbe3666487" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39" kindref="member">pixel_layout_t</ref></type>
+        <definition>pixel_layout_t ls::draw::imageResource::extFormat</definition>
+        <argsstring></argsstring>
+        <name>extFormat</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a826a66550bddbd167f874cf6f1127295" kindref="member">LS_DEFAULT_PIXEL_LAYOUT</ref></initializer>
+        <briefdescription>
+<para>CPU-Side format of an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can be any of the following: LS_GRAY LS_RG LS_RGB LS_RGBA LS_RGB16F LS_RGBA32F LS_RGB16F LS_RGBA32F </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="93" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a853020962d989a6a13ec87c90f9510e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::imageResource::imageResource</definition>
+        <argsstring>()</argsstring>
+        <name>imageResource</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="99" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="197" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a81cda51014b54651da2f94bfde5f723f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::imageResource::imageResource</definition>
+        <argsstring>(const imageResource &amp;)=delete</argsstring>
+        <name>imageResource</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1image_resource" kindref="compound">imageResource</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Constructor <ndash/> DELETED. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="104" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a5920559a17479926128111b72469e6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::imageResource::imageResource</definition>
+        <argsstring>(imageResource &amp;&amp;ir)</argsstring>
+        <name>imageResource</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1image_resource" kindref="compound">imageResource</ref> &amp;&amp;</type>
+          <declname>ir</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves data from the source operand into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a temporary image resource object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="115" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="204" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1aec7b3fce4633f0e11ce556ab4fb51639" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ls::draw::imageResource::~imageResource</definition>
+        <argsstring>()</argsstring>
+        <name>~imageResource</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Calls &quot;unload()&quot; and releases all memory from *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="122" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="213" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a8b9a2072997d87d4963b72c9aa31f13c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1image_resource" kindref="compound">imageResource</ref> &amp;</type>
+        <definition>imageResource&amp; ls::draw::imageResource::operator=</definition>
+        <argsstring>(const imageResource &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1image_resource" kindref="compound">imageResource</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Operator <ndash/> DELETED. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="127" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a0167bf2ade9a19475444cf412ca237ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1image_resource" kindref="compound">imageResource</ref> &amp;</type>
+        <definition>imageResource &amp; ls::draw::imageResource::operator=</definition>
+        <argsstring>(imageResource &amp;&amp;ir)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1image_resource" kindref="compound">imageResource</ref> &amp;&amp;</type>
+          <declname>ir</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all data from the source operand into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a temporary image resource object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="140" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="220" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1afe1bdb8de9e6133719e538b15068adde" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::imageResource::loadFile</definition>
+        <argsstring>(const std::string &amp;filename) override</argsstring>
+        <name>loadFile</name>
+        <reimplements refid="classls_1_1utils_1_1resource_1abc6a808606df0e4ca912f228f2a41aa7">loadFile</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Load an image file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string object containing the relative path name to a file that should be loadable into memory.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the file was successfully loaded. False if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="151" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="250" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a96961e944a8c32123237e154faeb19c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::imageResource::saveFile</definition>
+        <argsstring>(const std::string &amp;filename) const override</argsstring>
+        <name>saveFile</name>
+        <reimplements refid="classls_1_1utils_1_1resource_1ad07e11bc2ef3538a2444eb804114a2ef">saveFile</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Save an image file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string object containing the relative path name to a file that should be saved to the computer.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the file was successfully saved. False if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="162" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/imageResource_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a794809a165ad9c00baf8f7470bc88338" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::imageResource::saveFile</definition>
+        <argsstring>(const std::string &amp;filename, img_file_t filetype) const </argsstring>
+        <name>saveFile</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71" kindref="member">img_file_t</ref></type>
+          <declname>filetype</declname>
+        </param>
+        <briefdescription>
+<para>Save an image file in a specific format. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string object containing the relative path name to a file that should be saved to the computer.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filetype</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An img_file_t, representing the file format that should be used when saving image data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the file was successfully saved. False if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="177" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="335" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a2cb1936be8ee26a7c6aca20fd3c27158" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::draw::imageResource::unload</definition>
+        <argsstring>() override</argsstring>
+        <name>unload</name>
+        <reimplements refid="classls_1_1utils_1_1resource_1ae7de856e2b33910059d2e81d548e57eb">unload</reimplements>
+        <briefdescription>
+<para>Unload. </para>        </briefdescription>
+        <detaileddescription>
+<para>Free all memory used by *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="184" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="316" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1abb855374f639243a2d766637c58edbe3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void *</type>
+        <definition>void * ls::draw::imageResource::getData</definition>
+        <argsstring>() const override</argsstring>
+        <name>getData</name>
+        <reimplements refid="classls_1_1utils_1_1resource_1ac7ea69ade647fad36ccf0ba13d72e5c1">getData</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the raw, loaded, image data contained within <emphasis>this. The underlying type has been cast from a FreeImage FIBITMAP</emphasis>.</para><para><simplesect kind="return"><para>a void pointer to the raw image bits. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="192" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="365" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1ac6d476198f2a2e85ce788209f583e802" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>math::vec2i</type>
+        <definition>math::vec2i ls::draw::imageResource::getPixelSize</definition>
+        <argsstring>() const </argsstring>
+        <name>getPixelSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the pixel size of the currently loaded image</para><para><simplesect kind="return"><para>a 2D integer vector containing the width and height of the loaded image, in pixels. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="200" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/imageResource_impl.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a2198c278b427fff93c2d76b0777d8072" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668b" kindref="member">color_type_t</ref></type>
+        <definition>color_type_t ls::draw::imageResource::getPixelType</definition>
+        <argsstring>() const </argsstring>
+        <name>getPixelType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the format of the currently loaded image. For example, LS_UNSIGNED_BYTE, LS_INT, LS_FLOAT, etc. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="206" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/imageResource_impl.h" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a48d9f33ef3b758a591ae253357d98718" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::imageResource::getBpp</definition>
+        <argsstring>() const </argsstring>
+        <name>getBpp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number of bits per pixel in the image.</para><para><simplesect kind="return"><para>0, 1, 2, 4, 8, 16, 24, 32, 48, 64, 96, or 128 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="213" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/imageResource_impl.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1a60d7ac4c5fed26850dda786435c6f707" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31" kindref="member">pixel_format_t</ref></type>
+        <definition>pixel_format_t ls::draw::imageResource::getInternalFormat</definition>
+        <argsstring>() const </argsstring>
+        <name>getInternalFormat</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the OpenGL-compatible CPU-Side image format.</para><para><simplesect kind="return"><para>An enumeration containing image format information that can be used when setting up textures in OpenGL. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="221" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/imageResource_impl.h" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1image_resource_1ae0e9789b3ef25a1a7dce37108873c5e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39" kindref="member">pixel_layout_t</ref></type>
+        <definition>pixel_layout_t ls::draw::imageResource::getExternalFormat</definition>
+        <argsstring>() const </argsstring>
+        <name>getExternalFormat</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the OpenGL-compatible CPU-Side/GPU-Side image format pair.</para><para><simplesect kind="return"><para>An enumeration containing image format information that can be used when setting up textures in OpenGL. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="229" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/imageResource_impl.h" bodystart="43" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A resource object to load image files. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ This class can load images using the FreeImage library, The pData member contains raw texture data.</para><para>The inherited member &quot;pData&quot; will be reinterpreted as a pointer to a <heading level="2">FIBITMAP structure so as to make loading and saving easier to maintain. </heading>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="59">
+        <label>ls::draw::imageResource</label>
+        <link refid="classls_1_1draw_1_1image_resource"/>
+        <childnode refid="60" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>ls::utils::resource</label>
+        <link refid="classls_1_1utils_1_1resource"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="61">
+        <label>ls::draw::imageResource</label>
+        <link refid="classls_1_1draw_1_1image_resource"/>
+        <childnode refid="62" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>ls::utils::resource</label>
+        <link refid="classls_1_1utils_1_1resource"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="48" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="48" bodyend="230"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1image_resource_1a5b993356b53a0ddcb2428087923ea5b0" prot="private" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>bitsPerPixel</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" prot="protected" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>dataSize</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1adcce194f51f3847c28ee26bbe3666487" prot="private" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>extFormat</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a48d9f33ef3b758a591ae253357d98718" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>getBpp</name></member>
+      <member refid="classls_1_1utils_1_1resource_1ae8c73df0e1904ef69c4473d253c07996" prot="public" virt="virtual"><scope>ls::draw::imageResource</scope><name>getByteSize</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1abb855374f639243a2d766637c58edbe3" prot="public" virt="virtual"><scope>ls::draw::imageResource</scope><name>getData</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1ae0e9789b3ef25a1a7dce37108873c5e4" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>getExternalFormat</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a60d7ac4c5fed26850dda786435c6f707" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>getInternalFormat</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1ac6d476198f2a2e85ce788209f583e802" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>getPixelSize</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a2198c278b427fff93c2d76b0777d8072" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>getPixelType</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a853020962d989a6a13ec87c90f9510e9" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>imageResource</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a81cda51014b54651da2f94bfde5f723f" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>imageResource</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a5920559a17479926128111b72469e6c0" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>imageResource</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a614732769b3e660b65405174c9728218" prot="private" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>imgSize</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1aa3190112464b074d105945dc7abb3b86" prot="private" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>intFormat</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1afe1bdb8de9e6133719e538b15068adde" prot="public" virt="virtual"><scope>ls::draw::imageResource</scope><name>loadFile</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a982c2e94e4723d6d68153a4353c656f3" prot="public" virt="virtual" ambiguityscope="ls::utils::resource::"><scope>ls::draw::imageResource</scope><name>loadFile</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a8b9a2072997d87d4963b72c9aa31f13c" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a0167bf2ade9a19475444cf412ca237ad" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1resource_1aa13ad61fc6557eae016bd09a0f03423a" prot="public" virt="non-virtual" ambiguityscope="ls::utils::resource::"><scope>ls::draw::imageResource</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a9cd97e981d5fbbc17d645a0fa94c5e3b" prot="public" virt="non-virtual" ambiguityscope="ls::utils::resource::"><scope>ls::draw::imageResource</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" prot="protected" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>pData</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a9d4f972b80b06da58547528ca2dc7132" prot="private" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>pixelType</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a343735f471d08b7e3e1a71f0ff358158" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>resource</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a4211e2fc500db81a83870493e86ffbee" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>resource</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a1395afc3c010934708bbc769fc0b0e80" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>resource</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a96961e944a8c32123237e154faeb19c7" prot="public" virt="virtual"><scope>ls::draw::imageResource</scope><name>saveFile</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a794809a165ad9c00baf8f7470bc88338" prot="public" virt="non-virtual"><scope>ls::draw::imageResource</scope><name>saveFile</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a8f0ccf4c1548983b42fcbb8054ee9339" prot="public" virt="virtual" ambiguityscope="ls::utils::resource::"><scope>ls::draw::imageResource</scope><name>saveFile</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1a2cb1936be8ee26a7c6aca20fd3c27158" prot="public" virt="virtual"><scope>ls::draw::imageResource</scope><name>unload</name></member>
+      <member refid="classls_1_1draw_1_1image_resource_1aec7b3fce4633f0e11ce556ab4fb51639" prot="public" virt="virtual"><scope>ls::draw::imageResource</scope><name>~imageResource</name></member>
+      <member refid="classls_1_1utils_1_1resource_1a1e7c76b1fce42a50b8605d947cc7e736" prot="public" virt="pure-virtual"><scope>ls::draw::imageResource</scope><name>~resource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

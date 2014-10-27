@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_7dd0a4815b23cf2c0f028004485761ad" kind="dir">
+    <compoundname>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src</compoundname>
+    <innerfile refid="assert_8cpp">assert.cpp</innerfile>
+    <innerfile refid="data_resource_8cpp">dataResource.cpp</innerfile>
+    <innerfile refid="random_num_8cpp">randomNum.cpp</innerfile>
+    <innerfile refid="resource_8cpp">resource.cpp</innerfile>
+    <innerfile refid="string__utils_8cpp">string_utils.cpp</innerfile>
+    <innerfile refid="tuple_8cpp">tuple.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/"/>
+  </compounddef>
+</doxygen>

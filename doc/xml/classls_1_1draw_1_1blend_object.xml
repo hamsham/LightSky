@@ -1,0 +1,653 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1blend_object" kind="class" prot="public">
+    <compoundname>ls::draw::blendObject</compoundname>
+    <includes refid="blend_object_8h" local="no">blendObject.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a2f1c3151bb6ec313a540cc9fed7db74b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ls::draw::blendObject::enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <initializer>= GL_FALSE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if blending should be enabled or disabled. If blending is disabled, no other blending parameters will be sent through the rendering pipeline. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="97" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1ae823bf3e9b7f88ca5be4e10fa7782a56" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>color ls::draw::blendObject::blendCol</definition>
+        <argsstring></argsstring>
+        <name>blendCol</name>
+        <initializer>= lsBlank</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The color to be used when performing blending operations in OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="102" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a4cfad6de4953eee8ff6c067404ba3147" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+        <definition>blend_equ_t ls::draw::blendObject::rgbBlendEq</definition>
+        <argsstring></argsstring>
+        <name>rgbBlendEq</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class Member that&apos;s used to set the RGB blending equation in OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="107" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a2c4e12063054649ea5a956f27408c677" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+        <definition>blend_equ_t ls::draw::blendObject::alphaBlendEq</definition>
+        <argsstring></argsstring>
+        <name>alphaBlendEq</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class Member that&apos;s used to set the alpha blending equation in OpenGL </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="112" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a64f27255b6e71d04697e4a95e8e86862" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::srcRgbBlendFunc</definition>
+        <argsstring></argsstring>
+        <name>srcRgbBlendFunc</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class Member that&apos;s used to set the source RGB blending function in OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="118" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a14d54f1ccc4fa7f54874f93cc7110ec8" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::dstRgbBlendFunc</definition>
+        <argsstring></argsstring>
+        <name>dstRgbBlendFunc</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class Member that&apos;s used to set the destination RGB blending function in OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="124" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a695e5ec8683f2ded569c25d62fd8a885" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::srcAlphaBlendFunc</definition>
+        <argsstring></argsstring>
+        <name>srcAlphaBlendFunc</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class Member that&apos;s used to set the source alpha blending function in OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="130" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1blend_object_1a4c9acafb3df687579a3175e21a1560f7" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::dstAlphaBlendFunc</definition>
+        <argsstring></argsstring>
+        <name>dstAlphaBlendFunc</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class Member that&apos;s used to set the destination alpha blending function in OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="136" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a73b2c57430ee156b7f863640914358a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::blendObject::blendObject</definition>
+        <argsstring>()=default</argsstring>
+        <name>blendObject</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Creates an <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> using the default OpenGL blending parameters. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="145" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a3c9ab33229150f9396a62fda7d2d4098" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::blendObject::blendObject</definition>
+        <argsstring>(const blendObject &amp;)=default</argsstring>
+        <name>blendObject</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to another <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="154" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1aff9c4bbe7ad313d8eca00b51eafd958b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::blendObject::blendObject</definition>
+        <argsstring>(blendObject &amp;&amp;)=default</argsstring>
+        <name>blendObject</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to another <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="163" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a93f62dcc4cb444608ffc9e6eafec6b8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::blendObject::~blendObject</definition>
+        <argsstring>()=default</argsstring>
+        <name>~blendObject</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Does nothing. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="170" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a1cdbdadba162ba05b1c18d5d89b4018d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> &amp;</type>
+        <definition>blendObject&amp; ls::draw::blendObject::operator=</definition>
+        <argsstring>(const blendObject &amp;)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>An</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>R-Value reference to another <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> that is about to go out of scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="180" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a6d81b09daedb1f9c0d55d60752a102f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> &amp;</type>
+        <definition>blendObject&amp; ls::draw::blendObject::operator=</definition>
+        <argsstring>(blendObject &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>An</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>R-Value reference to another <ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref> that is about to go out of scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="190" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a25718a22e58503a2133e98d9e2c72e5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::bind</definition>
+        <argsstring>() const </argsstring>
+        <name>bind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable blending in OpenGL and apply all stored parameters (blending equations, functions, and color). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="196" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp" bodystart="16" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1adba1d9ded498ab448146f0b8235bad6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::unbind</definition>
+        <argsstring>() const </argsstring>
+        <name>unbind</name>
+        <briefdescription>
+<para>Disable Blending in OpenGL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Don&apos;t use this function if another depth object is going to be bound immediately afterwards. Doing so may cause a redundant state change within OpenGL. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="205" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1afbf19ee426725d298a4be2bf7997f1cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reset all currently held blend parameters to OpenGL&apos;s defaults. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="210" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a92f870fc19f7ff3c4dbf533e55a2ec90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::setState</definition>
+        <argsstring>(bool=GL_FALSE)</argsstring>
+        <name>setState</name>
+        <param>
+          <type>bool</type>
+          <defname>state</defname>
+          <defval>GL_FALSE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set whether blending should be enabled or disabled in the current rendering state. If blending is disabled, no other blending parameters will be sent through the rendering pipeline.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bool</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean value that will determine if OpenGL should have blending enabled or disabled. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="221" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a82cdc6f10efc2a114e2ffb0c442031a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::blendObject::getState</definition>
+        <argsstring>() const </argsstring>
+        <name>getState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine whether this blending object should tell OpenGL to enable or disable the use of blending.</para><para><simplesect kind="return"><para>bool A boolean value that will determine if OpenGL should have blending enabled or disabled. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="231" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a5d698e9ba7a228b62bffb4bd30ad2285" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::setBlendEquation</definition>
+        <argsstring>(blend_equ_t rgbaMode=LS_BLEND_ADD)</argsstring>
+        <name>setBlendEquation</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+          <declname>rgbaMode</declname>
+          <defval><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the blending equation to be used within OpenGL.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rgbaMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blend equation that OpenGL should use internally. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="239" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a63ddb27c422dce8ff7f3527969ac66c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::setBlendEquation</definition>
+        <argsstring>(blend_equ_t rgbMode=LS_BLEND_ADD, blend_equ_t alphaMode=LS_BLEND_ADD)</argsstring>
+        <name>setBlendEquation</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+          <declname>rgbMode</declname>
+          <defval><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+          <declname>alphaMode</declname>
+          <defval><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the OpenGL blending equation, but with different values for RGB and Alpha.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rgbMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The RGB blending equation</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alphaMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending equation for the alpha channel. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="251" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a157b46aca5fb1167ea5cefde3bed9a08" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+        <definition>blend_equ_t ls::draw::blendObject::getBlendEquationRgb</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendEquationRgb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the blending equation for the RGB channels.</para><para><simplesect kind="return"><para>blend_eq_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="261" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a7e7e70705b3420e543c706b100b8db8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref></type>
+        <definition>blend_equ_t ls::draw::blendObject::getBlendEquationAlpha</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendEquationAlpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the blending equation for the alpha channel.</para><para><simplesect kind="return"><para>blend_eq_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="268" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1adb726a3e71cb9ed6f1e46fc156d3ce71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::setBlendFunction</definition>
+        <argsstring>(blend_func_t srcFactor=LS_ONE, blend_func_t dstFactor=LS_ZERO)</argsstring>
+        <name>setBlendFunction</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+          <declname>srcFactor</declname>
+          <defval><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+          <declname>dstFactor</declname>
+          <defval><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the source and destination blending function.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>srcFactor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending function for the source RGBA channels.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dstFactor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending equation for the destination RGBA channels. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="279" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="53" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a6edb02face7fecf2db0a8ed3c97d79ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::setBlendFunction</definition>
+        <argsstring>(blend_func_t srcFactorRgb=LS_ONE, blend_func_t dstFactorRgb=LS_ZERO, blend_func_t srcFactorAlpha=LS_ONE, blend_func_t dstFactorAlpha=LS_ZERO)</argsstring>
+        <name>setBlendFunction</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+          <declname>srcFactorRgb</declname>
+          <defval><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+          <declname>dstFactorRgb</declname>
+          <defval><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+          <declname>srcFactorAlpha</declname>
+          <defval><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+          <declname>dstFactorAlpha</declname>
+          <defval><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the source and destination blending function, with separate RGB and alpha functions.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>srcFactorRgb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending function for the source RGB channels.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dstFactorRgb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending equation for the destination RGB channels.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>srcFactorAlpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending function for the source alpha channel.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dstFactorAlpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blending function for the destination alpha channel. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="300" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="63" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a42ad63bfd231a559599bea9917643615" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::getBlendFunctionSrcRgb</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendFunctionSrcRgb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current blend function from the source RGB channel</para><para><simplesect kind="return"><para>blend_equ_color_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="312" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1abe70ad65c3ec6c96ec940c0a5f392aae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::getBlendFunctionSrcAlpha</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendFunctionSrcAlpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current blend function from the source alpha channel</para><para><simplesect kind="return"><para>blend_equ_color_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="319" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a087776c13ab34bdbab51bb30ef7cb7d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::getBlendFunctionDstRgb</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendFunctionDstRgb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current blend function from the destination RGB channel</para><para><simplesect kind="return"><para>blend_equ_color_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="326" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1ac4f3637f3480028adae0540edbb8f615" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref></type>
+        <definition>blend_func_t ls::draw::blendObject::getBlendFunctionDstAlpha</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendFunctionDstAlpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current blend function from the destination alpha channel</para><para><simplesect kind="return"><para>blend_equ_color_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="333" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1a388e6443ff1325a32e36248b110acc2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::blendObject::setBlendColor</definition>
+        <argsstring>(const color &amp;rgba=lsBlank)</argsstring>
+        <name>setBlendColor</name>
+        <param>
+          <type>const <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref> &amp;</type>
+          <declname>rgba</declname>
+          <defval>lsBlank</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the color that OpenGL should use for blending</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rgba</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to an color that should be used during blending operations within OpenGL. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="342" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1blend_object_1abbcbd871616019be73bd39b079f3c5a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>color ls::draw::blendObject::getBlendColor</definition>
+        <argsstring>() const </argsstring>
+        <name>getBlendColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current color that OpenGL is using for blending operations.</para><para><simplesect kind="return"><para>a group of four floating-point numbers, representing the RGBA colors that OpenGL is using for blending. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="350" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/blendObject_impl.h" bodystart="111" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ <heading level="2">The blend object manages the current blend state within OpenGL. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="90" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="90" bodyend="351"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1blend_object_1a2c4e12063054649ea5a956f27408c677" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>alphaBlendEq</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a25718a22e58503a2133e98d9e2c72e5b" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>bind</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1ae823bf3e9b7f88ca5be4e10fa7782a56" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>blendCol</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a73b2c57430ee156b7f863640914358a3" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>blendObject</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a3c9ab33229150f9396a62fda7d2d4098" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>blendObject</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1aff9c4bbe7ad313d8eca00b51eafd958b" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>blendObject</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a4c9acafb3df687579a3175e21a1560f7" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>dstAlphaBlendFunc</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a14d54f1ccc4fa7f54874f93cc7110ec8" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>dstRgbBlendFunc</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a2f1c3151bb6ec313a540cc9fed7db74b" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>enabled</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1abbcbd871616019be73bd39b079f3c5a0" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendColor</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a7e7e70705b3420e543c706b100b8db8c" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendEquationAlpha</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a157b46aca5fb1167ea5cefde3bed9a08" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendEquationRgb</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1ac4f3637f3480028adae0540edbb8f615" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendFunctionDstAlpha</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a087776c13ab34bdbab51bb30ef7cb7d2" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendFunctionDstRgb</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1abe70ad65c3ec6c96ec940c0a5f392aae" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendFunctionSrcAlpha</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a42ad63bfd231a559599bea9917643615" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getBlendFunctionSrcRgb</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a82cdc6f10efc2a114e2ffb0c442031a2" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>getState</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a1cdbdadba162ba05b1c18d5d89b4018d" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a6d81b09daedb1f9c0d55d60752a102f4" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1afbf19ee426725d298a4be2bf7997f1cf" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>reset</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a4cfad6de4953eee8ff6c067404ba3147" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>rgbBlendEq</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a388e6443ff1325a32e36248b110acc2c" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>setBlendColor</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a5d698e9ba7a228b62bffb4bd30ad2285" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>setBlendEquation</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a63ddb27c422dce8ff7f3527969ac66c8" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>setBlendEquation</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1adb726a3e71cb9ed6f1e46fc156d3ce71" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>setBlendFunction</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a6edb02face7fecf2db0a8ed3c97d79ee" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>setBlendFunction</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a92f870fc19f7ff3c4dbf533e55a2ec90" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>setState</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a695e5ec8683f2ded569c25d62fd8a885" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>srcAlphaBlendFunc</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a64f27255b6e71d04697e4a95e8e86862" prot="private" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>srcRgbBlendFunc</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1adba1d9ded498ab448146f0b8235bad6d" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>unbind</name></member>
+      <member refid="classls_1_1draw_1_1blend_object_1a93f62dcc4cb444608ffc9e6eafec6b8c" prot="public" virt="non-virtual"><scope>ls::draw::blendObject</scope><name>~blendObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

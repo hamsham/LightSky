@@ -1,0 +1,903 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="math_8h" kind="file">
+    <compoundname>math.h</compoundname>
+    <includes refid="math_2setup_8h" local="yes">lightsky/math/setup.h</includes>
+    <includes refid="types_8h" local="yes">lightsky/math/types.h</includes>
+    <includes refid="fixed_8h" local="yes">lightsky/math/fixed.h</includes>
+    <includes refid="mat2_8h" local="yes">lightsky/math/mat2.h</includes>
+    <includes refid="mat3_8h" local="yes">lightsky/math/mat3.h</includes>
+    <includes refid="mat4_8h" local="yes">lightsky/math/mat4.h</includes>
+    <includes refid="quat_8h" local="yes">lightsky/math/quat.h</includes>
+    <includes refid="vec2_8h" local="yes">lightsky/math/vec2.h</includes>
+    <includes refid="vec3_8h" local="yes">lightsky/math/vec3.h</includes>
+    <includes refid="vec4_8h" local="yes">lightsky/math/vec4.h</includes>
+    <includes refid="scalar__utils_8h" local="yes">lightsky/math/scalar_utils.h</includes>
+    <includes refid="quat__utils_8h" local="yes">lightsky/math/quat_utils.h</includes>
+    <includes refid="vec__utils_8h" local="yes">lightsky/math/vec_utils.h</includes>
+    <includes refid="mat__utils_8h" local="yes">lightsky/math/mat_utils.h</includes>
+    <includes refid="perlin_noise_8h" local="yes">lightsky/math/perlinNoise.h</includes>
+    <includedby refid="draw_2setup_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h</includedby>
+    <includedby refid="game_2setup_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/game/setup.h</includedby>
+    <includedby refid="lightsky_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</includedby>
+    <includedby refid="mat2_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat2.cpp</includedby>
+    <includedby refid="mat3_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat3.cpp</includedby>
+    <includedby refid="mat4_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat4.cpp</includedby>
+    <includedby refid="perlin_noise_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/perlinNoise.cpp</includedby>
+    <includedby refid="quat_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/quat.cpp</includedby>
+    <includedby refid="vec2_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec2.cpp</includedby>
+    <includedby refid="vec3_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec3.cpp</includedby>
+    <includedby refid="vec4_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec4.cpp</includedby>
+    <incdepgraph>
+      <node id="5442">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5443" relation="include">
+        </childnode>
+      </node>
+      <node id="5421">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/math.h</label>
+        <link refid="math.h"/>
+        <childnode refid="5422" relation="include">
+        </childnode>
+        <childnode refid="5428" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5435" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+        <childnode refid="5445" relation="include">
+        </childnode>
+        <childnode refid="5449" relation="include">
+        </childnode>
+        <childnode refid="5438" relation="include">
+        </childnode>
+        <childnode refid="5442" relation="include">
+        </childnode>
+        <childnode refid="5446" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5451" relation="include">
+        </childnode>
+        <childnode refid="5452" relation="include">
+        </childnode>
+        <childnode refid="5455" relation="include">
+        </childnode>
+        <childnode refid="5457" relation="include">
+        </childnode>
+      </node>
+      <node id="5450">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="5424">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="5430">
+        <label>cstdint</label>
+      </node>
+      <node id="5426">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="5460">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="5455">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="5452" relation="include">
+        </childnode>
+        <childnode refid="5435" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+        <childnode refid="5445" relation="include">
+        </childnode>
+        <childnode refid="5456" relation="include">
+        </childnode>
+      </node>
+      <node id="5431">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="5432" relation="include">
+        </childnode>
+        <childnode refid="5430" relation="include">
+        </childnode>
+        <childnode refid="5433" relation="include">
+        </childnode>
+        <childnode refid="5422" relation="include">
+        </childnode>
+        <childnode refid="5428" relation="include">
+        </childnode>
+        <childnode refid="5434" relation="include">
+        </childnode>
+      </node>
+      <node id="5434">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="5448">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="5435">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5438" relation="include">
+        </childnode>
+        <childnode refid="5440" relation="include">
+        </childnode>
+      </node>
+      <node id="5429">
+        <label>cmath</label>
+      </node>
+      <node id="5451">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5442" relation="include">
+        </childnode>
+        <childnode refid="5446" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+        <childnode refid="5445" relation="include">
+        </childnode>
+        <childnode refid="5449" relation="include">
+        </childnode>
+        <childnode refid="5452" relation="include">
+        </childnode>
+        <childnode refid="5454" relation="include">
+        </childnode>
+      </node>
+      <node id="5437">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="5446">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5447" relation="include">
+        </childnode>
+      </node>
+      <node id="5453">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="5444">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="5447">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="5427">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="5440">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="5457">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="5458" relation="include">
+        </childnode>
+        <childnode refid="5459" relation="include">
+        </childnode>
+        <childnode refid="5442" relation="include">
+        </childnode>
+        <childnode refid="5460" relation="include">
+        </childnode>
+        <childnode refid="5461" relation="include">
+        </childnode>
+      </node>
+      <node id="5443">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="5422">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="5423" relation="include">
+        </childnode>
+      </node>
+      <node id="5441">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5442" relation="include">
+        </childnode>
+        <childnode refid="5444" relation="include">
+        </childnode>
+      </node>
+      <node id="5439">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="5449">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5450" relation="include">
+        </childnode>
+      </node>
+      <node id="5428">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="5429" relation="include">
+        </childnode>
+        <childnode refid="5430" relation="include">
+        </childnode>
+      </node>
+      <node id="5423">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="5424" relation="include">
+        </childnode>
+        <childnode refid="5425" relation="include">
+        </childnode>
+        <childnode refid="5426" relation="include">
+        </childnode>
+        <childnode refid="5427" relation="include">
+        </childnode>
+      </node>
+      <node id="5433">
+        <label>utility</label>
+      </node>
+      <node id="5456">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="5452">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="5428" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5438" relation="include">
+        </childnode>
+        <childnode refid="5442" relation="include">
+        </childnode>
+        <childnode refid="5446" relation="include">
+        </childnode>
+        <childnode refid="5453" relation="include">
+        </childnode>
+      </node>
+      <node id="5445">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5446" relation="include">
+        </childnode>
+        <childnode refid="5448" relation="include">
+        </childnode>
+      </node>
+      <node id="5438">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5439" relation="include">
+        </childnode>
+      </node>
+      <node id="5436">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="5422" relation="include">
+        </childnode>
+        <childnode refid="5428" relation="include">
+        </childnode>
+        <childnode refid="5437" relation="include">
+        </childnode>
+      </node>
+      <node id="5454">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="5432">
+        <label>climits</label>
+      </node>
+      <node id="5458">
+        <label>chrono</label>
+      </node>
+      <node id="5459">
+        <label>algorithm</label>
+      </node>
+      <node id="5425">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="5461">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5513">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/setup.cpp</label>
+        <link refid="draw_2src_2setup_8cpp"/>
+      </node>
+      <node id="5478">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp</label>
+        <link refid="bounding_box_8cpp"/>
+      </node>
+      <node id="5462">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/math.h</label>
+        <link refid="math.h"/>
+        <childnode refid="5463" relation="include">
+        </childnode>
+        <childnode refid="5515" relation="include">
+        </childnode>
+        <childnode refid="5466" relation="include">
+        </childnode>
+        <childnode refid="5516" relation="include">
+        </childnode>
+        <childnode refid="5517" relation="include">
+        </childnode>
+        <childnode refid="5518" relation="include">
+        </childnode>
+        <childnode refid="5519" relation="include">
+        </childnode>
+        <childnode refid="5520" relation="include">
+        </childnode>
+        <childnode refid="5521" relation="include">
+        </childnode>
+        <childnode refid="5522" relation="include">
+        </childnode>
+        <childnode refid="5523" relation="include">
+        </childnode>
+      </node>
+      <node id="5512">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp</label>
+        <link refid="shader_object_8cpp"/>
+      </node>
+      <node id="5509">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h</label>
+        <link refid="shader_object_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5510" relation="include">
+        </childnode>
+        <childnode refid="5512" relation="include">
+        </childnode>
+      </node>
+      <node id="5488">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp</label>
+        <link refid="atlas_8cpp"/>
+      </node>
+      <node id="5514">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h</label>
+        <link refid="vertex_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5477" relation="include">
+        </childnode>
+        <childnode refid="5474" relation="include">
+        </childnode>
+      </node>
+      <node id="5464">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h</label>
+        <link refid="blend_object_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5468" relation="include">
+        </childnode>
+      </node>
+      <node id="5466">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="5467" relation="include">
+        </childnode>
+      </node>
+      <node id="5463">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="5464" relation="include">
+        </childnode>
+        <childnode refid="5469" relation="include">
+        </childnode>
+        <childnode refid="5479" relation="include">
+        </childnode>
+        <childnode refid="5481" relation="include">
+        </childnode>
+        <childnode refid="5482" relation="include">
+        </childnode>
+        <childnode refid="5495" relation="include">
+        </childnode>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5503" relation="include">
+        </childnode>
+        <childnode refid="5489" relation="include">
+        </childnode>
+        <childnode refid="5505" relation="include">
+        </childnode>
+        <childnode refid="5484" relation="include">
+        </childnode>
+        <childnode refid="5507" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5477" relation="include">
+        </childnode>
+        <childnode refid="5492" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+        <childnode refid="5509" relation="include">
+        </childnode>
+        <childnode refid="5510" relation="include">
+        </childnode>
+        <childnode refid="5493" relation="include">
+        </childnode>
+        <childnode refid="5490" relation="include">
+        </childnode>
+        <childnode refid="5513" relation="include">
+        </childnode>
+        <childnode refid="5486" relation="include">
+        </childnode>
+        <childnode refid="5514" relation="include">
+        </childnode>
+      </node>
+      <node id="5496">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5493" relation="include">
+        </childnode>
+        <childnode refid="5497" relation="include">
+        </childnode>
+      </node>
+      <node id="5508">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/matrixStack.cpp</label>
+        <link refid="matrix_stack_8cpp"/>
+      </node>
+      <node id="5490">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="5510">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h</label>
+        <link refid="shader_program_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5511" relation="include">
+        </childnode>
+      </node>
+      <node id="5507">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h</label>
+        <link refid="matrix_stack_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5508" relation="include">
+        </childnode>
+      </node>
+      <node id="5473">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="5486">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="5487" relation="include">
+        </childnode>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5489" relation="include">
+        </childnode>
+        <childnode refid="5471" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+        <childnode refid="5491" relation="include">
+        </childnode>
+      </node>
+      <node id="5505">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5506" relation="include">
+        </childnode>
+        <childnode refid="5476" relation="include">
+        </childnode>
+      </node>
+      <node id="5481">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="5464" relation="include">
+        </childnode>
+        <childnode refid="5482" relation="include">
+        </childnode>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5484" relation="include">
+        </childnode>
+        <childnode refid="5492" relation="include">
+        </childnode>
+        <childnode refid="5488" relation="include">
+        </childnode>
+        <childnode refid="5493" relation="include">
+        </childnode>
+        <childnode refid="5494" relation="include">
+        </childnode>
+        <childnode refid="5485" relation="include">
+        </childnode>
+        <childnode refid="5474" relation="include">
+        </childnode>
+        <childnode refid="5473" relation="include">
+        </childnode>
+        <childnode refid="5486" relation="include">
+        </childnode>
+      </node>
+      <node id="5501">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp</label>
+        <link refid="game_state_8cpp"/>
+      </node>
+      <node id="5492">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5493" relation="include">
+        </childnode>
+      </node>
+      <node id="5487">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/atlas.h</label>
+        <link refid="atlas_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5477" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+        <childnode refid="5488" relation="include">
+        </childnode>
+        <childnode refid="5475" relation="include">
+        </childnode>
+      </node>
+      <node id="5480">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp</label>
+        <link refid="buffer_object_8cpp"/>
+      </node>
+      <node id="5497">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/system.h</label>
+        <link refid="system_8h"/>
+        <childnode refid="5498" relation="include">
+        </childnode>
+        <childnode refid="5500" relation="include">
+        </childnode>
+        <childnode refid="5502" relation="include">
+        </childnode>
+      </node>
+      <node id="5485">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp</label>
+        <link refid="image_resource_8cpp"/>
+      </node>
+      <node id="5519">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/perlinNoise.cpp</label>
+        <link refid="perlin_noise_8cpp"/>
+      </node>
+      <node id="5506">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="5465">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="5466" relation="include">
+        </childnode>
+      </node>
+      <node id="5469">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h</label>
+        <link refid="bounding_box_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5477" relation="include">
+        </childnode>
+        <childnode refid="5478" relation="include">
+        </childnode>
+      </node>
+      <node id="5471">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+        <childnode refid="5474" relation="include">
+        </childnode>
+      </node>
+      <node id="5498">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="5499" relation="include">
+        </childnode>
+        <childnode refid="5466" relation="include">
+        </childnode>
+      </node>
+      <node id="5520">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/quat.cpp</label>
+        <link refid="quat_8cpp"/>
+      </node>
+      <node id="5474">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="5483">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp</label>
+        <link refid="depth_object_8cpp"/>
+      </node>
+      <node id="5499">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="5475">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="5491">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="5511">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp</label>
+        <link refid="shader_program_8cpp"/>
+      </node>
+      <node id="5470">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5471" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+        <childnode refid="5475" relation="include">
+        </childnode>
+        <childnode refid="5476" relation="include">
+        </childnode>
+      </node>
+      <node id="5502">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/system.cpp</label>
+        <link refid="system_8cpp"/>
+      </node>
+      <node id="5468">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp</label>
+        <link refid="blend_object_8cpp"/>
+      </node>
+      <node id="5484">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h</label>
+        <link refid="image_resource_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5485" relation="include">
+        </childnode>
+        <childnode refid="5486" relation="include">
+        </childnode>
+      </node>
+      <node id="5477">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</label>
+        <link refid="mesh_resource_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5475" relation="include">
+        </childnode>
+        <childnode refid="5476" relation="include">
+        </childnode>
+      </node>
+      <node id="5482">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h</label>
+        <link refid="depth_object_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5483" relation="include">
+        </childnode>
+      </node>
+      <node id="5476">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="5489">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5490" relation="include">
+        </childnode>
+      </node>
+      <node id="5493">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp</label>
+        <link refid="context_8cpp"/>
+      </node>
+      <node id="5472">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5473" relation="include">
+        </childnode>
+      </node>
+      <node id="5494">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+      <node id="5522">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec3.cpp</label>
+        <link refid="vec3_8cpp"/>
+      </node>
+      <node id="5517">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat3.cpp</label>
+        <link refid="mat3_8cpp"/>
+      </node>
+      <node id="5504">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp</label>
+        <link refid="font_resource_8cpp"/>
+      </node>
+      <node id="5495">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h</label>
+        <link refid="display_8h"/>
+        <childnode refid="5496" relation="include">
+        </childnode>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5492" relation="include">
+        </childnode>
+        <childnode refid="5493" relation="include">
+        </childnode>
+        <childnode refid="5494" relation="include">
+        </childnode>
+        <childnode refid="5497" relation="include">
+        </childnode>
+      </node>
+      <node id="5521">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec2.cpp</label>
+        <link refid="vec2_8cpp"/>
+      </node>
+      <node id="5516">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat2.cpp</label>
+        <link refid="mat2_8cpp"/>
+      </node>
+      <node id="5503">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/fontResource.h</label>
+        <link refid="font_resource_8h"/>
+        <childnode refid="5487" relation="include">
+        </childnode>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5504" relation="include">
+        </childnode>
+      </node>
+      <node id="5515">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/setup.h</label>
+        <link refid="game_2setup_8h"/>
+        <childnode refid="5498" relation="include">
+        </childnode>
+        <childnode refid="5497" relation="include">
+        </childnode>
+      </node>
+      <node id="5500">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h</label>
+        <link refid="game_state_8h"/>
+        <childnode refid="5498" relation="include">
+        </childnode>
+        <childnode refid="5501" relation="include">
+        </childnode>
+        <childnode refid="5502" relation="include">
+        </childnode>
+      </node>
+      <node id="5523">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec4.cpp</label>
+        <link refid="vec4_8cpp"/>
+      </node>
+      <node id="5518">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat4.cpp</label>
+        <link refid="mat4_8cpp"/>
+      </node>
+      <node id="5467">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+      <node id="5479">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h</label>
+        <link refid="buffer_object_8h"/>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5471" relation="include">
+        </childnode>
+        <childnode refid="5480" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>math/math.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>contains<sp/>all<sp/>includes<sp/>for<sp/>the<sp/>math<sp/>module<sp/>of<sp/>LightSky.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_MATH_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_MATH_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>NOTES:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>All<sp/>angle<sp/>measurements<sp/>used<sp/>by<sp/>this<sp/>library<sp/>are<sp/>in<sp/>radians<sp/>unless<sp/>specified</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>otherwise.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>I<sp/>also<sp/>use<sp/>constructors<sp/>rather<sp/>than<sp/>assignments<sp/>when<sp/>creating<sp/>objects<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>variables,<sp/>so<sp/>this<sp/>might<sp/>make<sp/>readability<sp/>slightly<sp/>difficult<sp/>at<sp/>first.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="math_2setup_8h" kindref="compound">lightsky/math/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="types_8h" kindref="compound">lightsky/math/types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fixed_8h" kindref="compound">lightsky/math/fixed.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mat2_8h" kindref="compound">lightsky/math/mat2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mat3_8h" kindref="compound">lightsky/math/mat3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mat4_8h" kindref="compound">lightsky/math/mat4.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="quat_8h" kindref="compound">lightsky/math/quat.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vec2_8h" kindref="compound">lightsky/math/vec2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vec3_8h" kindref="compound">lightsky/math/vec3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vec4_8h" kindref="compound">lightsky/math/vec4.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="scalar__utils_8h" kindref="compound">lightsky/math/scalar_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="quat__utils_8h" kindref="compound">lightsky/math/quat_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vec__utils_8h" kindref="compound">lightsky/math/vec_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mat__utils_8h" kindref="compound">lightsky/math/mat_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="perlin_noise_8h" kindref="compound">lightsky/math/perlinNoise.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__LS_MATH_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/math.h"/>
+  </compounddef>
+</doxygen>

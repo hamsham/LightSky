@@ -1,0 +1,57 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <utility>\fP
+.br
+\fC#include <GL/glew\&.h>\fP
+.br
+\fC#include 'lightsky/draw/setup\&.h'\fP
+.br
+\fC#include 'lightsky/draw/generic/shaderObject_impl\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBls::draw::shaderObject< shaderType >\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::draw\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBls::draw::shader_stage_t\fP : unsigned { \fBls::draw::SHADER_STAGE_VERTEX\fP = GL_VERTEX_SHADER, \fBls::draw::SHADER_STAGE_GEOMETRY\fP = GL_GEOMETRY_SHADER, \fBls::draw::SHADER_STAGE_FRAGMENT\fP = GL_FRAGMENT_SHADER }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (vertexShader, shaderObject, SHADER_STAGE_VERTEX)"
+.br
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (geometryShader, shaderObject, SHADER_STAGE_GEOMETRY)"
+.br
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (fragmentShader, shaderObject, SHADER_STAGE_FRAGMENT)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

@@ -1,0 +1,268 @@
+.TH "ls::utils::bTree< key_t, data_t >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::utils::bTree< key_t, data_t > \- 
+.PP
+B-Tree A simple tree container that allows for fast lookup of data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <btree\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr \fBbTree\fP ()"
+.br
+.RI "\fIconstructor Creates an empty tree with no child nodes\&. \fP"
+.ti -1c
+.RI "\fBbTree\fP (const \fBbTree\fP &tree)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fBbTree\fP (\fBbTree\fP &&tree)"
+.br
+.RI "\fIMove constructor Moves all data from the input parameter into *this without any copies\&. \fP"
+.ti -1c
+.RI "\fB~bTree\fP ()"
+.br
+.RI "\fIdestructor Clears all data and resources used by *this\&. \fP"
+.ti -1c
+.RI "\fBbTree\fP & \fBoperator=\fP (const \fBbTree\fP &tree)"
+.br
+.RI "\fIcopy operator \fP"
+.ti -1c
+.RI "\fBbTree\fP & \fBoperator=\fP (\fBbTree\fP &&tree)"
+.br
+.RI "\fImove operator Moves all data from the input parameter into *this without any copies\&. \fP"
+.ti -1c
+.RI "data_t & \fBoperator[]\fP (const key_t &k)"
+.br
+.RI "\fIsubscript operator Iterates through the tree of nodes and returns the data referenced by a key\&. This operator behaves just like an std::map, where if an object does not exist at the specified key, one will be created\&. \fP"
+.ti -1c
+.RI "void \fBpush\fP (const key_t &k, const data_t &d)"
+.br
+.RI "\fIpush insert a piece of data into *this, referencing it by a key\&. \fP"
+.ti -1c
+.RI "void \fBpop\fP (const key_t &k)"
+.br
+.RI "\fIpop Delete an object contained within *this\&. \fP"
+.ti -1c
+.RI "bool \fBhasData\fP (const key_t &k)"
+.br
+.RI "\fIhasData Check to see if there is data within the tree, referenced by a key\&. \fP"
+.ti -1c
+.RI "const data_t * \fBgetData\fP (const key_t &k)"
+.br
+.RI "\fIgetData Get a pointer to the data that's referenced by a key\&. \fP"
+.ti -1c
+.RI "unsigned \fBsize\fP () const "
+.br
+.RI "\fIsize Get the number of nodes contained within *this\&. \fP"
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.RI "\fIclear frees all objects and dynamic memory from *this\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename key_t, typename data_t>class ls::utils::bTree< key_t, data_t >"
+B-Tree A simple tree container that allows for fast lookup of data\&. 
+
+
+.PP
+\fBTodo\fP
+.RS 4
+Add iterators, reduce usage of the new operator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file btree\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename key_t , typename data_t > constexpr \fBls::utils::bTree\fP< key_t, data_t >::\fBbTree\fP ()"
+
+.PP
+constructor Creates an empty tree with no child nodes\&. 
+.PP
+Definition at line 9 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > \fBls::utils::bTree\fP< key_t, data_t >::\fBbTree\fP (const \fBbTree\fP< key_t, data_t > &tree)"
+
+.PP
+Copy constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItree\fP A btree with data to be copied into *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 18 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > \fBls::utils::bTree\fP< key_t, data_t >::\fBbTree\fP (\fBbTree\fP< key_t, data_t > &&tree)"
+
+.PP
+Move constructor Moves all data from the input parameter into *this without any copies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItree\fP An r-value reference to a temporary tree\&. 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > \fBls::utils::bTree\fP< key_t, data_t >::~\fBbTree\fP ()\fC [inline]\fP"
+
+.PP
+destructor Clears all data and resources used by *this\&. 
+.PP
+Definition at line 266 of file btree\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename key_t , typename data_t > void \fBls::utils::bTree\fP< key_t, data_t >::clear ()"
+
+.PP
+clear frees all objects and dynamic memory from *this\&. 
+.PP
+Definition at line 97 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > const data_t * \fBls::utils::bTree\fP< key_t, data_t >::getData (const key_t &k)"
+
+.PP
+getData Get a pointer to the data that's referenced by a key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP The key that will be used to check for the existence of data in *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the data referenced by 'k\&.' Returns NULL if no data exists at 'k\&.' 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > bool \fBls::utils::bTree\fP< key_t, data_t >::hasData (const key_t &k)"
+
+.PP
+hasData Check to see if there is data within the tree, referenced by a key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP The key that will be used to check for the existence of data in *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if there is data referenced by the key 'k,' FALSE if not\&. 
+.RE
+.PP
+
+.PP
+Definition at line 156 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > \fBbTree\fP< key_t, data_t > & \fBls::utils::bTree\fP< key_t, data_t >::operator= (const \fBbTree\fP< key_t, data_t > &tree)"
+
+.PP
+copy operator 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItree\fP A btree with data to be copied into *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > \fBbTree\fP< key_t, data_t > & \fBls::utils::bTree\fP< key_t, data_t >::operator= (\fBbTree\fP< key_t, data_t > &&tree)"
+
+.PP
+move operator Moves all data from the input parameter into *this without any copies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItree\fP An r-value reference to a temporary tree\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > data_t & \fBls::utils::bTree\fP< key_t, data_t >::operator[] (const key_t &k)"
+
+.PP
+subscript operator Iterates through the tree of nodes and returns the data referenced by a key\&. This operator behaves just like an std::map, where if an object does not exist at the specified key, one will be created\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP A key used to reference a specific object in *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to a specific piece of data referenced by 'k\&.' 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > void \fBls::utils::bTree\fP< key_t, data_t >::pop (const key_t &k)"
+
+.PP
+pop Delete an object contained within *this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP The key that will be used to reference the data to be deleted\&. 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > void \fBls::utils::bTree\fP< key_t, data_t >::push (const key_t &k, const data_t &d)"
+
+.PP
+push insert a piece of data into *this, referencing it by a key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP The key that will be used to reference the inserted data\&.
+.br
+\fId\fP The data that will be inserted into *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file btree_impl\&.h\&.
+.SS "template<typename key_t , typename data_t > unsigned \fBls::utils::bTree\fP< key_t, data_t >::size () const\fC [inline]\fP"
+
+.PP
+size Get the number of nodes contained within *this\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of objects inserted into *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 356 of file btree\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

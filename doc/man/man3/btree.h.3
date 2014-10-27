@@ -1,0 +1,50 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <new>\fP
+.br
+\fC#include 'lightsky/utils/bits\&.h'\fP
+.br
+\fC#include 'lightsky/utils/generic/btree_impl\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBls::utils::bTreeNode< data_t >\fP"
+.br
+.RI "\fIBTree Node A node type used by the BTree class in order to store data\&. \fP"
+.ti -1c
+.RI "class \fBls::utils::bTree< key_t, data_t >\fP"
+.br
+.RI "\fIB-Tree A simple tree container that allows for fast lookup of data\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::utils\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBls::utils::bnode_dir_t\fP : unsigned { \fBls::utils::BNODE_LEFT\fP = 0, \fBls::utils::BNODE_RIGHT\fP = 1, \fBls::utils::BNODE_MAX\fP }"
+.br
+.RI "\fIbnode_dir_t A simple enumeration to help determine where within a btree-node a child node should be placed\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

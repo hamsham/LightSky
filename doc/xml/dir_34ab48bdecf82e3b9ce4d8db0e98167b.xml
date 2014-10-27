@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_34ab48bdecf82e3b9ce4d8db0e98167b" kind="dir">
+    <compoundname>C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic</compoundname>
+    <innerfile refid="atlas__impl_8h">atlas_impl.h</innerfile>
+    <innerfile refid="blend_object__impl_8h">blendObject_impl.h</innerfile>
+    <innerfile refid="bounding_box__impl_8h">boundingBox_impl.h</innerfile>
+    <innerfile refid="buffer_object__impl_8h">bufferObject_impl.h</innerfile>
+    <innerfile refid="context__impl_8h">context_impl.h</innerfile>
+    <innerfile refid="depth_object__impl_8h">depthObject_impl.h</innerfile>
+    <innerfile refid="display__impl_8h">display_impl.h</innerfile>
+    <innerfile refid="font_resource__impl_8h">fontResource_impl.h</innerfile>
+    <innerfile refid="framebuffer__impl_8h">framebuffer_impl.h</innerfile>
+    <innerfile refid="image_resource__impl_8h">imageResource_impl.h</innerfile>
+    <innerfile refid="matrix_stack__impl_8h">matrixStack_impl.h</innerfile>
+    <innerfile refid="mesh__impl_8h">mesh_impl.h</innerfile>
+    <innerfile refid="mesh_model__impl_8h">meshModel_impl.h</innerfile>
+    <innerfile refid="mesh_resource__impl_8h">meshResource_impl.h</innerfile>
+    <innerfile refid="renderer__impl_8h">renderer_impl.h</innerfile>
+    <innerfile refid="scene_manager__impl_8h">sceneManager_impl.h</innerfile>
+    <innerfile refid="shader_object__impl_8h">shaderObject_impl.h</innerfile>
+    <innerfile refid="shader_program__impl_8h">shaderProgram_impl.h</innerfile>
+    <innerfile refid="texture__impl_8h">texture_impl.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/"/>
+  </compounddef>
+</doxygen>

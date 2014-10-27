@@ -1,0 +1,254 @@
+.TH "ls::draw::mesh" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::mesh \- 
+.PP
+Mesh Object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mesh\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBmesh\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBmesh\fP (const \fBmesh\fP &)=delete"
+.br
+.RI "\fICopy Constructor -- DELETED\&. \fP"
+.ti -1c
+.RI "\fBmesh\fP (\fBmesh\fP &&m)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fB~mesh\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBmesh\fP & \fBoperator=\fP (const \fBmesh\fP &)=delete"
+.br
+.RI "\fICopy Operator -- DELETED\&. \fP"
+.ti -1c
+.RI "\fBmesh\fP & \fBoperator=\fP (\fBmesh\fP &&m)"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "unsigned \fBgetId\fP () const "
+.br
+.ti -1c
+.RI "bool \fBinit\fP (const \fBmeshResource\fP &mr)"
+.br
+.RI "\fIInitialize\&. \fP"
+.ti -1c
+.RI "bool \fBinit\fP (const \fBatlas\fP &glyphAtlas, const std::string &str)"
+.br
+.RI "\fIInitialize\&. \fP"
+.ti -1c
+.RI "void \fBterminate\fP ()"
+.br
+.ti -1c
+.RI "unsigned \fBgetNumVertices\fP () const "
+.br
+.ti -1c
+.RI "\fBdraw_mode_t\fP \fBgetDrawMode\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetDrawMode\fP (\fBdraw_mode_t\fP dm)"
+.br
+.ti -1c
+.RI "const \fBboundingBox\fP & \fBgetBounds\fP () const "
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBmeshResource\fP"
+.br
+.ti -1c
+.RI "class \fBmeshModel\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Mesh Object\&. 
+
+
+.PP
+ A mesh object contains information about the layout of vertex data located on the GPU\&. It's designed to be used directly with OpenGL\&. These classes are rather large\&. It is recommended to instantiate them using 
+.SS "dynamic allocation\&. "
+
+.PP
+Definition at line 50 of file mesh\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::draw::mesh::mesh ()"
+
+.PP
+Constructor\&. Initializes all members in *this to their default values\&. 
+.PP
+Definition at line 56 of file mesh\&.cpp\&.
+.SS "ls::draw::mesh::mesh (const \fBmesh\fP &)\fC [delete]\fP"
+
+.PP
+Copy Constructor -- DELETED\&. 
+.SS "ls::draw::mesh::mesh (\fBmesh\fP &&m)"
+
+.PP
+Move Constructor\&. Moves all data from the input parameter into *this\&. No copies are performed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP An r-value reference to a temporary mesh object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file mesh\&.cpp\&.
+.SS "ls::draw::mesh::~mesh ()"
+
+.PP
+Destructor\&. Unloads all resources used by *this\&. 
+.PP
+Definition at line 79 of file mesh\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBboundingBox\fP & ls::draw::mesh::getBounds () const\fC [inline]\fP"
+Get the maximum vertex bounds for this mesh object\&.
+.PP
+\fBReturns:\fP
+.RS 4
+a constant reference to a \fBboundingBox\fP objext\&. 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file mesh_impl\&.h\&.
+.SS "\fBdraw_mode_t\fP ls::draw::mesh::getDrawMode () const\fC [inline]\fP"
+Get the current Draw Mode for this mesh\&.
+.PP
+\fBReturns:\fP
+.RS 4
+an enumeration representing the proper draw mode that should be used to render the vertices within *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file mesh_impl\&.h\&.
+.SS "unsigned ls::draw::mesh::getId () const\fC [inline]\fP"
+Get an general identification to be used for this object
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned integral variable representing the GPU-side handle to the vertex buffer object used by *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 8 of file mesh_impl\&.h\&.
+.SS "unsigned ls::draw::mesh::getNumVertices () const\fC [inline]\fP"
+Get the number of vertices contained within this mesh object's VBO\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The number of vertices used to draw this mesh\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file mesh_impl\&.h\&.
+.SS "bool ls::draw::mesh::init (const \fBmeshResource\fP &mr)"
+
+.PP
+Initialize\&. This method send a set of vertices from a mesh resource object to the GPU using OpenGL\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImr\fP A mesh loader that contains raw vertex data in memory\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if the data was successfully sent to the GPU, or FALSE if an error occurred\&. 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file mesh\&.cpp\&.
+.SS "bool ls::draw::mesh::init (const \fBatlas\fP &glyphAtlas, const std::string &str)"
+
+.PP
+Initialize\&. Similar to its overload, this method sends text/string data to the GPU using a texture atlas and a corresponding string object\&. This method will generate a mesh on the fly, attempting to match the characters in the input string, and send the vertices to the GPU\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglyphAtlas\fP A texture Atlas containing pre-loaded font glyphs and their offsets\&.
+.br
+\fIstr\fP A constant reference to a character string, containing data which is to be loaded onto the GPU\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if the data was successfully sent to the GPU, or FALSE if an error occurred\&. 
+.RE
+.PP
+
+.PP
+Definition at line 136 of file mesh\&.cpp\&.
+.SS "\fBmesh\fP& ls::draw::mesh::operator= (const \fBmesh\fP &)\fC [delete]\fP"
+
+.PP
+Copy Operator -- DELETED\&. 
+.SS "\fBmesh\fP & ls::draw::mesh::operator= (\fBmesh\fP &&m)"
+
+.PP
+Move Operator\&. Moves all data from the input parameter into *this\&. No copies are performed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP An r-value reference to a temporary mesh object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file mesh\&.cpp\&.
+.SS "void ls::draw::mesh::setDrawMode (\fBdraw_mode_t\fPdm)\fC [inline]\fP"
+Set the method of drawing that should be used for this mesh\&. Its recommended not to use this method as it is set during initialization\&. If the current draw mode is changed, it should be cached in the event that the mode should be restored\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdm\fP An enumeration that will be used to determine how to render the vertices contained within *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 37 of file mesh_impl\&.h\&.
+.SS "void ls::draw::mesh::terminate ()\fC [inline]\fP"
+Unload all GPU-based resource that are used by *this\&. 
+.PP
+Definition at line 15 of file mesh_impl\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBmeshModel\fP\fC [friend]\fP"
+Allow the draw model to access data held within this object's VBO\&. 
+.PP
+Definition at line 59 of file mesh\&.h\&.
+.SS "friend class \fBmeshResource\fP\fC [friend]\fP"
+Allow the mesh resource class to load vertices directly into a mesh\&. 
+.PP
+Definition at line 54 of file mesh\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="blend_object_8h" kind="file">
+    <compoundname>blendObject.h</compoundname>
+    <includes local="no">GL/glew.h</includes>
+    <includes refid="draw_2setup_8h" local="yes">lightsky/draw/setup.h</includes>
+    <includes refid="color_8h" local="yes">lightsky/draw/color.h</includes>
+    <includes refid="blend_object__impl_8h" local="yes">lightsky/draw/generic/blendObject_impl.h</includes>
+    <includedby refid="draw_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</includedby>
+    <includedby refid="blend_object_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp</includedby>
+    <incdepgraph>
+      <node id="108">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="82">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="78">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h</label>
+        <link refid="blendObject.h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>cstdint</label>
+      </node>
+      <node id="84">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="80">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="121">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="114">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="101">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>cmath</label>
+      </node>
+      <node id="117">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="128">
+        <label>lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="112">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="119">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="110">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="92">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="113">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="85">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="106">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="123">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="94">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="105">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="90">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>utility</label>
+      </node>
+      <node id="122">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="118">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>iostream</label>
+      </node>
+      <node id="129">
+        <label>lightsky/draw/generic/blendObject_impl.h</label>
+        <link refid="blend_object__impl_8h"/>
+      </node>
+      <node id="104">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="98">
+        <label>climits</label>
+      </node>
+      <node id="124">
+        <label>chrono</label>
+      </node>
+      <node id="86">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="85" relation="include">
+        </childnode>
+      </node>
+      <node id="125">
+        <label>algorithm</label>
+      </node>
+      <node id="83">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="127">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="130">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h</label>
+        <link refid="blendObject.h"/>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="133" relation="include">
+        </childnode>
+      </node>
+      <node id="131">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="132" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp</label>
+        <link refid="blend_object_8cpp"/>
+      </node>
+      <node id="133">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classls_1_1draw_1_1blend_object" prot="public">ls::draw::blendObject</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>blendObject.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>August<sp/>3,<sp/>2014,<sp/>6:53<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_DRAW_BLEND_OBJECT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_DRAW_BLEND_OBJECT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GL/glew.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="draw_2setup_8h" kindref="compound">lightsky/draw/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="color_8h" kindref="compound">lightsky/draw/color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*-----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/><sp/><sp/>Enumerations</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">-----------------------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26" refid="namespacels_1_1draw_1a1d3585bce135c1b76a2e35775d8db627a68efdaa95b8294140317ca498220e1de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a1d3585bce135c1b76a2e35775d8db627a68efdaa95b8294140317ca498220e1de" kindref="member">LS_BLEND</ref><sp/>=<sp/>GL_BLEND</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="namespacels_1_1draw_1a175ed2e8adcf554613acdb7a1b3d32de" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1a175ed2e8adcf554613acdb7a1b3d32de" kindref="member">blend_color_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="33" refid="namespacels_1_1draw_1a175ed2e8adcf554613acdb7a1b3d32dea723ad82a73d9e426f81e83ffe8895fe8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a175ed2e8adcf554613acdb7a1b3d32dea723ad82a73d9e426f81e83ffe8895fe8" kindref="member">LS_BLEND_COLOR</ref><sp/>=<sp/>GL_BLEND_COLOR</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="40" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_FUNC_ADD,</highlight></codeline>
+<codeline lineno="41" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537a280123f87cca2fcafa444d5cbec2289d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537a280123f87cca2fcafa444d5cbec2289d" kindref="member">LS_BLEND_SUB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_FUNC_SUBTRACT,</highlight></codeline>
+<codeline lineno="42" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537a1b3eaa151f895ea67b4024236fccbb4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537a1b3eaa151f895ea67b4024236fccbb4a" kindref="member">LS_BLEND_REV_SUB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_FUNC_REVERSE_SUBTRACT,</highlight></codeline>
+<codeline lineno="43" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537ae5b975b4b02d56ff6a6008709307a5ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537ae5b975b4b02d56ff6a6008709307a5ff" kindref="member">LS_BLEND_MIN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_MIN,</highlight></codeline>
+<codeline lineno="44" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af99bdee378455e2c3a515f9f41e74e9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af99bdee378455e2c3a515f9f41e74e9d" kindref="member">LS_BLEND_MAX</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_MAX,</highlight></codeline>
+<codeline lineno="45" refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537aac655738a2c8a376835085de5e898f52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537aac655738a2c8a376835085de5e898f52" kindref="member">LS_DEFAULT_BLEND_EQU</ref><sp/><sp/><sp/><sp/>=<sp/>GL_FUNC_ADD</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88" kindref="member">blend_equ_color_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52" refid="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88a4136f759bde242e7fa038d4628851312" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88a4136f759bde242e7fa038d4628851312" kindref="member">LS_BLEND_EQUATION_RGB</ref><sp/><sp/><sp/>=<sp/>GL_BLEND_EQUATION_RGB,</highlight></codeline>
+<codeline lineno="53" refid="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88a36a9ad06a89e38e5def7f719fde8482d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88a36a9ad06a89e38e5def7f719fde8482d" kindref="member">LS_BLEND_EQUATION_ALPHA</ref><sp/>=<sp/>GL_BLEND_EQUATION_ALPHA</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="61" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_ZERO,</highlight></codeline>
+<codeline lineno="62" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_ONE,</highlight></codeline>
+<codeline lineno="63" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a9a299bf105a530c4ed3feb06db9b30bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a9a299bf105a530c4ed3feb06db9b30bf" kindref="member">LS_SRC_COLOR</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_SRC_COLOR,</highlight></codeline>
+<codeline lineno="64" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aae9bf331c395eee1a14edd1f4e612117" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aae9bf331c395eee1a14edd1f4e612117" kindref="member">LS_ONE_MINUS_SRC_COLOR</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_ONE_MINUS_SRC_COLOR,</highlight></codeline>
+<codeline lineno="65" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ab4a8214cd851145a0f4d7772e9117b7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ab4a8214cd851145a0f4d7772e9117b7a" kindref="member">LS_DST_COLOR</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_DST_COLOR,</highlight></codeline>
+<codeline lineno="66" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ac4eb1865d6f35f456fbc48e285f3a7cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ac4eb1865d6f35f456fbc48e285f3a7cf" kindref="member">LS_ONE_MINUS_DST_COLOR</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_ONE_MINUS_DST_COLOR,</highlight></codeline>
+<codeline lineno="67" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381af7646bcd9913dd6fb4a8c608304738f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381af7646bcd9913dd6fb4a8c608304738f7" kindref="member">LS_SRC_ALPHA</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_SRC_ALPHA,</highlight></codeline>
+<codeline lineno="68" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ae339543e69b35a722218d4e8f4cc0828" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ae339543e69b35a722218d4e8f4cc0828" kindref="member">LS_ONE_MINUS_SRC_ALPHA</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_ONE_MINUS_SRC_ALPHA,</highlight></codeline>
+<codeline lineno="69" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ac531ae64c6bb19d9158256794c9cccd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ac531ae64c6bb19d9158256794c9cccd8" kindref="member">LS_DST_ALPHA</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_DST_ALPHA,</highlight></codeline>
+<codeline lineno="70" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aee897223b186c5a765b2373c6bd37f31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aee897223b186c5a765b2373c6bd37f31" kindref="member">LS_ONE_MINUS_DST_ALPHA</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_ONE_MINUS_DST_ALPHA,</highlight></codeline>
+<codeline lineno="71" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aeb19f218198186fbce43349fcd1b9dec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aeb19f218198186fbce43349fcd1b9dec" kindref="member">LS_CONST_COLOR</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_CONSTANT_COLOR,</highlight></codeline>
+<codeline lineno="72" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ad3d46a724804cd47b0432f51dc0762ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ad3d46a724804cd47b0432f51dc0762ca" kindref="member">LS_ONE_MINUS_CONST_COLOR</ref><sp/><sp/><sp/><sp/>=<sp/>GL_ONE_MINUS_CONSTANT_COLOR,</highlight></codeline>
+<codeline lineno="73" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a82b5e3046ae0015525d8e0b2a8185fca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a82b5e3046ae0015525d8e0b2a8185fca" kindref="member">LS_CONST_ALPHA</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>GL_CONSTANT_ALPHA,</highlight></codeline>
+<codeline lineno="74" refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aebfcab3b0ff905d4ac50f272cdc17c27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aebfcab3b0ff905d4ac50f272cdc17c27" kindref="member">LS_ONE_MINUS_CONST_ALPHA</ref><sp/><sp/><sp/><sp/>=<sp/>GL_ONE_MINUS_CONSTANT_ALPHA</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8" kindref="member">blend_func_color_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="81" refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8af3b40c1aab47b82d4b4fa8976464ac14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8af3b40c1aab47b82d4b4fa8976464ac14" kindref="member">LS_BLEND_SRC_RGB</ref><sp/><sp/><sp/><sp/>=<sp/>GL_BLEND_SRC_RGB,</highlight></codeline>
+<codeline lineno="82" refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8a2c28df0863f678235c8d73b1d0b361d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8a2c28df0863f678235c8d73b1d0b361d7" kindref="member">LS_BLEND_DST_RGB</ref><sp/><sp/><sp/><sp/>=<sp/>GL_BLEND_DST_RGB,</highlight></codeline>
+<codeline lineno="83" refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8a3df89a6c51409c181288a63aa32c141c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8a3df89a6c51409c181288a63aa32c141c" kindref="member">LS_BLEND_SRC_ALPHA</ref><sp/><sp/>=<sp/>GL_BLEND_SRC_ALPHA,</highlight></codeline>
+<codeline lineno="84" refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8aeb1878a9dfbc94e7862301447f46a89e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8aeb1878a9dfbc94e7862301447f46a89e" kindref="member">LS_BLEND_DST_ALPHA</ref><sp/><sp/>=<sp/>GL_BLEND_DST_ALPHA</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classls_1_1draw_1_1blend_object" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enabled<sp/>=<sp/>GL_FALSE;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">color</ref><sp/>blendCol<sp/>=<sp/>lsBlank;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/>rgbBlendEq<sp/>=<sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/>alphaBlendEq<sp/>=<sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>srcRgbBlendFunc<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>dstRgbBlendFunc<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>srcAlphaBlendFunc<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>dstAlphaBlendFunc<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref>;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1blend_object_1a73b2c57430ee156b7f863640914358a3" kindref="member">blendObject</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1blend_object_1a73b2c57430ee156b7f863640914358a3" kindref="member">blendObject</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1blend_object_1a73b2c57430ee156b7f863640914358a3" kindref="member">blendObject</ref>(<ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1blend_object_1a93f62dcc4cb444608ffc9e6eafec6b8c" kindref="member">~blendObject</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1blend_object_1a1cdbdadba162ba05b1c18d5d89b4018d" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1blend_object_1a1cdbdadba162ba05b1c18d5d89b4018d" kindref="member">operator=</ref>(<ref refid="classls_1_1draw_1_1blend_object" kindref="compound">blendObject</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1a25718a22e58503a2133e98d9e2c72e5b" kindref="member">bind</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1adba1d9ded498ab448146f0b8235bad6d" kindref="member">unbind</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1afbf19ee426725d298a4be2bf7997f1cf" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1a92f870fc19f7ff3c4dbf533e55a2ec90" kindref="member">setState</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>=<sp/>GL_FALSE);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1a82cdc6f10efc2a114e2ffb0c442031a2" kindref="member">getState</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1a5d698e9ba7a228b62bffb4bd30ad2285" kindref="member">setBlendEquation</ref>(<ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/>rgbaMode<sp/>=<sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref>);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1a5d698e9ba7a228b62bffb4bd30ad2285" kindref="member">setBlendEquation</ref>(</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/>rgbMode<sp/>=<sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref>,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/>alphaMode<sp/>=<sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" kindref="member">LS_BLEND_ADD</ref></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1a157b46aca5fb1167ea5cefde3bed9a08" kindref="member">getBlendEquationRgb</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" kindref="member">blend_equ_t</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1a7e7e70705b3420e543c706b100b8db8c" kindref="member">getBlendEquationAlpha</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1adb726a3e71cb9ed6f1e46fc156d3ce71" kindref="member">setBlendFunction</ref>(</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>srcFactor<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref>,</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>dstFactor<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1adb726a3e71cb9ed6f1e46fc156d3ce71" kindref="member">setBlendFunction</ref>(</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>srcFactorRgb<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref>,</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>dstFactorRgb<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref>,</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>srcFactorAlpha<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" kindref="member">LS_ONE</ref>,</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/>dstFactorAlpha<sp/>=<sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" kindref="member">LS_ZERO</ref></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1a42ad63bfd231a559599bea9917643615" kindref="member">getBlendFunctionSrcRgb</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1abe70ad65c3ec6c96ec940c0a5f392aae" kindref="member">getBlendFunctionSrcAlpha</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1a087776c13ab34bdbab51bb30ef7cb7d2" kindref="member">getBlendFunctionDstRgb</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" kindref="member">blend_func_t</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1ac4f3637f3480028adae0540edbb8f615" kindref="member">getBlendFunctionDstAlpha</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1blend_object_1a388e6443ff1325a32e36248b110acc2c" kindref="member">setBlendColor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">color</ref>&amp;<sp/>rgba<sp/>=<sp/>lsBlank);</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">color</ref><sp/><ref refid="classls_1_1draw_1_1blend_object_1abbcbd871616019be73bd39b079f3c5a0" kindref="member">getBlendColor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="blend_object__impl_8h" kindref="compound">lightsky/draw/generic/blendObject_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_DRAW_BLEND_OBJECT_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h"/>
+  </compounddef>
+</doxygen>

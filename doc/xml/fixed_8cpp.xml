@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="fixed_8cpp" kind="file">
+    <compoundname>fixed.cpp</compoundname>
+    <includes refid="types_8h" local="yes">lightsky/math/types.h</includes>
+    <includes refid="fixed_8h" local="yes">lightsky/math/fixed.h</includes>
+    <incdepgraph>
+      <node id="5884">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="5878">
+        <label>cstdint</label>
+      </node>
+      <node id="5886">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="5879">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="5880" relation="include">
+        </childnode>
+        <childnode refid="5878" relation="include">
+        </childnode>
+        <childnode refid="5881" relation="include">
+        </childnode>
+        <childnode refid="5882" relation="include">
+        </childnode>
+        <childnode refid="5876" relation="include">
+        </childnode>
+        <childnode refid="5888" relation="include">
+        </childnode>
+      </node>
+      <node id="5888">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="5877">
+        <label>cmath</label>
+      </node>
+      <node id="5887">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="5882">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="5883" relation="include">
+        </childnode>
+      </node>
+      <node id="5876">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="5877" relation="include">
+        </childnode>
+        <childnode refid="5878" relation="include">
+        </childnode>
+      </node>
+      <node id="5883">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="5884" relation="include">
+        </childnode>
+        <childnode refid="5885" relation="include">
+        </childnode>
+        <childnode refid="5886" relation="include">
+        </childnode>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5881">
+        <label>utility</label>
+      </node>
+      <node id="5880">
+        <label>climits</label>
+      </node>
+      <node id="5875">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/fixed.cpp</label>
+        <link refid="fixed.cpp"/>
+        <childnode refid="5876" relation="include">
+        </childnode>
+        <childnode refid="5879" relation="include">
+        </childnode>
+      </node>
+      <node id="5885">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1math">ls::math</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="types_8h" kindref="compound">lightsky/math/types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fixed_8h" kindref="compound">lightsky/math/fixed.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">math<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/><sp/>Fixed-Point<sp/>Template<sp/>Specializations</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>int32_t,<sp/><sp/><sp/><sp/>7);<sp/></highlight><highlight class="comment">//<sp/>24.7<sp/>(-1<sp/>for<sp/>the<sp/>sign)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>int32_t,<sp/><sp/><sp/><sp/>15);<sp/></highlight><highlight class="comment">//<sp/>16.15</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>int32_t,<sp/><sp/><sp/><sp/>23);<sp/></highlight><highlight class="comment">//<sp/>8.23</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>int64_t,<sp/><sp/><sp/><sp/>15);<sp/></highlight><highlight class="comment">//<sp/>48.15</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>int64_t,<sp/><sp/><sp/><sp/>31);<sp/></highlight><highlight class="comment">//<sp/>32.31</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>int64_t,<sp/><sp/><sp/><sp/>47);<sp/></highlight><highlight class="comment">//<sp/>16.47</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>uint32_t,<sp/><sp/><sp/>8);<sp/></highlight><highlight class="comment">//<sp/>24.8<sp/>(-1<sp/>for<sp/>the<sp/>sign)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>uint32_t,<sp/><sp/><sp/>16);<sp/></highlight><highlight class="comment">//<sp/>16.16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>uint32_t,<sp/><sp/><sp/>24);<sp/></highlight><highlight class="comment">//<sp/>8.24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>uint64_t,<sp/><sp/><sp/>16);<sp/></highlight><highlight class="comment">//<sp/>48.16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>uint64_t,<sp/><sp/><sp/>32);<sp/></highlight><highlight class="comment">//<sp/>32.32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="namespacels_1_1math_1a4dcdfb3163289819cae38843f3532a58" kindref="member">LS_DEFINE_CLASS_TYPE</ref>(fixed_t,<sp/><sp/><sp/><sp/>uint64_t,<sp/><sp/><sp/>48);<sp/></highlight><highlight class="comment">//<sp/>16.48</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>End<sp/>math<sp/>namespace<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>End<sp/>ls<sp/>namespace<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/src/fixed.cpp"/>
+  </compounddef>
+</doxygen>

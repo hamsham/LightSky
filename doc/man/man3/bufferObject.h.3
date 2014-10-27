@@ -1,0 +1,65 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <GL/glew\&.h>\fP
+.br
+\fC#include 'lightsky/draw/setup\&.h'\fP
+.br
+\fC#include 'lightsky/draw/generic/bufferObject_impl\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBls::draw::bufferObject< bufferType >\fP"
+.br
+.RI "\fIVertex Buffer Object\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::draw\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBls::draw::buffer_t\fP : GLenum { \fBls::draw::LS_ARRAY_BUFFER\fP = GL_ARRAY_BUFFER, \fBls::draw::LS_ELEMENT_BUFFER\fP = GL_ELEMENT_ARRAY_BUFFER, \fBls::draw::LS_TEXTURE_BUFFER\fP = GL_TEXTURE_BUFFER, \fBls::draw::LS_TRANSFORM_FEEDBACK_BUFFER\fP = GL_TRANSFORM_FEEDBACK_BUFFER, \fBls::draw::LS_UNIFORM_BUFFER\fP = GL_UNIFORM_BUFFER }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::buffer_usage_t\fP : GLenum { \fBls::draw::LS_STATIC_READ\fP = GL_STATIC_READ, \fBls::draw::LS_STATIC_DRAW\fP = GL_STATIC_DRAW, \fBls::draw::LS_STATIC_COPY\fP = GL_STATIC_COPY, \fBls::draw::LS_STREAM_READ\fP = GL_STREAM_READ, \fBls::draw::LS_STREAM_DRAW\fP = GL_STREAM_DRAW, \fBls::draw::LS_STREAM_COPY\fP = GL_STREAM_COPY, \fBls::draw::LS_DYNAMIC_READ\fP = GL_DYNAMIC_READ, \fBls::draw::LS_DYNAMIC_DRAW\fP = GL_DYNAMIC_DRAW, \fBls::draw::LS_DYNAMIC_COPY\fP = GL_DYNAMIC_COPY }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::buffer_access_t\fP : GLbitfield { \fBls::draw::LS_MAP_READ_BIT\fP = GL_MAP_READ_BIT, \fBls::draw::LS_MAP_WRITE_BIT\fP = GL_MAP_WRITE_BIT, \fBls::draw::LS_MAP_INVALIDATE_RANGE_BIT\fP = GL_MAP_INVALIDATE_RANGE_BIT, \fBls::draw::LS_MAP_INVALIDATE_BUFFER_BIT\fP = GL_MAP_INVALIDATE_BUFFER_BIT, \fBls::draw::LS_MAP_FLUSH_EXPLICIT_BIT\fP = GL_MAP_FLUSH_EXPLICIT_BIT, \fBls::draw::LS_MAP_UNSYNCHRONIZED_BIT\fP = GL_MAP_UNSYNCHRONIZED_BIT, \fBls::draw::LS_MAP_PERSISTENT_BIT\fP = GL_MAP_PERSISTENT_BIT, \fBls::draw::LS_MAP_COHERENT_BIT\fP = GL_MAP_COHERENT_BIT }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (vertexBuffer, bufferObject, LS_ARRAY_BUFFER)"
+.br
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (indexBuffer, bufferObject, LS_ELEMENT_BUFFER)"
+.br
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (uvBuffer, bufferObject, LS_ARRAY_BUFFER)"
+.br
+.ti -1c
+.RI "\fBls::draw::LS_DECLARE_CLASS_TYPE\fP (colorBuffer, bufferObject, LS_ARRAY_BUFFER)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

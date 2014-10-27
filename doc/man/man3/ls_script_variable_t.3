@@ -1,0 +1,215 @@
+.TH "ls::script::variable_t< hashId, type >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::script::variable_t< hashId, type > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <setup\&.h>\fP
+.PP
+Inherits \fBls::script::variable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~variable_t\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBvariable_t\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBvariable_t\fP (const \fBvariable_t\fP &v)"
+.br
+.RI "\fICopy Constructor\&. \fP"
+.ti -1c
+.RI "\fBvariable_t\fP (\fBvariable_t\fP &&v)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fBvariable_t\fP & \fBoperator=\fP (const \fBvariable_t\fP &v)"
+.br
+.RI "\fICopy Operator\&. \fP"
+.ti -1c
+.RI "\fBvariable_t\fP & \fBoperator=\fP (\fBvariable_t\fP &&v)"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "bool \fBload\fP (std::istream &istr, \fBvarLoaderMap\fP &vlm, \fBfuncLoaderMap\fP &flm)"
+.br
+.RI "\fILoad Variable data from an std::istream\&. \fP"
+.ti -1c
+.RI "void \fBsave\fP (std::ostream &ostr) const "
+.br
+.RI "\fISave all data from *this into an std::ostream\&. \fP"
+.ti -1c
+.RI "hash_t \fBgetScriptSubType\fP () const final"
+.br
+.RI "\fIgetScriptSubType Retrieve the run-time-type information of the data stored in *this\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "type \fBdata\fP"
+.br
+.RI "\fIData Member\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<hash_t hashId, typename type>class ls::script::variable_t< hashId, type >"
+
+.PP
+ 
+.SS "Extended Variable Template Type "
+
+.PP
+Definition at line 45 of file setup\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<hash_t hashId, typename type > \fBls::script::variable_t\fP< hashId, type >::~\fBvariable_t\fP ()\fC [virtual]\fP"
+
+.PP
+Destructor\&. Cleans up any resources used by the parent classes\&. 
+.PP
+Definition at line 41 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > \fBls::script::variable_t\fP< hashId, type >::\fBvariable_t\fP ()"
+
+.PP
+Constructor\&. Initializes all base classes and data members\&. 
+.PP
+Definition at line 48 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > \fBls::script::variable_t\fP< hashId, type >::\fBvariable_t\fP (const \fBvariable_t\fP< hashId, type > &v)"
+
+.PP
+Copy Constructor\&. Copies data from the input parameter into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A constant reference to a scripting variable of the same type as *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > \fBls::script::variable_t\fP< hashId, type >::\fBvariable_t\fP (\fBvariable_t\fP< hashId, type > &&v)"
+
+.PP
+Move Constructor\&. Moves data from the input parameter into *this without performing any copies\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP An r-value reference to a scripting variable of the same type as *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file variable_impl\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<hash_t hashId, typename type > hash_t \fBls::script::variable_t\fP< hashId, type >::getScriptSubType () const\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+
+.PP
+getScriptSubType Retrieve the run-time-type information of the data stored in *this\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A portable hash code, representing the hashed lexical name of the data type stored in *this\&. 
+.RE
+.PP
+
+.PP
+Implements \fBls::script::variable\fP\&.
+.PP
+Definition at line 112 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > bool \fBls::script::variable_t\fP< hashId, type >::load (std::istream &istr, \fBvarLoaderMap\fP &vlm, \fBfuncLoaderMap\fP &flm)\fC [virtual]\fP"
+
+.PP
+Load Variable data from an std::istream\&. A serialization method to will help reload data from a standard input stream\&. This method uses the overloaded input stream operator 'std::istream::operator >> (T)' in order to load variable data into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIistr\fP A reference to a std::istream object which contains variable data to be loaded into *this\&.
+.br
+\fIvarLoader\fP A variable-loading factory that will be used to map variable data from the input stream into *this\&.
+.br
+\fIfuncLoader\fP A function-loading factory that will be used to map functor data from the input stream into *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value that will determine if data was successfully loaded into *this (TRUE) or not (FALSE)\&. 
+.RE
+.PP
+
+.PP
+Implements \fBls::script::scriptable\fP\&.
+.PP
+Definition at line 95 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > \fBvariable_t\fP< hashId, type > & \fBls::script::variable_t\fP< hashId, type >::operator= (const \fBvariable_t\fP< hashId, type > &v)"
+
+.PP
+Copy Operator\&. Copies data from the input parameter into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP A constant reference to a scripting variable of the same type as *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > \fBvariable_t\fP< hashId, type > & \fBls::script::variable_t\fP< hashId, type >::operator= (\fBvariable_t\fP< hashId, type > &&v)"
+
+.PP
+Move Operator\&. Moves data from the input parameter into *this without performing any copies\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP An r-value reference to a scripting variable of the same type as *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file variable_impl\&.h\&.
+.SS "template<hash_t hashId, typename type > void \fBls::script::variable_t\fP< hashId, type >::save (std::ostream &ostr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save all data from *this into an std::ostream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIostr\fP A reference to an std::ostream object\&. Each scripted variable must make use of the overloaded stream operator 'std::istream::operator >> (T)' in order to save variable data from *this\&. 
+.RE
+.PP
+
+.PP
+Implements \fBls::script::scriptable\fP\&.
+.PP
+Definition at line 104 of file variable_impl\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<hash_t hashId, typename type > type \fBls::script::variable_t\fP< hashId, type >::data"
+
+.PP
+Data Member\&. This class member is meant to be as transparent as a regular variable in code\&. Since scripted objects contain no internal manipulation, it can remain exposed\&. 
+.PP
+Definition at line 109 of file variable\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

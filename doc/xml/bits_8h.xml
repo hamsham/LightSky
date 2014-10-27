@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="bits_8h" kind="file">
+    <compoundname>bits.h</compoundname>
+    <includes local="no">climits</includes>
+    <includes refid="assert_8h" local="yes">lightsky/utils/assert.h</includes>
+    <includes refid="bits__impl_8h" local="yes">lightsky/utils/generic/bits_impl.h</includes>
+    <includedby refid="btree_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h</includedby>
+    <includedby refid="utils_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</includedby>
+    <incdepgraph>
+      <node id="7514">
+        <label>lightsky/utils/generic/bits_impl.h</label>
+        <link refid="bits__impl_8h"/>
+      </node>
+      <node id="7513">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="7510">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h</label>
+        <link refid="bits.h"/>
+        <childnode refid="7511" relation="include">
+        </childnode>
+        <childnode refid="7512" relation="include">
+        </childnode>
+        <childnode refid="7514" relation="include">
+        </childnode>
+      </node>
+      <node id="7511">
+        <label>climits</label>
+      </node>
+      <node id="7512">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="7513" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7517">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="7518" relation="include">
+        </childnode>
+      </node>
+      <node id="7518">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="7519" relation="include">
+        </childnode>
+      </node>
+      <node id="7515">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h</label>
+        <link refid="bits.h"/>
+        <childnode refid="7516" relation="include">
+        </childnode>
+        <childnode refid="7517" relation="include">
+        </childnode>
+      </node>
+      <node id="7516">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h</label>
+        <link refid="btree_8h"/>
+        <childnode refid="7517" relation="include">
+        </childnode>
+      </node>
+      <node id="7519">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structls_1_1utils_1_1bit_mask" prot="public">ls::utils::bitMask</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1utils">ls::utils</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="bits_8h_1a0105d4b835d80277c7ea8662c5f1b946" prot="public" static="no">
+        <name>LS_BITS_PER_BYTE</name>
+        <initializer>CHAR_BIT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" line="16" column="13" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>bytes/bits.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>June<sp/>21,<sp/>2013,<sp/>1:31<sp/>AM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_UTILS_BITS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_UTILS_BITS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;climits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assert_8h" kindref="compound">lightsky/utils/assert.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LS_BITS_PER_BYTE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="bits_8h_1a0105d4b835d80277c7ea8662c5f1b946" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>LS_BITS_PER_BYTE<sp/>CHAR_BIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structls_1_1utils_1_1bit_mask" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="keyword">alignas</highlight><highlight class="normal">(1)<sp/><ref refid="structls_1_1utils_1_1bit_mask" kindref="compound">bitMask</ref><sp/>{</highlight></codeline>
+<codeline lineno="31" refid="structls_1_1utils_1_1bit_mask_1a0c44f53dd198ee9345983172b405157b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structls_1_1utils_1_1bit_mask_1a0c44f53dd198ee9345983172b405157b" kindref="member">byte</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="structls_1_1utils_1_1bit_mask_1a3e0b05872b07794c7f808cfbf6ac9a90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(byte<sp/>&gt;&gt;<sp/>i)<sp/>&amp;<sp/>1;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57" refid="structls_1_1utils_1_1bit_mask_1ae757c313181654351210534b62c35b1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structls_1_1utils_1_1bit_mask_1ae757c313181654351210534b62c35b1d" kindref="member">set</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>byte<sp/>=<sp/>(byte<sp/>&amp;<sp/>~(1<sp/>&lt;&lt;<sp/>i))<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>i);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">/*-----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>Functions<sp/>allowing<sp/>access<sp/>to<sp/>individual<sp/>bytes</highlight></codeline>
+<codeline lineno="64"><highlight class="comment">-----------------------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="76"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t&gt;<sp/>constexpr</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bitMask*<sp/><ref refid="namespacels_1_1utils_1a3ce0bd3f2d5ca1ac7ec533eade48f01c" kindref="member">getByte</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t*<sp/>key,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>iter);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/>constexpr</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bitMask*<sp/><ref refid="namespacels_1_1utils_1a3ce0bd3f2d5ca1ac7ec533eade48f01c" kindref="member">getByte</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>iter);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/>constexpr</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bitMask*<sp/><ref refid="namespacels_1_1utils_1a3ce0bd3f2d5ca1ac7ec533eade48f01c" kindref="member">getByte</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>iter);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/>constexpr</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bitMask*<sp/><ref refid="namespacels_1_1utils_1a3ce0bd3f2d5ca1ac7ec533eade48f01c" kindref="member">getByte</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>char16_t*<sp/>key,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>iter);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/>constexpr</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bitMask*<sp/><ref refid="namespacels_1_1utils_1a3ce0bd3f2d5ca1ac7ec533eade48f01c" kindref="member">getByte</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>char32_t*<sp/>key,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>iter);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>utils<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bits__impl_8h" kindref="compound">lightsky/utils/generic/bits_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_UTILS_BITS_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h"/>
+  </compounddef>
+</doxygen>

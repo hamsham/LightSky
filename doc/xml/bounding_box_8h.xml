@@ -1,0 +1,547 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="bounding_box_8h" kind="file">
+    <compoundname>boundingBox.h</compoundname>
+    <includes refid="draw_2setup_8h" local="yes">lightsky/draw/setup.h</includes>
+    <includes refid="bounding_box__impl_8h" local="yes">lightsky/draw/generic/boundingBox_impl.h</includes>
+    <includedby refid="draw_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</includedby>
+    <includedby refid="mesh_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</includedby>
+    <includedby refid="mesh_resource_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</includedby>
+    <includedby refid="bounding_box_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp</includedby>
+    <incdepgraph>
+      <node id="164">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="143">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+      </node>
+      <node id="149">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="138">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="144">
+        <label>cstdint</label>
+      </node>
+      <node id="140">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="136">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="182">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="177">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="156">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="170">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="157">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+      </node>
+      <node id="152">
+        <label>cmath</label>
+      </node>
+      <node id="173">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+      </node>
+      <node id="159">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="168">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+      </node>
+      <node id="175">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="166">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="148">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="169">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="141">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="162">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="135">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h</label>
+        <link refid="boundingBox.h"/>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+      </node>
+      <node id="179">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="165">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="150">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="137" relation="include">
+        </childnode>
+      </node>
+      <node id="163">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="145">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="161">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="146">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+      </node>
+      <node id="171">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="137">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+      </node>
+      <node id="184">
+        <label>lightsky/draw/generic/boundingBox_impl.h</label>
+        <link refid="bounding_box__impl_8h"/>
+      </node>
+      <node id="155">
+        <label>utility</label>
+      </node>
+      <node id="178">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="174">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+      </node>
+      <node id="147">
+        <label>iostream</label>
+      </node>
+      <node id="160">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+      </node>
+      <node id="158">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+      </node>
+      <node id="176">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="154">
+        <label>climits</label>
+      </node>
+      <node id="180">
+        <label>chrono</label>
+      </node>
+      <node id="142">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="141" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>algorithm</label>
+      </node>
+      <node id="139">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="183">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="197">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp</label>
+        <link refid="bounding_box_8cpp"/>
+      </node>
+      <node id="187">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="192">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="186">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h</label>
+        <link refid="boundingBox.h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+      </node>
+      <node id="190">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+      </node>
+      <node id="193">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="194">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="189">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+      </node>
+      <node id="196">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</label>
+        <link refid="mesh_resource_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="191">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classls_1_1draw_1_1bounding_box" prot="public">ls::draw::boundingBox</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>draw/boundingBox.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>June<sp/>6,<sp/>2014,<sp/>6:57<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_DRAW_BOUNDING_BOX_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_DRAW_BOUNDING_BOX_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="draw_2setup_8h" kindref="compound">lightsky/draw/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classls_1_1draw_1_1bounding_box" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>math::vec3<sp/>topRearRight<sp/>=<sp/>{1.f,<sp/>1.f,<sp/>1.f};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>math::vec3<sp/>botFrontLeft<sp/>=<sp/>{-1.f,<sp/>-1.f,<sp/>-1.f};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a4efee779d59182616c4c638f8127cde5" kindref="member">boundingBox</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a4efee779d59182616c4c638f8127cde5" kindref="member">boundingBox</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;<sp/>bb);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a4efee779d59182616c4c638f8127cde5" kindref="member">boundingBox</ref>(<ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a784f7d18538a5275f4b2d8b542be67b8" kindref="member">~boundingBox</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1bounding_box_1a2c283a8b33fe51b19bb57fe5b62d33a5" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1bounding_box_1a2c283a8b33fe51b19bb57fe5b62d33a5" kindref="member">operator=</ref>(<ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a9aa4760e182db1b146234e401f54fb64" kindref="member">isInBox</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a9aa4760e182db1b146234e401f54fb64" kindref="member">isInBox</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a98bc55b0bcbed2d0cd96984ea5d39a59" kindref="member">setTopRearRight</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/><ref refid="classls_1_1draw_1_1bounding_box_1aeee24c7c06003db44bcc79683a6cfd14" kindref="member">getTopRearRight</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a123a845241fa2e92322183f9b58c2243" kindref="member">setBotFrontLeft</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/><ref refid="classls_1_1draw_1_1bounding_box_1a170b540d6d0b06f09feae604de31528c" kindref="member">getBotFrontLeft</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box_1a3b41cf6dc90a86a8eb20960e29f7d95d" kindref="member">resetSize</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1bounding_box_1ac56d1058a66eec9b4a4dc0de84e14c23" kindref="member">compareAndUpdate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/>point);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bounding_box__impl_8h" kindref="compound">lightsky/draw/generic/boundingBox_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_DRAW_BOUNDING_BOX_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h"/>
+  </compounddef>
+</doxygen>

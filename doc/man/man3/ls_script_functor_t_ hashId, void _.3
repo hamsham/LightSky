@@ -1,0 +1,250 @@
+.TH "ls::script::functor_t< hashId, void >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::script::functor_t< hashId, void > \- 
+.PP
+
+.SS "Functor Template Type with Void Parameters "
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <functor\&.h>\fP
+.PP
+Inherits \fBls::script::functor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~functor_t\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBfunctor_t\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBfunctor_t\fP (const \fBfunctor_t\fP &f)"
+.br
+.RI "\fICopy Constructor\&. \fP"
+.ti -1c
+.RI "\fBfunctor_t\fP (\fBfunctor_t\fP &&f)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fBfunctor_t\fP & \fBoperator=\fP (const \fBfunctor_t\fP &f)"
+.br
+.RI "\fICopy Assignment\&. \fP"
+.ti -1c
+.RI "\fBfunctor_t\fP & \fBoperator=\fP (\fBfunctor_t\fP &&f)"
+.br
+.RI "\fIMove Assignment\&. \fP"
+.ti -1c
+.RI "hash_t \fBgetScriptSubType\fP () const final"
+.br
+.RI "\fIGet the run-time-type information of *this functor\&. \fP"
+.ti -1c
+.RI "virtual unsigned \fBgetNumArgs\fP () const final"
+.br
+.RI "\fIRetrieve the number of arguments required to run *this\&. \fP"
+.ti -1c
+.RI "bool \fBload\fP (std::istream &istr, \fBvarLoaderMap\fP &vlm, \fBfuncLoaderMap\fP &flm) final"
+.br
+.RI "\fILoad functor data from an std::istream\&. \fP"
+.ti -1c
+.RI "void \fBsave\fP (std::ostream &ostr) const final"
+.br
+.RI "\fISave all data from *this into an std::ostream\&. \fP"
+.ti -1c
+.RI "bool \fBcompile\fP () final"
+.br
+.RI "\fICompile/Verify function arguments\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<hash_t hashId>class ls::script::functor_t< hashId, void >"
+
+.SS "Functor Template Type with Void Parameters "
+
+
+
+.PP
+ 
+.PP
+Definition at line 558 of file functor\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<hash_t hashId> \fBls::script::functor_t\fP< hashId, void >::~\fBfunctor_t\fP ()\fC [virtual]\fP"
+
+.PP
+Destructor\&. Frees all resources used by *this\&. 
+.PP
+Definition at line 225 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> \fBls::script::functor_t\fP< hashId, void >::\fBfunctor_t\fP ()"
+
+.PP
+Constructor\&. Initializes *this and all base classes\&. 
+.PP
+Definition at line 232 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> \fBls::script::functor_t\fP< hashId, void >::\fBfunctor_t\fP (const \fBfunctor_t\fP< hashId, void > &f)"
+
+.PP
+Copy Constructor\&. Copies all data from a functor of the same type into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP A constant reference to another functor of the same template type\&. 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> \fBls::script::functor_t\fP< hashId, void >::\fBfunctor_t\fP (\fBfunctor_t\fP< hashId, void > &&f)"
+
+.PP
+Move Constructor\&. Moves all data from a functor of the same type into *this without performing any copies\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP An r-value reference to another functor of the same template type\&. 
+.RE
+.PP
+
+.PP
+Definition at line 250 of file functor_impl\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<hash_t hashId> bool \fBls::script::functor_t\fP< hashId, void >::compile ()\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+
+.PP
+Compile/Verify function arguments\&. This method ensures that a functor is safe to operate at run-time\&. It uses custom RTTI information, combined with derived-type's template parameters to ensure that the proper arguments are placed in the correct order at run-time\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because the scripting system does not manage the order in which you actually use arguments, please ensure that your functor-mapping code is consistent with the derived functor's template parameters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if a functor managed to compile correctly, FALSE if not\&. If this function returns false, please check std::cerr for information on what went wrong\&. This will be changed in the future in order to provide more convenient error tracking\&. 
+.RE
+.PP
+
+.PP
+Implements \fBls::script::functor\fP\&.
+.PP
+Definition at line 310 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> unsigned \fBls::script::functor_t\fP< hashId, void >::getNumArgs () const\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+
+.PP
+Retrieve the number of arguments required to run *this\&. The number of arguments to the functor is not always the same number of arguments that *this functor's native function needs\&. Functor arguments can be mapped to return values, or to sequences of internal functions\&. It is up to the definition code to determine where functor arguments are mapped\&.
+.PP
+\fBReturns:\fP
+.RS 4
+An unsigned integral type, indicating how many arguments *this functor needs to run\&. 
+.RE
+.PP
+
+.PP
+Implements \fBls::script::functor\fP\&.
+.PP
+Definition at line 286 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> hash_t \fBls::script::functor_t\fP< hashId, void >::getScriptSubType () const\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+
+.PP
+Get the run-time-type information of *this functor\&. This method will return a hash-code, indicating what type of functor *this is\&. The has code is unique to types of functors, not individual functor objects\&. This hash code is used by the global script factories in order to generate a functor at run-time\&.
+.PP
+\fBReturns:\fP
+.RS 4
+hash_t A hash-code that identifies the RTTI information of *this\&. 
+.RE
+.PP
+
+.PP
+Implements \fBls::script::functor\fP\&.
+.PP
+Definition at line 278 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> bool \fBls::script::functor_t\fP< hashId, void >::load (std::istream &istr, \fBvarLoaderMap\fP &vlm, \fBfuncLoaderMap\fP &flm)\fC [final]\fP, \fC [virtual]\fP"
+
+.PP
+Load functor data from an std::istream\&. A serialization method to will help reload data from a standard input stream\&. This method uses the overloaded input stream operator 'std::istream::operator>> (T)' in order to load functor data into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIistr\fP A reference to a std::istream object which contains functor data to be loaded into *this\&.
+.br
+\fIvlm\fP A variable-loading factory that will be used to map variable data from the input stream into *this\&.
+.br
+\fIflm\fP A function-loading factory that will be used to map functor data from the input stream into *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value that will determine if data was successfully loaded into *this (TRUE) or not (FALSE)\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBls::script::functor\fP\&.
+.PP
+Definition at line 294 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> \fBfunctor_t\fP< hashId, void > & \fBls::script::functor_t\fP< hashId, void >::operator= (const \fBfunctor_t\fP< hashId, void > &f)"
+
+.PP
+Copy Assignment\&. Copies all data from a functor of the same type into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP A constant reference to another functor of the same template type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 260 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> \fBfunctor_t\fP< hashId, void > & \fBls::script::functor_t\fP< hashId, void >::operator= (\fBfunctor_t\fP< hashId, void > &&f)"
+
+.PP
+Move Assignment\&. Moves all data from a functor of the same type into *this without performing any copies\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP An r-value reference to another functor of the same template type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file functor_impl\&.h\&.
+.SS "template<hash_t hashId> void \fBls::script::functor_t\fP< hashId, void >::save (std::ostream &ostr) const\fC [final]\fP, \fC [virtual]\fP"
+
+.PP
+Save all data from *this into an std::ostream\&. In this instance, functors, references to other functors, and variables are all saved using RTTI information\&. Scriptable objects are not saved, just their type-info\&. All data is mapped to/from the 'loaderMap' objects in order to ensure cross-references are maintained when reloaded from an input stream\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIostr\fP A reference to an std::ostream object\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBls::script::functor\fP\&.
+.PP
+Definition at line 302 of file functor_impl\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

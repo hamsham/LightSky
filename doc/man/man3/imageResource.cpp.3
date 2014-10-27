@@ -1,0 +1,51 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <utility>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <FreeImage\&.h>\fP
+.br
+\fC#include 'lightsky/draw/color\&.h'\fP
+.br
+\fC#include 'lightsky/draw/imageResource\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::draw\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBls::draw::printImageLoadError\fP (FREE_IMAGE_FORMAT, const char *)"
+.br
+.ti -1c
+.RI "FREE_IMAGE_FORMAT \fBls::draw::deduceImageFormat\fP (const std::string &filename)"
+.br
+.ti -1c
+.RI "int \fBls::draw::getImageFlags\fP (FREE_IMAGE_FORMAT inFormat)"
+.br
+.ti -1c
+.RI "color_type_t \fBls::draw::getBitmapSize\fP (FIBITMAP *pImg)"
+.br
+.ti -1c
+.RI "void \fBls::draw::getPixelFormat\fP (FIBITMAP *pImg, unsigned bpp, pixel_format_t &intFmt, pixel_layout_t &extFmt)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

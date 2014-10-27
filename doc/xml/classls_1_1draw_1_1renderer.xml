@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1renderer" kind="class" prot="public" final="yes">
+    <compoundname>ls::draw::renderer</compoundname>
+    <includes refid="renderer_8h" local="no">renderer.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1a6e182c5a6719721074da5ff4ecf34715" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::renderer::setViewport</definition>
+        <argsstring>(const math::vec2i &amp;pos, const math::vec2i &amp;size)</argsstring>
+        <name>setViewport</name>
+        <param>
+          <type>const math::vec2i &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>const math::vec2i &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the size of the active viewport within the currently bound framebuffer.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lower-left hand cornet of the active framebuffer.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The width and height of the desired viewport. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="92" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1a55ef4acac9968066f91c35942bfd1a97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::renderer::setWindingOrder</definition>
+        <argsstring>(winding_order_t wo)</argsstring>
+        <name>setWindingOrder</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1aa70a96787acff7b363deace1790c0c58" kindref="member">winding_order_t</ref></type>
+          <declname>wo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the winding order for all rendered polygons.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An enumeration of winding_order_t, indicating whether polygons are to be rendered with their front faces as clockwise or counter- clockwise. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="102" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1a93981430542dd31aff213125197483dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1aa70a96787acff7b363deace1790c0c58" kindref="member">winding_order_t</ref></type>
+        <definition>winding_order_t ls::draw::renderer::getWindingOrder</definition>
+        <argsstring>() const </argsstring>
+        <name>getWindingOrder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the current winding order of rendered polygons.</para><para><simplesect kind="return"><para>An enumeration of winding_order_t, indicating whether polygons are to be rendered with their front faces as clockwise or counter- clockwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="112" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1a609286125825571e9c0a7b6e24c8eedc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::renderer::setFaceCulling</definition>
+        <argsstring>(bool shouldCull)</argsstring>
+        <name>setFaceCulling</name>
+        <param>
+          <type>bool</type>
+          <declname>shouldCull</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a boolean flag to determine if the current renderer should cull polygon faces or not.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shouldCull</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag that determines whether the renderer should cull rendered polygon faces or not. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="122" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1af3e1fca423501bdd8584492d02349cb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::renderer::getFaceCulling</definition>
+        <argsstring>() const </argsstring>
+        <name>getFaceCulling</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a boolean flag which tells if the current renderer is culling polygon faces or not.</para><para><simplesect kind="return"><para>a boolean flag that determines whether the renderer is culling polygon faces or not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="131" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1a8dcba964e3e2fc82d6e0efa8a01a83c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::renderer::setDepthTesting</definition>
+        <argsstring>(bool dt)</argsstring>
+        <name>setDepthTesting</name>
+        <param>
+          <type>bool</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable depth testing of rendered polygons. Depth testing can be used to render close polygons in front of distant ones.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag which can be used to enable depth testing (if TRUE) or disable it. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="141" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1renderer_1a81d69d9653d1e815e3c5f190a0e512f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::renderer::getDepthTesting</definition>
+        <argsstring>() const </argsstring>
+        <name>getDepthTesting</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if depth testing is enabled for all rendered polygons.</para><para><simplesect kind="return"><para>a boolean flag which can be used to determine if depth testing is enabled (if TRUE) or disabled. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="149" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/renderer_impl.h" bodystart="57" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Renderer Object On desktop platforms, this object strictly represents an OpenGL 3.3 context. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ <heading level="2">Only state-specific options are kept within this object. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="79" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" bodystart="79" bodyend="150"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1renderer_1a81d69d9653d1e815e3c5f190a0e512f4" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>getDepthTesting</name></member>
+      <member refid="classls_1_1draw_1_1renderer_1af3e1fca423501bdd8584492d02349cb1" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>getFaceCulling</name></member>
+      <member refid="classls_1_1draw_1_1renderer_1a93981430542dd31aff213125197483dd" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>getWindingOrder</name></member>
+      <member refid="classls_1_1draw_1_1renderer_1a8dcba964e3e2fc82d6e0efa8a01a83c3" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>setDepthTesting</name></member>
+      <member refid="classls_1_1draw_1_1renderer_1a609286125825571e9c0a7b6e24c8eedc" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>setFaceCulling</name></member>
+      <member refid="classls_1_1draw_1_1renderer_1a6e182c5a6719721074da5ff4ecf34715" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>setViewport</name></member>
+      <member refid="classls_1_1draw_1_1renderer_1a55ef4acac9968066f91c35942bfd1a97" prot="public" virt="non-virtual"><scope>ls::draw::renderer</scope><name>setWindingOrder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

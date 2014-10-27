@@ -1,0 +1,272 @@
+.TH "ls::utils::resource" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::utils::resource \- 
+.PP
+Basic file/resource abstraction\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <resource\&.h>\fP
+.PP
+Inherited by \fBls::draw::fontResource\fP, \fBls::draw::imageResource\fP, \fBls::draw::meshResource\fP, and \fBls::utils::dataResource\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBresource\fP ()=default"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBresource\fP (const \fBresource\fP &r)=delete"
+.br
+.RI "\fICopy Constructor\&. \fP"
+.ti -1c
+.RI "\fBresource\fP (\fBresource\fP &&r)=delete"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "virtual \fB~resource\fP ()=0"
+.br
+.ti -1c
+.RI "\fBresource\fP & \fBoperator=\fP (const \fBresource\fP &r)=delete"
+.br
+.RI "\fICopy operator\&. \fP"
+.ti -1c
+.RI "\fBresource\fP & \fBoperator=\fP (\fBresource\fP &&r)=delete"
+.br
+.RI "\fIMove operator\&. \fP"
+.ti -1c
+.RI "virtual bool \fBloadFile\fP (const std::string &filename)=0"
+.br
+.RI "\fILoad a file\&. \fP"
+.ti -1c
+.RI "virtual bool \fBloadFile\fP (const std::wstring &filename)"
+.br
+.RI "\fILoad a file using a c-style wide string\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsaveFile\fP (const std::string &filename) const =0"
+.br
+.RI "\fISave a file\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsaveFile\fP (const std::wstring &filename) const "
+.br
+.RI "\fISave a file using a c-style string of wide (UTF-8) characters\&. \fP"
+.ti -1c
+.RI "virtual void \fBunload\fP ()=0"
+.br
+.RI "\fIUnload\&. \fP"
+.ti -1c
+.RI "virtual long \fBgetByteSize\fP () const "
+.br
+.ti -1c
+.RI "virtual void * \fBgetData\fP () const "
+.br
+.RI "\fIGet the raw, loaded, data contained within *this\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "char * \fBpData\fP = nullptr"
+.br
+.ti -1c
+.RI "long \fBdataSize\fP = 0l"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Basic file/resource abstraction\&. 
+
+Resource Objects can open a file by calling either openFile() or \fBsaveFile()\fP using a wide character string, The function merely converts the wide string into a multi-byte character string, then delegates the rest of the file operation to the c-string openFile/closeFile methods\&. This means that if this class is derived from, there is little need to overload the wide-string methods\&. 
+.PP
+Definition at line 29 of file resource\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::utils::resource::resource ()\fC [default]\fP"
+
+.PP
+Constructor\&. Initializes all members in *this\&. 
+.SS "ls::utils::resource::resource (const \fBresource\fP &r)\fC [delete]\fP"
+
+.PP
+Copy Constructor\&. Attempts to copy all data from the source operand into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP A constant reference to a resource object\&. 
+.RE
+.PP
+
+.SS "ls::utils::resource::resource (\fBresource\fP &&r)\fC [delete]\fP"
+
+.PP
+Move Constructor\&. Move all memory from the source object into *this\&. No copies are performed during this operation\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP An r-value reference to a resource object\&. 
+.RE
+.PP
+
+.SS "ls::utils::resource::~resource ()\fC [pure virtual]\fP"
+Destructor\&. Make sure to call 'unload()' before an object goes out of scope\&. 
+.PP
+Definition at line 16 of file resource\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "long ls::utils::resource::getByteSize () const\fC [inline]\fP, \fC [virtual]\fP"
+Get the size, in bytes, of the current file loaded into memory\&.
+.PP
+\fBReturns:\fP
+.RS 4
+a long integral type, used to determine how many bytes had been loaded from a file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 8 of file resource_impl\&.h\&.
+.SS "void * ls::utils::resource::getData () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the raw, loaded, data contained within *this\&. This method may be overridden by derived classes in order to provide data specific to a certain module's needs\&. In such a case, please see the associated documentation in order to determine how to use this method\&.
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to a chunk of data loaded from a file\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBls::draw::imageResource\fP\&.
+.PP
+Definition at line 15 of file resource_impl\&.h\&.
+.SS "virtual bool ls::utils::resource::loadFile (const std::string &filename)\fC [pure virtual]\fP"
+
+.PP
+Load a file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP A string object containing the relative path name to a file that should be loadable into memory\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the file was successfully loaded\&. False if not\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBls::draw::fontResource\fP, \fBls::draw::imageResource\fP, \fBls::draw::meshResource\fP, and \fBls::utils::dataResource\fP\&.
+.SS "bool ls::utils::resource::loadFile (const std::wstring &filename)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Load a file using a c-style wide string\&. This method merely converts the filename into a multi-byte string and calls 'openFile()' using the ANSI equivalent string\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP A string object containing the relative path name to a file that should be loadable into memory\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the file was successfully loaded\&. False if not\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBls::draw::fontResource\fP\&.
+.PP
+Definition at line 22 of file resource_impl\&.h\&.
+.SS "\fBresource\fP& ls::utils::resource::operator= (const \fBresource\fP &r)\fC [delete]\fP"
+
+.PP
+Copy operator\&. Attempts to copy all data from the source operand into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP A constant reference to a resource object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.SS "\fBresource\fP& ls::utils::resource::operator= (\fBresource\fP &&r)\fC [delete]\fP"
+
+.PP
+Move operator\&. Move all memory from the source object into *this\&. No copies are performed during this operation\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP An r-value reference to a resource object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.SS "virtual bool ls::utils::resource::saveFile (const std::string &filename) const\fC [pure virtual]\fP"
+
+.PP
+Save a file\&. Use this method to save data to a file, specific to the type of resource used by derived classes\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP A string object containing the relative path name to a file that should be saved to the computer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the file was successfully saved\&. False if not\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBls::draw::fontResource\fP, \fBls::draw::imageResource\fP, \fBls::draw::meshResource\fP, and \fBls::utils::dataResource\fP\&.
+.SS "bool ls::utils::resource::saveFile (const std::wstring &filename) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save a file using a c-style string of wide (UTF-8) characters\&. This method merely converts the filename into a multi-byte string and calls 'saveFile()' using the ANSI equivalent string\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP A string object containing the relative path name to a file that should be saved to the computer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the file was successfully saved\&. False if not\&. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file resource_impl\&.h\&.
+.SS "virtual void ls::utils::resource::unload ()\fC [pure virtual]\fP"
+
+.PP
+Unload\&. Free all memory used by *this\&. 
+.PP
+Implemented in \fBls::draw::fontResource\fP, \fBls::draw::imageResource\fP, \fBls::draw::meshResource\fP, and \fBls::utils::dataResource\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "long ls::utils::resource::dataSize = 0l\fC [protected]\fP"
+dataSize holds the current size, in bytes, of the memory being used by pData\&. 
+.PP
+Definition at line 42 of file resource\&.h\&.
+.SS "char* ls::utils::resource::pData = nullptr\fC [protected]\fP"
+pData is a pointer to an array of bytes that hold a complete resource in RAM\&. Data is automatically freed during a file object's destruction but can also be freed by calling 'unload()\&.' 
+.PP
+Definition at line 36 of file resource\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

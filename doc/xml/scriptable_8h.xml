@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="scriptable_8h" kind="file">
+    <compoundname>scriptable.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includes refid="hash_8h" local="yes">lightsky/utils/hash.h</includes>
+    <includes refid="script_2setup_8h" local="yes">lightsky/script/setup.h</includes>
+    <includedby refid="functor_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</includedby>
+    <includedby refid="script_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/script.h</includedby>
+    <includedby refid="scriptable_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp</includedby>
+    <includedby refid="variable_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h</includedby>
+    <incdepgraph>
+      <node id="6847">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="6848" relation="include">
+        </childnode>
+        <childnode refid="6849" relation="include">
+        </childnode>
+      </node>
+      <node id="6848">
+        <label>cstdint</label>
+      </node>
+      <node id="6851">
+        <label>map</label>
+      </node>
+      <node id="6852">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="6849">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="6845">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h</label>
+        <link refid="scriptable.h"/>
+        <childnode refid="6846" relation="include">
+        </childnode>
+        <childnode refid="6847" relation="include">
+        </childnode>
+        <childnode refid="6850" relation="include">
+        </childnode>
+      </node>
+      <node id="6846">
+        <label>iostream</label>
+      </node>
+      <node id="6850">
+        <label>lightsky/script/setup.h</label>
+        <link refid="script_2setup_8h"/>
+        <childnode refid="6851" relation="include">
+        </childnode>
+        <childnode refid="6852" relation="include">
+        </childnode>
+        <childnode refid="6847" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6856">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="6857" relation="include">
+        </childnode>
+      </node>
+      <node id="6854">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</label>
+        <link refid="functor_8h"/>
+        <childnode refid="6855" relation="include">
+        </childnode>
+        <childnode refid="6858" relation="include">
+        </childnode>
+      </node>
+      <node id="6855">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="6856" relation="include">
+        </childnode>
+      </node>
+      <node id="6860">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h</label>
+        <link refid="variable_8h"/>
+        <childnode refid="6854" relation="include">
+        </childnode>
+        <childnode refid="6855" relation="include">
+        </childnode>
+        <childnode refid="6861" relation="include">
+        </childnode>
+      </node>
+      <node id="6853">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h</label>
+        <link refid="scriptable.h"/>
+        <childnode refid="6854" relation="include">
+        </childnode>
+        <childnode refid="6855" relation="include">
+        </childnode>
+        <childnode refid="6859" relation="include">
+        </childnode>
+        <childnode refid="6860" relation="include">
+        </childnode>
+      </node>
+      <node id="6859">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp</label>
+        <link refid="scriptable_8cpp"/>
+      </node>
+      <node id="6858">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp</label>
+        <link refid="functor_8cpp"/>
+      </node>
+      <node id="6861">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/variable.cpp</label>
+        <link refid="variable_8cpp"/>
+      </node>
+      <node id="6857">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classls_1_1script_1_1scriptable" prot="public">ls::script::scriptable</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1script">ls::script</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>scriptable.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_SCRIPT_SCRIPTABLE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_SCRIPT_SCRIPTABLE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hash_8h" kindref="compound">lightsky/utils/hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="script_2setup_8h" kindref="compound">lightsky/script/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">script<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classls_1_1script_1_1scriptable" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1scriptable_1a7ac9302b44878e7e1ed78400e3651cde" kindref="member">~scriptable</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" kindref="member">scriptable</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" kindref="member">scriptable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref>&amp;);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" kindref="member">scriptable</ref>(<ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref>&amp;<sp/><ref refid="classls_1_1script_1_1scriptable_1a0a44fbbc1ef4ebb824a82163257cc490" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref>&amp;);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref>&amp;<sp/><ref refid="classls_1_1script_1_1scriptable_1a0a44fbbc1ef4ebb824a82163257cc490" kindref="member">operator =</ref>(<ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1a" kindref="member">script_base_t</ref><sp/><ref refid="classls_1_1script_1_1scriptable_1ae53e220ec8827ca3c71e07a78908f03c" kindref="member">getScriptType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="classls_1_1script_1_1scriptable_1ad3f9203567b786571ea408e5dbf556e9" kindref="member">getScriptSubType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1scriptable_1a056218abb0bbf49aa175a20c9e5feb32" kindref="member">load</ref>(std::istream&amp;<sp/>istr,<sp/><ref refid="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" kindref="member">varLoaderMap</ref>&amp;<sp/>varLoader,<sp/><ref refid="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" kindref="member">funcLoaderMap</ref>&amp;<sp/>funcLoader)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1scriptable_1adf72ecdf5afee754bb57642f4220585c" kindref="member">save</ref>(std::ostream&amp;<sp/>ostr)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>script<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__LS_SCRIPT_SCRIPTABLE_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h"/>
+  </compounddef>
+</doxygen>

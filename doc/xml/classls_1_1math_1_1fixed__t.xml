@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1math_1_1fixed__t" kind="class" prot="public" final="yes">
+    <compoundname>ls::math::fixed_t</compoundname>
+    <includes refid="fixed_8h" local="no">fixed.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename fixed_base_t</type>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>num_frac_digits</declname>
+        <defname>num_frac_digits</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Fixed-Point number Class. Utilizes the bits provided by a type from a &quot;fixed_base_t&quot; in order to store integral values that represent a fixed-precision number. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ <heading level="2">In it&apos;s current state, it&apos;s prone to overflows. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/fixed.h" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/fixed.h" bodystart="23" bodyend="689"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

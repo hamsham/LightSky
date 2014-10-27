@@ -1,0 +1,1195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="namespacels_1_1utils" kind="namespace">
+    <compoundname>ls::utils</compoundname>
+    <innerclass refid="structls_1_1utils_1_1bit_mask" prot="public">ls::utils::bitMask</innerclass>
+    <innerclass refid="classls_1_1utils_1_1b_tree" prot="public">ls::utils::bTree</innerclass>
+    <innerclass refid="classls_1_1utils_1_1b_tree_node" prot="public">ls::utils::bTreeNode</innerclass>
+    <innerclass refid="classls_1_1utils_1_1data_resource" prot="public">ls::utils::dataResource</innerclass>
+    <innerclass refid="classls_1_1utils_1_1random_num" prot="public">ls::utils::randomNum</innerclass>
+    <innerclass refid="classls_1_1utils_1_1resource" prot="public">ls::utils::resource</innerclass>
+    <innerclass refid="classls_1_1utils_1_1tuple__t" prot="public">ls::utils::tuple_t</innerclass>
+    <innernamespace refid="namespacels_1_1utils_1_1utils_impl">ls::utils::utilsImpl</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" prot="public" static="no">
+        <name>error_t</name>
+        <enumvalue id="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5daed035339a0dc42ab48c7957121be2187" prot="public">
+          <name>ALERT</name>
+          <briefdescription>
+<para>ALERT when used with runtime_assert, this indicates that a message will print to std::cout. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5dafbf56df0734baf50a74706281cdc2c76" prot="public">
+          <name>WARNING</name>
+          <briefdescription>
+<para>WARNING when used with runtime_assert, this indicates that a message will print to std::cerr. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5da5a34fafdd6319ebdf947e3def429847f" prot="public">
+          <name>ERROR</name>
+          <briefdescription>
+<para>ERROR when used with runtime_assert, this indicates that a message will print to std::cerr, and an exception of type <ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" kindref="member">ls::utils::error_t</ref> is thrown. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>error_t A basic enumeration for lightsky assertions. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="14" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" bodystart="14" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1utils_1a9b60097c422c6b68c6bc3f2e3e37dad0" prot="public" static="no">
+        <name>bnode_dir_t</name>
+        <enumvalue id="namespacels_1_1utils_1a9b60097c422c6b68c6bc3f2e3e37dad0a6166f2e07f0785161cc16a1b240e3dc3" prot="public">
+          <name>BNODE_LEFT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1a9b60097c422c6b68c6bc3f2e3e37dad0a87b5bed5beb60e9f902ab3b8cd2e14f3" prot="public">
+          <name>BNODE_RIGHT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1a9b60097c422c6b68c6bc3f2e3e37dad0a31a777f60dd4a8908d43975080f1c5b1" prot="public">
+          <name>BNODE_MAX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>bnode_dir_t A simple enumeration to help determine where within a btree-node a child node should be placed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="24" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="24" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1utils_1a46f2dd4d3b29d671977ccf97c4ad681c" prot="public" static="no">
+        <name>endian_t</name>
+        <enumvalue id="namespacels_1_1utils_1a46f2dd4d3b29d671977ccf97c4ad681ca0c096dca1a0eaa414800d03be90aa14f" prot="public">
+          <name>LS_LITTLE_ENDIAN</name>
+          <initializer>= 0x00000001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1a46f2dd4d3b29d671977ccf97c4ad681caa2a4e0f8cb7e8973c91715cc562d9c51" prot="public">
+          <name>LS_BIG_ENDIAN</name>
+          <initializer>= 0x01000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1a46f2dd4d3b29d671977ccf97c4ad681cab3cdd7e3bf4d96afcfb6185a465f5246" prot="public">
+          <name>LS_PDP_ENDIAN</name>
+          <initializer>= 0x00010000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1utils_1a46f2dd4d3b29d671977ccf97c4ad681cae3f5e5798cae0f1e0d34ae2a65379e6e" prot="public">
+          <name>LS_UNKNOWN_ENDIAN</name>
+          <initializer>= 0xFFFFFFFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This enumeration can be placed into templated objects in order to generate compile-time code based on a program&apos;s target endianness.</para><para>The values placed in this enum are used just in case the need arises in order to manually compare them against the number order in the endianValues[] array. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="26" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="26" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t ls::utils::hash_t</definition>
+        <argsstring></argsstring>
+        <name>hash_t</name>
+        <briefdescription>
+<para>hash_t An integral type that&apos;s long enough to hold a simple hash value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/hash.h" line="28" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/hash.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacels_1_1utils_1a96afe13b74e009eebc1836063167d358" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::utils::runtime_assert</definition>
+        <argsstring>(bool condition, error_t type, const char *const msg)</argsstring>
+        <name>runtime_assert</name>
+        <param>
+          <type>bool</type>
+          <declname>condition</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" kindref="member">error_t</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const char *const</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>runtime_assert Throw an <ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" kindref="member">ls::utils::error_t</ref> and/or send a message to stdout/stderr. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>condition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The boolean check to determine if an assertion should be raised. If the condition tests TRUE, then no assertion is made, otherwise an exception could be raised (of type <ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" kindref="member">ls::utils::error_t</ref>), a message could be printed to stdout, or an error will be sent to stderr.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An error type that indicates if an assertion is a simple alert message, a warning, or a critical error.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message that will be printed to an standard output stream if the condition tests FALSE. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="55" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/assert.cpp" bodystart="8" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a3ce0bd3f2d5ca1ac7ec533eade48f01c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename key_t</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr const <ref refid="structls_1_1utils_1_1bit_mask" kindref="compound">bitMask</ref> *</type>
+        <definition>constexpr const bitMask* ls::utils::getByte</definition>
+        <argsstring>(const key_t *key, unsigned iter)</argsstring>
+        <name>getByte</name>
+        <param>
+          <type>const key_t *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>getByte Retrieve the Nth byte of a basic data type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator which specifies the Nth byte in &apos;key&apos;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Nth byte in &apos;key,&apos; specified by &apos;iter.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" line="77" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a7cc863c38817c3c7fd5c570faf74df17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>constexpr const <ref refid="structls_1_1utils_1_1bit_mask" kindref="compound">bitMask</ref> *</type>
+        <definition>constexpr const bitMask* ls::utils::getByte</definition>
+        <argsstring>(const char *key, unsigned iter)</argsstring>
+        <name>getByte</name>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>getByte (char string specialization) Retrieve the Nth byte of a basic data type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator which specifies the Nth byte in &apos;key&apos;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Nth byte in &apos;key,&apos; specified by &apos;iter.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a3508cbe35e975ee8d7f92b746a460f76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>constexpr const <ref refid="structls_1_1utils_1_1bit_mask" kindref="compound">bitMask</ref> *</type>
+        <definition>constexpr const bitMask* ls::utils::getByte</definition>
+        <argsstring>(const wchar_t *key, unsigned iter)</argsstring>
+        <name>getByte</name>
+        <param>
+          <type>const wchar_t *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>getByte (wchar_t string specialization) Retrieve the Nth byte of a basic data type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator which specifies the Nth byte in &apos;key&apos;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Nth byte in &apos;key,&apos; specified by &apos;iter.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" line="105" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1ac24389d899aa53d209e2b226b25d6a60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>constexpr const <ref refid="structls_1_1utils_1_1bit_mask" kindref="compound">bitMask</ref> *</type>
+        <definition>constexpr const bitMask* ls::utils::getByte</definition>
+        <argsstring>(const char16_t *key, unsigned iter)</argsstring>
+        <name>getByte</name>
+        <param>
+          <type>const char16_t *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>getByte (char16_t string specialization) Retrieve the Nth byte of a basic data type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator which specifies the Nth byte in &apos;key&apos;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Nth byte in &apos;key,&apos; specified by &apos;iter.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a959abd2644bc4d3ff8ee7513ad6e7a16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>constexpr const <ref refid="structls_1_1utils_1_1bit_mask" kindref="compound">bitMask</ref> *</type>
+        <definition>constexpr const bitMask* ls::utils::getByte</definition>
+        <argsstring>(const char32_t *key, unsigned iter)</argsstring>
+        <name>getByte</name>
+        <param>
+          <type>const char32_t *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>getByte (char32_t string specialization) Retrieve the Nth byte of a basic data type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator which specifies the Nth byte in &apos;key&apos;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Nth byte in &apos;key,&apos; specified by &apos;iter.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h" line="133" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1adba751679836c0520f988a06851d02fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned ls::utils::getArgByteSize</definition>
+        <argsstring>(unsigned size)</argsstring>
+        <name>getArgByteSize</name>
+        <param>
+          <type>unsigned</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>getArgByteSize Helper function to sum the number of bytes used by a set of types. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An unsigned integer representing the size, in bytes, of an object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An unsigned integer, representing the size, in bytes, of an object. This can be the size of a built-in type, or user-defined structures. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/byteSize.h" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/byteSize_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a6ec59137bf38e7f9ddc058f6cc757046" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>integral_t</declname>
+            <defname>integral_t</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned ls::utils::getArgByteSize</definition>
+        <argsstring>(unsigned size, integral_t...sizeN)</argsstring>
+        <name>getArgByteSize</name>
+        <param>
+          <type>unsigned</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>integral_t...</type>
+          <declname>sizeN</declname>
+        </param>
+        <briefdescription>
+<para>getArgByteSize Helper function to sum the number of bytes used by a set of types. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An unsigned integer representing the size, in bytes, of an object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sizeN</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A set of unsigned integers that contain the byte size of a set of objects.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An unsigned integer, representing the size, in bytes, of a set of object types. These types can be built-in, or user-defined structures. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/byteSize.h" line="40" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/byteSize_impl.h" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1ae41f7aff32bda8a1c09987b49e9fff57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>integral_t</declname>
+            <defname>integral_t</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned ls::utils::getByteSize</definition>
+        <argsstring>()</argsstring>
+        <name>getByteSize</name>
+        <briefdescription>
+<para>getByteSize Sum the number of bytes used by a set of types. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An unsigned integer, representing the size, in bytes, of a set of object types. These types can be built-in, or user-defined structures. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/byteSize.h" line="51" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/byteSize_impl.h" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aee791167ca041966fc9162b85fecf917" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a46f2dd4d3b29d671977ccf97c4ad681c" kindref="member">endian_t</ref></type>
+        <definition>constexpr endian_t ls::utils::getEndianOrder</definition>
+        <argsstring>()</argsstring>
+        <name>getEndianOrder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A simple function that can be used to help determine a program&apos;s endianness at compile-time. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="38" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="38" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aff29c0be67deb66b6538607129367028" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr uint16_t</type>
+        <definition>constexpr uint16_t ls::utils::btol</definition>
+        <argsstring>(uint16_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of an unsigned 16-bit integral type between big and little endian representation. This function can be used at compile-time.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an unsigned integral type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint16_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="61" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1ab0695c04ff154c015e5f5259ded36b00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr int16_t</type>
+        <definition>constexpr int16_t ls::utils::btol</definition>
+        <argsstring>(int16_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>int16_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of a signed 16-bit integral type between big and little endian representation. This function can be used at compile-time.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a signed integral type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int16_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="77" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1abea33b0755486b2efef9f66403b1ac57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t ls::utils::btol</definition>
+        <argsstring>(uint32_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of an unsigned 32-bit integral type between big and little endian representation. This function can be used at compile-time.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an unsigned integral type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint32_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="93" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="93" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1acc2cd4eda56bcd75bcc586bd2cb99324" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr int32_t</type>
+        <definition>constexpr int32_t ls::utils::btol</definition>
+        <argsstring>(int32_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>int32_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of a signed 32-bit integral type between big and little endian representation. This function can be used at compile-time.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a signed integral type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int32_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="113" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="113" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a4d3ea0bf2b99f0c1d9d1fa8b34329107" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr uint64_t</type>
+        <definition>constexpr uint64_t ls::utils::btol</definition>
+        <argsstring>(uint64_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of an unsigned 64-bit integral type between big and little endian representation. This function can be used at compile-time.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an unsigned integral type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint64_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="129" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="129" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a0a3d0523d666351728a104ff7822c374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr int64_t</type>
+        <definition>constexpr int64_t ls::utils::btol</definition>
+        <argsstring>(int64_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>int64_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of a signed 64-bit integral type between big and little endian representation. This function can be used at compile-time.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a signed integral type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int64_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="153" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="153" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1abd2af0a3948a7e9c5cda4083409ac041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename num_t</type>
+          </param>
+        </templateparamlist>
+        <type>num_t</type>
+        <definition>num_t ls::utils::btol</definition>
+        <argsstring>(num_t n)</argsstring>
+        <name>btol</name>
+        <param>
+          <type>num_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the bytes of a POD type between big and little endian representation.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A plain-old-data type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>num_t The value of the input parameter with its bytes swapped between big &amp; little endian representation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" line="168" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" bodystart="168" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1ad6eea42180965606079e486faad2c37c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashDJB2_impl</definition>
+        <argsstring>(const char *str, unsigned int hashVal)</argsstring>
+        <name>hashDJB2_impl</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>hashVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="9" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="9" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1abc1a3c504bb9cb6acd0ad54da5ea4f19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashDJB2</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>hashDJB2</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>DJB2 Hashing Function This hash algorithm was found on here: <ulink url="http://nguillemot.blogspot.com/2012/06/side-story-compile-time-string-hashing.html">http://nguillemot.blogspot.com/2012/06/side-story-compile-time-string-hashing.html</ulink>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a null-terminated c-style string.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an integer-type, representing the hash value using the DJB2 algorithm. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="19" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="19" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aa3438626c6afc738773ac3e60a9ca3f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashSDBM_impl</definition>
+        <argsstring>(const char *str, unsigned int hashVal)</argsstring>
+        <name>hashSDBM_impl</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>hashVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="29" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a3da43b7cb7175cf10efacd1d443e6fea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashSDBM</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>hashSDBM</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>SDBM Hashing Function This hash algorithm was found here: <ulink url="http://www.cse.yorku.ca/~oz/hash.html">http://www.cse.yorku.ca/~oz/hash.html</ulink>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a null-terminated c-style string.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an integer-type, representing the hash value using the SDBM algorithm. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="39" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="39" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1acd6c0184be611eeb9f01313fe9054b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashFNV1_impl</definition>
+        <argsstring>(const char *str, unsigned int hashVal)</argsstring>
+        <name>hashFNV1_impl</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>hashVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="49" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a6df29a51c8e8cc8a3992aed21c759a1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashFNV1</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>hashFNV1</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>FNV-1a Hashing Function This hash algorithm was found here: <ulink url="http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_hashing.aspx">http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_hashing.aspx</ulink>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a null-terminated c-style string.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an integer-type, representing the hash value using the FNV-1a algorithm. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="59" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aedaaec6f662c311ff093845319cb577a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::crc32</definition>
+        <argsstring>(const char *str, hash_t prevCrc)</argsstring>
+        <name>crc32</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+          <declname>prevCrc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" line="126" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" bodystart="126" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a635789a068e5357de1d9b40be0e52155" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Arg</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logMsg</definition>
+        <argsstring>(const Arg &amp;arg)</argsstring>
+        <name>logMsg</name>
+        <param>
+          <type>const Arg &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" line="6" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" bodystart="6" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aa8db48f9a89d47fe0d7582b1bcc61717" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Arg</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logMsg</definition>
+        <argsstring>(const Arg &amp;arg, const Args &amp;...args)</argsstring>
+        <name>logMsg</name>
+        <param>
+          <type>const Arg &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const Args &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" line="12" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a630b424ab0d4f73b61d941da425daafd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Arg</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logErr</definition>
+        <argsstring>(const Arg &amp;arg)</argsstring>
+        <name>logErr</name>
+        <param>
+          <type>const Arg &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" line="18" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a41a64949c47e69bc4752bacd46507a20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Arg</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logErr</definition>
+        <argsstring>(const Arg &amp;arg, const Args &amp;...args)</argsstring>
+        <name>logErr</name>
+        <param>
+          <type>const Arg &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const Args &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" line="24" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/log_impl.h" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a6d501646d4c9b408975e5b1474d8e23d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr <ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+        <definition>constexpr hash_t ls::utils::hashCRC32</definition>
+        <argsstring>(const char *str, hash_t prevCrc=0xFFFFFFFF)</argsstring>
+        <name>hashCRC32</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref></type>
+          <declname>prevCrc</declname>
+          <defval>0xFFFFFFFF</defval>
+        </param>
+        <briefdescription>
+<para>CRC32 Hashing function A simple compile-time hashing function using the CRC32 algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method was adapted from a previous implementation on StackOverflow: <ulink url="http://stackoverflow.com/a/23683218/1217127">http://stackoverflow.com/a/23683218/1217127</ulink></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A c-style string that will be hashed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>prevCrc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A previous hash value that will be modified by the current string&apos;s hash.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a 32-bit integer, representing a hashed value of the input string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/hash.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aa94b016e538c180a70a03e7dd3215fcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logMsg</definition>
+        <argsstring>(const arg_t &amp;arg)</argsstring>
+        <name>logMsg</name>
+        <param>
+          <type>const arg_t &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+<para>Print multiple parameters to std::cout. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is syntactic sugar to write data to a standard output stream. It is similar to the printf() family of functions, however all values are separated by commas. Use of this function will cause a new line to be printed to the output stream afterwards; std::cout.flush() will also be called.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a data type which can be send to std::cout using the &apos;std::ostream::operator::&lt;&lt;()&apos; overload. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/log.h" line="32" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a0bc22402c4f2c039ba72039fbd07ec4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>args_t</declname>
+            <defname>args_t</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logMsg</definition>
+        <argsstring>(const arg_t &amp;arg, const args_t &amp;...args)</argsstring>
+        <name>logMsg</name>
+        <param>
+          <type>const arg_t &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const args_t &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Print multiple parameters to std::cout. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is syntactic sugar to write data to a standard output stream. It is similar to the printf() family of functions, however all values are separated by commas. Use of this function will cause a new line to be printed to the output stream afterwards; std::cout.flush() will also be called.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a data type which can be send to std::cout using the &apos;std::ostream::operator::&lt;&lt;()&apos; overload.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to multiple variadic arguments that will be written to std::cout after &apos;arg&apos; is written. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/log.h" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1af05153ef5d3bea7b710081456763dac8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logErr</definition>
+        <argsstring>(const arg_t &amp;arg)</argsstring>
+        <name>logErr</name>
+        <param>
+          <type>const arg_t &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+<para>Print multiple parameters to std::cerr. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is syntactic sugar to write data to a standard output stream. It is similar to the printf() family of functions, however all values are separated by commas. Use of this function will cause a new line to be printed to the output stream afterwards; std::cerr.flush() will also be called.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a data type which can be send to std::cerr using the &apos;std::ostream::operator::&lt;&lt;()&apos; overload. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/log.h" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1a7bb49dc84b286b4ca2164c39520d9333" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>args_t</declname>
+            <defname>args_t</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ls::utils::logErr</definition>
+        <argsstring>(const arg_t &amp;arg, const args_t &amp;...args)</argsstring>
+        <name>logErr</name>
+        <param>
+          <type>const arg_t &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const args_t &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Print multiple parameters to std::cerr. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is syntactic sugar to write data to a standard output stream. It is similar to the printf() family of functions, however all values are separated by commas. Use of this function will cause a new line to be printed to the output stream afterwards; std::cerr.flush() will also be called.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a data type which can be send to std::cerr using the &apos;std::ostream::operator::&lt;&lt;()&apos; overload.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to multiple variadic arguments that will be written to std::cerr after &apos;arg&apos; is written. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/log.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1af41c68ce29e18c803a3e583dda24f6d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string ls::utils::toString</definition>
+        <argsstring>(const T &amp;data)</argsstring>
+        <name>toString</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Convert a basic data type to an std::string. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is only here because not all C++11-supporting versions of GCC have std::to_string().</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A generic type that can be printed to an std::ostream using the &apos;&lt;&lt;&apos; operator.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::string A string-representation of the input parameter </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/string_utils.h" line="31" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/string_utils_impl.h" bodystart="8" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1utils_1aa7a4bbcb42ad7eeab7233a7464d4d45e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ls::utils::convertWtoMb</definition>
+        <argsstring>(const std::wstring &amp;wstr)</argsstring>
+        <name>convertWtoMb</name>
+        <param>
+          <type>const std::wstring &amp;</type>
+          <declname>wstr</declname>
+        </param>
+        <briefdescription>
+<para>Convert a Wide String to a Multi-Byte Character String. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function assists in making an application cope with UTF-8 and UTF-16 compatibility issues.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wstr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A wide-character string object which needs to be converted into a multi-byte string representation.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::string A std::string object that uses &apos;char&apos; types instead of the input parameter&apos;s &apos;wchar_t&apos; type. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/string_utils.h" line="47" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/string_utils.cpp" bodystart="19" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="8" column="1"/>
+  </compounddef>
+</doxygen>

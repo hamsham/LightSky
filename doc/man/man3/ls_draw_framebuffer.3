@@ -1,0 +1,324 @@
+.TH "ls::draw::framebuffer" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::framebuffer \- 
+.PP
+Framebuffer Object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <framebuffer\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBframebuffer\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBframebuffer\fP (const \fBframebuffer\fP &)=delete"
+.br
+.RI "\fICopy Constructor - DELETED\&. \fP"
+.ti -1c
+.RI "\fBframebuffer\fP (\fBframebuffer\fP &&fbo)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fB~framebuffer\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBframebuffer\fP & \fBoperator=\fP (const \fBframebuffer\fP &)=delete"
+.br
+.RI "\fICopy Operator - DELETED\&. \fP"
+.ti -1c
+.RI "\fBframebuffer\fP & \fBoperator=\fP (\fBframebuffer\fP &&fbo)"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "unsigned \fBgetId\fP () const "
+.br
+.ti -1c
+.RI "\fBfbo_access_t\fP \fBgetAccessType\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetAccessType\fP (\fBfbo_access_t\fP a)"
+.br
+.ti -1c
+.RI "void \fBbind\fP () const "
+.br
+.ti -1c
+.RI "void \fBunbind\fP () const "
+.br
+.ti -1c
+.RI "bool \fBinit\fP ()"
+.br
+.ti -1c
+.RI "void \fBterminate\fP ()"
+.br
+.ti -1c
+.RI "void \fBblit\fP (const math::vec2i &srcOrig, const math::vec2i &srcSize, const math::vec2i &dstOrig, const math::vec2i &dstSize, \fBfbo_mask_t\fP msk, \fBls_tex_filter_t\fP fltr=\fBLS_FILTER_LINEAR\fP) const "
+.br
+.RI "\fIBlit (draw) this frame buffer onto another\&. \fP"
+.ti -1c
+.RI "void \fBclear\fP (\fBfbo_mask_t\fP) const "
+.br
+.ti -1c
+.RI "void \fBsetDrawTargets\fP (unsigned numTargets, const \fBfbo_attach_t\fP *targets)"
+.br
+.ti -1c
+.RI "void \fBattachTexture\fP (\fBfbo_attach_t\fP atch, \fBtexture_target_t\fP trgt, const \fBtexture\fP &tex, int mipmapLevel=0, int layer=0)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int \fBgetMaxNumAttachments\fP ()"
+.br
+.ti -1c
+.RI "static void \fBprintStatus\fP (const \fBframebuffer\fP &fbo)"
+.br
+.ti -1c
+.RI "static \fBfbo_status_t\fP \fBgetStatus\fP (const \fBframebuffer\fP &fbo)"
+.br
+.ti -1c
+.RI "static void \fBbindDefaultFramebuffer\fP (\fBfbo_access_t\fP access=\fBFBO_ACCESS_RW\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Framebuffer Object\&. 
+
+
+.PP
+ A Framebuffer Object represents a canvas for which all draw operations will be placed on\&. When a Framebuffer is not active, OpenGL will render to the default buffer residing within a render context\&. Framebuffer objects can 
+.SS "be used to render to a texture as well\&. "
+
+.PP
+Definition at line 108 of file framebuffer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::draw::framebuffer::framebuffer ()"
+
+.PP
+Constructor\&. Initializes all values within *this to their default values\&. This does not initialize a framebuffer on the GPU\&. 
+.PP
+Definition at line 74 of file framebuffer\&.cpp\&.
+.SS "ls::draw::framebuffer::framebuffer (const \fBframebuffer\fP &)\fC [delete]\fP"
+
+.PP
+Copy Constructor - DELETED\&. 
+.SS "ls::draw::framebuffer::framebuffer (\fBframebuffer\fP &&fbo)"
+
+.PP
+Move Constructor\&. Moves all data from the input parameter into *this without performing any copies\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfbo\fP An r-value reference to another Framebuffer Object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file framebuffer\&.cpp\&.
+.SS "ls::draw::framebuffer::~framebuffer ()"
+
+.PP
+Destructor\&. Frees all memory, GPU-handles, and resources used by *this\&. 
+.PP
+Definition at line 67 of file framebuffer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ls::draw::framebuffer::attachTexture (\fBfbo_attach_t\fPatch, \fBtexture_target_t\fPtrgt, const \fBtexture\fP &tex, intmipmapLevel = \fC0\fP, intlayer = \fC0\fP)"
+Attach a texture to the currently bound framebuffer
+.PP
+\fBParameters:\fP
+.RS 4
+\fIatch\fP Specifies the internal OpenGL color/depth/stencil attachment to use\&. This parameter must correlate to a fragment shader output\&.
+.br
+\fItrgt\fP Use this parameter in order to aid in rendering to different parts of different texture types\&.
+.br
+\fItex\fP A constant reference to a texture object to bind to this and use as a render target\&.
+.br
+\fImipmapLevel\fP The level of mipmap filtering to use for rendering\&.
+.br
+\fIlayer\fP In the event that 'tex' is a 3D texture, this parameter specifies which 3D layer to use for rendering\&. 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file framebuffer\&.cpp\&.
+.SS "void ls::draw::framebuffer::bind () const\fC [inline]\fP"
+Bind the current framebuffer to OpenGL 
+.PP
+Definition at line 53 of file framebuffer_impl\&.h\&.
+.SS "void ls::draw::framebuffer::bindDefaultFramebuffer (\fBfbo_access_t\fPaccess = \fC\fBFBO_ACCESS_RW\fP\fP)\fC [inline]\fP, \fC [static]\fP"
+Bind the default read/write buffer
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfbo_access_t\fP 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file framebuffer_impl\&.h\&.
+.SS "void ls::draw::framebuffer::blit (const math::vec2i &srcOrig, const math::vec2i &srcSize, const math::vec2i &dstOrig, const math::vec2i &dstSize, \fBfbo_mask_t\fPmsk, \fBls_tex_filter_t\fPfltr = \fC\fBLS_FILTER_LINEAR\fP\fP) const\fC [inline]\fP"
+
+.PP
+Blit (draw) this frame buffer onto another\&. This buffer must be accessed as LS_READ_BUFFER in order to work properly\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrcOrig\fP A point that specifies the bottom-left corner of *this from which to blit onto another framebuffer\&.
+.br
+\fIsrcSize\fP A point that specifies the top-right corner of *this to blit onto another framebuffer\&.
+.br
+\fIdstOrig\fP A point that specifies the bottom-left corner of the target framebuffer at which to start blitting to\&.
+.br
+\fIdstSize\fP A point that specifies the top-right corner of the target framebuffer at which to end the blitting\&.
+.br
+\fImsk\fP Used to determine if *this framebuffer's depth, stencil, and/or color buffers should be copied to the target framebuffer\&.
+.br
+\fIfltr\fP Used to determine the type of filtering that should be performed during the blitting operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file framebuffer_impl\&.h\&.
+.SS "void ls::draw::framebuffer::clear (\fBfbo_mask_t\fPmask) const\fC [inline]\fP"
+Clear the color attachment indicated by the input parameter\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP bitmask of type fbo_mask_t\&. 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file framebuffer_impl\&.h\&.
+.SS "\fBfbo_access_t\fP ls::draw::framebuffer::getAccessType () const\fC [inline]\fP"
+Get the framebuffer acccess type\&.
+.PP
+\fBReturns:\fP
+.RS 4
+fbo_access_t An enumeration that can help make perform framebuffer read/write operations 
+.RE
+.PP
+
+.PP
+Definition at line 15 of file framebuffer_impl\&.h\&.
+.SS "unsigned ls::draw::framebuffer::getId () const\fC [inline]\fP"
+Get the GPU-Assigned ID that this object references\&.
+.PP
+\fBReturns:\fP
+.RS 4
+A non-zero unsigned integer that is used as a handle to the framebuffer object represented by this object\&. This value returns 0 if nothing is referenced by *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 8 of file framebuffer_impl\&.h\&.
+.SS "int ls::draw::framebuffer::getMaxNumAttachments ()\fC [inline]\fP, \fC [static]\fP"
+Get the maximum number of supported color attachments from the current render context\&. OpenGL requires at least 8 attachments are supported\&.
+.PP
+\fBReturns:\fP
+.RS 4
+A signed integral type representing the number of currently supported render targets\&. 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file framebuffer_impl\&.h\&.
+.SS "\fBfbo_status_t\fP ls::draw::framebuffer::getStatus (const \fBframebuffer\fP &fbo)\fC [inline]\fP, \fC [static]\fP"
+Get the completion status of a framebuffer based on the currently used fbo_status_t\&.
+.PP
+An FBO must be bound/active in order to report properly\&.
+.PP
+\fBReturns:\fP
+.RS 4
+framebuffer 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file framebuffer_impl\&.h\&.
+.SS "bool ls::draw::framebuffer::init ()"
+Initialize an empty framebuffer\&.
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if a new framebuffer object was successfully generated on the GPU, FALSE if otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 93 of file framebuffer\&.cpp\&.
+.SS "\fBframebuffer\fP& ls::draw::framebuffer::operator= (const \fBframebuffer\fP &)\fC [delete]\fP"
+
+.PP
+Copy Operator - DELETED\&. 
+.SS "\fBframebuffer\fP & ls::draw::framebuffer::operator= (\fBframebuffer\fP &&fbo)"
+
+.PP
+Move Operator\&. Moves all data from the input parameter into *this without performing any copies\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfbo\fP An r-value reference to another Framebuffer Object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 80 of file framebuffer\&.cpp\&.
+.SS "void ls::draw::framebuffer::printStatus (const \fBframebuffer\fP &fbo)\fC [static]\fP"
+Error code handling for framebuffer creation\&. The input FBO must be bound/active in order to report properly\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfbo\fP A constant reference to the active framebuffer object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 17 of file framebuffer\&.cpp\&.
+.SS "void ls::draw::framebuffer::setAccessType (\fBfbo_access_t\fPa)\fC [inline]\fP"
+Set the framebuffer access type\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP An enumeration that can help make perform framebuffer read/write operations\&. 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file framebuffer_impl\&.h\&.
+.SS "void ls::draw::framebuffer::setDrawTargets (unsignednumTargets, const \fBfbo_attach_t\fP *targets)\fC [inline]\fP"
+Set the current draw targets to be used by this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumTargets\fP The number of draw targets contained within the array specified by 'targets\&.'
+.br
+\fItargets\fP The set of all render targets that should be rendered to by this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 89 of file framebuffer_impl\&.h\&.
+.SS "void ls::draw::framebuffer::terminate ()"
+Release all resources used by this framebuffer object\&. 
+.PP
+Definition at line 102 of file framebuffer\&.cpp\&.
+.SS "void ls::draw::framebuffer::unbind () const\fC [inline]\fP"
+Unbind the current framebuffer to OpenGL 
+.PP
+Definition at line 60 of file framebuffer_impl\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

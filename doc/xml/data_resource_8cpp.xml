@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="data_resource_8cpp" kind="file">
+    <compoundname>dataResource.cpp</compoundname>
+    <includes local="no">utility</includes>
+    <includes local="no">new</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">string</includes>
+    <includes refid="data_resource_8h" local="yes">lightsky/utils/dataResource.h</includes>
+    <incdepgraph>
+      <node id="8013">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/dataResource.cpp</label>
+        <link refid="dataResource.cpp"/>
+        <childnode refid="8014" relation="include">
+        </childnode>
+        <childnode refid="8015" relation="include">
+        </childnode>
+        <childnode refid="8016" relation="include">
+        </childnode>
+        <childnode refid="8017" relation="include">
+        </childnode>
+        <childnode refid="8018" relation="include">
+        </childnode>
+        <childnode refid="8019" relation="include">
+        </childnode>
+      </node>
+      <node id="8022">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="8024">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="8029">
+        <label>lightsky/utils/generic/string_utils_impl.h</label>
+        <link refid="string__utils__impl_8h"/>
+      </node>
+      <node id="8019">
+        <label>lightsky/utils/dataResource.h</label>
+        <link refid="data_resource_8h"/>
+        <childnode refid="8018" relation="include">
+        </childnode>
+        <childnode refid="8020" relation="include">
+        </childnode>
+        <childnode refid="8026" relation="include">
+        </childnode>
+      </node>
+      <node id="8018">
+        <label>string</label>
+      </node>
+      <node id="8025">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="8017">
+        <label>fstream</label>
+      </node>
+      <node id="8020">
+        <label>lightsky/utils/setup.h</label>
+        <link refid="utils_2setup_8h"/>
+        <childnode refid="8021" relation="include">
+        </childnode>
+      </node>
+      <node id="8030">
+        <label>lightsky/utils/generic/resource_impl.h</label>
+        <link refid="resource__impl_8h"/>
+      </node>
+      <node id="8026">
+        <label>lightsky/utils/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="8018" relation="include">
+        </childnode>
+        <childnode refid="8020" relation="include">
+        </childnode>
+        <childnode refid="8027" relation="include">
+        </childnode>
+        <childnode refid="8030" relation="include">
+        </childnode>
+      </node>
+      <node id="8021">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="8022" relation="include">
+        </childnode>
+        <childnode refid="8023" relation="include">
+        </childnode>
+        <childnode refid="8024" relation="include">
+        </childnode>
+        <childnode refid="8025" relation="include">
+        </childnode>
+      </node>
+      <node id="8015">
+        <label>new</label>
+      </node>
+      <node id="8014">
+        <label>utility</label>
+      </node>
+      <node id="8028">
+        <label>sstream</label>
+      </node>
+      <node id="8016">
+        <label>algorithm</label>
+      </node>
+      <node id="8023">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="8027">
+        <label>lightsky/utils/string_utils.h</label>
+        <link refid="string__utils_8h"/>
+        <childnode refid="8018" relation="include">
+        </childnode>
+        <childnode refid="8028" relation="include">
+        </childnode>
+        <childnode refid="8029" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1utils">ls::utils</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>utils/dataResource.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>February<sp/>1,<sp/>2014,<sp/>11:09<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;new&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::nothrow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::copy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::fstream</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data_resource_8h" kindref="compound">lightsky/utils/dataResource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/><sp/><sp/>Constructor</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" kindref="member">dataResource::dataResource</ref>()<sp/>:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource" kindref="compound">resource</ref>{}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/><sp/>Copy<sp/>Constructor</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classls_1_1utils_1_1data_resource_1a90c04d54a670e636ed3c109d2319dddf" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" kindref="member">dataResource::dataResource</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/>f)<sp/>:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource" kindref="compound">resource</ref>{}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>setData(const_cast&lt;char*&gt;(f.pData),<sp/>f.dataSize,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>Move<sp/>Constructor</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classls_1_1utils_1_1data_resource_1a3814d39986220ccf95cab30f2098b999" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" kindref="member">dataResource::dataResource</ref>(<ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;&amp;<sp/>f)<sp/>:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource" kindref="compound">resource</ref>{}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>pData<sp/>=<sp/>f.<ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>f.pData<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>dataSize<sp/>=<sp/>f.dataSize;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>f.dataSize<sp/>=<sp/>0l;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/>Destructor</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classls_1_1utils_1_1data_resource_1aaa0ab2164bb6ed61c01e13d5c34ae10a" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource_1aaa0ab2164bb6ed61c01e13d5c34ae10a" kindref="member">dataResource::~dataResource</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" kindref="member">unload</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/>Unload<sp/>a<sp/>resource</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" kindref="member">dataResource::unload</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>[]<sp/><ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref><sp/>=<sp/>0l;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/>Copy<sp/>Operator</highlight></codeline>
+<codeline lineno="66"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classls_1_1utils_1_1data_resource_1ad6e15157b3798afdf13d6e57fb0136c1" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/><ref refid="classls_1_1utils_1_1data_resource_1ad6e15157b3798afdf13d6e57fb0136c1" kindref="member">dataResource::operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/>f)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1abf8de38c29711986bc0ffdfb1ebc5cd8" kindref="member">setData</ref>(const_cast&lt;char*&gt;(f.<ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref>),<sp/>f.<ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/>Move<sp/>Operator</highlight></codeline>
+<codeline lineno="74"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classls_1_1utils_1_1data_resource_1ade5197c5b7ca0006656b7a49348d5475" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/><ref refid="classls_1_1utils_1_1data_resource_1ad6e15157b3798afdf13d6e57fb0136c1" kindref="member">dataResource::operator =</ref>(<ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;&amp;<sp/>f)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" kindref="member">unload</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref><sp/>=<sp/>f.pData;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>f.pData<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref><sp/>=<sp/>f.dataSize;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>f.dataSize<sp/>=<sp/>0l;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/>Open<sp/>a<sp/>file<sp/>using<sp/>UTF-8</highlight></codeline>
+<codeline lineno="88"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classls_1_1utils_1_1data_resource_1aea8343146dd511f11536418f765b4933" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1aea8343146dd511f11536418f765b4933" kindref="member">dataResource::loadFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" kindref="member">unload</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ifstream<sp/>fin;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buffer<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>fin.open(filename,<sp/>std::ios_base::binary<sp/>|<sp/>std::ios_base::in);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fin.good())<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>file<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>fin.seekg(0,<sp/>std::ios_base::end);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/>fin.tellg();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>fin.seekg(0,<sp/>std::ios_base::beg);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Determine<sp/>of<sp/>the<sp/>file<sp/>can<sp/>successfully<sp/>scanned,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fin.bad()<sp/>||<sp/>fin.fail())<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fin.close();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>load<sp/>the<sp/>file<sp/>into<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal">(std::nothrow)<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[size];</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fin.read(buffer,<sp/>size);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fin.close();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>for<sp/>errors<sp/>when<sp/>reading<sp/>the<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fin.bad()<sp/>||<sp/>fin.fail())<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>[]<sp/>buffer;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fin.close();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>everything<sp/>passed,<sp/>set<sp/>the<sp/>data<sp/>at<sp/>*this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref><sp/>=<sp/>buffer;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref><sp/>=<sp/>size;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>fin.close();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/>Save<sp/>with<sp/>a<sp/>UTF-8<sp/>filename</highlight></codeline>
+<codeline lineno="139"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classls_1_1utils_1_1data_resource_1a61b72216fc11814083bbfd99f6625584" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1a61b72216fc11814083bbfd99f6625584" kindref="member">dataResource::saveFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ofstream<sp/>fout;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>fout.open(filename,<sp/>std::ios_base::binary);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fout.good())<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>fout.write(<ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref>,<sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>fout.good();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>fout.close();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/>Set<sp/>a<sp/>resource&apos;s<sp/>data</highlight></codeline>
+<codeline lineno="158"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classls_1_1utils_1_1data_resource_1abf8de38c29711986bc0ffdfb1ebc5cd8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1abf8de38c29711986bc0ffdfb1ebc5cd8" kindref="member">dataResource::setData</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copyMemory)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" kindref="member">unload</ref>();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>size<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(copyMemory<sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[size];</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>sure<sp/>that<sp/>there<sp/>are<sp/>no<sp/>buffer<sp/>overflows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&gt;<sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size<sp/>=<sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref>;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(data,<sp/>data<sp/>+<sp/>size,<sp/><ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref><sp/>=<sp/>size;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6d51ff840102e455c80b6a8dbc15e326" kindref="member">pData</ref><sp/>=<sp/>data;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1resource_1a6748a8528cc1af299d511d9a2f8a74ce" kindref="member">dataSize</ref><sp/>=<sp/>size;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>utils<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/dataResource.cpp"/>
+  </compounddef>
+</doxygen>

@@ -152,7 +152,8 @@ class functor : public scriptable {
 
     public:
         /**
-         *  @brief Destructor
+         *  @brief Functor Destructor
+         * 
          *  Frees all resources used by *this.
          */
         virtual ~functor() = 0;

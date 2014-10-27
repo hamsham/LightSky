@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1utils_1_1random_num" kind="class" prot="public">
+    <compoundname>ls::utils::randomNum</compoundname>
+    <includes refid="random_num_8h" local="no">randomNum.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1utils_1_1random_num_1a82c1c177957b872d176468eb5f68f000" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long ls::utils::randomNum::state[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>state</name>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+<para>state A set of seeds that are used to extend the period of random numbers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1utils_1_1random_num_1a53a30df0ecf503f04ee10aa147578686" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int ls::utils::randomNum::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>index An iterator that&apos;s used to extract random seeds from &apos;state&apos;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="29" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1ade184ea7d6963b58438586d9432f5045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::randomNum::randomNum</definition>
+        <argsstring>(unsigned long s)</argsstring>
+        <name>randomNum</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Seed Constructor Seeds the PRNG in order to make random values available immediately after construction. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An initial seed value that can be used to initialize the internal PRNG algorithm. The same seed can be used repeatedly in order to generate the same set of values. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="42" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1a7db08cfb9fc5483fa47f7c2be9ae96aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::randomNum::randomNum</definition>
+        <argsstring>()</argsstring>
+        <name>randomNum</name>
+        <briefdescription>
+<para>Constructor Initializes a non-seeded PRNG. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="48" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="21" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1aae00b2376355af5b692e1fc6daa325a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::randomNum::randomNum</definition>
+        <argsstring>(const randomNum &amp;prng)</argsstring>
+        <name>randomNum</name>
+        <param>
+          <type>const <ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;</type>
+          <declname>prng</declname>
+        </param>
+        <briefdescription>
+<para>Copy Constructor Copies all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to another pseudo-random number generator. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="57" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1a8206f4e272178394f75d961157cea9eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::randomNum::randomNum</definition>
+        <argsstring>(randomNum &amp;&amp;prng)</argsstring>
+        <name>randomNum</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;&amp;</type>
+          <declname>prng</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor Copies all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to another pseudo-random number generator. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="66" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="38" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1aba9ed9ac012eab2ff259e844be8db8a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::randomNum::~randomNum</definition>
+        <argsstring>()</argsstring>
+        <name>~randomNum</name>
+        <briefdescription>
+<para>Destructor Frees all resources used by this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="72" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="49" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1abbd6e82e878581068239fe3059c6ed35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;</type>
+        <definition>randomNum &amp; ls::utils::randomNum::operator=</definition>
+        <argsstring>(const randomNum &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;</type>
+          <defname>rn</defname>
+        </param>
+        <briefdescription>
+<para>Copy Operator Copies all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to another pseudo-random number generator.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="83" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="55" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1affd299b3e2f783b20b6fc969205dd6ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;</type>
+        <definition>randomNum &amp; ls::utils::randomNum::operator=</definition>
+        <argsstring>(randomNum &amp;&amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;&amp;</type>
+          <defname>rn</defname>
+        </param>
+        <briefdescription>
+<para>Move Operator Copies all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to another pseudo-random number generator.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="94" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="67" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1ad5dd0e059148e52d52e654eed91c3494" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::utils::randomNum::seed</definition>
+        <argsstring>(unsigned long s)</argsstring>
+        <name>seed</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Seed Seeds the PRNG in order to provide a new set of pseudo-random numbers. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A seed value that can be used to initialize the internal PRNG algorithm. The same seed can be used repeatedly in order to generate the same set of values. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="106" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="79" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1a23574bbf1da325b56ddf91de2f4e2ddd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::utils::randomNum::seed</definition>
+        <argsstring>()</argsstring>
+        <name>seed</name>
+        <briefdescription>
+<para>Seed Seeds the PRNG in order to provide a new set of pseudo-random numbers. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method uses the current system time in order to seed the internal PRNG algorithm. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="116" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1a2dfcb1bde3096add731ebbdb137095b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned long</type>
+        <definition>unsigned long ls::utils::randomNum::operator()</definition>
+        <argsstring>()</argsstring>
+        <name>operator()</name>
+        <briefdescription>
+<para>Overloaded function operator. Generates a pseudo-random number using the WELL-512 PRNG algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a randomly generated unsigned integral type. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="124" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="97" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1ace778f04196d0ae3c9f257ef6d013b7c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float ls::utils::randomNum::randRangeF</definition>
+        <argsstring>(randomNum &amp;prng, float low, float high)</argsstring>
+        <name>randRangeF</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;</type>
+          <declname>prng</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>low</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>high</declname>
+        </param>
+        <briefdescription>
+<para>randRangeF Generates a random floating-point number in between two specified values (inclusive). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a random-number generator.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>low</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lower-bound used to clamp a prng value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>high</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The upper-bound used to clamp a prng value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pseudo-random floating-point value clamped in between &apos;low&apos; and &apos;high.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="146" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="115" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1random_num_1a46d5df6b693ca96393e93400dfcbcdb1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ls::utils::randomNum::randRangeI</definition>
+        <argsstring>(randomNum &amp;prng, int low, int high)</argsstring>
+        <name>randRangeI</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1random_num" kindref="compound">randomNum</ref> &amp;</type>
+          <declname>prng</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>low</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>high</declname>
+        </param>
+        <briefdescription>
+<para>randRangeF Generates a random integral value in between two specified values (inclusive). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a random-number generator.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>low</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lower-bound used to clamp a prng value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>high</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The upper-bound used to clamp a prng value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pseudo-random integer value clamped in between &apos;low&apos; and &apos;high.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="164" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp" bodystart="128" bodyend="135"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pseudo-randomn number generator using the WELLRNC 512 algorithm. </para>    </briefdescription>
+    <detaileddescription>
+<para>The implementation was adapted from: <ulink url="http://www.lomont.org/Math/Papers/Papers.php">http://www.lomont.org/Math/Papers/Papers.php</ulink> (see: Random Number Generation) <ulink url="http://www.lomont.org/Math/Papers/2008/Lomont_PRNG_2008.pdf">http://www.lomont.org/Math/Papers/2008/Lomont_PRNG_2008.pdf</ulink> </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" line="16" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/randomNum.h" bodystart="16" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classls_1_1utils_1_1random_num_1a53a30df0ecf503f04ee10aa147578686" prot="private" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>index</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1a2dfcb1bde3096add731ebbdb137095b9" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>operator()</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1abbd6e82e878581068239fe3059c6ed35" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1affd299b3e2f783b20b6fc969205dd6ec" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1ade184ea7d6963b58438586d9432f5045" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>randomNum</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1a7db08cfb9fc5483fa47f7c2be9ae96aa" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>randomNum</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1aae00b2376355af5b692e1fc6daa325a2" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>randomNum</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1a8206f4e272178394f75d961157cea9eb" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>randomNum</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1ace778f04196d0ae3c9f257ef6d013b7c" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>randRangeF</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1a46d5df6b693ca96393e93400dfcbcdb1" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>randRangeI</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1ad5dd0e059148e52d52e654eed91c3494" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>seed</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1a23574bbf1da325b56ddf91de2f4e2ddd" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>seed</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1a82c1c177957b872d176468eb5f68f000" prot="private" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>state</name></member>
+      <member refid="classls_1_1utils_1_1random_num_1aba9ed9ac012eab2ff259e844be8db8a6" prot="public" virt="non-virtual"><scope>ls::utils::randomNum</scope><name>~randomNum</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,141 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/math/quat_utils.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/math/quat_utils.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'lightsky/math/scalar_utils\&.h'\fP
+.br
+\fC#include 'lightsky/math/vec3\&.h'\fP
+.br
+\fC#include 'lightsky/math/vec4\&.h'\fP
+.br
+\fC#include 'lightsky/math/mat3\&.h'\fP
+.br
+\fC#include 'lightsky/math/mat4\&.h'\fP
+.br
+\fC#include 'lightsky/math/quat\&.h'\fP
+.br
+\fC#include 'lightsky/math/vec_utils\&.h'\fP
+.br
+\fC#include 'lightsky/math/generic/quat_utils_impl\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::math\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::dot\fP (const quat_t< N > &, const quat_t< N > &)"
+.br
+.RI "\fIdot Retrieve the dot product of two quaternions\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::lengthSquared\fP (const quat_t< N > &)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a quaternion\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::length\fP (const quat_t< N > &)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::inverse\fP (const quat_t< N > &q)"
+.br
+.RI "\fIinverse Retrieve the geometric inverse of the quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr quat_t< N > \fBls::math::conjugate\fP (const quat_t< N > &q)"
+.br
+.RI "\fIconjugate Get the complex-conjugate of a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::normalize\fP (const quat_t< N > &)"
+.br
+.RI "\fInormalize Normalize the quaternion q so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr quat_t< N > \fBls::math::lerp\fP (const quat_t< N > &q1, const quat_t< N > &q2, N percent)"
+.br
+.RI "\fILinearly interpolate a quaternion towards another by some percentage\&. This is the same as calling 'ls::math::mix()' for a vector or scalar\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr quat_t< N > \fBls::math::nlerp\fP (const quat_t< N > &q1, const quat_t< N > &q2, N percent)"
+.br
+.RI "\fILinearly interpolate a quaternion towards another by some percentage and normalize the result\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::slerp\fP (const quat_t< N > &, const quat_t< N > &, N)"
+.br
+.RI "\fISLERP Perform a spherical-interpolation of q1 towards q2 by some percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::lookAt\fP (const vec3_t< N > &target, const vec3_t< N > &dir)"
+.br
+.ti -1c
+.RI "template<typename N > mat3_t< N > \fBls::math::quatToMat3\fP (const quat_t< N > &q)"
+.br
+.RI "\fIquatToMat3 Convert a quaternion into a 3x3 rotational matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::quatToMat4\fP (const quat_t< N > &q)"
+.br
+.RI "\fIquatToMat4 Convert a quaternion into a 4x4 rotational matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::matToQuat\fP (const mat3_t< N > &m)"
+.br
+.RI "\fImatToQuat Convert a 3x3 rotation matrix into a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::matToQuat\fP (const mat4_t< N > &m)"
+.br
+.RI "\fImatToQuat Convert a 4x4 rotation matrix into a quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::getAxisX\fP (const quat_t< N > &q)"
+.br
+.RI "\fIgetAxisX Retrieve the 'x-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the x-axis\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::getAxisY\fP (const quat_t< N > &q)"
+.br
+.RI "\fIgetAxisY Retrieve the 'y-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the y-axis\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::getAxisZ\fP (const quat_t< N > &q)"
+.br
+.RI "\fIgetAxisZ Retrieve the 'z-axis' of a quaternion\&. This is a short-circuited method of converting a quaternion into a rotation matrix, then extracting the axis of rotation along the z-axis\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::getAngle\fP (const quat_t< N > &q)"
+.br
+.RI "\fIgetAngle Retrieve the angle of rotation (i\&.e\&. the real-component) of a quaternion, in R^3\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::toEuler\fP (const quat_t< N > &q)"
+.br
+.RI "\fItoEuler Convert a unit quaternion into 3 Euler angles, pitch, yaw, and roll\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::fromEuler\fP (const vec3_t< N > &pyr)"
+.br
+.RI "\fIfromEuler Convert three Euler angles into a rotational quaternion\&. These angles must be in the order of pitch, yaw, and roll, respectively\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::fromEuler\fP (N pitch, N yaw, N roll)"
+.br
+.RI "\fIfromEuler Convert three Euler angles into a rotational quaternion\&. These angles must be in the order of pitch, yaw, and roll, respectively\&. \fP"
+.ti -1c
+.RI "template<typename N > void \fBls::math::toAxisAngle\fP (const quat_t< N > &q, vec3_t< N > &outAaxis, N &outAngle)"
+.br
+.RI "\fItoAxisAngle Convert a rotational quaternion into Axis-Angle representation\&. \fP"
+.ti -1c
+.RI "template<typename N > vec4_t< N > \fBls::math::toAxisAngle\fP (const quat_t< N > &q)"
+.br
+.RI "\fItoAxisAngle Convert a rotational quaternion into Axis-Angle representation\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::fromAxisAngle\fP (const vec3_t< N > &axis, N angle)"
+.br
+.RI "\fIfromAxisAngle Convert a 3D axis, plus angle of rotation, into a rotational quaternion\&. \fP"
+.ti -1c
+.RI "template<typename N > quat_t< N > \fBls::math::fromAxisAngle\fP (const vec4_t< N > &axisAngle)"
+.br
+.RI "\fIfromAxisAngle Convert a 4D axis-angle into a rotational quaternion\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

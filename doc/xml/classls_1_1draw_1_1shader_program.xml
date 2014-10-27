@@ -1,0 +1,1123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1shader_program" kind="class" prot="public">
+    <compoundname>ls::draw::shaderProgram</compoundname>
+    <includes refid="shader_program_8h" local="no">shaderProgram.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1shader_program_1ad57aece851238ad4a263c48d74d4da8c" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint ls::draw::shaderProgram::programId</definition>
+        <argsstring></argsstring>
+        <name>programId</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A handle to the GPU-side shader program within OpenGL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="31" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ad04c15a31ff5b4d162f0116331be30c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::shaderProgram::shaderProgram</definition>
+        <argsstring>()</argsstring>
+        <name>shaderProgram</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="37" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ac5c34db130b0fb9504f78016a5b0bc2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::shaderProgram::shaderProgram</definition>
+        <argsstring>(const shaderProgram &amp;)=delete</argsstring>
+        <name>shaderProgram</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Constructor <ndash/> Deleted. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a476c346c1e5bd0b845a836353a8ada0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::shaderProgram::shaderProgram</definition>
+        <argsstring>(shaderProgram &amp;&amp;)</argsstring>
+        <name>shaderProgram</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref> &amp;&amp;</type>
+          <defname>tempProgram</defname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copy the handle to the shader object owned by the input argument, reset the moved object&apos;s shader handle to 0.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A, r-value reference to a shader program object to move into *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="53" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ad4152031ec554b6403fb87a642b2c1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref> &amp;</type>
+        <definition>shaderProgram&amp; ls::draw::shaderProgram::operator=</definition>
+        <argsstring>(const shaderProgram &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy Operator <ndash/> Deleted. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a164aa6cbc20446cfdee014a74e691660" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref> &amp;</type>
+        <definition>shaderProgram &amp; ls::draw::shaderProgram::operator=</definition>
+        <argsstring>(shaderProgram &amp;&amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref> &amp;&amp;</type>
+          <defname>tempProgram</defname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Move the values of the input argument and reset the moved object&apos;s values to 0.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A, r-value reference to a shader program object to move into *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="71" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1afd3ce6cf2fe7a38154201325d57ceb53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::shaderProgram::~shaderProgram</definition>
+        <argsstring>()</argsstring>
+        <name>~shaderProgram</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Destroy this object and free any GPU memory it uses. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="78" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1af53b8f68e05237d4ec648d3fb3ae6f8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free all memory used by this shader object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="83" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a60d6512e34694516b7fcfde5875295fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::shaderProgram::attachShaders</definition>
+        <argsstring>(const vertexShader &amp;vs, const fragmentShader &amp;fs)</argsstring>
+        <name>attachShaders</name>
+        <param>
+          <type>const vertexShader &amp;</type>
+          <declname>vs</declname>
+        </param>
+        <param>
+          <type>const fragmentShader &amp;</type>
+          <declname>fs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attach a set of shader units to the program</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vertex shader unit that should be attached to *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A fragment shader unit that should be attached to *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the input shader units were successfully attached to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="97" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="58" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a7dde1073beb8c24c28fc83d255a7f2a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::shaderProgram::attachShaders</definition>
+        <argsstring>(const vertexShader &amp;vs, const geometryShader &amp;gs, const fragmentShader &amp;fs)</argsstring>
+        <name>attachShaders</name>
+        <param>
+          <type>const vertexShader &amp;</type>
+          <declname>vs</declname>
+        </param>
+        <param>
+          <type>const geometryShader &amp;</type>
+          <declname>gs</declname>
+        </param>
+        <param>
+          <type>const fragmentShader &amp;</type>
+          <declname>fs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attach a set of shader units to the program</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vertex shader unit that should be attached to *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A geometry shader unit that should be attached to *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A fragment shader unit that should be attached to *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the input shader units were successfully attached to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="114" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="82" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ac78b4e77849f4e297a841b38ba2cc2a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::shaderProgram::link</definition>
+        <argsstring>()</argsstring>
+        <name>link</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Link the attached shader units to this and create an entire GPU-side shader program.</para><para><simplesect kind="return"><para>TRUE if *this object was successfully linked with its attached shader units. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="127" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="108" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ae30fdc44d1c7565c492fcf17bf9c90ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::bind</definition>
+        <argsstring>() const </argsstring>
+        <name>bind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind this program to the current context </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="132" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ad461c434703498471b759d0790477907" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::unbind</definition>
+        <argsstring>() const </argsstring>
+        <name>unbind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unbind this program from the context. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="137" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a38c3171208a3b42adf3cf1fc0a0db4da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::bindAttribute</definition>
+        <argsstring>(GLuint index, const GLchar *const name)</argsstring>
+        <name>bindAttribute</name>
+        <param>
+          <type>GLuint</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind a vertex attribute to a shader.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An unsigned integral type which specifies the vertex array location of an attachment to bind.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exact name of the vertex array attribute in *this to bind. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="149" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a003777c90ffc313f5fb8eb1989a2307a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>GLint</type>
+        <definition>GLint ls::draw::shaderProgram::getAttribute</definition>
+        <argsstring>(const GLchar *const name) const </argsstring>
+        <name>getAttribute</name>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the location of a vertex attribute</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exact name of the vertex array attribute in *this whose index location should be retrieved.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GLint A positive value to indicate the attribute&apos;s location in OpenGL or -1 for an invalid index. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="162" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aaed7274bbaee573d0acd60756f95c192" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>GLint</type>
+        <definition>GLint ls::draw::shaderProgram::getUniformLocation</definition>
+        <argsstring>(const GLchar *const name) const </argsstring>
+        <name>getUniformLocation</name>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the location of a uniform variable.</para><para><simplesect kind="return"><para>GLint A positive value to indicate the uniform&apos;s location in OpenGL or -1 for an invalid uniform index. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="171" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aac8536b561e6f1806f19d3def5f34e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ls::draw::shaderProgram::getUniformInfo</definition>
+        <argsstring>(int index, GLint *const varSize, GLenum *const varType) const </argsstring>
+        <name>getUniformInfo</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>GLint *const</type>
+          <declname>varSize</declname>
+        </param>
+        <param>
+          <type>GLenum *const</type>
+          <declname>varType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get information about an active uniform located in a shader.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- indicates the index of the uniform to be queried.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>varSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- indicates the number of elements contained within the uniform. This will be a value of 1 for all variables that are not arrays.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>varType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- used to determine the variable&apos;s data type; such as an int, float, sampler, matrix, or sampler array.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the name of the variable as it is known in the shader source code. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="189" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp" bodystart="137" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, int val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a single uniform integer variable </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="194" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1acf908b604a28155ee1ad34b5a3d581c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, int val0, int val1)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set two uniform integer variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="199" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="54" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a5e9a0a2d690d25830123520f82500c99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, int val0, int val1, int val2)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set three uniform integer variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="204" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a8ebb48eb1457afe8203f715b7b47b624" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, int val0, int val1, int val2, int val3)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>val3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set four uniform integer variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="209" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1af0af8a551609d60613fee147a073ab3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec2i &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec2i &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 2d vector of integers </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="214" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aa2fa92fcb2d1bd78bac87a812153b191" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec3i &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec3i &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 3d vector of integers </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="219" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ae79c69ce278f176e4c7d12fe06264644" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec4i &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec4i &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 4d vector of integers </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="224" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aa6dfd75da247643c7ac403ba3563584f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, unsigned val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a single uniform unsigned int variable </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="229" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a181c3ad0116d739f78e517ec502a515d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, unsigned val0, unsigned val1)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set two uniform unsigned int variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="234" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="103" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a2c3c9ebd5d8051375b9680db0ca63229" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, unsigned val0, unsigned val1, unsigned val2)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set three uniform unsigned int variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="239" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="110" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ae1fc903d85c6a01d856c953ee8cc0647" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, unsigned val0, unsigned val1, unsigned val2, unsigned val3)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val2</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>val3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set four uniform unsigned int variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="244" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="117" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a834c7380d98553fe44c72051b8146312" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec2ui &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec2ui &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 2d vector of unsigned ints </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="249" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a821d5e918116d0c5bfffa71613f42ab0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec3ui &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec3ui &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 3d vector of unsigned ints </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="254" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1ad6169c4c803895edc0f475fdf30d1de3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec4ui &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec4ui &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 4d vector of unsigned ints </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="259" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a8b86a883346a4908eceec3e5c68a7c9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, float val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a single uniform float variable </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="264" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="145" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aaefecba5ec8db35411c1ae2e7bb419dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, float val0, float val1)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set two uniform float variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="269" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a8274211238ebd431a3fa0f833d8dd884" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, float val0, float val1, float val2)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set three uniform float variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="274" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a1d2ff7512a739c4309408da499297de8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, float val0, float val1, float val2, float val3)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val0</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set four uniform float variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="279" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="166" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a8b6720197a6dbb3c4770a6b9caf6f15a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec2 &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec2 &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 2d vector of floats </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="284" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a07d973278ac6035a7301c83a4bac22b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec3 &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec3 &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 3d vector of floats </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="289" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="180" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1af34faef8f040e1610eb328d7a5202a67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::vec4 &amp;val)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::vec4 &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 4d vector of floats </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="294" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="187" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1af14b3606b7f00d1e14ce4d064bb6687c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::mat2 &amp;val, bool transpose=false)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::mat2 &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transpose</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 2d matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="299" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="194" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a578feff96ea435d2fe7f147154bb7fd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::mat3 &amp;val, bool transpose=false)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::mat3 &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transpose</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 3d matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="304" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="201" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1aa62ed584f1ec040b5b405807ef068f77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::setUniformValue</definition>
+        <argsstring>(GLint uniformId, const math::mat4 &amp;val, bool transpose=false)</argsstring>
+        <name>setUniformValue</name>
+        <param>
+          <type>GLint</type>
+          <declname>uniformId</declname>
+        </param>
+        <param>
+          <type>const math::mat4 &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transpose</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a uniform 4d matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="309" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="208" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a9bcfd80cab68a7df30a4fa1e030abd28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::bindFragDataLocation</definition>
+        <argsstring>(GLuint colorNum, const GLchar *const name)</argsstring>
+        <name>bindFragDataLocation</name>
+        <param>
+          <type>GLuint</type>
+          <declname>colorNum</declname>
+        </param>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind data to a fragment shader </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="314" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a4e515afa644a2ce98f4c100cb8f1547b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::shaderProgram::bindFragDataLocationIndex</definition>
+        <argsstring>(GLuint colorNum, GLuint index, const GLchar *const name)</argsstring>
+        <name>bindFragDataLocationIndex</name>
+        <param>
+          <type>GLuint</type>
+          <declname>colorNum</declname>
+        </param>
+        <param>
+          <type>GLuint</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind data to a fragment shader </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="319" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="222" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1af1ada31a0cb844671753aa0066dc6333" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>GLint</type>
+        <definition>GLint ls::draw::shaderProgram::getFragDataIndex</definition>
+        <argsstring>(const GLchar *const name) const </argsstring>
+        <name>getFragDataIndex</name>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query the bindings of color indices to a user-defined varying out variable </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="324" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="229" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1shader_program_1a3bba8fff40b5fa7b252c29bc1ca1724c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>GLint</type>
+        <definition>GLint ls::draw::shaderProgram::getFragDataLocation</definition>
+        <argsstring>(const GLchar *const name) const </argsstring>
+        <name>getFragDataLocation</name>
+        <param>
+          <type>const GLchar *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query the bindings of color numbers to user-defined varying out variables </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="329" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/shaderProgram_impl.h" bodystart="236" bodyend="238"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Shader Program. </para>    </briefdescription>
+    <detaileddescription>
+<para>Represents a combination of OpenGL vertex, fragment, and geometry shader objects. </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" line="26" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h" bodystart="26" bodyend="330"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1shader_program_1a60d6512e34694516b7fcfde5875295fc" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>attachShaders</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a7dde1073beb8c24c28fc83d255a7f2a0" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>attachShaders</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ae30fdc44d1c7565c492fcf17bf9c90ff" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>bind</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a38c3171208a3b42adf3cf1fc0a0db4da" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>bindAttribute</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a9bcfd80cab68a7df30a4fa1e030abd28" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>bindFragDataLocation</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a4e515afa644a2ce98f4c100cb8f1547b" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>bindFragDataLocationIndex</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a003777c90ffc313f5fb8eb1989a2307a" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>getAttribute</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1af1ada31a0cb844671753aa0066dc6333" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>getFragDataIndex</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a3bba8fff40b5fa7b252c29bc1ca1724c" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>getFragDataLocation</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aac8536b561e6f1806f19d3def5f34e1d" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>getUniformInfo</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aaed7274bbaee573d0acd60756f95c192" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>getUniformLocation</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ac78b4e77849f4e297a841b38ba2cc2a6" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>link</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ad4152031ec554b6403fb87a642b2c1eb" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a164aa6cbc20446cfdee014a74e691660" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ad57aece851238ad4a263c48d74d4da8c" prot="private" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>programId</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1acf908b604a28155ee1ad34b5a3d581c7" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a5e9a0a2d690d25830123520f82500c99" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a8ebb48eb1457afe8203f715b7b47b624" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1af0af8a551609d60613fee147a073ab3b" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aa2fa92fcb2d1bd78bac87a812153b191" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ae79c69ce278f176e4c7d12fe06264644" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aa6dfd75da247643c7ac403ba3563584f" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a181c3ad0116d739f78e517ec502a515d" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a2c3c9ebd5d8051375b9680db0ca63229" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ae1fc903d85c6a01d856c953ee8cc0647" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a834c7380d98553fe44c72051b8146312" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a821d5e918116d0c5bfffa71613f42ab0" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ad6169c4c803895edc0f475fdf30d1de3" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a8b86a883346a4908eceec3e5c68a7c9f" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aaefecba5ec8db35411c1ae2e7bb419dc" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a8274211238ebd431a3fa0f833d8dd884" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a1d2ff7512a739c4309408da499297de8" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a8b6720197a6dbb3c4770a6b9caf6f15a" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a07d973278ac6035a7301c83a4bac22b1" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1af34faef8f040e1610eb328d7a5202a67" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1af14b3606b7f00d1e14ce4d064bb6687c" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a578feff96ea435d2fe7f147154bb7fd1" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1aa62ed584f1ec040b5b405807ef068f77" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>setUniformValue</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ad04c15a31ff5b4d162f0116331be30c5" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>shaderProgram</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ac5c34db130b0fb9504f78016a5b0bc2a" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>shaderProgram</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1a476c346c1e5bd0b845a836353a8ada0a" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>shaderProgram</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1af53b8f68e05237d4ec648d3fb3ae6f8e" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>terminate</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1ad461c434703498471b759d0790477907" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>unbind</name></member>
+      <member refid="classls_1_1draw_1_1shader_program_1afd3ce6cf2fe7a38154201325d57ceb53" prot="public" virt="non-virtual"><scope>ls::draw::shaderProgram</scope><name>~shaderProgram</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

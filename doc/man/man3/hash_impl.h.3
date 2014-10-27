@@ -1,0 +1,52 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::utils\fP"
+.br
+.ti -1c
+.RI " \fBls::utils::utilsImpl\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::hashDJB2_impl\fP (const char *str, unsigned int hashVal)"
+.br
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::hashDJB2\fP (const char *str)"
+.br
+.RI "\fIDJB2 Hashing Function This hash algorithm was found on here: http://nguillemot.blogspot.com/2012/06/side-story-compile-time-string-hashing.html\&. \fP"
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::hashSDBM_impl\fP (const char *str, unsigned int hashVal)"
+.br
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::hashSDBM\fP (const char *str)"
+.br
+.RI "\fISDBM Hashing Function This hash algorithm was found here: http://www.cse.yorku.ca/~oz/hash.html\&. \fP"
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::hashFNV1_impl\fP (const char *str, unsigned int hashVal)"
+.br
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::hashFNV1\fP (const char *str)"
+.br
+.RI "\fIFNV-1a Hashing Function This hash algorithm was found here: http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_hashing.aspx\&. \fP"
+.ti -1c
+.RI "constexpr hash_t \fBls::utils::crc32\fP (const char *str, hash_t prevCrc)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

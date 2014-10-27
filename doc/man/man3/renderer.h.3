@@ -1,0 +1,59 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <GL/glew\&.h>\fP
+.br
+\fC#include 'lightsky/draw/setup\&.h'\fP
+.br
+\fC#include 'lightsky/draw/color\&.h'\fP
+.br
+\fC#include 'lightsky/draw/display\&.h'\fP
+.br
+\fC#include 'lightsky/draw/generic/renderer_impl\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBls::draw::renderer\fP"
+.br
+.RI "\fIRenderer Object On desktop platforms, this object strictly represents an OpenGL 3\&.3 context\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::draw\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBls::draw::draw_mode_t\fP : int { \fBls::draw::DRAW_MODE_POINTS\fP = GL_POINTS, \fBls::draw::DRAW_MODE_LINE_STRIP\fP = GL_LINE_STRIP, \fBls::draw::DRAW_MODE_LINE_LOOP\fP = GL_LINE_LOOP, \fBls::draw::DRAW_MODE_LINES\fP = GL_LINES, \fBls::draw::DRAW_MODE_LINE_STRIP_ADJACENCY\fP = GL_LINE_STRIP_ADJACENCY, \fBls::draw::DRAW_MODE_LINES_ADJACENCY\fP = GL_LINES_ADJACENCY, \fBls::draw::DRAW_MODE_TRI_STRIP\fP = GL_TRIANGLE_STRIP, \fBls::draw::DRAW_MODE_TRI_FAN\fP = GL_TRIANGLE_FAN, \fBls::draw::DRAW_MODE_TRIS\fP = GL_TRIANGLES, \fBls::draw::DRAW_MODE_TRI_STRIP_ADJACENCY\fP = GL_TRIANGLE_STRIP_ADJACENCY, \fBls::draw::DRAW_MODE_TRIS_ADJACENCY\fP = GL_TRIANGLES_ADJACENCY, \fBls::draw::DRAW_MODE_DEFAULT\fP = DRAW_MODE_TRIS }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::winding_order_t\fP : int { \fBls::draw::WINDING_ORDER_CW\fP = GL_CW, \fBls::draw::WINDING_ORDER_CCW\fP = GL_CCW, \fBls::draw::WINDING_ORDER_DEFAULT\fP = GL_CCW }"
+.br
+.RI "\fIWinding order for polygons\&. This also helps determine which faces won't be rendered if face culling is 
+.SS "enabled\&. "
+\fP"
+.ti -1c
+.RI "enum \fBls::draw::face_cull_t\fP : int { \fBls::draw::FACE_CULL\fP = GL_CULL_FACE, \fBls::draw::FACE_CULL_FRONT\fP = GL_FRONT, \fBls::draw::FACE_CULL_BACK\fP = GL_BACK }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::render_test_t\fP : int { \fBls::draw::RENDER_TEST_DEPTH\fP = GL_DEPTH_TEST, \fBls::draw::RENDER_TEST_STENCIL\fP = GL_STENCIL_TEST }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

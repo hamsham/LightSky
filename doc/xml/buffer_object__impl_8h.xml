@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="buffer_object__impl_8h" kind="file">
+    <compoundname>bufferObject_impl.h</compoundname>
+    <includedby refid="buffer_object_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h</includedby>
+    <invincdepgraph>
+      <node id="810">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h</label>
+        <link refid="bufferObject_impl.h"/>
+        <childnode refid="811" relation="include">
+        </childnode>
+      </node>
+      <node id="813">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="814" relation="include">
+        </childnode>
+      </node>
+      <node id="818">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="822">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp</label>
+        <link refid="buffer_object_8cpp"/>
+      </node>
+      <node id="812">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="813" relation="include">
+        </childnode>
+      </node>
+      <node id="816">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="812" relation="include">
+        </childnode>
+        <childnode refid="817" relation="include">
+        </childnode>
+        <childnode refid="819" relation="include">
+        </childnode>
+      </node>
+      <node id="819">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="820">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="815">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="812" relation="include">
+        </childnode>
+        <childnode refid="816" relation="include">
+        </childnode>
+        <childnode refid="817" relation="include">
+        </childnode>
+        <childnode refid="820" relation="include">
+        </childnode>
+        <childnode refid="821" relation="include">
+        </childnode>
+      </node>
+      <node id="821">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="817">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="812" relation="include">
+        </childnode>
+        <childnode refid="818" relation="include">
+        </childnode>
+      </node>
+      <node id="814">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+      <node id="811">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h</label>
+        <link refid="buffer_object_8h"/>
+        <childnode refid="812" relation="include">
+        </childnode>
+        <childnode refid="815" relation="include">
+        </childnode>
+        <childnode refid="816" relation="include">
+        </childnode>
+        <childnode refid="822" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/>Constructor</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="9" refid="classls_1_1draw_1_1buffer_object_1aa1044ec86b5446467a7f3a9ee47279d2" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1buffer_object_1aa1044ec86b5446467a7f3a9ee47279d2" kindref="member">bufferObject&lt;bufferType&gt;::bufferObject</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/><sp/><sp/>Move<sp/>Constructor</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="16" refid="classls_1_1draw_1_1buffer_object_1a769df87897d1e650610d796a3588834a" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1buffer_object_1aa1044ec86b5446467a7f3a9ee47279d2" kindref="member">bufferObject&lt;bufferType&gt;::bufferObject</ref>(<ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref>&amp;&amp;<sp/>vb)<sp/>:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>vbo{vb.vbo}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>vb.vbo<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/><sp/><sp/>Destructor</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="26" refid="classls_1_1draw_1_1buffer_object_1a20493e0d083287a2c508e1a7f01345d5" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1buffer_object_1a20493e0d083287a2c508e1a7f01345d5" kindref="member">bufferObject&lt;bufferType&gt;::~bufferObject</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1game_1_1global_1ab8f47dd33802e1a54168950a9e51e3c3" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/><sp/>Move<sp/>Operator</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="34" refid="classls_1_1draw_1_1buffer_object_1a6b71092313d6c047d7713126a51a8111" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject&lt;bufferType&gt;</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1buffer_object_1a4aec10a7dae95aa744e5a7d63acc522a" kindref="member">bufferObject&lt;bufferType&gt;::operator=</ref>(<ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref>&amp;&amp;<sp/>vb)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>vbo<sp/>=<sp/>vb.vbo;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>vb.vbo<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/>Buffer<sp/>initialization</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="44" refid="classls_1_1draw_1_1buffer_object_1a355121c4dda50eb6c7971883ba1949a8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1a355121c4dda50eb6c7971883ba1949a8" kindref="member">bufferObject&lt;bufferType&gt;::init</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!vbo)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGenBuffers(1,<sp/>&amp;vbo);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vbo<sp/>!=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/>Terminate<sp/>the<sp/>vertex<sp/>buffer<sp/>and<sp/>release<sp/>all<sp/>of<sp/>its<sp/>resources<sp/>back<sp/>to</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>the<sp/>GPU.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="56" refid="classls_1_1draw_1_1buffer_object_1a04f3618de09080970c9ba60bc2b4c05c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1a04f3618de09080970c9ba60bc2b4c05c" kindref="member">bufferObject&lt;bufferType&gt;::terminate</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>glDeleteBuffers(1,<sp/>&amp;vbo);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>vbo<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>Get<sp/>the<sp/>GPU-assigned<sp/>handle<sp/>of<sp/>this<sp/>buffer<sp/>object</highlight></codeline>
+<codeline lineno="63"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="65" refid="classls_1_1draw_1_1buffer_object_1a9a0f393fd391fc2648a2633cce129945" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1a9a0f393fd391fc2648a2633cce129945" kindref="member">bufferObject&lt;bufferType&gt;::getId</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vbo;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>Determine<sp/>if<sp/>there<sp/>is<sp/>data<sp/>used<sp/>by<sp/>this<sp/>object</highlight></codeline>
+<codeline lineno="71"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="73" refid="classls_1_1draw_1_1buffer_object_1a379b46e692c700340c1302a22904c33f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1a379b46e692c700340c1302a22904c33f" kindref="member">bufferObject&lt;bufferType&gt;::isValid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vbo<sp/>!=<sp/>0;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/>Bind<sp/>this<sp/>vertex<sp/>buffer<sp/>to<sp/>the<sp/>current<sp/>global<sp/>rendering<sp/>context.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="81" refid="classls_1_1draw_1_1buffer_object_1a1bf8ba61333d9b32446c398727a35e99" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1a1bf8ba61333d9b32446c398727a35e99" kindref="member">bufferObject&lt;bufferType&gt;::bind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(bufferType,<sp/>vbo);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/>Unbind<sp/>this<sp/>vertex<sp/>buffer<sp/>object<sp/>from<sp/>the<sp/>current<sp/>render<sp/>context.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="89" refid="classls_1_1draw_1_1buffer_object_1ac01383ce0db1c576bb5e3f2bc6df61e8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1ac01383ce0db1c576bb5e3f2bc6df61e8" kindref="member">bufferObject&lt;bufferType&gt;::unbind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(bufferType,<sp/>0);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/>Set<sp/>the<sp/>data<sp/>within<sp/>the<sp/>buffer<sp/>to<sp/>whatever<sp/>is<sp/>set<sp/>at<sp/>&quot;pData.&quot;</highlight></codeline>
+<codeline lineno="95"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="97" refid="classls_1_1draw_1_1buffer_object_1a264695c4238eb4aeb39b1d5fcf113938" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1a264695c4238eb4aeb39b1d5fcf113938" kindref="member">bufferObject&lt;bufferType&gt;::setData</ref>(</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>size,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pData,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5" kindref="member">buffer_usage_t</ref></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>usage</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferData(bufferType,<sp/>size,<sp/>pData,<sp/>usage);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/>Modify<sp/>the<sp/>data<sp/>within<sp/>a<sp/>buffer<sp/>to<sp/>contain<sp/>whatever<sp/>is<sp/>in<sp/>&quot;pData.&quot;</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/>at<sp/>an<sp/>offset<sp/>of<sp/>a<sp/>specified<sp/>amount<sp/>of<sp/>bytes.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="111" refid="classls_1_1draw_1_1buffer_object_1ad085726a023b94b5e74aeb22f06541ae" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1ad085726a023b94b5e74aeb22f06541ae" kindref="member">bufferObject&lt;bufferType&gt;::setSubData</ref>(</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>offset,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>size,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pData</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferSubData(bufferType,<sp/>offset,<sp/>size,<sp/>pData);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/>Map<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>buffer<sp/>into<sp/>memory<sp/>in<sp/>order<sp/>to<sp/>perform<sp/>a<sp/>DMA</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/>transfer<sp/>of<sp/>data<sp/>to<sp/>the<sp/>GPU.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="124" refid="classls_1_1draw_1_1buffer_object_1ae3ec213c3be4d626f40efe922974024d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classls_1_1draw_1_1buffer_object_1ae3ec213c3be4d626f40efe922974024d" kindref="member">bufferObject&lt;bufferType&gt;::mapData</ref>(</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>offset,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>range,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6db" kindref="member">buffer_access_t</ref><sp/>access</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>glMapBufferRange(bufferType,<sp/>offset,<sp/>range,<sp/>access);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/>Notify<sp/>the<sp/>GPU<sp/>that<sp/>all<sp/>data<sp/>has<sp/>been<sp/>uploaded<sp/>to<sp/>the<sp/>requested</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>location<sp/>in<sp/>memory<sp/>and<sp/>that<sp/>the<sp/>DMA<sp/>transfer<sp/>can<sp/>now<sp/>be<sp/>performed.</highlight></codeline>
+<codeline lineno="135"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;buffer_t<sp/>bufferType&gt;</highlight></codeline>
+<codeline lineno="137" refid="classls_1_1draw_1_1buffer_object_1aa2bf4a8eeaab9417e7c468ff00adafa0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1buffer_object_1aa2bf4a8eeaab9417e7c468ff00adafa0" kindref="member">bufferObject&lt;bufferType&gt;::unmapData</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>glUnmapBuffer(bufferType);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h"/>
+  </compounddef>
+</doxygen>

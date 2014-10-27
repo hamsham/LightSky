@@ -1,0 +1,275 @@
+.TH "ls::draw::display" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::display \- 
+.PP
+Display Class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <display\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBdisplay\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBdisplay\fP (const \fBdisplay\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBdisplay\fP (\fBdisplay\fP &&d)"
+.br
+.RI "\fIMove operator\&. \fP"
+.ti -1c
+.RI "\fB~display\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBdisplay\fP & \fBoperator=\fP (const \fBdisplay\fP &d)=delete"
+.br
+.ti -1c
+.RI "\fBdisplay\fP & \fBoperator=\fP (\fBdisplay\fP &&d)"
+.br
+.RI "\fIMove operator\&. \fP"
+.ti -1c
+.RI "bool \fBinit\fP (void *const hwnd)"
+.br
+.ti -1c
+.RI "bool \fBinit\fP (const math::vec2i inResolution, bool isFullScreen=false)"
+.br
+.ti -1c
+.RI "void \fBterminate\fP ()"
+.br
+.ti -1c
+.RI "const math::vec2i \fBgetResolution\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetResolution\fP (const math::vec2i inResolution)"
+.br
+.ti -1c
+.RI "void \fBsetFullScreenState\fP (bool fs)"
+.br
+.ti -1c
+.RI "bool \fBgetFullScreenState\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetFullScreenMode\fP (\fBfullscreen_t\fP fs=\fBFULLSCREEN_DEFAULT\fP)"
+.br
+.ti -1c
+.RI "\fBfullscreen_t\fP \fBgetFullScreenMode\fP () const "
+.br
+.ti -1c
+.RI "bool \fBisRunning\fP () const "
+.br
+.ti -1c
+.RI "SDL_Window * \fBgetWindow\fP () const "
+.br
+.ti -1c
+.RI "bool \fBusingNativeWindow\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Display Class\&. 
+
+
+.PP
+ This class is responsible for Opening an OpenGL 3\&.3-compatible device context (a window within the OS)\&. It contains the object responsible for 
+.SS "rendering or drawing in OpenGL\&. "
+
+.PP
+Definition at line 53 of file display\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::draw::display::display ()"
+
+.PP
+Constructor\&. 
+.PP
+Definition at line 52 of file display\&.cpp\&.
+.SS "ls::draw::display::display (const \fBdisplay\fP &)\fC [delete]\fP"
+Copy Constructor - DELETED 
+.SS "ls::draw::display::display (\fBdisplay\fP &&d)"
+
+.PP
+Move operator\&. Moves all members from the input parameter into *this\&. No copies are performed\&. Any existing window handles will be invalidated\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP An r-value reference to another display object that *this will take ownership of\&. 
+.RE
+.PP
+
+.PP
+Definition at line 59 of file display\&.cpp\&.
+.SS "ls::draw::display::~display ()"
+
+.PP
+Destructor\&. Closes the window and frees all resources used by *this\&. 
+.PP
+Definition at line 83 of file display\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBfullscreen_t\fP ls::draw::display::getFullScreenMode () const"
+Get the current fullscreen-handling method\&.
+.PP
+\fBReturns:\fP
+.RS 4
+fullscreen_t 
+.RE
+.PP
+
+.PP
+Definition at line 264 of file display\&.cpp\&.
+.SS "bool ls::draw::display::getFullScreenState () const"
+Determine if the current display is in fullscreen mode\&.
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if the display is in fullscreen mode, FALSE if not\&. 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file display\&.cpp\&.
+.SS "const math::vec2i ls::draw::display::getResolution () const"
+Get the resolution, in pixels, of the display referenced by *this\&.
+.PP
+\fBReturns:\fP
+.RS 4
+math::vec2i 
+.RE
+.PP
+
+.PP
+Definition at line 204 of file display\&.cpp\&.
+.SS "SDL_Window * ls::draw::display::getWindow () const"
+Get a handle to the SDL_Window responsible for the window that this object references\&.
+.PP
+\fBReturns:\fP
+.RS 4
+SDL_Window\&. 
+.RE
+.PP
+
+.PP
+Definition at line 275 of file display\&.cpp\&.
+.SS "bool ls::draw::display::init (void *consthwnd)"
+Create an display object from a native OS hardware handle\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhwnd\fP A pointer to the operating systen's native window type\&.
+.br
+\fIisFullScreen\fP Determine if the window should be made full-screen\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool TRUE if a window could be successfully created, or FALSE if otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file display\&.cpp\&.
+.SS "bool ls::draw::display::init (const math::vec2iinResolution, boolisFullScreen = \fCfalse\fP)"
+Initialize/Open a window within the OS\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinResolution\fP The desired window resolution, in pixels\&.
+.br
+\fIisFullScreen\fP Determine if the window should be made full-screen\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if the display initialized properly, FALSE is not\&. 
+.RE
+.PP
+
+.PP
+Definition at line 150 of file display\&.cpp\&.
+.SS "bool ls::draw::display::isRunning () const\fC [inline]\fP"
+Determine if this object holds a handle to an open window\&.
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if a window is open, FALSE if not\&. 
+.RE
+.PP
+
+.PP
+Definition at line 8 of file display_impl\&.h\&.
+.SS "\fBdisplay\fP& ls::draw::display::operator= (const \fBdisplay\fP &d)\fC [delete]\fP"
+Copy Operator - DELETED 
+.SS "\fBdisplay\fP & ls::draw::display::operator= (\fBdisplay\fP &&d)"
+
+.PP
+Move operator\&. Moves all members from the input parameter into *this\&. No copies are performed\&. Any existing window handles will be invalidated\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP An r-value reference to another display object that *this will take ownership of\&. 
+.RE
+.PP
+
+.PP
+Definition at line 70 of file display\&.cpp\&.
+.SS "void ls::draw::display::setFullScreenMode (\fBfullscreen_t\fPfs = \fC\fBFULLSCREEN_DEFAULT\fP\fP)"
+Set how the window should handle the full resolution of the current display\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfs\fP Set to FULLSCREEN_DISPLAY in order to use the default fullscreen mode, or use FULLSCREEN_WINDOW in order to make the window become borderless and use the entire available resolution\&. 
+.RE
+.PP
+
+.PP
+Definition at line 243 of file display\&.cpp\&.
+.SS "void ls::draw::display::setFullScreenState (boolfs)"
+Set whether or not this display should be made fullscreen\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfs\fP TRUE to enable a fullscreen window, FALSE to reduce the display down to a simple window\&. 
+.RE
+.PP
+
+.PP
+Definition at line 220 of file display\&.cpp\&.
+.SS "void ls::draw::display::setResolution (const math::vec2iinResolution)"
+Set the resolution, in pixels, that this display should be\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinResolution\fP A new resolution, contained within a 2d integral vector, represented in pixels\&. 
+.RE
+.PP
+
+.PP
+Definition at line 213 of file display\&.cpp\&.
+.SS "void ls::draw::display::terminate ()"
+Close the window and free all memory/resources used by *this\&. 
+.PP
+Definition at line 192 of file display\&.cpp\&.
+.SS "bool ls::draw::display::usingNativeWindow () const\fC [inline]\fP"
+Determine if the current display is using a native window handle\&.
+.PP
+\fBReturns:\fP
+.RS 4
+bool TRUE if this display was created using a previously existing OS window handle, or FALSE if the display was created using an internal method\&. 
+.RE
+.PP
+
+.PP
+Definition at line 15 of file display_impl\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

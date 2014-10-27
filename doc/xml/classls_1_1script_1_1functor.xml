@@ -1,0 +1,737 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1script_1_1functor" kind="class" prot="public" abstract="yes">
+    <compoundname>ls::script::functor</compoundname>
+    <basecompoundref refid="classls_1_1script_1_1scriptable" prot="public" virt="non-virtual">ls::script::scriptable</basecompoundref>
+    <derivedcompoundref refid="classls_1_1script_1_1functor__t" prot="public" virt="non-virtual">ls::script::functor_t&lt; hashId, args_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4" prot="public" virt="non-virtual">ls::script::functor_t&lt; hashId, void &gt;</derivedcompoundref>
+    <includes refid="functor_8h" local="no">functor.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classls_1_1script_1_1functor_1acbfe9e8f75165199dbb1f844889420d8" prot="protected" static="no" mutable="no">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> *</type>
+        <definition>functor* ls::script::functor::nextFunc</definition>
+        <argsstring></argsstring>
+        <name>nextFunc</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>the &apos;nextFunc&apos; member is a pointer to another function that can be run after *this. </para>        </briefdescription>
+        <detaileddescription>
+<para>This member allows functions to be chained together at runtime, creating a linked-list of functions. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="124" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1script_1_1functor_1a617aa828e6583631566752ed312e12e8" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref></type>
+        <definition>const func_ref_t ls::script::functor::pFunction</definition>
+        <argsstring></argsstring>
+        <name>pFunction</name>
+        <briefdescription>
+<para>&apos;pFunction&apos; is a reference to a native function wrapper. </para>        </briefdescription>
+        <detaileddescription>
+<para>This member references a wrapper function which takes an array of script variables as parameters. Use the wrapper function to map argument parameters to actual, native parameters and a return value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="134" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1script_1_1functor_1ae941567add854b32d89c3100200a3da0" prot="protected" static="no" mutable="no">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> **const</type>
+        <definition>variable** const ls::script::functor::pArgs</definition>
+        <argsstring></argsstring>
+        <name>pArgs</name>
+        <briefdescription>
+<para>An array of pointers to variables. </para>        </briefdescription>
+        <detaileddescription>
+<para>Retaining an array of argument pointers allows variables to be mapped to functors at run-time. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="142" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a987920da0ac130e7ef4886244da54462" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool ls::script::functor::checkSingleArg</definition>
+        <argsstring>(const functor &amp;f, unsigned i, arg_t *t)</argsstring>
+        <name>checkSingleArg</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>arg_t *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>A verification method for single arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is similar to the &apos;compile&apos; method, but allows one to check a single functor argument and verify that it is safe to operate at run-time. This is explicitly called for each argument when calling the &apos;<ref refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" kindref="member">compile()</ref>&apos; method.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>g</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a functor object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the argument in &apos;f&apos; to verify.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A dummy type which allows argument type information to be matched against something.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the argument in &apos;f&apos;, specified by &apos;i&apos;, is able to be used, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="64" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="54" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a8941b6c017a655154efe36670588bb62" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>args_t</declname>
+            <defname>args_t</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>static bool ls::script::functor::checkArgs</definition>
+        <argsstring>(const functor &amp;f, unsigned i, arg_t *t, args_t *...ts)</argsstring>
+        <name>checkArgs</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>arg_t *</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>args_t *...</type>
+          <declname>ts</declname>
+        </param>
+        <briefdescription>
+<para>A verification method for single arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is similar to the &apos;compile&apos; method, but allows one to check a single functor argument and verify that it is safe to operate at run-time. This is explicitly called for each argument when calling the &apos;<ref refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" kindref="member">compile()</ref>&apos; method.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>g</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a functor object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the argument in &apos;f&apos; to verify.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A dummy type which allows argument type information to be matched against something.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Addition types for subsequent argument matching.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the argument in &apos;f&apos;, specified by &apos;i&apos;, is able to be used, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a28e482e376b79bd66a2d4555065b78fa" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool ls::script::functor::checkArgs</definition>
+        <argsstring>(const functor &amp;f, unsigned i, arg_t *t)</argsstring>
+        <name>checkArgs</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>arg_t *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>A verification method for single arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is similar to the &apos;compile&apos; method, but allows one to check a single functor argument and verify that it is safe to operate at run-time. This is explicitly called for each argument when calling the &apos;<ref refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" kindref="member">compile()</ref>&apos; method.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>g</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a functor object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the argument in &apos;f&apos; to verify.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A dummy type which allows argument type information to be matched against something.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the argument in &apos;f&apos;, specified by &apos;i&apos;, is able to be used, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="115" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="107" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a3c6f0053bd2205db6fa764b4ad747b46" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::functor::functor</definition>
+        <argsstring>(variable **const pArguments, const func_ref_t pFunc)</argsstring>
+        <name>functor</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> **const</type>
+          <declname>pArguments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref></type>
+          <declname>pFunc</declname>
+        </param>
+        <briefdescription>
+<para>Protected Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This constructor MUST be called by any derived functor constructors in order to properly initialize *this and all members contained in *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="151" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="27" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1ae00c4fbeafb2768e853d2a5c30224de0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ls::script::functor::~functor</definition>
+        <argsstring>()=0</argsstring>
+        <name>~functor</name>
+        <briefdescription>
+<para>Destructor Frees all resources used by *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="158" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="21" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1ad26e83423084b818c23a309dbee38de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::functor::functor</definition>
+        <argsstring>()=delete</argsstring>
+        <name>functor</name>
+        <briefdescription>
+<para>Basic constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This constructor has been deleted due to the need for construction of protected members by derived classes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="166" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1af7dd673af12b19cd6b9ce9ae5f1fe4c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::functor::functor</definition>
+        <argsstring>(const functor &amp;f)=delete</argsstring>
+        <name>functor</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Copy Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This constructor has been deleted due to the need for construction of protected members by derived classes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="174" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1af05cc14d2af4787968ca11b20e0f853d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::functor::functor</definition>
+        <argsstring>(functor &amp;&amp;f)=delete</argsstring>
+        <name>functor</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This constructor has been deleted due to the need for construction of protected members by derived classes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="182" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+        <definition>functor &amp; ls::script::functor::operator=</definition>
+        <argsstring>(const functor &amp;f)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Copy Assignment. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies pointers of arguments from the input parameter into *this. Remember to compile *this after a copy is performed in order to ensure program stability.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a functor object with the same signature as *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="197" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="37" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a1e9ef5080b2e94cf64c93934520c4232" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+        <definition>functor &amp; ls::script::functor::operator=</definition>
+        <argsstring>(functor &amp;&amp;f)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Move Assignment. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves pointers of arguments from the input parameter into *this. Remember to compile *this after a move is performed in order to ensure program stability.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a functor object with the same signature as *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="212" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="51" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a060497e0e2440b8e808dca09cd3ef00d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> *</type>
+        <definition>functor * ls::script::functor::getNextFunc</definition>
+        <argsstring>()</argsstring>
+        <name>getNextFunc</name>
+        <briefdescription>
+<para>Get the function that has been assigned to run after *this. </para>        </briefdescription>
+        <detaileddescription>
+<para>Functors in the scripting system are linked to each other by pointers. When another function is assigned as the &apos;next&apos; functor, then it will run after *this one has completed.</para><para><simplesect kind="return"><para>a pointer to the functor object which has been assigned to run after *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="224" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1af6ba6622fdf347e7db2760ee30e7556f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::script::functor::setNextFunc</definition>
+        <argsstring>(functor *const f)</argsstring>
+        <name>setNextFunc</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> *const</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Assign a functor to run after *this. </para>        </briefdescription>
+        <detaileddescription>
+<para>Functors in the scripting system are linked to each other by pointers. When another function is assigned as the &apos;next&apos; functor, then it will run after *this one has completed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a functor object. If the input parameter is NULL, then the function sequence will halt after this functor has completed its &apos;<ref refid="classls_1_1script_1_1functor_1a7598508969b165e43cf0b59d604a9e96" kindref="member">run()</ref>&apos; method. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="238" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1ac47c53ecc1323ad42a22bc1d822ca7ad" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1a" kindref="member">script_base_t</ref></type>
+        <definition>script_base_t ls::script::functor::getScriptType</definition>
+        <argsstring>() const final</argsstring>
+        <name>getScriptType</name>
+        <reimplements refid="classls_1_1script_1_1scriptable_1ae53e220ec8827ca3c71e07a78908f03c">getScriptType</reimplements>
+        <briefdescription>
+<para>Get *this object&apos;s scriptable type. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1aae04b2be0a46321b419482976b06a28ac" kindref="member">script_base_t::SCRIPT_FUNC</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="245" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a4c872e2fd539ac19f8059714c263e30b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>hash_t</type>
+        <definition>virtual hash_t ls::script::functor::getScriptSubType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScriptSubType</name>
+        <reimplements refid="classls_1_1script_1_1scriptable_1ad3f9203567b786571ea408e5dbf556e9">getScriptSubType</reimplements>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a1a794cef9de1a011b506d9e651355c42">getScriptSubType</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a7815911fbd19d04dd799efb38d381829">getScriptSubType</reimplementedby>
+        <briefdescription>
+<para>Get the run-time-type information of *this functor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method will return a hash-code, indicating what type of functor *this is. The has code is unique to types of functors, not individual functor objects. This hash code is used by the global script factories in order to generate a functor at run-time.</para><para><simplesect kind="return"><para>hash_t A hash-code that will identify the RTTI information of *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="258" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1add592ec77ef606c708a43ae5191f45e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>unsigned</type>
+        <definition>virtual unsigned ls::script::functor::getNumArgs</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getNumArgs</name>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a7c46627a05c0db60f0eda54ef697c709">getNumArgs</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a43539fe25b3d5743528e6fc95eefe3ff">getNumArgs</reimplementedby>
+        <briefdescription>
+<para>Retrieve the number of arguments required to run *this. </para>        </briefdescription>
+        <detaileddescription>
+<para>The number of arguments to the functor is not always the same number of arguments that *this functor&apos;s native function needs. Functor arguments can be mapped to return values, or to sequences of internal functions. It is up to the definition code to determine where functor arguments are mapped.</para><para><simplesect kind="return"><para>An unsigned integral type, indicating how many arguments *this functor needs to run. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="272" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a618828b53466cb566e4b3021731cc365" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> *</type>
+        <definition>variable * ls::script::functor::getArg</definition>
+        <argsstring>(unsigned index) const </argsstring>
+        <name>getArg</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve an arguments from *this. </para>        </briefdescription>
+        <detaileddescription>
+<para>The number of arguments to the functor is not always the same number of arguments that *this functor&apos;s native function needs. Functor arguments can be mapped to return values, or to sequences of internal functions. It is up to the definition code to determine where functor arguments are mapped.</para><para><simplesect kind="return"><para>A pointer to an internal variable that will be used to run *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="286" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1abaffa911b2d74b755f817fe7090b82b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::script::functor::setArg</definition>
+        <argsstring>(unsigned index, variable *v)</argsstring>
+        <name>setArg</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> *</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Assign a variable to be functor argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>The number of arguments to the functor is not always the same number of arguments that *this functor&apos;s native function needs. Functor arguments can be mapped to return values, or to sequences of internal functions. It is up to the definition code to determine where functor arguments are mapped.</para><para><simplesect kind="note"><para>Always remember to recompile your functors after manipulating functor arguments to ensure they don&apos;t crash at run-time. The scripting system provides the means to verify type information but does not perform these checks for you.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to an variable object that will be used to run *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="306" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1affeea1a5c68be54375de86a3d93ec99e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ls::script::functor::load</definition>
+        <argsstring>(std::istream &amp;istr, varLoaderMap &amp;vlm, funcLoaderMap &amp;flm)</argsstring>
+        <name>load</name>
+        <reimplements refid="classls_1_1script_1_1scriptable_1a056218abb0bbf49aa175a20c9e5feb32">load</reimplements>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a9750105d975196ff332133c856f9dfb1">load</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a4e39c884f5aaa7c4c6f662945c1cd429">load</reimplementedby>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>istr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" kindref="member">varLoaderMap</ref> &amp;</type>
+          <declname>vlm</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" kindref="member">funcLoaderMap</ref> &amp;</type>
+          <declname>flm</declname>
+        </param>
+        <briefdescription>
+<para>Load functor data from an std::istream. </para>        </briefdescription>
+        <detaileddescription>
+<para>A serialization method to will help reload data from a standard input stream. This method uses the overloaded input stream operator &apos;std::istream::operator&gt;&gt; (T)&apos; in order to load functor data into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>istr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a std::istream object which contains functor data to be loaded into *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vlm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variable-loading factory that will be used to map variable data from the input stream into *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A function-loading factory that will be used to map functor data from the input stream into *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a boolean value that will determine if data was successfully loaded into *this (TRUE) or not (FALSE). </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="331" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="68" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a912026d4acf2de9d1e647afb11e881b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ls::script::functor::save</definition>
+        <argsstring>(std::ostream &amp;ostr) const </argsstring>
+        <name>save</name>
+        <reimplements refid="classls_1_1script_1_1scriptable_1adf72ecdf5afee754bb57642f4220585c">save</reimplements>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1a1f2609b0c5207e65c06ab7690f5ee206">save</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a722036b4ec6ba3e47331958afb416040">save</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>ostr</declname>
+        </param>
+        <briefdescription>
+<para>Save all data from *this into an std::ostream. </para>        </briefdescription>
+        <detaileddescription>
+<para>In this instance, functors, references to other functors, and variables are all saved using RTTI information. Scriptable objects are not saved, just their type-info. All data is mapped to/from the &apos;loaderMap&apos; objects in order to ensure cross-references are maintained when reloaded from an input stream.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ostr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to an std::ostream object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="345" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="87" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ls::script::functor::compile</definition>
+        <argsstring>()=0</argsstring>
+        <name>compile</name>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_1aec1084fc2df539f699310246317b4b46">compile</reimplementedby>
+        <reimplementedby refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4_1a533ac1076440101169868d933a37e3d2">compile</reimplementedby>
+        <briefdescription>
+<para>Compile/Verify function arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method ensures that a functor is safe to operate at run-time. It uses custom RTTI information, combined with derived-type&apos;s template parameters to ensure that the proper arguments are placed in the correct order at run-time.</para><para><simplesect kind="note"><para>Because the scripting system does not manage the order in which you actually use arguments, please ensure that your functor-mapping code is consistent with the derived functor&apos;s template parameters.</para></simplesect>
+<simplesect kind="return"><para>TRUE if a functor managed to compile correctly, FALSE if not. If this function returns false, please check std::cerr for information on what went wrong. This will be changed in the future in order to provide more convenient error tracking. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="365" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1a7598508969b165e43cf0b59d604a9e96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::script::functor::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <briefdescription>
+<para>Run a functor at run-time. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="370" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1functor_1acfec7ad11fcb55d1f3ee340ad90defda" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename arg_t</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>args_t</declname>
+            <defname>args_t</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool ls::script::functor::checkArgs</definition>
+        <argsstring>(const functor &amp;f, unsigned i, arg_t *t, args_t *...)</argsstring>
+        <name>checkArgs</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>arg_t *</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>args_t *</type>
+          <declname>...</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" line="98" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/functor_impl.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Functor Base Class. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ The functor base class is constructed with a reference to a native C/C++ function. It contains methods to store and load its parameters from a <heading level="2">script file, self-compile, and change its arguments at runtime. </heading>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="34">
+        <label>ls::script::functor</label>
+        <link refid="classls_1_1script_1_1functor"/>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>ls::script::functor_t&lt; hashId, void &gt;</label>
+        <link refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>ls::script::functor_t&lt; hashId, args_t &gt;</label>
+        <link refid="classls_1_1script_1_1functor__t"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>ls::script::scriptable</label>
+        <link refid="classls_1_1script_1_1scriptable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="38">
+        <label>ls::script::functor</label>
+        <link refid="classls_1_1script_1_1functor"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+        <childnode refid="40" relation="usage">
+          <edgelabel>pArgs</edgelabel>
+        </childnode>
+        <childnode refid="38" relation="usage">
+          <edgelabel>nextFunc</edgelabel>
+        </childnode>
+      </node>
+      <node id="40">
+        <label>ls::script::variable</label>
+        <link refid="classls_1_1script_1_1variable"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>ls::script::scriptable</label>
+        <link refid="classls_1_1script_1_1scriptable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="40" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="40" bodyend="371"/>
+    <listofallmembers>
+      <member refid="classls_1_1script_1_1functor_1a8941b6c017a655154efe36670588bb62" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>checkArgs</name></member>
+      <member refid="classls_1_1script_1_1functor_1a28e482e376b79bd66a2d4555065b78fa" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>checkArgs</name></member>
+      <member refid="classls_1_1script_1_1functor_1acfec7ad11fcb55d1f3ee340ad90defda" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>checkArgs</name></member>
+      <member refid="classls_1_1script_1_1functor_1a987920da0ac130e7ef4886244da54462" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>checkSingleArg</name></member>
+      <member refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" prot="public" virt="pure-virtual"><scope>ls::script::functor</scope><name>compile</name></member>
+      <member refid="classls_1_1script_1_1functor_1a3c6f0053bd2205db6fa764b4ad747b46" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>functor</name></member>
+      <member refid="classls_1_1script_1_1functor_1ad26e83423084b818c23a309dbee38de9" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>functor</name></member>
+      <member refid="classls_1_1script_1_1functor_1af7dd673af12b19cd6b9ce9ae5f1fe4c6" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>functor</name></member>
+      <member refid="classls_1_1script_1_1functor_1af05cc14d2af4787968ca11b20e0f853d" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>functor</name></member>
+      <member refid="classls_1_1script_1_1functor_1a618828b53466cb566e4b3021731cc365" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>getArg</name></member>
+      <member refid="classls_1_1script_1_1functor_1a060497e0e2440b8e808dca09cd3ef00d" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>getNextFunc</name></member>
+      <member refid="classls_1_1script_1_1functor_1add592ec77ef606c708a43ae5191f45e3" prot="public" virt="pure-virtual"><scope>ls::script::functor</scope><name>getNumArgs</name></member>
+      <member refid="classls_1_1script_1_1functor_1a4c872e2fd539ac19f8059714c263e30b" prot="public" virt="pure-virtual"><scope>ls::script::functor</scope><name>getScriptSubType</name></member>
+      <member refid="classls_1_1script_1_1functor_1ac47c53ecc1323ad42a22bc1d822ca7ad" prot="public" virt="virtual"><scope>ls::script::functor</scope><name>getScriptType</name></member>
+      <member refid="classls_1_1script_1_1functor_1affeea1a5c68be54375de86a3d93ec99e" prot="public" virt="virtual"><scope>ls::script::functor</scope><name>load</name></member>
+      <member refid="classls_1_1script_1_1functor_1acbfe9e8f75165199dbb1f844889420d8" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>nextFunc</name></member>
+      <member refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1functor_1a1e9ef5080b2e94cf64c93934520c4232" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a0a44fbbc1ef4ebb824a82163257cc490" prot="public" virt="non-virtual" ambiguityscope="ls::script::scriptable::"><scope>ls::script::functor</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1ae5ab31974a89ab5b3ce4e5b4c3d51591" prot="public" virt="non-virtual" ambiguityscope="ls::script::scriptable::"><scope>ls::script::functor</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1functor_1ae941567add854b32d89c3100200a3da0" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>pArgs</name></member>
+      <member refid="classls_1_1script_1_1functor_1a617aa828e6583631566752ed312e12e8" prot="protected" virt="non-virtual"><scope>ls::script::functor</scope><name>pFunction</name></member>
+      <member refid="classls_1_1script_1_1functor_1a7598508969b165e43cf0b59d604a9e96" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>run</name></member>
+      <member refid="classls_1_1script_1_1functor_1a912026d4acf2de9d1e647afb11e881b1" prot="public" virt="virtual"><scope>ls::script::functor</scope><name>save</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a99f50f8744279cbbd954c124b3dbb9f9" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a7838ffef45488993cbd83305ac2a121b" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1functor_1abaffa911b2d74b755f817fe7090b82b6" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>setArg</name></member>
+      <member refid="classls_1_1script_1_1functor_1af6ba6622fdf347e7db2760ee30e7556f" prot="public" virt="non-virtual"><scope>ls::script::functor</scope><name>setNextFunc</name></member>
+      <member refid="classls_1_1script_1_1functor_1ae00c4fbeafb2768e853d2a5c30224de0" prot="public" virt="pure-virtual"><scope>ls::script::functor</scope><name>~functor</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a7ac9302b44878e7e1ed78400e3651cde" prot="public" virt="pure-virtual"><scope>ls::script::functor</scope><name>~scriptable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

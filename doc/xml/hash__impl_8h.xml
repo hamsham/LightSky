@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="hash__impl_8h" kind="file">
+    <compoundname>hash_impl.h</compoundname>
+    <includedby refid="hash_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/hash.h</includedby>
+    <invincdepgraph>
+      <node id="7639">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/setup.cpp</label>
+        <link refid="draw_2src_2setup_8cpp"/>
+      </node>
+      <node id="7588">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="7589" relation="include">
+        </childnode>
+        <childnode refid="7641" relation="include">
+        </childnode>
+        <childnode refid="7642" relation="include">
+        </childnode>
+        <childnode refid="7649" relation="include">
+        </childnode>
+        <childnode refid="7653" relation="include">
+        </childnode>
+      </node>
+      <node id="7604">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp</label>
+        <link refid="bounding_box_8cpp"/>
+      </node>
+      <node id="7638">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp</label>
+        <link refid="shader_object_8cpp"/>
+      </node>
+      <node id="7635">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h</label>
+        <link refid="shader_object_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7636" relation="include">
+        </childnode>
+        <childnode refid="7638" relation="include">
+        </childnode>
+      </node>
+      <node id="7614">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp</label>
+        <link refid="atlas_8cpp"/>
+      </node>
+      <node id="7640">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h</label>
+        <link refid="vertex_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7596" relation="include">
+        </childnode>
+        <childnode refid="7603" relation="include">
+        </childnode>
+        <childnode refid="7600" relation="include">
+        </childnode>
+      </node>
+      <node id="7590">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h</label>
+        <link refid="blend_object_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7594" relation="include">
+        </childnode>
+      </node>
+      <node id="7653">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="7592" relation="include">
+        </childnode>
+      </node>
+      <node id="7592">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="7593" relation="include">
+        </childnode>
+      </node>
+      <node id="7589">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="7590" relation="include">
+        </childnode>
+        <childnode refid="7595" relation="include">
+        </childnode>
+        <childnode refid="7605" relation="include">
+        </childnode>
+        <childnode refid="7607" relation="include">
+        </childnode>
+        <childnode refid="7608" relation="include">
+        </childnode>
+        <childnode refid="7621" relation="include">
+        </childnode>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7629" relation="include">
+        </childnode>
+        <childnode refid="7615" relation="include">
+        </childnode>
+        <childnode refid="7631" relation="include">
+        </childnode>
+        <childnode refid="7610" relation="include">
+        </childnode>
+        <childnode refid="7633" relation="include">
+        </childnode>
+        <childnode refid="7596" relation="include">
+        </childnode>
+        <childnode refid="7603" relation="include">
+        </childnode>
+        <childnode refid="7618" relation="include">
+        </childnode>
+        <childnode refid="7598" relation="include">
+        </childnode>
+        <childnode refid="7635" relation="include">
+        </childnode>
+        <childnode refid="7636" relation="include">
+        </childnode>
+        <childnode refid="7619" relation="include">
+        </childnode>
+        <childnode refid="7616" relation="include">
+        </childnode>
+        <childnode refid="7639" relation="include">
+        </childnode>
+        <childnode refid="7612" relation="include">
+        </childnode>
+        <childnode refid="7640" relation="include">
+        </childnode>
+      </node>
+      <node id="7622">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7619" relation="include">
+        </childnode>
+        <childnode refid="7623" relation="include">
+        </childnode>
+      </node>
+      <node id="7634">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/matrixStack.cpp</label>
+        <link refid="matrix_stack_8cpp"/>
+      </node>
+      <node id="7616">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="7636">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h</label>
+        <link refid="shader_program_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7637" relation="include">
+        </childnode>
+      </node>
+      <node id="7633">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h</label>
+        <link refid="matrix_stack_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7634" relation="include">
+        </childnode>
+      </node>
+      <node id="7599">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="7612">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="7613" relation="include">
+        </childnode>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7615" relation="include">
+        </childnode>
+        <childnode refid="7597" relation="include">
+        </childnode>
+        <childnode refid="7598" relation="include">
+        </childnode>
+        <childnode refid="7617" relation="include">
+        </childnode>
+      </node>
+      <node id="7631">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7632" relation="include">
+        </childnode>
+        <childnode refid="7602" relation="include">
+        </childnode>
+      </node>
+      <node id="7607">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="7590" relation="include">
+        </childnode>
+        <childnode refid="7608" relation="include">
+        </childnode>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7610" relation="include">
+        </childnode>
+        <childnode refid="7618" relation="include">
+        </childnode>
+        <childnode refid="7614" relation="include">
+        </childnode>
+        <childnode refid="7619" relation="include">
+        </childnode>
+        <childnode refid="7620" relation="include">
+        </childnode>
+        <childnode refid="7611" relation="include">
+        </childnode>
+        <childnode refid="7600" relation="include">
+        </childnode>
+        <childnode refid="7599" relation="include">
+        </childnode>
+        <childnode refid="7612" relation="include">
+        </childnode>
+      </node>
+      <node id="7643">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</label>
+        <link refid="functor_8h"/>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7645" relation="include">
+        </childnode>
+      </node>
+      <node id="7652">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/setup.cpp</label>
+        <link refid="script_2src_2setup_8cpp"/>
+      </node>
+      <node id="7627">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp</label>
+        <link refid="game_state_8cpp"/>
+      </node>
+      <node id="7618">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7596" relation="include">
+        </childnode>
+        <childnode refid="7619" relation="include">
+        </childnode>
+      </node>
+      <node id="7613">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/atlas.h</label>
+        <link refid="atlas_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7596" relation="include">
+        </childnode>
+        <childnode refid="7603" relation="include">
+        </childnode>
+        <childnode refid="7598" relation="include">
+        </childnode>
+        <childnode refid="7614" relation="include">
+        </childnode>
+        <childnode refid="7601" relation="include">
+        </childnode>
+      </node>
+      <node id="7606">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp</label>
+        <link refid="buffer_object_8cpp"/>
+      </node>
+      <node id="7623">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/system.h</label>
+        <link refid="system_8h"/>
+        <childnode refid="7624" relation="include">
+        </childnode>
+        <childnode refid="7626" relation="include">
+        </childnode>
+        <childnode refid="7628" relation="include">
+        </childnode>
+      </node>
+      <node id="7611">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp</label>
+        <link refid="image_resource_8cpp"/>
+      </node>
+      <node id="7632">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="7591">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="7592" relation="include">
+        </childnode>
+      </node>
+      <node id="7595">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h</label>
+        <link refid="bounding_box_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7596" relation="include">
+        </childnode>
+        <childnode refid="7603" relation="include">
+        </childnode>
+        <childnode refid="7604" relation="include">
+        </childnode>
+      </node>
+      <node id="7597">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7598" relation="include">
+        </childnode>
+        <childnode refid="7600" relation="include">
+        </childnode>
+      </node>
+      <node id="7624">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="7625" relation="include">
+        </childnode>
+        <childnode refid="7592" relation="include">
+        </childnode>
+      </node>
+      <node id="7650">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/factory.h</label>
+        <link refid="factory_8h"/>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7651" relation="include">
+        </childnode>
+      </node>
+      <node id="7644">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="7592" relation="include">
+        </childnode>
+      </node>
+      <node id="7600">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="7647">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h</label>
+        <link refid="variable_8h"/>
+        <childnode refid="7643" relation="include">
+        </childnode>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7648" relation="include">
+        </childnode>
+      </node>
+      <node id="7587">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash_impl.h"/>
+        <childnode refid="7588" relation="include">
+        </childnode>
+      </node>
+      <node id="7609">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp</label>
+        <link refid="depth_object_8cpp"/>
+      </node>
+      <node id="7642">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/scriptable.h</label>
+        <link refid="scriptable_8h"/>
+        <childnode refid="7643" relation="include">
+        </childnode>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7646" relation="include">
+        </childnode>
+        <childnode refid="7647" relation="include">
+        </childnode>
+      </node>
+      <node id="7625">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="7601">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="7617">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="7637">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp</label>
+        <link refid="shader_program_8cpp"/>
+      </node>
+      <node id="7596">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7597" relation="include">
+        </childnode>
+        <childnode refid="7598" relation="include">
+        </childnode>
+        <childnode refid="7601" relation="include">
+        </childnode>
+        <childnode refid="7602" relation="include">
+        </childnode>
+      </node>
+      <node id="7628">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/system.cpp</label>
+        <link refid="system_8cpp"/>
+      </node>
+      <node id="7594">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp</label>
+        <link refid="blend_object_8cpp"/>
+      </node>
+      <node id="7610">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h</label>
+        <link refid="image_resource_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7611" relation="include">
+        </childnode>
+        <childnode refid="7612" relation="include">
+        </childnode>
+      </node>
+      <node id="7646">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/scriptable.cpp</label>
+        <link refid="scriptable_8cpp"/>
+      </node>
+      <node id="7603">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</label>
+        <link refid="mesh_resource_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7601" relation="include">
+        </childnode>
+        <childnode refid="7602" relation="include">
+        </childnode>
+      </node>
+      <node id="7608">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h</label>
+        <link refid="depth_object_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7609" relation="include">
+        </childnode>
+      </node>
+      <node id="7602">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="7615">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7616" relation="include">
+        </childnode>
+      </node>
+      <node id="7619">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp</label>
+        <link refid="context_8cpp"/>
+      </node>
+      <node id="7598">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7599" relation="include">
+        </childnode>
+      </node>
+      <node id="7620">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+      <node id="7630">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp</label>
+        <link refid="font_resource_8cpp"/>
+      </node>
+      <node id="7645">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp</label>
+        <link refid="functor_8cpp"/>
+      </node>
+      <node id="7621">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h</label>
+        <link refid="display_8h"/>
+        <childnode refid="7622" relation="include">
+        </childnode>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7618" relation="include">
+        </childnode>
+        <childnode refid="7619" relation="include">
+        </childnode>
+        <childnode refid="7620" relation="include">
+        </childnode>
+        <childnode refid="7623" relation="include">
+        </childnode>
+      </node>
+      <node id="7651">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp</label>
+        <link refid="factory_8cpp"/>
+      </node>
+      <node id="7648">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/variable.cpp</label>
+        <link refid="variable_8cpp"/>
+      </node>
+      <node id="7629">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/fontResource.h</label>
+        <link refid="font_resource_8h"/>
+        <childnode refid="7613" relation="include">
+        </childnode>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7630" relation="include">
+        </childnode>
+      </node>
+      <node id="7649">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h</label>
+        <link refid="script_2setup_8h"/>
+        <childnode refid="7650" relation="include">
+        </childnode>
+        <childnode refid="7643" relation="include">
+        </childnode>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7642" relation="include">
+        </childnode>
+        <childnode refid="7652" relation="include">
+        </childnode>
+        <childnode refid="7647" relation="include">
+        </childnode>
+      </node>
+      <node id="7641">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/setup.h</label>
+        <link refid="game_2setup_8h"/>
+        <childnode refid="7624" relation="include">
+        </childnode>
+        <childnode refid="7623" relation="include">
+        </childnode>
+      </node>
+      <node id="7626">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h</label>
+        <link refid="game_state_8h"/>
+        <childnode refid="7624" relation="include">
+        </childnode>
+        <childnode refid="7627" relation="include">
+        </childnode>
+        <childnode refid="7628" relation="include">
+        </childnode>
+      </node>
+      <node id="7593">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+      <node id="7605">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h</label>
+        <link refid="buffer_object_8h"/>
+        <childnode refid="7591" relation="include">
+        </childnode>
+        <childnode refid="7596" relation="include">
+        </childnode>
+        <childnode refid="7597" relation="include">
+        </childnode>
+        <childnode refid="7606" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1utils">ls::utils</innernamespace>
+    <innernamespace refid="namespacels_1_1utils_1_1utils_impl">ls::utils::utilsImpl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/>DJB2<sp/>hash<sp/>implementation</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="9" refid="namespacels_1_1utils_1ad6eea42180965606079e486faad2c37c" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1ad6eea42180965606079e486faad2c37c" kindref="member">hashDJB2_impl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>hashVal)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!*str)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>hashVal</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacels_1_1utils_1ad6eea42180965606079e486faad2c37c" kindref="member">hashDJB2_impl</ref>(str+1,<sp/>((hashVal<sp/>&lt;&lt;<sp/>5)<sp/>+<sp/>hashVal)<sp/>^<sp/>*str);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/><sp/>DJB2<sp/>hash<sp/>interface</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="19" refid="namespacels_1_1utils_1abc1a3c504bb9cb6acd0ad54da5ea4f19" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1abc1a3c504bb9cb6acd0ad54da5ea4f19" kindref="member">hashDJB2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!str)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>0</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacels_1_1utils_1ad6eea42180965606079e486faad2c37c" kindref="member">hashDJB2_impl</ref>(str,<sp/>5381);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/><sp/>SDBM<sp/>hash<sp/>implementation</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="29" refid="namespacels_1_1utils_1aa3438626c6afc738773ac3e60a9ca3f1" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1aa3438626c6afc738773ac3e60a9ca3f1" kindref="member">hashSDBM_impl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>hashVal)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!*str)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>hashVal</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacels_1_1utils_1aa3438626c6afc738773ac3e60a9ca3f1" kindref="member">hashSDBM_impl</ref>(str+1,<sp/>*str<sp/>+<sp/>(hashVal<sp/>&lt;&lt;<sp/>6)<sp/>+<sp/>(hashVal<sp/>&lt;&lt;<sp/>16)<sp/>-<sp/>hashVal);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>SDBM<sp/>hash<sp/>interface</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="39" refid="namespacels_1_1utils_1a3da43b7cb7175cf10efacd1d443e6fea" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1a3da43b7cb7175cf10efacd1d443e6fea" kindref="member">hashSDBM</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!str)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>0</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacels_1_1utils_1aa3438626c6afc738773ac3e60a9ca3f1" kindref="member">hashSDBM_impl</ref>(str,<sp/>65599);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>FNV-1a<sp/>hash<sp/>implementation</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="49" refid="namespacels_1_1utils_1acd6c0184be611eeb9f01313fe9054b95" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1acd6c0184be611eeb9f01313fe9054b95" kindref="member">hashFNV1_impl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>hashVal)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!*str)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>hashVal</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacels_1_1utils_1acd6c0184be611eeb9f01313fe9054b95" kindref="member">hashFNV1_impl</ref>(str+1,<sp/>*str<sp/>^<sp/>(hashVal<sp/>*<sp/><sp/>16777619));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/>FNV-1a<sp/>hash<sp/>interface</highlight></codeline>
+<codeline lineno="57"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="59" refid="namespacels_1_1utils_1a6df29a51c8e8cc8a3992aed21c759a1b" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1a6df29a51c8e8cc8a3992aed21c759a1b" kindref="member">hashFNV1</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!str)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>0</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacels_1_1utils_1acd6c0184be611eeb9f01313fe9054b95" kindref="member">hashFNV1_impl</ref>(str,<sp/>2166136261);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/>CRC32<sp/>hash<sp/>interface/implementation</highlight></codeline>
+<codeline lineno="67"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="namespacels_1_1utils_1_1utils_impl" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utilsImpl<sp/>{</highlight><highlight class="comment">//<sp/>CRC32<sp/>Table<sp/>(zlib<sp/>polynomia<sp/>from<sp/>crc32.c)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">constexpr<sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>crc_table[256]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>0x00000000L,<sp/>0x77073096L,<sp/>0xee0e612cL,<sp/>0x990951baL,<sp/>0x076dc419L,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>0x706af48fL,<sp/>0xe963a535L,<sp/>0x9e6495a3L,<sp/>0x0edb8832L,<sp/>0x79dcb8a4L,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>0xe0d5e91eL,<sp/>0x97d2d988L,<sp/>0x09b64c2bL,<sp/>0x7eb17cbdL,<sp/>0xe7b82d07L,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>0x90bf1d91L,<sp/>0x1db71064L,<sp/>0x6ab020f2L,<sp/>0xf3b97148L,<sp/>0x84be41deL,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>0x1adad47dL,<sp/>0x6ddde4ebL,<sp/>0xf4d4b551L,<sp/>0x83d385c7L,<sp/>0x136c9856L,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>0x646ba8c0L,<sp/>0xfd62f97aL,<sp/>0x8a65c9ecL,<sp/>0x14015c4fL,<sp/>0x63066cd9L,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>0xfa0f3d63L,<sp/>0x8d080df5L,<sp/>0x3b6e20c8L,<sp/>0x4c69105eL,<sp/>0xd56041e4L,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>0xa2677172L,<sp/>0x3c03e4d1L,<sp/>0x4b04d447L,<sp/>0xd20d85fdL,<sp/>0xa50ab56bL,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>0x35b5a8faL,<sp/>0x42b2986cL,<sp/>0xdbbbc9d6L,<sp/>0xacbcf940L,<sp/>0x32d86ce3L,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>0x45df5c75L,<sp/>0xdcd60dcfL,<sp/>0xabd13d59L,<sp/>0x26d930acL,<sp/>0x51de003aL,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>0xc8d75180L,<sp/>0xbfd06116L,<sp/>0x21b4f4b5L,<sp/>0x56b3c423L,<sp/>0xcfba9599L,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>0xb8bda50fL,<sp/>0x2802b89eL,<sp/>0x5f058808L,<sp/>0xc60cd9b2L,<sp/>0xb10be924L,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>0x2f6f7c87L,<sp/>0x58684c11L,<sp/>0xc1611dabL,<sp/>0xb6662d3dL,<sp/>0x76dc4190L,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>0x01db7106L,<sp/>0x98d220bcL,<sp/>0xefd5102aL,<sp/>0x71b18589L,<sp/>0x06b6b51fL,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>0x9fbfe4a5L,<sp/>0xe8b8d433L,<sp/>0x7807c9a2L,<sp/>0x0f00f934L,<sp/>0x9609a88eL,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>0xe10e9818L,<sp/>0x7f6a0dbbL,<sp/>0x086d3d2dL,<sp/>0x91646c97L,<sp/>0xe6635c01L,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>0x6b6b51f4L,<sp/>0x1c6c6162L,<sp/>0x856530d8L,<sp/>0xf262004eL,<sp/>0x6c0695edL,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>0x1b01a57bL,<sp/>0x8208f4c1L,<sp/>0xf50fc457L,<sp/>0x65b0d9c6L,<sp/>0x12b7e950L,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>0x8bbeb8eaL,<sp/>0xfcb9887cL,<sp/>0x62dd1ddfL,<sp/>0x15da2d49L,<sp/>0x8cd37cf3L,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>0xfbd44c65L,<sp/>0x4db26158L,<sp/>0x3ab551ceL,<sp/>0xa3bc0074L,<sp/>0xd4bb30e2L,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>0x4adfa541L,<sp/>0x3dd895d7L,<sp/>0xa4d1c46dL,<sp/>0xd3d6f4fbL,<sp/>0x4369e96aL,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>0x346ed9fcL,<sp/>0xad678846L,<sp/>0xda60b8d0L,<sp/>0x44042d73L,<sp/>0x33031de5L,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>0xaa0a4c5fL,<sp/>0xdd0d7cc9L,<sp/>0x5005713cL,<sp/>0x270241aaL,<sp/>0xbe0b1010L,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>0xc90c2086L,<sp/>0x5768b525L,<sp/>0x206f85b3L,<sp/>0xb966d409L,<sp/>0xce61e49fL,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>0x5edef90eL,<sp/>0x29d9c998L,<sp/>0xb0d09822L,<sp/>0xc7d7a8b4L,<sp/>0x59b33d17L,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>0x2eb40d81L,<sp/>0xb7bd5c3bL,<sp/>0xc0ba6cadL,<sp/>0xedb88320L,<sp/>0x9abfb3b6L,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>0x03b6e20cL,<sp/>0x74b1d29aL,<sp/>0xead54739L,<sp/>0x9dd277afL,<sp/>0x04db2615L,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>0x73dc1683L,<sp/>0xe3630b12L,<sp/>0x94643b84L,<sp/>0x0d6d6a3eL,<sp/>0x7a6a5aa8L,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>0xe40ecf0bL,<sp/>0x9309ff9dL,<sp/>0x0a00ae27L,<sp/>0x7d079eb1L,<sp/>0xf00f9344L,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>0x8708a3d2L,<sp/>0x1e01f268L,<sp/>0x6906c2feL,<sp/>0xf762575dL,<sp/>0x806567cbL,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>0x196c3671L,<sp/>0x6e6b06e7L,<sp/>0xfed41b76L,<sp/>0x89d32be0L,<sp/>0x10da7a5aL,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>0x67dd4accL,<sp/>0xf9b9df6fL,<sp/>0x8ebeeff9L,<sp/>0x17b7be43L,<sp/>0x60b08ed5L,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>0xd6d6a3e8L,<sp/>0xa1d1937eL,<sp/>0x38d8c2c4L,<sp/>0x4fdff252L,<sp/>0xd1bb67f1L,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>0xa6bc5767L,<sp/>0x3fb506ddL,<sp/>0x48b2364bL,<sp/>0xd80d2bdaL,<sp/>0xaf0a1b4cL,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>0x36034af6L,<sp/>0x41047a60L,<sp/>0xdf60efc3L,<sp/>0xa867df55L,<sp/>0x316e8eefL,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>0x4669be79L,<sp/>0xcb61b38cL,<sp/>0xbc66831aL,<sp/>0x256fd2a0L,<sp/>0x5268e236L,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>0xcc0c7795L,<sp/>0xbb0b4703L,<sp/>0x220216b9L,<sp/>0x5505262fL,<sp/>0xc5ba3bbeL,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>0xb2bd0b28L,<sp/>0x2bb45a92L,<sp/>0x5cb36a04L,<sp/>0xc2d7ffa7L,<sp/>0xb5d0cf31L,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>0x2cd99e8bL,<sp/>0x5bdeae1dL,<sp/>0x9b64c2b0L,<sp/>0xec63f226L,<sp/>0x756aa39cL,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>0x026d930aL,<sp/>0x9c0906a9L,<sp/>0xeb0e363fL,<sp/>0x72076785L,<sp/>0x05005713L,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>0x95bf4a82L,<sp/>0xe2b87a14L,<sp/>0x7bb12baeL,<sp/>0x0cb61b38L,<sp/>0x92d28e9bL,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>0xe5d5be0dL,<sp/>0x7cdcefb7L,<sp/>0x0bdbdf21L,<sp/>0x86d3d2d4L,<sp/>0xf1d4e242L,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>0x68ddb3f8L,<sp/>0x1fda836eL,<sp/>0x81be16cdL,<sp/>0xf6b9265bL,<sp/>0x6fb077e1L,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>0x18b74777L,<sp/>0x88085ae6L,<sp/>0xff0f6a70L,<sp/>0x66063bcaL,<sp/>0x11010b5cL,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>0x8f659effL,<sp/>0xf862ae69L,<sp/>0x616bffd3L,<sp/>0x166ccf45L,<sp/>0xa00ae278L,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>0xd70dd2eeL,<sp/>0x4e048354L,<sp/>0x3903b3c2L,<sp/>0xa7672661L,<sp/>0xd06016f7L,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>0x4969474dL,<sp/>0x3e6e77dbL,<sp/>0xaed16a4aL,<sp/>0xd9d65adcL,<sp/>0x40df0b66L,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>0x37d83bf0L,<sp/>0xa9bcae53L,<sp/>0xdebb9ec5L,<sp/>0x47b2cf7fL,<sp/>0x30b5ffe9L,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>0xbdbdf21cL,<sp/>0xcabac28aL,<sp/>0x53b39330L,<sp/>0x24b4a3a6L,<sp/>0xbad03605L,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>0xcdd70693L,<sp/>0x54de5729L,<sp/>0x23d967bfL,<sp/>0xb3667a2eL,<sp/>0xc4614ab8L,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>0x5d681b02L,<sp/>0x2a6f2b94L,<sp/>0xb40bbe37L,<sp/>0xc30c8ea1L,<sp/>0x5a05df1bL,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>0x2d02ef8dL</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>utilsImpl<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">constexpr</highlight></codeline>
+<codeline lineno="126" refid="namespacels_1_1utils_1aedaaec6f662c311ff093845319cb577a" refkind="member"><highlight class="normal"><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="namespacels_1_1utils_1aedaaec6f662c311ff093845319cb577a" kindref="member">crc32</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str,<sp/><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/>prevCrc)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*str<sp/>!=<sp/>0</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/><ref refid="namespacels_1_1utils_1aedaaec6f662c311ff093845319cb577a" kindref="member">crc32</ref>(str+1,<sp/>(prevCrc<sp/>&gt;&gt;<sp/>8)<sp/>^<sp/>utilsImpl::crc_table[(prevCrc<sp/>^<sp/>str[0])<sp/>&amp;<sp/>0xFF])</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>prevCrc<sp/>^<sp/>0xFFFFFFFF;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>utils<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/hash_impl.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1bounding_box" kind="class" prot="public">
+    <compoundname>ls::draw::boundingBox</compoundname>
+    <includes refid="bounding_box_8h" local="no">boundingBox.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1bounding_box_1a8967ca50c0f3bafc8ce09710a31628dd" prot="private" static="no" mutable="no">
+        <type>math::vec3</type>
+        <definition>math::vec3 ls::draw::boundingBox::topRearRight</definition>
+        <argsstring></argsstring>
+        <name>topRearRight</name>
+        <initializer>= {1.f, 1.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="24" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1bounding_box_1a95c51ee72742511eb2a4cdf7a317115c" prot="private" static="no" mutable="no">
+        <type>math::vec3</type>
+        <definition>math::vec3 ls::draw::boundingBox::botFrontLeft</definition>
+        <argsstring></argsstring>
+        <name>botFrontLeft</name>
+        <initializer>= {-1.f, -1.f, -1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="25" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a4efee779d59182616c4c638f8127cde5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::boundingBox::boundingBox</definition>
+        <argsstring>()</argsstring>
+        <name>boundingBox</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="31" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="18" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a6954ae9dda512832f32202f99a93351e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::boundingBox::boundingBox</definition>
+        <argsstring>(const boundingBox &amp;bb)</argsstring>
+        <name>boundingBox</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;</type>
+          <declname>bb</declname>
+        </param>
+        <briefdescription>
+<para>Copy Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies data from another bounding box.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a fully constructed bounding box object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="42" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a2ff08c56be2daccfb371d3cc05940473" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::boundingBox::boundingBox</definition>
+        <argsstring>(boundingBox &amp;&amp;)</argsstring>
+        <name>boundingBox</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;&amp;</type>
+          <defname>bb</defname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies data from another bounding box (no moves are performed).</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>An</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>r-value reference to a fully constructed bounding box </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="51" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="32" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a784f7d18538a5275f4b2d8b542be67b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::boundingBox::~boundingBox</definition>
+        <argsstring>()=default</argsstring>
+        <name>~boundingBox</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Defaulted </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a2c283a8b33fe51b19bb57fe5b62d33a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;</type>
+        <definition>boundingBox &amp; ls::draw::boundingBox::operator=</definition>
+        <argsstring>(const boundingBox &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;</type>
+          <defname>bb</defname>
+        </param>
+        <briefdescription>
+<para>Copy Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies data from another bounding box.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to a fully constructed bounding box object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="70" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a0812d2913a1c7001606e79aa3b7a4b9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;</type>
+        <definition>boundingBox &amp; ls::draw::boundingBox::operator=</definition>
+        <argsstring>(boundingBox &amp;&amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;&amp;</type>
+          <defname>bb</defname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>An</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>R-Value reference to a bounding box that is about to go out of scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="80" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="52" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a9aa4760e182db1b146234e401f54fb64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::boundingBox::isInBox</definition>
+        <argsstring>(const math::vec3 &amp;) const </argsstring>
+        <name>isInBox</name>
+        <param>
+          <type>const math::vec3 &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+<para>Check if a point is within this box. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to a vec3 object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the point is within *this, or FALSE if otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="89" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1ad4a9a8d38ef5769022f04959d0280804" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::boundingBox::isInBox</definition>
+        <argsstring>(const boundingBox &amp;) const </argsstring>
+        <name>isInBox</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1bounding_box" kindref="compound">boundingBox</ref> &amp;</type>
+          <defname>bb</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if a portion of another bounding box is within *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to another bounding box.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if a portion of the bounding box is within *this, or FALSE if it isn&apos;t. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="99" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/boundingBox_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a98bc55b0bcbed2d0cd96984ea5d39a59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::boundingBox::setTopRearRight</definition>
+        <argsstring>(const math::vec3 &amp;)</argsstring>
+        <name>setTopRearRight</name>
+        <param>
+          <type>const math::vec3 &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the top-rear-right point of this bounding box.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to a point that will be used as the top, rear, right point of this bounding box. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="107" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/boundingBox_impl.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1aeee24c7c06003db44bcc79683a6cfd14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const math::vec3 &amp;</type>
+        <definition>const math::vec3 &amp; ls::draw::boundingBox::getTopRearRight</definition>
+        <argsstring>() const </argsstring>
+        <name>getTopRearRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the top-rear-right point of this bounding box.</para><para><simplesect kind="return"><para>A constant reference to the top, rear, right point of this bounding box. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="115" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/boundingBox_impl.h" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a123a845241fa2e92322183f9b58c2243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::boundingBox::setBotFrontLeft</definition>
+        <argsstring>(const math::vec3 &amp;)</argsstring>
+        <name>setBotFrontLeft</name>
+        <param>
+          <type>const math::vec3 &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the bottom, front, left point of this bounding box.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>constant reference to a point that will be used as the bottom, front, left point of this bounding box. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="123" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/boundingBox_impl.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a170b540d6d0b06f09feae604de31528c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const math::vec3 &amp;</type>
+        <definition>const math::vec3 &amp; ls::draw::boundingBox::getBotFrontLeft</definition>
+        <argsstring>() const </argsstring>
+        <name>getBotFrontLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the bottom, front, left point of this bounding box.</para><para><simplesect kind="return"><para>A constant reference to the bottom, front, left point of this bounding box. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="131" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/boundingBox_impl.h" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1a3b41cf6dc90a86a8eb20960e29f7d95d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::boundingBox::resetSize</definition>
+        <argsstring>()</argsstring>
+        <name>resetSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reset the bounds of this bounding box to their default values. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="136" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1bounding_box_1ac56d1058a66eec9b4a4dc0de84e14c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::boundingBox::compareAndUpdate</definition>
+        <argsstring>(const math::vec3 &amp;point)</argsstring>
+        <name>compareAndUpdate</name>
+        <param>
+          <type>const math::vec3 &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compare a point to the current set of vertices. If any of the components within the parameter are larger than the components of this box, the current set of points will be enlarged.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>point</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A point who&apos;s individual components should be used to update the size of this bounding box. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="147" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp" bodystart="82" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Bounding Box Class. </para>    </briefdescription>
+    <detaileddescription>
+<para>The orientation for a bounding box follows OpenGL coordinates, where the positive XYZ coordinates point towards the top, right, front of the viewport. </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" line="22" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h" bodystart="22" bodyend="148"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1bounding_box_1a95c51ee72742511eb2a4cdf7a317115c" prot="private" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>botFrontLeft</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a4efee779d59182616c4c638f8127cde5" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>boundingBox</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a6954ae9dda512832f32202f99a93351e" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>boundingBox</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a2ff08c56be2daccfb371d3cc05940473" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>boundingBox</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1ac56d1058a66eec9b4a4dc0de84e14c23" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>compareAndUpdate</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a170b540d6d0b06f09feae604de31528c" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>getBotFrontLeft</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1aeee24c7c06003db44bcc79683a6cfd14" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>getTopRearRight</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a9aa4760e182db1b146234e401f54fb64" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>isInBox</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1ad4a9a8d38ef5769022f04959d0280804" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>isInBox</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a2c283a8b33fe51b19bb57fe5b62d33a5" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a0812d2913a1c7001606e79aa3b7a4b9e" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a3b41cf6dc90a86a8eb20960e29f7d95d" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>resetSize</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a123a845241fa2e92322183f9b58c2243" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>setBotFrontLeft</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a98bc55b0bcbed2d0cd96984ea5d39a59" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>setTopRearRight</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a8967ca50c0f3bafc8ce09710a31628dd" prot="private" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>topRearRight</name></member>
+      <member refid="classls_1_1draw_1_1bounding_box_1a784f7d18538a5275f4b2d8b542be67b8" prot="public" virt="non-virtual"><scope>ls::draw::boundingBox</scope><name>~boundingBox</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

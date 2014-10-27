@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="namespacels_1_1script" kind="namespace">
+    <compoundname>ls::script</compoundname>
+    <innerclass refid="classls_1_1script_1_1functor" prot="public">ls::script::functor</innerclass>
+    <innerclass refid="classls_1_1script_1_1functor__t" prot="public">ls::script::functor_t</innerclass>
+    <innerclass refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4" prot="public">ls::script::functor_t&lt; hashId, void &gt;</innerclass>
+    <innerclass refid="classls_1_1script_1_1scriptable" prot="public">ls::script::scriptable</innerclass>
+    <innerclass refid="classls_1_1script_1_1variable" prot="public">ls::script::variable</innerclass>
+    <innerclass refid="singletonls_1_1script_1_1variable__t" prot="public">ls::script::variable_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1a" prot="public" static="no">
+        <name>script_base_t</name>
+        <enumvalue id="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1aaa647a5ae531361c8af466c9260ebf759" prot="public">
+          <name>SCRIPT_VAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1aae04b2be0a46321b419482976b06a28ac" prot="public">
+          <name>SCRIPT_FUNC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="29" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="29" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" prot="public" static="no">
+        <type>void(&amp;)</type>
+        <definition>typedef void(&amp;) ls::script::func_ref_t(variable **const)</definition>
+        <argsstring>(variable **const)</argsstring>
+        <name>func_ref_t</name>
+        <briefdescription>
+<para>func_ref_t is a reference-to-function typedef to make things easier to understand in-code. </para>        </briefdescription>
+        <detaileddescription>
+<para>Use this typedef to instantiate a reference to a scripted function which takes an array of script variables as its parameters. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="31" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1a831a2172d8919637f40628d9f3c094b6" prot="public" static="no">
+        <type><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&lt; 0, void &gt;</type>
+        <definition>typedef functor_t&lt;0, void &gt; ls::script::emptyFunc</definition>
+        <argsstring></argsstring>
+        <name>emptyFunc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="71" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1a45350bc37bbe456cad4e582684ff94ad" prot="public" static="no">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> *(*</type>
+        <definition>typedef variable*(* ls::script::varFactory)()</definition>
+        <argsstring>)()</argsstring>
+        <name>varFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="79" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1aa940e50f52fb0f92187fd3fb58ba5d7f" prot="public" static="no">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> *(*</type>
+        <definition>typedef functor*(* ls::script::funcFactory)()</definition>
+        <argsstring>)()</argsstring>
+        <name>funcFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="81" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1a4baef92f842cab0fffa142d69effe15c" prot="public" static="no">
+        <type>std::map&lt; hash_t, <ref refid="namespacels_1_1script_1a45350bc37bbe456cad4e582684ff94ad" kindref="member">varFactory</ref> &gt;</type>
+        <definition>typedef std::map&lt;hash_t, varFactory&gt; ls::script::varFactoryMap</definition>
+        <argsstring></argsstring>
+        <name>varFactoryMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="86" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1af45da7d07dc3e5ffedf00234560f9f75" prot="public" static="no">
+        <type>std::map&lt; hash_t, <ref refid="namespacels_1_1script_1aa940e50f52fb0f92187fd3fb58ba5d7f" kindref="member">funcFactory</ref> &gt;</type>
+        <definition>typedef std::map&lt;hash_t, funcFactory&gt; ls::script::funcFactoryMap</definition>
+        <argsstring></argsstring>
+        <name>funcFactoryMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="88" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" prot="public" static="no">
+        <type>std::map&lt; void *, <ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> * &gt;</type>
+        <definition>typedef std::map&lt;void*, variable*&gt; ls::script::varLoaderMap</definition>
+        <argsstring></argsstring>
+        <name>varLoaderMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="93" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" prot="public" static="no">
+        <type>std::map&lt; void *, <ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> * &gt;</type>
+        <definition>typedef std::map&lt;void*, functor*&gt; ls::script::funcLoaderMap</definition>
+        <argsstring></argsstring>
+        <name>funcLoaderMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="94" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacels_1_1script_1acc2b41ffc4021480e155c256c7654a33" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1script_1a4baef92f842cab0fffa142d69effe15c" kindref="member">varFactoryMap</ref></type>
+        <definition>varFactoryMap ls::script::gVarFactory</definition>
+        <argsstring></argsstring>
+        <name>gVarFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="99" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1script_1a19d0e7d2d56f7a43dd886035ded61afd" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1script_1af45da7d07dc3e5ffedf00234560f9f75" kindref="member">funcFactoryMap</ref></type>
+        <definition>funcFactoryMap ls::script::gFuncFactory</definition>
+        <argsstring></argsstring>
+        <name>gFuncFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/setup.h" line="100" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacels_1_1script_1a23a64060b4cb4588a08c405d169f39e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> *</type>
+        <definition>variable* ls::script::createScriptVar</definition>
+        <argsstring>(hash_t)</argsstring>
+        <name>createScriptVar</name>
+        <param>
+          <type>hash_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a script variable using the global variable factory</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hash_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A hash value that determines the type of variable that should be returned.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pointer to the script variable requested. This pointer must be destroyed with the &quot;delete&quot; operator. This function will return NULL if the variable requested could not be instantiated. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/factory.h" line="27" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1script_1a91930670e9d5b6642989214ab2b59b2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> *</type>
+        <definition>functor* ls::script::createScriptFunc</definition>
+        <argsstring>(hash_t)</argsstring>
+        <name>createScriptFunc</name>
+        <param>
+          <type>hash_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a script function using the global functor factory</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hash_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A hash value that determines the type of functor that should be returned.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pointer to the script functor requested. This pointer must be destroyed with the &quot;delete&quot; operator. This function will return NULL if the functor requested could not be instantiated. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/factory.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1script_1af3630b8b1c6c656da8cadfb4c22af7ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> *</type>
+        <definition>variable* ls::script::createVariable</definition>
+        <argsstring>(hash_t h)</argsstring>
+        <name>createVariable</name>
+        <param>
+          <type>hash_t</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp" line="61" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp" bodystart="61" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1script_1a85c16d3195573e28d39fdd4243e3c0f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref> *</type>
+        <definition>functor* ls::script::createFunctor</definition>
+        <argsstring>(hash_t h)</argsstring>
+        <name>createFunctor</name>
+        <param>
+          <type>hash_t</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp" line="70" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/factory.cpp" bodystart="70" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1script_1af3e61aa6733be06569b760af95918a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::LS_SCRIPT_DEFINE_FUNC</definition>
+        <argsstring>(empty, void)</argsstring>
+        <name>LS_SCRIPT_DEFINE_FUNC</name>
+        <param>
+          <type>empty</type>
+        </param>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" line="99" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp" bodystart="99" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/factory.h" line="14" column="1"/>
+  </compounddef>
+</doxygen>

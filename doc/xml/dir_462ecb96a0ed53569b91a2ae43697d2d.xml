@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_462ecb96a0ed53569b91a2ae43697d2d" kind="dir">
+    <compoundname>C:/Users/miles/C++/projects/LightSky/lightsky/setup</compoundname>
+    <innerdir refid="dir_06ed4f0f1179f67803254ab7531510ef">C:/Users/miles/C++/projects/LightSky/lightsky/setup/src</innerdir>
+    <innerfile refid="arch_8h">arch.h</innerfile>
+    <innerfile refid="compiler_8h">compiler.h</innerfile>
+    <innerfile refid="macros_8h">macros.h</innerfile>
+    <innerfile refid="os_8h">os.h</innerfile>
+    <innerfile refid="setup_2setup_8h">setup.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/setup/"/>
+  </compounddef>
+</doxygen>

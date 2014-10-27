@@ -1,0 +1,148 @@
+.TH "ls::draw::shaderObject< shaderType >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::shaderObject< shaderType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <shaderObject\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBshaderObject\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBshaderObject\fP (const \fBshaderObject\fP &)=delete"
+.br
+.RI "\fICopy Constructor -- Deleted\&. \fP"
+.ti -1c
+.RI "\fBshaderObject\fP (\fBshaderObject\fP &&so)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fBshaderObject\fP & \fBoperator=\fP (const \fBshaderObject\fP &)=delete"
+.br
+.RI "\fICopy Operator -- Deleted\&. \fP"
+.ti -1c
+.RI "\fBshaderObject\fP & \fBoperator=\fP (\fBshaderObject\fP &&so)"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "\fB~shaderObject\fP ()"
+.br
+.ti -1c
+.RI "void \fBterminate\fP ()"
+.br
+.ti -1c
+.RI "bool \fBcompile\fP (const char *data, int size=0)"
+.br
+.ti -1c
+.RI "GLuint \fBgetId\fP () const "
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBshaderProgram\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<shader_stage_t shaderType>class ls::draw::shaderObject< shaderType >"
+
+.PP
+ Shader Object Base Class
+.PP
+Shader objects are attached to programs in order to manipulate rendering on 
+.SS "the GPU "
+
+.PP
+Definition at line 35 of file shaderObject\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<shader_stage_t shaderType> \fBls::draw::shaderObject\fP< shaderType >::\fBshaderObject\fP ()"
+
+.PP
+Constructor\&. Initializes all members within *this\&. 
+.PP
+Definition at line 9 of file shaderObject_impl\&.h\&.
+.SS "template<shader_stage_t shaderType> \fBls::draw::shaderObject\fP< shaderType >::\fBshaderObject\fP (const \fBshaderObject\fP< shaderType > &)\fC [delete]\fP"
+
+.PP
+Copy Constructor -- Deleted\&. 
+.SS "template<shader_stage_t shaderType> \fBls::draw::shaderObject\fP< shaderType >::\fBshaderObject\fP (\fBshaderObject\fP< shaderType > &&so)"
+
+.PP
+Move Constructor\&. Copy the handle to the shader object owned by the input argument, reset the moved object's shader handle to 0\&. 
+.PP
+Definition at line 16 of file shaderObject_impl\&.h\&.
+.SS "template<shader_stage_t shaderType> \fBls::draw::shaderObject\fP< shaderType >::~\fBshaderObject\fP ()"
+Destroy this object and free any GPU memory it uses\&. 
+.PP
+Definition at line 26 of file shaderObject_impl\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<shader_stage_t shaderType> bool \fBls::draw::shaderObject\fP< shaderType >::compile (const char *data, intsize = \fC0\fP)"
+Compile a shader and put it into GPU memory\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP A pointer to a string which contains the shader's textual content\&.
+.br
+\fIsize\fP the size, in bytes, of the shader's text data\&. Let this remain zero if you are sure that the data string is null-terminated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if the shader was successfully compiled, FALSE if otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file shaderObject_impl\&.h\&.
+.SS "template<shader_stage_t shaderType> GLuint \fBls::draw::shaderObject\fP< shaderType >::getId () const\fC [inline]\fP"
+Get a shader's GPU-assigned ID 
+.PP
+Definition at line 106 of file shaderObject_impl\&.h\&.
+.SS "template<shader_stage_t shaderType> \fBshaderObject\fP& \fBls::draw::shaderObject\fP< shaderType >::operator= (const \fBshaderObject\fP< shaderType > &)\fC [delete]\fP"
+
+.PP
+Copy Operator -- Deleted\&. 
+.SS "template<shader_stage_t shaderType> \fBshaderObject\fP< shaderType > & \fBls::draw::shaderObject\fP< shaderType >::operator= (\fBshaderObject\fP< shaderType > &&so)"
+
+.PP
+Move Operator\&. Move the values of the input argument and reset the moved object's values to 0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIso\fP A \fBshaderProgram\fP to move into *this\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A reference to *this 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file shaderObject_impl\&.h\&.
+.SS "template<shader_stage_t shaderType> void \fBls::draw::shaderObject\fP< shaderType >::terminate ()\fC [inline]\fP"
+Free all memory used by this shader object\&. 
+.PP
+Definition at line 47 of file shaderObject_impl\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<shader_stage_t shaderType> friend class \fBshaderProgram\fP\fC [friend]\fP"
+
+.PP
+Definition at line 36 of file shaderObject\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

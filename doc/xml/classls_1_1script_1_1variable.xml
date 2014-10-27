@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1script_1_1variable" kind="class" prot="public" abstract="yes">
+    <compoundname>ls::script::variable</compoundname>
+    <basecompoundref refid="classls_1_1script_1_1scriptable" prot="public" virt="non-virtual">ls::script::scriptable</basecompoundref>
+    <derivedcompoundref refid="singletonls_1_1script_1_1variable__t" prot="public" virt="non-virtual">ls::script::variable_t&lt; hashId, type &gt;</derivedcompoundref>
+    <includes refid="variable_8h" local="no">variable.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1ac7a9a7ef768e86de74b76ad643e2ae1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ls::script::variable::~variable</definition>
+        <argsstring>()=0</argsstring>
+        <name>~variable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="30" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/variable.cpp" bodystart="19" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1af07624d916e15ca0da6f3add2b172b1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::variable::variable</definition>
+        <argsstring>()</argsstring>
+        <name>variable</name>
+        <briefdescription>
+<para>Constructor Constructs *this and the &apos;scriptable&apos; base class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="36" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/variable.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1ae91702817d11cf387cfd30077524afff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::variable::variable</definition>
+        <argsstring>(const variable &amp;v)</argsstring>
+        <name>variable</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Copy Constructor Copies data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a variable base object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/variable.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1a600d800aaf9c65eadc719ca33a0ffa12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::script::variable::variable</definition>
+        <argsstring>(variable &amp;&amp;v)</argsstring>
+        <name>variable</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor Moves data from the input parameter into *this without performing any copies. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a variable base object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="55" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/variable.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1aaee55855cb48fdc2fd7c085795088a80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> &amp;</type>
+        <definition>variable &amp; ls::script::variable::operator=</definition>
+        <argsstring>(const variable &amp;v)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Copy Constructor Copies data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a variable base object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="67" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/variable_impl.h" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1a190fefa705f9817f189196cf93163a8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> &amp;</type>
+        <definition>variable &amp; ls::script::variable::operator=</definition>
+        <argsstring>(variable &amp;&amp;v)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref> &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator Moves data from the input parameter into *this without performing any copies. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a variable base object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="80" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/variable_impl.h" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1ad1eb4e04a0319c48238047fbd9497188" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1a" kindref="member">script_base_t</ref></type>
+        <definition>script_base_t ls::script::variable::getScriptType</definition>
+        <argsstring>() const final</argsstring>
+        <name>getScriptType</name>
+        <reimplements refid="classls_1_1script_1_1scriptable_1ae53e220ec8827ca3c71e07a78908f03c">getScriptType</reimplements>
+        <briefdescription>
+<para>getScriptType Retrieve the type of scripting object *this is. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1aaa647a5ae531361c8af466c9260ebf759" kindref="member">ls::script::script_base_t::SCRIPT_VAR</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="88" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/generic/variable_impl.h" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1script_1_1variable_1afb0063d7214481b524024f22261825a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>hash_t</type>
+        <definition>virtual hash_t ls::script::variable::getScriptSubType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScriptSubType</name>
+        <reimplements refid="classls_1_1script_1_1scriptable_1ad3f9203567b786571ea408e5dbf556e9">getScriptSubType</reimplements>
+        <reimplementedby refid="singletonls_1_1script_1_1variable__t_1a6cf40cee4f78ca6815963dde5f2bcfde">getScriptSubType</reimplementedby>
+        <briefdescription>
+<para>getScriptSubType Used to determine the run-time-type information about the type of scripting object that *this is. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hash_t A hash code that indicates the specific type of object that *this is at run-time. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="93" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ Variable Base Type</para><para><heading level="2">The Variable base object is used as an interface for scriptable data types. </heading>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="114">
+        <label>ls::script::variable</label>
+        <link refid="classls_1_1script_1_1variable"/>
+        <childnode refid="115" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>ls::script::variable_t&lt; hashId, type &gt;</label>
+        <link refid="singletonls_1_1script_1_1variable__t"/>
+        <childnode refid="114" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>ls::script::scriptable</label>
+        <link refid="classls_1_1script_1_1scriptable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="117">
+        <label>ls::script::variable</label>
+        <link refid="classls_1_1script_1_1variable"/>
+        <childnode refid="118" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>ls::script::scriptable</label>
+        <link refid="classls_1_1script_1_1scriptable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" line="25" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/variable.h" bodystart="25" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classls_1_1script_1_1variable_1afb0063d7214481b524024f22261825a1" prot="public" virt="pure-virtual"><scope>ls::script::variable</scope><name>getScriptSubType</name></member>
+      <member refid="classls_1_1script_1_1variable_1ad1eb4e04a0319c48238047fbd9497188" prot="public" virt="virtual"><scope>ls::script::variable</scope><name>getScriptType</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a056218abb0bbf49aa175a20c9e5feb32" prot="public" virt="pure-virtual"><scope>ls::script::variable</scope><name>load</name></member>
+      <member refid="classls_1_1script_1_1variable_1aaee55855cb48fdc2fd7c085795088a80" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1variable_1a190fefa705f9817f189196cf93163a8c" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a0a44fbbc1ef4ebb824a82163257cc490" prot="public" virt="non-virtual" ambiguityscope="ls::script::scriptable::"><scope>ls::script::variable</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1ae5ab31974a89ab5b3ce4e5b4c3d51591" prot="public" virt="non-virtual" ambiguityscope="ls::script::scriptable::"><scope>ls::script::variable</scope><name>operator=</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1adf72ecdf5afee754bb57642f4220585c" prot="public" virt="pure-virtual"><scope>ls::script::variable</scope><name>save</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1adf074cf8a86531adc5e273e5bbfb46e2" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a99f50f8744279cbbd954c124b3dbb9f9" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a7838ffef45488993cbd83305ac2a121b" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>scriptable</name></member>
+      <member refid="classls_1_1script_1_1variable_1af07624d916e15ca0da6f3add2b172b1a" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>variable</name></member>
+      <member refid="classls_1_1script_1_1variable_1ae91702817d11cf387cfd30077524afff" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>variable</name></member>
+      <member refid="classls_1_1script_1_1variable_1a600d800aaf9c65eadc719ca33a0ffa12" prot="public" virt="non-virtual"><scope>ls::script::variable</scope><name>variable</name></member>
+      <member refid="classls_1_1script_1_1scriptable_1a7ac9302b44878e7e1ed78400e3651cde" prot="public" virt="pure-virtual"><scope>ls::script::variable</scope><name>~scriptable</name></member>
+      <member refid="classls_1_1script_1_1variable_1ac7a9a7ef768e86de74b76ad643e2ae1c" prot="public" virt="pure-virtual"><scope>ls::script::variable</scope><name>~variable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

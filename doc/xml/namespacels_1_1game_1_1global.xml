@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="namespacels_1_1game_1_1global" kind="namespace">
+    <compoundname>ls::game::global</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacels_1_1game_1_1global_1af6fc99654443ba064912438176ca0874" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::game::global::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+<para>LightSky Initialization. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the framework was able to initialize properly, or FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h" line="27" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp" bodystart="18" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1game_1_1global_1ab8f47dd33802e1a54168950a9e51e3c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::game::global::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+<para>LightSky termination. </para>        </briefdescription>
+        <detaileddescription>
+<para>Frees all extra resources used by the framework. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h" line="34" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp" bodystart="64" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h" line="19" column="1"/>
+  </compounddef>
+</doxygen>

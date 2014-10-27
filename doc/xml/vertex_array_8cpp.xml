@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="vertex_array_8cpp" kind="file">
+    <compoundname>vertexArray.cpp</compoundname>
+    <includes refid="vertex_array_8h" local="yes">lightsky/draw/vertexArray.h</includes>
+    <incdepgraph>
+      <node id="3348">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="3346">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/vertexArray.cpp</label>
+        <link refid="vertexArray.cpp"/>
+        <childnode refid="3347" relation="include">
+        </childnode>
+      </node>
+      <node id="3347">
+        <label>lightsky/draw/vertexArray.h</label>
+        <link refid="vertex_array_8h"/>
+        <childnode refid="3348" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>vertexArray.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>February<sp/>7,<sp/>2014,<sp/>8:01<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex_array_8h" kindref="compound">lightsky/draw/vertexArray.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/><sp/>Constructor</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classls_1_1draw_1_1vertex_array_1a4496decddf77c84bc6e737a64e30730d" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1vertex_array_1a4496decddf77c84bc6e737a64e30730d" kindref="member">vertexArray::vertexArray</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/><sp/><sp/>Move<sp/>Constructor</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classls_1_1draw_1_1vertex_array_1a5c5d5b6d7b4c3bd1ac46b72aa366abf3" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1vertex_array_1a4496decddf77c84bc6e737a64e30730d" kindref="member">vertexArray::vertexArray</ref>(<ref refid="classls_1_1draw_1_1vertex_array" kindref="compound">vertexArray</ref>&amp;&amp;<sp/>va)<sp/>:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>vao{va.vao}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>va.vao<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/><sp/>Destructor</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classls_1_1draw_1_1vertex_array_1aa1f125b036284eb8051af86f6200f4eb" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1vertex_array_1aa1f125b036284eb8051af86f6200f4eb" kindref="member">vertexArray::~vertexArray</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1vertex_array_1a20a5f920a2b0f85ec973185d7b4ebf0d" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>Move<sp/>Operator</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classls_1_1draw_1_1vertex_array_1a79918dc8c6ae8df0e09f577dfc4431af" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1vertex_array" kindref="compound">vertexArray</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1vertex_array_1a468b5d7e122ca6f291520544b5c46927" kindref="member">vertexArray::operator=</ref>(<ref refid="classls_1_1draw_1_1vertex_array" kindref="compound">vertexArray</ref>&amp;&amp;<sp/>va)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>vao<sp/>=<sp/>va.vao;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>va.vao<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/>Array<sp/>initialization.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classls_1_1draw_1_1vertex_array_1a0570c34181a69bda90becdced71c0b07" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1vertex_array_1a0570c34181a69bda90becdced71c0b07" kindref="member">vertexArray::init</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vao<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1vertex_array_1a20a5f920a2b0f85ec973185d7b4ebf0d" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenVertexArrays(1,<sp/>&amp;vao);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vao<sp/>!=<sp/>0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/vertexArray.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,85 @@
+.TH "ls::utils::bitMask" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::utils::bitMask \- 
+.PP
+\fBbitMask\fP Convenience structure to facilitate bit acquisition of bytes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <bits\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr int \fBget\fP (int i) const "
+.br
+.RI "\fIget Get the Ith bit of 'byte\&.' \fP"
+.ti -1c
+.RI "void \fBset\fP (int i, int val)"
+.br
+.RI "\fIset Set the Ith bit in *this\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "char \fBbyte\fP = 0"
+.br
+.RI "\fIbyte A single (hopefully cross-platform) representation of a byte\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBbitMask\fP Convenience structure to facilitate bit acquisition of bytes\&. 
+.PP
+Definition at line 26 of file bits\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "constexpr int ls::utils::bitMask::get (inti) const\fC [inline]\fP"
+
+.PP
+get Get the Ith bit of 'byte\&.' 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP An iterative value, representing what bit in 'byte' should be returned\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A single binary value representing the Ith bit of *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file bits\&.h\&.
+.SS "void ls::utils::bitMask::set (inti, intval)\fC [inline]\fP"
+
+.PP
+set Set the Ith bit in *this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP An iterative value, representing what bit in 'byte' should be toggled\&.
+.br
+\fIval\fP A binary value, representing whether 'byte' should be toggled to 1 or 0\&. 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file bits\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "char ls::utils::bitMask::byte = 0"
+
+.PP
+byte A single (hopefully cross-platform) representation of a byte\&. 
+.PP
+Definition at line 31 of file bits\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

@@ -1,0 +1,641 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="structls_1_1math_1_1quat__t" kind="struct" prot="public">
+    <compoundname>ls::math::quat_t</compoundname>
+    <includes refid="quat_8h" local="no">quat.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>num_t</declname>
+        <defname>num_t</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structls_1_1math_1_1quat__t_1a44c18fc5f628e9691108b2bf188bb04d" prot="public" static="no" mutable="no">
+        <type>num_t</type>
+        <definition>num_t ls::math::quat_t&lt; num_t &gt;::q[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>q</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="26" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a380e6725dbecb9d70c131200c6692ca2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::math::quat_t&lt; num_t &gt;::quat_t</definition>
+        <argsstring>(num_t inX, num_t inY, num_t inZ, num_t inW)</argsstring>
+        <name>quat_t</name>
+        <param>
+          <type>num_t</type>
+          <declname>inX</declname>
+        </param>
+        <param>
+          <type>num_t</type>
+          <declname>inY</declname>
+        </param>
+        <param>
+          <type>num_t</type>
+          <declname>inZ</declname>
+        </param>
+        <param>
+          <type>num_t</type>
+          <declname>inW</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="29" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ad20b001b93cfb3561623099c2333bd57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::math::quat_t&lt; num_t &gt;::quat_t</definition>
+        <argsstring>()</argsstring>
+        <name>quat_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="30" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1af24b454d5cb9efbde06d16c5bd5847e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::math::quat_t&lt; num_t &gt;::quat_t</definition>
+        <argsstring>(num_t n)</argsstring>
+        <name>quat_t</name>
+        <param>
+          <type>num_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="31" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a0bbdb60bde8609149ea8c5965219bbee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::math::quat_t&lt; num_t &gt;::quat_t</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input)</argsstring>
+        <name>quat_t</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="32" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a2554492d47807a07ab367eccf5ebab4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::math::quat_t&lt; num_t &gt;::quat_t</definition>
+        <argsstring>(quat_t&lt; num_t &gt; &amp;&amp;input)</argsstring>
+        <name>quat_t</name>
+        <param>
+          <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;&amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="33" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1acb4d3a7d6e4851ac43fad7f73c2d6da9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::math::quat_t&lt; num_t &gt;::~quat_t</definition>
+        <argsstring>()=default</argsstring>
+        <name>~quat_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a607569c805facb0422e11f541b333a3e" prot="public" static="no" const="yes" explicit="yes" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename other_t</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr</type>
+        <definition>constexpr ls::math::quat_t&lt; num_t &gt;::operator quat_t&lt; other_t &gt;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator quat_t&lt; other_t &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="39" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a03be50fbb288e44179680733e06a7350" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const num_t *</type>
+        <definition>const num_t * ls::math::quat_t&lt; num_t &gt;::operator&amp;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator&amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="41" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ae647f54ac0e1714afe53f86cd09b1b59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>num_t *</type>
+        <definition>num_t * ls::math::quat_t&lt; num_t &gt;::operator&amp;</definition>
+        <argsstring>()</argsstring>
+        <name>operator&amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="42" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ae1fe56963c2bc5ff839fbde278c42b85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr num_t</type>
+        <definition>constexpr num_t ls::math::quat_t&lt; num_t &gt;::operator[]</definition>
+        <argsstring>(int i) const </argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="74" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a9d40f83bad2cc01a82b80134f7b173e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>num_t &amp;</type>
+        <definition>num_t &amp; ls::math::quat_t&lt; num_t &gt;::operator[]</definition>
+        <argsstring>(int i)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="46" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1afffc4a6c5a35ee2d9d6d9cfc7c38e0d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator++</definition>
+        <argsstring>()</argsstring>
+        <name>operator++</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="49" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ab34106cb1318956a81c42392a3f19fb0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator--</definition>
+        <argsstring>()</argsstring>
+        <name>operator--</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="50" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a8992fe033d19d5baee5b205e82fa5a2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator++</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator++</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="51" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="101" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a0a1de43835d26cb9d9488ee5c95bd7be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator--</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator--</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="52" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a67940ad21f41edc2687b8786ff000dff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator+</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input) const </argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="53" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="115" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a8fc32cdaa8baa5e94a1b2516e63edb26" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator-</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input) const </argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="54" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="125" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ab74bf974c99f808a18bdd9d58fffad74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator*</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input) const </argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="55" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="135" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a2627b441d9652ced292e9525c75f8125" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator=</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="56" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="145" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a90c7ca01a74bbb232f4b85c19e1ec676" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator=</definition>
+        <argsstring>(quat_t&lt; num_t &gt; &amp;&amp;input)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;&amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="57" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="154" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a6b67aae7aa91032dcb4d496f35ac82f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator+=</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="58" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="163" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a7f73fd0337ddda0ac06528562e762af8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator-=</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="59" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="172" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ad6a23d099d6b6d7ed807d4881672c5f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator*=</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input)</argsstring>
+        <name>operator*=</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="60" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="181" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a16b173601185af8e84e9a1983eb55cf7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::math::quat_t&lt; num_t &gt;::operator==</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input) const </argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="61" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="186" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a392f6cc7c02521ae843bf54ece66cff0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::math::quat_t&lt; num_t &gt;::operator!=</definition>
+        <argsstring>(const quat_t&lt; num_t &gt; &amp;input) const </argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref>&lt; num_t &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="62" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="195" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1aab9c7916cc20821ce53896dd86ae40f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator+</definition>
+        <argsstring>(num_t) const </argsstring>
+        <name>operator+</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="65" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="207" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a5ec0f46bc38d3b8cb66becf4513584f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator-</definition>
+        <argsstring>(num_t) const </argsstring>
+        <name>operator-</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="66" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="217" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a18e97ce3791b74d2323f2bc74b8a6d1d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator*</definition>
+        <argsstring>(num_t) const </argsstring>
+        <name>operator*</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="67" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="227" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ad0bcefc8d0bfb3952780f3aaff05d7c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref></type>
+        <definition>quat_t&lt; num_t &gt; ls::math::quat_t&lt; num_t &gt;::operator/</definition>
+        <argsstring>(num_t) const </argsstring>
+        <name>operator/</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="68" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="237" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a83a6315de3524b7cdd6d2b329c0a9db4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator=</definition>
+        <argsstring>(num_t)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="69" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="247" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a91cd90cc24c9da96162d4d8b7ba27d42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator+=</definition>
+        <argsstring>(num_t)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="70" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="256" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1a53dfed0473aa66c6ea2de61d1e565528" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator-=</definition>
+        <argsstring>(num_t)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="71" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="265" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1abf68c18526278dc5edcfce5e082ed761" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator*=</definition>
+        <argsstring>(num_t)</argsstring>
+        <name>operator*=</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="72" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="274" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="structls_1_1math_1_1quat__t_1ae6850397a39f2d447b48c97bf97c7287" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structls_1_1math_1_1quat__t" kindref="compound">quat_t</ref> &amp;</type>
+        <definition>quat_t&lt; num_t &gt; &amp; ls::math::quat_t&lt; num_t &gt;::operator/=</definition>
+        <argsstring>(num_t)</argsstring>
+        <name>operator/=</name>
+        <param>
+          <type>num_t</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="73" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/quat_impl.h" bodystart="283" bodyend="289"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Quaternion Structure. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ Recommended for use with non-integral types</para><para><simplesect kind="note"><para>Indexing is as follows: 0 = X 1 = Y 2 = Z <heading level="2">3 = W (real component) </heading>
+</para></simplesect>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" line="24" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/math/quat.h" bodystart="24" bodyend="74"/>
+    <listofallmembers>
+      <member refid="structls_1_1math_1_1quat__t_1a607569c805facb0422e11f541b333a3e" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator quat_t&lt; other_t &gt;</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a392f6cc7c02521ae843bf54ece66cff0" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator!=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a03be50fbb288e44179680733e06a7350" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator&amp;</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ae647f54ac0e1714afe53f86cd09b1b59" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator&amp;</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ab74bf974c99f808a18bdd9d58fffad74" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator*</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a18e97ce3791b74d2323f2bc74b8a6d1d" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator*</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ad6a23d099d6b6d7ed807d4881672c5f6" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator*=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1abf68c18526278dc5edcfce5e082ed761" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator*=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a67940ad21f41edc2687b8786ff000dff" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator+</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1aab9c7916cc20821ce53896dd86ae40f4" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator+</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1afffc4a6c5a35ee2d9d6d9cfc7c38e0d0" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator++</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a8992fe033d19d5baee5b205e82fa5a2c" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator++</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a6b67aae7aa91032dcb4d496f35ac82f6" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator+=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a91cd90cc24c9da96162d4d8b7ba27d42" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator+=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a8fc32cdaa8baa5e94a1b2516e63edb26" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator-</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a5ec0f46bc38d3b8cb66becf4513584f0" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator-</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ab34106cb1318956a81c42392a3f19fb0" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator--</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a0a1de43835d26cb9d9488ee5c95bd7be" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator--</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a7f73fd0337ddda0ac06528562e762af8" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator-=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a53dfed0473aa66c6ea2de61d1e565528" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator-=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ad0bcefc8d0bfb3952780f3aaff05d7c5" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator/</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ae6850397a39f2d447b48c97bf97c7287" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator/=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a2627b441d9652ced292e9525c75f8125" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a90c7ca01a74bbb232f4b85c19e1ec676" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a83a6315de3524b7cdd6d2b329c0a9db4" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator=</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a16b173601185af8e84e9a1983eb55cf7" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator==</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ae1fe56963c2bc5ff839fbde278c42b85" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator[]</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a9d40f83bad2cc01a82b80134f7b173e6" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>operator[]</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a44c18fc5f628e9691108b2bf188bb04d" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>q</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a380e6725dbecb9d70c131200c6692ca2" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>quat_t</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1ad20b001b93cfb3561623099c2333bd57" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>quat_t</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1af24b454d5cb9efbde06d16c5bd5847e3" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>quat_t</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a0bbdb60bde8609149ea8c5965219bbee" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>quat_t</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1a2554492d47807a07ab367eccf5ebab4a" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>quat_t</name></member>
+      <member refid="structls_1_1math_1_1quat__t_1acb4d3a7d6e4851ac43fad7f73c2d6da9" prot="public" virt="non-virtual"><scope>ls::math::quat_t</scope><name>~quat_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

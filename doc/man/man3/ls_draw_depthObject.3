@@ -1,0 +1,324 @@
+.TH "ls::draw::depthObject" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::depthObject \- 
+.PP
+Render Depth Manipulation Object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <depthObject\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBdepthObject\fP ()=default"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBdepthObject\fP (const \fBdepthObject\fP &d)=default"
+.br
+.RI "\fICopy Constructor\&. \fP"
+.ti -1c
+.RI "\fBdepthObject\fP (\fBdepthObject\fP &&d)=default"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fB~depthObject\fP ()=default"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBdepthObject\fP & \fBoperator=\fP (const \fBdepthObject\fP &d)=default"
+.br
+.RI "\fICopy Operator\&. \fP"
+.ti -1c
+.RI "\fBdepthObject\fP & \fBoperator=\fP (\fBdepthObject\fP &&d)=default"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "void \fBbind\fP () const "
+.br
+.ti -1c
+.RI "void \fBunbind\fP () const "
+.br
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetState\fP (bool s=GL_FALSE)"
+.br
+.ti -1c
+.RI "bool \fBgetState\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetClearVal\fP (double cv)"
+.br
+.ti -1c
+.RI "double \fBgetClearVal\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetDepthFunc\fP (\fBcompare_func_t\fP cf=\fBLS_DEPTH_LESS\fP)"
+.br
+.ti -1c
+.RI "\fBcompare_func_t\fP \fBgetDepthFunc\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetDepthMask\fP (bool dm=GL_TRUE)"
+.br
+.ti -1c
+.RI "bool \fBgetDepthMask\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetDepthNear\fP (double near=0\&.0)"
+.br
+.ti -1c
+.RI "double \fBgetDepthNear\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetDepthFar\fP (double far=1\&.0)"
+.br
+.ti -1c
+.RI "double \fBgetDepthFar\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDepthRange\fP (double near=0\&.0, double far=1\&.0)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Render Depth Manipulation Object\&. 
+
+
+.PP
+ The depth object id an artificial wrapper for depth buffer manipulation within OpenGL\&. through this object, you can change the depth buffer's 
+.SS "state and parameters\&. "
+
+.PP
+Definition at line 42 of file depthObject\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::draw::depthObject::depthObject ()\fC [default]\fP"
+
+.PP
+Constructor\&. Creates an \fBdepthObject\fP using the default OpenGL depth parameters\&. 
+.SS "ls::draw::depthObject::depthObject (const \fBdepthObject\fP &d)\fC [default]\fP"
+
+.PP
+Copy Constructor\&. Copies all data from the input parameter into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP A constant reference to another \fBdepthObject\fP\&. 
+.RE
+.PP
+
+.SS "ls::draw::depthObject::depthObject (\fBdepthObject\fP &&d)\fC [default]\fP"
+
+.PP
+Move Constructor\&. Copies all data from the input parameter into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP A constant reference to another \fBdepthObject\fP\&. 
+.RE
+.PP
+
+.SS "ls::draw::depthObject::~depthObject ()\fC [default]\fP"
+
+.PP
+Destructor\&. Does nothing\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void ls::draw::depthObject::bind () const"
+Bind all members to their associated depth parameters\&. 
+.PP
+Definition at line 16 of file depthObject\&.cpp\&.
+.SS "double ls::draw::depthObject::getClearVal () const\fC [inline]\fP"
+Get the value that's applied to the depth buffer when a call to glClear(LS_DEPTH_BUFFER_BIT) has been made\&.
+.PP
+\fBReturns:\fP
+.RS 4
+double A double-precision float that will be clamped to the range of 0-1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file depthObject_impl\&.h\&.
+.SS "double ls::draw::depthObject::getDepthFar ()\fC [inline]\fP"
+Get the far value that will be used by OpenGL's depth buffer\&. This value will be clamped between 0\&.0 and 1\&.0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfar\fP Used to set the farthest renderable depth of a fragment output by the pixel shader\&. 
+.RE
+.PP
+
+.PP
+Definition at line 89 of file depthObject_impl\&.h\&.
+.SS "\fBcompare_func_t\fP ls::draw::depthObject::getDepthFunc () const\fC [inline]\fP"
+Get the depth-comparison function used by this depth object\&.
+.PP
+\fBReturns:\fP
+.RS 4
+compare_func_t The comparison function to be used when rendering pixel fragments\&. 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file depthObject_impl\&.h\&.
+.SS "bool ls::draw::depthObject::getDepthMask () const\fC [inline]\fP"
+Determine if writes to the depth buffer are enabled\&.
+.PP
+\fBReturns:\fP
+.RS 4
+bool TRUE if depth buffer writes are enabled, or FALSE if not\&. 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file depthObject_impl\&.h\&.
+.SS "double ls::draw::depthObject::getDepthNear () const\fC [inline]\fP"
+Get the near value that will be used by OpenGL's depth buffer\&. This value will be clamped between 0\&.0 and 1\&.0\&.
+.PP
+\fBReturns:\fP
+.RS 4
+double A double-precision floating point value that is used to determine if a value is within the screen-space depth buffer\&. 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file depthObject_impl\&.h\&.
+.SS "bool ls::draw::depthObject::getState () const\fC [inline]\fP"
+Determine whether depth testing should be enabled or disabled in the current rendering state\&.
+.PP
+\fBReturns:\fP
+.RS 4
+bool A boolean value that will determine if OpenGL should have depth testing enabled or disabled\&. 
+.RE
+.PP
+
+.PP
+Definition at line 17 of file depthObject_impl\&.h\&.
+.SS "\fBdepthObject\fP& ls::draw::depthObject::operator= (const \fBdepthObject\fP &d)\fC [default]\fP"
+
+.PP
+Copy Operator\&. Copies all data from the input parameter into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP An R-Value reference to another \fBdepthObject\fP that is about to go out of scope\&. 
+.RE
+.PP
+
+.SS "\fBdepthObject\fP& ls::draw::depthObject::operator= (\fBdepthObject\fP &&d)\fC [default]\fP"
+
+.PP
+Move Operator\&. Copies all data from the input parameter into *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP An R-Value reference to another \fBdepthObject\fP that is about to go out of scope\&. 
+.RE
+.PP
+
+.SS "void ls::draw::depthObject::reset ()"
+Reset all currently held depth parameters to OpenGL's defaults\&. 
+.PP
+Definition at line 42 of file depthObject\&.cpp\&.
+.SS "void ls::draw::depthObject::setClearVal (doublecv)\fC [inline]\fP"
+Set the value to be applied to the depth buffer after a call to glClear(LS_DEPTH_BUFFER_BIT)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcv\fP A double-precision float that will be clamped to the range of 0-1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::setDepthFar (doublefar = \fC1\&.0\fP)\fC [inline]\fP"
+Set the far value that will be used by OpenGL's depth buffer\&. This value will be clamped between 0\&.0 and 1\&.0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdouble\fP A double-precision floating point value that will be used to determine if a value is within the screen-space depth buffer\&. 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::setDepthFunc (\fBcompare_func_t\fPcf = \fC\fBLS_DEPTH_LESS\fP\fP)\fC [inline]\fP"
+Set the function to be used when rendering fragments from the pixel shader\&. This value helps to determine if fragments should be kept or discarded\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcf\fP The comparison function to be used when rendering pixel fragments\&. 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::setDepthMask (booldm = \fCGL_TRUE\fP)\fC [inline]\fP"
+Set whether to enable writes to the depth buffer\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdm\fP If TRUE then writes to the depth buffer are enabled, if FALSE then they will be disabled\&. 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::setDepthNear (doublenear = \fC0\&.0\fP)\fC [inline]\fP"
+Set the near value that will be used by OpenGL's depth buffer\&. This value will be clamped between 0\&.0 and 1\&.0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInear\fP Used to set the nearest renderable depth of a fragment output by the pixel shader\&. 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::setDepthRange (doublenear = \fC0\&.0\fP, doublefar = \fC1\&.0\fP)\fC [inline]\fP"
+Set both the the near and far values that will be used by OpenGL's depth buffer to determine if a fragment is of renderable depth\&. These value will be clamped between 0\&.0 and 1\&.0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInear\fP Used to set the nearest renderable depth of a fragment output by the pixel shader\&.
+.br
+\fIfar\fP Used to set the farthest renderable depth of a fragment output by the pixel shader\&. 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::setState (bools = \fCGL_FALSE\fP)\fC [inline]\fP"
+Set whether depth testing should be enabled or disabled in the current rendering state\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP A boolean value that will determine if OpenGL should have depth testing enabled or disabled\&. 
+.RE
+.PP
+
+.PP
+Definition at line 9 of file depthObject_impl\&.h\&.
+.SS "void ls::draw::depthObject::unbind () const"
+Unbind all depth parameters used by *this and restore the default depth parameters to OpenGL\&.
+.PP
+\fBNote:\fP
+.RS 4
+Don't use this function if another depth object is going to be bound immediately afterwards\&. Doing so may cause a redundant state change within OpenGL\&. 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file depthObject\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

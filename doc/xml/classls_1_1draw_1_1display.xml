@@ -1,0 +1,435 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1display" kind="class" prot="public">
+    <compoundname>ls::draw::display</compoundname>
+    <includes refid="display_8h" local="no">display.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1display_1adc28259d6504bd0a4a5644320958efce" prot="private" static="no" mutable="no">
+        <type>SDL_Window *</type>
+        <definition>SDL_Window* ls::draw::display::pWindow</definition>
+        <argsstring></argsstring>
+        <name>pWindow</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal handle to the device context created by SDL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="58" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1display_1aff5419657ed0c9b64389af25d7138c4f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ls::draw::display::windowIsNative</definition>
+        <argsstring></argsstring>
+        <name>windowIsNative</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Keep track of whether a native hardware handle is being used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="63" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1display_1a939152f1834780d7e470f9a5e6d446b0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ls::draw::display::fullScreenMode</definition>
+        <argsstring></argsstring>
+        <name>fullScreenMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Member to keep track of whether the display should use the default fullscreen mode, or present the render context in a borderless window that matches the user&apos;s display resolution. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="70" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a863952163d83f9e77c90591d8968e55a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::display::display</definition>
+        <argsstring>()</argsstring>
+        <name>display</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="76" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a58c20f8dbb876faf3b74902cea4f004b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::display::display</definition>
+        <argsstring>(const display &amp;)=delete</argsstring>
+        <name>display</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Constructor - DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="81" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a38128d047201d30684bf3165b808dcac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::display::display</definition>
+        <argsstring>(display &amp;&amp;d)</argsstring>
+        <name>display</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;&amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Move operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all members from the input parameter into *this. No copies are performed. Any existing window handles will be invalidated.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to another display object that *this will take ownership of. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="93" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="59" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1ac258755d0229e7cc6c33a5777cf774cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::display::~display</definition>
+        <argsstring>()</argsstring>
+        <name>~display</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Closes the window and frees all resources used by *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="100" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1aa632bc3bbbefa643808246f2df881c49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+        <definition>display&amp; ls::draw::display::operator=</definition>
+        <argsstring>(const display &amp;d)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Operator - DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="105" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1ab014d0a50c5afe0b80e0e1c5423746fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+        <definition>display &amp; ls::draw::display::operator=</definition>
+        <argsstring>(display &amp;&amp;d)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;&amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Move operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all members from the input parameter into *this. No copies are performed. Any existing window handles will be invalidated.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to another display object that *this will take ownership of. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="117" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="70" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1aa513b8fc0b6699a27a82b25a0bd315d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::display::init</definition>
+        <argsstring>(void *const hwnd)</argsstring>
+        <name>init</name>
+        <param>
+          <type>void *const</type>
+          <declname>hwnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an display object from a native OS hardware handle.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hwnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the operating systen&apos;s native window type.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isFullScreen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Determine if the window should be made full-screen.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool TRUE if a window could be successfully created, or FALSE if otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="132" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="90" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1aa5d523cf752345742e04a0b47466fe90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::display::init</definition>
+        <argsstring>(const math::vec2i inResolution, bool isFullScreen=false)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const math::vec2i</type>
+          <declname>inResolution</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isFullScreen</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize/Open a window within the OS.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inResolution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The desired window resolution, in pixels.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isFullScreen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Determine if the window should be made full-screen.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the display initialized properly, FALSE is not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="145" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="150" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1abdddb559024bae6b6b28aaa92d0bf697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::display::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Close the window and free all memory/resources used by *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="150" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="192" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a11a9c330cc612f3bda84a33cc4bd3847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const math::vec2i</type>
+        <definition>const math::vec2i ls::draw::display::getResolution</definition>
+        <argsstring>() const </argsstring>
+        <name>getResolution</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the resolution, in pixels, of the display referenced by *this.</para><para><simplesect kind="return"><para>math::vec2i </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="157" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="204" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a12b8f96e14546f36e46eb8bc317cadb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::display::setResolution</definition>
+        <argsstring>(const math::vec2i inResolution)</argsstring>
+        <name>setResolution</name>
+        <param>
+          <type>const math::vec2i</type>
+          <declname>inResolution</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the resolution, in pixels, that this display should be.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inResolution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A new resolution, contained within a 2d integral vector, represented in pixels. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="166" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="213" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1ad63c6f23c60f58320c9d39131f0dfe8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::display::setFullScreenState</definition>
+        <argsstring>(bool fs)</argsstring>
+        <name>setFullScreenState</name>
+        <param>
+          <type>bool</type>
+          <declname>fs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set whether or not this display should be made fullscreen.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE to enable a fullscreen window, FALSE to reduce the display down to a simple window. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="175" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="220" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a6f9135cee63c30155d165dae5b6cca2a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::display::getFullScreenState</definition>
+        <argsstring>() const </argsstring>
+        <name>getFullScreenState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if the current display is in fullscreen mode.</para><para><simplesect kind="return"><para>TRUE if the display is in fullscreen mode, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="182" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="234" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a1454bcf8ca680ebaf2ae610b618c2596" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::display::setFullScreenMode</definition>
+        <argsstring>(fullscreen_t fs=FULLSCREEN_DEFAULT)</argsstring>
+        <name>setFullScreenMode</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcad" kindref="member">fullscreen_t</ref></type>
+          <declname>fs</declname>
+          <defval><ref refid="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcada20b16d12fe744b3fedbd204fd11769e9" kindref="member">FULLSCREEN_DEFAULT</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set how the window should handle the full resolution of the current display.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to FULLSCREEN_DISPLAY in order to use the default fullscreen mode, or use FULLSCREEN_WINDOW in order to make the window become borderless and use the entire available resolution. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="193" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="243" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a90b8882ca69b2c7930f01334663b897e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcad" kindref="member">fullscreen_t</ref></type>
+        <definition>fullscreen_t ls::draw::display::getFullScreenMode</definition>
+        <argsstring>() const </argsstring>
+        <name>getFullScreenMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current fullscreen-handling method.</para><para><simplesect kind="return"><para>fullscreen_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="200" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="264" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1aa406d69ac8363c361860617168c627f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::display::isRunning</definition>
+        <argsstring>() const </argsstring>
+        <name>isRunning</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if this object holds a handle to an open window.</para><para><simplesect kind="return"><para>TRUE if a window is open, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="207" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/display_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1a285d9b6eeffca6fe03a1f5a085ee4851" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>SDL_Window *</type>
+        <definition>SDL_Window * ls::draw::display::getWindow</definition>
+        <argsstring>() const </argsstring>
+        <name>getWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a handle to the SDL_Window responsible for the window that this object references.</para><para><simplesect kind="return"><para>SDL_Window. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="215" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="275" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1display_1afa066c718636e6b3143d95541ca12962" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::display::usingNativeWindow</definition>
+        <argsstring>() const </argsstring>
+        <name>usingNativeWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if the current display is using a native window handle.</para><para><simplesect kind="return"><para>bool TRUE if this display was created using a previously existing OS window handle, or FALSE if the display was created using an internal method. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="225" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/display_impl.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Display Class. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ This class is responsible for Opening an OpenGL 3.3-compatible device context (a window within the OS). It contains the object responsible for <heading level="2">rendering or drawing in OpenGL. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="53" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" bodystart="53" bodyend="226"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1display_1a863952163d83f9e77c90591d8968e55a" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>display</name></member>
+      <member refid="classls_1_1draw_1_1display_1a58c20f8dbb876faf3b74902cea4f004b" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>display</name></member>
+      <member refid="classls_1_1draw_1_1display_1a38128d047201d30684bf3165b808dcac" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>display</name></member>
+      <member refid="classls_1_1draw_1_1display_1a939152f1834780d7e470f9a5e6d446b0" prot="private" virt="non-virtual"><scope>ls::draw::display</scope><name>fullScreenMode</name></member>
+      <member refid="classls_1_1draw_1_1display_1a90b8882ca69b2c7930f01334663b897e" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>getFullScreenMode</name></member>
+      <member refid="classls_1_1draw_1_1display_1a6f9135cee63c30155d165dae5b6cca2a" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>getFullScreenState</name></member>
+      <member refid="classls_1_1draw_1_1display_1a11a9c330cc612f3bda84a33cc4bd3847" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>getResolution</name></member>
+      <member refid="classls_1_1draw_1_1display_1a285d9b6eeffca6fe03a1f5a085ee4851" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>getWindow</name></member>
+      <member refid="classls_1_1draw_1_1display_1aa513b8fc0b6699a27a82b25a0bd315d6" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>init</name></member>
+      <member refid="classls_1_1draw_1_1display_1aa5d523cf752345742e04a0b47466fe90" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>init</name></member>
+      <member refid="classls_1_1draw_1_1display_1aa406d69ac8363c361860617168c627f8" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>isRunning</name></member>
+      <member refid="classls_1_1draw_1_1display_1aa632bc3bbbefa643808246f2df881c49" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1display_1ab014d0a50c5afe0b80e0e1c5423746fb" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1display_1adc28259d6504bd0a4a5644320958efce" prot="private" virt="non-virtual"><scope>ls::draw::display</scope><name>pWindow</name></member>
+      <member refid="classls_1_1draw_1_1display_1a1454bcf8ca680ebaf2ae610b618c2596" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>setFullScreenMode</name></member>
+      <member refid="classls_1_1draw_1_1display_1ad63c6f23c60f58320c9d39131f0dfe8d" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>setFullScreenState</name></member>
+      <member refid="classls_1_1draw_1_1display_1a12b8f96e14546f36e46eb8bc317cadb0" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>setResolution</name></member>
+      <member refid="classls_1_1draw_1_1display_1abdddb559024bae6b6b28aaa92d0bf697" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>terminate</name></member>
+      <member refid="classls_1_1draw_1_1display_1afa066c718636e6b3143d95541ca12962" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>usingNativeWindow</name></member>
+      <member refid="classls_1_1draw_1_1display_1aff5419657ed0c9b64389af25d7138c4f" prot="private" virt="non-virtual"><scope>ls::draw::display</scope><name>windowIsNative</name></member>
+      <member refid="classls_1_1draw_1_1display_1ac258755d0229e7cc6c33a5777cf774cc" prot="public" virt="non-virtual"><scope>ls::draw::display</scope><name>~display</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

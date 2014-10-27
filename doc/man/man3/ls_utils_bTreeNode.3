@@ -1,0 +1,143 @@
+.TH "ls::utils::bTreeNode< data_t >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::utils::bTreeNode< data_t > \- 
+.PP
+BTree Node A node type used by the BTree class in order to store data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <btree\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr \fBbTreeNode\fP ()"
+.br
+.RI "\fIConstructor Creates a b-tree node with no data within\&. \fP"
+.ti -1c
+.RI "\fBbTreeNode\fP (const \fBbTreeNode\fP &btn)"
+.br
+.RI "\fIB-Tree Node Copu Operator Copies all data from the input parameter into *this\&. \fP"
+.ti -1c
+.RI "\fBbTreeNode\fP (\fBbTreeNode\fP &&btn)"
+.br
+.RI "\fIB-Tree Node Move Operator Moves all data from the input parameter into *this\&. \fP"
+.ti -1c
+.RI "\fB~bTreeNode\fP ()"
+.br
+.RI "\fIDestructor Frees all memory/resources used by *this\&. \fP"
+.ti -1c
+.RI "\fBbTreeNode\fP & \fBoperator=\fP (const \fBbTreeNode\fP &btn)"
+.br
+.RI "\fIB-Tree Node Copu Operator Copies all data from the input parameter into *this\&. \fP"
+.ti -1c
+.RI "\fBbTreeNode\fP & \fBoperator=\fP (\fBbTreeNode\fP &&btn)"
+.br
+.RI "\fIB-Tree Node Move Operator Moves all data from the input parameter into *this\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "template<typename , typename > class \fBbTree\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename data_t>class ls::utils::bTreeNode< data_t >"
+BTree Node A node type used by the BTree class in order to store data\&. 
+.PP
+Definition at line 35 of file btree\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename data_t > constexpr \fBls::utils::bTreeNode\fP< data_t >::\fBbTreeNode\fP ()"
+
+.PP
+Constructor Creates a b-tree node with no data within\&. 
+.PP
+Definition at line 112 of file btree\&.h\&.
+.SS "template<typename data_t > \fBls::utils::bTreeNode\fP< data_t >::\fBbTreeNode\fP (const \fBbTreeNode\fP< data_t > &btn)"
+
+.PP
+B-Tree Node Copu Operator Copies all data from the input parameter into *this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbtn\fP A constant reference to a b-tree node\&. 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file btree\&.h\&.
+.SS "template<typename data_t > \fBls::utils::bTreeNode\fP< data_t >::\fBbTreeNode\fP (\fBbTreeNode\fP< data_t > &&btn)"
+
+.PP
+B-Tree Node Move Operator Moves all data from the input parameter into *this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbtn\fP An r-value reference to a b-tree node that will to go out of scope\&. 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file btree\&.h\&.
+.SS "template<typename data_t > \fBls::utils::bTreeNode\fP< data_t >::~\fBbTreeNode\fP ()"
+
+.PP
+Destructor Frees all memory/resources used by *this\&. 
+.PP
+Definition at line 149 of file btree\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename data_t > \fBbTreeNode\fP< data_t > & \fBls::utils::bTreeNode\fP< data_t >::operator= (const \fBbTreeNode\fP< data_t > &btn)"
+
+.PP
+B-Tree Node Copu Operator Copies all data from the input parameter into *this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbtn\fP A constant reference to a b-tree node\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 161 of file btree\&.h\&.
+.SS "template<typename data_t > \fBbTreeNode\fP< data_t > & \fBls::utils::bTreeNode\fP< data_t >::operator= (\fBbTreeNode\fP< data_t > &&btn)"
+
+.PP
+B-Tree Node Move Operator Moves all data from the input parameter into *this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbtn\fP An r-value reference to a b-tree node that will to go out of scope\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 186 of file btree\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename data_t> template<typename , typename > friend class \fBbTree\fP\fC [friend]\fP"
+
+.PP
+Definition at line 38 of file btree\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

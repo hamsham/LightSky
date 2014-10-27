@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1buffer_object" kind="class" prot="public">
+    <compoundname>ls::draw::bufferObject</compoundname>
+    <includes refid="buffer_object_8h" local="no">bufferObject.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089" kindref="member">buffer_t</ref></type>
+        <declname>bufferType</declname>
+        <defname>bufferType</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1buffer_object_1a95c0721fc3597c92c59df90539146cc7" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint ls::draw::bufferObject&lt; bufferType &gt;::vbo</definition>
+        <argsstring></argsstring>
+        <name>vbo</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A handle to the vertex buffer object residing on the GPU. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="79" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1aa1044ec86b5446467a7f3a9ee47279d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::bufferObject&lt; bufferType &gt;::bufferObject</definition>
+        <argsstring>()</argsstring>
+        <name>bufferObject</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="85" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="9" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a175835cea24274953241109708581085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::bufferObject&lt; bufferType &gt;::bufferObject</definition>
+        <argsstring>(const bufferObject &amp;)=delete</argsstring>
+        <name>bufferObject</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Constructor - DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a769df87897d1e650610d796a3588834a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::bufferObject&lt; bufferType &gt;::bufferObject</definition>
+        <argsstring>(bufferObject &amp;&amp;vb)</argsstring>
+        <name>bufferObject</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref> &amp;&amp;</type>
+          <declname>vb</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This moves the data contained within the constructor parameter into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vertex buffer object whose data will be moved into *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="101" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="16" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a20493e0d083287a2c508e1a7f01345d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::bufferObject&lt; bufferType &gt;::~bufferObject</definition>
+        <argsstring>()</argsstring>
+        <name>~bufferObject</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Releases all resources used by *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="108" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a4aec10a7dae95aa744e5a7d63acc522a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref> &amp;</type>
+        <definition>bufferObject&amp; ls::draw::bufferObject&lt; bufferType &gt;::operator=</definition>
+        <argsstring>(const bufferObject &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Operator - DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a6b71092313d6c047d7713126a51a8111" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref> &amp;</type>
+        <definition>bufferObject&lt; bufferType &gt; &amp; ls::draw::bufferObject&lt; bufferType &gt;::operator=</definition>
+        <argsstring>(bufferObject &amp;&amp;vb)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref> &amp;&amp;</type>
+          <declname>vb</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>This moves the data contained within the method parameter into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vertex buffer object whose data will be moved into *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="124" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a355121c4dda50eb6c7971883ba1949a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::bufferObject&lt; bufferType &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+<para>Buffer initialization. </para>        </briefdescription>
+        <detaileddescription>
+<para>Generates a vertex buffer object on the GPY that will be used to contain a large pool of data.</para><para><simplesect kind="return"><para>true if the buffer was successfully created, false if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="134" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a04f3618de09080970c9ba60bc2b4c05c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::bufferObject&lt; bufferType &gt;::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Terminate the vertex buffer and release all of its resources back to the GPU. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="140" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a9a0f393fd391fc2648a2633cce129945" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::bufferObject&lt; bufferType &gt;::getId</definition>
+        <argsstring>() const </argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the GPU-assigned handle of this buffer object <simplesect kind="return"><para>An unsigned integer, representing the GPU-side buffer that this object represents. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="147" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a379b46e692c700340c1302a22904c33f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::bufferObject&lt; bufferType &gt;::isValid</definition>
+        <argsstring>() const </argsstring>
+        <name>isValid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if there is data used by this object</para><para><simplesect kind="return"><para>true if this object has data residing on GPU memory, false if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="155" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a1bf8ba61333d9b32446c398727a35e99" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::bufferObject&lt; bufferType &gt;::bind</definition>
+        <argsstring>() const </argsstring>
+        <name>bind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind this vertex buffer to the current global rendering context. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="160" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1ac01383ce0db1c576bb5e3f2bc6df61e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::bufferObject&lt; bufferType &gt;::unbind</definition>
+        <argsstring>() const </argsstring>
+        <name>unbind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unbind this vertex buffer object from the current render context. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="165" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1a264695c4238eb4aeb39b1d5fcf113938" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::bufferObject&lt; bufferType &gt;::setData</definition>
+        <argsstring>(ptrdiff_t size, const void *pData, buffer_usage_t usage)</argsstring>
+        <name>setData</name>
+        <param>
+          <type>ptrdiff_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5" kindref="member">buffer_usage_t</ref></type>
+          <declname>usage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the data within the buffer to whatever is set at &quot;pData.&quot;</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size, in bytes, of the data that the buffer should contain.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the data contained within the buffer. This argument can be NULL to indicate that an empty buffer should be allocated and will have its contents filled later.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>usage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The usage of this buffer. This can indicate that the buffer is static, should be used to stream data occasionally, or the data is dynamic and will be updated on a regular basis. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="184" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="97" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1ad085726a023b94b5e74aeb22f06541ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::bufferObject&lt; bufferType &gt;::setSubData</definition>
+        <argsstring>(ptrdiff_t offset, ptrdiff_t size, const void *pData)</argsstring>
+        <name>setSubData</name>
+        <param>
+          <type>ptrdiff_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ptrdiff_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Modify the data within a buffer to contain whatever is in &quot;pData.&quot; at an offset of a specified amount of bytes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size, in bytes, of the data that the buffer should contain.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset, in bytes, to where the data should be placed in *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the data contained within the buffer. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="200" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="111" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1ae3ec213c3be4d626f40efe922974024d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * ls::draw::bufferObject&lt; bufferType &gt;::mapData</definition>
+        <argsstring>(ptrdiff_t offset, ptrdiff_t range, buffer_access_t access)</argsstring>
+        <name>mapData</name>
+        <param>
+          <type>ptrdiff_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ptrdiff_t</type>
+          <declname>range</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6db" kindref="member">buffer_access_t</ref></type>
+          <declname>access</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Map the contents of the buffer into memory in order to perform a DMA transfer of data to the GPU.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The offset, in bytes, to where the data should be placed in *this.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The range of bytes that will be mapped to memory.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>access</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies a combination of access flags indicating the desired access to the range of memory.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* A pointer to the location in memory where the data will be mapped. A NULL pointer may be returned, indicating an error that may have occurred while attempting to map the buffer to memory. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="222" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="124" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1buffer_object_1aa2bf4a8eeaab9417e7c468ff00adafa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::bufferObject&lt; bufferType &gt;::unmapData</definition>
+        <argsstring>()</argsstring>
+        <name>unmapData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Notify the GPU that all data has been uploaded to the requested location in memory and that the DMA transfer can now be performed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="228" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/bufferObject_impl.h" bodystart="137" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Vertex Buffer Object. </para>    </briefdescription>
+    <detaileddescription>
+<para>This object provides RAII to an OpenGL vertex Buffer Object. Different VBO types can be generated by modifying the template parameter. </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="74" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" bodystart="74" bodyend="229"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1buffer_object_1a1bf8ba61333d9b32446c398727a35e99" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>bind</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1aa1044ec86b5446467a7f3a9ee47279d2" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>bufferObject</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a175835cea24274953241109708581085" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>bufferObject</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a769df87897d1e650610d796a3588834a" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>bufferObject</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a9a0f393fd391fc2648a2633cce129945" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>getId</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a355121c4dda50eb6c7971883ba1949a8" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>init</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a379b46e692c700340c1302a22904c33f" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>isValid</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1ae3ec213c3be4d626f40efe922974024d" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>mapData</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a4aec10a7dae95aa744e5a7d63acc522a" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a6b71092313d6c047d7713126a51a8111" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a264695c4238eb4aeb39b1d5fcf113938" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>setData</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1ad085726a023b94b5e74aeb22f06541ae" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>setSubData</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a04f3618de09080970c9ba60bc2b4c05c" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>terminate</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1ac01383ce0db1c576bb5e3f2bc6df61e8" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>unbind</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1aa2bf4a8eeaab9417e7c468ff00adafa0" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>unmapData</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a95c0721fc3597c92c59df90539146cc7" prot="private" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>vbo</name></member>
+      <member refid="classls_1_1draw_1_1buffer_object_1a20493e0d083287a2c508e1a7f01345d5" prot="public" virt="non-virtual"><scope>ls::draw::bufferObject</scope><name>~bufferObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

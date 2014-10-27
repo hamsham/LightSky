@@ -1,0 +1,567 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="game_8cpp" kind="file">
+    <compoundname>game.cpp</compoundname>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes refid="game_8h" local="yes">lightsky/game/game.h</includes>
+    <incdepgraph>
+      <node id="3699">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3700" relation="include">
+        </childnode>
+      </node>
+      <node id="3678">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="3679" relation="include">
+        </childnode>
+        <childnode refid="3680" relation="include">
+        </childnode>
+      </node>
+      <node id="3725">
+        <label>lightsky/draw/generic/display_impl.h</label>
+        <link refid="display__impl_8h"/>
+      </node>
+      <node id="3684">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="3685" relation="include">
+        </childnode>
+        <childnode refid="3686" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3692" relation="include">
+        </childnode>
+        <childnode refid="3698" relation="include">
+        </childnode>
+        <childnode refid="3702" relation="include">
+        </childnode>
+        <childnode refid="3706" relation="include">
+        </childnode>
+        <childnode refid="3695" relation="include">
+        </childnode>
+        <childnode refid="3699" relation="include">
+        </childnode>
+        <childnode refid="3703" relation="include">
+        </childnode>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3708" relation="include">
+        </childnode>
+        <childnode refid="3709" relation="include">
+        </childnode>
+        <childnode refid="3712" relation="include">
+        </childnode>
+        <childnode refid="3714" relation="include">
+        </childnode>
+      </node>
+      <node id="3729">
+        <label>lightsky/game/manager.h</label>
+        <link refid="manager_8h"/>
+        <childnode refid="3690" relation="include">
+        </childnode>
+        <childnode refid="3730" relation="include">
+        </childnode>
+        <childnode refid="3731" relation="include">
+        </childnode>
+      </node>
+      <node id="3707">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="3673">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="3679">
+        <label>cstdint</label>
+      </node>
+      <node id="3675">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="3724">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="3672" relation="include">
+        </childnode>
+        <childnode refid="3677" relation="include">
+        </childnode>
+        <childnode refid="3678" relation="include">
+        </childnode>
+        <childnode refid="3681" relation="include">
+        </childnode>
+        <childnode refid="3684" relation="include">
+        </childnode>
+      </node>
+      <node id="3717">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="3722">
+        <label>lightsky/draw/context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="3723" relation="include">
+        </childnode>
+        <childnode refid="3726" relation="include">
+        </childnode>
+      </node>
+      <node id="3712">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="3709" relation="include">
+        </childnode>
+        <childnode refid="3692" relation="include">
+        </childnode>
+        <childnode refid="3698" relation="include">
+        </childnode>
+        <childnode refid="3702" relation="include">
+        </childnode>
+        <childnode refid="3713" relation="include">
+        </childnode>
+      </node>
+      <node id="3688">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="3689" relation="include">
+        </childnode>
+        <childnode refid="3679" relation="include">
+        </childnode>
+        <childnode refid="3690" relation="include">
+        </childnode>
+        <childnode refid="3685" relation="include">
+        </childnode>
+        <childnode refid="3686" relation="include">
+        </childnode>
+        <childnode refid="3691" relation="include">
+        </childnode>
+      </node>
+      <node id="3691">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="3705">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="3692">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3695" relation="include">
+        </childnode>
+        <childnode refid="3697" relation="include">
+        </childnode>
+      </node>
+      <node id="3731">
+        <label>lightsky/game/generic/manager_impl.h</label>
+        <link refid="manager__impl_8h"/>
+      </node>
+      <node id="3687">
+        <label>cmath</label>
+      </node>
+      <node id="3708">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3699" relation="include">
+        </childnode>
+        <childnode refid="3703" relation="include">
+        </childnode>
+        <childnode refid="3698" relation="include">
+        </childnode>
+        <childnode refid="3702" relation="include">
+        </childnode>
+        <childnode refid="3706" relation="include">
+        </childnode>
+        <childnode refid="3709" relation="include">
+        </childnode>
+        <childnode refid="3711" relation="include">
+        </childnode>
+      </node>
+      <node id="3694">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="3703">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3704" relation="include">
+        </childnode>
+      </node>
+      <node id="3710">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="3701">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="3683">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="3704">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="3720">
+        <label>lightsky/game/system.h</label>
+        <link refid="system_8h"/>
+        <childnode refid="3721" relation="include">
+        </childnode>
+        <childnode refid="3722" relation="include">
+        </childnode>
+        <childnode refid="3723" relation="include">
+        </childnode>
+        <childnode refid="3717" relation="include">
+        </childnode>
+        <childnode refid="3671" relation="include">
+        </childnode>
+        <childnode refid="3727" relation="include">
+        </childnode>
+      </node>
+      <node id="3676">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="3697">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="3728">
+        <label>lightsky/game/generic/gameState_impl.h</label>
+        <link refid="game_state__impl_8h"/>
+      </node>
+      <node id="3670">
+        <label>lightsky/game/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="3671" relation="include">
+        </childnode>
+        <childnode refid="3719" relation="include">
+        </childnode>
+        <childnode refid="3729" relation="include">
+        </childnode>
+        <childnode refid="3720" relation="include">
+        </childnode>
+      </node>
+      <node id="3714">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="3715" relation="include">
+        </childnode>
+        <childnode refid="3716" relation="include">
+        </childnode>
+        <childnode refid="3699" relation="include">
+        </childnode>
+        <childnode refid="3717" relation="include">
+        </childnode>
+        <childnode refid="3718" relation="include">
+        </childnode>
+      </node>
+      <node id="3700">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="3685">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="3672" relation="include">
+        </childnode>
+      </node>
+      <node id="3698">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3699" relation="include">
+        </childnode>
+        <childnode refid="3701" relation="include">
+        </childnode>
+      </node>
+      <node id="3669">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="3680">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="3696">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="3681">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="3682" relation="include">
+        </childnode>
+        <childnode refid="3683" relation="include">
+        </childnode>
+      </node>
+      <node id="3668">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp</label>
+        <link refid="game.cpp"/>
+        <childnode refid="3669" relation="include">
+        </childnode>
+        <childnode refid="3670" relation="include">
+        </childnode>
+      </node>
+      <node id="3706">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3707" relation="include">
+        </childnode>
+      </node>
+      <node id="3721">
+        <label>vector</label>
+      </node>
+      <node id="3686">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="3687" relation="include">
+        </childnode>
+        <childnode refid="3679" relation="include">
+        </childnode>
+      </node>
+      <node id="3672">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="3673" relation="include">
+        </childnode>
+        <childnode refid="3674" relation="include">
+        </childnode>
+        <childnode refid="3675" relation="include">
+        </childnode>
+        <childnode refid="3676" relation="include">
+        </childnode>
+      </node>
+      <node id="3727">
+        <label>lightsky/game/generic/system_impl.h</label>
+        <link refid="system__impl_8h"/>
+      </node>
+      <node id="3690">
+        <label>utility</label>
+      </node>
+      <node id="3713">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="3709">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="3686" relation="include">
+        </childnode>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3695" relation="include">
+        </childnode>
+        <childnode refid="3699" relation="include">
+        </childnode>
+        <childnode refid="3703" relation="include">
+        </childnode>
+        <childnode refid="3710" relation="include">
+        </childnode>
+      </node>
+      <node id="3702">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3703" relation="include">
+        </childnode>
+        <childnode refid="3705" relation="include">
+        </childnode>
+      </node>
+      <node id="3682">
+        <label>iostream</label>
+      </node>
+      <node id="3723">
+        <label>lightsky/draw/display.h</label>
+        <link refid="display_8h"/>
+        <childnode refid="3724" relation="include">
+        </childnode>
+        <childnode refid="3725" relation="include">
+        </childnode>
+      </node>
+      <node id="3695">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3696" relation="include">
+        </childnode>
+      </node>
+      <node id="3730">
+        <label>unordered_map</label>
+      </node>
+      <node id="3693">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="3685" relation="include">
+        </childnode>
+        <childnode refid="3686" relation="include">
+        </childnode>
+        <childnode refid="3694" relation="include">
+        </childnode>
+      </node>
+      <node id="3711">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="3689">
+        <label>climits</label>
+      </node>
+      <node id="3671">
+        <label>lightsky/game/setup.h</label>
+        <link refid="game_2setup_8h"/>
+        <childnode refid="3672" relation="include">
+        </childnode>
+        <childnode refid="3677" relation="include">
+        </childnode>
+        <childnode refid="3678" relation="include">
+        </childnode>
+        <childnode refid="3681" relation="include">
+        </childnode>
+        <childnode refid="3684" relation="include">
+        </childnode>
+      </node>
+      <node id="3715">
+        <label>chrono</label>
+      </node>
+      <node id="3719">
+        <label>lightsky/game/gameState.h</label>
+        <link refid="game_state_8h"/>
+        <childnode refid="3720" relation="include">
+        </childnode>
+        <childnode refid="3728" relation="include">
+        </childnode>
+      </node>
+      <node id="3677">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="3676" relation="include">
+        </childnode>
+      </node>
+      <node id="3716">
+        <label>algorithm</label>
+      </node>
+      <node id="3726">
+        <label>lightsky/draw/generic/context_impl.h</label>
+        <link refid="context__impl_8h"/>
+      </node>
+      <node id="3674">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="3718">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1game">ls::game</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>game/game.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>August<sp/>2,<sp/>2014,<sp/>10:27<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game_8h" kindref="compound">lightsky/game/game.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">game<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/><sp/>LightSky<sp/>initialization.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="namespacels_1_1game_1_1global_1af6fc99654443ba064912438176ca0874" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1game_1_1global_1af6fc99654443ba064912438176ca0874" kindref="member">global::init</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SDL_WasInit(0)<sp/>==<sp/>SDL_INIT_EVERYTHING)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1game_1_1global_1ab8f47dd33802e1a54168950a9e51e3c3" kindref="member">global::terminate</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_SetMainReady();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Setup<sp/>the<sp/>necessary<sp/>parameters<sp/>for<sp/>OpenGL<sp/>3.3</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,<sp/>3);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,<sp/>3);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,<sp/>SDL_GL_CONTEXT_PROFILE_CORE);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,<sp/>1);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,<sp/>24);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE,<sp/>8);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">#ifdef<sp/>LS_DEBUG</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>SDL_GL_CONTEXT_DEBUG_FLAG</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">#endif</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!SDL_Init(SDL_INIT_EVERYTHING))<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="game_2setup_8h_1abc234f375f4f4c916de2e164c787ce06" kindref="member">LS_LOG_GAME_ERR</ref>(</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Unable<sp/>to<sp/>initialize<sp/>SDL.\n&quot;</highlight><highlight class="normal">,<sp/>SDL_GetError(),<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Complain<sp/>to<sp/>your<sp/>local<sp/>programmer.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="game_2setup_8h_1a59bd83a3a4e6d6cdbc0423011a11b40d" kindref="member">LS_LOG_GAME_MSG</ref>(</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>initialized<sp/>SDL.\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GetError(),<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_ClearError();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>LightSky<sp/>termination</highlight></codeline>
+<codeline lineno="63"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="namespacels_1_1game_1_1global_1ab8f47dd33802e1a54168950a9e51e3c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1game_1_1global_1ab8f47dd33802e1a54168950a9e51e3c3" kindref="member">global::terminate</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SDL_WasInit(0))<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_QuitSubSystem(SDL_INIT_EVERYTHING);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_Quit();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>game<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp"/>
+  </compounddef>
+</doxygen>

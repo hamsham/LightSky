@@ -1,0 +1,132 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/math/mat_utils.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/math/mat_utils.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'lightsky/math/vec_utils\&.h'\fP
+.br
+\fC#include 'lightsky/math/mat2\&.h'\fP
+.br
+\fC#include 'lightsky/math/mat3\&.h'\fP
+.br
+\fC#include 'lightsky/math/mat4\&.h'\fP
+.br
+\fC#include 'lightsky/math/generic/mat_utils_impl\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::math\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::determinant\fP (const mat2_t< N > &m)"
+.br
+.RI "\fIdeterminant Retrieve the determinate for a 2x2 matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat2_t< N > \fBls::math::transpose\fP (const mat2_t< N > &m)"
+.br
+.RI "\fItranspose Flip the values of a matrix around its main diagonal\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat2_t< N > \fBls::math::inverse\fP (const mat2_t< N > &m)"
+.br
+.RI "\fIinverse Invert a matrix m so that m * m^i = I \fP"
+.ti -1c
+.RI "template<typename N > mat2_t< N > \fBls::math::rotate\fP (const mat2_t< N > &m, N radians)"
+.br
+.RI "\fIrotate Rotate a 2x2 matrix by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat2_t< N > \fBls::math::scale\fP (const mat2_t< N > &m, const vec2_t< N > &amount)"
+.br
+.RI "\fIscale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::determinant\fP (const mat3_t< N > &m)"
+.br
+.RI "\fIdeterminant Retrieve the determinate for a 3x3 matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat3_t< N > \fBls::math::transpose\fP (const mat3_t< N > &m)"
+.br
+.RI "\fItranspose Flip the values of a matrix around its main diagonal\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat3_t< N > \fBls::math::inverse\fP (const mat3_t< N > &m)"
+.br
+.RI "\fIinverse \fP"
+.ti -1c
+.RI "template<typename N > mat3_t< N > \fBls::math::rotate\fP (const mat3_t< N > &m, const vec3_t< N > &axis, N radians)"
+.br
+.RI "\fIrotate Rotate a 3x3 matrix by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat3_t< N > \fBls::math::scale\fP (const mat3_t< N > &m, const vec3_t< N > &amount)"
+.br
+.RI "\fIscale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat3_t< N > \fBls::math::translate\fP (const mat3_t< N > &m, const vec2_t< N > &amount)"
+.br
+.RI "\fItranslate Translate a 3x3 matrix along a 2D plane\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::determinant\fP (const mat4_t< N > &m)"
+.br
+.RI "\fIdeterminant Retrieve the determinate for a 4x4 matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat4_t< N > \fBls::math::transpose\fP (const mat4_t< N > &m)"
+.br
+.RI "\fItranspose Flip the values of a matrix around its main diagonal\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::inverse\fP (const mat4_t< N > &m)"
+.br
+.RI "\fIinverse \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::rotate\fP (const mat4_t< N > &m, const vec3_t< N > &axis, N radians)"
+.br
+.RI "\fIrotate Rotate a 4x4 matrix by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat4_t< N > \fBls::math::scale\fP (const mat4_t< N > &m, const vec3_t< N > &amount)"
+.br
+.RI "\fIscale Scale a matrix by modifying the components of its main diagonal\&. This method uses additive scaling rather than multiplicative scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr mat4_t< N > \fBls::math::translate\fP (const mat4_t< N > &m, const vec3_t< N > &amount)"
+.br
+.RI "\fItranslate Translate a 4x4 matrix along a 3D plane\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::perspective\fP (N fov, N aspect, N zNear, N zFar)"
+.br
+.RI "\fIperspective Create a 2D perspective projection matrix in 3D space\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::infinitePerspective\fP (N fov, N aspect, N zNear)"
+.br
+.RI "\fIinfinitePerspective Create a 2D perspective projection matrix in 3D space with no far-clipping plane\&. This is useful in applications which do not care about the precision of floating-point values far from the projection matrix\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::ortho\fP (N left, N right, N top, N bottom)"
+.br
+.RI "\fIortho Create an orthographic-projection matrix in order to project 3D points onto a 2D plane\&. This method will project points without factoring in distance-scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::ortho\fP (N left, N right, N top, N bottom, N near, N far)"
+.br
+.RI "\fIortho Create an orthographic-projection matrix in order to project 3D points onto a 2D plane\&. This method will project points without factoring in distance-scaling\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::frustum\fP (N left, N right, N top, N bottom, N near, N far)"
+.br
+.RI "\fIfrustum Create a viewing frustum in order to project 3D points into 2D space\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::lookAt\fP (const vec3_t< N > &pos, const vec3_t< N > &target, const vec3_t< N > &up)"
+.br
+.RI "\fIlookAt Direct the far-plane of a projection matrix towards a point in 3D space\&. \fP"
+.ti -1c
+.RI "template<typename N > mat4_t< N > \fBls::math::billboard\fP (const vec3_t< N > &pos, const mat4_t< N > &viewMatrix)"
+.br
+.RI "\fIbillboard Retrieve a model matrix in 3D space so that it is oriented towards a Rotation/View matrix from a certain position\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

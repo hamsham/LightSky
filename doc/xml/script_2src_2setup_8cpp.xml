@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="script_2src_2setup_8cpp" kind="file">
+    <compoundname>setup.cpp</compoundname>
+    <includes refid="script_2setup_8h" local="yes">lightsky/script/setup.h</includes>
+    <incdepgraph>
+      <node id="3163">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="3164" relation="include">
+        </childnode>
+        <childnode refid="3165" relation="include">
+        </childnode>
+      </node>
+      <node id="3164">
+        <label>cstdint</label>
+      </node>
+      <node id="3161">
+        <label>map</label>
+      </node>
+      <node id="3159">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/setup.cpp</label>
+        <link refid="script/src/setup.cpp"/>
+        <childnode refid="3160" relation="include">
+        </childnode>
+      </node>
+      <node id="3162">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="3165">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="3160">
+        <label>lightsky/script/setup.h</label>
+        <link refid="script_2setup_8h"/>
+        <childnode refid="3161" relation="include">
+        </childnode>
+        <childnode refid="3162" relation="include">
+        </childnode>
+        <childnode refid="3163" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="script_2setup_8h" kindref="compound">lightsky/script/setup.h</ref>&quot;</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/setup.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,939 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="mat2__impl_8h" kind="file">
+    <compoundname>mat2_impl.h</compoundname>
+    <includedby refid="mat2_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/math/mat2.h</includedby>
+    <invincdepgraph>
+      <node id="4289">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/setup.cpp</label>
+        <link refid="draw_2src_2setup_8cpp"/>
+      </node>
+      <node id="4254">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp</label>
+        <link refid="bounding_box_8cpp"/>
+      </node>
+      <node id="4238">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="4239" relation="include">
+        </childnode>
+        <childnode refid="4291" relation="include">
+        </childnode>
+        <childnode refid="4242" relation="include">
+        </childnode>
+        <childnode refid="4292" relation="include">
+        </childnode>
+        <childnode refid="4293" relation="include">
+        </childnode>
+        <childnode refid="4294" relation="include">
+        </childnode>
+        <childnode refid="4295" relation="include">
+        </childnode>
+        <childnode refid="4296" relation="include">
+        </childnode>
+        <childnode refid="4297" relation="include">
+        </childnode>
+        <childnode refid="4298" relation="include">
+        </childnode>
+        <childnode refid="4299" relation="include">
+        </childnode>
+      </node>
+      <node id="4288">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp</label>
+        <link refid="shader_object_8cpp"/>
+      </node>
+      <node id="4285">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h</label>
+        <link refid="shader_object_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4286" relation="include">
+        </childnode>
+        <childnode refid="4288" relation="include">
+        </childnode>
+      </node>
+      <node id="4264">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp</label>
+        <link refid="atlas_8cpp"/>
+      </node>
+      <node id="4290">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h</label>
+        <link refid="vertex_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4246" relation="include">
+        </childnode>
+        <childnode refid="4253" relation="include">
+        </childnode>
+        <childnode refid="4250" relation="include">
+        </childnode>
+      </node>
+      <node id="4240">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h</label>
+        <link refid="blend_object_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4244" relation="include">
+        </childnode>
+      </node>
+      <node id="4242">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="4243" relation="include">
+        </childnode>
+      </node>
+      <node id="4239">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="4240" relation="include">
+        </childnode>
+        <childnode refid="4245" relation="include">
+        </childnode>
+        <childnode refid="4255" relation="include">
+        </childnode>
+        <childnode refid="4257" relation="include">
+        </childnode>
+        <childnode refid="4258" relation="include">
+        </childnode>
+        <childnode refid="4271" relation="include">
+        </childnode>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4279" relation="include">
+        </childnode>
+        <childnode refid="4265" relation="include">
+        </childnode>
+        <childnode refid="4281" relation="include">
+        </childnode>
+        <childnode refid="4260" relation="include">
+        </childnode>
+        <childnode refid="4283" relation="include">
+        </childnode>
+        <childnode refid="4246" relation="include">
+        </childnode>
+        <childnode refid="4253" relation="include">
+        </childnode>
+        <childnode refid="4268" relation="include">
+        </childnode>
+        <childnode refid="4248" relation="include">
+        </childnode>
+        <childnode refid="4285" relation="include">
+        </childnode>
+        <childnode refid="4286" relation="include">
+        </childnode>
+        <childnode refid="4269" relation="include">
+        </childnode>
+        <childnode refid="4266" relation="include">
+        </childnode>
+        <childnode refid="4289" relation="include">
+        </childnode>
+        <childnode refid="4262" relation="include">
+        </childnode>
+        <childnode refid="4290" relation="include">
+        </childnode>
+      </node>
+      <node id="4272">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4269" relation="include">
+        </childnode>
+        <childnode refid="4273" relation="include">
+        </childnode>
+      </node>
+      <node id="4237">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="4238" relation="include">
+        </childnode>
+        <childnode refid="4300" relation="include">
+        </childnode>
+      </node>
+      <node id="4284">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/matrixStack.cpp</label>
+        <link refid="matrix_stack_8cpp"/>
+      </node>
+      <node id="4266">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="4286">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h</label>
+        <link refid="shader_program_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4287" relation="include">
+        </childnode>
+      </node>
+      <node id="4283">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h</label>
+        <link refid="matrix_stack_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4284" relation="include">
+        </childnode>
+      </node>
+      <node id="4249">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="4262">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="4263" relation="include">
+        </childnode>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4265" relation="include">
+        </childnode>
+        <childnode refid="4247" relation="include">
+        </childnode>
+        <childnode refid="4248" relation="include">
+        </childnode>
+        <childnode refid="4267" relation="include">
+        </childnode>
+      </node>
+      <node id="4236">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="4237" relation="include">
+        </childnode>
+        <childnode refid="4238" relation="include">
+        </childnode>
+        <childnode refid="4292" relation="include">
+        </childnode>
+      </node>
+      <node id="4281">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4282" relation="include">
+        </childnode>
+        <childnode refid="4252" relation="include">
+        </childnode>
+      </node>
+      <node id="4257">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="4240" relation="include">
+        </childnode>
+        <childnode refid="4258" relation="include">
+        </childnode>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4260" relation="include">
+        </childnode>
+        <childnode refid="4268" relation="include">
+        </childnode>
+        <childnode refid="4264" relation="include">
+        </childnode>
+        <childnode refid="4269" relation="include">
+        </childnode>
+        <childnode refid="4270" relation="include">
+        </childnode>
+        <childnode refid="4261" relation="include">
+        </childnode>
+        <childnode refid="4250" relation="include">
+        </childnode>
+        <childnode refid="4249" relation="include">
+        </childnode>
+        <childnode refid="4262" relation="include">
+        </childnode>
+      </node>
+      <node id="4277">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp</label>
+        <link refid="game_state_8cpp"/>
+      </node>
+      <node id="4268">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4246" relation="include">
+        </childnode>
+        <childnode refid="4269" relation="include">
+        </childnode>
+      </node>
+      <node id="4263">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/atlas.h</label>
+        <link refid="atlas_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4246" relation="include">
+        </childnode>
+        <childnode refid="4253" relation="include">
+        </childnode>
+        <childnode refid="4248" relation="include">
+        </childnode>
+        <childnode refid="4264" relation="include">
+        </childnode>
+        <childnode refid="4251" relation="include">
+        </childnode>
+      </node>
+      <node id="4256">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp</label>
+        <link refid="buffer_object_8cpp"/>
+      </node>
+      <node id="4273">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/system.h</label>
+        <link refid="system_8h"/>
+        <childnode refid="4274" relation="include">
+        </childnode>
+        <childnode refid="4276" relation="include">
+        </childnode>
+        <childnode refid="4278" relation="include">
+        </childnode>
+      </node>
+      <node id="4261">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp</label>
+        <link refid="image_resource_8cpp"/>
+      </node>
+      <node id="4235">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2_impl.h"/>
+        <childnode refid="4236" relation="include">
+        </childnode>
+      </node>
+      <node id="4295">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/perlinNoise.cpp</label>
+        <link refid="perlin_noise_8cpp"/>
+      </node>
+      <node id="4282">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="4241">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="4242" relation="include">
+        </childnode>
+      </node>
+      <node id="4245">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h</label>
+        <link refid="bounding_box_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4246" relation="include">
+        </childnode>
+        <childnode refid="4253" relation="include">
+        </childnode>
+        <childnode refid="4254" relation="include">
+        </childnode>
+      </node>
+      <node id="4247">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4248" relation="include">
+        </childnode>
+        <childnode refid="4250" relation="include">
+        </childnode>
+      </node>
+      <node id="4274">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="4275" relation="include">
+        </childnode>
+        <childnode refid="4242" relation="include">
+        </childnode>
+      </node>
+      <node id="4296">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/quat.cpp</label>
+        <link refid="quat_8cpp"/>
+      </node>
+      <node id="4250">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="4259">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp</label>
+        <link refid="depth_object_8cpp"/>
+      </node>
+      <node id="4275">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="4251">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="4267">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="4287">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp</label>
+        <link refid="shader_program_8cpp"/>
+      </node>
+      <node id="4246">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4247" relation="include">
+        </childnode>
+        <childnode refid="4248" relation="include">
+        </childnode>
+        <childnode refid="4251" relation="include">
+        </childnode>
+        <childnode refid="4252" relation="include">
+        </childnode>
+      </node>
+      <node id="4278">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/system.cpp</label>
+        <link refid="system_8cpp"/>
+      </node>
+      <node id="4244">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp</label>
+        <link refid="blend_object_8cpp"/>
+      </node>
+      <node id="4260">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h</label>
+        <link refid="image_resource_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4261" relation="include">
+        </childnode>
+        <childnode refid="4262" relation="include">
+        </childnode>
+      </node>
+      <node id="4253">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</label>
+        <link refid="mesh_resource_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4251" relation="include">
+        </childnode>
+        <childnode refid="4252" relation="include">
+        </childnode>
+      </node>
+      <node id="4258">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h</label>
+        <link refid="depth_object_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4259" relation="include">
+        </childnode>
+      </node>
+      <node id="4252">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="4265">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4266" relation="include">
+        </childnode>
+      </node>
+      <node id="4269">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp</label>
+        <link refid="context_8cpp"/>
+      </node>
+      <node id="4248">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4249" relation="include">
+        </childnode>
+      </node>
+      <node id="4270">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+      <node id="4298">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec3.cpp</label>
+        <link refid="vec3_8cpp"/>
+      </node>
+      <node id="4293">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat3.cpp</label>
+        <link refid="mat3_8cpp"/>
+      </node>
+      <node id="4280">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp</label>
+        <link refid="font_resource_8cpp"/>
+      </node>
+      <node id="4271">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h</label>
+        <link refid="display_8h"/>
+        <childnode refid="4272" relation="include">
+        </childnode>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4268" relation="include">
+        </childnode>
+        <childnode refid="4269" relation="include">
+        </childnode>
+        <childnode refid="4270" relation="include">
+        </childnode>
+        <childnode refid="4273" relation="include">
+        </childnode>
+      </node>
+      <node id="4297">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec2.cpp</label>
+        <link refid="vec2_8cpp"/>
+      </node>
+      <node id="4292">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat2.cpp</label>
+        <link refid="mat2_8cpp"/>
+      </node>
+      <node id="4300">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat_utils.cpp</label>
+        <link refid="mat__utils_8cpp"/>
+      </node>
+      <node id="4279">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/fontResource.h</label>
+        <link refid="font_resource_8h"/>
+        <childnode refid="4263" relation="include">
+        </childnode>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4280" relation="include">
+        </childnode>
+      </node>
+      <node id="4291">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/setup.h</label>
+        <link refid="game_2setup_8h"/>
+        <childnode refid="4274" relation="include">
+        </childnode>
+        <childnode refid="4273" relation="include">
+        </childnode>
+      </node>
+      <node id="4276">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h</label>
+        <link refid="game_state_8h"/>
+        <childnode refid="4274" relation="include">
+        </childnode>
+        <childnode refid="4277" relation="include">
+        </childnode>
+        <childnode refid="4278" relation="include">
+        </childnode>
+      </node>
+      <node id="4299">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/vec4.cpp</label>
+        <link refid="vec4_8cpp"/>
+      </node>
+      <node id="4294">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/math/src/mat4.cpp</label>
+        <link refid="mat4_8cpp"/>
+      </node>
+      <node id="4243">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+      <node id="4255">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h</label>
+        <link refid="buffer_object_8h"/>
+        <childnode refid="4241" relation="include">
+        </childnode>
+        <childnode refid="4246" relation="include">
+        </childnode>
+        <childnode refid="4247" relation="include">
+        </childnode>
+        <childnode refid="4256" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1math">ls::math</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">math<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/>Constructors</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Main<sp/>Constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="10" refid="structls_1_1math_1_1mat2__t_1a1764aaf512c7b03e906f2535e9d58646" refkind="member"><highlight class="normal">constexpr<sp/><ref refid="structls_1_1math_1_1mat2__t_1ad4c1856bbe20069dfb96f1104152311a" kindref="member">mat2_t&lt;num_t&gt;::mat2_t</ref>(</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>num_t<sp/>inXX,<sp/>num_t<sp/>inXY,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>num_t<sp/>inYX,<sp/>num_t<sp/>inYY</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">)<sp/>:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>m{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{inXX,<sp/>inXY},</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{inYX,<sp/>inYY},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">constexpr<sp/><ref refid="structls_1_1math_1_1mat2__t_1ad4c1856bbe20069dfb96f1104152311a" kindref="member">mat2_t&lt;num_t&gt;::mat2_t</ref>()<sp/>:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>m{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{num_t{0},<sp/>num_t{0}},</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{num_t{0},<sp/>num_t{0}}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">constexpr<sp/><ref refid="structls_1_1math_1_1mat2__t_1ad4c1856bbe20069dfb96f1104152311a" kindref="member">mat2_t&lt;num_t&gt;::mat2_t</ref>(num_t<sp/>n)<sp/>:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>m{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{n,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_t{0}},</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{num_t{0},<sp/><sp/>n}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">constexpr<sp/><ref refid="structls_1_1math_1_1mat2__t_1ad4c1856bbe20069dfb96f1104152311a" kindref="member">mat2_t&lt;num_t&gt;::mat2_t</ref>(</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>x,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>y</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">)<sp/>:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>m{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{x.v[0],<sp/>x.v[1]},</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{y.v[0],<sp/>y.v[1]}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">constexpr<sp/><ref refid="structls_1_1math_1_1mat2__t_1ad4c1856bbe20069dfb96f1104152311a" kindref="member">mat2_t&lt;num_t&gt;::mat2_t</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)<sp/>:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>m{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{m.m[0][0],<sp/>m.m[0][1]},</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{m.m[1][0],<sp/>m.m[1][1]}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">constexpr<sp/><ref refid="structls_1_1math_1_1mat2__t_1ad4c1856bbe20069dfb96f1104152311a" kindref="member">mat2_t&lt;num_t&gt;::mat2_t</ref>(mat2_t&lt;num_t&gt;&amp;&amp;<sp/>m)<sp/>:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>m{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>.m[0][0],<sp/><ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>.m[0][1]},</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>.m[1][0],<sp/><ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>.m[1][1]}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/>Conversions<sp/>&amp;<sp/>Casting</highlight></codeline>
+<codeline lineno="65"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>other_t&gt;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">constexpr<sp/>mat2_t&lt;num_t&gt;::operator<sp/>mat2_t&lt;other_t&gt;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;other_t&gt;{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(other_t)m[0][0],<sp/>(other_t)m[0][1],</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(other_t)m[1][0],<sp/>(other_t)m[1][1]</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>Subscripting<sp/>Operators</highlight></codeline>
+<codeline lineno="77"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">template<sp/>&lt;typename<sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">inline<sp/>const<sp/>vec2_t&lt;num_t&gt;&amp;<sp/>mat2_t&lt;num_t&gt;::operator[](</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m[i];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a85ec3333610066e60d3a51c84c70e35f" kindref="member">mat2_t&lt;num_t&gt;::operator[]</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m[i];</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/>Matrix-Matrix<sp/>Operators</highlight></codeline>
+<codeline lineno="90"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>prefix<sp/>operators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1ae15bc87654bf7b52ec70066c65355d5d" kindref="member">mat2_t&lt;num_t&gt;::operator++ </ref>()<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>++m[0][0];<sp/>++m[0][1];</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>++m[1][0];<sp/>++m[1][1];</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1afd2a0b520318ba1a569a550e217e5042" kindref="member">mat2_t&lt;num_t&gt;::operator-- </ref>()<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>--m[0][0];<sp/>--m[0][1];</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>--m[1][0];<sp/>--m[1][1];</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//postfix<sp/>operators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1ae15bc87654bf7b52ec70066c65355d5d" kindref="member">mat2_t&lt;num_t&gt;::operator++ </ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++m[0][0],<sp/>++m[0][1],</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++m[1][0],<sp/>++m[1][1]</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1afd2a0b520318ba1a569a550e217e5042" kindref="member">mat2_t&lt;num_t&gt;::operator-- </ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--m[0][0],<sp/>--m[0][1],</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--m[1][0],<sp/>--m[1][1]</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a376e79af477e66eb30a05d0f60cfb131" kindref="member">mat2_t&lt;num_t&gt;::operator + </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>+<sp/>input.<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>[0][0],<sp/>m[0][1]<sp/>+<sp/>input.m[0][1],</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>+<sp/>input.m[1][0],<sp/>m[1][1]<sp/>+<sp/>input.m[1][1]</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a84e45213f09f7cdb9bdabc2cfd90c3f6" kindref="member">mat2_t&lt;num_t&gt;::operator - </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>-<sp/>input.<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>[0][0],<sp/>m[0][1]<sp/>-<sp/>input.m[0][1],</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>-<sp/>input.m[1][0],<sp/>m[1][1]<sp/>-<sp/>input.m[1][1]</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//for<sp/>operations<sp/>like<sp/>&quot;mat2a<sp/>=<sp/>-mat2b&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a84e45213f09f7cdb9bdabc2cfd90c3f6" kindref="member">mat2_t&lt;num_t&gt;::operator - </ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-m[0][0],<sp/>-m[0][1],</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-m[1][0],<sp/>-m[1][1]</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1abd0209ce002b515997027eb949161b44" kindref="member">mat2_t&lt;num_t&gt;::operator * </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(input.m[0][0]*m[0][0])<sp/>+<sp/>(input.m[0][1]*m[1][0]),</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(input.m[0][0]*m[0][1])<sp/>+<sp/>(input.m[0][1]*m[1][1]),</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(input.m[1][0]*m[0][0])<sp/>+<sp/>(input.m[1][1]*m[1][0]),</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(input.m[1][0]*m[0][1])<sp/>+<sp/>(input.m[1][1]*m[1][1])</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a5d975be159f87c09de720ca7921361f4" kindref="member">mat2_t&lt;num_t&gt;::operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>=<sp/>input.<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>[0][0];</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][1]<sp/>=<sp/>input.m[0][1];</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>=<sp/>input.m[1][0];</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][1]<sp/>=<sp/>input.m[1][1];</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a5d975be159f87c09de720ca7921361f4" kindref="member">mat2_t&lt;num_t&gt;::operator =</ref>(mat2_t&lt;num_t&gt;&amp;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>=<sp/>input.<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>[0][0];</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][1]<sp/>=<sp/>input.m[0][1];</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>=<sp/>input.m[1][0];</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][1]<sp/>=<sp/>input.m[1][1];</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a90507c6382d692ee773d40c3a7849372" kindref="member">mat2_t&lt;num_t&gt;::operator += </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>+=<sp/>input.<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>[0][0];<sp/>m[0][1]<sp/>+=<sp/>input.m[0][1];</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>+=<sp/>input.m[1][0];<sp/>m[1][1]<sp/>+=<sp/>input.m[1][1];</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1ae1340b7a05165a9929c7bcae6a8972f4" kindref="member">mat2_t&lt;num_t&gt;::operator -= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>-=<sp/>input.<ref refid="structls_1_1math_1_1mat2__t_1ab0acf17075d3b29c2ab8b25308c313ed" kindref="member">m</ref>[0][0];<sp/>m[0][1]<sp/>-=<sp/>input.m[0][1];</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>-=<sp/>input.m[1][0];<sp/>m[1][1]<sp/>-=<sp/>input.m[1][1];</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a6073dd490a23afffcdaed369727e34e0" kindref="member">mat2_t&lt;num_t&gt;::operator *= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>*<sp/>input;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structls_1_1math_1_1mat2__t_1a9580cdaa8cb8ec0b40b2bbbe93c4c46b" kindref="member">mat2_t&lt;num_t&gt;::operator == </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>compare)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>==<sp/>compare.m[0][0]<sp/>&amp;&amp;<sp/>m[0][1]<sp/>==<sp/>compare.m[0][1]<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>==<sp/>compare.m[1][0]<sp/>&amp;&amp;<sp/>m[1][1]<sp/>==<sp/>compare.m[1][1];</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structls_1_1math_1_1mat2__t_1a88d656b06dc8cda926bee85fa411f31a" kindref="member">mat2_t&lt;num_t&gt;::operator != </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>compare)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>!=<sp/>compare.m[0][0]<sp/>||<sp/>m[0][1]<sp/>!=<sp/>compare.m[0][1]<sp/>||</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>!=<sp/>compare.m[1][0]<sp/>||<sp/>m[1][1]<sp/>!=<sp/>compare.m[1][1];</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/>Vector-Matrix<sp/>Math<sp/>Operations<sp/>(Declared<sp/>in<sp/>the<sp/>vector<sp/>header)</highlight></codeline>
+<codeline lineno="217"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1vec2__t_1a04037618ab01183d58556ac39900c3d5" kindref="member">vec2_t&lt;num_t&gt;::operator + </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[0]<sp/>+<sp/>m.m[0][0],<sp/>v[0]<sp/>+<sp/>m.m[0][1],</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[1]<sp/>+<sp/>m.m[1][0],<sp/>v[1]<sp/>+<sp/>m.m[1][1]</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1vec2__t_1af565aaa2cd684546b162af35cc9f30f6" kindref="member">vec2_t&lt;num_t&gt;::operator - </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[0]<sp/>-<sp/>m.m[0][0],<sp/>v[0]<sp/>-<sp/>m.m[0][1],</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[1]<sp/>-<sp/>m.m[1][0],<sp/>v[1]<sp/>-<sp/>m.m[1][1]</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Multiplies<sp/>by<sp/>a<sp/>row<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal">vec2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1vec2__t_1a3098c04f8c31f2aabe05c2d3f743851f" kindref="member">vec2_t&lt;num_t&gt;::operator * </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(m.m[0][0]<sp/>*<sp/>v[0])<sp/>+<sp/>(m.m[1][0]<sp/>*<sp/>v[1]),</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(m.m[0][1]<sp/>*<sp/>v[0])<sp/>+<sp/>(m.m[1][1]<sp/>*<sp/>v[1])</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal">vec2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1vec2__t_1a0ffe35a4e5872edfd9b9b144d1034657" kindref="member">vec2_t&lt;num_t&gt;::operator *= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)<sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>*<sp/>m;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/><sp/><sp/><sp/>Matrix-Vector<sp/>Operators</highlight></codeline>
+<codeline lineno="251"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a376e79af477e66eb30a05d0f60cfb131" kindref="member">mat2_t&lt;num_t&gt;::operator + </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>+<sp/>input.v[0],<sp/>m[0][1]<sp/>+<sp/>input.v[1],</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>+<sp/>input.v[0],<sp/>m[1][1]<sp/>+<sp/>input.v[1]</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a84e45213f09f7cdb9bdabc2cfd90c3f6" kindref="member">mat2_t&lt;num_t&gt;::operator - </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>-<sp/>input.v[0],<sp/>m[0][1]<sp/>-<sp/>input.v[1],</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>-<sp/>input.v[0],<sp/>m[1][1]<sp/>-<sp/>input.v[1]</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Multiply<sp/>by<sp/>a<sp/>column-vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal">vec2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1abd0209ce002b515997027eb949161b44" kindref="member">mat2_t&lt;num_t&gt;::operator * </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>inVec)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(m[0][0]<sp/>*<sp/>inVec.v[0])<sp/>+<sp/>(m[0][1]<sp/>*<sp/>inVec.v[1]),</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(m[1][0]<sp/>*<sp/>inVec.v[0])<sp/>+<sp/>(m[1][1]<sp/>*<sp/>inVec.v[1])</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a5d975be159f87c09de720ca7921361f4" kindref="member">mat2_t&lt;num_t&gt;::operator = </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>=<sp/>input.v[0];<sp/>m[0][1]<sp/>=<sp/>input.v[0];</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>=<sp/>input.v[1];<sp/>m[1][1]<sp/>=<sp/>input.v[1];</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a90507c6382d692ee773d40c3a7849372" kindref="member">mat2_t&lt;num_t&gt;::operator += </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>+=<sp/>input.v[0];<sp/>m[0][1]<sp/>+=<sp/>input.v[1];</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>+=<sp/>input.v[0];<sp/>m[1][1]<sp/>+=<sp/>input.v[1];</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1ae1340b7a05165a9929c7bcae6a8972f4" kindref="member">mat2_t&lt;num_t&gt;::operator -= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2_t&lt;num_t&gt;&amp;<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>-=<sp/>input.v[0];<sp/>m[0][1]<sp/>-=<sp/>input.v[1];</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>-=<sp/>input.v[0];<sp/>m[1][1]<sp/>-=<sp/>input.v[1];</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="299"><highlight class="comment"><sp/><sp/><sp/><sp/>Matrix-Scalar<sp/>Operators</highlight></codeline>
+<codeline lineno="300"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a376e79af477e66eb30a05d0f60cfb131" kindref="member">mat2_t&lt;num_t&gt;::operator + </ref>(num_t<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>+<sp/>input,<sp/>m[0][1]<sp/>+<sp/>input,</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>+<sp/>input,<sp/>m[1][1]<sp/>+<sp/>input</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="307"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a84e45213f09f7cdb9bdabc2cfd90c3f6" kindref="member">mat2_t&lt;num_t&gt;::operator - </ref>(num_t<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>-<sp/>input,<sp/>m[0][1]<sp/>-<sp/>input,</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>-<sp/>input,<sp/>m[1][1]<sp/>-<sp/>input</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1abd0209ce002b515997027eb949161b44" kindref="member">mat2_t&lt;num_t&gt;::operator * </ref>(num_t<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>*<sp/>input,<sp/>m[0][1]<sp/>*<sp/>input,</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>*<sp/>input,<sp/>m[1][1]<sp/>*<sp/>input</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="323"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a5b24a726183b56c3711314cc4035c105" kindref="member">mat2_t&lt;num_t&gt;::operator / </ref>(num_t<sp/>input)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;{</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[0][0]<sp/>/<sp/>input,<sp/>m[0][1]<sp/>/<sp/>input,</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[1][0]<sp/>/<sp/>input,<sp/>m[1][1]<sp/>/<sp/>input</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a5d975be159f87c09de720ca7921361f4" kindref="member">mat2_t&lt;num_t&gt;::operator = </ref>(num_t<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>=<sp/>input;<sp/>m[0][1]<sp/>=<sp/>input;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>=<sp/>input;<sp/>m[1][1]<sp/>=<sp/>input;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a90507c6382d692ee773d40c3a7849372" kindref="member">mat2_t&lt;num_t&gt;::operator += </ref>(num_t<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>+=<sp/>input;<sp/>m[0][1]<sp/>+=<sp/>input;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>+=<sp/>input;<sp/>m[1][1]<sp/>+=<sp/>input;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1ae1340b7a05165a9929c7bcae6a8972f4" kindref="member">mat2_t&lt;num_t&gt;::operator -= </ref>(num_t<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>-=<sp/>input;<sp/>m[0][1]<sp/>-=<sp/>input;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>-=<sp/>input;<sp/>m[1][1]<sp/>-=<sp/>input;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1a6073dd490a23afffcdaed369727e34e0" kindref="member">mat2_t&lt;num_t&gt;::operator *= </ref>(num_t<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>*=<sp/>input;<sp/>m[0][1]<sp/>*=<sp/>input;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>*=<sp/>input;<sp/>m[1][1]<sp/>*=<sp/>input;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal">mat2_t&lt;num_t&gt;&amp;<sp/><ref refid="structls_1_1math_1_1mat2__t_1adb569a3b81d659e82675560e2738c9d6" kindref="member">mat2_t&lt;num_t&gt;::operator /= </ref>(num_t<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>m[0][0]<sp/>/=<sp/>input;<sp/>m[0][1]<sp/>/=<sp/>input;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>m[1][0]<sp/>/=<sp/>input;<sp/>m[1][1]<sp/>/=<sp/>input;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="369"><highlight class="comment"><sp/><sp/><sp/><sp/>Non-Member<sp/>Matrix-Scalar<sp/>operations</highlight></codeline>
+<codeline lineno="370"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="namespacels_1_1math_1a6359e379194968f6e79620a3e0a99cd8" kindref="member">operator + </ref>(num_t<sp/>n,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)<sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m<sp/>+<sp/>n;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="namespacels_1_1math_1abf0959477fda2fa09eb88d49959a51bf" kindref="member">operator - </ref>(num_t<sp/>n,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)<sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m<sp/>-<sp/>n;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>num_t&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal">mat2_t&lt;num_t&gt;<sp/><ref refid="namespacels_1_1math_1ac5dc0119315a1df74b312154e2c0554a" kindref="member">operator * </ref>(num_t<sp/>n,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mat2_t&lt;num_t&gt;&amp;<sp/>m)<sp/>{</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m<sp/>*<sp/>n;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal">}<sp/></highlight><highlight class="comment">//end<sp/>math<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal">}<sp/></highlight><highlight class="comment">//end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/math/generic/mat2_impl.h"/>
+  </compounddef>
+</doxygen>

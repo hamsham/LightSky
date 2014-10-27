@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="utils_8h" kind="file">
+    <compoundname>utils.h</compoundname>
+    <includes refid="utils_2setup_8h" local="yes">lightsky/utils/setup.h</includes>
+    <includes refid="assert_8h" local="yes">lightsky/utils/assert.h</includes>
+    <includes refid="bits_8h" local="yes">lightsky/utils/bits.h</includes>
+    <includes refid="btree_8h" local="yes">lightsky/utils/btree.h</includes>
+    <includes refid="byte_size_8h" local="yes">lightsky/utils/byteSize.h</includes>
+    <includes refid="data_resource_8h" local="yes">lightsky/utils/dataResource.h</includes>
+    <includes refid="endian_8h" local="yes">lightsky/utils/endian.h</includes>
+    <includes refid="hash_8h" local="yes">lightsky/utils/hash.h</includes>
+    <includes refid="log_8h" local="yes">lightsky/utils/log.h</includes>
+    <includes refid="random_num_8h" local="yes">lightsky/utils/randomNum.h</includes>
+    <includes refid="resource_8h" local="yes">lightsky/utils/resource.h</includes>
+    <includes refid="string__utils_8h" local="yes">lightsky/utils/string_utils.h</includes>
+    <includes refid="tuple_8h" local="yes">lightsky/utils/tuple.h</includes>
+    <includedby refid="lightsky_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</includedby>
+    <incdepgraph>
+      <node id="8140">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="8139" relation="include">
+        </childnode>
+        <childnode refid="8141" relation="include">
+        </childnode>
+      </node>
+      <node id="8130">
+        <label>lightsky/utils/generic/byteSize_impl.h</label>
+        <link refid="byte_size__impl_8h"/>
+      </node>
+      <node id="8145">
+        <label>lightsky/utils/tuple.h</label>
+        <link refid="tuple_8h"/>
+        <childnode refid="8127" relation="include">
+        </childnode>
+        <childnode refid="8146" relation="include">
+        </childnode>
+        <childnode refid="8147" relation="include">
+        </childnode>
+        <childnode refid="8129" relation="include">
+        </childnode>
+        <childnode refid="8148" relation="include">
+        </childnode>
+      </node>
+      <node id="8117">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="8114">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils.h"/>
+        <childnode refid="8115" relation="include">
+        </childnode>
+        <childnode refid="8121" relation="include">
+        </childnode>
+        <childnode refid="8122" relation="include">
+        </childnode>
+        <childnode refid="8125" relation="include">
+        </childnode>
+        <childnode refid="8129" relation="include">
+        </childnode>
+        <childnode refid="8131" relation="include">
+        </childnode>
+        <childnode refid="8138" relation="include">
+        </childnode>
+        <childnode refid="8140" relation="include">
+        </childnode>
+        <childnode refid="8142" relation="include">
+        </childnode>
+        <childnode refid="8144" relation="include">
+        </childnode>
+        <childnode refid="8133" relation="include">
+        </childnode>
+        <childnode refid="8134" relation="include">
+        </childnode>
+        <childnode refid="8145" relation="include">
+        </childnode>
+      </node>
+      <node id="8139">
+        <label>cstdint</label>
+      </node>
+      <node id="8119">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="8144">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="8129">
+        <label>lightsky/utils/byteSize.h</label>
+        <link refid="byte_size_8h"/>
+        <childnode refid="8130" relation="include">
+        </childnode>
+      </node>
+      <node id="8136">
+        <label>lightsky/utils/generic/string_utils_impl.h</label>
+        <link refid="string__utils__impl_8h"/>
+      </node>
+      <node id="8131">
+        <label>lightsky/utils/dataResource.h</label>
+        <link refid="data_resource_8h"/>
+        <childnode refid="8132" relation="include">
+        </childnode>
+        <childnode refid="8115" relation="include">
+        </childnode>
+        <childnode refid="8133" relation="include">
+        </childnode>
+      </node>
+      <node id="8124">
+        <label>lightsky/utils/generic/bits_impl.h</label>
+        <link refid="bits__impl_8h"/>
+      </node>
+      <node id="8132">
+        <label>string</label>
+      </node>
+      <node id="8143">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="8120">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="8141">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="8142">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="8126" relation="include">
+        </childnode>
+        <childnode refid="8143" relation="include">
+        </childnode>
+      </node>
+      <node id="8115">
+        <label>lightsky/utils/setup.h</label>
+        <link refid="utils_2setup_8h"/>
+        <childnode refid="8116" relation="include">
+        </childnode>
+      </node>
+      <node id="8137">
+        <label>lightsky/utils/generic/resource_impl.h</label>
+        <link refid="resource__impl_8h"/>
+      </node>
+      <node id="8133">
+        <label>lightsky/utils/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="8132" relation="include">
+        </childnode>
+        <childnode refid="8115" relation="include">
+        </childnode>
+        <childnode refid="8134" relation="include">
+        </childnode>
+        <childnode refid="8137" relation="include">
+        </childnode>
+      </node>
+      <node id="8138">
+        <label>lightsky/utils/endian.h</label>
+        <link refid="endian_8h"/>
+        <childnode refid="8139" relation="include">
+        </childnode>
+      </node>
+      <node id="8116">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="8117" relation="include">
+        </childnode>
+        <childnode refid="8118" relation="include">
+        </childnode>
+        <childnode refid="8119" relation="include">
+        </childnode>
+        <childnode refid="8120" relation="include">
+        </childnode>
+      </node>
+      <node id="8127">
+        <label>new</label>
+      </node>
+      <node id="8147">
+        <label>utility</label>
+      </node>
+      <node id="8122">
+        <label>lightsky/utils/bits.h</label>
+        <link refid="bits_8h"/>
+        <childnode refid="8123" relation="include">
+        </childnode>
+        <childnode refid="8121" relation="include">
+        </childnode>
+        <childnode refid="8124" relation="include">
+        </childnode>
+      </node>
+      <node id="8135">
+        <label>sstream</label>
+      </node>
+      <node id="8126">
+        <label>iostream</label>
+      </node>
+      <node id="8123">
+        <label>climits</label>
+      </node>
+      <node id="8125">
+        <label>lightsky/utils/btree.h</label>
+        <link refid="btree_8h"/>
+        <childnode refid="8126" relation="include">
+        </childnode>
+        <childnode refid="8127" relation="include">
+        </childnode>
+        <childnode refid="8122" relation="include">
+        </childnode>
+        <childnode refid="8128" relation="include">
+        </childnode>
+      </node>
+      <node id="8148">
+        <label>lightsky/utils/generic/tuple_impl.h</label>
+        <link refid="tuple__impl_8h"/>
+      </node>
+      <node id="8146">
+        <label>type_traits</label>
+      </node>
+      <node id="8121">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="8120" relation="include">
+        </childnode>
+      </node>
+      <node id="8118">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="8134">
+        <label>lightsky/utils/string_utils.h</label>
+        <link refid="string__utils_8h"/>
+        <childnode refid="8132" relation="include">
+        </childnode>
+        <childnode refid="8135" relation="include">
+        </childnode>
+        <childnode refid="8136" relation="include">
+        </childnode>
+      </node>
+      <node id="8128">
+        <label>lightsky/utils/generic/btree_impl.h</label>
+        <link refid="btree__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8149">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils.h"/>
+        <childnode refid="8150" relation="include">
+        </childnode>
+      </node>
+      <node id="8150">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="8151" relation="include">
+        </childnode>
+      </node>
+      <node id="8151">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>utils/utils.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>contains<sp/>all<sp/>includes<sp/>for<sp/>the<sp/>utils<sp/>module<sp/>of<sp/>LightSky.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_UTILS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_UTILS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2setup_8h" kindref="compound">lightsky/utils/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assert_8h" kindref="compound">lightsky/utils/assert.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bits_8h" kindref="compound">lightsky/utils/bits.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="btree_8h" kindref="compound">lightsky/utils/btree.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="byte_size_8h" kindref="compound">lightsky/utils/byteSize.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data_resource_8h" kindref="compound">lightsky/utils/dataResource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="endian_8h" kindref="compound">lightsky/utils/endian.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hash_8h" kindref="compound">lightsky/utils/hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">lightsky/utils/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="random_num_8h" kindref="compound">lightsky/utils/randomNum.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="resource_8h" kindref="compound">lightsky/utils/resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="string__utils_8h" kindref="compound">lightsky/utils/string_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tuple_8h" kindref="compound">lightsky/utils/tuple.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__LS_UTILS_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h"/>
+  </compounddef>
+</doxygen>

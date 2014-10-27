@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="structls_1_1draw_1_1vertex" kind="struct" prot="public">
+    <compoundname>ls::draw::vertex</compoundname>
+    <includes refid="vertex_8h" local="no">vertex.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structls_1_1draw_1_1vertex_1adea866fe2fda566f8d09a70d3a85549a" prot="public" static="no" mutable="no">
+        <type>math::vec3</type>
+        <definition>math::vec3 ls::draw::vertex::pos</definition>
+        <argsstring></argsstring>
+        <name>pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" line="27" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structls_1_1draw_1_1vertex_1a26f6df34ebd24c932b6761a32dd478c6" prot="public" static="no" mutable="no">
+        <type>math::vec2</type>
+        <definition>math::vec2 ls::draw::vertex::uv</definition>
+        <argsstring></argsstring>
+        <name>uv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" line="28" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structls_1_1draw_1_1vertex_1a9ae05a9ae1266f7893a18ece8da5d8a2" prot="public" static="no" mutable="no">
+        <type>math::vec3</type>
+        <definition>math::vec3 ls::draw::vertex::norm</definition>
+        <argsstring></argsstring>
+        <name>norm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" line="29" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Basic vertex building block in LS. This vertex type contains enough information to light a textured mesh. </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" line="26" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" bodystart="26" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structls_1_1draw_1_1vertex_1a9ae05a9ae1266f7893a18ece8da5d8a2" prot="public" virt="non-virtual"><scope>ls::draw::vertex</scope><name>norm</name></member>
+      <member refid="structls_1_1draw_1_1vertex_1adea866fe2fda566f8d09a70d3a85549a" prot="public" virt="non-virtual"><scope>ls::draw::vertex</scope><name>pos</name></member>
+      <member refid="structls_1_1draw_1_1vertex_1a26f6df34ebd24c932b6761a32dd478c6" prot="public" virt="non-virtual"><scope>ls::draw::vertex</scope><name>uv</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

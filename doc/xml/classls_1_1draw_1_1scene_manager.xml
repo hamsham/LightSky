@@ -1,0 +1,805 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1scene_manager" kind="class" prot="public">
+    <compoundname>ls::draw::sceneManager</compoundname>
+    <includes refid="scene_manager_8h" local="no">sceneManager.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classls_1_1draw_1_1scene_manager_1a37c57353f4ebbaf4162ddcd69a44d115" prot="public" static="no">
+        <name>@2</name>
+        <enumvalue id="classls_1_1draw_1_1scene_manager_1a37c57353f4ebbaf4162ddcd69a44d115a9a8c270c819a8fca6c40fe38cb48256e" prot="public">
+          <name>INVALID_SCENE_ID</name>
+          <initializer>= ((unsigned)-1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enums for types needed by the scene manager. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="50" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="50" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1scene_manager_1aa2e2c46b5ed1c517588b40ad401fd16b" prot="private" static="no" mutable="no">
+        <type><ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref></type>
+        <definition>texture ls::draw::sceneManager::defaultTex</definition>
+        <argsstring></argsstring>
+        <name>defaultTex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The default texture for a mesh. This texture is used upon initializing a mesh so that it can be rendered without error. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="59" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1scene_manager_1a674516fea74e84dfabc0ec50b13f5a6a" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a1630e9bdf4479360ab10b794d960774a" kindref="member">textureList</ref></type>
+        <definition>textureList ls::draw::sceneManager::texMgr</definition>
+        <argsstring></argsstring>
+        <name>texMgr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="69" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1scene_manager_1ae0354edea5c14b68e058d2213e80387a" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a5e613f27c9d529db0cb41ab77dd5f8d1" kindref="member">meshList</ref></type>
+        <definition>meshList ls::draw::sceneManager::meshMgr</definition>
+        <argsstring></argsstring>
+        <name>meshMgr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="70" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1scene_manager_1ad2c0bee3b9a51f1d96f91485b288d1db" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a8e8c56cbc4de7552879921cce37ca248" kindref="member">atlasList</ref></type>
+        <definition>atlasList ls::draw::sceneManager::atlasMgr</definition>
+        <argsstring></argsstring>
+        <name>atlasMgr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="71" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1scene_manager_1add1d181ae5c321613f355e799d670608" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1a66bcfe78add4fce83b491878faf0167c" kindref="member">drawList</ref></type>
+        <definition>drawList ls::draw::sceneManager::drawMgr</definition>
+        <argsstring></argsstring>
+        <name>drawMgr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="72" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1aa1a6955a46c8c10f7ed313e81fa4634c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::sceneManager::initDefaultTexture</definition>
+        <argsstring>()</argsstring>
+        <name>initDefaultTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialization method for the default texture.</para><para><simplesect kind="return"><para>TRUE if the default texture was initialized properly, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="67" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="122" bodyend="147"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a59cdf3a2fa36f6f0ee672c7416914a16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::sceneManager::sceneManager</definition>
+        <argsstring>()</argsstring>
+        <name>sceneManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="75" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ae14ab17f7cd7d8f0f5425e05b22d584d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::sceneManager::sceneManager</definition>
+        <argsstring>(const sceneManager &amp;)=delete</argsstring>
+        <name>sceneManager</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1scene_manager" kindref="compound">sceneManager</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ae6f2a8cdac69994ac7093328054d8269" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::sceneManager::sceneManager</definition>
+        <argsstring>(sceneManager &amp;&amp;)</argsstring>
+        <name>sceneManager</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1scene_manager" kindref="compound">sceneManager</ref> &amp;&amp;</type>
+          <defname>sm</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="77" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="45" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a2d85f198d17a5c98c6a785600f5586a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::sceneManager::~sceneManager</definition>
+        <argsstring>()</argsstring>
+        <name>~sceneManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="79" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ab90b4f176537305085ce79fa1961f3dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1scene_manager" kindref="compound">sceneManager</ref> &amp;</type>
+        <definition>sceneManager&amp; ls::draw::sceneManager::operator=</definition>
+        <argsstring>(const sceneManager &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1scene_manager" kindref="compound">sceneManager</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="81" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a17d35f22819bcee46d11ed39d76de3ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1scene_manager" kindref="compound">sceneManager</ref> &amp;</type>
+        <definition>sceneManager &amp; ls::draw::sceneManager::operator=</definition>
+        <argsstring>(sceneManager &amp;&amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1scene_manager" kindref="compound">sceneManager</ref> &amp;&amp;</type>
+          <defname>sm</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="82" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="56" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a1b39fc1840233747f90352f9d4e1f2de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::sceneManager::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="84" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="69" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a99f3bc81db2050a0216b54096a943ec3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::sceneManager::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="85" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="86" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a60f6c77d2c7b1ea48938acce292462ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> &amp;</type>
+        <definition>const texture &amp; ls::draw::sceneManager::getDefaultTexture</definition>
+        <argsstring>() const </argsstring>
+        <name>getDefaultTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the default texture used by freshly loaded models.</para><para><simplesect kind="return"><para>A constant reference to the default model texture </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="92" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/sceneManager_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a7c1b102b03161a9d70613c69957ceca2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a5e613f27c9d529db0cb41ab77dd5f8d1" kindref="member">meshList</ref> &amp;</type>
+        <definition>meshList &amp; ls::draw::sceneManager::getMeshList</definition>
+        <argsstring>()</argsstring>
+        <name>getMeshList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="94" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a4b14b611568b88b17a7b44107e28d0d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a1630e9bdf4479360ab10b794d960774a" kindref="member">textureList</ref> &amp;</type>
+        <definition>textureList &amp; ls::draw::sceneManager::getTextureList</definition>
+        <argsstring>()</argsstring>
+        <name>getTextureList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="95" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1aa9e030e5659d95a4659bed8a7db23cc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a8e8c56cbc4de7552879921cce37ca248" kindref="member">atlasList</ref> &amp;</type>
+        <definition>atlasList &amp; ls::draw::sceneManager::getAtlasList</definition>
+        <argsstring>()</argsstring>
+        <name>getAtlasList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="96" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="160" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a1461d8cf79fc007a909c12774d7a7dc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1a66bcfe78add4fce83b491878faf0167c" kindref="member">drawList</ref> &amp;</type>
+        <definition>drawList &amp; ls::draw::sceneManager::getModelList</definition>
+        <argsstring>()</argsstring>
+        <name>getModelList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="97" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="164" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a7b8e6caafcaeeeb18d6fda68b68af7b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespacels_1_1draw_1a5e613f27c9d529db0cb41ab77dd5f8d1" kindref="member">meshList</ref> &amp;</type>
+        <definition>const meshList &amp; ls::draw::sceneManager::getMeshList</definition>
+        <argsstring>() const </argsstring>
+        <name>getMeshList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="99" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="171" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ae85bc170a3f2be277bb99e0097210308" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespacels_1_1draw_1a1630e9bdf4479360ab10b794d960774a" kindref="member">textureList</ref> &amp;</type>
+        <definition>const textureList &amp; ls::draw::sceneManager::getTextureList</definition>
+        <argsstring>() const </argsstring>
+        <name>getTextureList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="100" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="175" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a7fdc2efb7897ba992cbfc0607dcf0956" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespacels_1_1draw_1a8e8c56cbc4de7552879921cce37ca248" kindref="member">atlasList</ref> &amp;</type>
+        <definition>const atlasList &amp; ls::draw::sceneManager::getAtlasList</definition>
+        <argsstring>() const </argsstring>
+        <name>getAtlasList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="101" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="179" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a103f824a0e6d3d4d8edaca9e74bdccb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespacels_1_1draw_1a66bcfe78add4fce83b491878faf0167c" kindref="member">drawList</ref> &amp;</type>
+        <definition>const drawList &amp; ls::draw::sceneManager::getModelList</definition>
+        <argsstring>() const </argsstring>
+        <name>getModelList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="102" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ad4f644c0387bfc1db0548fa35e0b4d3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> *</type>
+        <definition>mesh * ls::draw::sceneManager::getMesh</definition>
+        <argsstring>(unsigned index) const </argsstring>
+        <name>getMesh</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="104" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="190" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a849f86470b3a8e0ed4b1d73b2fdb6235" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> *</type>
+        <definition>texture * ls::draw::sceneManager::getTexture</definition>
+        <argsstring>(unsigned index) const </argsstring>
+        <name>getTexture</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="105" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="195" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a5890fa3c11c7b711a3cd5fc99967fc29" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref> *</type>
+        <definition>atlas * ls::draw::sceneManager::getAtlas</definition>
+        <argsstring>(unsigned index) const </argsstring>
+        <name>getAtlas</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="106" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="200" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1add8a2a7a1f492799e5a53dd65b44f773" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> *</type>
+        <definition>meshModel * ls::draw::sceneManager::getModel</definition>
+        <argsstring>(unsigned index) const </argsstring>
+        <name>getModel</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="107" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="205" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a0d08a45fbabcae3de48ef821e487a259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::sceneManager::eraseMesh</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>eraseMesh</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="109" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="213" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ac687ce452787c4c7fc8d3783d4df759f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::sceneManager::eraseTexture</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>eraseTexture</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="110" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="219" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a227dab84a2e79f28e640a5659e379e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::sceneManager::eraseAtlas</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>eraseAtlas</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="111" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="225" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1afa7898f9a1c5a89121dfc10f73383b93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::sceneManager::eraseModel</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>eraseModel</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="112" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="231" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a4b0978c3ec0b8ef14040f05f8b12e522" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::getNumMeshes</definition>
+        <argsstring>() const </argsstring>
+        <name>getNumMeshes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="114" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ac092e5b15140e852bd47d9a51a5683ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::getNumTextures</definition>
+        <argsstring>() const </argsstring>
+        <name>getNumTextures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="115" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="244" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a8ec31eb8e1d6bfcc5ddc0ab578064321" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::getNumAtlases</definition>
+        <argsstring>() const </argsstring>
+        <name>getNumAtlases</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="116" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="248" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1ac2bbcbbdcf1387bdb6277efab923e863" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::getNumModels</definition>
+        <argsstring>() const </argsstring>
+        <name>getNumModels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="117" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="252" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a2db3a0db60d5a098450238e1c9bd3d34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::manageMesh</definition>
+        <argsstring>(mesh *const)</argsstring>
+        <name>manageMesh</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> *</type>
+          <declname>const</declname>
+          <defname>pMesh</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="119" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="259" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a558ac446bcd54ffefedc90097d10470b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::manageTexture</definition>
+        <argsstring>(texture *const)</argsstring>
+        <name>manageTexture</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> *</type>
+          <declname>const</declname>
+          <defname>pTexture</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="120" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="269" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1af6a8bcac374d051c607776e1da00ec03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::manageAtlas</definition>
+        <argsstring>(atlas *const)</argsstring>
+        <name>manageAtlas</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref> *</type>
+          <declname>const</declname>
+          <defname>pAtlas</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="121" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="279" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a1d47b5275ee34b56c8fcbc62fea3ce4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::sceneManager::manageModel</definition>
+        <argsstring>(meshModel *const)</argsstring>
+        <name>manageModel</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> *</type>
+          <declname>const</declname>
+          <defname>pText</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="122" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="289" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a3d1e175b3a2e751acb62a1387afed2d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> *</type>
+        <definition>mesh * ls::draw::sceneManager::unManageMesh</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>unManageMesh</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="124" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="302" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a773922a5a6ec5e6800bcc9dcde0e7c34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> *</type>
+        <definition>texture * ls::draw::sceneManager::unManageTexture</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>unManageTexture</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="125" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="309" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a9169d8c2e68f9e808ada8f70a37cfa46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref> *</type>
+        <definition>atlas * ls::draw::sceneManager::unManageAtlas</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>unManageAtlas</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="126" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="316" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1af637361e7b02d5fdade86eed428b8936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> *</type>
+        <definition>meshModel * ls::draw::sceneManager::unManageModel</definition>
+        <argsstring>(unsigned index)</argsstring>
+        <name>unManageModel</name>
+        <param>
+          <type>unsigned</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="127" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="323" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1abc9132f3b86227edcac8c4293ec5295f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::sceneManager::containsMesh</definition>
+        <argsstring>(const mesh *const) const </argsstring>
+        <name>containsMesh</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> *</type>
+          <declname>const</declname>
+          <defname>pMesh</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="129" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="333" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a1773e0807c4f6d62bd4a626ac1542e38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::sceneManager::containsTexture</definition>
+        <argsstring>(const texture *const) const </argsstring>
+        <name>containsTexture</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> *</type>
+          <declname>const</declname>
+          <defname>pTex</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="130" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="351" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1a1c6810fff83d32b6d42cfd1d9e34a208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::sceneManager::containsAtlas</definition>
+        <argsstring>(const atlas *const) const </argsstring>
+        <name>containsAtlas</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref> *</type>
+          <declname>const</declname>
+          <defname>pAtlas</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="131" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="369" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1scene_manager_1aa0129b5d6d5c2894e7ce30437090a4b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::sceneManager::containsModel</definition>
+        <argsstring>(const meshModel *const) const </argsstring>
+        <name>containsModel</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> *</type>
+          <declname>const</declname>
+          <defname>pText</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="132" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="387" bodyend="403"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ Scene manager class</para><para>Contains all visual elements to a scene such as meshes, textures, texture <heading level="2">atlases, shaders, etc. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="45" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1scene_manager_1ad2c0bee3b9a51f1d96f91485b288d1db" prot="private" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>atlasMgr</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a1c6810fff83d32b6d42cfd1d9e34a208" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>containsAtlas</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1abc9132f3b86227edcac8c4293ec5295f" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>containsMesh</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1aa0129b5d6d5c2894e7ce30437090a4b5" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>containsModel</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a1773e0807c4f6d62bd4a626ac1542e38" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>containsTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1aa2e2c46b5ed1c517588b40ad401fd16b" prot="private" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>defaultTex</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1add1d181ae5c321613f355e799d670608" prot="private" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>drawMgr</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a227dab84a2e79f28e640a5659e379e71" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>eraseAtlas</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a0d08a45fbabcae3de48ef821e487a259" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>eraseMesh</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1afa7898f9a1c5a89121dfc10f73383b93" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>eraseModel</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ac687ce452787c4c7fc8d3783d4df759f" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>eraseTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a5890fa3c11c7b711a3cd5fc99967fc29" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getAtlas</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1aa9e030e5659d95a4659bed8a7db23cc0" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getAtlasList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a7fdc2efb7897ba992cbfc0607dcf0956" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getAtlasList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a60f6c77d2c7b1ea48938acce292462ec" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getDefaultTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ad4f644c0387bfc1db0548fa35e0b4d3b" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getMesh</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a7c1b102b03161a9d70613c69957ceca2" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getMeshList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a7b8e6caafcaeeeb18d6fda68b68af7b5" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getMeshList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1add8a2a7a1f492799e5a53dd65b44f773" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getModel</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a1461d8cf79fc007a909c12774d7a7dc6" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getModelList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a103f824a0e6d3d4d8edaca9e74bdccb3" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getModelList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a8ec31eb8e1d6bfcc5ddc0ab578064321" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getNumAtlases</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a4b0978c3ec0b8ef14040f05f8b12e522" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getNumMeshes</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ac2bbcbbdcf1387bdb6277efab923e863" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getNumModels</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ac092e5b15140e852bd47d9a51a5683ec" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getNumTextures</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a849f86470b3a8e0ed4b1d73b2fdb6235" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a4b14b611568b88b17a7b44107e28d0d7" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getTextureList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ae85bc170a3f2be277bb99e0097210308" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>getTextureList</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a1b39fc1840233747f90352f9d4e1f2de" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>init</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1aa1a6955a46c8c10f7ed313e81fa4634c" prot="private" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>initDefaultTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a37c57353f4ebbaf4162ddcd69a44d115a9a8c270c819a8fca6c40fe38cb48256e" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>INVALID_SCENE_ID</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1af6a8bcac374d051c607776e1da00ec03" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>manageAtlas</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a2db3a0db60d5a098450238e1c9bd3d34" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>manageMesh</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a1d47b5275ee34b56c8fcbc62fea3ce4b" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>manageModel</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a558ac446bcd54ffefedc90097d10470b" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>manageTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ae0354edea5c14b68e058d2213e80387a" prot="private" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>meshMgr</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ab90b4f176537305085ce79fa1961f3dd" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a17d35f22819bcee46d11ed39d76de3ec" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a59cdf3a2fa36f6f0ee672c7416914a16" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>sceneManager</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ae14ab17f7cd7d8f0f5425e05b22d584d" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>sceneManager</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1ae6f2a8cdac69994ac7093328054d8269" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>sceneManager</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a99f3bc81db2050a0216b54096a943ec3" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>terminate</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a674516fea74e84dfabc0ec50b13f5a6a" prot="private" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>texMgr</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a9169d8c2e68f9e808ada8f70a37cfa46" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>unManageAtlas</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a3d1e175b3a2e751acb62a1387afed2d0" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>unManageMesh</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1af637361e7b02d5fdade86eed428b8936" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>unManageModel</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a773922a5a6ec5e6800bcc9dcde0e7c34" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>unManageTexture</name></member>
+      <member refid="classls_1_1draw_1_1scene_manager_1a2d85f198d17a5c98c6a785600f5586a9" prot="public" virt="non-virtual"><scope>ls::draw::sceneManager</scope><name>~sceneManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

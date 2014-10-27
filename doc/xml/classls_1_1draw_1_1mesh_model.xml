@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1mesh_model" kind="class" prot="public" final="yes">
+    <compoundname>ls::draw::meshModel</compoundname>
+    <includes refid="mesh_model_8h" local="no">meshModel.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1mesh_model_1a711272e538ca0f6e00d0283a34e8102c" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> *</type>
+        <definition>const mesh* ls::draw::meshModel::pMesh</definition>
+        <argsstring></argsstring>
+        <name>pMesh</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to the mesh that should be drawn using this model. The &quot;draw&quot; methods should NOT be called if this is null. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="31" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1mesh_model_1a1f06dc0b1432f2b293dcbfac762c4de2" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> *</type>
+        <definition>const texture* ls::draw::meshModel::pTexture</definition>
+        <argsstring></argsstring>
+        <name>pTexture</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to the texture that should be applied when rendering this model&apos;s mesh. The &quot;draw&quot; methods should NOT be called if this is null. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="38" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1mesh_model_1a3d91fa096a9a3bfb8cc25da26b20ec43" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ls::draw::meshModel::numInstances</definition>
+        <argsstring></argsstring>
+        <name>numInstances</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Counter of the number of instances that are currently reserved for drawing in the vao &amp; vbo. This is also a cound of the number of model matrices that are held within the vbo. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1mesh_model_1a9172fb27ebeddf46ca8b2a3af785808e" prot="private" static="no" mutable="no">
+        <type>vertexBuffer</type>
+        <definition>vertexBuffer ls::draw::meshModel::modelVbo</definition>
+        <argsstring></argsstring>
+        <name>modelVbo</name>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Vertex Buffer that will be used specifically for model matrices. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="50" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1mesh_model_1a479e18ff69870d226335679185274429" prot="private" static="no" mutable="no">
+        <type><ref refid="classls_1_1draw_1_1vertex_array" kindref="compound">vertexArray</ref></type>
+        <definition>vertexArray ls::draw::meshModel::vao</definition>
+        <argsstring></argsstring>
+        <name>vao</name>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Vertex array to be used with this mesh object </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="55" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a051a4e9c03017a69e42fac56d7b2f04f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::setVertexAttribs</definition>
+        <argsstring>()</argsstring>
+        <name>setVertexAttribs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper function to ensure all vertex attributes are setup properly. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="60" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="66" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1ab48e43d517f9303b1f3914e4e957e0e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::meshModel::meshModel</definition>
+        <argsstring>()</argsstring>
+        <name>meshModel</name>
+        <briefdescription>
+<para>Default Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="66" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="22" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a23a32454fb84badf30e758513fc78e4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::meshModel::meshModel</definition>
+        <argsstring>(const meshModel &amp;mm)=delete</argsstring>
+        <name>meshModel</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> &amp;</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Constructor <ndash/> DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1ace54f7e1e62abfb6bc08d1b302883522" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::meshModel::meshModel</definition>
+        <argsstring>(meshModel &amp;&amp;mm)</argsstring>
+        <name>meshModel</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> &amp;&amp;</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all data from the input parameter into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An R-Value reference to an <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> that is about to go out of scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="83" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="28" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a56c524144327be24c3c3400304132acc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::meshModel::~meshModel</definition>
+        <argsstring>()</argsstring>
+        <name>~meshModel</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Frees All memory and resources used by *this. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="90" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1ada7882396362871f0d83112c927e1c4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> &amp;</type>
+        <definition>meshModel&amp; ls::draw::meshModel::operator=</definition>
+        <argsstring>(const meshModel &amp;mm)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> &amp;</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Operator <ndash/> DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="95" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a049acecd26ad7fada9435a22e1a5793e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> &amp;</type>
+        <definition>meshModel &amp; ls::draw::meshModel::operator=</definition>
+        <argsstring>(meshModel &amp;&amp;mm)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> &amp;&amp;</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An R-Value reference to an <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> that is about to go out of scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="108" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="47" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1adcb76c5197517c521be8a8dbeed588ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::meshModel::getId</definition>
+        <argsstring>() const </argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the GPU-Assigned ID associated with this mesh model. This ID is directly correlated to the VAO which holds all model matrices and vertex data for the mesh bound to *this.</para><para><simplesect kind="return"><para>An unsigned integral type representing a unique ID for this mesh model. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="118" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1adfeab216ce522b31a361e137a15101bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::meshModel::init</definition>
+        <argsstring>(const mesh &amp;meshRef, const texture &amp;texRef)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> &amp;</type>
+          <declname>meshRef</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> &amp;</type>
+          <declname>texRef</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the mesh and texture to be used by this object during a draw operation.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meshRef</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A const reference to an mesh</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>texRef</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A const reference to an texture</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the mesh was successfully loaded with a VBO assigned to handle model matrices, FALSE if otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="133" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="126" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a50459cef75b1808577c8cc17e2e2d731" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clear all draw parameters to their default, null values and free any allocated resources used by *this.</para><para>This method will also terminate any internal VAO and VBO objects that are used internally. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="142" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="115" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1af1afe35e83e61d2ac1b0146ac1aa0b29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> &amp;</type>
+        <definition>const mesh &amp; ls::draw::meshModel::getMesh</definition>
+        <argsstring>() const </argsstring>
+        <name>getMesh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the mesh that is currently used by this model</para><para><simplesect kind="return"><para>a const reference to the mesh used by *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="149" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a8684fc965577ba9659aee700dae7d261" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> &amp;</type>
+        <definition>const texture &amp; ls::draw::meshModel::getTexture</definition>
+        <argsstring>() const </argsstring>
+        <name>getTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the texture that is currently used by this model</para><para><simplesect kind="return"><para>A const reference to a texture object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="156" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a981a084cfb24e24af15fab4a76e621f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::setTexture</definition>
+        <argsstring>(const texture &amp;texRef)</argsstring>
+        <name>setTexture</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> &amp;</type>
+          <declname>texRef</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the texture ID to be used by this object during a draw operation.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>texRef</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A const reference to a texture </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="164" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a38a3773783d8bf9ccf80c886306154b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int ls::draw::meshModel::getNumInstances</definition>
+        <argsstring>() const </argsstring>
+        <name>getNumInstances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number of instances that will be rendered when a call to &quot;draw()&quot; is made.</para><para><simplesect kind="return"><para>the number of meshes/model matrices rendered by/with this mesh. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="173" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1aa0a4a39f2e3a001117521b2fd1847246" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::setNumInstances</definition>
+        <argsstring>(int instanceCount, const math::mat4 *const modelMatrices)</argsstring>
+        <name>setNumInstances</name>
+        <param>
+          <type>int</type>
+          <declname>instanceCount</declname>
+        </param>
+        <param>
+          <type>const math::mat4 *const</type>
+          <declname>modelMatrices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All meshes support instanced draws by default. This will set the number of instances that will appear when drawing a mesh.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>instanceCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of instances (and modelMatrices) that will be drawn by this mesh.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelMatrices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to an array of model matrices that will be applied to each mesh instance. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="187" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="161" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1af973cf955457d7d9e29b77ed53b3eb4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::modifyInstance</definition>
+        <argsstring>(int index, const math::mat4 &amp;modelMatrix)</argsstring>
+        <name>modifyInstance</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const math::mat4 &amp;</type>
+          <declname>modelMatrix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the model matrix for a single instance</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index to specify which model matrix in *this should be modified. Model matrices are sent directly to an instance/array buffer on the GPU.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a model matrix which is to replace the one on the GPU, specified by &apos;index.&apos; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="201" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp" bodystart="174" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a8972c66e853230d65cd6de871c0ab4ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::meshModel::canDraw</definition>
+        <argsstring>() const </argsstring>
+        <name>canDraw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if this current model is able to be rendered.</para><para><simplesect kind="return"><para>TRUE if both the current mesh and current texture point to non-null, objects. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="209" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1ac4aa63983e54055921882578ca6708e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::draw</definition>
+        <argsstring>() const </argsstring>
+        <name>draw</name>
+        <briefdescription>
+<para>Draw a mesh. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method renders a mesh to the currently bound framebuffer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="216" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="51" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1mesh_model_1a3985c065ec45ff2a4ea1ebb03bf0bdb0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::meshModel::drawSubMesh</definition>
+        <argsstring>(int startPos, int endPos) const </argsstring>
+        <name>drawSubMesh</name>
+        <param>
+          <type>int</type>
+          <declname>startPos</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>endPos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw a single part of the total sub-meshes contained within *this. This function already takes the vertex counts into account.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>startPos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>indicates the starting offset to the the mesh contained within *this that should be drawn.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>endPos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>indicates the offset to the final sub-mesh contained within *this that should be drawn. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="230" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/meshModel_impl.h" bodystart="62" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> represents a single renderable mesh that can be drawn multiple times by attaching both an mesh and a set of model matrices. The more model matrices that are bound to a mesh model, the more instances will be rendered by OpenGL. </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" line="25" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h" bodystart="25" bodyend="231"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1mesh_model_1a8972c66e853230d65cd6de871c0ab4ca" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>canDraw</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1ac4aa63983e54055921882578ca6708e9" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>draw</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a3985c065ec45ff2a4ea1ebb03bf0bdb0" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>drawSubMesh</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1adcb76c5197517c521be8a8dbeed588ed" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>getId</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1af1afe35e83e61d2ac1b0146ac1aa0b29" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>getMesh</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a38a3773783d8bf9ccf80c886306154b6" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>getNumInstances</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a8684fc965577ba9659aee700dae7d261" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>getTexture</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1adfeab216ce522b31a361e137a15101bb" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>init</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1ab48e43d517f9303b1f3914e4e957e0e4" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>meshModel</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a23a32454fb84badf30e758513fc78e4b" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>meshModel</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1ace54f7e1e62abfb6bc08d1b302883522" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>meshModel</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a9172fb27ebeddf46ca8b2a3af785808e" prot="private" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>modelVbo</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1af973cf955457d7d9e29b77ed53b3eb4b" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>modifyInstance</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a3d91fa096a9a3bfb8cc25da26b20ec43" prot="private" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>numInstances</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1ada7882396362871f0d83112c927e1c4d" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a049acecd26ad7fada9435a22e1a5793e" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a711272e538ca0f6e00d0283a34e8102c" prot="private" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>pMesh</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a1f06dc0b1432f2b293dcbfac762c4de2" prot="private" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>pTexture</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1aa0a4a39f2e3a001117521b2fd1847246" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>setNumInstances</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a981a084cfb24e24af15fab4a76e621f1" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>setTexture</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a051a4e9c03017a69e42fac56d7b2f04f" prot="private" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>setVertexAttribs</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a50459cef75b1808577c8cc17e2e2d731" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>terminate</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a479e18ff69870d226335679185274429" prot="private" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>vao</name></member>
+      <member refid="classls_1_1draw_1_1mesh_model_1a56c524144327be24c3c3400304132acc" prot="public" virt="non-virtual"><scope>ls::draw::meshModel</scope><name>~meshModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

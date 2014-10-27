@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_f35956ce0448175e6b3a9791cf38cd20" kind="dir">
+    <compoundname>C:/Users/miles/C++/projects/LightSky/lightsky/game/src</compoundname>
+    <innerfile refid="game_8cpp">game.cpp</innerfile>
+    <innerfile refid="game_state_8cpp">gameState.cpp</innerfile>
+    <innerfile refid="manager_8cpp">manager.cpp</innerfile>
+    <innerfile refid="system_8cpp">system.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/src/"/>
+  </compounddef>
+</doxygen>

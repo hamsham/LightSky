@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="data_resource_8h" kind="file">
+    <compoundname>dataResource.h</compoundname>
+    <includes local="no">string</includes>
+    <includes refid="utils_2setup_8h" local="yes">lightsky/utils/setup.h</includes>
+    <includes refid="resource_8h" local="yes">lightsky/utils/resource.h</includes>
+    <includedby refid="data_resource_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/dataResource.cpp</includedby>
+    <includedby refid="utils_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</includedby>
+    <incdepgraph>
+      <node id="7545">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="7547">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="7552">
+        <label>lightsky/utils/generic/string_utils_impl.h</label>
+        <link refid="string__utils__impl_8h"/>
+      </node>
+      <node id="7541">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/dataResource.h</label>
+        <link refid="dataResource.h"/>
+        <childnode refid="7542" relation="include">
+        </childnode>
+        <childnode refid="7543" relation="include">
+        </childnode>
+        <childnode refid="7549" relation="include">
+        </childnode>
+      </node>
+      <node id="7542">
+        <label>string</label>
+      </node>
+      <node id="7548">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="7543">
+        <label>lightsky/utils/setup.h</label>
+        <link refid="utils_2setup_8h"/>
+        <childnode refid="7544" relation="include">
+        </childnode>
+      </node>
+      <node id="7553">
+        <label>lightsky/utils/generic/resource_impl.h</label>
+        <link refid="resource__impl_8h"/>
+      </node>
+      <node id="7549">
+        <label>lightsky/utils/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="7542" relation="include">
+        </childnode>
+        <childnode refid="7543" relation="include">
+        </childnode>
+        <childnode refid="7550" relation="include">
+        </childnode>
+        <childnode refid="7553" relation="include">
+        </childnode>
+      </node>
+      <node id="7544">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="7545" relation="include">
+        </childnode>
+        <childnode refid="7546" relation="include">
+        </childnode>
+        <childnode refid="7547" relation="include">
+        </childnode>
+        <childnode refid="7548" relation="include">
+        </childnode>
+      </node>
+      <node id="7551">
+        <label>sstream</label>
+      </node>
+      <node id="7546">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="7550">
+        <label>lightsky/utils/string_utils.h</label>
+        <link refid="string__utils_8h"/>
+        <childnode refid="7542" relation="include">
+        </childnode>
+        <childnode refid="7551" relation="include">
+        </childnode>
+        <childnode refid="7552" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7555">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/dataResource.cpp</label>
+        <link refid="data_resource_8cpp"/>
+      </node>
+      <node id="7556">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="7557" relation="include">
+        </childnode>
+      </node>
+      <node id="7557">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="7558" relation="include">
+        </childnode>
+      </node>
+      <node id="7554">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/dataResource.h</label>
+        <link refid="dataResource.h"/>
+        <childnode refid="7555" relation="include">
+        </childnode>
+        <childnode refid="7556" relation="include">
+        </childnode>
+      </node>
+      <node id="7558">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classls_1_1utils_1_1data_resource" prot="public">ls::utils::dataResource</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1utils">ls::utils</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>utils/dataResource.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>February<sp/>1,<sp/>2014,<sp/>11:09<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_UTILS_DATA_RESOURCE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_UTILS_DATA_RESOURCE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2setup_8h" kindref="compound">lightsky/utils/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="resource_8h" kindref="compound">lightsky/utils/resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classls_1_1utils_1_1data_resource" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1resource" kindref="compound">resource</ref><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" kindref="member">dataResource</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" kindref="member">dataResource</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/>dr);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource_1affbc34e3a610128032c1005cadb4197c" kindref="member">dataResource</ref>(<ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;&amp;<sp/>dr);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1aaa0ab2164bb6ed61c01e13d5c34ae10a" kindref="member">~dataResource</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/><ref refid="classls_1_1utils_1_1data_resource_1ad6e15157b3798afdf13d6e57fb0136c1" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/>dr);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;<sp/><ref refid="classls_1_1utils_1_1data_resource_1ad6e15157b3798afdf13d6e57fb0136c1" kindref="member">operator =</ref>(<ref refid="classls_1_1utils_1_1data_resource" kindref="compound">dataResource</ref>&amp;&amp;<sp/>dr);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1aea8343146dd511f11536418f765b4933" kindref="member">loadFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1a61b72216fc11814083bbfd99f6625584" kindref="member">saveFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1aeba2732e6dba423a4e1ab1f1b552294e" kindref="member">unload</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1utils_1_1data_resource_1abf8de38c29711986bc0ffdfb1ebc5cd8" kindref="member">setData</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copyMemory);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>utils<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_UTILS_DATA_RESOURCE_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/dataResource.h"/>
+  </compounddef>
+</doxygen>

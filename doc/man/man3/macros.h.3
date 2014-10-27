@@ -1,0 +1,64 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/setup/macros.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/setup/macros.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLS_STRINGIFY\fP(x)   #x"
+.br
+.ti -1c
+.RI "#define \fBLS_MAX\fP(x, y)   ((x > y) ? x : y)"
+.br
+.ti -1c
+.RI "#define \fBLS_MIN\fP(x, y)   ((x < y) ? x : y)"
+.br
+.ti -1c
+.RI "#define \fBLS_ARRAY_SIZE\fP(a)   ( sizeof( a ) / sizeof( a[0] ) )"
+.br
+.ti -1c
+.RI "#define \fBLS_DECLARE_CLASS_TYPE\fP(nickName, name,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBLS_DEFINE_CLASS_TYPE\fP(name,\&.\&.\&.)   template class name<__VA_ARGS__>"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define LS_ARRAY_SIZE(a)   ( sizeof( a ) / sizeof( a[0] ) )"
+
+.PP
+Definition at line 34 of file macros\&.h\&.
+.SS "#define LS_DECLARE_CLASS_TYPE(nickName, name, \&.\&.\&.)"
+\fBValue:\fP
+.PP
+.nf
+typedef name<__VA_ARGS__> nickName; \
+        extern template class name<__VA_ARGS__>
+.fi
+.PP
+Definition at line 45 of file macros\&.h\&.
+.SS "#define LS_DEFINE_CLASS_TYPE(name, \&.\&.\&.)   template class name<__VA_ARGS__>"
+
+.PP
+Definition at line 56 of file macros\&.h\&.
+.SS "#define LS_MAX(x, y)   ((x > y) ? x : y)"
+
+.PP
+Definition at line 22 of file macros\&.h\&.
+.SS "#define LS_MIN(x, y)   ((x < y) ? x : y)"
+
+.PP
+Definition at line 28 of file macros\&.h\&.
+.SS "#define LS_STRINGIFY(x)   #x"
+
+.PP
+Definition at line 15 of file macros\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

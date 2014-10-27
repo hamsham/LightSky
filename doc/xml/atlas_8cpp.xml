@@ -1,0 +1,676 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="atlas_8cpp" kind="file">
+    <compoundname>atlas.cpp</compoundname>
+    <includes local="no">utility</includes>
+    <includes refid="atlas_8h" local="yes">lightsky/draw/atlas.h</includes>
+    <includes refid="color_8h" local="yes">lightsky/draw/color.h</includes>
+    <incdepgraph>
+      <node id="2126">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2127" relation="include">
+        </childnode>
+      </node>
+      <node id="2106">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="2107" relation="include">
+        </childnode>
+        <childnode refid="2108" relation="include">
+        </childnode>
+      </node>
+      <node id="2112">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="2113" relation="include">
+        </childnode>
+        <childnode refid="2114" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2119" relation="include">
+        </childnode>
+        <childnode refid="2125" relation="include">
+        </childnode>
+        <childnode refid="2129" relation="include">
+        </childnode>
+        <childnode refid="2133" relation="include">
+        </childnode>
+        <childnode refid="2122" relation="include">
+        </childnode>
+        <childnode refid="2126" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2135" relation="include">
+        </childnode>
+        <childnode refid="2136" relation="include">
+        </childnode>
+        <childnode refid="2139" relation="include">
+        </childnode>
+        <childnode refid="2141" relation="include">
+        </childnode>
+      </node>
+      <node id="2134">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="2094">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp</label>
+        <link refid="atlas.cpp"/>
+        <childnode refid="2095" relation="include">
+        </childnode>
+        <childnode refid="2096" relation="include">
+        </childnode>
+        <childnode refid="2155" relation="include">
+        </childnode>
+      </node>
+      <node id="2101">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="2107">
+        <label>cstdint</label>
+      </node>
+      <node id="2103">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="2099">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="2100" relation="include">
+        </childnode>
+        <childnode refid="2105" relation="include">
+        </childnode>
+        <childnode refid="2106" relation="include">
+        </childnode>
+        <childnode refid="2109" relation="include">
+        </childnode>
+        <childnode refid="2112" relation="include">
+        </childnode>
+      </node>
+      <node id="2144">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="2139">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="2136" relation="include">
+        </childnode>
+        <childnode refid="2119" relation="include">
+        </childnode>
+        <childnode refid="2125" relation="include">
+        </childnode>
+        <childnode refid="2129" relation="include">
+        </childnode>
+        <childnode refid="2140" relation="include">
+        </childnode>
+      </node>
+      <node id="2116">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="2117" relation="include">
+        </childnode>
+        <childnode refid="2107" relation="include">
+        </childnode>
+        <childnode refid="2095" relation="include">
+        </childnode>
+        <childnode refid="2113" relation="include">
+        </childnode>
+        <childnode refid="2114" relation="include">
+        </childnode>
+        <childnode refid="2118" relation="include">
+        </childnode>
+      </node>
+      <node id="2150">
+        <label>lightsky/utils/generic/string_utils_impl.h</label>
+        <link refid="string__utils__impl_8h"/>
+      </node>
+      <node id="2118">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="2132">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="2153">
+        <label>lightsky/draw/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="2154" relation="include">
+        </childnode>
+        <childnode refid="2155" relation="include">
+        </childnode>
+        <childnode refid="2156" relation="include">
+        </childnode>
+        <childnode refid="2099" relation="include">
+        </childnode>
+        <childnode refid="2158" relation="include">
+        </childnode>
+      </node>
+      <node id="2119">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2122" relation="include">
+        </childnode>
+        <childnode refid="2124" relation="include">
+        </childnode>
+      </node>
+      <node id="2115">
+        <label>cmath</label>
+      </node>
+      <node id="2135">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2126" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+        <childnode refid="2125" relation="include">
+        </childnode>
+        <childnode refid="2129" relation="include">
+        </childnode>
+        <childnode refid="2133" relation="include">
+        </childnode>
+        <childnode refid="2136" relation="include">
+        </childnode>
+        <childnode refid="2138" relation="include">
+        </childnode>
+      </node>
+      <node id="2121">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="2155">
+        <label>lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="2154" relation="include">
+        </childnode>
+        <childnode refid="2099" relation="include">
+        </childnode>
+      </node>
+      <node id="2130">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2131" relation="include">
+        </childnode>
+      </node>
+      <node id="2098">
+        <label>string</label>
+      </node>
+      <node id="2154">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="2137">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="2128">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="2096">
+        <label>lightsky/draw/atlas.h</label>
+        <link refid="atlas_8h"/>
+        <childnode refid="2097" relation="include">
+        </childnode>
+        <childnode refid="2153" relation="include">
+        </childnode>
+        <childnode refid="2159" relation="include">
+        </childnode>
+      </node>
+      <node id="2111">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="2131">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="2104">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="2124">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="2157">
+        <label>lightsky/draw/generic/imageResource_impl.h</label>
+        <link refid="image_resource__impl_8h"/>
+      </node>
+      <node id="2141">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="2142" relation="include">
+        </childnode>
+        <childnode refid="2143" relation="include">
+        </childnode>
+        <childnode refid="2126" relation="include">
+        </childnode>
+        <childnode refid="2144" relation="include">
+        </childnode>
+        <childnode refid="2145" relation="include">
+        </childnode>
+      </node>
+      <node id="2127">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="2113">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="2100" relation="include">
+        </childnode>
+      </node>
+      <node id="2159">
+        <label>lightsky/draw/generic/atlas_impl.h</label>
+        <link refid="atlas__impl_8h"/>
+      </node>
+      <node id="2125">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2126" relation="include">
+        </childnode>
+        <childnode refid="2128" relation="include">
+        </childnode>
+      </node>
+      <node id="2108">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="2123">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="2109">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="2110" relation="include">
+        </childnode>
+        <childnode refid="2111" relation="include">
+        </childnode>
+      </node>
+      <node id="2133">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2134" relation="include">
+        </childnode>
+      </node>
+      <node id="2147">
+        <label>lightsky/utils/setup.h</label>
+        <link refid="utils_2setup_8h"/>
+        <childnode refid="2100" relation="include">
+        </childnode>
+      </node>
+      <node id="2151">
+        <label>lightsky/utils/generic/resource_impl.h</label>
+        <link refid="resource__impl_8h"/>
+      </node>
+      <node id="2156">
+        <label>lightsky/draw/imageResource.h</label>
+        <link refid="image_resource_8h"/>
+        <childnode refid="2098" relation="include">
+        </childnode>
+        <childnode refid="2099" relation="include">
+        </childnode>
+        <childnode refid="2146" relation="include">
+        </childnode>
+        <childnode refid="2155" relation="include">
+        </childnode>
+        <childnode refid="2157" relation="include">
+        </childnode>
+      </node>
+      <node id="2146">
+        <label>lightsky/utils/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="2098" relation="include">
+        </childnode>
+        <childnode refid="2147" relation="include">
+        </childnode>
+        <childnode refid="2148" relation="include">
+        </childnode>
+        <childnode refid="2151" relation="include">
+        </childnode>
+      </node>
+      <node id="2114">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="2115" relation="include">
+        </childnode>
+        <childnode refid="2107" relation="include">
+        </childnode>
+      </node>
+      <node id="2100">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="2101" relation="include">
+        </childnode>
+        <childnode refid="2102" relation="include">
+        </childnode>
+        <childnode refid="2103" relation="include">
+        </childnode>
+        <childnode refid="2104" relation="include">
+        </childnode>
+      </node>
+      <node id="2095">
+        <label>utility</label>
+      </node>
+      <node id="2149">
+        <label>sstream</label>
+      </node>
+      <node id="2140">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="2136">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="2114" relation="include">
+        </childnode>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2122" relation="include">
+        </childnode>
+        <childnode refid="2126" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+        <childnode refid="2137" relation="include">
+        </childnode>
+      </node>
+      <node id="2129">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+        <childnode refid="2132" relation="include">
+        </childnode>
+      </node>
+      <node id="2110">
+        <label>iostream</label>
+      </node>
+      <node id="2122">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2123" relation="include">
+        </childnode>
+      </node>
+      <node id="2120">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="2113" relation="include">
+        </childnode>
+        <childnode refid="2114" relation="include">
+        </childnode>
+        <childnode refid="2121" relation="include">
+        </childnode>
+      </node>
+      <node id="2138">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="2117">
+        <label>climits</label>
+      </node>
+      <node id="2097">
+        <label>lightsky/draw/fontResource.h</label>
+        <link refid="font_resource_8h"/>
+        <childnode refid="2098" relation="include">
+        </childnode>
+        <childnode refid="2099" relation="include">
+        </childnode>
+        <childnode refid="2146" relation="include">
+        </childnode>
+        <childnode refid="2152" relation="include">
+        </childnode>
+      </node>
+      <node id="2142">
+        <label>chrono</label>
+      </node>
+      <node id="2158">
+        <label>lightsky/draw/generic/texture_impl.h</label>
+        <link refid="texture__impl_8h"/>
+      </node>
+      <node id="2152">
+        <label>lightsky/draw/generic/fontResource_impl.h</label>
+        <link refid="font_resource__impl_8h"/>
+      </node>
+      <node id="2105">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="2104" relation="include">
+        </childnode>
+      </node>
+      <node id="2143">
+        <label>algorithm</label>
+      </node>
+      <node id="2102">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="2148">
+        <label>lightsky/utils/string_utils.h</label>
+        <link refid="string__utils_8h"/>
+        <childnode refid="2098" relation="include">
+        </childnode>
+        <childnode refid="2149" relation="include">
+        </childnode>
+        <childnode refid="2150" relation="include">
+        </childnode>
+      </node>
+      <node id="2145">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>draw/atlas.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>February<sp/>16,<sp/>2014,<sp/>2:36<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="atlas_8h" kindref="compound">lightsky/draw/atlas.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="color_8h" kindref="compound">lightsky/draw/color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ls::math::vec2;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ls::math::vec2i;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>Destructor</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classls_1_1draw_1_1atlas_1aa9f36ca463aba51cd27f2e2d730965a8" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1atlas_1aa9f36ca463aba51cd27f2e2d730965a8" kindref="member">atlas::~atlas</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1atlas_1aeb2d5757c1a8ae290fc388d1cb13c308" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>Constructor</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classls_1_1draw_1_1atlas_1a64f7c45a2f2f6a2fd2f5dc43a14794a4" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1atlas_1a64f7c45a2f2f6a2fd2f5dc43a14794a4" kindref="member">atlas::atlas</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>Font<sp/>Atlas<sp/>Move<sp/>constructor</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classls_1_1draw_1_1atlas_1a8ef10a8a5b1090d752d3d27dbc53dd5b" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1atlas_1a64f7c45a2f2f6a2fd2f5dc43a14794a4" kindref="member">atlas::atlas</ref>(<ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref>&amp;&amp;<sp/>a)<sp/>:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>atlasTex{std::move(a.atlasTex)},</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>entries{a.entries},</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>numEntries{a.numEntries}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>a.entries<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>a.numEntries<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>Font<sp/>Atlas<sp/>move<sp/>operator</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classls_1_1draw_1_1atlas_1affc023dad12ceac62b0ef2597fd6b683" refkind="member"><highlight class="normal"><ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1atlas_1a12535fc106f9a5295b9bdeff8dd1787c" kindref="member">atlas::operator =</ref>(<ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref>&amp;&amp;<sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>atlasTex<sp/>=<sp/>std::move(a.atlasTex);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>entries<sp/>=<sp/>a.entries;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>a.entries<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>numEntries<sp/>=<sp/>a.numEntries;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>a.numEntries<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>Store<sp/>a<sp/>fontFile&apos;s<sp/>texture<sp/>data<sp/>on<sp/>OpenGL<sp/>server<sp/>memory</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classls_1_1draw_1_1atlas_1a426a65842fb4630f323db9fb3502ba27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1atlas_1a426a65842fb4630f323db9fb3502ba27" kindref="member">atlas::init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1font_resource" kindref="compound">fontResource</ref>&amp;<sp/>fr)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1atlas_1aeb2d5757c1a8ae290fc388d1cb13c308" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>the<sp/>size<sp/>of<sp/>the<sp/>atlas.<sp/>Cast<sp/>like<sp/>crazy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dimensions<sp/>is<sp/>the<sp/>number<sp/>of<sp/>entries<sp/>in<sp/>the<sp/>x/y<sp/>directions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimensions<sp/>=<sp/>(int)std::sqrt((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)fr.<ref refid="classls_1_1draw_1_1font_resource_1ad80176cc0a224821871d9dc9fd331ab3" kindref="member">getNumGlyphs</ref>());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vec2i&amp;&amp;<sp/>maxGlyphSize<sp/>=<sp/>fr.<ref refid="classls_1_1draw_1_1font_resource_1a09ff077387945abe5a2ce94752f6ab75" kindref="member">getMaxGlyphSize</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1af694eceb659d9266fd76327d06db65b4" kindref="member">LS_LOG_MSG</ref>(</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Attempting<sp/>to<sp/>load<sp/>a<sp/>font<sp/>atlas.&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\n\tSupported<sp/>X*Y<sp/>Size:<sp/>&quot;</highlight><highlight class="normal">,<sp/><ref refid="classls_1_1draw_1_1texture_1a36bb093b51e4ef394bedfcc151b5506a" kindref="member">texture::getMaxTextureSize</ref>(),</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\n\tGlyphs<sp/>Per<sp/>Row/Col:<sp/>&quot;</highlight><highlight class="normal">,<sp/>dimensions,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>x<sp/>&quot;</highlight><highlight class="normal">,<sp/>dimensions,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\n\tTotal<sp/>Glyph<sp/>Count:<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/>fr.<ref refid="classls_1_1draw_1_1font_resource_1ad80176cc0a224821871d9dc9fd331ab3" kindref="member">getNumGlyphs</ref>(),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\n\tWidth<sp/>Per<sp/>Glyph:<sp/><sp/><sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/>maxGlyphSize[0],</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\n\tHeight<sp/>Per<sp/>Glyph:<sp/><sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/>maxGlyphSize[1]</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>prepare<sp/>the<sp/>array<sp/>of<sp/>atlas<sp/>entries</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>entries<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal">(std::nothrow)<sp/><ref refid="structls_1_1draw_1_1atlas_entry" kindref="compound">atlasEntry</ref>[fr.numGlyphs];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(entries<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;\tUnable<sp/>to<sp/>generate<sp/>an<sp/>array<sp/>of<sp/>font<sp/>atlas<sp/>entries.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>OpenGL<sp/>know<sp/>that<sp/>fonts<sp/>only<sp/>use<sp/>1-byte<sp/>per<sp/>pixel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>glPixelStorei(GL_UNPACK_ALIGNMENT,<sp/>1);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!atlasTex.<ref refid="classls_1_1draw_1_1texture_1a3ca36d7a8df529f27881574e19691b9e" kindref="member">init</ref>(0,<sp/><ref refid="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a5d6dc9185d18d3c05c9dd87e90f29ede" kindref="member">LS_R_8</ref>,<sp/>maxGlyphSize*dimensions,<sp/><ref refid="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a006ba419f56159e15429d5178cd74e6f" kindref="member">LS_R</ref>,<sp/><ref refid="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668baa3b0ea51004e9632be737be8909f993b" kindref="member">COLOR_TYPE_UNSIGNED_BYTE</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a9dd6539d687c063e16806164a20fb41f" kindref="member">LOG_GL_ERR</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;\tAn<sp/>error<sp/>occurred<sp/>while<sp/>allocating<sp/>space<sp/>for<sp/>a<sp/>font<sp/>atlas.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>[]<sp/>entries;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a9dd6539d687c063e16806164a20fb41f" kindref="member">LOG_GL_ERR</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Upload<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>numEntries<sp/>=<sp/>fr.numGlyphs;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>dimensions;<sp/>++x)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>dimensions;<sp/>++y)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structls_1_1draw_1_1glyph" kindref="compound">glyph</ref>&amp;<sp/>pGlyph<sp/>=<sp/>fr.<ref refid="classls_1_1draw_1_1font_resource_1aacdedfeaaec34fdf85e7f57adf3e4dda" kindref="member">getGlyphs</ref>()[iter];</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structls_1_1draw_1_1atlas_entry" kindref="compound">atlasEntry</ref>&amp;<sp/>pEntry<sp/><sp/>=<sp/>entries[iter];</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atlasTex.<ref refid="classls_1_1draw_1_1texture_1a429915012dc328eec2558cd29a0de985" kindref="member">modify</ref>(</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec2i{x*maxGlyphSize[0],<sp/>y*maxGlyphSize[1]},</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pGlyph.<ref refid="structls_1_1draw_1_1glyph_1ab37b8f3d857ac90e86de77ded85e33b6" kindref="member">size</ref>,<sp/><ref refid="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a06c0d2707774329d319d1af2a87a7247" kindref="member">LS_GRAY</ref>,<sp/><ref refid="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668baa3b0ea51004e9632be737be8909f993b" kindref="member">COLOR_TYPE_UNSIGNED_BYTE</ref>,<sp/>pGlyph.<ref refid="structls_1_1draw_1_1glyph_1a9767c2ffa45b6f786a4f47fbafd3ce5e" kindref="member">pData</ref></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fDimension<sp/>=<sp/>(float)dimensions;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Texture<sp/>atlases<sp/>use<sp/>a<sp/>rectangle<sp/>texture.<sp/>no<sp/>need<sp/>to<sp/>normalize<sp/>the<sp/>UVs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>top-left<sp/>uv<sp/>coordinate<sp/>for<sp/>each<sp/>glyph</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a233e61a2c83918f5371aedd0880e038f" kindref="member">uv</ref>[0]<sp/>=<sp/>vec2{(float)maxGlyphSize[0]*x,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)maxGlyphSize[1]*y};</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bottom<sp/>left<sp/>corner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a233e61a2c83918f5371aedd0880e038f" kindref="member">uv</ref>[1]<sp/>=<sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a233e61a2c83918f5371aedd0880e038f" kindref="member">uv</ref>[0]<sp/>+<sp/>(vec2)pGlyph.<ref refid="structls_1_1draw_1_1glyph_1ab37b8f3d857ac90e86de77ded85e33b6" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>descriptor<sp/>data<sp/>for<sp/>each<sp/>glyoh.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a30db61b88f0d3b17b34a2a4c580df76e" kindref="member">advance</ref><sp/>=<sp/>(vec2)pGlyph.<ref refid="structls_1_1draw_1_1glyph_1a0a2e605544d2aedefcd0962b111f9a70" kindref="member">advance</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a30db61b88f0d3b17b34a2a4c580df76e" kindref="member">advance</ref><sp/>/=<sp/>fDimension;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a16628469a679f2f8ea646f6666666bfd" kindref="member">bearing</ref><sp/>=<sp/>(vec2)pGlyph.<ref refid="structls_1_1draw_1_1glyph_1a9b2a79edaf964a32f5dea62b578c5e3d" kindref="member">bearing</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1a16628469a679f2f8ea646f6666666bfd" kindref="member">bearing</ref><sp/>/=<sp/>fDimension;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1abcd4bda436c52f271bdcfc01ae510bb8" kindref="member">size</ref><sp/>=<sp/>(vec2)pGlyph.<ref refid="structls_1_1draw_1_1glyph_1ab37b8f3d857ac90e86de77ded85e33b6" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pEntry.<ref refid="structls_1_1draw_1_1atlas_entry_1abcd4bda436c52f271bdcfc01ae510bb8" kindref="member">size</ref><sp/>/=<sp/>fDimension;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++iter;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>atlasTex.<ref refid="classls_1_1draw_1_1texture_1a282d5931287e2ef82d281396cbe3c98c" kindref="member">setParameter</ref>(<ref refid="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdab9513f0839ab66cb72989d0291fb43e2" kindref="member">LS_TEX_WRAP_S</ref>,<sp/><ref refid="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda88c63e706326537e48004169511c5a34" kindref="member">LS_TEX_CLAMP_BORDER</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>atlasTex.<ref refid="classls_1_1draw_1_1texture_1a282d5931287e2ef82d281396cbe3c98c" kindref="member">setParameter</ref>(<ref refid="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdad4f80f0db3f47f7e797f444f6a5e3c89" kindref="member">LS_TEX_WRAP_T</ref>,<sp/><ref refid="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda88c63e706326537e48004169511c5a34" kindref="member">LS_TEX_CLAMP_BORDER</ref>);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>atlasTex.<ref refid="classls_1_1draw_1_1texture_1aa7c112e4b0bb6577eacb5d8c345fdc2d" kindref="member">unbind</ref>();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a9dd6539d687c063e16806164a20fb41f" kindref="member">LOG_GL_ERR</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Restore<sp/>OpenGL&apos;s<sp/>default<sp/>pixel<sp/>packing<sp/>format<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>glPixelStorei(GL_UNPACK_ALIGNMENT,<sp/>4);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a9dd6539d687c063e16806164a20fb41f" kindref="member">LOG_GL_ERR</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1af694eceb659d9266fd76327d06db65b4" kindref="member">LS_LOG_MSG</ref>(</highlight><highlight class="stringliteral">&quot;\tSuccessfully<sp/>loaded<sp/>a<sp/>font<sp/>atlas.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>Frees<sp/>all<sp/>memory<sp/>used<sp/>by<sp/>*this.</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classls_1_1draw_1_1atlas_1aeb2d5757c1a8ae290fc388d1cb13c308" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1atlas_1aeb2d5757c1a8ae290fc388d1cb13c308" kindref="member">atlas::terminate</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>atlasTex.<ref refid="classls_1_1draw_1_1texture_1a010bc9e89d0a128f4dae40faaf68c8f0" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>[]<sp/>entries;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>entries<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>numEntries<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp"/>
+  </compounddef>
+</doxygen>

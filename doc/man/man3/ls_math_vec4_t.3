@@ -1,0 +1,362 @@
+.TH "ls::math::vec4_t< num_t >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::math::vec4_t< num_t > \- 
+.PP
+4D Vector Structure  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <vec4\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr \fBvec4_t\fP (num_t inX, num_t inY, num_t inZ, num_t inW)"
+.br
+.ti -1c
+.RI "constexpr \fBvec4_t\fP ()"
+.br
+.ti -1c
+.RI "constexpr \fBvec4_t\fP (num_t n)"
+.br
+.ti -1c
+.RI "constexpr \fBvec4_t\fP (const \fBvec4_t\fP< num_t > &input)"
+.br
+.ti -1c
+.RI "constexpr \fBvec4_t\fP (\fBvec4_t\fP< num_t > &&input)"
+.br
+.ti -1c
+.RI "\fB~vec4_t\fP ()=default"
+.br
+.ti -1c
+.RI "template<typename other_t > constexpr \fBoperator vec4_t< other_t >\fP () const "
+.br
+.ti -1c
+.RI "const num_t * \fBoperator&\fP () const "
+.br
+.ti -1c
+.RI "num_t * \fBoperator&\fP ()"
+.br
+.ti -1c
+.RI "constexpr num_t \fBoperator[]\fP (int i) const "
+.br
+.ti -1c
+.RI "num_t & \fBoperator[]\fP (int i)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator+\fP (const \fBvec4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator-\fP (const \fBvec4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator-\fP () const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator*\fP (const \fBvec4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator/\fP (const \fBvec4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator=\fP (const \fBvec4_t\fP< num_t > &)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator=\fP (\fBvec4_t\fP< num_t > &&)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator+=\fP (const \fBvec4_t\fP< num_t > &)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator-=\fP (const \fBvec4_t\fP< num_t > &)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator*=\fP (const \fBvec4_t\fP< num_t > &)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator/=\fP (const \fBvec4_t\fP< num_t > &)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator++\fP ()"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator--\fP ()"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator++\fP (int)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator--\fP (int)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBvec4_t\fP< num_t > &compare) const "
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBvec4_t\fP< num_t > &compare) const "
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBvec4_t\fP< num_t > &compare) const "
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBvec4_t\fP< num_t > &compare) const "
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBvec4_t\fP< num_t > &compare) const "
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (const \fBvec4_t\fP< num_t > &compare) const "
+.br
+.ti -1c
+.RI "\fBmat4_t\fP< num_t > \fBoperator+\fP (const \fBmat4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBmat4_t\fP< num_t > \fBoperator-\fP (const \fBmat4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP< num_t > \fBoperator*\fP (const \fBmat4_t\fP< num_t > &) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator*=\fP (const \fBmat4_t\fP< num_t > &)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator=\fP (num_t)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator+\fP (num_t) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator-\fP (num_t) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator*\fP (num_t) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP \fBoperator/\fP (num_t) const "
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator+=\fP (num_t)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator-=\fP (num_t)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator*=\fP (num_t)"
+.br
+.ti -1c
+.RI "\fBvec4_t\fP & \fBoperator/=\fP (num_t)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "num_t \fBv\fP [4]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename num_t>struct ls::math::vec4_t< num_t >"
+4D Vector Structure 
+
+
+.PP
+ Recommended for use with non-integral types
+.PP
+\fBNote:\fP
+.RS 4
+Indexing is as follows: 0 = X 1 = Y 2 = Z 
+.SS "3 = W "
+.RE
+.PP
+
+.PP
+Definition at line 28 of file vec4\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename num_t > constexpr \fBls::math::vec4_t\fP< num_t >::\fBvec4_t\fP (num_tinX, num_tinY, num_tinZ, num_tinW)"
+
+.PP
+Definition at line 10 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > constexpr \fBls::math::vec4_t\fP< num_t >::\fBvec4_t\fP ()"
+
+.PP
+Definition at line 15 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > constexpr \fBls::math::vec4_t\fP< num_t >::\fBvec4_t\fP (num_tn)"
+
+.PP
+Definition at line 20 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > constexpr \fBls::math::vec4_t\fP< num_t >::\fBvec4_t\fP (const \fBvec4_t\fP< num_t > &input)"
+
+.PP
+Definition at line 25 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > constexpr \fBls::math::vec4_t\fP< num_t >::\fBvec4_t\fP (\fBvec4_t\fP< num_t > &&input)"
+
+.PP
+Definition at line 30 of file vec4_impl\&.h\&.
+.SS "template<typename num_t> \fBls::math::vec4_t\fP< num_t >::~\fBvec4_t\fP ()\fC [default]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename num_t > template<typename other_t > constexpr \fBls::math::vec4_t\fP< num_t >::operator \fBvec4_t\fP< other_t > () const\fC [explicit]\fP"
+
+.PP
+Definition at line 39 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > bool \fBls::math::vec4_t\fP< num_t >::operator!= (const \fBvec4_t\fP< num_t > &compare) const\fC [inline]\fP"
+
+.PP
+Definition at line 220 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > const num_t * \fBls::math::vec4_t\fP< num_t >::operator& () const"
+
+.PP
+Definition at line 46 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > num_t * \fBls::math::vec4_t\fP< num_t >::operator& ()\fC [inline]\fP"
+
+.PP
+Definition at line 51 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator* (const \fBvec4_t\fP< num_t > &input) const\fC [inline]\fP"
+
+.PP
+Definition at line 98 of file vec4_impl\&.h\&.
+.SS "template<typename num_t> \fBvec4_t\fP<num_t> \fBls::math::vec4_t\fP< num_t >::operator* (const \fBmat4_t\fP< num_t > &) const"
+
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator* (num_tinput) const\fC [inline]\fP"
+
+.PP
+Definition at line 294 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator*= (const \fBvec4_t\fP< num_t > &input)\fC [inline]\fP"
+
+.PP
+Definition at line 154 of file vec4_impl\&.h\&.
+.SS "template<typename num_t> \fBvec4_t\fP& \fBls::math::vec4_t\fP< num_t >::operator*= (const \fBmat4_t\fP< num_t > &)"
+
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator*= (num_tinput)\fC [inline]\fP"
+
+.PP
+Definition at line 328 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator+ (const \fBvec4_t\fP< num_t > &input) const\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file vec4_impl\&.h\&.
+.SS "template<typename num_t> \fBmat4_t\fP<num_t> \fBls::math::vec4_t\fP< num_t >::operator+ (const \fBmat4_t\fP< num_t > &) const"
+
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator+ (num_tinput) const\fC [inline]\fP"
+
+.PP
+Definition at line 276 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator++ ()\fC [inline]\fP"
+
+.PP
+Definition at line 173 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator++ (int)\fC [inline]\fP"
+
+.PP
+Definition at line 191 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator+= (const \fBvec4_t\fP< num_t > &input)\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator+= (num_tinput)\fC [inline]\fP"
+
+.PP
+Definition at line 312 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator- (const \fBvec4_t\fP< num_t > &input) const\fC [inline]\fP"
+
+.PP
+Definition at line 82 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator- () const\fC [inline]\fP"
+
+.PP
+Definition at line 93 of file vec4_impl\&.h\&.
+.SS "template<typename num_t> \fBmat4_t\fP<num_t> \fBls::math::vec4_t\fP< num_t >::operator- (const \fBmat4_t\fP< num_t > &) const"
+
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator- (num_tinput) const\fC [inline]\fP"
+
+.PP
+Definition at line 285 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator-- ()\fC [inline]\fP"
+
+.PP
+Definition at line 181 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator-- (int)\fC [inline]\fP"
+
+.PP
+Definition at line 200 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator-= (const \fBvec4_t\fP< num_t > &input)\fC [inline]\fP"
+
+.PP
+Definition at line 145 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator-= (num_tinput)\fC [inline]\fP"
+
+.PP
+Definition at line 320 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator/ (const \fBvec4_t\fP< num_t > &input) const\fC [inline]\fP"
+
+.PP
+Definition at line 108 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator/ (num_tinput) const\fC [inline]\fP"
+
+.PP
+Definition at line 303 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator/= (const \fBvec4_t\fP< num_t > &input)\fC [inline]\fP"
+
+.PP
+Definition at line 163 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator/= (num_tinput)\fC [inline]\fP"
+
+.PP
+Definition at line 336 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > bool \fBls::math::vec4_t\fP< num_t >::operator< (const \fBvec4_t\fP< num_t > &compare) const\fC [inline]\fP"
+
+.PP
+Definition at line 229 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > bool \fBls::math::vec4_t\fP< num_t >::operator<= (const \fBvec4_t\fP< num_t > &compare) const\fC [inline]\fP"
+
+.PP
+Definition at line 247 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator= (const \fBvec4_t\fP< num_t > &input)\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > & \fBls::math::vec4_t\fP< num_t >::operator= (\fBvec4_t\fP< num_t > &&input)\fC [inline]\fP"
+
+.PP
+Definition at line 127 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > \fBvec4_t\fP< num_t > \fBls::math::vec4_t\fP< num_t >::operator= (num_tinput)\fC [inline]\fP"
+
+.PP
+Definition at line 268 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > bool \fBls::math::vec4_t\fP< num_t >::operator== (const \fBvec4_t\fP< num_t > &compare) const\fC [inline]\fP"
+
+.PP
+Definition at line 211 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > bool \fBls::math::vec4_t\fP< num_t >::operator> (const \fBvec4_t\fP< num_t > &compare) const\fC [inline]\fP"
+
+.PP
+Definition at line 238 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > bool \fBls::math::vec4_t\fP< num_t >::operator>= (const \fBvec4_t\fP< num_t > &compare) const\fC [inline]\fP"
+
+.PP
+Definition at line 256 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > constexpr num_t \fBls::math::vec4_t\fP< num_t >::operator[] (inti) const"
+
+.PP
+Definition at line 59 of file vec4_impl\&.h\&.
+.SS "template<typename num_t > num_t & \fBls::math::vec4_t\fP< num_t >::operator[] (inti)\fC [inline]\fP"
+
+.PP
+Definition at line 64 of file vec4_impl\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename num_t> num_t \fBls::math::vec4_t\fP< num_t >::v[4]"
+
+.PP
+Definition at line 30 of file vec4\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

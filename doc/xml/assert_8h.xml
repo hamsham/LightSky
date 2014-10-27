@@ -1,0 +1,693 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="assert_8h" kind="file">
+    <compoundname>assert.h</compoundname>
+    <includes refid="macros_8h" local="yes">lightsky/setup/macros.h</includes>
+    <includedby refid="draw_2setup_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h</includedby>
+    <includedby refid="mesh_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</includedby>
+    <includedby refid="mesh_model_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</includedby>
+    <includedby refid="game_2setup_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/game/setup.h</includedby>
+    <includedby refid="functor_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</includedby>
+    <includedby refid="bits_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h</includedby>
+    <includedby refid="assert_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/assert.cpp</includedby>
+    <includedby refid="random_num_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp</includedby>
+    <includedby refid="utils_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</includedby>
+    <incdepgraph>
+      <node id="7447">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="7446">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h</label>
+        <link refid="assert.h"/>
+        <childnode refid="7447" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7499">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/setup.cpp</label>
+        <link refid="draw_2src_2setup_8cpp"/>
+      </node>
+      <node id="7464">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/boundingBox.cpp</label>
+        <link refid="bounding_box_8cpp"/>
+      </node>
+      <node id="7509">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/randomNum.cpp</label>
+        <link refid="random_num_8cpp"/>
+      </node>
+      <node id="7498">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp</label>
+        <link refid="shader_object_8cpp"/>
+      </node>
+      <node id="7495">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h</label>
+        <link refid="shader_object_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7496" relation="include">
+        </childnode>
+        <childnode refid="7498" relation="include">
+        </childnode>
+      </node>
+      <node id="7474">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp</label>
+        <link refid="atlas_8cpp"/>
+      </node>
+      <node id="7500">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h</label>
+        <link refid="vertex_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7463" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+      </node>
+      <node id="7450">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h</label>
+        <link refid="blend_object_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7454" relation="include">
+        </childnode>
+      </node>
+      <node id="7507">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="7452" relation="include">
+        </childnode>
+      </node>
+      <node id="7452">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="7453" relation="include">
+        </childnode>
+      </node>
+      <node id="7449">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="7450" relation="include">
+        </childnode>
+        <childnode refid="7455" relation="include">
+        </childnode>
+        <childnode refid="7465" relation="include">
+        </childnode>
+        <childnode refid="7467" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7489" relation="include">
+        </childnode>
+        <childnode refid="7475" relation="include">
+        </childnode>
+        <childnode refid="7491" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7493" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7463" relation="include">
+        </childnode>
+        <childnode refid="7478" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+        <childnode refid="7495" relation="include">
+        </childnode>
+        <childnode refid="7496" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7476" relation="include">
+        </childnode>
+        <childnode refid="7499" relation="include">
+        </childnode>
+        <childnode refid="7472" relation="include">
+        </childnode>
+        <childnode refid="7500" relation="include">
+        </childnode>
+      </node>
+      <node id="7482">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7483" relation="include">
+        </childnode>
+      </node>
+      <node id="7494">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/matrixStack.cpp</label>
+        <link refid="matrix_stack_8cpp"/>
+      </node>
+      <node id="7476">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="7496">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h</label>
+        <link refid="shader_program_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7497" relation="include">
+        </childnode>
+      </node>
+      <node id="7493">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h</label>
+        <link refid="matrix_stack_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7494" relation="include">
+        </childnode>
+      </node>
+      <node id="7459">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="7472">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="7473" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7475" relation="include">
+        </childnode>
+        <childnode refid="7457" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+        <childnode refid="7477" relation="include">
+        </childnode>
+      </node>
+      <node id="7491">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7492" relation="include">
+        </childnode>
+        <childnode refid="7462" relation="include">
+        </childnode>
+      </node>
+      <node id="7467">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h</label>
+        <link refid="color_8h"/>
+        <childnode refid="7450" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7478" relation="include">
+        </childnode>
+        <childnode refid="7474" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7471" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7459" relation="include">
+        </childnode>
+        <childnode refid="7472" relation="include">
+        </childnode>
+      </node>
+      <node id="7502">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</label>
+        <link refid="functor_8h"/>
+        <childnode refid="7503" relation="include">
+        </childnode>
+        <childnode refid="7504" relation="include">
+        </childnode>
+      </node>
+      <node id="7487">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/gameState.cpp</label>
+        <link refid="game_state_8cpp"/>
+      </node>
+      <node id="7478">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7473">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/atlas.h</label>
+        <link refid="atlas_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7463" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+        <childnode refid="7474" relation="include">
+        </childnode>
+        <childnode refid="7461" relation="include">
+        </childnode>
+      </node>
+      <node id="7466">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp</label>
+        <link refid="buffer_object_8cpp"/>
+      </node>
+      <node id="7483">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/system.h</label>
+        <link refid="system_8h"/>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7486" relation="include">
+        </childnode>
+        <childnode refid="7488" relation="include">
+        </childnode>
+      </node>
+      <node id="7471">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp</label>
+        <link refid="image_resource_8cpp"/>
+      </node>
+      <node id="7508">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/assert.cpp</label>
+        <link refid="assert_8cpp"/>
+      </node>
+      <node id="7492">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="7451">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="7452" relation="include">
+        </childnode>
+      </node>
+      <node id="7455">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/boundingBox.h</label>
+        <link refid="bounding_box_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7463" relation="include">
+        </childnode>
+        <childnode refid="7464" relation="include">
+        </childnode>
+      </node>
+      <node id="7457">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+      </node>
+      <node id="7484">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="7485" relation="include">
+        </childnode>
+        <childnode refid="7452" relation="include">
+        </childnode>
+      </node>
+      <node id="7503">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="7452" relation="include">
+        </childnode>
+      </node>
+      <node id="7460">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="7469">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp</label>
+        <link refid="depth_object_8cpp"/>
+      </node>
+      <node id="7485">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="7461">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="7477">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="7497">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp</label>
+        <link refid="shader_program_8cpp"/>
+      </node>
+      <node id="7456">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7457" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+        <childnode refid="7461" relation="include">
+        </childnode>
+        <childnode refid="7462" relation="include">
+        </childnode>
+      </node>
+      <node id="7488">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/src/system.cpp</label>
+        <link refid="system_8cpp"/>
+      </node>
+      <node id="7454">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/blendObject.cpp</label>
+        <link refid="blend_object_8cpp"/>
+      </node>
+      <node id="7470">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h</label>
+        <link refid="image_resource_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7471" relation="include">
+        </childnode>
+        <childnode refid="7472" relation="include">
+        </childnode>
+      </node>
+      <node id="7505">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/bits.h</label>
+        <link refid="bits_8h"/>
+        <childnode refid="7506" relation="include">
+        </childnode>
+        <childnode refid="7507" relation="include">
+        </childnode>
+      </node>
+      <node id="7463">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</label>
+        <link refid="mesh_resource_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7461" relation="include">
+        </childnode>
+        <childnode refid="7462" relation="include">
+        </childnode>
+      </node>
+      <node id="7468">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h</label>
+        <link refid="depth_object_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7469" relation="include">
+        </childnode>
+      </node>
+      <node id="7462">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="7475">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7476" relation="include">
+        </childnode>
+      </node>
+      <node id="7479">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp</label>
+        <link refid="context_8cpp"/>
+      </node>
+      <node id="7458">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7459" relation="include">
+        </childnode>
+      </node>
+      <node id="7480">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+      <node id="7490">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp</label>
+        <link refid="font_resource_8cpp"/>
+      </node>
+      <node id="7504">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp</label>
+        <link refid="functor_8cpp"/>
+      </node>
+      <node id="7481">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h</label>
+        <link refid="display_8h"/>
+        <childnode refid="7482" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7478" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7483" relation="include">
+        </childnode>
+      </node>
+      <node id="7489">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/fontResource.h</label>
+        <link refid="font_resource_8h"/>
+        <childnode refid="7473" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7490" relation="include">
+        </childnode>
+      </node>
+      <node id="7501">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/setup.h</label>
+        <link refid="game_2setup_8h"/>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7483" relation="include">
+        </childnode>
+      </node>
+      <node id="7486">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/game/gameState.h</label>
+        <link refid="game_state_8h"/>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7487" relation="include">
+        </childnode>
+        <childnode refid="7488" relation="include">
+        </childnode>
+      </node>
+      <node id="7506">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h</label>
+        <link refid="btree_8h"/>
+        <childnode refid="7507" relation="include">
+        </childnode>
+      </node>
+      <node id="7448">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h</label>
+        <link refid="assert.h"/>
+        <childnode refid="7449" relation="include">
+        </childnode>
+        <childnode refid="7461" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7501" relation="include">
+        </childnode>
+        <childnode refid="7502" relation="include">
+        </childnode>
+        <childnode refid="7505" relation="include">
+        </childnode>
+        <childnode refid="7508" relation="include">
+        </childnode>
+        <childnode refid="7509" relation="include">
+        </childnode>
+        <childnode refid="7507" relation="include">
+        </childnode>
+      </node>
+      <node id="7453">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+      <node id="7465">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h</label>
+        <link refid="buffer_object_8h"/>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7457" relation="include">
+        </childnode>
+        <childnode refid="7466" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1utils">ls::utils</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="assert_8h_1a643c7508872589752db16fc9fd296d8f" prot="public" static="no">
+        <name>LS_ASSERT_BASIC</name>
+        <param><defname>x</defname></param>
+        <param><defname>fileName</defname></param>
+        <param><defname>lineNum</defname></param>
+        <param><defname>type</defname></param>
+        <initializer><ref refid="namespacels_1_1utils_1a96afe13b74e009eebc1836063167d358" kindref="member">ls::utils::runtime_assert</ref>(\
+			(x), type,\
+			&quot;Assertion failed&quot;\
+            &quot; on line &quot; LS_STRINGIFY(lineNum)\
+            &quot; of &quot; LS_STRINGIFY(fileName)\
+            &quot;: (&quot; <ref refid="macros_8h_1a5bfafe8742a13a31e54eab3ef7824792" kindref="member">LS_STRINGIFY</ref>(x) &quot;)&quot;\
+		)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="64" column="10" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="assert_8h_1a137c132d218c89de1adefe803ec42d87" prot="public" static="no">
+        <name>LS_ASSERT</name>
+        <param><defname>x</defname></param>
+        <initializer><ref refid="assert_8h_1a643c7508872589752db16fc9fd296d8f" kindref="member">LS_ASSERT_BASIC</ref>(x, __FILE__, __LINE__, <ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5da5a34fafdd6319ebdf947e3def429847f" kindref="member">ls::utils::ERROR</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="78" column="10" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="assert_8h_1a7be2750fc0336b79413cdbe2a456cc00" prot="public" static="no">
+        <name>LS_DEBUG_ASSERT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="89" column="14" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="assert_8h_1a919a32602d7f335ab44fe9e19553d201" prot="public" static="no">
+        <name>LS_WARN</name>
+        <param><defname>x</defname></param>
+        <initializer><ref refid="assert_8h_1a643c7508872589752db16fc9fd296d8f" kindref="member">LS_ASSERT_BASIC</ref>(x, __FILE__, __LINE__, <ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5dafbf56df0734baf50a74706281cdc2c76" kindref="member">ls::utils::WARNING</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="96" column="10" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="assert_8h_1a708f0596ec6e535053f0cca1d1749761" prot="public" static="no">
+        <name>LS_ALERT</name>
+        <param><defname>x</defname></param>
+        <initializer><ref refid="assert_8h_1a643c7508872589752db16fc9fd296d8f" kindref="member">LS_ASSERT_BASIC</ref>(x, __FILE__, __LINE__, <ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5daed035339a0dc42ab48c7957121be2187" kindref="member">ls::utils::ALERT</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" line="103" column="10" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_UTILS_ASSERT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_UTILS_ASSERT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="macros_8h" kindref="compound">lightsky/setup/macros.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="8" refid="namespacels_1_1utils" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" kindref="member">error_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5daed035339a0dc42ab48c7957121be2187" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5daed035339a0dc42ab48c7957121be2187" kindref="member">ALERT</ref>,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27" refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5dafbf56df0734baf50a74706281cdc2c76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5dafbf56df0734baf50a74706281cdc2c76" kindref="member">WARNING</ref>,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34" refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5da5a34fafdd6319ebdf947e3def429847f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5da5a34fafdd6319ebdf947e3def429847f" kindref="member">ERROR</ref></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1utils_1a96afe13b74e009eebc1836063167d358" kindref="member">runtime_assert</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>condition,<sp/><ref refid="namespacels_1_1utils_1ab58f69ca87e14d6f1fe011059fea4e5d" kindref="member">error_t</ref><sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>msg);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>Utils<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>Basic<sp/>Assertion<sp/>Template</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LS_ASSERT_BASIC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="assert_8h_1a643c7508872589752db16fc9fd296d8f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>LS_ASSERT_BASIC(<sp/>x,<sp/>fileName,<sp/>lineNum,<sp/>type<sp/>)\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ls::utils::runtime_assert(\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(x),<sp/>type,\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Assertion<sp/>failed&quot;\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>on<sp/>line<sp/>&quot;<sp/>LS_STRINGIFY(lineNum)\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>of<sp/>&quot;<sp/>LS_STRINGIFY(fileName)\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;:<sp/>(&quot;<sp/>LS_STRINGIFY(x)<sp/>&quot;)&quot;\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>LS_ASSERT_BASIC<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>Standard<sp/>Assertion/Exception</highlight></codeline>
+<codeline lineno="76"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LS_ASSERT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="assert_8h_1a137c132d218c89de1adefe803ec42d87" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>LS_ASSERT(<sp/>x<sp/>)<sp/>LS_ASSERT_BASIC(x,<sp/>__FILE__,<sp/>__LINE__,<sp/>ls::utils::ERROR)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ASSERT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/>Debug<sp/>Assertion/Exception</highlight></codeline>
+<codeline lineno="83"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>LS_DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#ifndef<sp/>LS_DEBUG_ASSERT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#define<sp/>LS_DEBUG_ASSERT(<sp/>x<sp/>)<sp/>LS_ASSERT(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="assert_8h_1a7be2750fc0336b79413cdbe2a456cc00" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>LS_DEBUG_ASSERT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DEBUG<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/>Warning<sp/>Message</highlight></codeline>
+<codeline lineno="94"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LS_WARN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="assert_8h_1a919a32602d7f335ab44fe9e19553d201" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>LS_WARN(<sp/>x<sp/>)<sp/>LS_ASSERT_BASIC(x,<sp/>__FILE__,<sp/>__LINE__,<sp/>ls::utils::WARNING)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ASSERT_WARN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/>Simple<sp/>Alert<sp/>Message</highlight></codeline>
+<codeline lineno="101"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LS_ALERT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="assert_8h_1a708f0596ec6e535053f0cca1d1749761" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>LS_ALERT(<sp/>x<sp/>)<sp/>LS_ASSERT_BASIC(x,<sp/>__FILE__,<sp/>__LINE__,<sp/>ls::utils::ALERT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ASSERT_ALERT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__LS_UTILS_ASSERT_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/assert.h"/>
+  </compounddef>
+</doxygen>

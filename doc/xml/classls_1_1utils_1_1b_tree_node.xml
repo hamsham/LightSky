@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1utils_1_1b_tree_node" kind="class" prot="public">
+    <compoundname>ls::utils::bTreeNode</compoundname>
+    <includes refid="btree_8h" local="no">btree.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>data_t</declname>
+        <defname>data_t</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classls_1_1utils_1_1b_tree_node_1a919f2c2dcb91d140e79c9d37b18b6cf8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class bTree</definition>
+        <argsstring></argsstring>
+        <name>bTree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="38" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1utils_1_1b_tree_node_1a7f75436562ad8c52e368c34aa642977c" prot="private" static="no" mutable="no">
+        <type>data_t *</type>
+        <definition>data_t* ls::utils::bTreeNode&lt; data_t &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>data A pointer to a dynamically-allocated object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="44" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1utils_1_1b_tree_node_1a7e751058024154697da9e9666d117405" prot="private" static="no" mutable="no">
+        <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> *</type>
+        <definition>bTreeNode* ls::utils::bTreeNode&lt; data_t &gt;::subNodes</definition>
+        <argsstring></argsstring>
+        <name>subNodes</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>subNodes A pointer to a dynamic array of child nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="50" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_node_1a0168b100597af0eb2d6a9b03b67af41b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::utils::bTreeNode&lt; data_t &gt;::bTreeNode</definition>
+        <argsstring>()</argsstring>
+        <name>bTreeNode</name>
+        <briefdescription>
+<para>Constructor Creates a b-tree node with no data within. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="57" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_node_1a09e8441d28601c7b63feb92e992d3796" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::bTreeNode&lt; data_t &gt;::bTreeNode</definition>
+        <argsstring>(const bTreeNode &amp;btn)</argsstring>
+        <name>bTreeNode</name>
+        <param>
+          <type>const <ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> &amp;</type>
+          <declname>btn</declname>
+        </param>
+        <briefdescription>
+<para>B-Tree Node Copu Operator Copies all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>btn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a b-tree node. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="66" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="118" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_node_1a2f94402080fba53fd130c9a23341da64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::bTreeNode&lt; data_t &gt;::bTreeNode</definition>
+        <argsstring>(bTreeNode &amp;&amp;btn)</argsstring>
+        <name>bTreeNode</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> &amp;&amp;</type>
+          <declname>btn</declname>
+        </param>
+        <briefdescription>
+<para>B-Tree Node Move Operator Moves all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>btn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a b-tree node that will to go out of scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="76" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="137" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_node_1a85d6d896b21edf385293fc272bf0e893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::bTreeNode&lt; data_t &gt;::~bTreeNode</definition>
+        <argsstring>()</argsstring>
+        <name>~bTreeNode</name>
+        <briefdescription>
+<para>Destructor Frees all memory/resources used by *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="82" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="149" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_node_1a7367c50d021710be5fc14a0e2be092fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> &amp;</type>
+        <definition>bTreeNode&lt; data_t &gt; &amp; ls::utils::bTreeNode&lt; data_t &gt;::operator=</definition>
+        <argsstring>(const bTreeNode &amp;btn)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> &amp;</type>
+          <declname>btn</declname>
+        </param>
+        <briefdescription>
+<para>B-Tree Node Copu Operator Copies all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>btn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to a b-tree node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="93" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="161" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_node_1a84cf71b69e568ee8b060334890f836b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> &amp;</type>
+        <definition>bTreeNode&lt; data_t &gt; &amp; ls::utils::bTreeNode&lt; data_t &gt;::operator=</definition>
+        <argsstring>(bTreeNode &amp;&amp;btn)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref> &amp;&amp;</type>
+          <declname>btn</declname>
+        </param>
+        <briefdescription>
+<para>B-Tree Node Move Operator Moves all data from the input parameter into *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>btn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a b-tree node that will to go out of scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="105" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="186" bodyend="192"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>BTree Node A node type used by the BTree class in order to store data. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="35" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="35" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a919f2c2dcb91d140e79c9d37b18b6cf8" prot="private" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>bTree</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a0168b100597af0eb2d6a9b03b67af41b" prot="public" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>bTreeNode</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a09e8441d28601c7b63feb92e992d3796" prot="public" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>bTreeNode</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a2f94402080fba53fd130c9a23341da64" prot="public" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>bTreeNode</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a7f75436562ad8c52e368c34aa642977c" prot="private" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>data</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a7367c50d021710be5fc14a0e2be092fc" prot="public" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a84cf71b69e568ee8b060334890f836b6" prot="public" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a7e751058024154697da9e9666d117405" prot="private" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>subNodes</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_node_1a85d6d896b21edf385293fc272bf0e893" prot="public" virt="non-virtual"><scope>ls::utils::bTreeNode</scope><name>~bTreeNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

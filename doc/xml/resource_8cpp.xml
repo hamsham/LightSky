@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="resource_8cpp" kind="file">
+    <compoundname>resource.cpp</compoundname>
+    <includes refid="resource_8h" local="yes">lightsky/utils/resource.h</includes>
+    <incdepgraph>
+      <node id="8044">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="8046">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="8050">
+        <label>lightsky/utils/generic/string_utils_impl.h</label>
+        <link refid="string__utils__impl_8h"/>
+      </node>
+      <node id="8041">
+        <label>string</label>
+      </node>
+      <node id="8047">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="8042">
+        <label>lightsky/utils/setup.h</label>
+        <link refid="utils_2setup_8h"/>
+        <childnode refid="8043" relation="include">
+        </childnode>
+      </node>
+      <node id="8051">
+        <label>lightsky/utils/generic/resource_impl.h</label>
+        <link refid="resource__impl_8h"/>
+      </node>
+      <node id="8040">
+        <label>lightsky/utils/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="8041" relation="include">
+        </childnode>
+        <childnode refid="8042" relation="include">
+        </childnode>
+        <childnode refid="8048" relation="include">
+        </childnode>
+        <childnode refid="8051" relation="include">
+        </childnode>
+      </node>
+      <node id="8043">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="8044" relation="include">
+        </childnode>
+        <childnode refid="8045" relation="include">
+        </childnode>
+        <childnode refid="8046" relation="include">
+        </childnode>
+        <childnode refid="8047" relation="include">
+        </childnode>
+      </node>
+      <node id="8049">
+        <label>sstream</label>
+      </node>
+      <node id="8039">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/resource.cpp</label>
+        <link refid="resource.cpp"/>
+        <childnode refid="8040" relation="include">
+        </childnode>
+      </node>
+      <node id="8045">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="8048">
+        <label>lightsky/utils/string_utils.h</label>
+        <link refid="string__utils_8h"/>
+        <childnode refid="8041" relation="include">
+        </childnode>
+        <childnode refid="8049" relation="include">
+        </childnode>
+        <childnode refid="8050" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1utils">ls::utils</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>utils/resource.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>February<sp/>1,<sp/>2014,<sp/>11:09<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="resource_8h" kindref="compound">lightsky/utils/resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/><sp/>Destructor</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classls_1_1utils_1_1resource_1a1e7c76b1fce42a50b8605d947cc7e736" refkind="member"><highlight class="normal"><ref refid="classls_1_1utils_1_1resource_1a1e7c76b1fce42a50b8605d947cc7e736" kindref="member">resource::~resource</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>utils<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/resource.cpp"/>
+  </compounddef>
+</doxygen>

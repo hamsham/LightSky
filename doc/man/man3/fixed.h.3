@@ -1,0 +1,100 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/math/fixed.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/math/fixed.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <climits>\fP
+.br
+\fC#include <cstdint>\fP
+.br
+\fC#include <utility>\fP
+.br
+\fC#include 'lightsky/math/setup\&.h'\fP
+.br
+\fC#include 'lightsky/math/types\&.h'\fP
+.br
+\fC#include 'lightsky/math/generic/fixed_impl\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBls::math::fixed_t< fixed_base_t, num_frac_digits >\fP"
+.br
+.RI "\fIFixed-Point number Class\&. Utilizes the bits provided by a type from a 'fixed_base_t' in order to store integral values that represent a fixed-precision number\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::math\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (lowp_t, fixed_t, int32_t, 7)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (lowp, fixed_t, \fBLS_INT\fP, 7)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (medp_t, fixed_t, int32_t, 15)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (medp, fixed_t, \fBLS_INT\fP, 15)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (highp_t, fixed_t, int32_t, 23)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (highp, fixed_t, \fBLS_INT\fP, 23)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (long_lowp_t, fixed_t, int64_t, 15)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (long_medp_t, fixed_t, int64_t, 31)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (long_highp_t, fixed_t, int64_t, 47)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (ulowp_t, fixed_t, uint32_t, 8)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (ulowp, fixed_t, \fBLS_UINT\fP, 8)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (umedp_t, fixed_t, uint32_t, 16)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (umedp, fixed_t, \fBLS_UINT\fP, 16)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (uhighp_t, fixed_t, uint32_t, 24)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (uhigh, fixed_t, \fBLS_UINT\fP, 24)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (ulong_lowp_t, fixed_t, uint64_t, 16)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (ulong_medp_t, fixed_t, uint64_t, 32)"
+.br
+.ti -1c
+.RI "\fBls::math::LS_DECLARE_CLASS_TYPE\fP (ulong_highp_t, fixed_t, uint64_t, 48)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

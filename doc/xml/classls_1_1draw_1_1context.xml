@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1context" kind="class" prot="public" final="yes">
+    <compoundname>ls::draw::context</compoundname>
+    <includes refid="context_8h" local="no">context.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1context_1a275d855aed2d8722ac515e02e559ac30" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* ls::draw::context::pContext</definition>
+        <argsstring></argsstring>
+        <name>pContext</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pContext is a void pointer to an SDL_GLContext structure. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="27" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a5e1112a55b12063b2b509ea1d4f77321" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::context::context</definition>
+        <argsstring>()</argsstring>
+        <name>context</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="33" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a7cb6ee2231acc2c49ef98ce184f65532" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::context::context</definition>
+        <argsstring>(const context &amp;)=delete</argsstring>
+        <name>context</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1context" kindref="compound">context</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Constructor <ndash/> DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a179978992fe6b58ce20034dbe474500d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::context::context</definition>
+        <argsstring>(context &amp;&amp;ctx)</argsstring>
+        <name>context</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1context" kindref="compound">context</ref> &amp;&amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all render context data from the input parameter into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An R-Value reference to a render context. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="49" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="30" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a2f5a779ff1464ecc06eacd864b785f2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::context::~context</definition>
+        <argsstring>()</argsstring>
+        <name>~context</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Frees all hardware handles and memory resources used by *this. This effectively does the same thing as &quot;terminate().&quot; Make sure the display object that this was created with has not yet been destroyed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="59" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a873d70077b603650d56454dcb6ba786f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1context" kindref="compound">context</ref> &amp;</type>
+        <definition>context&amp; ls::draw::context::operator=</definition>
+        <argsstring>(const context &amp;ctx)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1context" kindref="compound">context</ref> &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy Operator <ndash/> DELETED </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="64" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a56c8c828cd38458893a1bb683cee699c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1context" kindref="compound">context</ref> &amp;</type>
+        <definition>context &amp; ls::draw::context::operator=</definition>
+        <argsstring>(context &amp;&amp;ctx)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1context" kindref="compound">context</ref> &amp;&amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Moves all render context data from the input parameter into *this. No copies are performed.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context&amp;&amp;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An R-Value reference to a render context. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="75" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="39" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a472d98a3528a2431af1c6e1d2562d8ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::context::init</definition>
+        <argsstring>(const display &amp;disp, bool useVsync=true)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+          <declname>disp</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>useVsync</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Initializer method for *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a constant display object. This display object must have already been initialized and created with OpenGL 3.3 core attributes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool TRUE if a context was able to be created from the input display object, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="89" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="56" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1ad0927eb39c626065c3cba66092dfaafe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::context::terminate</definition>
+        <argsstring>()</argsstring>
+        <name>terminate</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Frees all hardware handles and memory resources used by *this. Make sure the display object that this was created with has not yet been destroyed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="98" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="117" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a7f0de2d3a2f78dc94e88588f07af8261" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::context::makeCurrent</definition>
+        <argsstring>(const display &amp;disp) const </argsstring>
+        <name>makeCurrent</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+          <declname>disp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind this render context to the active display. This method should only be called on one display and one display only. Binding this render context to more than one display may cause OpenGL to crash.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to the dsplay object that *this context has been initialized with. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="109" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1ac49979bc34101940702b2ec3f8182796" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * ls::draw::context::getContext</definition>
+        <argsstring>() const </argsstring>
+        <name>getContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a pointer to the SDL_GLContext that is used by the active display. This context must have been made current in order to be used.</para><para><simplesect kind="return"><para>A void pointer that can be safely casted to a SDL_GLContext. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="118" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/context_impl.h" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a31d206c872b86a60606a4ba02ab204c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::context::setVsync</definition>
+        <argsstring>(bool vsync)</argsstring>
+        <name>setVsync</name>
+        <param>
+          <type>bool</type>
+          <declname>vsync</declname>
+        </param>
+        <briefdescription>
+<para>Enable/Disable VSync. </para>        </briefdescription>
+        <detaileddescription>
+<para>This context must have been made current in order to be used.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if vsync is desired, FALSE to disable it. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="127" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1ad06d4f102a47af1943c7558825633202" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::context::getVsync</definition>
+        <argsstring>() const </argsstring>
+        <name>getVsync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if VSync is enabled or disabled within the current window. This context must have been made current in order to be used.</para><para><simplesect kind="return"><para>TRUE if VSync is enabled, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="135" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1context_1a665e72473957ad084dc9189c1b41a449" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::context::flip</definition>
+        <argsstring>(const display &amp;disp) const </argsstring>
+        <name>flip</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1display" kindref="compound">display</ref> &amp;</type>
+          <declname>disp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the current display&apos;s front and back buffers. This method should only be called on one display and one display only. Binding this render context to more than one display may cause OpenGL to crash.</para><para>This context must have been made current in order to be used.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to the dsplay object that *this context has been initialized with. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="149" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/context.cpp" bodystart="148" bodyend="150"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The render context is a wrapper class for an SDL_GLContext structure. This class helps to provide RAII to the OpenGL context created from a display. If is also useful in providing information about the currently loaded OpenGL resource handle. </para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" line="22" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/context.h" bodystart="22" bodyend="150"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1context_1a5e1112a55b12063b2b509ea1d4f77321" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>context</name></member>
+      <member refid="classls_1_1draw_1_1context_1a7cb6ee2231acc2c49ef98ce184f65532" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>context</name></member>
+      <member refid="classls_1_1draw_1_1context_1a179978992fe6b58ce20034dbe474500d" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>context</name></member>
+      <member refid="classls_1_1draw_1_1context_1a665e72473957ad084dc9189c1b41a449" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>flip</name></member>
+      <member refid="classls_1_1draw_1_1context_1ac49979bc34101940702b2ec3f8182796" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>getContext</name></member>
+      <member refid="classls_1_1draw_1_1context_1ad06d4f102a47af1943c7558825633202" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>getVsync</name></member>
+      <member refid="classls_1_1draw_1_1context_1a472d98a3528a2431af1c6e1d2562d8ca" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>init</name></member>
+      <member refid="classls_1_1draw_1_1context_1a7f0de2d3a2f78dc94e88588f07af8261" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>makeCurrent</name></member>
+      <member refid="classls_1_1draw_1_1context_1a873d70077b603650d56454dcb6ba786f" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1context_1a56c8c828cd38458893a1bb683cee699c" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1context_1a275d855aed2d8722ac515e02e559ac30" prot="private" virt="non-virtual"><scope>ls::draw::context</scope><name>pContext</name></member>
+      <member refid="classls_1_1draw_1_1context_1a31d206c872b86a60606a4ba02ab204c2" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>setVsync</name></member>
+      <member refid="classls_1_1draw_1_1context_1ad0927eb39c626065c3cba66092dfaafe" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>terminate</name></member>
+      <member refid="classls_1_1draw_1_1context_1a2f5a779ff1464ecc06eacd864b785f2a" prot="public" virt="non-virtual"><scope>ls::draw::context</scope><name>~context</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

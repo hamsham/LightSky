@@ -1,0 +1,64 @@
+.TH "ls::draw::geometry" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::geometry \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "math::vec3 \fBcalcNormal\fP (const math::vec3 &v0, const math::vec3 &v1, const math::vec3 &v2)"
+.br
+.ti -1c
+.RI "void \fBcalcTangents\fP (unsigned vertCount, const math::vec3 *const positions, const math::vec2 *const uvs, math::vec3 *tangents, math::vec3 *bitangents)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "math::vec3 ls::draw::geometry::calcNormal (const math::vec3 &v0, const math::vec3 &v1, const math::vec3 &v2)"
+
+.PP
+ Helper function to calculate a vertex normal from 3 vertices\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv0\fP 
+.br
+\fIv1\fP 
+.br
+\fIv2\fP 
+.SS "A 3-dimensional vector that represents a vertex normal\&. "
+.RE
+.PP
+
+.PP
+Definition at line 16 of file geometry\&.cpp\&.
+.SS "void ls::draw::geometry::calcTangents (unsignedvertCount, const math::vec3 *constpositions, const math::vec2 *constuvs, math::vec3 *tangents, math::vec3 *bitangents)"
+
+.PP
+ Calculate the tangents for a set of triangles (placed in a vertex array)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvertCount\fP The number of vertices in the input arrays\&.
+.br
+\fIpositions\fP A pointer to an array (of size 'vertCount') of 3D vectors, representing the positions of a set of triangles\&.
+.br
+\fIuvs\fP A pointer to an array (of size 'vertCount') of 3D vectors, representing the uvs of a set of triangles\&.
+.br
+\fItangents\fP A pointer to an array (of size 'vertCount') of 3D vectors, representing the tangents of a set of triangles\&.
+.br
+\fIbitangents\fP A pointer to an array (of size 'vertCount') of 3D vectors, representing the bitangents of a set of triangles\&. 
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file geometry\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

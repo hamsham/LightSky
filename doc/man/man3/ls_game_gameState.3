@@ -1,0 +1,505 @@
+.TH "ls::game::gameState" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::game::gameState \- 
+.PP
+Game State Base Class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <gameState\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBgameState\fP ()"
+.br
+.RI "\fIDefault Constructor\&. \fP"
+.ti -1c
+.RI "\fBgameState\fP (const \fBgameState\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBgameState\fP (\fBgameState\fP &&gs)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "virtual \fB~gameState\fP ()=0"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBgameState\fP & \fBoperator=\fP (const \fBgameState\fP &)=delete"
+.br
+.RI "\fICopy Operator -- DELETED\&. \fP"
+.ti -1c
+.RI "\fBgameState\fP & \fBoperator=\fP (\fBgameState\fP &&gs)"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "\fBgame_state_t\fP \fBgetState\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetState\fP (\fBgame_state_t\fP s)"
+.br
+.ti -1c
+.RI "\fBsystem\fP & \fBgetParentSystem\fP () const "
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBonKeyboardUpEvent\fP (const SDL_KeyboardEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonKeyboardDownEvent\fP (const SDL_KeyboardEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonKeyboardTextEvent\fP (const SDL_TextInputEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonWindowEvent\fP (const SDL_WindowEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonMouseMoveEvent\fP (const SDL_MouseMotionEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonMouseButtonUpEvent\fP (const SDL_MouseButtonEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonMouseButtonDownEvent\fP (const SDL_MouseButtonEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonMouseWheelEvent\fP (const SDL_MouseWheelEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonControllerAddedEvent\fP (const SDL_ControllerDeviceEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonControllerRemovedEvent\fP (const SDL_ControllerDeviceEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonControllerRemappedEvent\fP (const SDL_ControllerDeviceEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonControllerAxisEvent\fP (const SDL_ControllerAxisEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonControllerButtonUpEvent\fP (const SDL_ControllerButtonEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonControllerButtonDownEvent\fP (const SDL_ControllerButtonEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyAddEvent\fP (const SDL_JoyDeviceEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyRemoveEvent\fP (const SDL_JoyDeviceEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyAxisEvent\fP (const SDL_JoyAxisEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyBallEvent\fP (const SDL_JoyBallEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyButtonDownEvent\fP (const SDL_JoyButtonEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyButtonUpEvent\fP (const SDL_JoyButtonEvent &evt)"
+.br
+.ti -1c
+.RI "virtual void \fBonJoyHatEvent\fP (const SDL_JoyHatEvent &evt)"
+.br
+.ti -1c
+.RI "virtual bool \fBonStart\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBonStop\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBonRun\fP (float tickTime)"
+.br
+.ti -1c
+.RI "virtual void \fBonPause\fP (float tickTime)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBsystem\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Game State Base Class\&. 
+
+
+.PP
+ An Abstract base class that can be overridden to organize games onto stacks within an lsSubsystem\&. \fBgameState\fP objects are pushed onto a 'stack' managed by the lsSubsystem\&. Game states are passed hardware events by subsystems 
+.SS "when they are running\&. "
+
+.PP
+Definition at line 55 of file gameState\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::game::gameState::gameState ()"
+
+.PP
+Default Constructor\&. 
+.PP
+Definition at line 22 of file gameState\&.cpp\&.
+.SS "ls::game::gameState::gameState (const \fBgameState\fP &)\fC [delete]\fP"
+Copy Constructor -- DELETED
+.PP
+LightSky makes no attempts to copy game state objects\&. 
+.SS "ls::game::gameState::gameState (\fBgameState\fP &&gs)"
+
+.PP
+Move Constructor\&. Moves all memory allocations from the input parameter into *this\&. This method may be called at some point by the parent subsystem\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgs\fP An r-value reference to a game state who's members are to be moved into *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 28 of file gameState\&.cpp\&.
+.SS "ls::game::gameState::~gameState ()\fC [pure virtual]\fP"
+
+.PP
+Destructor\&. It is recommended to perform all object cleanup using the 'onStop()' method\&. This should be used as a last-resort\&. 
+.PP
+Definition at line 16 of file gameState\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBsystem\fP & ls::game::gameState::getParentSystem () const\fC [inline]\fP"
+
+.PP
+Definition at line 22 of file gameState_impl\&.h\&.
+.SS "\fBgame_state_t\fP ls::game::gameState::getState () const\fC [inline]\fP"
+Get the current state of *this object\&. This object's state is used by the parent subsystem to determine when it should go out of scope and terminate\&.
+.PP
+\fBReturns:\fP
+.RS 4
+game_state_t 
+.RE
+.PP
+
+.PP
+Definition at line 8 of file gameState_impl\&.h\&.
+.SS "void ls::game::gameState::onControllerAddedEvent (const SDL_ControllerDeviceEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a controller has been plugged in\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_ControllerDeviceEvent 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onControllerAxisEvent (const SDL_ControllerAxisEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a controller has modified its axes\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_ControllerAxisEvent 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onControllerButtonDownEvent (const SDL_ControllerButtonEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a controller had a button pressed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_ControllerButtonEvent 
+.RE
+.PP
+
+.PP
+Definition at line 161 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onControllerButtonUpEvent (const SDL_ControllerButtonEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a controller had a button released\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_ControllerButtonEvent 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onControllerRemappedEvent (const SDL_ControllerDeviceEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a controller has been remapped\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_ControllerDeviceEvent 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onControllerRemovedEvent (const SDL_ControllerDeviceEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a controller has disconnected\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_ControllerDeviceEvent 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyAddEvent (const SDL_JoyDeviceEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick has been plugged\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyDeviceEvent 
+.RE
+.PP
+
+.PP
+Definition at line 171 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyAxisEvent (const SDL_JoyAxisEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick has modified its axes\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyAxisEvent 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyBallEvent (const SDL_JoyBallEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick has changed it's trackball position\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyBallEvent 
+.RE
+.PP
+
+.PP
+Definition at line 192 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyButtonDownEvent (const SDL_JoyButtonEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick had a button pressed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyButtonEvent 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyButtonUpEvent (const SDL_JoyButtonEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick had a button released\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyButtonEvent 
+.RE
+.PP
+
+.PP
+Definition at line 206 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyHatEvent (const SDL_JoyHatEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick hat button event has occurred\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyHatEvent 
+.RE
+.PP
+
+.PP
+Definition at line 213 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onJoyRemoveEvent (const SDL_JoyDeviceEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a joystick has been disconnected\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_JoyDeviceEvent 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onKeyboardDownEvent (const SDL_KeyboardEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a keyboard key is pressed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_KeyboardEvent 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onKeyboardTextEvent (const SDL_TextInputEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a keyboard key is used for text entry\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_TextInputEvent 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onKeyboardUpEvent (const SDL_KeyboardEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a keyboard key is disengaged\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_KeyboardEvent 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onMouseButtonDownEvent (const SDL_MouseButtonEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a button on the user's mouse has been engaged\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_MouseButtonEvent 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onMouseButtonUpEvent (const SDL_MouseButtonEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when a button on the user's mouse has been depressed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_MouseButtonEvent 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onMouseMoveEvent (const SDL_MouseMotionEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when the mouse has moved\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_MouseMotionEvent 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onMouseWheelEvent (const SDL_MouseWheelEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when the scroll wheel on the user's mouse has moved\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_MouseWheelEvent 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onPause (floattickTime)\fC [protected]\fP, \fC [virtual]\fP"
+This method is used by the parent subsystem to tell *this game state that it's paused\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItickTime\fP A floating-point number to indicate how many milliseconds have passed since the last parent system update\&. 
+.RE
+.PP
+
+.PP
+Definition at line 245 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onRun (floattickTime)\fC [protected]\fP, \fC [virtual]\fP"
+This method is used to tell the current game state that it should update its child components/variables/state\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItickTime\fP A floating-point number to indicate how many milliseconds have passed since the last parent system update\&. 
+.RE
+.PP
+
+.PP
+Definition at line 238 of file gameState\&.cpp\&.
+.SS "bool ls::game::gameState::onStart ()\fC [protected]\fP, \fC [virtual]\fP"
+The onStart method is called by the parent subsystem when *this object has been notified to start\&. Place all memory allocations here\&.
+.PP
+\fBReturns:\fP
+.RS 4
+bool TRUE to indicate that *this has successfully initialized, FALSE if otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 223 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onStop ()\fC [protected]\fP, \fC [virtual]\fP"
+The onStop method is used by the parent subsystem to indicate that *this game state should terminate\&. Place all memory cleanup here\&. 
+.PP
+Definition at line 231 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::onWindowEvent (const SDL_WindowEvent &evt)\fC [protected]\fP, \fC [virtual]\fP"
+Event which allows a game state to input events when the current SDL display has been modified\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevt\fP A reference to an SDL_WindowEvent 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file gameState\&.cpp\&.
+.SS "\fBgameState\fP& ls::game::gameState::operator= (const \fBgameState\fP &)\fC [delete]\fP"
+
+.PP
+Copy Operator -- DELETED\&. LightSky makes no attempts to copy game state objects\&. 
+.SS "\fBgameState\fP & ls::game::gameState::operator= (\fBgameState\fP &&gs)"
+
+.PP
+Move Operator\&. Moves all memory allocations from the input parameter into *this\&. This method may be called at some point by the parent subsystem\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgs\fP An r-value reference to a game state that's about to go out of scope and be terminated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A reference to *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file gameState\&.cpp\&.
+.SS "void ls::game::gameState::setState (\fBgame_state_t\fPs)\fC [inline]\fP"
+Set the operational state of *this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP A game_state_t which will be used to set the current runtime state of *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 15 of file gameState_impl\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBsystem\fP\fC [friend]\fP"
+
+.PP
+Definition at line 56 of file gameState\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

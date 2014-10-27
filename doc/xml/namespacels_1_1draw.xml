@@ -1,0 +1,3024 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="namespacels_1_1draw" kind="namespace">
+    <compoundname>ls::draw</compoundname>
+    <innerclass refid="classls_1_1draw_1_1atlas" prot="public">ls::draw::atlas</innerclass>
+    <innerclass refid="structls_1_1draw_1_1atlas_entry" prot="public">ls::draw::atlasEntry</innerclass>
+    <innerclass refid="classls_1_1draw_1_1blend_object" prot="public">ls::draw::blendObject</innerclass>
+    <innerclass refid="classls_1_1draw_1_1bounding_box" prot="public">ls::draw::boundingBox</innerclass>
+    <innerclass refid="classls_1_1draw_1_1buffer_object" prot="public">ls::draw::bufferObject</innerclass>
+    <innerclass refid="classls_1_1draw_1_1context" prot="public">ls::draw::context</innerclass>
+    <innerclass refid="classls_1_1draw_1_1depth_object" prot="public">ls::draw::depthObject</innerclass>
+    <innerclass refid="classls_1_1draw_1_1display" prot="public">ls::draw::display</innerclass>
+    <innerclass refid="classls_1_1draw_1_1font_resource" prot="public">ls::draw::fontResource</innerclass>
+    <innerclass refid="classls_1_1draw_1_1framebuffer" prot="public">ls::draw::framebuffer</innerclass>
+    <innerclass refid="structls_1_1draw_1_1glyph" prot="public">ls::draw::glyph</innerclass>
+    <innerclass refid="classls_1_1draw_1_1image_resource" prot="public">ls::draw::imageResource</innerclass>
+    <innerclass refid="classls_1_1draw_1_1matrix_stack" prot="public">ls::draw::matrixStack</innerclass>
+    <innerclass refid="classls_1_1draw_1_1mesh" prot="public">ls::draw::mesh</innerclass>
+    <innerclass refid="classls_1_1draw_1_1mesh_model" prot="public">ls::draw::meshModel</innerclass>
+    <innerclass refid="classls_1_1draw_1_1mesh_resource" prot="public">ls::draw::meshResource</innerclass>
+    <innerclass refid="classls_1_1draw_1_1renderer" prot="public">ls::draw::renderer</innerclass>
+    <innerclass refid="classls_1_1draw_1_1scene_manager" prot="public">ls::draw::sceneManager</innerclass>
+    <innerclass refid="classls_1_1draw_1_1shader_object" prot="public">ls::draw::shaderObject</innerclass>
+    <innerclass refid="classls_1_1draw_1_1shader_program" prot="public">ls::draw::shaderProgram</innerclass>
+    <innerclass refid="classls_1_1draw_1_1texture" prot="public">ls::draw::texture</innerclass>
+    <innerclass refid="structls_1_1draw_1_1vertex" prot="public">ls::draw::vertex</innerclass>
+    <innerclass refid="classls_1_1draw_1_1vertex_array" prot="public">ls::draw::vertexArray</innerclass>
+    <innernamespace refid="namespacels_1_1draw_1_1geometry">ls::draw::geometry</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacels_1_1draw_1a1d3585bce135c1b76a2e35775d8db627" prot="public" static="no">
+        <name>@0</name>
+        <enumvalue id="namespacels_1_1draw_1a1d3585bce135c1b76a2e35775d8db627a68efdaa95b8294140317ca498220e1de" prot="public">
+          <name>LS_BLEND</name>
+          <initializer>= GL_BLEND</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blending equations that can be used when rendering. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="25" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a175ed2e8adcf554613acdb7a1b3d32de" prot="public" static="no">
+        <name>blend_color_t</name>
+        <enumvalue id="namespacels_1_1draw_1a175ed2e8adcf554613acdb7a1b3d32dea723ad82a73d9e426f81e83ffe8895fe8" prot="public">
+          <name>LS_BLEND_COLOR</name>
+          <initializer>= GL_BLEND_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blending colors </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="32" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537" prot="public" static="no">
+        <name>blend_equ_t</name>
+        <enumvalue id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af906a046c7f116368907f3e6d2b59cbd" prot="public">
+          <name>LS_BLEND_ADD</name>
+          <initializer>= GL_FUNC_ADD</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537a280123f87cca2fcafa444d5cbec2289d" prot="public">
+          <name>LS_BLEND_SUB</name>
+          <initializer>= GL_FUNC_SUBTRACT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537a1b3eaa151f895ea67b4024236fccbb4a" prot="public">
+          <name>LS_BLEND_REV_SUB</name>
+          <initializer>= GL_FUNC_REVERSE_SUBTRACT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537ae5b975b4b02d56ff6a6008709307a5ff" prot="public">
+          <name>LS_BLEND_MIN</name>
+          <initializer>= GL_MIN</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537af99bdee378455e2c3a515f9f41e74e9d" prot="public">
+          <name>LS_BLEND_MAX</name>
+          <initializer>= GL_MAX</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a479e2124aa18fb15232c9075d9d61537aac655738a2c8a376835085de5e898f52" prot="public">
+          <name>LS_DEFAULT_BLEND_EQU</name>
+          <initializer>= GL_FUNC_ADD</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blending equations </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="39" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="39" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88" prot="public" static="no">
+        <name>blend_equ_color_t</name>
+        <enumvalue id="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88a4136f759bde242e7fa038d4628851312" prot="public">
+          <name>LS_BLEND_EQUATION_RGB</name>
+          <initializer>= GL_BLEND_EQUATION_RGB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3b075858d7ee737e0485091d6b2cc88a36a9ad06a89e38e5def7f719fde8482d" prot="public">
+          <name>LS_BLEND_EQUATION_ALPHA</name>
+          <initializer>= GL_BLEND_EQUATION_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blending Equation Color </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="51" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381" prot="public" static="no">
+        <name>blend_func_t</name>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a8c747b79ee773c64cff50d5b979c3b06" prot="public">
+          <name>LS_ZERO</name>
+          <initializer>= GL_ZERO</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a29345c81289f986eec8adb227783f00e" prot="public">
+          <name>LS_ONE</name>
+          <initializer>= GL_ONE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a9a299bf105a530c4ed3feb06db9b30bf" prot="public">
+          <name>LS_SRC_COLOR</name>
+          <initializer>= GL_SRC_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aae9bf331c395eee1a14edd1f4e612117" prot="public">
+          <name>LS_ONE_MINUS_SRC_COLOR</name>
+          <initializer>= GL_ONE_MINUS_SRC_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ab4a8214cd851145a0f4d7772e9117b7a" prot="public">
+          <name>LS_DST_COLOR</name>
+          <initializer>= GL_DST_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ac4eb1865d6f35f456fbc48e285f3a7cf" prot="public">
+          <name>LS_ONE_MINUS_DST_COLOR</name>
+          <initializer>= GL_ONE_MINUS_DST_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381af7646bcd9913dd6fb4a8c608304738f7" prot="public">
+          <name>LS_SRC_ALPHA</name>
+          <initializer>= GL_SRC_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ae339543e69b35a722218d4e8f4cc0828" prot="public">
+          <name>LS_ONE_MINUS_SRC_ALPHA</name>
+          <initializer>= GL_ONE_MINUS_SRC_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ac531ae64c6bb19d9158256794c9cccd8" prot="public">
+          <name>LS_DST_ALPHA</name>
+          <initializer>= GL_DST_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aee897223b186c5a765b2373c6bd37f31" prot="public">
+          <name>LS_ONE_MINUS_DST_ALPHA</name>
+          <initializer>= GL_ONE_MINUS_DST_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aeb19f218198186fbce43349fcd1b9dec" prot="public">
+          <name>LS_CONST_COLOR</name>
+          <initializer>= GL_CONSTANT_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381ad3d46a724804cd47b0432f51dc0762ca" prot="public">
+          <name>LS_ONE_MINUS_CONST_COLOR</name>
+          <initializer>= GL_ONE_MINUS_CONSTANT_COLOR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381a82b5e3046ae0015525d8e0b2a8185fca" prot="public">
+          <name>LS_CONST_ALPHA</name>
+          <initializer>= GL_CONSTANT_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afba9766af4c2b060f87b853ee125e381aebfcab3b0ff905d4ac50f272cdc17c27" prot="public">
+          <name>LS_ONE_MINUS_CONST_ALPHA</name>
+          <initializer>= GL_ONE_MINUS_CONSTANT_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blend functions which help determine the type of blending that&apos;s applied to a renderable object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="60" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="60" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8" prot="public" static="no">
+        <name>blend_func_color_t</name>
+        <enumvalue id="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8af3b40c1aab47b82d4b4fa8976464ac14" prot="public">
+          <name>LS_BLEND_SRC_RGB</name>
+          <initializer>= GL_BLEND_SRC_RGB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8a2c28df0863f678235c8d73b1d0b361d7" prot="public">
+          <name>LS_BLEND_DST_RGB</name>
+          <initializer>= GL_BLEND_DST_RGB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8a3df89a6c51409c181288a63aa32c141c" prot="public">
+          <name>LS_BLEND_SRC_ALPHA</name>
+          <initializer>= GL_BLEND_SRC_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a2504a21ecb0c4aaa6b4e24a4499a80c8aeb1878a9dfbc94e7862301447f46a89e" prot="public">
+          <name>LS_BLEND_DST_ALPHA</name>
+          <initializer>= GL_BLEND_DST_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blending Function Color </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" line="80" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/blendObject.h" bodystart="80" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089" prot="public" static="no">
+        <name>buffer_t</name>
+        <enumvalue id="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089af247d0ac0e6b76e15895f7e8606baeae" prot="public">
+          <name>LS_ARRAY_BUFFER</name>
+          <initializer>= GL_ARRAY_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089ad2a18764ef8ca56a598535645b1d3850" prot="public">
+          <name>LS_ELEMENT_BUFFER</name>
+          <initializer>= GL_ELEMENT_ARRAY_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089aa7c6e32aa91c7edc8353bab945e3df9a" prot="public">
+          <name>LS_TEXTURE_BUFFER</name>
+          <initializer>= GL_TEXTURE_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089ad35c7e9eb8e3b33371cfce7e8efec254" prot="public">
+          <name>LS_TRANSFORM_FEEDBACK_BUFFER</name>
+          <initializer>= GL_TRANSFORM_FEEDBACK_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089ad37db7864ed75ae494e258821b5fb905" prot="public">
+          <name>LS_UNIFORM_BUFFER</name>
+          <initializer>= GL_UNIFORM_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This enumeration outlines the basic types of buffers are available for use in a render context. It will be updated as more features are written. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="25" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5" prot="public" static="no">
+        <name>buffer_usage_t</name>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5a7fc33a90a00c5182b9fbd31d0ca839f2" prot="public">
+          <name>LS_STATIC_READ</name>
+          <initializer>= GL_STATIC_READ</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5abcc25d1d8f1da651d679bef75fbeb29c" prot="public">
+          <name>LS_STATIC_DRAW</name>
+          <initializer>= GL_STATIC_DRAW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5a9a1984c20b196ee03bf28f4fe08e3e5a" prot="public">
+          <name>LS_STATIC_COPY</name>
+          <initializer>= GL_STATIC_COPY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5a09e81d28ed7a55af59dc8ae71b48e3e0" prot="public">
+          <name>LS_STREAM_READ</name>
+          <initializer>= GL_STREAM_READ</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5a01347682548750fe4a897019801aaec8" prot="public">
+          <name>LS_STREAM_DRAW</name>
+          <initializer>= GL_STREAM_DRAW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5a9f6cf78ba8b6eb99fe404a4787d2be2d" prot="public">
+          <name>LS_STREAM_COPY</name>
+          <initializer>= GL_STREAM_COPY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5ae880da0ea780d1f7b3621c7d36eddf74" prot="public">
+          <name>LS_DYNAMIC_READ</name>
+          <initializer>= GL_DYNAMIC_READ</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5abd832bb73641f13e150a8a512598baad" prot="public">
+          <name>LS_DYNAMIC_DRAW</name>
+          <initializer>= GL_DYNAMIC_DRAW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad72d8fc98a09ccda2791f6207b6731c5a9f0879d8f3fd542a21237a4b5cb50b5b" prot="public">
+          <name>LS_DYNAMIC_COPY</name>
+          <initializer>= GL_DYNAMIC_COPY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Different usage parameters that determine how a buffer may be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="36" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" bodystart="36" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6db" prot="public" static="no">
+        <name>buffer_access_t</name>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dba921bbee590c5560e0a618584e17edcb1" prot="public">
+          <name>LS_MAP_READ_BIT</name>
+          <initializer>= GL_MAP_READ_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dba8f7080531e2a96bb9ead83cf265a9dff" prot="public">
+          <name>LS_MAP_WRITE_BIT</name>
+          <initializer>= GL_MAP_WRITE_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dbaaf7ec3d36b46513861b7285340be9729" prot="public">
+          <name>LS_MAP_INVALIDATE_RANGE_BIT</name>
+          <initializer>= GL_MAP_INVALIDATE_RANGE_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dba4ece2fdbfbef2e3a85ae1314fb5038c6" prot="public">
+          <name>LS_MAP_INVALIDATE_BUFFER_BIT</name>
+          <initializer>= GL_MAP_INVALIDATE_BUFFER_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dbaa3426b501c0c73cd6ef0dbfa6e7e3754" prot="public">
+          <name>LS_MAP_FLUSH_EXPLICIT_BIT</name>
+          <initializer>= GL_MAP_FLUSH_EXPLICIT_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dba1b7bf48a8166f17a6496a821d280bf60" prot="public">
+          <name>LS_MAP_UNSYNCHRONIZED_BIT</name>
+          <initializer>= GL_MAP_UNSYNCHRONIZED_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dbac2b9fb0083c8dea119322adfc7223291" prot="public">
+          <name>LS_MAP_PERSISTENT_BIT</name>
+          <initializer>= GL_MAP_PERSISTENT_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab9c4d57912af50d43216102338d7b6dba9ab947d5836c9618027fa5752032f238" prot="public">
+          <name>LS_MAP_COHERENT_BIT</name>
+          <initializer>= GL_MAP_COHERENT_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Memory mapping bit flags used for DMA transfers between CPU and GPU memory. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="53" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" bodystart="53" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668b" prot="public" static="no">
+        <name>color_type_t</name>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668bace673c52f2e0945bc5e7a52921cb2f32" prot="public">
+          <name>COLOR_TYPE_BYTE</name>
+          <initializer>= GL_BYTE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668ba2956781a14e81e99164abcb18c5d02cc" prot="public">
+          <name>COLOR_TYPE_SHORT</name>
+          <initializer>= GL_SHORT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668babb9253c796c45300585ec9d079e8e386" prot="public">
+          <name>COLOR_TYPE_INT</name>
+          <initializer>= GL_INT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668bacc49104b92fddd6b0b0b71b39a044045" prot="public">
+          <name>COLOR_TYPE_FLOAT</name>
+          <initializer>= GL_FLOAT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668ba7229d4e39b628beb8102e40bf15ca839" prot="public">
+          <name>COLOR_TYPE_DOUBLE</name>
+          <initializer>= GL_DOUBLE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668baa3b0ea51004e9632be737be8909f993b" prot="public">
+          <name>COLOR_TYPE_UNSIGNED_BYTE</name>
+          <initializer>= GL_UNSIGNED_BYTE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668ba07bffb410b33daabaf4813f6ec1580a0" prot="public">
+          <name>COLOR_TYPE_UNSIGNED_SHORT</name>
+          <initializer>= GL_UNSIGNED_SHORT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668ba397877b6cece9b2cb23f7ddf667dcde4" prot="public">
+          <name>COLOR_TYPE_UNSIGNED_INT</name>
+          <initializer>= GL_UNSIGNED_INT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668ba6188dade9f826d0393c1362f45630289" prot="public">
+          <name>COLOR_TYPE_DEFAULT</name>
+          <initializer>= GL_UNSIGNED_BYTE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668baa71644dbdee55ad09f6190f538a698e0" prot="public">
+          <name>COLOR_TYPE_INVALID</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Framebuffer/Texture data types. </para>        </briefdescription>
+        <detaileddescription>
+<para>These enumerations are used to specify the basic data type each pixel of a texture or framebuffer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="27" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="27" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39" prot="public" static="no">
+        <name>pixel_layout_t</name>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a06c0d2707774329d319d1af2a87a7247" prot="public">
+          <name>LS_GRAY</name>
+          <initializer>= GL_DEPTH_COMPONENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a006ba419f56159e15429d5178cd74e6f" prot="public">
+          <name>LS_R</name>
+          <initializer>= GL_RED</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a94909f21135164d4179e918fec7447ec" prot="public">
+          <name>LS_RG</name>
+          <initializer>= GL_RG</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a11c4233564d718c97c4fb0ab44b0a94a" prot="public">
+          <name>LS_RGB</name>
+          <initializer>= GL_BGR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a79696f8b254d109db2ba8d5d13ed7966" prot="public">
+          <name>LS_RGBA</name>
+          <initializer>= GL_BGRA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39a826a66550bddbd167f874cf6f1127295" prot="public">
+          <name>LS_DEFAULT_PIXEL_LAYOUT</name>
+          <initializer>= GL_BGR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39aea23fef489a91c8549d3b4cba99d0583" prot="public">
+          <name>LS_INVALID_PIXEL_LAYOUT</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPU-side pixel formats. </para>        </briefdescription>
+        <detaileddescription>
+<para>OpenGL refers to these as the &quot;format&quot; parameter when using operations such as &quot;glTexImage().&quot; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="49" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="49" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31" prot="public" static="no">
+        <name>pixel_format_t</name>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a53ac1f00efca8f5bdf32ed10c1fa2e35" prot="public">
+          <name>LS_GRAY_8</name>
+          <initializer>= GL_DEPTH_COMPONENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a5d6dc9185d18d3c05c9dd87e90f29ede" prot="public">
+          <name>LS_R_8</name>
+          <initializer>= GL_R8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ae9a1e23465549a953c2f088d3c92ea02" prot="public">
+          <name>LS_RG_8</name>
+          <initializer>= GL_RG8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a0f27e7a39606caf4cb6b50cd245908e8" prot="public">
+          <name>LS_RGB_8</name>
+          <initializer>= GL_RGB8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ad38a57787a783429652b6dfe02b26ea0" prot="public">
+          <name>LS_RGBA_8</name>
+          <initializer>= GL_RGBA8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a4957a4009782a35d86fe3c223a0f4821" prot="public">
+          <name>LS_GRAY_16I</name>
+          <initializer>= GL_DEPTH_COMPONENT16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a0f1009536381dc51649817e6fc26fb93" prot="public">
+          <name>LS_R_16I</name>
+          <initializer>= GL_R16I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31aab6c8142b16c78be8dc71ababcf13a6c" prot="public">
+          <name>LS_RG_16I</name>
+          <initializer>= GL_RG16I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a472475f9c919eab07d9600788a545a4b" prot="public">
+          <name>LS_RGB_16I</name>
+          <initializer>= GL_RGB16I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a614a7adc7be8e8b00dfd84c19a07274b" prot="public">
+          <name>LS_RGBA_16I</name>
+          <initializer>= GL_RGBA16I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a8721927b70575b394a550b5e4b7965b1" prot="public">
+          <name>LS_GRAY_16U</name>
+          <initializer>= GL_DEPTH_COMPONENT16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31acf19fb5904bedfde7013fb40e89b67c0" prot="public">
+          <name>LS_R_16U</name>
+          <initializer>= GL_R16UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31af0a123a742a77260f1b4a8de6fea200f" prot="public">
+          <name>LS_RG_16U</name>
+          <initializer>= GL_RG16UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a0e386cdfc86261540c63a2eb91d68776" prot="public">
+          <name>LS_RGB_16U</name>
+          <initializer>= GL_RGB16UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31aa9828b0277c7977c037b0bad49ea8c15" prot="public">
+          <name>LS_RGBA_16U</name>
+          <initializer>= GL_RGBA16UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31abf8f95cbc1028f648c4de53f1f199071" prot="public">
+          <name>LS_GRAY_32I</name>
+          <initializer>= GL_DEPTH_COMPONENT32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a23ab0028c9f0dcac59c214d136e7cf55" prot="public">
+          <name>LS_R_32I</name>
+          <initializer>= GL_R32I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a78286f9bd9b06764a24ef9647ec997e3" prot="public">
+          <name>LS_RG_32I</name>
+          <initializer>= GL_RG32I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ab33681b37f967dc0fc353fef706c13a5" prot="public">
+          <name>LS_RGB_32I</name>
+          <initializer>= GL_RGB32I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31aeb745020451fc55f0dd58c5028ef2bfe" prot="public">
+          <name>LS_RGBA_32I</name>
+          <initializer>= GL_RGBA32I</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a25be70808c8637b344bc8eace49b9d75" prot="public">
+          <name>LS_GRAY_32U</name>
+          <initializer>= GL_DEPTH_COMPONENT32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a7f1a1db708ae1a316979a012562e0e60" prot="public">
+          <name>LS_R_32U</name>
+          <initializer>= GL_R32UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a06e1bda108f899bf262da6e871a035de" prot="public">
+          <name>LS_RG_32U</name>
+          <initializer>= GL_RG32UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ad5e58f426c9ab45f06a6134d2ed2662e" prot="public">
+          <name>LS_RGB_32U</name>
+          <initializer>= GL_RGB32UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a15f67a0dd19d9c4959b47d8f02b27955" prot="public">
+          <name>LS_RGBA_32U</name>
+          <initializer>= GL_RGBA32UI</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31aadd9fcd9bc3f9c1e6014c105336ca41f" prot="public">
+          <name>LS_GRAY_16F</name>
+          <initializer>= GL_R16F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a1ae74d98b94635e7445ebb7b3bf154c5" prot="public">
+          <name>LS_R_8F</name>
+          <initializer>= GL_R16F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a070ce8f7cb555b3aff6fc8a8d8235940" prot="public">
+          <name>LS_RG_16F</name>
+          <initializer>= GL_RG16F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a4c97331ddaa9cc5446d5feb32a183ec3" prot="public">
+          <name>LS_RGB_16F</name>
+          <initializer>= GL_RGB16F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a7549559789f96a45bef3e68ba961d3a8" prot="public">
+          <name>LS_RGBA_16F</name>
+          <initializer>= GL_RGBA16F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a8c906a9d2f7d1926cb972827295506f2" prot="public">
+          <name>LS_GRAY_32F</name>
+          <initializer>= GL_DEPTH_COMPONENT32F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31aa17803a758b35e452f8d105e0b7e5f72" prot="public">
+          <name>LS_R_32F</name>
+          <initializer>= GL_R32F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a1374b88008f3c4f76e8f8eec7fdd49ec" prot="public">
+          <name>LS_RG_32F</name>
+          <initializer>= GL_RG32F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ada81cf089c6989b3c25963726087fefd" prot="public">
+          <name>LS_RGB_32F</name>
+          <initializer>= GL_RGB32F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a14d31e5323ac53a0549a1c4299aa9b04" prot="public">
+          <name>LS_RGBA_32F</name>
+          <initializer>= GL_RGBA32F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ab1f445218f3495fd7e42c7ea2ed466c2" prot="public">
+          <name>LS_SRGB</name>
+          <initializer>= GL_SRGB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a309a3da42af15cba8d97515bb4119dce" prot="public">
+          <name>LS_SRGB_8</name>
+          <initializer>= GL_SRGB8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a1a74e5e8ba356fc5acddbf31f07a4968" prot="public">
+          <name>LS_SRGBA</name>
+          <initializer>= GL_SRGB_ALPHA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31aae8a575f1072e707734df9f44d880bd3" prot="public">
+          <name>LS_SRGBA_8</name>
+          <initializer>= GL_SRGB8_ALPHA8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a1cb1375c9aae0681c193e3eb0a9b64c4" prot="public">
+          <name>LS_R_C</name>
+          <initializer>= GL_COMPRESSED_RED</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a23e76eb6a3eedcd9637caed743dd62f6" prot="public">
+          <name>LS_RG_C</name>
+          <initializer>= GL_COMPRESSED_RG</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31afc1faa66de5f36624b3297f03b6cb13a" prot="public">
+          <name>LS_RGB_C</name>
+          <initializer>= GL_COMPRESSED_RGB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ade35385e75c8313b2f7e5aad4082d23d" prot="public">
+          <name>LS_RGBA_C</name>
+          <initializer>= GL_COMPRESSED_RGBA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31ab63d072bcb156131230a3dd2ed2f5930" prot="public">
+          <name>LS_DEFAULT_PIXEL_FORMAT</name>
+          <initializer>= GL_RGB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31a990f26649f932ea6f6ff8c8435dde0c8" prot="public">
+          <name>LS_INVALID_PIXEL_FORMAT</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CPU-Side pixel formats. </para>        </briefdescription>
+        <detaileddescription>
+<para>OpenGL refers to these types as the &quot;internalFormat&quot; parameter in functions such as &quot;glRenderbufferStorage()&quot; and &quot;glTexImage()&quot; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="66" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="66" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924" prot="public" static="no">
+        <name>compare_func_t</name>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a471c8c8c7f757bac189d3068658a8eab" prot="public">
+          <name>LS_DEPTH_ALWAYS</name>
+          <initializer>= GL_ALWAYS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a1a4a354b98dd7532a748ee633867741b" prot="public">
+          <name>LS_DEPTH_NEVER</name>
+          <initializer>= GL_NEVER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a899bdbe26532c933ce873795e53ab45b" prot="public">
+          <name>LS_DEPTH_LESS</name>
+          <initializer>= GL_LESS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a6ec36849cc95c8eaf59adfbd868e146f" prot="public">
+          <name>LS_DEPTH_EQUAL</name>
+          <initializer>= GL_EQUAL</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a8018cfe76efc479b460400b77a9408ac" prot="public">
+          <name>LS_DEPTH_LEQUAL</name>
+          <initializer>= GL_LEQUAL</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924aa8dff5464fdd90e087dce6cd40eb4da7" prot="public">
+          <name>LS_DEPTH_GEQUAL</name>
+          <initializer>= GL_GEQUAL</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924abeb77f44980df1762c3f606a83440078" prot="public">
+          <name>LS_DEPTH_NEQUAL</name>
+          <initializer>= GL_NOTEQUAL</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Depth Comparison Operations. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ These can be sent to OpenGL in order to determine how to compare the depth <heading level="2">of rasterized fragments. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="25" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="25" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcad" prot="public" static="no">
+        <name>fullscreen_t</name>
+        <enumvalue id="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcada77e4dba3f149d843f9d1c57f55e04e4e" prot="public">
+          <name>FULLSCREEN_DISPLAY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Display in standard fullscreen </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcada0abe0d6ffbf37930c4c87570f0929ca7" prot="public">
+          <name>FULLSCREEN_WINDOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Display a borderless window at the current display&apos;s full resolution. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1aa648d8ce60ea381af3328f258324dcada20b16d12fe744b3fedbd204fd11769e9" prot="public">
+          <name>FULLSCREEN_DEFAULT</name>
+          <initializer>= FULLSCREEN_DISPLAY</initializer>
+          <briefdescription>
+<para>Default Full-Screen mode. </para>          </briefdescription>
+          <detaileddescription>
+<para>Currently uses a standard full-screen mode. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Full-Screen Flags. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ These flags can be used to determine the full-screen mode of a display <heading level="2">object. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" line="27" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/display.h" bodystart="27" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281f" prot="public" static="no">
+        <name>fbo_attach_t</name>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa5a3f746d6d3791111a9b9c902340f00f" prot="public">
+          <name>FBO_ATTACHMENT_0</name>
+          <initializer>= GL_COLOR_ATTACHMENT0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa4efb94ea3a8487931670ca694a061257" prot="public">
+          <name>FBO_ATTACHMENT_1</name>
+          <initializer>= GL_COLOR_ATTACHMENT1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa7b110e94a2aeaa28697ba1814c827f6d" prot="public">
+          <name>FBO_ATTACHMENT_2</name>
+          <initializer>= GL_COLOR_ATTACHMENT2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa843c33abe84fadeaf2268553e90cb737" prot="public">
+          <name>FBO_ATTACHMENT_3</name>
+          <initializer>= GL_COLOR_ATTACHMENT3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa699230485be15c1544bda81608470e96" prot="public">
+          <name>FBO_ATTACHMENT_4</name>
+          <initializer>= GL_COLOR_ATTACHMENT4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa575a93d8d65678b13277e0e6cee27702" prot="public">
+          <name>FBO_ATTACHMENT_5</name>
+          <initializer>= GL_COLOR_ATTACHMENT5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281faaf6859f4792caa1b90c8f96e7928858c" prot="public">
+          <name>FBO_ATTACHMENT_6</name>
+          <initializer>= GL_COLOR_ATTACHMENT6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa9c372efd0ad0171fe4f2ea4caf678792" prot="public">
+          <name>FBO_ATTACHMENT_7</name>
+          <initializer>= GL_COLOR_ATTACHMENT7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa66c2e85d712317f6934a412fd55018ce" prot="public">
+          <name>FBO_ATTACHMENT_8</name>
+          <initializer>= GL_COLOR_ATTACHMENT8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa83e57fb200302df9c8ea1bcb6909877b" prot="public">
+          <name>FBO_ATTACHMENT_9</name>
+          <initializer>= GL_COLOR_ATTACHMENT9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281facf7e6d5e3ac7796cea17493e13ca5109" prot="public">
+          <name>FBO_ATTACHMENT_10</name>
+          <initializer>= GL_COLOR_ATTACHMENT10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa54edb29e06842b498885b4d7a32ac621" prot="public">
+          <name>FBO_ATTACHMENT_11</name>
+          <initializer>= GL_COLOR_ATTACHMENT11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa73b00ce29deb861320da93acafc4dda3" prot="public">
+          <name>FBO_ATTACHMENT_12</name>
+          <initializer>= GL_COLOR_ATTACHMENT12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa8e8eee6abcc52bb00c5d3a5ea2b90de6" prot="public">
+          <name>FBO_ATTACHMENT_13</name>
+          <initializer>= GL_COLOR_ATTACHMENT13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fae1f3d7c7516c00cb560697576c9c5e10" prot="public">
+          <name>FBO_ATTACHMENT_14</name>
+          <initializer>= GL_COLOR_ATTACHMENT14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa19a59fc9feb1d4746081a00a81fc36c7" prot="public">
+          <name>FBO_ATTACHMENT_15</name>
+          <initializer>= GL_COLOR_ATTACHMENT15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fab728f680d04deb4e5c3075751cd9ea8f" prot="public">
+          <name>FBO_ATTACHMENT_DEPTH</name>
+          <initializer>= GL_DEPTH_ATTACHMENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fa60d1d2892f640531d3de36991124cac7" prot="public">
+          <name>FBO_ATTACHMENT_STENCIL</name>
+          <initializer>= GL_STENCIL_ATTACHMENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ab36a712df772da585fbf284af770281fab9b22cb198c7baa01958f1cffac2e66a" prot="public">
+          <name>FBO_ATTACHMENT_DEPTH_STENCIL</name>
+          <initializer>= GL_DEPTH_STENCIL_ATTACHMENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Draw buffers for fbo render targets </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" line="22" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" bodystart="22" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1" prot="public" static="no">
+        <name>texture_target_t</name>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a199339cb17246829bb85cac20b0c84b5" prot="public">
+          <name>FBO_1D_TARGET</name>
+          <initializer>= GL_TEXTURE_1D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1aac5dc96821853faff042364e57fafd3e" prot="public">
+          <name>FBO_2D_TARGET</name>
+          <initializer>= GL_TEXTURE_2D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a19d089d64d8c9faf9afbbd1971a3677c" prot="public">
+          <name>FBO_2D_MS_TARGET</name>
+          <initializer>= GL_TEXTURE_2D_MULTISAMPLE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a35dfdb124953065969d38230ab51ddca" prot="public">
+          <name>FBO_2D_MS_ARRAY_TARGET</name>
+          <initializer>= GL_TEXTURE_2D_MULTISAMPLE_ARRAY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a054d285392b7b33ed8ac203c7a7bc0bc" prot="public">
+          <name>FBO_RECT_TARGET</name>
+          <initializer>= GL_TEXTURE_RECTANGLE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a9e25f35f75e3a3bad410d05fe3ed48f5" prot="public">
+          <name>FBO_3D_TARGET</name>
+          <initializer>= GL_TEXTURE_3D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a19856d10cd0f664d5ee1944051a7a541" prot="public">
+          <name>FBO_POS_X_TARGET</name>
+          <initializer>= GL_TEXTURE_CUBE_MAP_POSITIVE_X</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a4a211ed79a55c294257a3fb9bc7aac6c" prot="public">
+          <name>FBO_NEG_X_TARGET</name>
+          <initializer>= GL_TEXTURE_CUBE_MAP_NEGATIVE_X</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a7eb34d4b1a637f50736a10393a121191" prot="public">
+          <name>FBO_POS_Y_TARGET</name>
+          <initializer>= GL_TEXTURE_CUBE_MAP_POSITIVE_Y</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a6e1ad10b9010bf83c47840e533a2e61c" prot="public">
+          <name>FBO_NEG_Y_TARGET</name>
+          <initializer>= GL_TEXTURE_CUBE_MAP_NEGATIVE_Y</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1a337049cedf6a0daf095a53a63c645e02" prot="public">
+          <name>FBO_POS_Z_TARGET</name>
+          <initializer>= GL_TEXTURE_CUBE_MAP_POSITIVE_Z</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7c001d2b0841fd073793ad338237aba1aecedb2c86f5733f09950a7354ae31028" prot="public">
+          <name>FBO_NEG_Z_TARGET</name>
+          <initializer>= GL_TEXTURE_CUBE_MAP_NEGATIVE_Z</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Texture targets that can be bound to an FBO </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" line="48" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" bodystart="48" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14" prot="public" static="no">
+        <name>fbo_access_t</name>
+        <enumvalue id="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14a4c3db294993509eff6583b406a91bdcd" prot="public">
+          <name>FBO_ACCESS_RW</name>
+          <initializer>= GL_FRAMEBUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14a9fe43a43b63c60cd56bd3e18ddf60cfd" prot="public">
+          <name>FBO_ACCESS_W</name>
+          <initializer>= GL_DRAW_FRAMEBUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14ace1b85cea22bb575af6351d73ee482de" prot="public">
+          <name>FBO_ACCESS_R</name>
+          <initializer>= GL_READ_FRAMEBUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Draw/Read access control for framebuffer objects. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" line="69" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" bodystart="69" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512" prot="public" static="no">
+        <name>fbo_status_t</name>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512ae8385bef6a35bf8aefaee11eca1e3f86" prot="public">
+          <name>FBO_COMPLETE</name>
+          <initializer>= GL_FRAMEBUFFER_COMPLETE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512af8c914a14eff4f6c285d68e9af985716" prot="public">
+          <name>FBO_UNDEFINED</name>
+          <initializer>= GL_FRAMEBUFFER_UNDEFINED</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512a8371c73b7cceb4c5c6a255df2a4e6327" prot="public">
+          <name>FBO_INCOMPLETE_ATTACHMENT</name>
+          <initializer>= GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512a24342d101957b58cd04c1671226afaaf" prot="public">
+          <name>FBO_INCOMPLETE_MISSING_ATTACHMENT</name>
+          <initializer>= GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512a0a9c1f5b71da94a87a7e98f7406f3702" prot="public">
+          <name>FBO_INCOMPLETE_DRAW_BUFFER</name>
+          <initializer>= GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512af77f28d08aa3627bf132994162c68f4e" prot="public">
+          <name>FBO_INCOMPLETE_READ_BUFFER</name>
+          <initializer>= GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512ac5073464f5355ef530a4bcb7aca6d2b9" prot="public">
+          <name>FBO_UNSUPPORTED</name>
+          <initializer>= GL_FRAMEBUFFER_UNSUPPORTED</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512aaf4ebb4d01e844468be65a38e4950d31" prot="public">
+          <name>FBO_INCOMPLETE_MULTISAMPLE</name>
+          <initializer>= GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512a5523606f69167011aab18882ae13341d" prot="public">
+          <name>FBO_INCOMPLETE_LAYER_TARGETS</name>
+          <initializer>= GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Framebuffer status codes </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" line="78" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" bodystart="78" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a681041eb7cdd425f48f8b837f5920cea" prot="public" static="no">
+        <name>fbo_mask_t</name>
+        <enumvalue id="namespacels_1_1draw_1a681041eb7cdd425f48f8b837f5920ceaa5b6bbaa91599fa7359e072b1b303af0f" prot="public">
+          <name>FBO_DEPTH_BIT</name>
+          <initializer>= GL_DEPTH_BUFFER_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a681041eb7cdd425f48f8b837f5920ceaa9780a26be90476841a3242dc17152888" prot="public">
+          <name>FBO_STENCIL_BIT</name>
+          <initializer>= GL_STENCIL_BUFFER_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a681041eb7cdd425f48f8b837f5920ceaa809aa57e4cbbae00c2ae92570d13c809" prot="public">
+          <name>FBO_COLOR_BIT</name>
+          <initializer>= GL_COLOR_BUFFER_BIT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Bitmasks that can help determine what aspects of a framebuffer should be <heading level="2">modified during read/draw calls. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" line="94" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" bodystart="94" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71" prot="public" static="no">
+        <name>img_file_t</name>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a847b9af75ae78963c496a7a2c9999e23" prot="public">
+          <name>IMG_FILE_BMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71af35b0a7485468cf631d0fb1a8a93ec60" prot="public">
+          <name>IMG_FILE_EXR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a16f700e049b30ea5eb17da82b97348b9" prot="public">
+          <name>IMG_FILE_GIF</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71ad4e3af9c3126453e6ece0b35b8973de1" prot="public">
+          <name>IMG_FILE_HDR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71ae5064c905034e28ab470250a2cd427bb" prot="public">
+          <name>IMG_FILE_ICO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71ac87e551f6e8d16037628822872f5482c" prot="public">
+          <name>IMG_FILE_JPG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a94073d71dee6a5e662bf82b02a23a58c" prot="public">
+          <name>IMG_FILE_J2K</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a07e13df41fcfa21647786af5edf24c84" prot="public">
+          <name>IMG_FILE_PNG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a1fc6cdc662b9173599ff0c3e3db133aa" prot="public">
+          <name>IMG_FILE_PPM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a9c42f43ff03335d8851f302bdce7d3d4" prot="public">
+          <name>IMG_FILE_TGA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71ad82fb21427e2eba091d30e9db83c06b7" prot="public">
+          <name>IMG_FILE_TIF</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71a9d5b1060efbb79a703c994649322ab3a" prot="public">
+          <name>IMG_FILE_WBP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a7b91da039f72c1dec04e0a1d9a616c71aaadeef44857377fd461c427feb3017c8" prot="public">
+          <name>IMG_FILE_XPM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Enumerations for saving image files. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h" bodystart="23" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528" prot="public" static="no">
+        <name>matrix_use_t</name>
+        <enumvalue id="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528a2a5442df43cf9382bd16c5953450d908" prot="public">
+          <name>MATRIX_USE_INVALID</name>
+          <initializer>= (unsigned)-1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528abaa7e87b04aeac47d882cb097cdb14f4" prot="public">
+          <name>MATRIX_USE_PROJECTION</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528a8f712633b5b58b9cd3dcbb311f571f40" prot="public">
+          <name>MATRIX_USE_VIEW</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528a7af466298b733f93222a457cc5553fa6" prot="public">
+          <name>MATRIX_USE_MODEL</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3071c2ceac28fe33fdefea3804042528a59c19e1ea7fb56d9305b3caf9e90c508" prot="public">
+          <name>MATRIX_USE_MAX</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Enumeration to facilitate matrix manipulations within the matrix stack. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" line="21" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/matrixStack.h" bodystart="21" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a787996651fd28b83dd7faf5b9cea1975" prot="public" static="no">
+        <name>mesh_property_t</name>
+        <enumvalue id="namespacels_1_1draw_1a787996651fd28b83dd7faf5b9cea1975a819c28e9b03375b665af4e952494e563" prot="public">
+          <name>MESH_VERTS_PER_GLYPH</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a787996651fd28b83dd7faf5b9cea1975afe465150367913b7a804579ba8b5810d" prot="public">
+          <name>MESH_SPACES_PER_TAB</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Mesh Properties. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ These enumerations contains properties for different types of mesh objects. These constants used within contain vital information that&apos;s used within the <heading level="2">mesh object&apos;s implementation. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h" line="34" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546" prot="public" static="no">
+        <name>draw_mode_t</name>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a4aec5afba50c4faeb163637885cf8d5f" prot="public">
+          <name>DRAW_MODE_POINTS</name>
+          <initializer>= GL_POINTS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a1cfcc3031af305b71bef18d11bdaef82" prot="public">
+          <name>DRAW_MODE_LINE_STRIP</name>
+          <initializer>= GL_LINE_STRIP</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a939a0821b314c2bbc2dadad2a673ebc1" prot="public">
+          <name>DRAW_MODE_LINE_LOOP</name>
+          <initializer>= GL_LINE_LOOP</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546aeb919240cb06f0a3e64daf72584c2817" prot="public">
+          <name>DRAW_MODE_LINES</name>
+          <initializer>= GL_LINES</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546aadcf128e83fb12922cc746991a7e0b3b" prot="public">
+          <name>DRAW_MODE_LINE_STRIP_ADJACENCY</name>
+          <initializer>= GL_LINE_STRIP_ADJACENCY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546afe0c906d4abeeeedbed3c9828a9fda16" prot="public">
+          <name>DRAW_MODE_LINES_ADJACENCY</name>
+          <initializer>= GL_LINES_ADJACENCY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546ae1b65fcdb4638287f27ae55d2dd3f87f" prot="public">
+          <name>DRAW_MODE_TRI_STRIP</name>
+          <initializer>= GL_TRIANGLE_STRIP</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a618124ed341d165e6ff4e042abbc0129" prot="public">
+          <name>DRAW_MODE_TRI_FAN</name>
+          <initializer>= GL_TRIANGLE_FAN</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a8b2df844579ae2e9546e53a11e64f61d" prot="public">
+          <name>DRAW_MODE_TRIS</name>
+          <initializer>= GL_TRIANGLES</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546af35b31bd63496fc8ff57b2cb6281c22a" prot="public">
+          <name>DRAW_MODE_TRI_STRIP_ADJACENCY</name>
+          <initializer>= GL_TRIANGLE_STRIP_ADJACENCY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a94ebb02fe27d25a876ead587c17d8dc5" prot="public">
+          <name>DRAW_MODE_TRIS_ADJACENCY</name>
+          <initializer>= GL_TRIANGLES_ADJACENCY</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1ae8e45123197ab63f5b0f34a1913e5546a4c34fa7815c562428590565438303069" prot="public">
+          <name>DRAW_MODE_DEFAULT</name>
+          <initializer>= DRAW_MODE_TRIS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Draw modes for renderable types. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" bodystart="23" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1aa70a96787acff7b363deace1790c0c58" prot="public" static="no">
+        <name>winding_order_t</name>
+        <enumvalue id="namespacels_1_1draw_1aa70a96787acff7b363deace1790c0c58a966c53eb6ef581ce77fff25b865fc440" prot="public">
+          <name>WINDING_ORDER_CW</name>
+          <initializer>= GL_CW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1aa70a96787acff7b363deace1790c0c58a3b956fc267318504c02d3a34455aa952" prot="public">
+          <name>WINDING_ORDER_CCW</name>
+          <initializer>= GL_CCW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1aa70a96787acff7b363deace1790c0c58a7243a96838f94baeb54a6c05a8bca36f" prot="public">
+          <name>WINDING_ORDER_DEFAULT</name>
+          <initializer>= GL_CCW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Winding order for polygons. This also helps determine which faces won&apos;t be rendered if face culling is <heading level="2">enabled. </heading>
+</para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a5a2d5bf428fa36602f13591905562c2b" prot="public" static="no">
+        <name>face_cull_t</name>
+        <enumvalue id="namespacels_1_1draw_1a5a2d5bf428fa36602f13591905562c2bad18fb616f5bf348a88f5b080552cc9f3" prot="public">
+          <name>FACE_CULL</name>
+          <initializer>= GL_CULL_FACE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a5a2d5bf428fa36602f13591905562c2baf75a4ead3961badba6a35a9e9141fa2b" prot="public">
+          <name>FACE_CULL_FRONT</name>
+          <initializer>= GL_FRONT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a5a2d5bf428fa36602f13591905562c2ba1c9f99409c78917476dff0e5aa3e0427" prot="public">
+          <name>FACE_CULL_BACK</name>
+          <initializer>= GL_BACK</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Face culling modes for polygons. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="54" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1aa45325e2a497803b4bfba5f9238037a8" prot="public" static="no">
+        <name>render_test_t</name>
+        <enumvalue id="namespacels_1_1draw_1aa45325e2a497803b4bfba5f9238037a8a5dda79af72ce5793bb1dbdde5adf1623" prot="public">
+          <name>RENDER_TEST_DEPTH</name>
+          <initializer>= GL_DEPTH_TEST</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1aa45325e2a497803b4bfba5f9238037a8a64ce9344daa0cb4b9a580cbf2b52aa05" prot="public">
+          <name>RENDER_TEST_STENCIL</name>
+          <initializer>= GL_STENCIL_TEST</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Display tests </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" line="63" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/renderer.h" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8" prot="public" static="no">
+        <name>shader_stage_t</name>
+        <enumvalue id="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8a6eef06ed2b82cbed9ecf2953210edf65" prot="public">
+          <name>SHADER_STAGE_VERTEX</name>
+          <initializer>= GL_VERTEX_SHADER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8a80829e50ae7d120fe7f77cc39b2893bb" prot="public">
+          <name>SHADER_STAGE_GEOMETRY</name>
+          <initializer>= GL_GEOMETRY_SHADER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8adc62588fd954ff94da23516dd069ff1f" prot="public">
+          <name>SHADER_STAGE_FRAGMENT</name>
+          <initializer>= GL_FRAGMENT_SHADER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Enumeration to determine the type of shader that should be created on the GPU </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h" line="22" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbd" prot="public" static="no">
+        <name>ls_tex_param_t</name>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdadfac9f9f5700919817b80aaf48b09649" prot="public">
+          <name>LS_TEX_INVALID</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda56bfc0aee25f469aee69f34f103cad54" prot="public">
+          <name>LS_TEX_WIDTH</name>
+          <initializer>= GL_TEXTURE_WIDTH</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdae2ea7852fa63aa6839ad24a49cc52ad3" prot="public">
+          <name>LS_TEX_HEIGHT</name>
+          <initializer>= GL_TEXTURE_HEIGHT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda9b35c74369b53115656c9b40c4bd5d75" prot="public">
+          <name>LS_TEX_DEPTH</name>
+          <initializer>= GL_TEXTURE_DEPTH</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda9da4eb9e35b0f79e4a451999ec230721" prot="public">
+          <name>LS_TEX_MIN_FILTER</name>
+          <initializer>= GL_TEXTURE_MIN_FILTER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda628f5c25f97e57c2df098b77f87bbd44" prot="public">
+          <name>LS_TEX_MAG_FILTER</name>
+          <initializer>= GL_TEXTURE_MAG_FILTER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdab9513f0839ab66cb72989d0291fb43e2" prot="public">
+          <name>LS_TEX_WRAP_S</name>
+          <initializer>= GL_TEXTURE_WRAP_S</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdad4f80f0db3f47f7e797f444f6a5e3c89" prot="public">
+          <name>LS_TEX_WRAP_T</name>
+          <initializer>= GL_TEXTURE_WRAP_T</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda21c1670ad352bf224c58b9f93621eb3a" prot="public">
+          <name>LS_TEX_WRAP_R</name>
+          <initializer>= GL_TEXTURE_WRAP_R</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda007ff3f8bb27f2a4ed09dddcd23e5846" prot="public">
+          <name>LS_TEX_CLAMP_EDGE</name>
+          <initializer>= GL_CLAMP_TO_EDGE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbda88c63e706326537e48004169511c5a34" prot="public">
+          <name>LS_TEX_CLAMP_BORDER</name>
+          <initializer>= GL_CLAMP_TO_BORDER</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a012105ac459b2847e4a8b8145e58bcbdae034c0cf52dc242ba52f2ec2f8d43066" prot="public">
+          <name>LS_TEX_REPEAT</name>
+          <initializer>= GL_REPEAT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Parameters for creating or modifying texture objects. </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h" bodystart="23" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926d" prot="public" static="no">
+        <name>ls_tex_filter_t</name>
+        <enumvalue id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926dae608266d2e1b4eb0b94e0dd285eb9f43" prot="public">
+          <name>LS_FILTER_LINEAR</name>
+          <initializer>= GL_LINEAR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926daac0bc54599e095ce40be65c79dbb88b5" prot="public">
+          <name>LS_FILTER_NEAREST</name>
+          <initializer>= GL_NEAREST</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926da8c34db1d3342eb3432bd2b2dd6f65a90" prot="public">
+          <name>LS_FILTER_LINEAR_NEAREST</name>
+          <initializer>= GL_LINEAR_MIPMAP_NEAREST</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926da00ff38a88e44a932625249f7450ffd21" prot="public">
+          <name>LS_FILTER_NEAREST_NEAREST</name>
+          <initializer>= GL_NEAREST_MIPMAP_NEAREST</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926dac3fcd4428b6a3ee5431d75ccf908e525" prot="public">
+          <name>LS_FILTER_LINEAR_LINEAR</name>
+          <initializer>= GL_LINEAR_MIPMAP_LINEAR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926da17ace4640a9588ce6738534ea0fe0f17" prot="public">
+          <name>LS_FILTER_NEAREST_LINEAR</name>
+          <initializer>= GL_NEAREST_MIPMAP_LINEAR</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Framebuffer filtering specifiers </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h" line="45" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h" bodystart="45" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a3a6c34c66ec4270fffa88ee2abc50d84" prot="public" static="no">
+        <name>ls_tex_desc_t</name>
+        <enumvalue id="namespacels_1_1draw_1a3a6c34c66ec4270fffa88ee2abc50d84a256c1012879a60507af52ae9514f57c9" prot="public">
+          <name>LS_TEX_1D</name>
+          <initializer>= GL_TEXTURE_1D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3a6c34c66ec4270fffa88ee2abc50d84a112277c029293ad136970dcea79a3991" prot="public">
+          <name>LS_TEX_2D</name>
+          <initializer>= GL_TEXTURE_2D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3a6c34c66ec4270fffa88ee2abc50d84aeb533b19f18ac6f9256b416e2c2606d3" prot="public">
+          <name>LS_TEX_3D</name>
+          <initializer>= GL_TEXTURE_3D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a3a6c34c66ec4270fffa88ee2abc50d84af44aaa901898d95e57794e18a2754796" prot="public">
+          <name>LS_TEX_RECT</name>
+          <initializer>= GL_TEXTURE_RECTANGLE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Descriptors for different texture types </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h" line="59" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h" bodystart="59" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bd" prot="public" static="no">
+        <name>vertex_attrib_t</name>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bda2cee6ed188145794056dadd1ddc6ab33" prot="public">
+          <name>VERTEX_ATTRIB_POS</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bdafe40d263cf46c05e247b278ba78fcd63" prot="public">
+          <name>VERTEX_ATTRIB_TEX</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bdaa15d956da59c2877928c05d52f8bb489" prot="public">
+          <name>VERTEX_ATTRIB_NORM</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bdaed9a8906a96760464e66af5118501a59" prot="public">
+          <name>VERTEX_ATTRIB_MAT_ROW</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bdabc55615f2689dd81837053d2fba257cf" prot="public">
+          <name>VERTEX_ATTRIB_MAT_ROW0</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bda3367db4585630c362bf881b3533b69de" prot="public">
+          <name>VERTEX_ATTRIB_MAT_ROW1</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bdabef75ab1f35b177273eb60b8c93dec19" prot="public">
+          <name>VERTEX_ATTRIB_MAT_ROW2</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacels_1_1draw_1a9543f9a6812895b10a76f3810eff93bda307e0771bfc643e6a1f85a1d879af93f" prot="public">
+          <name>VERTEX_ATTRIB_MAT_ROW3</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>These enumerations can be used to describe vertex layouts to VAO objects. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" line="35" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/vertex.h" bodystart="35" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacels_1_1draw_1a349bdf84afcb56d2a614a450dff18373" prot="public" static="no">
+        <type><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">math::vec4_t</ref>&lt; unsigned char &gt;</type>
+        <definition>typedef math::vec4_t&lt;unsigned char&gt; ls::draw::colorub</definition>
+        <argsstring></argsstring>
+        <name>colorub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="126" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1a9228104d4e817e1c94eecf39fcf8c93b" prot="public" static="no">
+        <type><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">math::vec4_t</ref>&lt; unsigned short &gt;</type>
+        <definition>typedef math::vec4_t&lt;unsigned short&gt; ls::draw::colorus</definition>
+        <argsstring></argsstring>
+        <name>colorus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="127" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1adc294cdc37ffb3aa1ffc6c671638b910" prot="public" static="no">
+        <type><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">math::vec4_t</ref>&lt; unsigned int &gt;</type>
+        <definition>typedef math::vec4_t&lt;unsigned int&gt; ls::draw::colorui</definition>
+        <argsstring></argsstring>
+        <name>colorui</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="128" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1ae696f4487f5503fc9e9d5245a075e218" prot="public" static="no">
+        <type><ref refid="structls_1_1math_1_1vec4__t" kindref="compound">math::vec4_t</ref>&lt; float &gt;</type>
+        <definition>typedef math::vec4_t&lt;float&gt; ls::draw::colorf</definition>
+        <argsstring></argsstring>
+        <name>colorf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="129" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" prot="public" static="no">
+        <type><ref refid="namespacels_1_1draw_1ae696f4487f5503fc9e9d5245a075e218" kindref="member">colorf</ref></type>
+        <definition>typedef colorf ls::draw::color</definition>
+        <argsstring></argsstring>
+        <name>color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="131" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1a5e613f27c9d529db0cb41ab77dd5f8d1" prot="public" static="no">
+        <type>std::deque&lt; <ref refid="classls_1_1draw_1_1mesh" kindref="compound">mesh</ref> * &gt;</type>
+        <definition>typedef std::deque&lt;mesh*&gt; ls::draw::meshList</definition>
+        <argsstring></argsstring>
+        <name>meshList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="34" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1a66bcfe78add4fce83b491878faf0167c" prot="public" static="no">
+        <type>std::deque&lt; <ref refid="classls_1_1draw_1_1mesh_model" kindref="compound">meshModel</ref> * &gt;</type>
+        <definition>typedef std::deque&lt;meshModel*&gt; ls::draw::drawList</definition>
+        <argsstring></argsstring>
+        <name>drawList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="35" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1a1630e9bdf4479360ab10b794d960774a" prot="public" static="no">
+        <type>std::deque&lt; <ref refid="classls_1_1draw_1_1texture" kindref="compound">texture</ref> * &gt;</type>
+        <definition>typedef std::deque&lt;texture*&gt; ls::draw::textureList</definition>
+        <argsstring></argsstring>
+        <name>textureList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="36" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacels_1_1draw_1a8e8c56cbc4de7552879921cce37ca248" prot="public" static="no">
+        <type>std::deque&lt; <ref refid="classls_1_1draw_1_1atlas" kindref="compound">atlas</ref> * &gt;</type>
+        <definition>typedef std::deque&lt;atlas*&gt; ls::draw::atlasList</definition>
+        <argsstring></argsstring>
+        <name>atlasList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" line="37" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacels_1_1draw_1a6ecec279c979c68b2a12803022654c8b" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsBlank</definition>
+        <argsstring></argsstring>
+        <name>lsBlank</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{0.f, 0.f, 0.f, 0.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="136" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1aaf3c1f1f589baee55498bf0bc1ef9512" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsRed</definition>
+        <argsstring></argsstring>
+        <name>lsRed</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{1.f, 0.f, 0.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="139" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a8862f1d5fd355777410c3cf93ee66b15" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsGreen</definition>
+        <argsstring></argsstring>
+        <name>lsGreen</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{0.f, 1.f, 0.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="140" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1af6b7bd8ed3a5a88c0c1fe75c4ee88d2b" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsBlue</definition>
+        <argsstring></argsstring>
+        <name>lsBlue</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{0.f, 0.f, 1.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="141" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a035d4441a310bc0a859b4531734a4b09" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsMagenta</definition>
+        <argsstring></argsstring>
+        <name>lsMagenta</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{1.f, 0.f, 1.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="144" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a4c14165695bd5612990d2cec5d8cee77" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsYellow</definition>
+        <argsstring></argsstring>
+        <name>lsYellow</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{1.f, 1.f, 0.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="145" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a9ce44c5b5e5e8c253a0fe91829e857e8" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsCyan</definition>
+        <argsstring></argsstring>
+        <name>lsCyan</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{0.f, 1.f, 1.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="146" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a19315933cef8050bf4ab3b3ca06b58e3" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsBlack</definition>
+        <argsstring></argsstring>
+        <name>lsBlack</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{0.f, 0.f, 0.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="149" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a611ebd16f200bbdb3840aa74acdf5a54" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsWhite</definition>
+        <argsstring></argsstring>
+        <name>lsWhite</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{1.f, 1.f, 1.f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="150" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1aa94e921c74e461f29238588f09d4f72d" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::lsGray</definition>
+        <argsstring></argsstring>
+        <name>lsGray</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref>{0.5f, 0.5f, 0.5f, 1.f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" line="151" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/color.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacels_1_1draw_1a5419e618b4234951f1dbe80a0ad14372" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="namespacels_1_1draw_1aa8e995c4b6ff54636192e88dd97d9e3c" kindref="member">color</ref></type>
+        <definition>constexpr color ls::draw::checkeredCol[]</definition>
+        <argsstring>[]</argsstring>
+        <name>checkeredCol</name>
+        <initializer>= {
+    lsMagenta,  lsBlack,
+    lsBlack,    lsMagenta
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" line="114" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacels_1_1draw_1a2118f4309edb72239ceb1c7ef98fc889" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(vertexBuffer, bufferObject, LS_ARRAY_BUFFER)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>vertexBuffer</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089af247d0ac0e6b76e15895f7e8606baeae" kindref="member">LS_ARRAY_BUFFER</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="234" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a73c63216cdd23ed8dc761422ada01a6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(indexBuffer, bufferObject, LS_ELEMENT_BUFFER)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>indexBuffer</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089ad2a18764ef8ca56a598535645b1d3850" kindref="member">LS_ELEMENT_BUFFER</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="235" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a45b9737601881d125fb9dcdfba629462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(uvBuffer, bufferObject, LS_ARRAY_BUFFER)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>uvBuffer</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089af247d0ac0e6b76e15895f7e8606baeae" kindref="member">LS_ARRAY_BUFFER</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="236" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a35da81319124ccd990ac985eefcb1c7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(colorBuffer, bufferObject, LS_ARRAY_BUFFER)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>colorBuffer</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089af247d0ac0e6b76e15895f7e8606baeae" kindref="member">LS_ARRAY_BUFFER</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/bufferObject.h" line="237" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1add2eb2cf6b617123f824b9412ed2c2ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::lsPrintGlError</definition>
+        <argsstring>(int, const char *)</argsstring>
+        <name>lsPrintGlError</name>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h" line="71" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/setup.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a427ddefc1edc352391b16346a1155f20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(vertexShader, shaderObject, SHADER_STAGE_VERTEX)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>vertexShader</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_object" kindref="compound">shaderObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8a6eef06ed2b82cbed9ecf2953210edf65" kindref="member">SHADER_STAGE_VERTEX</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a3a9782c9baacc63a93d03d73b9f469ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(geometryShader, shaderObject, SHADER_STAGE_GEOMETRY)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>geometryShader</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_object" kindref="compound">shaderObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8a80829e50ae7d120fe7f77cc39b2893bb" kindref="member">SHADER_STAGE_GEOMETRY</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h" line="118" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1ae9712e158c9c37d1e5f5a9fab9098617" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DECLARE_CLASS_TYPE</definition>
+        <argsstring>(fragmentShader, shaderObject, SHADER_STAGE_FRAGMENT)</argsstring>
+        <name>LS_DECLARE_CLASS_TYPE</name>
+        <param>
+          <type>fragmentShader</type>
+        </param>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_object" kindref="compound">shaderObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8adc62588fd954ff94da23516dd069ff1f" kindref="member">SHADER_STAGE_FRAGMENT</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderObject.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a40214a5835d410f7484d34ddc6361210" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DEFINE_CLASS_TYPE</definition>
+        <argsstring>(bufferObject, LS_ARRAY_BUFFER)</argsstring>
+        <name>LS_DEFINE_CLASS_TYPE</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089af247d0ac0e6b76e15895f7e8606baeae" kindref="member">LS_ARRAY_BUFFER</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp" line="16" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1abb552411905518def846996278946da3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DEFINE_CLASS_TYPE</definition>
+        <argsstring>(bufferObject, LS_ELEMENT_BUFFER)</argsstring>
+        <name>LS_DEFINE_CLASS_TYPE</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1buffer_object" kindref="compound">bufferObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a90864a1b2a8222a276310beff8a07089ad2a18764ef8ca56a598535645b1d3850" kindref="member">LS_ELEMENT_BUFFER</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/bufferObject.cpp" line="17" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a90dfff84324262ac53fe466d8bbabbe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::printWindowFlags</definition>
+        <argsstring>(uint32_t flags)</argsstring>
+        <name>printWindowFlags</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Print SDL window flags to the console. This is primarily used for debugging.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A bit field of difference SDL flags., see <ulink url="https://wiki.libsdl.org/">https://wiki.libsdl.org/</ulink> for more information. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" line="29" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/display.cpp" bodystart="29" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a7d7c9c4938ea500dc5a64c47b7a135e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::copyGlyph</definition>
+        <argsstring>(glyph &amp;pGlyph, const FT_GlyphSlot ftGlyph)</argsstring>
+        <name>copyGlyph</name>
+        <param>
+          <type><ref refid="structls_1_1draw_1_1glyph" kindref="compound">glyph</ref> &amp;</type>
+          <declname>pGlyph</declname>
+        </param>
+        <param>
+          <type>const FT_GlyphSlot</type>
+          <declname>ftGlyph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ <heading level="2">Helper function to load a glyph </heading>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp" line="42" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp" bodystart="42" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a2e60906e169b8373b28bcaec1d5810ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::printImageLoadError</definition>
+        <argsstring>(FREE_IMAGE_FORMAT, const char *)</argsstring>
+        <name>printImageLoadError</name>
+        <param>
+          <type>FREE_IMAGE_FORMAT</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" line="34" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a117bef2d32b7e66b3053d8871ed3999e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FREE_IMAGE_FORMAT</type>
+        <definition>FREE_IMAGE_FORMAT ls::draw::deduceImageFormat</definition>
+        <argsstring>(const std::string &amp;filename)</argsstring>
+        <name>deduceImageFormat</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" line="40" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="40" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a6050df44e4d5642c589f342fbd1fe910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ls::draw::getImageFlags</definition>
+        <argsstring>(FREE_IMAGE_FORMAT inFormat)</argsstring>
+        <name>getImageFlags</name>
+        <param>
+          <type>FREE_IMAGE_FORMAT</type>
+          <declname>inFormat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" line="51" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="51" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a0049e663769994ea2ed09440152f6c20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1afaef2be618862b3e5b465e3cc70e668b" kindref="member">color_type_t</ref></type>
+        <definition>color_type_t ls::draw::getBitmapSize</definition>
+        <argsstring>(FIBITMAP *pImg)</argsstring>
+        <name>getBitmapSize</name>
+        <param>
+          <type>FIBITMAP *</type>
+          <declname>pImg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" line="63" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="63" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a8fec25a5f8afead26871e694a2fde5e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::getPixelFormat</definition>
+        <argsstring>(FIBITMAP *pImg, unsigned bpp, pixel_format_t &amp;intFmt, pixel_layout_t &amp;extFmt)</argsstring>
+        <name>getPixelFormat</name>
+        <param>
+          <type>FIBITMAP *</type>
+          <declname>pImg</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bpp</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a41ea06202f1f4631682c080ef7e3ab31" kindref="member">pixel_format_t</ref> &amp;</type>
+          <declname>intFmt</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a720c31963d2ec9ddd5397d92e101fc39" kindref="member">pixel_layout_t</ref> &amp;</type>
+          <declname>extFmt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" line="122" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp" bodystart="122" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1af1533202fc82fa35afca27af58be97aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::draw::getDrawableCharCount</definition>
+        <argsstring>(const char *const str)</argsstring>
+        <name>getDrawableCharCount</name>
+        <param>
+          <type>const char *const</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp" line="23" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp" bodystart="23" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1ab4b20057902f64913efe28fe62bc46d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DEFINE_CLASS_TYPE</definition>
+        <argsstring>(shaderObject, SHADER_STAGE_VERTEX)</argsstring>
+        <name>LS_DEFINE_CLASS_TYPE</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_object" kindref="compound">shaderObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8a6eef06ed2b82cbed9ecf2953210edf65" kindref="member">SHADER_STAGE_VERTEX</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp" line="16" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1ac9ae8cd63a094f6c676fdf4360b4116f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DEFINE_CLASS_TYPE</definition>
+        <argsstring>(shaderObject, SHADER_STAGE_GEOMETRY)</argsstring>
+        <name>LS_DEFINE_CLASS_TYPE</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_object" kindref="compound">shaderObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8a80829e50ae7d120fe7f77cc39b2893bb" kindref="member">SHADER_STAGE_GEOMETRY</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp" line="17" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1acd7af83aed27063dfe1c5bef0851f673" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::LS_DEFINE_CLASS_TYPE</definition>
+        <argsstring>(shaderObject, SHADER_STAGE_FRAGMENT)</argsstring>
+        <name>LS_DEFINE_CLASS_TYPE</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1shader_object" kindref="compound">shaderObject</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1a818f5beed04ac6e5dbb179761e8df7f8adc62588fd954ff94da23516dd069ff1f" kindref="member">SHADER_STAGE_FRAGMENT</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderObject.cpp" line="18" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacels_1_1draw_1a7f6715564051d887d73263bc17503281" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::getGpuHandle</definition>
+        <argsstring>(unsigned &amp;texId)</argsstring>
+        <name>getGpuHandle</name>
+        <param>
+          <type>unsigned &amp;</type>
+          <declname>texId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Simple helper function that can help reduce a few lines of code during texture initialization.</para><para><simplesect kind="return"><para>TRUE if the texture was created properly, FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp" line="22" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp" bodystart="22" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/atlas.h" line="15" column="1"/>
+  </compounddef>
+</doxygen>

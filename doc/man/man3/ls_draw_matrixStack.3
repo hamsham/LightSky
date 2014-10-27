@@ -1,0 +1,267 @@
+.TH "ls::draw::matrixStack" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::draw::matrixStack \- 
+.PP
+Matrix Stack\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <matrixStack\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBmatrixStack\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBmatrixStack\fP (const \fBmatrixStack\fP &)=delete"
+.br
+.RI "\fICopy Constructor -- DELETED\&. \fP"
+.ti -1c
+.RI "\fBmatrixStack\fP (\fBmatrixStack\fP &&ms)"
+.br
+.RI "\fIMove Constructor Moves all data from the input parameter into *this without performing any copies\&. \fP"
+.ti -1c
+.RI "\fB~matrixStack\fP ()"
+.br
+.RI "\fIDestructor Frees all memory/resources used by *this\&. \fP"
+.ti -1c
+.RI "\fBmatrixStack\fP & \fBoperator=\fP (const \fBmatrixStack\fP &)=delete"
+.br
+.RI "\fICopy Operator -- DELETED\&. \fP"
+.ti -1c
+.RI "\fBmatrixStack\fP & \fBoperator=\fP (\fBmatrixStack\fP &&ms)"
+.br
+.RI "\fIMove Operator Moves all data from the input parameter into *this without performing any copies\&. \fP"
+.ti -1c
+.RI "void \fBpushMatrix\fP (\fBmatrix_use_t\fP matrixType, const math::mat4 &m)"
+.br
+.ti -1c
+.RI "void \fBpushIdentity\fP (\fBmatrix_use_t\fP matrixType)"
+.br
+.ti -1c
+.RI "void \fBemplaceMatrix\fP (\fBmatrix_use_t\fP matrixType, const math::mat4 &m)"
+.br
+.ti -1c
+.RI "void \fBpopMatrix\fP (\fBmatrix_use_t\fP matrixType)"
+.br
+.ti -1c
+.RI "void \fBloadMatrix\fP (\fBmatrix_use_t\fP matrixType, const math::mat4 &m)"
+.br
+.ti -1c
+.RI "void \fBloadIdentity\fP (\fBmatrix_use_t\fP)"
+.br
+.ti -1c
+.RI "void \fBmultMatrix\fP (\fBmatrix_use_t\fP matrixType, const math::mat4 &m)"
+.br
+.ti -1c
+.RI "const math::mat4 & \fBgetMatrix\fP (\fBmatrix_use_t\fP matrixType) const "
+.br
+.RI "\fIGet the current model matrix\&. \fP"
+.ti -1c
+.RI "void \fBconstructMvp\fP ()"
+.br
+.ti -1c
+.RI "void \fBconstructVp\fP ()"
+.br
+.ti -1c
+.RI "const math::mat4 & \fBgetMvpMatrix\fP () const "
+.br
+.RI "\fIGet the MVP Matrix\&. \fP"
+.ti -1c
+.RI "const math::mat4 & \fBgetVpMatrix\fP () const "
+.br
+.RI "\fIGet the VP Matrix\&. \fP"
+.ti -1c
+.RI "unsigned \fBsize\fP (\fBmatrix_use_t\fP matrixType)"
+.br
+.RI "\fIClear a specific Stack\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Matrix Stack\&. 
+
+
+.PP
+ This object can be used to make life MUCH easier when dealing with matrices within OpenGL\&. Usage was designed to be fairly close to the original OpenGL 
+.SS "1\&.0 spec\&. "
+
+.PP
+Definition at line 38 of file matrixStack\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ls::draw::matrixStack::matrixStack ()"
+
+.PP
+Constructor\&. 
+.PP
+Definition at line 18 of file matrixStack\&.cpp\&.
+.SS "ls::draw::matrixStack::matrixStack (const \fBmatrixStack\fP &)\fC [delete]\fP"
+
+.PP
+Copy Constructor -- DELETED\&. 
+.SS "ls::draw::matrixStack::matrixStack (\fBmatrixStack\fP &&ms)"
+
+.PP
+Move Constructor Moves all data from the input parameter into *this without performing any copies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIms\fP A reference to a temporary matrix stack object\&. 
+.RE
+.PP
+
+.SS "ls::draw::matrixStack::~matrixStack ()"
+
+.PP
+Destructor Frees all memory/resources used by *this\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void ls::draw::matrixStack::constructMvp ()\fC [inline]\fP"
+Multiply the model, view, and projection stacks together 
+.PP
+Definition at line 15 of file matrixStack_impl\&.h\&.
+.SS "void ls::draw::matrixStack::constructVp ()\fC [inline]\fP"
+Multiply only the view and projection stacks together 
+.PP
+Definition at line 23 of file matrixStack_impl\&.h\&.
+.SS "void ls::draw::matrixStack::emplaceMatrix (\fBmatrix_use_t\fPmatrixType, const math::mat4 &m)"
+Push a matrix onto the stack\&. This function pushes a pre-constructed matrix onto the stack\&. Unlike 'pushMatrix(\&.\&.\&.),' this method does not multiply the current matrix with the one being pushed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&.
+.br
+\fIm\fP A constant reference to a 4x4 matrix\&. 
+.RE
+.PP
+
+.SS "const math::mat4 & ls::draw::matrixStack::getMatrix (\fBmatrix_use_t\fPmatrixType) const\fC [inline]\fP"
+
+.PP
+Get the current model matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file matrixStack_impl\&.h\&.
+.SS "const math::mat4 & ls::draw::matrixStack::getMvpMatrix () const\fC [inline]\fP"
+
+.PP
+Get the MVP Matrix\&. 
+.PP
+Definition at line 37 of file matrixStack_impl\&.h\&.
+.SS "const math::mat4 & ls::draw::matrixStack::getVpMatrix () const\fC [inline]\fP"
+
+.PP
+Get the VP Matrix\&. 
+.PP
+Definition at line 44 of file matrixStack_impl\&.h\&.
+.SS "void ls::draw::matrixStack::loadIdentity (\fBmatrix_use_t\fP)"
+Set the selected matrix to an identity matrix
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&. 
+.RE
+.PP
+
+.SS "void ls::draw::matrixStack::loadMatrix (\fBmatrix_use_t\fPmatrixType, const math::mat4 &m)"
+Set the matrix on top of the stack to the one passed into the function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&.
+.br
+\fIThe\fP matrix to be used on top of the stack 
+.RE
+.PP
+
+.SS "void ls::draw::matrixStack::multMatrix (\fBmatrix_use_t\fPmatrixType, const math::mat4 &m)\fC [inline]\fP"
+Multiply the selected matrix by the one passed into the function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&.
+.br
+\fIm\fP A constant reference to the matrix to multiply against the on on the stack\&. 
+.RE
+.PP
+
+.PP
+Definition at line 8 of file matrixStack_impl\&.h\&.
+.SS "\fBmatrixStack\fP& ls::draw::matrixStack::operator= (const \fBmatrixStack\fP &)\fC [delete]\fP"
+
+.PP
+Copy Operator -- DELETED\&. 
+.SS "\fBmatrixStack\fP& ls::draw::matrixStack::operator= (\fBmatrixStack\fP &&ms)"
+
+.PP
+Move Operator Moves all data from the input parameter into *this without performing any copies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIms\fP A reference to a temporary matrix stack object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A reference to *this 
+.RE
+.PP
+
+.SS "void ls::draw::matrixStack::popMatrix (\fBmatrix_use_t\fPmatrixType)"
+Remove a matrix from a specified stack\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&. 
+.RE
+.PP
+
+.SS "void ls::draw::matrixStack::pushIdentity (\fBmatrix_use_t\fPmatrixType)"
+Push an identity matrix onto the stack\&. The current matrix will be stored and an identity matrix will be pushed onto the stack\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&. 
+.RE
+.PP
+
+.SS "void ls::draw::matrixStack::pushMatrix (\fBmatrix_use_t\fPmatrixType, const math::mat4 &m)"
+Push a matrix onto the stack\&. The current matrix will be copied into a new matrix and pushed onto the stack\&. This matrix this then multiplied by the one passed into the function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The type of matrix to be used on the stack\&.
+.br
+\fIm\fP A constant reference to a 4x4 matrix\&. 
+.RE
+.PP
+
+.SS "unsigned ls::draw::matrixStack::size (\fBmatrix_use_t\fPmatrixType)\fC [inline]\fP"
+
+.PP
+Clear a specific Stack\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrixType\fP The stack type who's size will be queried\&. 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file matrixStack_impl\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

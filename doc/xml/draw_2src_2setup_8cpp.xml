@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="draw_2src_2setup_8cpp" kind="file">
+    <compoundname>setup.cpp</compoundname>
+    <includes local="no">GL/glew.h</includes>
+    <includes refid="draw_2setup_8h" local="yes">lightsky/draw/setup.h</includes>
+    <incdepgraph>
+      <node id="3138">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3139" relation="include">
+        </childnode>
+      </node>
+      <node id="3117">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="3118" relation="include">
+        </childnode>
+        <childnode refid="3119" relation="include">
+        </childnode>
+      </node>
+      <node id="3108">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/setup.cpp</label>
+        <link refid="draw/src/setup.cpp"/>
+        <childnode refid="3109" relation="include">
+        </childnode>
+        <childnode refid="3110" relation="include">
+        </childnode>
+      </node>
+      <node id="3123">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="3124" relation="include">
+        </childnode>
+        <childnode refid="3125" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3131" relation="include">
+        </childnode>
+        <childnode refid="3137" relation="include">
+        </childnode>
+        <childnode refid="3141" relation="include">
+        </childnode>
+        <childnode refid="3145" relation="include">
+        </childnode>
+        <childnode refid="3134" relation="include">
+        </childnode>
+        <childnode refid="3138" relation="include">
+        </childnode>
+        <childnode refid="3142" relation="include">
+        </childnode>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3147" relation="include">
+        </childnode>
+        <childnode refid="3148" relation="include">
+        </childnode>
+        <childnode refid="3151" relation="include">
+        </childnode>
+        <childnode refid="3153" relation="include">
+        </childnode>
+      </node>
+      <node id="3146">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="3112">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="3118">
+        <label>cstdint</label>
+      </node>
+      <node id="3114">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="3110">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="3111" relation="include">
+        </childnode>
+        <childnode refid="3116" relation="include">
+        </childnode>
+        <childnode refid="3117" relation="include">
+        </childnode>
+        <childnode refid="3120" relation="include">
+        </childnode>
+        <childnode refid="3123" relation="include">
+        </childnode>
+      </node>
+      <node id="3156">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="3151">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="3148" relation="include">
+        </childnode>
+        <childnode refid="3131" relation="include">
+        </childnode>
+        <childnode refid="3137" relation="include">
+        </childnode>
+        <childnode refid="3141" relation="include">
+        </childnode>
+        <childnode refid="3152" relation="include">
+        </childnode>
+      </node>
+      <node id="3127">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="3128" relation="include">
+        </childnode>
+        <childnode refid="3118" relation="include">
+        </childnode>
+        <childnode refid="3129" relation="include">
+        </childnode>
+        <childnode refid="3124" relation="include">
+        </childnode>
+        <childnode refid="3125" relation="include">
+        </childnode>
+        <childnode refid="3130" relation="include">
+        </childnode>
+      </node>
+      <node id="3130">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="3144">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="3131">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3134" relation="include">
+        </childnode>
+        <childnode refid="3136" relation="include">
+        </childnode>
+      </node>
+      <node id="3126">
+        <label>cmath</label>
+      </node>
+      <node id="3147">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3138" relation="include">
+        </childnode>
+        <childnode refid="3142" relation="include">
+        </childnode>
+        <childnode refid="3137" relation="include">
+        </childnode>
+        <childnode refid="3141" relation="include">
+        </childnode>
+        <childnode refid="3145" relation="include">
+        </childnode>
+        <childnode refid="3148" relation="include">
+        </childnode>
+        <childnode refid="3150" relation="include">
+        </childnode>
+      </node>
+      <node id="3133">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="3142">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3143" relation="include">
+        </childnode>
+      </node>
+      <node id="3109">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="3149">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="3140">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="3122">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="3143">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="3115">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="3136">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="3153">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="3154" relation="include">
+        </childnode>
+        <childnode refid="3155" relation="include">
+        </childnode>
+        <childnode refid="3138" relation="include">
+        </childnode>
+        <childnode refid="3156" relation="include">
+        </childnode>
+        <childnode refid="3157" relation="include">
+        </childnode>
+      </node>
+      <node id="3139">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="3124">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="3111" relation="include">
+        </childnode>
+      </node>
+      <node id="3137">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3138" relation="include">
+        </childnode>
+        <childnode refid="3140" relation="include">
+        </childnode>
+      </node>
+      <node id="3119">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="3135">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="3120">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="3121" relation="include">
+        </childnode>
+        <childnode refid="3122" relation="include">
+        </childnode>
+      </node>
+      <node id="3145">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3146" relation="include">
+        </childnode>
+      </node>
+      <node id="3125">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="3126" relation="include">
+        </childnode>
+        <childnode refid="3118" relation="include">
+        </childnode>
+      </node>
+      <node id="3111">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="3112" relation="include">
+        </childnode>
+        <childnode refid="3113" relation="include">
+        </childnode>
+        <childnode refid="3114" relation="include">
+        </childnode>
+        <childnode refid="3115" relation="include">
+        </childnode>
+      </node>
+      <node id="3129">
+        <label>utility</label>
+      </node>
+      <node id="3152">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="3148">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="3125" relation="include">
+        </childnode>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3134" relation="include">
+        </childnode>
+        <childnode refid="3138" relation="include">
+        </childnode>
+        <childnode refid="3142" relation="include">
+        </childnode>
+        <childnode refid="3149" relation="include">
+        </childnode>
+      </node>
+      <node id="3141">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3142" relation="include">
+        </childnode>
+        <childnode refid="3144" relation="include">
+        </childnode>
+      </node>
+      <node id="3121">
+        <label>iostream</label>
+      </node>
+      <node id="3134">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="3132" relation="include">
+        </childnode>
+        <childnode refid="3127" relation="include">
+        </childnode>
+        <childnode refid="3135" relation="include">
+        </childnode>
+      </node>
+      <node id="3132">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="3124" relation="include">
+        </childnode>
+        <childnode refid="3125" relation="include">
+        </childnode>
+        <childnode refid="3133" relation="include">
+        </childnode>
+      </node>
+      <node id="3150">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="3128">
+        <label>climits</label>
+      </node>
+      <node id="3154">
+        <label>chrono</label>
+      </node>
+      <node id="3116">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="3115" relation="include">
+        </childnode>
+      </node>
+      <node id="3155">
+        <label>algorithm</label>
+      </node>
+      <node id="3113">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="3157">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>draw/setup.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>November<sp/>15,<sp/>2013,<sp/>8:28<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GL/glew.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="draw_2setup_8h" kindref="compound">lightsky/draw/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>OpenGL<sp/>Errors</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>LS_DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1add2eb2cf6b617123f824b9412ed2c2ba" kindref="member">lsPrintGlError</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLenum<sp/>errorCode<sp/>=<sp/>glGetError();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(errorCode)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_ENUM:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_INVALID_ENUM<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_VALUE:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_INVALID_VALUE<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_OPERATION:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_INVALID_OPERATION<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_STACK_OVERFLOW:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_STACK_OVERFLOW<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_STACK_UNDERFLOW:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_STACK_UNDERFLOW<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_OUT_OF_MEMORY:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_OUT_OF_MEMORY<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_FRAMEBUFFER_OPERATION:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a3f10ca43cace5624eed676aa775f3174" kindref="member">LS_LOG_ERR</ref>(</highlight><highlight class="stringliteral">&quot;OpenGL<sp/>Error:<sp/>GL_INVALID_FRAMEBUFFER_OPERATION<sp/>On<sp/>line<sp/>&quot;</highlight><highlight class="normal">,<sp/>line,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal">,<sp/>file,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_NO_ERROR:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/setup.cpp"/>
+  </compounddef>
+</doxygen>

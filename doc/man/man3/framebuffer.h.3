@@ -1,0 +1,57 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <GL/glew\&.h>\fP
+.br
+\fC#include 'lightsky/draw/setup\&.h'\fP
+.br
+\fC#include 'lightsky/draw/texture\&.h'\fP
+.br
+\fC#include 'lightsky/draw/generic/framebuffer_impl\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBls::draw::framebuffer\fP"
+.br
+.RI "\fIFramebuffer Object\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::draw\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBls::draw::fbo_attach_t\fP : int { \fBls::draw::FBO_ATTACHMENT_0\fP = GL_COLOR_ATTACHMENT0, \fBls::draw::FBO_ATTACHMENT_1\fP = GL_COLOR_ATTACHMENT1, \fBls::draw::FBO_ATTACHMENT_2\fP = GL_COLOR_ATTACHMENT2, \fBls::draw::FBO_ATTACHMENT_3\fP = GL_COLOR_ATTACHMENT3, \fBls::draw::FBO_ATTACHMENT_4\fP = GL_COLOR_ATTACHMENT4, \fBls::draw::FBO_ATTACHMENT_5\fP = GL_COLOR_ATTACHMENT5, \fBls::draw::FBO_ATTACHMENT_6\fP = GL_COLOR_ATTACHMENT6, \fBls::draw::FBO_ATTACHMENT_7\fP = GL_COLOR_ATTACHMENT7, \fBls::draw::FBO_ATTACHMENT_8\fP = GL_COLOR_ATTACHMENT8, \fBls::draw::FBO_ATTACHMENT_9\fP = GL_COLOR_ATTACHMENT9, \fBls::draw::FBO_ATTACHMENT_10\fP = GL_COLOR_ATTACHMENT10, \fBls::draw::FBO_ATTACHMENT_11\fP = GL_COLOR_ATTACHMENT11, \fBls::draw::FBO_ATTACHMENT_12\fP = GL_COLOR_ATTACHMENT12, \fBls::draw::FBO_ATTACHMENT_13\fP = GL_COLOR_ATTACHMENT13, \fBls::draw::FBO_ATTACHMENT_14\fP = GL_COLOR_ATTACHMENT14, \fBls::draw::FBO_ATTACHMENT_15\fP = GL_COLOR_ATTACHMENT15, \fBls::draw::FBO_ATTACHMENT_DEPTH\fP = GL_DEPTH_ATTACHMENT, \fBls::draw::FBO_ATTACHMENT_STENCIL\fP = GL_STENCIL_ATTACHMENT, \fBls::draw::FBO_ATTACHMENT_DEPTH_STENCIL\fP = GL_DEPTH_STENCIL_ATTACHMENT }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::texture_target_t\fP : int { \fBls::draw::FBO_1D_TARGET\fP = GL_TEXTURE_1D, \fBls::draw::FBO_2D_TARGET\fP = GL_TEXTURE_2D, \fBls::draw::FBO_2D_MS_TARGET\fP = GL_TEXTURE_2D_MULTISAMPLE, \fBls::draw::FBO_2D_MS_ARRAY_TARGET\fP = GL_TEXTURE_2D_MULTISAMPLE_ARRAY, \fBls::draw::FBO_RECT_TARGET\fP = GL_TEXTURE_RECTANGLE, \fBls::draw::FBO_3D_TARGET\fP = GL_TEXTURE_3D, \fBls::draw::FBO_POS_X_TARGET\fP = GL_TEXTURE_CUBE_MAP_POSITIVE_X, \fBls::draw::FBO_NEG_X_TARGET\fP = GL_TEXTURE_CUBE_MAP_NEGATIVE_X, \fBls::draw::FBO_POS_Y_TARGET\fP = GL_TEXTURE_CUBE_MAP_POSITIVE_Y, \fBls::draw::FBO_NEG_Y_TARGET\fP = GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, \fBls::draw::FBO_POS_Z_TARGET\fP = GL_TEXTURE_CUBE_MAP_POSITIVE_Z, \fBls::draw::FBO_NEG_Z_TARGET\fP = GL_TEXTURE_CUBE_MAP_NEGATIVE_Z }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::fbo_access_t\fP : unsigned { \fBls::draw::FBO_ACCESS_RW\fP = GL_FRAMEBUFFER, \fBls::draw::FBO_ACCESS_W\fP = GL_DRAW_FRAMEBUFFER, \fBls::draw::FBO_ACCESS_R\fP = GL_READ_FRAMEBUFFER }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::fbo_status_t\fP : int { \fBls::draw::FBO_COMPLETE\fP = GL_FRAMEBUFFER_COMPLETE, \fBls::draw::FBO_UNDEFINED\fP = GL_FRAMEBUFFER_UNDEFINED, \fBls::draw::FBO_INCOMPLETE_ATTACHMENT\fP = GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT, \fBls::draw::FBO_INCOMPLETE_MISSING_ATTACHMENT\fP = GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT, \fBls::draw::FBO_INCOMPLETE_DRAW_BUFFER\fP = GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER, \fBls::draw::FBO_INCOMPLETE_READ_BUFFER\fP = GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER, \fBls::draw::FBO_UNSUPPORTED\fP = GL_FRAMEBUFFER_UNSUPPORTED, \fBls::draw::FBO_INCOMPLETE_MULTISAMPLE\fP = GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE, \fBls::draw::FBO_INCOMPLETE_LAYER_TARGETS\fP = GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS }"
+.br
+.ti -1c
+.RI "enum \fBls::draw::fbo_mask_t\fP : int { \fBls::draw::FBO_DEPTH_BIT\fP = GL_DEPTH_BUFFER_BIT, \fBls::draw::FBO_STENCIL_BIT\fP = GL_STENCIL_BUFFER_BIT, \fBls::draw::FBO_COLOR_BIT\fP = GL_COLOR_BUFFER_BIT }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

@@ -1,0 +1,202 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/math/vec_utils.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/math/vec_utils.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'lightsky/math/types\&.h'\fP
+.br
+\fC#include 'lightsky/math/scalar_utils\&.h'\fP
+.br
+\fC#include 'lightsky/math/vec2\&.h'\fP
+.br
+\fC#include 'lightsky/math/vec3\&.h'\fP
+.br
+\fC#include 'lightsky/math/vec4\&.h'\fP
+.br
+\fC#include 'lightsky/math/generic/vec_utils_impl\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::math\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::dot\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fIdot Retrieve the dot product of a 2D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::cross\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fIcross Retrieve the cross product of two 2D vectors\&. This method was developed my Allen Chou: http://allenchou.net/2013/07/cross-product-of-2d-vectors/ This is useful in determining if the second vector is on the left or right side of the first\&. \fP"
+.ti -1c
+.RI "template<typename N > vec2_t< N > \fBls::math::normalize\fP (const vec2_t< N > &v)"
+.br
+.RI "\fInormalize Normalize the vector v so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::lengthSquared\fP (const vec2_t< N > &v)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a 2D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::length\fP (const vec2_t< N > &v)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a 2D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > vec2_t< N > \fBls::math::rotate\fP (const vec2_t< N > &v, N angle)"
+.br
+.RI "\fIrotate Rotate a 2D vector by a number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::angleBetween\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two 2D vectors placed around the origin of the Cartesian coordinate plane\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::angleBetween\fP (const vec2_t< N > &v1, const vec2_t< N > &v2, const vec2_t< N > &origin)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two points in 2D space, with a specified origin\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec2_t< N > \fBls::math::min\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fImin Determine which of two vectors has the smallest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec2_t< N > \fBls::math::mix\fP (const vec2_t< N > &v1, const vec2_t< N > &v2, N percent)"
+.br
+.RI "\fImix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec2_t< N > \fBls::math::max\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fImax Determine which of two vectors has the largest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > vec2_t< N > \fBls::math::project\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fIproject Project one vector onto another and retrieve the result\&. \fP"
+.ti -1c
+.RI "template<typename N > vec2_t< N > \fBls::math::reflect\fP (const vec2_t< N > &v, const vec2_t< N > &norm)"
+.br
+.RI "\fIreflect Reflect a vector v around a normal vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec2_t< N > \fBls::math::mid\fP (const vec2_t< N > &v1, const vec2_t< N > &v2)"
+.br
+.RI "\fImid \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::dot\fP (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+.br
+.RI "\fIdot Retrieve the dot product of a 3D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::cross\fP (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+.br
+.RI "\fIcross Retrieve the cross product of two 3D vectors\&. This result is perpendicular to the two input vectors\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::normalize\fP (const vec3_t< N > &v)"
+.br
+.RI "\fInormalize Normalize the vector v so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::lengthSquared\fP (const vec3_t< N > &v)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a 3D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::length\fP (const vec3_t< N > &v)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a 3D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::xRotation\fP (N angle)"
+.br
+.RI "\fIxRotation Retrieve a unit vector that has been rotated around the cartesian X-Axis by a certain number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::yRotation\fP (N angle)"
+.br
+.RI "\fIxRotation Retrieve a unit vector that has been rotated around the cartesian Y-Axis by a certain number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::zRotation\fP (N angle)"
+.br
+.RI "\fIxRotation Retrieve a unit vector that has been rotated around the cartesian Z-Axis by a certain number of radians\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::angleBetween\fP (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two 3D vectors placed around the origin of the Cartesian coordinate plane\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::angleBetween\fP (const vec3_t< N > &v1, const vec3_t< N > &v2, const vec3_t< N > &origin)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two points in 3D space, with a specified origin\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::min\fP (const vec3_t< N > &, const vec3_t< N > &)"
+.br
+.RI "\fImin Determine which of two vectors has the smallest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::mix\fP (const vec3_t< N > &, const vec3_t< N > &, N)"
+.br
+.RI "\fImix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::max\fP (const vec3_t< N > &, const vec3_t< N > &)"
+.br
+.RI "\fImax Determine which of two vectors has the largest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::project\fP (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+.br
+.RI "\fIproject Project one vector onto another and retrieve the result\&. \fP"
+.ti -1c
+.RI "template<typename N > vec3_t< N > \fBls::math::reflect\fP (const vec3_t< N > &v1, const vec3_t< N > &norm)"
+.br
+.RI "\fIreflect Reflect a vector v around a normal vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec3_t< N > \fBls::math::mid\fP (const vec3_t< N > &v1, const vec3_t< N > &v2)"
+.br
+.RI "\fImid \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::dot\fP (const vec4_t< N > &, const vec4_t< N > &v)"
+.br
+.RI "\fIdot Retrieve the dot product of two 4D vectors\&. \fP"
+.ti -1c
+.RI "template<typename N > vec4_t< N > \fBls::math::normalize\fP (const vec4_t< N > &v)"
+.br
+.RI "\fInormalize Normalize the vector v so that its points lie within a unit-sphere\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr N \fBls::math::lengthSquared\fP (const vec4_t< N > &v)"
+.br
+.RI "\fIlengthSquared Retrieve the square of the length/magnitude of a 4D vector\&. This is faster than calling \fBlength()\fP as no square roots are performed\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::length\fP (const vec4_t< N > &v)"
+.br
+.RI "\fIlength Retrieve the length/magnitude of a 4D vector\&. \fP"
+.ti -1c
+.RI "template<typename N > N \fBls::math::angleBetween\fP (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+.br
+.RI "\fIangleBetween Determine the angle, in radians of two 4D vectors placed around the origin of the Cartesian coordinate plane\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec4_t< N > \fBls::math::min\fP (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+.br
+.RI "\fImin Determine which of two vectors has the smallest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec4_t< N > \fBls::math::mix\fP (const vec4_t< N > &v1, const vec4_t< N > &v2, N percent)"
+.br
+.RI "\fImix Retrieve the linear interpolation of one vector towards another, moved by a certain percentage\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec4_t< N > \fBls::math::max\fP (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+.br
+.RI "\fImax Determine which of two vectors has the largest length/magnitude\&. \fP"
+.ti -1c
+.RI "template<typename N > vec4_t< N > \fBls::math::project\fP (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+.br
+.RI "\fIproject Project one vector onto another and retrieve the result\&. \fP"
+.ti -1c
+.RI "template<typename N > vec4_t< N > \fBls::math::reflect\fP (const vec4_t< N > &v1, const vec4_t< N > &norm)"
+.br
+.RI "\fIreflect Reflect a vector v around a normal vector\&. \fP"
+.ti -1c
+.RI "template<typename N > constexpr vec4_t< N > \fBls::math::mid\fP (const vec4_t< N > &v1, const vec4_t< N > &v2)"
+.br
+.RI "\fImid \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

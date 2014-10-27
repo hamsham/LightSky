@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="functor_8h" kind="file">
+    <compoundname>functor.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">typeinfo</includes>
+    <includes refid="assert_8h" local="yes">lightsky/utils/assert.h</includes>
+    <includes refid="script_2setup_8h" local="yes">lightsky/script/setup.h</includes>
+    <includes refid="scriptable_8h" local="yes">lightsky/script/scriptable.h</includes>
+    <includes refid="variable_8h" local="yes">lightsky/script/variable.h</includes>
+    <includes refid="functor__impl_8h" local="yes">lightsky/script/generic/functor_impl.h</includes>
+    <includedby refid="script_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/script.h</includedby>
+    <includedby refid="functor_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp</includedby>
+    <incdepgraph>
+      <node id="6795">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="6796" relation="include">
+        </childnode>
+        <childnode refid="6797" relation="include">
+        </childnode>
+      </node>
+      <node id="6796">
+        <label>cstdint</label>
+      </node>
+      <node id="6802">
+        <label>lightsky/script/generic/functor_impl.h</label>
+        <link refid="functor__impl_8h"/>
+      </node>
+      <node id="6800">
+        <label>string</label>
+      </node>
+      <node id="6794">
+        <label>map</label>
+      </node>
+      <node id="6787">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</label>
+        <link refid="functor.h"/>
+        <childnode refid="6788" relation="include">
+        </childnode>
+        <childnode refid="6789" relation="include">
+        </childnode>
+        <childnode refid="6790" relation="include">
+        </childnode>
+        <childnode refid="6791" relation="include">
+        </childnode>
+        <childnode refid="6793" relation="include">
+        </childnode>
+        <childnode refid="6798" relation="include">
+        </childnode>
+        <childnode refid="6799" relation="include">
+        </childnode>
+        <childnode refid="6802" relation="include">
+        </childnode>
+      </node>
+      <node id="6792">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="6801">
+        <label>lightsky/script/generic/variable_impl.h</label>
+        <link refid="variable__impl_8h"/>
+      </node>
+      <node id="6799">
+        <label>lightsky/script/variable.h</label>
+        <link refid="variable_8h"/>
+        <childnode refid="6800" relation="include">
+        </childnode>
+        <childnode refid="6788" relation="include">
+        </childnode>
+        <childnode refid="6793" relation="include">
+        </childnode>
+        <childnode refid="6798" relation="include">
+        </childnode>
+        <childnode refid="6801" relation="include">
+        </childnode>
+      </node>
+      <node id="6797">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="6798">
+        <label>lightsky/script/scriptable.h</label>
+        <link refid="scriptable_8h"/>
+        <childnode refid="6788" relation="include">
+        </childnode>
+        <childnode refid="6795" relation="include">
+        </childnode>
+        <childnode refid="6793" relation="include">
+        </childnode>
+      </node>
+      <node id="6790">
+        <label>typeinfo</label>
+      </node>
+      <node id="6789">
+        <label>utility</label>
+      </node>
+      <node id="6788">
+        <label>iostream</label>
+      </node>
+      <node id="6793">
+        <label>lightsky/script/setup.h</label>
+        <link refid="script_2setup_8h"/>
+        <childnode refid="6794" relation="include">
+        </childnode>
+        <childnode refid="6792" relation="include">
+        </childnode>
+        <childnode refid="6795" relation="include">
+        </childnode>
+      </node>
+      <node id="6791">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="6792" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6805">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="6806" relation="include">
+        </childnode>
+      </node>
+      <node id="6803">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h</label>
+        <link refid="functor.h"/>
+        <childnode refid="6804" relation="include">
+        </childnode>
+        <childnode refid="6807" relation="include">
+        </childnode>
+      </node>
+      <node id="6804">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="6805" relation="include">
+        </childnode>
+      </node>
+      <node id="6807">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/script/src/functor.cpp</label>
+        <link refid="functor_8cpp"/>
+      </node>
+      <node id="6806">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classls_1_1script_1_1functor" prot="public">ls::script::functor</innerclass>
+    <innerclass refid="classls_1_1script_1_1functor__t" prot="public">ls::script::functor_t</innerclass>
+    <innerclass refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4" prot="public">ls::script::functor_t&lt; hashId, void &gt;</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1script">ls::script</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="functor_8h_1af93f7c7327700fe421e276808ee084e4" prot="public" static="no">
+        <name>LS_SCRIPT_DECLARE_FUNC</name>
+        <param><defname>funcName</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>\
+    enum : ls::script::hash_t { \
+        scriptHash_##funcName = <ref refid="script_2setup_8h_1aa63519079e4c89f935008bf5ea9f7096" kindref="member">LS_SCRIPT_HASH_FUNC</ref>(<ref refid="macros_8h_1a5bfafe8742a13a31e54eab3ef7824792" kindref="member">LS_STRINGIFY</ref>(funcName)) \
+    }; \
+    \
+    typedef <ref refid="classls_1_1script_1_1functor__t" kindref="compound">ls::script::functor_t</ref>&lt;scriptHash_##funcName, __VA_ARGS__&gt; scriptFunc_##funcName; \
+    \
+    extern const <ref refid="namespacels_1_1script_1aa940e50f52fb0f92187fd3fb58ba5d7f" kindref="member">ls::script::funcFactory</ref> scriptFactory_##funcName; \
+    \
+    extern template class <ref refid="classls_1_1script_1_1functor__t" kindref="compound">ls::script::functor_t</ref>&lt;scriptHash_##funcName, __VA_ARGS__&gt;</initializer>
+        <briefdescription>
+<para>Functor Declaration for Header Files. </para>        </briefdescription>
+        <detaileddescription>
+<para>Use this macro in a header file in order to declare a functor and provide global access to the script type to be used.</para><para>For example, use it as follows: <ref refid="functor_8h_1af93f7c7327700fe421e276808ee084e4" kindref="member">LS_SCRIPT_DECLARE_FUNC(addNums, scriptVar_int, scriptVar_int)</ref>; <ref refid="functor_8h_1af93f7c7327700fe421e276808ee084e4" kindref="member">LS_SCRIPT_DECLARE_FUNC(strcat, scriptVar_string, scriptVar_string, scriptVar_string)</ref>;</para><para>The sample above will provide the declarations, hashes, and factories for two new functors. These functors themselves can be referenced like so: &apos;scriptFunc_addNums&apos; and &apos;scriptFunc_strcat&apos;</para><para>The hashes can be referenced as such: &apos;scriptHash_addNums&apos; and &apos;scriptHash_strcat&apos;</para><para>And the factory methods are accessible like this: <ref refid="classls_1_1script_1_1functor" kindref="compound">ls::script::functor</ref>* pFunc; pFunc = ls::script::createScriptFunc(scriptHash_addNums); ... delete pFunc;</para><para>pFunc = ls::script::createScriptFunc(scriptHash_strcat); ... delete pFunc; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="759" column="9" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="759" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="functor_8h_1a27a9a4108297d239891d177a99706fa4" prot="public" static="no">
+        <name>LS_SCRIPT_DEFINE_FUNC</name>
+        <param><defname>funcName</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>template class <ref refid="classls_1_1script_1_1functor__t" kindref="compound">ls::script::functor_t</ref>&lt;scriptHash_##funcName, __VA_ARGS__&gt;; \
+    \
+    const <ref refid="namespacels_1_1script_1aa940e50f52fb0f92187fd3fb58ba5d7f" kindref="member">ls::script::funcFactory</ref> scriptFactory_##funcName = \
+        <ref refid="namespacels_1_1script_1a19d0e7d2d56f7a43dd886035ded61afd" kindref="member">ls::script::gFuncFactory</ref>[scriptHash_##funcName] = \
+            []()-&gt;<ref refid="classls_1_1script_1_1functor" kindref="compound">ls::script::functor</ref>* { return new scriptFunc_##funcName{}; }; \
+    \
+    template &lt;&gt; \
+    const <ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">ls::script::func_ref_t</ref> \
+    scriptFunc_##funcName::functionImpl = *[](<ref refid="classls_1_1script_1_1variable" kindref="compound">ls::script::variable</ref>** const pArgs)-&gt;void</initializer>
+        <briefdescription>
+<para>Function Definition for source files. </para>        </briefdescription>
+        <detaileddescription>
+<para>The definition of functors MUST define how arguments will be mapped to native functions. For example, to use this, simply write as follows: <verbatim>LS_SCRIPT_DEFINE_FUNC(addNums, scriptVar_int, scriptVar_int) {
+    LS_SCRIPT_PARAM(0, scriptVar_int) += LS_SCRIPT_PARAM(1, scriptVar_int);
+};
+
+LS_SCRIPT_DEFINE_FUNC(strcat, scriptVar_string, scriptVar_string, scriptVar_string) {
+    LS_SCRIPT_PARAM(0, scriptVar_string)
+        = LS_SCRIPT_PARAM(1, scriptVar_string)
+        + LS_SCRIPT_PARAM(2, scriptVar_string);
+};
+</verbatim></para><para>Although a bit verbose, the process is actually quite painless once you get used to it. As shown above, functor arguments/parameters are accessible through both indices and types. In order to ensure that the proper types get used by a functor, make sure that the &apos;compile()&apos; method is called and returns TRUE before running a functor.</para><para>Finally, defining a functor using this macro enables linkage to the global factory methods. A functor can now be spawned in the following manner: <ref refid="classls_1_1script_1_1functor" kindref="compound">ls::script::functor</ref>* pFunc; pFunc = ls::script::createScriptFunc(scriptHash_addNums); if (pFunc-&gt;compile()) { pFunc-&gt;run(); } delete pFunc; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="803" column="9" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="803" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="functor_8h_1a4072998a91440e70535b9ce1e724c775" prot="public" static="no">
+        <name>LS_SCRIPT_PARAM</name>
+        <param><defname>index</defname></param>
+        <param><defname>varType</defname></param>
+        <initializer>static_cast&lt;varType*&gt;(pArgs[index])-&gt;data</initializer>
+        <briefdescription>
+<para>Function Argument Accessibility. </para>        </briefdescription>
+        <detaileddescription>
+<para>Use this macro to access arguments/parameters when defining the functor. For example, use it like this: <verbatim>LS_SCRIPT_DEFINE_FUNC(addNums, scriptVar_int, scriptVar_int) {
+    LS_SCRIPT_PARAM(0, scriptVar_int) += LS_SCRIPT_PARAM(1, scriptVar_int);
+};
+
+LS_SCRIPT_DEFINE_FUNC(strcat, scriptVar_string, scriptVar_string, scriptVar_string) {
+    LS_SCRIPT_PARAM(0, scriptVar_string)
+        = LS_SCRIPT_PARAM(1, scriptVar_string)
+        + LS_SCRIPT_PARAM(2, scriptVar_string);
+};</verbatim> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="830" column="9" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" bodystart="830" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="functor_8h_1a87bc8a578513f4abc138815528b49f4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LS_SCRIPT_DECLARE_FUNC</definition>
+        <argsstring>(empty, void)</argsstring>
+        <name>LS_SCRIPT_DECLARE_FUNC</name>
+        <param>
+          <type>empty</type>
+        </param>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h" line="836" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>functor.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>April<sp/>13,<sp/>2014,<sp/>9:07<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_SCRIPT_FUNCTOR_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_SCRIPT_FUNCTOR_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::cout,<sp/>std::cin,<sp/>std::cerr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::move()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>typeid(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assert_8h" kindref="compound">lightsky/utils/assert.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>LS_DEBUG_ASSERT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="script_2setup_8h" kindref="compound">lightsky/script/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="scriptable_8h" kindref="compound">lightsky/script/scriptable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="variable_8h" kindref="compound">lightsky/script/variable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">script<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(&amp;<ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref>)(<ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref>**<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classls_1_1script_1_1functor" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1scriptable" kindref="compound">scriptable</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>arg_t&gt;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a987920da0ac130e7ef4886244da54462" kindref="member">checkSingleArg</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/>f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i,<sp/>arg_t*<sp/>t);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>arg_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>args_t&gt;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a8941b6c017a655154efe36670588bb62" kindref="member">checkArgs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/>f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i,<sp/>arg_t*<sp/>t,<sp/>args_t*...<sp/>ts);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>arg_t&gt;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a8941b6c017a655154efe36670588bb62" kindref="member">checkArgs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/>f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i,<sp/>arg_t*<sp/>t);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124" refid="classls_1_1script_1_1functor_1acbfe9e8f75165199dbb1f844889420d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>*<sp/><ref refid="classls_1_1script_1_1functor_1acbfe9e8f75165199dbb1f844889420d8" kindref="member">nextFunc</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134" refid="classls_1_1script_1_1functor_1a617aa828e6583631566752ed312e12e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref><sp/><ref refid="classls_1_1script_1_1functor_1a617aa828e6583631566752ed312e12e8" kindref="member">pFunction</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142" refid="classls_1_1script_1_1functor_1ae941567add854b32d89c3100200a3da0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref>**<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1ae941567add854b32d89c3100200a3da0" kindref="member">pArgs</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor_1ad26e83423084b818c23a309dbee38de9" kindref="member">functor</ref>(<ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref>**<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pArguments,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref><sp/>pFunc);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1ae00c4fbeafb2768e853d2a5c30224de0" kindref="member">~functor</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor_1ad26e83423084b818c23a309dbee38de9" kindref="member">functor</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor_1ad26e83423084b818c23a309dbee38de9" kindref="member">functor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/>f)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor_1ad26e83423084b818c23a309dbee38de9" kindref="member">functor</ref>(<ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;&amp;<sp/>f)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/><ref refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;<sp/><ref refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" kindref="member">operator =</ref>(<ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>&amp;&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>*<sp/><ref refid="classls_1_1script_1_1functor_1a060497e0e2440b8e808dca09cd3ef00d" kindref="member">getNextFunc</ref>();</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1af6ba6622fdf347e7db2760ee30e7556f" kindref="member">setNextFunc</ref>(<ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>f);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1script_1aa2320f4ac1ff7ade16588ce1f5c59f1a" kindref="member">script_base_t</ref><sp/><ref refid="classls_1_1script_1_1functor_1ac47c53ecc1323ad42a22bc1d822ca7ad" kindref="member">getScriptType</ref>()<sp/>const<sp/>final;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtual<sp/><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="classls_1_1script_1_1functor_1a4c872e2fd539ac19f8059714c263e30b" kindref="member">getScriptSubType</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1add592ec77ef606c708a43ae5191f45e3" kindref="member">getNumArgs</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inline<sp/><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref>*<sp/><ref refid="classls_1_1script_1_1functor_1a618828b53466cb566e4b3021731cc365" kindref="member">getArg</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>index)<sp/>const;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1abaffa911b2d74b755f817fe7090b82b6" kindref="member">setArg</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>index,<sp/><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref>*<sp/>v);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1affeea1a5c68be54375de86a3d93ec99e" kindref="member">load</ref>(std::istream&amp;<sp/>istr,<sp/><ref refid="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" kindref="member">varLoaderMap</ref>&amp;<sp/>vlm,<sp/><ref refid="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" kindref="member">funcLoaderMap</ref>&amp;<sp/>flm);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a912026d4acf2de9d1e647afb11e881b1" kindref="member">save</ref>(std::ostream&amp;<sp/>ostr)<sp/>const;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" kindref="member">compile</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a7598508969b165e43cf0b59d604a9e96" kindref="member">run</ref>();</highlight></codeline>
+<codeline lineno="371"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal">template<sp/>&lt;<ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/>hashId,<sp/>typename...<sp/>args_t&gt;</highlight></codeline>
+<codeline lineno="380" refid="classls_1_1script_1_1functor__t" refkind="compound"><highlight class="normal">class<sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref><sp/>final<sp/>:<sp/>public<sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref><sp/>{</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1variable" kindref="compound">variable</ref>*<sp/>parameters[</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(args_t)]<sp/>=<sp/>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref><sp/>functionImpl;</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>();</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>();</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>(<ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/><ref refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;);</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/><ref refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" kindref="member">operator =</ref>(<ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="classls_1_1script_1_1functor_1a4c872e2fd539ac19f8059714c263e30b" kindref="member">getScriptSubType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1add592ec77ef606c708a43ae5191f45e3" kindref="member">getNumArgs</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1affeea1a5c68be54375de86a3d93ec99e" kindref="member">load</ref>(std::istream&amp;<sp/>istr,<sp/><ref refid="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" kindref="member">varLoaderMap</ref>&amp;<sp/>vlm,<sp/><ref refid="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" kindref="member">funcLoaderMap</ref>&amp;<sp/>flm)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a912026d4acf2de9d1e647afb11e881b1" kindref="member">save</ref>(std::ostream&amp;<sp/>ostr)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" kindref="member">compile</ref>()<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="552"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;hash_t<sp/>hashId&gt;</highlight></codeline>
+<codeline lineno="558" refid="classls_1_1script_1_1functor__t_3_01hash_id_00_01void_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&lt;hashId,<sp/>void&gt;<sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor" kindref="compound">functor</ref><sp/>{</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1script_1a319408b52de3d462183e0a84e1cf353b" kindref="member">func_ref_t</ref><sp/>functionImpl;</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"></highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>();</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"></highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>();</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"></highlight></codeline>
+<codeline lineno="599"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="610"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>(<ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="611"><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/><ref refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;<sp/><ref refid="classls_1_1script_1_1functor_1ac4b5de93a8ba47fa09f0ea186b5e55f4" kindref="member">operator =</ref>(<ref refid="classls_1_1script_1_1functor__t" kindref="compound">functor_t</ref>&amp;&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"></highlight></codeline>
+<codeline lineno="648"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1utils_1a53ed44f6f1c3753ed11e1241ac36647b" kindref="member">hash_t</ref><sp/><ref refid="classls_1_1script_1_1functor_1a4c872e2fd539ac19f8059714c263e30b" kindref="member">getScriptSubType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="649"><highlight class="normal"></highlight></codeline>
+<codeline lineno="662"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1add592ec77ef606c708a43ae5191f45e3" kindref="member">getNumArgs</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="663"><highlight class="normal"></highlight></codeline>
+<codeline lineno="687"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1affeea1a5c68be54375de86a3d93ec99e" kindref="member">load</ref>(std::istream&amp;<sp/>istr,<sp/><ref refid="namespacels_1_1script_1a7269f0f5e6dd192ead0637331c331671" kindref="member">varLoaderMap</ref>&amp;<sp/>vlm,<sp/><ref refid="namespacels_1_1script_1acbb0b98d89aa532fe62e508927abb22c" kindref="member">funcLoaderMap</ref>&amp;<sp/>flm)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="688"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="701"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a912026d4acf2de9d1e647afb11e881b1" kindref="member">save</ref>(std::ostream&amp;<sp/>ostr)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="702"><highlight class="normal"></highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1script_1_1functor_1a7a8f015d962fbe40d172661a5d31c4ca" kindref="member">compile</ref>()<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="722"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="723"><highlight class="normal"></highlight></codeline>
+<codeline lineno="724"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>script<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="725"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="726"><highlight class="normal"></highlight></codeline>
+<codeline lineno="727"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="functor__impl_8h" kindref="compound">lightsky/script/generic/functor_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="728"><highlight class="normal"></highlight></codeline>
+<codeline lineno="729"><highlight class="normal"></highlight><highlight class="comment">/*-----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="730"><highlight class="comment"><sp/><sp/><sp/><sp/>Functor<sp/>Utility<sp/>Macros</highlight></codeline>
+<codeline lineno="731"><highlight class="comment">-----------------------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="759" refid="functor_8h_1af93f7c7327700fe421e276808ee084e4" refkind="member"><highlight class="preprocessor">#define<sp/>LS_SCRIPT_DECLARE_FUNC(funcName,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="760"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="761"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>enum<sp/>:<sp/>ls::script::hash_t<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="762"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scriptHash_##funcName<sp/>=<sp/>LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(funcName))<sp/>\</highlight></codeline>
+<codeline lineno="763"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};<sp/>\</highlight></codeline>
+<codeline lineno="764"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="765"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>typedef<sp/>ls::script::functor_t&lt;scriptHash_##funcName,<sp/>__VA_ARGS__&gt;<sp/>scriptFunc_##funcName;<sp/>\</highlight></codeline>
+<codeline lineno="766"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="767"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>extern<sp/>const<sp/>ls::script::funcFactory<sp/>scriptFactory_##funcName;<sp/>\</highlight></codeline>
+<codeline lineno="768"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="769"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>extern<sp/>template<sp/>class<sp/>ls::script::functor_t&lt;scriptHash_##funcName,<sp/>__VA_ARGS__&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="770"><highlight class="normal"></highlight></codeline>
+<codeline lineno="803" refid="functor_8h_1a27a9a4108297d239891d177a99706fa4" refkind="member"><highlight class="preprocessor">#define<sp/>LS_SCRIPT_DEFINE_FUNC(funcName,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="804"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>ls::script::functor_t&lt;scriptHash_##funcName,<sp/>__VA_ARGS__&gt;;<sp/>\</highlight></codeline>
+<codeline lineno="805"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="806"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>const<sp/>ls::script::funcFactory<sp/>scriptFactory_##funcName<sp/>=<sp/>\</highlight></codeline>
+<codeline lineno="807"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ls::script::gFuncFactory[scriptHash_##funcName]<sp/>=<sp/>\</highlight></codeline>
+<codeline lineno="808"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[]()-&gt;ls::script::functor*<sp/>{<sp/>return<sp/>new<sp/>scriptFunc_##funcName{};<sp/>};<sp/>\</highlight></codeline>
+<codeline lineno="809"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="810"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;&gt;<sp/>\</highlight></codeline>
+<codeline lineno="811"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>const<sp/>ls::script::func_ref_t<sp/>\</highlight></codeline>
+<codeline lineno="812"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>scriptFunc_##funcName::functionImpl<sp/>=<sp/>*[](ls::script::variable**<sp/>const<sp/>pArgs)-&gt;void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="813"><highlight class="normal"></highlight></codeline>
+<codeline lineno="830" refid="functor_8h_1a4072998a91440e70535b9ce1e724c775" refkind="member"><highlight class="preprocessor">#define<sp/>LS_SCRIPT_PARAM(index,<sp/>varType)<sp/>\</highlight></codeline>
+<codeline lineno="831"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>static_cast&lt;varType*&gt;(pArgs[index])-&gt;data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="832"><highlight class="normal"></highlight></codeline>
+<codeline lineno="833"><highlight class="normal"></highlight><highlight class="comment">/*-----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="834"><highlight class="comment"><sp/><sp/><sp/><sp/>Built-In<sp/>Types</highlight></codeline>
+<codeline lineno="835"><highlight class="comment">-----------------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="836"><highlight class="normal"><ref refid="functor_8h_1af93f7c7327700fe421e276808ee084e4" kindref="member">LS_SCRIPT_DECLARE_FUNC</ref>(empty,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="837"><highlight class="normal"></highlight></codeline>
+<codeline lineno="838"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_SCRIPT_FUNCTOR_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="839"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/functor.h"/>
+  </compounddef>
+</doxygen>

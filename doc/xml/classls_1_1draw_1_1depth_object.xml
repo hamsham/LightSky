@@ -1,0 +1,582 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1draw_1_1depth_object" kind="class" prot="public">
+    <compoundname>ls::draw::depthObject</compoundname>
+    <includes refid="depth_object_8h" local="no">depthObject.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1draw_1_1depth_object_1a008efe7ac8aec44f306fd74aac6625af" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ls::draw::depthObject::enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <initializer>= GL_FALSE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if depth testing should be enabled or disabled. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="47" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1depth_object_1a4b40846650617f22414678c3a2ca529e" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ls::draw::depthObject::depthClearVal</definition>
+        <argsstring></argsstring>
+        <name>depthClearVal</name>
+        <initializer>= 1.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>clearVal is used to set the value of the depth buffer when it has been cleared using &quot;glClear(GL_DEPTH_BUFFER_BIT).&quot; This value is always clamped to a value between 0 and 1, according to the OpenGL documentation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="55" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1depth_object_1a10092fc43df80fa4655707d13bad991b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924" kindref="member">compare_func_t</ref></type>
+        <definition>compare_func_t ls::draw::depthObject::depthFunc</definition>
+        <argsstring></argsstring>
+        <name>depthFunc</name>
+        <initializer>= <ref refid="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a899bdbe26532c933ce873795e53ab45b" kindref="member">LS_DEPTH_LESS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Used to determine the if currently rendered fragment should be kept by comparing it to the one rendered before. This member is applied to the function &quot;glDepthFunc()&quot; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="62" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1depth_object_1af52689cebbdfc79ad1d94ecb253034bc" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ls::draw::depthObject::depthMask</definition>
+        <argsstring></argsstring>
+        <name>depthMask</name>
+        <initializer>= GL_TRUE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A GLboolean flag that, used with glDepthMask(), determines if a fragment should write to the depth buffer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="68" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1depth_object_1a798fc6b8a33a4b6d8aaa079ec7068f26" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ls::draw::depthObject::depthNear</definition>
+        <argsstring></argsstring>
+        <name>depthNear</name>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The near value that should be used by OpenGL&apos;s depth buffer. This value will be clamped between 0.0 and 1.0. This helps determine if a fragment is within the acceptable range of values that can be rendered to the currently bound framebuffer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="76" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1draw_1_1depth_object_1a4a8244d530d93be324c0aad0d99b62ac" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ls::draw::depthObject::depthFar</definition>
+        <argsstring></argsstring>
+        <name>depthFar</name>
+        <initializer>= 1.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The furthest normalized value that should be used by OpenGL&apos;s depth buffer. This value will be clamped between 0.0 and 1.0. This helps determine if a fragment is within the acceptable range of values that can be rendered to the currently bound framebuffer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="84" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a86e532edecfdaed61747f2dfd4a31f9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::depthObject::depthObject</definition>
+        <argsstring>()=default</argsstring>
+        <name>depthObject</name>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Creates an <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> using the default OpenGL depth parameters. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a2967cc84f8506b62d8dd69ff47bc8343" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::depthObject::depthObject</definition>
+        <argsstring>(const depthObject &amp;d)=default</argsstring>
+        <name>depthObject</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Copy Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to another <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="102" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a48ae5b7a06391e04fc5afb2f3c2cea3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::depthObject::depthObject</definition>
+        <argsstring>(depthObject &amp;&amp;d)=default</argsstring>
+        <name>depthObject</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> &amp;&amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Move Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant reference to another <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1ad65d54b4fac3eb2ae3a7ca95818b8574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::draw::depthObject::~depthObject</definition>
+        <argsstring>()=default</argsstring>
+        <name>~depthObject</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Does nothing. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a0093481bca2617c94505fc51b9e79d0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> &amp;</type>
+        <definition>depthObject&amp; ls::draw::depthObject::operator=</definition>
+        <argsstring>(const depthObject &amp;d)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Copy Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An R-Value reference to another <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> that is about to go out of scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="130" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1aafc980efa97aba947e88f192e27d65e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> &amp;</type>
+        <definition>depthObject&amp; ls::draw::depthObject::operator=</definition>
+        <argsstring>(depthObject &amp;&amp;d)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> &amp;&amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Move Operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Copies all data from the input parameter into *this.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An R-Value reference to another <ref refid="classls_1_1draw_1_1depth_object" kindref="compound">depthObject</ref> that is about to go out of scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="141" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a2053216c0ded4883db9a0e6e523165b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::bind</definition>
+        <argsstring>() const </argsstring>
+        <name>bind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind all members to their associated depth parameters. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="146" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp" bodystart="16" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1acfcbf2317f370450679d6f009b22c663" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::unbind</definition>
+        <argsstring>() const </argsstring>
+        <name>unbind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unbind all depth parameters used by *this and restore the default depth parameters to OpenGL.</para><para><simplesect kind="note"><para>Don&apos;t use this function if another depth object is going to be bound immediately afterwards. Doing so may cause a redundant state change within OpenGL. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="156" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a3d8cef9f17fe5bc063574fa6d835ae62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reset all currently held depth parameters to OpenGL&apos;s defaults. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="161" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/depthObject.cpp" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1ac39683af0510a453edf8114eee4f0d0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setState</definition>
+        <argsstring>(bool s=GL_FALSE)</argsstring>
+        <name>setState</name>
+        <param>
+          <type>bool</type>
+          <declname>s</declname>
+          <defval>GL_FALSE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set whether depth testing should be enabled or disabled in the current rendering state.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean value that will determine if OpenGL should have depth testing enabled or disabled. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="171" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a247618251e7815599fc2f272e450e5c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::depthObject::getState</definition>
+        <argsstring>() const </argsstring>
+        <name>getState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine whether depth testing should be enabled or disabled in the current rendering state.</para><para><simplesect kind="return"><para>bool A boolean value that will determine if OpenGL should have depth testing enabled or disabled. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="181" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a630cbabbebe82eaf1cdefdcaf4e0e371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setClearVal</definition>
+        <argsstring>(double cv)</argsstring>
+        <name>setClearVal</name>
+        <param>
+          <type>double</type>
+          <declname>cv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the value to be applied to the depth buffer after a call to glClear(LS_DEPTH_BUFFER_BIT).</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A double-precision float that will be clamped to the range of 0-1. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="190" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1ad3013fea4eb0a5c3ba4a247aa59629a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double ls::draw::depthObject::getClearVal</definition>
+        <argsstring>() const </argsstring>
+        <name>getClearVal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value that&apos;s applied to the depth buffer when a call to glClear(LS_DEPTH_BUFFER_BIT) has been made.</para><para><simplesect kind="return"><para>double A double-precision float that will be clamped to the range of 0-1. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="199" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a322afaaed6c53e4aa605b991de29b844" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setDepthFunc</definition>
+        <argsstring>(compare_func_t cf=LS_DEPTH_LESS)</argsstring>
+        <name>setDepthFunc</name>
+        <param>
+          <type><ref refid="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924" kindref="member">compare_func_t</ref></type>
+          <declname>cf</declname>
+          <defval><ref refid="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924a899bdbe26532c933ce873795e53ab45b" kindref="member">LS_DEPTH_LESS</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the function to be used when rendering fragments from the pixel shader. This value helps to determine if fragments should be kept or discarded.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The comparison function to be used when rendering pixel fragments. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="209" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1adc63468e37c9d995cdf9c0d560a426b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacels_1_1draw_1ad8ce802926ecb57cabd70fe3ae963924" kindref="member">compare_func_t</ref></type>
+        <definition>compare_func_t ls::draw::depthObject::getDepthFunc</definition>
+        <argsstring>() const </argsstring>
+        <name>getDepthFunc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the depth-comparison function used by this depth object.</para><para><simplesect kind="return"><para>compare_func_t The comparison function to be used when rendering pixel fragments. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="217" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a4e8a68af05739b81f1841c215d18e480" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setDepthMask</definition>
+        <argsstring>(bool dm=GL_TRUE)</argsstring>
+        <name>setDepthMask</name>
+        <param>
+          <type>bool</type>
+          <declname>dm</declname>
+          <defval>GL_TRUE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set whether to enable writes to the depth buffer.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If TRUE then writes to the depth buffer are enabled, if FALSE then they will be disabled. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="226" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="54" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a8209a854282dc42fc481d0147d12756a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::draw::depthObject::getDepthMask</definition>
+        <argsstring>() const </argsstring>
+        <name>getDepthMask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if writes to the depth buffer are enabled.</para><para><simplesect kind="return"><para>bool TRUE if depth buffer writes are enabled, or FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="234" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a852c984427f0a99ba22ec7cb69ea6001" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setDepthNear</definition>
+        <argsstring>(double near=0.0)</argsstring>
+        <name>setDepthNear</name>
+        <param>
+          <type>double</type>
+          <declname>near</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the near value that will be used by OpenGL&apos;s depth buffer. This value will be clamped between 0.0 and 1.0.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>near</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used to set the nearest renderable depth of a fragment output by the pixel shader. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="244" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a4c12c43619901927ff752e863abcfe75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double ls::draw::depthObject::getDepthNear</definition>
+        <argsstring>() const </argsstring>
+        <name>getDepthNear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the near value that will be used by OpenGL&apos;s depth buffer. This value will be clamped between 0.0 and 1.0.</para><para><simplesect kind="return"><para>double A double-precision floating point value that is used to determine if a value is within the screen-space depth buffer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="254" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1a77b8a60b925d7dc8de7d8eaad5f623dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setDepthFar</definition>
+        <argsstring>(double far=1.0)</argsstring>
+        <name>setDepthFar</name>
+        <param>
+          <type>double</type>
+          <declname>far</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the far value that will be used by OpenGL&apos;s depth buffer. This value will be clamped between 0.0 and 1.0.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>double</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A double-precision floating point value that will be used to determine if a value is within the screen-space depth buffer. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="264" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1ab6f3065e52ac7d20362f42e763f52935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double ls::draw::depthObject::getDepthFar</definition>
+        <argsstring>()</argsstring>
+        <name>getDepthFar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the far value that will be used by OpenGL&apos;s depth buffer. This value will be clamped between 0.0 and 1.0.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>far</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used to set the farthest renderable depth of a fragment output by the pixel shader. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="274" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1draw_1_1depth_object_1ab090821214239996ea38287cdcaf8a63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::draw::depthObject::setDepthRange</definition>
+        <argsstring>(double near=0.0, double far=1.0)</argsstring>
+        <name>setDepthRange</name>
+        <param>
+          <type>double</type>
+          <declname>near</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>far</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set both the the near and far values that will be used by OpenGL&apos;s depth buffer to determine if a fragment is of renderable depth. These value will be clamped between 0.0 and 1.0.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>near</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used to set the nearest renderable depth of a fragment output by the pixel shader.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>far</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used to set the farthest renderable depth of a fragment output by the pixel shader. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="289" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/depthObject_impl.h" bodystart="97" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Render Depth Manipulation Object. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ The depth object id an artificial wrapper for depth buffer manipulation within OpenGL. through this object, you can change the depth buffer&apos;s <heading level="2">state and parameters. </heading>
+</para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" line="42" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/draw/depthObject.h" bodystart="42" bodyend="290"/>
+    <listofallmembers>
+      <member refid="classls_1_1draw_1_1depth_object_1a2053216c0ded4883db9a0e6e523165b5" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>bind</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a4b40846650617f22414678c3a2ca529e" prot="private" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthClearVal</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a4a8244d530d93be324c0aad0d99b62ac" prot="private" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthFar</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a10092fc43df80fa4655707d13bad991b" prot="private" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthFunc</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1af52689cebbdfc79ad1d94ecb253034bc" prot="private" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthMask</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a798fc6b8a33a4b6d8aaa079ec7068f26" prot="private" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthNear</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a86e532edecfdaed61747f2dfd4a31f9b" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthObject</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a2967cc84f8506b62d8dd69ff47bc8343" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthObject</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a48ae5b7a06391e04fc5afb2f3c2cea3c" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>depthObject</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a008efe7ac8aec44f306fd74aac6625af" prot="private" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>enabled</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1ad3013fea4eb0a5c3ba4a247aa59629a4" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>getClearVal</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1ab6f3065e52ac7d20362f42e763f52935" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>getDepthFar</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1adc63468e37c9d995cdf9c0d560a426b9" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>getDepthFunc</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a8209a854282dc42fc481d0147d12756a" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>getDepthMask</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a4c12c43619901927ff752e863abcfe75" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>getDepthNear</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a247618251e7815599fc2f272e450e5c4" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>getState</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a0093481bca2617c94505fc51b9e79d0b" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1aafc980efa97aba947e88f192e27d65e3" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>operator=</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a3d8cef9f17fe5bc063574fa6d835ae62" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>reset</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a630cbabbebe82eaf1cdefdcaf4e0e371" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setClearVal</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a77b8a60b925d7dc8de7d8eaad5f623dc" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setDepthFar</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a322afaaed6c53e4aa605b991de29b844" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setDepthFunc</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a4e8a68af05739b81f1841c215d18e480" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setDepthMask</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1a852c984427f0a99ba22ec7cb69ea6001" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setDepthNear</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1ab090821214239996ea38287cdcaf8a63" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setDepthRange</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1ac39683af0510a453edf8114eee4f0d0e" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>setState</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1acfcbf2317f370450679d6f009b22c663" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>unbind</name></member>
+      <member refid="classls_1_1draw_1_1depth_object_1ad65d54b4fac3eb2ae3a7ca95818b8574" prot="public" virt="non-virtual"><scope>ls::draw::depthObject</scope><name>~depthObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

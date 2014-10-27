@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_da86226765147b3a1d6fed7026d44f92" kind="dir">
+    <compoundname>C:/Users/miles/C++/projects/LightSky/lightsky/script/src</compoundname>
+    <innerfile refid="factory_8cpp">factory.cpp</innerfile>
+    <innerfile refid="functor_8cpp">functor.cpp</innerfile>
+    <innerfile refid="scriptable_8cpp">scriptable.cpp</innerfile>
+    <innerfile refid="script_2src_2setup_8cpp">setup.cpp</innerfile>
+    <innerfile refid="variable_8cpp">variable.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/script/src/"/>
+  </compounddef>
+</doxygen>

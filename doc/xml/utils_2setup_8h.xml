@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="utils_2setup_8h" kind="file">
+    <compoundname>setup.h</compoundname>
+    <includes refid="setup_2setup_8h" local="yes">lightsky/setup/setup.h</includes>
+    <includedby refid="data_resource_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/dataResource.h</includedby>
+    <includedby refid="resource_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/resource.h</includedby>
+    <includedby refid="utils_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</includedby>
+    <incdepgraph>
+      <node id="1946">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="1948">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="1949">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="1944">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/setup.h</label>
+        <link refid="utils/setup.h"/>
+        <childnode refid="1945" relation="include">
+        </childnode>
+      </node>
+      <node id="1945">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="1946" relation="include">
+        </childnode>
+        <childnode refid="1947" relation="include">
+        </childnode>
+        <childnode refid="1948" relation="include">
+        </childnode>
+        <childnode refid="1949" relation="include">
+        </childnode>
+      </node>
+      <node id="1947">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1952">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/dataResource.cpp</label>
+        <link refid="data_resource_8cpp"/>
+      </node>
+      <node id="1968">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/atlas.cpp</label>
+        <link refid="atlas_8cpp"/>
+      </node>
+      <node id="1953">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="1954" relation="include">
+        </childnode>
+      </node>
+      <node id="1954">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="1955" relation="include">
+        </childnode>
+      </node>
+      <node id="1974">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="1963">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/sceneManager.cpp</label>
+        <link refid="scene_manager_8cpp"/>
+      </node>
+      <node id="1972">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="1958" relation="include">
+        </childnode>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1973" relation="include">
+        </childnode>
+        <childnode refid="1961" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1975" relation="include">
+        </childnode>
+      </node>
+      <node id="1951">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/dataResource.h</label>
+        <link refid="data_resource_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1953" relation="include">
+        </childnode>
+      </node>
+      <node id="1958">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/atlas.h</label>
+        <link refid="atlas_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1960" relation="include">
+        </childnode>
+        <childnode refid="1967" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1968" relation="include">
+        </childnode>
+        <childnode refid="1965" relation="include">
+        </childnode>
+      </node>
+      <node id="1971">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/imageResource.cpp</label>
+        <link refid="image_resource_8cpp"/>
+      </node>
+      <node id="1959">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="1954" relation="include">
+        </childnode>
+      </node>
+      <node id="1961">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshModel.h</label>
+        <link refid="mesh_model_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1964" relation="include">
+        </childnode>
+      </node>
+      <node id="1964">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshModel.cpp</label>
+        <link refid="mesh_model_8cpp"/>
+      </node>
+      <node id="1965">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="1975">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="1960">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1961" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1965" relation="include">
+        </childnode>
+        <childnode refid="1966" relation="include">
+        </childnode>
+      </node>
+      <node id="1950">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/setup.h</label>
+        <link refid="utils/setup.h"/>
+        <childnode refid="1951" relation="include">
+        </childnode>
+        <childnode refid="1956" relation="include">
+        </childnode>
+        <childnode refid="1953" relation="include">
+        </childnode>
+      </node>
+      <node id="1970">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/imageResource.h</label>
+        <link refid="image_resource_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1971" relation="include">
+        </childnode>
+        <childnode refid="1972" relation="include">
+        </childnode>
+      </node>
+      <node id="1956">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="1957" relation="include">
+        </childnode>
+        <childnode refid="1970" relation="include">
+        </childnode>
+        <childnode refid="1967" relation="include">
+        </childnode>
+        <childnode refid="1965" relation="include">
+        </childnode>
+        <childnode refid="1951" relation="include">
+        </childnode>
+        <childnode refid="1976" relation="include">
+        </childnode>
+        <childnode refid="1953" relation="include">
+        </childnode>
+      </node>
+      <node id="1967">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/meshResource.h</label>
+        <link refid="mesh_resource_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1965" relation="include">
+        </childnode>
+        <childnode refid="1966" relation="include">
+        </childnode>
+      </node>
+      <node id="1966">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="1973">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1974" relation="include">
+        </childnode>
+      </node>
+      <node id="1962">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/sceneManager.h</label>
+        <link refid="scene_manager_8h"/>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1963" relation="include">
+        </childnode>
+      </node>
+      <node id="1969">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp</label>
+        <link refid="font_resource_8cpp"/>
+      </node>
+      <node id="1957">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/fontResource.h</label>
+        <link refid="font_resource_8h"/>
+        <childnode refid="1958" relation="include">
+        </childnode>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1969" relation="include">
+        </childnode>
+      </node>
+      <node id="1976">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/utils/src/resource.cpp</label>
+        <link refid="resource_8cpp"/>
+      </node>
+      <node id="1955">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>utils/setup.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>contains<sp/>macros<sp/>and<sp/>definitions<sp/>for<sp/>the<sp/>utils<sp/>module<sp/>of<sp/>LightSky.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_UTILS_SETUP_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_UTILS_SETUP_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="setup_2setup_8h" kindref="compound">lightsky/setup/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__LS_UTILS_SETUP_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/setup.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,463 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="geometry_8h" kind="file">
+    <compoundname>geometry.h</compoundname>
+    <includes refid="draw_2setup_8h" local="yes">lightsky/draw/setup.h</includes>
+    <includedby refid="draw_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</includedby>
+    <includedby refid="geometry_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/geometry.cpp</includedby>
+    <includedby refid="mesh_resource_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</includedby>
+    <incdepgraph>
+      <node id="1027">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1028" relation="include">
+        </childnode>
+      </node>
+      <node id="1006">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="1007" relation="include">
+        </childnode>
+        <childnode refid="1008" relation="include">
+        </childnode>
+      </node>
+      <node id="1012">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="1013" relation="include">
+        </childnode>
+        <childnode refid="1014" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1020" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+        <childnode refid="1030" relation="include">
+        </childnode>
+        <childnode refid="1034" relation="include">
+        </childnode>
+        <childnode refid="1023" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1031" relation="include">
+        </childnode>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1036" relation="include">
+        </childnode>
+        <childnode refid="1037" relation="include">
+        </childnode>
+        <childnode refid="1040" relation="include">
+        </childnode>
+        <childnode refid="1042" relation="include">
+        </childnode>
+      </node>
+      <node id="1035">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="1001">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="1007">
+        <label>cstdint</label>
+      </node>
+      <node id="1003">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="999">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="1000" relation="include">
+        </childnode>
+        <childnode refid="1005" relation="include">
+        </childnode>
+        <childnode refid="1006" relation="include">
+        </childnode>
+        <childnode refid="1009" relation="include">
+        </childnode>
+        <childnode refid="1012" relation="include">
+        </childnode>
+      </node>
+      <node id="1045">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="1040">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="1037" relation="include">
+        </childnode>
+        <childnode refid="1020" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+        <childnode refid="1030" relation="include">
+        </childnode>
+        <childnode refid="1041" relation="include">
+        </childnode>
+      </node>
+      <node id="1016">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="1017" relation="include">
+        </childnode>
+        <childnode refid="1007" relation="include">
+        </childnode>
+        <childnode refid="1018" relation="include">
+        </childnode>
+        <childnode refid="1013" relation="include">
+        </childnode>
+        <childnode refid="1014" relation="include">
+        </childnode>
+        <childnode refid="1019" relation="include">
+        </childnode>
+      </node>
+      <node id="1019">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="1033">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="1020">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1023" relation="include">
+        </childnode>
+        <childnode refid="1025" relation="include">
+        </childnode>
+      </node>
+      <node id="998">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h</label>
+        <link refid="geometry.h"/>
+        <childnode refid="999" relation="include">
+        </childnode>
+      </node>
+      <node id="1015">
+        <label>cmath</label>
+      </node>
+      <node id="1036">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1031" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+        <childnode refid="1030" relation="include">
+        </childnode>
+        <childnode refid="1034" relation="include">
+        </childnode>
+        <childnode refid="1037" relation="include">
+        </childnode>
+        <childnode refid="1039" relation="include">
+        </childnode>
+      </node>
+      <node id="1022">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="1031">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1032" relation="include">
+        </childnode>
+      </node>
+      <node id="1038">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="1029">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="1011">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="1032">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="1004">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="1025">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="1042">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="1043" relation="include">
+        </childnode>
+        <childnode refid="1044" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1045" relation="include">
+        </childnode>
+        <childnode refid="1046" relation="include">
+        </childnode>
+      </node>
+      <node id="1028">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="1013">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="1000" relation="include">
+        </childnode>
+      </node>
+      <node id="1026">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1029" relation="include">
+        </childnode>
+      </node>
+      <node id="1008">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="1024">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="1009">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1010" relation="include">
+        </childnode>
+        <childnode refid="1011" relation="include">
+        </childnode>
+      </node>
+      <node id="1034">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1035" relation="include">
+        </childnode>
+      </node>
+      <node id="1014">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="1015" relation="include">
+        </childnode>
+        <childnode refid="1007" relation="include">
+        </childnode>
+      </node>
+      <node id="1000">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="1001" relation="include">
+        </childnode>
+        <childnode refid="1002" relation="include">
+        </childnode>
+        <childnode refid="1003" relation="include">
+        </childnode>
+        <childnode refid="1004" relation="include">
+        </childnode>
+      </node>
+      <node id="1018">
+        <label>utility</label>
+      </node>
+      <node id="1041">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="1037">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="1014" relation="include">
+        </childnode>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1023" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1031" relation="include">
+        </childnode>
+        <childnode refid="1038" relation="include">
+        </childnode>
+      </node>
+      <node id="1030">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1031" relation="include">
+        </childnode>
+        <childnode refid="1033" relation="include">
+        </childnode>
+      </node>
+      <node id="1010">
+        <label>iostream</label>
+      </node>
+      <node id="1023">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1024" relation="include">
+        </childnode>
+      </node>
+      <node id="1021">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="1013" relation="include">
+        </childnode>
+        <childnode refid="1014" relation="include">
+        </childnode>
+        <childnode refid="1022" relation="include">
+        </childnode>
+      </node>
+      <node id="1039">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="1017">
+        <label>climits</label>
+      </node>
+      <node id="1043">
+        <label>chrono</label>
+      </node>
+      <node id="1005">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="1004" relation="include">
+        </childnode>
+      </node>
+      <node id="1044">
+        <label>algorithm</label>
+      </node>
+      <node id="1002">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="1046">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1049">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="1050" relation="include">
+        </childnode>
+      </node>
+      <node id="1047">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h</label>
+        <link refid="geometry.h"/>
+        <childnode refid="1048" relation="include">
+        </childnode>
+        <childnode refid="1051" relation="include">
+        </childnode>
+        <childnode refid="1052" relation="include">
+        </childnode>
+      </node>
+      <node id="1051">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="1048">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="1049" relation="include">
+        </childnode>
+      </node>
+      <node id="1052">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/meshResource.cpp</label>
+        <link refid="mesh_resource_8cpp"/>
+      </node>
+      <node id="1050">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <innernamespace refid="namespacels_1_1draw_1_1geometry">ls::draw::geometry</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>geometry.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>April<sp/>6,<sp/>2014,<sp/>5:08<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_DRAW_GEOMETRY_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_DRAW_GEOMETRY_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="draw_2setup_8h" kindref="compound">lightsky/draw/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="15" refid="namespacels_1_1draw_1_1geometry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">geometry<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>math::vec3<sp/><ref refid="namespacels_1_1draw_1_1geometry_1a4e3de0c43440a051191d2a3a30052084" kindref="member">calcNormal</ref>(</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/>v0,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/>v1,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/>v2</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1_1geometry_1adf6edfe979a10ce5fb09450f1d81c949" kindref="member">calcTangents</ref>(</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>vertCount,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>positions,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uvs,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>math::vec3*<sp/>tangents,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>math::vec3*<sp/>bitangents</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>geometry<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_DRAW_GEOMETRY_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/geometry.h"/>
+  </compounddef>
+</doxygen>

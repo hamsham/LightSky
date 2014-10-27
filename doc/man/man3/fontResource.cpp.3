@@ -1,0 +1,107 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/fontResource.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <algorithm>\fP
+.br
+\fC#include <utility>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <freetype2/ft2build\&.h>\fP
+.br
+\fC#include 'lightSky/draw/fontResource\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::draw\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBFT_ERRORDEF\fP(e, v, s)   { e, s },"
+.br
+.ti -1c
+.RI "#define \fBFT_ERROR_START_LIST\fP   {"
+.br
+.ti -1c
+.RI "#define \fBFT_ERROR_END_LIST\fP   { 0, 0 } };"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBls::draw::copyGlyph\fP (glyph &pGlyph, const FT_GlyphSlot ftGlyph)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   int \fBcode\fP"
+.br
+.ti -1c
+.RI "   const char * \fBmessage\fP"
+.br
+.ti -1c
+.RI "} \fBFT_Errors\fP []"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define FT_ERROR_END_LIST   { 0, 0 } };"
+
+.PP
+Definition at line 21 of file fontResource\&.cpp\&.
+.SS "#define FT_ERROR_START_LIST   {"
+
+.PP
+Definition at line 20 of file fontResource\&.cpp\&.
+.SS "#define FT_ERRORDEF(e, v, s)   { e, s },"
+
+.PP
+Definition at line 19 of file fontResource\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "int code"
+
+.PP
+Definition at line 23 of file fontResource\&.cpp\&.
+.SS "const { \&.\&.\&. }   FT_Errors[]"
+\fBInitial value:\fP
+.PP
+.nf
+=
+
+
+void foo() {
+
+}
+
+
+
+using ls::utils::resource
+.fi
+.SS "const char* message"
+
+.PP
+Definition at line 24 of file fontResource\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

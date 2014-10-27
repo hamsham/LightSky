@@ -1,0 +1,582 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="shader_program_8h" kind="file">
+    <compoundname>shaderProgram.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">GL/glew.h</includes>
+    <includes refid="draw_2setup_8h" local="yes">lightsky/draw/setup.h</includes>
+    <includes refid="shader_object_8h" local="yes">lightsky/draw/shaderObject.h</includes>
+    <includes refid="shader_program__impl_8h" local="yes">lightsky/draw/generic/shaderProgram_impl.h</includes>
+    <includedby refid="draw_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</includedby>
+    <includedby refid="shader_program_8cpp" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp</includedby>
+    <incdepgraph>
+      <node id="2066">
+        <label>lightsky/math/vec3.h</label>
+        <link refid="vec3_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2067" relation="include">
+        </childnode>
+      </node>
+      <node id="2045">
+        <label>lightsky/utils/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="2046" relation="include">
+        </childnode>
+        <childnode refid="2047" relation="include">
+        </childnode>
+      </node>
+      <node id="2051">
+        <label>lightsky/math/math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="2052" relation="include">
+        </childnode>
+        <childnode refid="2053" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2059" relation="include">
+        </childnode>
+        <childnode refid="2065" relation="include">
+        </childnode>
+        <childnode refid="2069" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2062" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2070" relation="include">
+        </childnode>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2075" relation="include">
+        </childnode>
+        <childnode refid="2076" relation="include">
+        </childnode>
+        <childnode refid="2079" relation="include">
+        </childnode>
+        <childnode refid="2081" relation="include">
+        </childnode>
+      </node>
+      <node id="2074">
+        <label>lightsky/math/generic/quat_impl.h</label>
+        <link refid="quat__impl_8h"/>
+      </node>
+      <node id="2086">
+        <label>lightsky/draw/shaderObject.h</label>
+        <link refid="shader_object_8h"/>
+        <childnode refid="2057" relation="include">
+        </childnode>
+        <childnode refid="2037" relation="include">
+        </childnode>
+        <childnode refid="2038" relation="include">
+        </childnode>
+        <childnode refid="2087" relation="include">
+        </childnode>
+      </node>
+      <node id="2040">
+        <label>lightsky/setup/compiler.h</label>
+        <link refid="compiler_8h"/>
+      </node>
+      <node id="2046">
+        <label>cstdint</label>
+      </node>
+      <node id="2042">
+        <label>lightsky/setup/os.h</label>
+        <link refid="os_8h"/>
+      </node>
+      <node id="2038">
+        <label>lightsky/draw/setup.h</label>
+        <link refid="draw_2setup_8h"/>
+        <childnode refid="2039" relation="include">
+        </childnode>
+        <childnode refid="2044" relation="include">
+        </childnode>
+        <childnode refid="2045" relation="include">
+        </childnode>
+        <childnode refid="2048" relation="include">
+        </childnode>
+        <childnode refid="2051" relation="include">
+        </childnode>
+      </node>
+      <node id="2084">
+        <label>lightsky/utils/randomNum.h</label>
+        <link refid="random_num_8h"/>
+      </node>
+      <node id="2079">
+        <label>lightsky/math/mat_utils.h</label>
+        <link refid="mat__utils_8h"/>
+        <childnode refid="2076" relation="include">
+        </childnode>
+        <childnode refid="2059" relation="include">
+        </childnode>
+        <childnode refid="2065" relation="include">
+        </childnode>
+        <childnode refid="2069" relation="include">
+        </childnode>
+        <childnode refid="2080" relation="include">
+        </childnode>
+      </node>
+      <node id="2055">
+        <label>lightsky/math/fixed.h</label>
+        <link refid="fixed_8h"/>
+        <childnode refid="2056" relation="include">
+        </childnode>
+        <childnode refid="2046" relation="include">
+        </childnode>
+        <childnode refid="2057" relation="include">
+        </childnode>
+        <childnode refid="2052" relation="include">
+        </childnode>
+        <childnode refid="2053" relation="include">
+        </childnode>
+        <childnode refid="2058" relation="include">
+        </childnode>
+      </node>
+      <node id="2035">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h</label>
+        <link refid="shaderProgram.h"/>
+        <childnode refid="2036" relation="include">
+        </childnode>
+        <childnode refid="2037" relation="include">
+        </childnode>
+        <childnode refid="2038" relation="include">
+        </childnode>
+        <childnode refid="2086" relation="include">
+        </childnode>
+        <childnode refid="2088" relation="include">
+        </childnode>
+      </node>
+      <node id="2058">
+        <label>lightsky/math/generic/fixed_impl.h</label>
+        <link refid="fixed__impl_8h"/>
+      </node>
+      <node id="2072">
+        <label>lightsky/math/generic/mat4_impl.h</label>
+        <link refid="mat4__impl_8h"/>
+      </node>
+      <node id="2059">
+        <label>lightsky/math/mat2.h</label>
+        <link refid="mat2_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2062" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+      </node>
+      <node id="2054">
+        <label>cmath</label>
+      </node>
+      <node id="2075">
+        <label>lightsky/math/quat_utils.h</label>
+        <link refid="quat__utils_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2070" relation="include">
+        </childnode>
+        <childnode refid="2065" relation="include">
+        </childnode>
+        <childnode refid="2069" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2076" relation="include">
+        </childnode>
+        <childnode refid="2078" relation="include">
+        </childnode>
+      </node>
+      <node id="2061">
+        <label>lightsky/math/generic/scalar_utils_impl.h</label>
+        <link refid="scalar__utils__impl_8h"/>
+      </node>
+      <node id="2070">
+        <label>lightsky/math/vec4.h</label>
+        <link refid="vec4_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2071" relation="include">
+        </childnode>
+      </node>
+      <node id="2036">
+        <label>string</label>
+      </node>
+      <node id="2037">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="2077">
+        <label>lightsky/math/generic/vec_utils_impl.h</label>
+        <link refid="vec__utils__impl_8h"/>
+      </node>
+      <node id="2068">
+        <label>lightsky/math/generic/mat3_impl.h</label>
+        <link refid="mat3__impl_8h"/>
+      </node>
+      <node id="2050">
+        <label>lightsky/utils/generic/log_impl.h</label>
+        <link refid="log__impl_8h"/>
+      </node>
+      <node id="2071">
+        <label>lightsky/math/generic/vec4_impl.h</label>
+        <link refid="vec4__impl_8h"/>
+      </node>
+      <node id="2043">
+        <label>lightsky/setup/macros.h</label>
+        <link refid="macros_8h"/>
+      </node>
+      <node id="2064">
+        <label>lightsky/math/generic/mat2_impl.h</label>
+        <link refid="mat2__impl_8h"/>
+      </node>
+      <node id="2081">
+        <label>lightsky/math/perlinNoise.h</label>
+        <link refid="perlin_noise_8h"/>
+        <childnode refid="2082" relation="include">
+        </childnode>
+        <childnode refid="2083" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2084" relation="include">
+        </childnode>
+        <childnode refid="2085" relation="include">
+        </childnode>
+      </node>
+      <node id="2067">
+        <label>lightsky/math/generic/vec3_impl.h</label>
+        <link refid="vec3__impl_8h"/>
+      </node>
+      <node id="2052">
+        <label>lightsky/math/setup.h</label>
+        <link refid="math_2setup_8h"/>
+        <childnode refid="2039" relation="include">
+        </childnode>
+      </node>
+      <node id="2065">
+        <label>lightsky/math/mat3.h</label>
+        <link refid="mat3_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2068" relation="include">
+        </childnode>
+      </node>
+      <node id="2047">
+        <label>lightsky/utils/generic/hash_impl.h</label>
+        <link refid="hash__impl_8h"/>
+      </node>
+      <node id="2063">
+        <label>lightsky/math/generic/vec2_impl.h</label>
+        <link refid="vec2__impl_8h"/>
+      </node>
+      <node id="2048">
+        <label>lightsky/utils/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="2049" relation="include">
+        </childnode>
+        <childnode refid="2050" relation="include">
+        </childnode>
+      </node>
+      <node id="2073">
+        <label>lightsky/math/quat.h</label>
+        <link refid="quat_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2074" relation="include">
+        </childnode>
+      </node>
+      <node id="2053">
+        <label>lightsky/math/types.h</label>
+        <link refid="types_8h"/>
+        <childnode refid="2054" relation="include">
+        </childnode>
+        <childnode refid="2046" relation="include">
+        </childnode>
+      </node>
+      <node id="2039">
+        <label>lightsky/setup/setup.h</label>
+        <link refid="setup_2setup_8h"/>
+        <childnode refid="2040" relation="include">
+        </childnode>
+        <childnode refid="2041" relation="include">
+        </childnode>
+        <childnode refid="2042" relation="include">
+        </childnode>
+        <childnode refid="2043" relation="include">
+        </childnode>
+      </node>
+      <node id="2057">
+        <label>utility</label>
+      </node>
+      <node id="2087">
+        <label>lightsky/draw/generic/shaderObject_impl.h</label>
+        <link refid="shader_object__impl_8h"/>
+      </node>
+      <node id="2080">
+        <label>lightsky/math/generic/mat_utils_impl.h</label>
+        <link refid="mat__utils__impl_8h"/>
+      </node>
+      <node id="2076">
+        <label>lightsky/math/vec_utils.h</label>
+        <link refid="vec__utils_8h"/>
+        <childnode refid="2053" relation="include">
+        </childnode>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2062" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2070" relation="include">
+        </childnode>
+        <childnode refid="2077" relation="include">
+        </childnode>
+      </node>
+      <node id="2069">
+        <label>lightsky/math/mat4.h</label>
+        <link refid="mat4_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2070" relation="include">
+        </childnode>
+        <childnode refid="2072" relation="include">
+        </childnode>
+      </node>
+      <node id="2049">
+        <label>iostream</label>
+      </node>
+      <node id="2062">
+        <label>lightsky/math/vec2.h</label>
+        <link refid="vec2_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2055" relation="include">
+        </childnode>
+        <childnode refid="2063" relation="include">
+        </childnode>
+      </node>
+      <node id="2060">
+        <label>lightsky/math/scalar_utils.h</label>
+        <link refid="scalar__utils_8h"/>
+        <childnode refid="2052" relation="include">
+        </childnode>
+        <childnode refid="2053" relation="include">
+        </childnode>
+        <childnode refid="2061" relation="include">
+        </childnode>
+      </node>
+      <node id="2078">
+        <label>lightsky/math/generic/quat_utils_impl.h</label>
+        <link refid="quat__utils__impl_8h"/>
+      </node>
+      <node id="2056">
+        <label>climits</label>
+      </node>
+      <node id="2088">
+        <label>lightsky/draw/generic/shaderProgram_impl.h</label>
+        <link refid="shader_program__impl_8h"/>
+      </node>
+      <node id="2082">
+        <label>chrono</label>
+      </node>
+      <node id="2044">
+        <label>lightsky/utils/assert.h</label>
+        <link refid="assert_8h"/>
+        <childnode refid="2043" relation="include">
+        </childnode>
+      </node>
+      <node id="2083">
+        <label>algorithm</label>
+      </node>
+      <node id="2041">
+        <label>lightsky/setup/arch.h</label>
+        <link refid="arch_8h"/>
+      </node>
+      <node id="2085">
+        <label>lightsky/math/generic/perlinNoise_impl.h</label>
+        <link refid="perlin_noise__impl_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2091">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="2092" relation="include">
+        </childnode>
+      </node>
+      <node id="2089">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h</label>
+        <link refid="shaderProgram.h"/>
+        <childnode refid="2090" relation="include">
+        </childnode>
+        <childnode refid="2093" relation="include">
+        </childnode>
+      </node>
+      <node id="2090">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="2091" relation="include">
+        </childnode>
+      </node>
+      <node id="2093">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/shaderProgram.cpp</label>
+        <link refid="shader_program_8cpp"/>
+      </node>
+      <node id="2092">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classls_1_1draw_1_1shader_program" prot="public">ls::draw::shaderProgram</innerclass>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>draw/shaderProgram.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Miles<sp/>Lacey</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>January<sp/>21,<sp/>2014,<sp/>6:54<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__LS_DRAW_SHADER_PROGRAM_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LS_DRAW_SHADER_PROGRAM_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GL/glew.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="draw_2setup_8h" kindref="compound">lightsky/draw/setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="shader_object_8h" kindref="compound">lightsky/draw/shaderObject.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classls_1_1draw_1_1shader_program" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/>programId<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1shader_program_1ad04c15a31ff5b4d162f0116331be30c5" kindref="member">shaderProgram</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1shader_program_1ad04c15a31ff5b4d162f0116331be30c5" kindref="member">shaderProgram</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1shader_program_1ad04c15a31ff5b4d162f0116331be30c5" kindref="member">shaderProgram</ref>(<ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1shader_program_1ad4152031ec554b6403fb87a642b2c1eb" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref>&amp;<sp/><ref refid="classls_1_1draw_1_1shader_program_1ad4152031ec554b6403fb87a642b2c1eb" kindref="member">operator=</ref>(<ref refid="classls_1_1draw_1_1shader_program" kindref="compound">shaderProgram</ref>&amp;&amp;);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classls_1_1draw_1_1shader_program_1afd3ce6cf2fe7a38154201325d57ceb53" kindref="member">~shaderProgram</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1af53b8f68e05237d4ec648d3fb3ae6f8e" kindref="member">terminate</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1a60d6512e34694516b7fcfde5875295fc" kindref="member">attachShaders</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vertexShader&amp;<sp/>vs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fragmentShader&amp;<sp/>fs);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1a60d6512e34694516b7fcfde5875295fc" kindref="member">attachShaders</ref>(</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vertexShader&amp;<sp/>vs,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometryShader&amp;<sp/>gs,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fragmentShader&amp;<sp/>fs</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1ac78b4e77849f4e297a841b38ba2cc2a6" kindref="member">link</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1ae30fdc44d1c7565c492fcf17bf9c90ff" kindref="member">bind</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1ad461c434703498471b759d0790477907" kindref="member">unbind</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1a38c3171208a3b42adf3cf1fc0a0db4da" kindref="member">bindAttribute</ref>(GLuint<sp/>index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="classls_1_1draw_1_1shader_program_1a003777c90ffc313f5fb8eb1989a2307a" kindref="member">getAttribute</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="classls_1_1draw_1_1shader_program_1aaed7274bbaee573d0acd60756f95c192" kindref="member">getUniformLocation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classls_1_1draw_1_1shader_program_1aac8536b561e6f1806f19d3def5f34e1d" kindref="member">getUniformInfo</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/>GLint*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>varSize,<sp/>GLenum*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>varType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val1);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val2);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val2,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val3);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2i&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3i&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec4i&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val1);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val1,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val2);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val1,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val2,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>val3);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2ui&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3ui&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec4ui&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val1);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val2);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val2,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>val3);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec3&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec4&amp;<sp/>val);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::mat2&amp;<sp/>val,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1math_1a0151b7247c9660411217818926ec4268" kindref="member">transpose</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::mat3&amp;<sp/>val,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1math_1a0151b7247c9660411217818926ec4268" kindref="member">transpose</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1aed62333689b5e1e90ca262cee29b8c9e" kindref="member">setUniformValue</ref>(GLint<sp/>uniformId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::mat4&amp;<sp/>val,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1math_1a0151b7247c9660411217818926ec4268" kindref="member">transpose</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1a9bcfd80cab68a7df30a4fa1e030abd28" kindref="member">bindFragDataLocation</ref>(GLuint<sp/>colorNum,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1shader_program_1a4e515afa644a2ce98f4c100cb8f1547b" kindref="member">bindFragDataLocationIndex</ref>(GLuint<sp/>colorNum,<sp/>GLuint<sp/>index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="classls_1_1draw_1_1shader_program_1af1ada31a0cb844671753aa0066dc6333" kindref="member">getFragDataIndex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="classls_1_1draw_1_1shader_program_1a3bba8fff40b5fa7b252c29bc1ca1724c" kindref="member">getFragDataLocation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="shader_program__impl_8h" kindref="compound">lightsky/draw/generic/shaderProgram_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__LS_DRAW_SHADER_PROGRAM_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/shaderProgram.h"/>
+  </compounddef>
+</doxygen>

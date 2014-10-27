@@ -1,0 +1,72 @@
+.TH "C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/miles/C++/projects/LightSky/lightsky/utils/endian.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdint>\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBls\fP"
+.br
+.ti -1c
+.RI " \fBls::utils\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLS_ENDIANNESS\fP   \fBls::utils::getEndianOrder\fP()"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBls::utils::endian_t\fP : uint32_t { \fBls::utils::LS_LITTLE_ENDIAN\fP = 0x00000001, \fBls::utils::LS_BIG_ENDIAN\fP = 0x01000000, \fBls::utils::LS_PDP_ENDIAN\fP = 0x00010000, \fBls::utils::LS_UNKNOWN_ENDIAN\fP = 0xFFFFFFFF }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr endian_t \fBls::utils::getEndianOrder\fP ()"
+.br
+.ti -1c
+.RI "constexpr uint16_t \fBls::utils::btol\fP (uint16_t n)"
+.br
+.ti -1c
+.RI "constexpr int16_t \fBls::utils::btol\fP (int16_t n)"
+.br
+.ti -1c
+.RI "constexpr uint32_t \fBls::utils::btol\fP (uint32_t n)"
+.br
+.ti -1c
+.RI "constexpr int32_t \fBls::utils::btol\fP (int32_t n)"
+.br
+.ti -1c
+.RI "constexpr uint64_t \fBls::utils::btol\fP (uint64_t n)"
+.br
+.ti -1c
+.RI "constexpr int64_t \fBls::utils::btol\fP (int64_t n)"
+.br
+.ti -1c
+.RI "template<typename num_t > num_t \fBls::utils::btol\fP (num_t n)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define LS_ENDIANNESS   \fBls::utils::getEndianOrder\fP()"
+Macro that should be used to always get the endianness of the current build target\&. 
+.PP
+Definition at line 187 of file endian\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="framebuffer__impl_8h" kind="file">
+    <compoundname>framebuffer_impl.h</compoundname>
+    <includedby refid="framebuffer_8h" local="yes">C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</includedby>
+    <invincdepgraph>
+      <node id="887">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/lightsky.h</label>
+        <link refid="lightsky_8h"/>
+        <childnode refid="888" relation="include">
+        </childnode>
+      </node>
+      <node id="889">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/src/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="884">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/framebuffer_impl.h</label>
+        <link refid="framebuffer_impl.h"/>
+        <childnode refid="885" relation="include">
+        </childnode>
+      </node>
+      <node id="886">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/draw.h</label>
+        <link refid="draw_8h"/>
+        <childnode refid="887" relation="include">
+        </childnode>
+      </node>
+      <node id="885">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/draw/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="886" relation="include">
+        </childnode>
+        <childnode refid="889" relation="include">
+        </childnode>
+      </node>
+      <node id="888">
+        <label>C:/Users/miles/C++/projects/LightSky/lightsky/src/lightsky.cpp</label>
+        <link refid="lightsky_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacels">ls</innernamespace>
+    <innernamespace refid="namespacels_1_1draw">ls::draw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacels" kindref="compound">ls</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">draw<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/>Get<sp/>the<sp/>GPU-Assigned<sp/>ID<sp/>that<sp/>this<sp/>object<sp/>references.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classls_1_1draw_1_1framebuffer_1a2cdba63826811d153a63188536c3ab5c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a2cdba63826811d153a63188536c3ab5c" kindref="member">framebuffer::getId</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fboId;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/><sp/><sp/>Get<sp/>the<sp/>framebuffer<sp/>acccess<sp/>type.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classls_1_1draw_1_1framebuffer_1af0a3a9679f9a80fb93f4bc02afbf3659" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14" kindref="member">fbo_access_t</ref><sp/><ref refid="classls_1_1draw_1_1framebuffer_1af0a3a9679f9a80fb93f4bc02afbf3659" kindref="member">framebuffer::getAccessType</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>access;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/><sp/><sp/>Set<sp/>the<sp/>framebuffer<sp/>access<sp/>type.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classls_1_1draw_1_1framebuffer_1a29e990f8f98f496359fae6054dcbbf52" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a29e990f8f98f496359fae6054dcbbf52" kindref="member">framebuffer::setAccessType</ref>(<ref refid="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14" kindref="member">fbo_access_t</ref><sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>access<sp/>=<sp/>a;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/><sp/>Get<sp/>the<sp/>maximum<sp/>number<sp/>of<sp/>supported<sp/>color<sp/>attachments.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classls_1_1draw_1_1framebuffer_1a79229d0b13b5499536bbacc6a9ed243d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a79229d0b13b5499536bbacc6a9ed243d" kindref="member">framebuffer::getMaxNumAttachments</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numAttachments;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MAX_DRAW_BUFFERS,<sp/>&amp;numAttachments);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>numAttachments;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>Get<sp/>the<sp/>status<sp/>of<sp/>the<sp/>current<sp/>framebuffer.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classls_1_1draw_1_1framebuffer_1a3bc9dfc6837cd463f249dd6ffad257d4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512" kindref="member">fbo_status_t</ref><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a3bc9dfc6837cd463f249dd6ffad257d4" kindref="member">framebuffer::getStatus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer" kindref="compound">framebuffer</ref>&amp;<sp/>fbo)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_2setup_8h_1a9dd6539d687c063e16806164a20fb41f" kindref="member">LOG_GL_ERR</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="namespacels_1_1draw_1ae3c629d4581997d80d132774612d1512" kindref="member">fbo_status_t</ref>)glCheckFramebufferStatus(fbo.<ref refid="classls_1_1draw_1_1framebuffer_1af0a3a9679f9a80fb93f4bc02afbf3659" kindref="member">getAccessType</ref>());</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/>Bind<sp/>the<sp/>default<sp/>read/write<sp/>buffer</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classls_1_1draw_1_1framebuffer_1a23ef1af5e8bf19960e2e12bba3e5886d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a23ef1af5e8bf19960e2e12bba3e5886d" kindref="member">framebuffer::bindDefaultFramebuffer</ref>(<ref refid="namespacels_1_1draw_1ac7363f051b664b0260e33db4b23a5e14" kindref="member">fbo_access_t</ref><sp/>access)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindFramebuffer(access,<sp/>0);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/>Bind<sp/>the<sp/>current<sp/>framebuffer<sp/>to<sp/>OpenGL</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classls_1_1draw_1_1framebuffer_1a87ab3fb0075d78800cd2fe476ec575ee" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a87ab3fb0075d78800cd2fe476ec575ee" kindref="member">framebuffer::bind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindFramebuffer(access,<sp/>fboId);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/>Unbind<sp/>the<sp/>current<sp/>framebuffer<sp/>to<sp/>OpenGL</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classls_1_1draw_1_1framebuffer_1a1906f286345faea0d6f7c52d73176ef6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a1906f286345faea0d6f7c52d73176ef6" kindref="member">framebuffer::unbind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindFramebuffer(access,<sp/>0);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/>Blit<sp/>this<sp/>framebuffer<sp/>to<sp/>the<sp/>current<sp/>draw<sp/>buffer.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classls_1_1draw_1_1framebuffer_1a1cea95a9c6bf4879f13b3136fee69ab2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a1cea95a9c6bf4879f13b3136fee69ab2" kindref="member">framebuffer::blit</ref>(</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2i&amp;<sp/>srcOrig,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2i&amp;<sp/>srcSize,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2i&amp;<sp/>dstOrig,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>math::vec2i&amp;<sp/>dstSize,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacels_1_1draw_1a681041eb7cdd425f48f8b837f5920cea" kindref="member">fbo_mask_t</ref><sp/>mask,<sp/><ref refid="namespacels_1_1draw_1a0af088c118d4ef85aefab930dee8926d" kindref="member">ls_tex_filter_t</ref><sp/>filter</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>glBlitFramebuffer(</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>srcOrig[0],<sp/>srcOrig[1],<sp/>srcSize[0],<sp/>srcSize[1],</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dstOrig[0],<sp/>dstOrig[1],<sp/>dstSize[0],<sp/>dstSize[1],</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(GLbitfield)mask,<sp/>(GLenum)filter</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/>Clear<sp/>the<sp/>color<sp/>attachment<sp/>indicated<sp/>by<sp/>the<sp/>input<sp/>parameter.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classls_1_1draw_1_1framebuffer_1ae866a536cd06372dbe94c52fd7586990" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1ae866a536cd06372dbe94c52fd7586990" kindref="member">framebuffer::clear</ref>(<ref refid="namespacels_1_1draw_1a681041eb7cdd425f48f8b837f5920cea" kindref="member">fbo_mask_t</ref><sp/>mask)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>glClear((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)mask);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">/*-------------------------------------</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/>Set<sp/>the<sp/>current<sp/>draw<sp/>targets<sp/>to<sp/>be<sp/>used<sp/>by<sp/>this.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment">-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classls_1_1draw_1_1framebuffer_1a0932b6b5b2fee096e76635e5299ae329" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classls_1_1draw_1_1framebuffer_1a0932b6b5b2fee096e76635e5299ae329" kindref="member">framebuffer::setDrawTargets</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numTargets,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacels_1_1draw_1ab36a712df772da585fbf284af770281f" kindref="member">fbo_attach_t</ref>*<sp/>targets)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>glDrawBuffers(numTargets,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLenum*)targets);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>draw<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>ls<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/draw/generic/framebuffer_impl.h"/>
+  </compounddef>
+</doxygen>

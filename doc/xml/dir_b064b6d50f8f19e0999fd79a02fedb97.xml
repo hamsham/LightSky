@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_b064b6d50f8f19e0999fd79a02fedb97" kind="dir">
+    <compoundname>C:/Users/miles/C++/projects/LightSky/lightsky/game</compoundname>
+    <innerdir refid="dir_3f17467a42e3e434c9d0b25097f2ae85">C:/Users/miles/C++/projects/LightSky/lightsky/game/generic</innerdir>
+    <innerdir refid="dir_f35956ce0448175e6b3a9791cf38cd20">C:/Users/miles/C++/projects/LightSky/lightsky/game/src</innerdir>
+    <innerfile refid="game_8h">game.h</innerfile>
+    <innerfile refid="game_state_8h">gameState.h</innerfile>
+    <innerfile refid="manager_8h">manager.h</innerfile>
+    <innerfile refid="game_2setup_8h">setup.h</innerfile>
+    <innerfile refid="system_8h">system.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/game/"/>
+  </compounddef>
+</doxygen>

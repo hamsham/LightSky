@@ -1,0 +1,187 @@
+.TH "ls::utils::tuple_t< data_t >" 3 "Sun Oct 26 2014" "Version Pre-Alpha" "LightSky" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ls::utils::tuple_t< data_t > \- 
+.PP
+Tuple Class An tuple is a set of objects determined at compile-time\&. These objects are constructed within a tightly packed buffer\&. It is recommended to construct an tuple using the 'new' operator if there are many objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <tuple\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr \fBtuple_t\fP ()"
+.br
+.RI "\fIConstructor\&. \fP"
+.ti -1c
+.RI "\fBtuple_t\fP (const \fBtuple_t\fP &)"
+.br
+.RI "\fICopy Constructor\&. \fP"
+.ti -1c
+.RI "\fBtuple_t\fP (\fBtuple_t\fP &&)"
+.br
+.RI "\fIMove Constructor\&. \fP"
+.ti -1c
+.RI "\fB~tuple_t\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBtuple_t\fP & \fBoperator=\fP (const \fBtuple_t\fP &)"
+.br
+.RI "\fICopy Operator\&. \fP"
+.ti -1c
+.RI "\fBtuple_t\fP & \fBoperator=\fP (\fBtuple_t\fP &&)"
+.br
+.RI "\fIMove Operator\&. \fP"
+.ti -1c
+.RI "template<typename request_t > constexpr const request_t * \fBgetObject\fP () const "
+.br
+.RI "\fIGet a constant object contained within *this\&. This object is specified using template parameters\&. \fP"
+.ti -1c
+.RI "template<typename request_t > request_t * \fBgetObject\fP ()"
+.br
+.RI "\fIGet an object contained within *this\&. This object is specified using a template parameter\&. \fP"
+.ti -1c
+.RI "constexpr const void * \fBgetObject\fP (unsigned index) const "
+.br
+.RI "\fIGet a constant object contained within *this\&. This object is specified using an array-like index\&. \fP"
+.ti -1c
+.RI "void * \fBgetObject\fP (unsigned index)"
+.br
+.RI "\fIGet an object contained within *this\&. This object is specified using an array-like index\&. \fP"
+.ti -1c
+.RI "constexpr unsigned \fBgetNumObjects\fP () const "
+.br
+.RI "\fIRetrieve the number of objects contained within an \fBtuple_t\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename\&.\&.\&. data_t>class ls::utils::tuple_t< data_t >"
+Tuple Class An tuple is a set of objects determined at compile-time\&. These objects are constructed within a tightly packed buffer\&. It is recommended to construct an tuple using the 'new' operator if there are many objects\&. 
+.PP
+Definition at line 24 of file tuple\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename\&.\&.\&. data_t> constexpr \fBls::utils::tuple_t\fP< data_t >::\fBtuple_t\fP ()"
+
+.PP
+Constructor\&. Initialize all parameterized data types within a byte array\&. 
+.PP
+Definition at line 118 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> \fBls::utils::tuple_t\fP< data_t >::\fBtuple_t\fP (const \fBtuple_t\fP< data_t > &a)"
+
+.PP
+Copy Constructor\&. Uses each object's copy operator to copy data into *this\&. 
+.PP
+Definition at line 126 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> \fBls::utils::tuple_t\fP< data_t >::\fBtuple_t\fP (\fBtuple_t\fP< data_t > &&a)"
+
+.PP
+Move Constructor\&. Uses each object's move operator to move data into *this\&. 
+.PP
+Definition at line 136 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> \fBls::utils::tuple_t\fP< data_t >::~\fBtuple_t\fP ()"
+
+.PP
+Destructor\&. Calls the destructor on all member objects requested at compile-time\&. 
+.PP
+Definition at line 146 of file tuple_impl\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename\&.\&.\&. data_t> constexpr unsigned \fBls::utils::tuple_t\fP< data_t >::getNumObjects () const"
+
+.PP
+Retrieve the number of objects contained within an \fBtuple_t\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An unsigned integral type representing the number of objects that are stored in *this\&. 
+.RE
+.PP
+
+.PP
+Definition at line 313 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> template<typename request_t > constexpr const request_t * \fBls::utils::tuple_t\fP< data_t >::getObject () const"
+
+.PP
+Get a constant object contained within *this\&. This object is specified using template parameters\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A constant pointer to a tuple object if it exists\&. Otherwise, this methods returns NULL\&. 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> template<typename request_t > request_t * \fBls::utils::tuple_t\fP< data_t >::getObject ()\fC [inline]\fP"
+
+.PP
+Get an object contained within *this\&. This object is specified using a template parameter\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to a tuple object if it exists\&. Otherwise, this methods returns NULL\&. 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> constexpr const void * \fBls::utils::tuple_t\fP< data_t >::getObject (unsignedindex) const"
+
+.PP
+Get a constant object contained within *this\&. This object is specified using an array-like index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP An array-like index that can be used to retrieve a value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A constant pointer to a tuple object if it exists\&. Returns otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 268 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> void * \fBls::utils::tuple_t\fP< data_t >::getObject (unsignedindex)\fC [inline]\fP"
+
+.PP
+Get an object contained within *this\&. This object is specified using an array-like index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP An array-like index that can be used to retrieve a value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to a tuple object if it exists\&. Returns NULL otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 302 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> \fBtuple_t\fP< data_t\&.\&.\&.> & \fBls::utils::tuple_t\fP< data_t >::operator= (const \fBtuple_t\fP< data_t > &a)"
+
+.PP
+Copy Operator\&. Uses each object's copy operator to copy data into *this\&. 
+.PP
+Definition at line 154 of file tuple_impl\&.h\&.
+.SS "template<typename\&.\&.\&. data_t> \fBtuple_t\fP< data_t\&.\&.\&.> & \fBls::utils::tuple_t\fP< data_t >::operator= (\fBtuple_t\fP< data_t > &&a)"
+
+.PP
+Move Operator\&. Uses each object's move operator to move data into *this\&. 
+.PP
+Definition at line 163 of file tuple_impl\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LightSky from the source code\&.

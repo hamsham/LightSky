@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classls_1_1utils_1_1b_tree" kind="class" prot="public">
+    <compoundname>ls::utils::bTree</compoundname>
+    <includes refid="btree_8h" local="no">btree.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename key_t</type>
+      </param>
+      <param>
+        <type>typename data_t</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classls_1_1utils_1_1b_tree_1a3b5ff0736e5d769e61a3d10886837c11" prot="private" static="no" mutable="no">
+        <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref>&lt; data_t &gt;</type>
+        <definition>bTreeNode&lt;data_t&gt; ls::utils::bTree&lt; key_t, data_t &gt;::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <initializer>= <ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref>&lt;data_t&gt;{}</initializer>
+        <briefdescription>
+<para>head The head tree which contains all child nodes and data. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="211" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classls_1_1utils_1_1b_tree_1a686ca0e11ac30a2d0653d130bf481c19" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ls::utils::bTree&lt; key_t, data_t &gt;::numNodes</definition>
+        <argsstring></argsstring>
+        <name>numNodes</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>numNodes Number of child nodes, not including the head node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="217" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1aedaf597abe0878c204d93d0e24590a95" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1b_tree_node" kindref="compound">bTreeNode</ref>&lt; data_t &gt; *</type>
+        <definition>bTreeNode&lt; data_t &gt; * ls::utils::bTree&lt; key_t, data_t &gt;::iterate</definition>
+        <argsstring>(const key_t *k, bool createNodes)</argsstring>
+        <name>iterate</name>
+        <param>
+          <type>const key_t *</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>createNodes</declname>
+        </param>
+        <briefdescription>
+<para>iterate Iterates through the list of child nodes and returns whichever node is referenced by a key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A key which indicates the child node that should be iterated to.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>createNodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to determine if a child node should be created if one does not exist at they key &apos;k.&apos;</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to a child node, referenced by &apos;k,&apos; or NULL if one does not exist. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="235" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="63" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1ad26062b96c2df747b5ec9e1ece716fa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr ls::utils::bTree&lt; key_t, data_t &gt;::bTree</definition>
+        <argsstring>()</argsstring>
+        <name>bTree</name>
+        <briefdescription>
+<para>constructor Creates an empty tree with no child nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="242" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a9ed9b06bf38fd454ae57e539ec01e755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::bTree&lt; key_t, data_t &gt;::bTree</definition>
+        <argsstring>(const bTree &amp;tree)</argsstring>
+        <name>bTree</name>
+        <param>
+          <type>const <ref refid="classls_1_1utils_1_1b_tree" kindref="compound">bTree</ref> &amp;</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tree</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A btree with data to be copied into *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="250" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a0d2e273a7c7548175c217ae47d71c87c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::bTree&lt; key_t, data_t &gt;::bTree</definition>
+        <argsstring>(bTree &amp;&amp;tree)</argsstring>
+        <name>bTree</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1b_tree" kindref="compound">bTree</ref> &amp;&amp;</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor Moves all data from the input parameter into *this without any copies. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tree</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a temporary tree. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="260" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1ab4d47c5b5a6476ff7c5a80233c63a348" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ls::utils::bTree&lt; key_t, data_t &gt;::~bTree</definition>
+        <argsstring>()</argsstring>
+        <name>~bTree</name>
+        <briefdescription>
+<para>destructor Clears all data and resources used by *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="266" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="266" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a15e5f75964c1c960aefb897e327dffbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1b_tree" kindref="compound">bTree</ref> &amp;</type>
+        <definition>bTree&lt; key_t, data_t &gt; &amp; ls::utils::bTree&lt; key_t, data_t &gt;::operator=</definition>
+        <argsstring>(const bTree &amp;tree)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classls_1_1utils_1_1b_tree" kindref="compound">bTree</ref> &amp;</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+<para>copy operator </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tree</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A btree with data to be copied into *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="276" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="39" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a869c1eed72480a6bd681953fd63dd397" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classls_1_1utils_1_1b_tree" kindref="compound">bTree</ref> &amp;</type>
+        <definition>bTree&lt; key_t, data_t &gt; &amp; ls::utils::bTree&lt; key_t, data_t &gt;::operator=</definition>
+        <argsstring>(bTree &amp;&amp;tree)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classls_1_1utils_1_1b_tree" kindref="compound">bTree</ref> &amp;&amp;</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+<para>move operator Moves all data from the input parameter into *this without any copies. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tree</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An r-value reference to a temporary tree.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="288" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="49" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a19181478ca66682c95542f6884514d20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>data_t &amp;</type>
+        <definition>data_t &amp; ls::utils::bTree&lt; key_t, data_t &gt;::operator[]</definition>
+        <argsstring>(const key_t &amp;k)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const key_t &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>subscript operator Iterates through the tree of nodes and returns the data referenced by a key. This operator behaves just like an std::map, where if an object does not exist at the specified key, one will be created. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A key used to reference a specific object in *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to a specific piece of data referenced by &apos;k.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="301" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="110" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1abef490f92f8480aa721210619586cd10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::utils::bTree&lt; key_t, data_t &gt;::push</definition>
+        <argsstring>(const key_t &amp;k, const data_t &amp;d)</argsstring>
+        <name>push</name>
+        <param>
+          <type>const key_t &amp;</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>const data_t &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>push insert a piece of data into *this, referencing it by a key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key that will be used to reference the inserted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data that will be inserted into *this. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="313" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="125" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1ab28bcf0d0f070f67e421c08c86b3ad32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::utils::bTree&lt; key_t, data_t &gt;::pop</definition>
+        <argsstring>(const key_t &amp;k)</argsstring>
+        <name>pop</name>
+        <param>
+          <type>const key_t &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>pop Delete an object contained within *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key that will be used to reference the data to be deleted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="322" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="141" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1afa42537f6de813d5cf20b45f005f2d98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ls::utils::bTree&lt; key_t, data_t &gt;::hasData</definition>
+        <argsstring>(const key_t &amp;k)</argsstring>
+        <name>hasData</name>
+        <param>
+          <type>const key_t &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>hasData Check to see if there is data within the tree, referenced by a key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key that will be used to check for the existence of data in *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if there is data referenced by the key &apos;k,&apos; FALSE if not. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="335" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="156" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a7df76968982d2bc5470af7f176e6ed48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const data_t *</type>
+        <definition>const data_t * ls::utils::bTree&lt; key_t, data_t &gt;::getData</definition>
+        <argsstring>(const key_t &amp;k)</argsstring>
+        <name>getData</name>
+        <param>
+          <type>const key_t &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>getData Get a pointer to the data that&apos;s referenced by a key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key that will be used to check for the existence of data in *this.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pointer to the data referenced by &apos;k.&apos; Returns NULL if no data exists at &apos;k.&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="348" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="166" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a0614343f5ee2b465c8559d2abc26c044" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ls::utils::bTree&lt; key_t, data_t &gt;::size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>size Get the number of nodes contained within *this. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the number of objects inserted into *this. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="356" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="356" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classls_1_1utils_1_1b_tree_1a600f51529b5afa712fc654c7fe9e2d8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ls::utils::bTree&lt; key_t, data_t &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+<para>clear frees all objects and dynamic memory from *this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="362" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/generic/btree_impl.h" bodystart="97" bodyend="104"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>B-Tree A simple tree container that allows for fast lookup of data. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Add iterators, reduce usage of the new operator. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" line="205" column="1" bodyfile="C:/Users/miles/C++/projects/LightSky/lightsky/utils/btree.h" bodystart="205" bodyend="363"/>
+    <listofallmembers>
+      <member refid="classls_1_1utils_1_1b_tree_1ad26062b96c2df747b5ec9e1ece716fa9" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>bTree</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a9ed9b06bf38fd454ae57e539ec01e755" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>bTree</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a0d2e273a7c7548175c217ae47d71c87c" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>bTree</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a600f51529b5afa712fc654c7fe9e2d8a" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>clear</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a7df76968982d2bc5470af7f176e6ed48" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>getData</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1afa42537f6de813d5cf20b45f005f2d98" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>hasData</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a3b5ff0736e5d769e61a3d10886837c11" prot="private" virt="non-virtual"><scope>ls::utils::bTree</scope><name>head</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1aedaf597abe0878c204d93d0e24590a95" prot="private" virt="non-virtual"><scope>ls::utils::bTree</scope><name>iterate</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a686ca0e11ac30a2d0653d130bf481c19" prot="private" virt="non-virtual"><scope>ls::utils::bTree</scope><name>numNodes</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a15e5f75964c1c960aefb897e327dffbd" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a869c1eed72480a6bd681953fd63dd397" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>operator=</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a19181478ca66682c95542f6884514d20" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>operator[]</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1ab28bcf0d0f070f67e421c08c86b3ad32" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>pop</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1abef490f92f8480aa721210619586cd10" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>push</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1a0614343f5ee2b465c8559d2abc26c044" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>size</name></member>
+      <member refid="classls_1_1utils_1_1b_tree_1ab4d47c5b5a6476ff7c5a80233c63a348" prot="public" virt="non-virtual"><scope>ls::utils::bTree</scope><name>~bTree</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

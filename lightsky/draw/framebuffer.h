@@ -288,7 +288,7 @@ class framebuffer final {
         void blit(
             const math::vec2i& srcOrig, const math::vec2i& srcSize,
             const math::vec2i& dstOrig, const math::vec2i& dstSize,
-            fbo_mask_t msk, ls_tex_filter_t fltr = LS_FILTER_LINEAR
+            fbo_mask_t msk, tex_filter_t fltr = TEX_FILTER_LINEAR
         ) const;
         
         /**

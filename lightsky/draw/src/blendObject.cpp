@@ -15,11 +15,11 @@ namespace draw {
 -------------------------------------*/
 void blendObject::bind() const {
     if (!enabled) {
-        glDisable(LS_BLEND);
+        glDisable(BLEND_STATE);
         return;
     }
     
-    glEnable(LS_BLEND);
+    glEnable(BLEND_STATE);
     
     glBlendColor(blendCol[0], blendCol[1], blendCol[2], blendCol[3]);
     

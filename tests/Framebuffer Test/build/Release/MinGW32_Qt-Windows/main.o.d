@@ -47,8 +47,8 @@ build/Release/MinGW32_Qt-Windows/main.o: main.cpp \
  ../../lightsky/draw/generic/blendObject_impl.h \
  ../../lightsky/draw/boundingBox.h \
  ../../lightsky/draw/generic/boundingBox_impl.h \
- ../../lightsky/draw/bufferObject.h \
- ../../lightsky/draw/generic/bufferObject_impl.h \
+ ../../lightsky/draw/vertexBuffer.h \
+ ../../lightsky/draw/generic/vertexBuffer_impl.h \
  ../../lightsky/draw/context.h ../../lightsky/draw/display.h \
  ../../lightsky/draw/generic/display_impl.h \
  ../../lightsky/draw/generic/context_impl.h \
@@ -225,9 +225,9 @@ build/Release/MinGW32_Qt-Windows/main.o: main.cpp \
 
 ../../lightsky/draw/generic/boundingBox_impl.h:
 
-../../lightsky/draw/bufferObject.h:
+../../lightsky/draw/vertexBuffer.h:
 
-../../lightsky/draw/generic/bufferObject_impl.h:
+../../lightsky/draw/generic/vertexBuffer_impl.h:
 
 ../../lightsky/draw/context.h:
 

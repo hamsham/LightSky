@@ -22,35 +22,35 @@ namespace draw {
 /**
  * Blending equations that can be used when rendering.
  */
-enum : int {
-    LS_BLEND = GL_BLEND
+enum blend_state_t : int {
+    BLEND_STATE = GL_BLEND
 };
 
 /**
  * Blending colors
  */
 enum blend_color_t : int {
-    LS_BLEND_COLOR = GL_BLEND_COLOR
+    BLEND_COLOR = GL_BLEND_COLOR
 };
 
 /**
  * Blending equations
  */
 enum blend_equ_t : int {
-    LS_BLEND_ADD            = GL_FUNC_ADD,
-    LS_BLEND_SUB            = GL_FUNC_SUBTRACT,
-    LS_BLEND_REV_SUB        = GL_FUNC_REVERSE_SUBTRACT,
-    LS_BLEND_MIN            = GL_MIN,
-    LS_BLEND_MAX            = GL_MAX,
-    LS_DEFAULT_BLEND_EQU    = GL_FUNC_ADD
+    BLEND_EQU_ADD       = GL_FUNC_ADD,
+    BLEND_EQU_SUB       = GL_FUNC_SUBTRACT,
+    BLEND_EQU_REV_SUB   = GL_FUNC_REVERSE_SUBTRACT,
+    BLEND_EQU_MIN       = GL_MIN,
+    BLEND_EQU_MAX       = GL_MAX,
+    BLEND_EQU_DEFAULT   = GL_FUNC_ADD
 };
 
 /**
  * Blending Equation Color
  */
 enum blend_equ_color_t : int {
-    LS_BLEND_EQUATION_RGB   = GL_BLEND_EQUATION_RGB,
-    LS_BLEND_EQUATION_ALPHA = GL_BLEND_EQUATION_ALPHA
+    BLEND_EQU_COL_RGB   = GL_BLEND_EQUATION_RGB,
+    BLEND_EQU_COL_ALPHA = GL_BLEND_EQUATION_ALPHA
 };
 
 /**
@@ -58,30 +58,30 @@ enum blend_equ_color_t : int {
  * a renderable object.
  */
 enum blend_func_t : int {
-    LS_ZERO                     = GL_ZERO,
-    LS_ONE                      = GL_ONE,
-    LS_SRC_COLOR                = GL_SRC_COLOR,
-    LS_ONE_MINUS_SRC_COLOR      = GL_ONE_MINUS_SRC_COLOR,
-    LS_DST_COLOR                = GL_DST_COLOR,
-    LS_ONE_MINUS_DST_COLOR      = GL_ONE_MINUS_DST_COLOR,
-    LS_SRC_ALPHA                = GL_SRC_ALPHA,
-    LS_ONE_MINUS_SRC_ALPHA      = GL_ONE_MINUS_SRC_ALPHA,
-    LS_DST_ALPHA                = GL_DST_ALPHA,
-    LS_ONE_MINUS_DST_ALPHA      = GL_ONE_MINUS_DST_ALPHA,
-    LS_CONST_COLOR              = GL_CONSTANT_COLOR,
-    LS_ONE_MINUS_CONST_COLOR    = GL_ONE_MINUS_CONSTANT_COLOR,
-    LS_CONST_ALPHA              = GL_CONSTANT_ALPHA,
-    LS_ONE_MINUS_CONST_ALPHA    = GL_ONE_MINUS_CONSTANT_ALPHA
+    BLEND_FNC_ZERO                 = GL_ZERO,
+    BLEND_FNC_ONE                  = GL_ONE,
+    BLEND_FNC_SRC_COLOR            = GL_SRC_COLOR,
+    BLEND_FNC_1_SUB_SRC_COLOR      = GL_ONE_MINUS_SRC_COLOR,
+    BLEND_FNC_DST_COLOR            = GL_DST_COLOR,
+    BLEND_FNC_1_SUB_DST_COLOR      = GL_ONE_MINUS_DST_COLOR,
+    BLEND_FNC_SRC_ALPHA            = GL_SRC_ALPHA,
+    BLEND_FNC_1_SUB_SRC_ALPHA      = GL_ONE_MINUS_SRC_ALPHA,
+    BLEND_FNC_DST_ALPHA            = GL_DST_ALPHA,
+    BLEND_FNC_1_SUB_DST_ALPHA      = GL_ONE_MINUS_DST_ALPHA,
+    BLEND_FNC_CONST_COLOR          = GL_CONSTANT_COLOR,
+    BLEND_FNC_1_SUB_CONST_COLOR    = GL_ONE_MINUS_CONSTANT_COLOR,
+    BLEND_FNC_CONST_ALPHA          = GL_CONSTANT_ALPHA,
+    BLEND_FNC_1_SUB_CONST_ALPHA    = GL_ONE_MINUS_CONSTANT_ALPHA
 };
 
 /**
  * Blending Function Color
  */
 enum blend_func_color_t : int {
-    LS_BLEND_SRC_RGB    = GL_BLEND_SRC_RGB,
-    LS_BLEND_DST_RGB    = GL_BLEND_DST_RGB,
-    LS_BLEND_SRC_ALPHA  = GL_BLEND_SRC_ALPHA,
-    LS_BLEND_DST_ALPHA  = GL_BLEND_DST_ALPHA
+    BLEND_FNC_COL_SRC_RGB   = GL_BLEND_SRC_RGB,
+    BLEND_FNC_COL_DST_RGB   = GL_BLEND_DST_RGB,
+    BLEND_FNC_COL_SRC_ALPHA = GL_BLEND_SRC_ALPHA,
+    BLEND_FNC_COL_DST_ALPHA = GL_BLEND_DST_ALPHA
 };
 
 /**----------------------------------------------------------------------------
@@ -104,36 +104,36 @@ class blendObject {
         /**
          * Class Member that's used to set the RGB blending equation in OpenGL.
          */
-        blend_equ_t rgbBlendEq = LS_BLEND_ADD;
+        blend_equ_t rgbBlendEq = BLEND_EQU_ADD;
         
         /**
          * Class Member that's used to set the alpha blending equation in OpenGL
          */
-        blend_equ_t alphaBlendEq = LS_BLEND_ADD;
+        blend_equ_t alphaBlendEq = BLEND_EQU_ADD;
         
         /**
          * Class Member that's used to set the source RGB blending function in
          * OpenGL.
          */
-        blend_func_t srcRgbBlendFunc = LS_ONE;
+        blend_func_t srcRgbBlendFunc = BLEND_FNC_ONE;
         
         /**
          * Class Member that's used to set the destination RGB blending function
          * in OpenGL.
          */
-        blend_func_t dstRgbBlendFunc = LS_ZERO;
+        blend_func_t dstRgbBlendFunc = BLEND_FNC_ZERO;
         
         /**
          * Class Member that's used to set the source alpha blending function in
          * OpenGL.
          */
-        blend_func_t srcAlphaBlendFunc = LS_ONE;
+        blend_func_t srcAlphaBlendFunc = BLEND_FNC_ONE;
         
         /**
          * Class Member that's used to set the destination alpha blending
          * function in OpenGL.
          */
-        blend_func_t dstAlphaBlendFunc = LS_ZERO;
+        blend_func_t dstAlphaBlendFunc = BLEND_FNC_ZERO;
 
     public:
         /**
@@ -236,7 +236,7 @@ class blendObject {
          * @param rgbaMode
          * The blend equation that OpenGL should use internally.
          */
-        void setBlendEquation(blend_equ_t rgbaMode = LS_BLEND_ADD);
+        void setBlendEquation(blend_equ_t rgbaMode = BLEND_EQU_ADD);
         
         /**
          * Set the OpenGL blending equation, but with different values for RGB
@@ -249,8 +249,8 @@ class blendObject {
          * The blending equation for the alpha channel.
          */
         void setBlendEquation(
-            blend_equ_t rgbMode = LS_BLEND_ADD,
-            blend_equ_t alphaMode = LS_BLEND_ADD
+            blend_equ_t rgbMode = BLEND_EQU_ADD,
+            blend_equ_t alphaMode = BLEND_EQU_ADD
         );
         
         /**
@@ -277,8 +277,8 @@ class blendObject {
          * The blending equation for the destination RGBA channels.
          */
         void setBlendFunction(
-            blend_func_t srcFactor = LS_ONE,
-            blend_func_t dstFactor = LS_ZERO
+            blend_func_t srcFactor = BLEND_FNC_ONE,
+            blend_func_t dstFactor = BLEND_FNC_ZERO
         );
         
         /**
@@ -298,10 +298,10 @@ class blendObject {
          * The blending function for the destination alpha channel.
          */
         void setBlendFunction(
-            blend_func_t srcFactorRgb = LS_ONE,
-            blend_func_t dstFactorRgb = LS_ZERO,
-            blend_func_t srcFactorAlpha = LS_ONE,
-            blend_func_t dstFactorAlpha = LS_ZERO
+            blend_func_t srcFactorRgb = BLEND_FNC_ONE,
+            blend_func_t dstFactorRgb = BLEND_FNC_ZERO,
+            blend_func_t srcFactorAlpha = BLEND_FNC_ONE,
+            blend_func_t dstFactorAlpha = BLEND_FNC_ZERO
         );
         
         /**

@@ -183,8 +183,8 @@ bool uiState::initDrawModels() {
 ******************************************************************************/
 void uiState::setRendererParams() {
     pBlender->setState(true);
-    pBlender->setBlendEquation(ls::draw::LS_BLEND_ADD, ls::draw::LS_BLEND_ADD);
-    pBlender->setBlendFunction(ls::draw::LS_ONE, ls::draw::LS_ONE_MINUS_SRC_ALPHA, ls::draw::LS_ONE, ls::draw::LS_ZERO);
+    pBlender->setBlendEquation(ls::draw::BLEND_EQU_ADD, ls::draw::BLEND_EQU_ADD);
+    pBlender->setBlendFunction(ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_1_SUB_SRC_ALPHA, ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_ZERO);
 }
 
 /******************************************************************************

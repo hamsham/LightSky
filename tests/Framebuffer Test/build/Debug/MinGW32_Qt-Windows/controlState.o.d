@@ -52,8 +52,8 @@ build/Debug/MinGW32_Qt-Windows/controlState.o: controlState.cpp \
  ../../lightsky/draw/generic/blendObject_impl.h \
  ../../lightsky/draw/boundingBox.h \
  ../../lightsky/draw/generic/boundingBox_impl.h \
- ../../lightsky/draw/bufferObject.h \
- ../../lightsky/draw/generic/bufferObject_impl.h \
+ ../../lightsky/draw/vertexBuffer.h \
+ ../../lightsky/draw/generic/vertexBuffer_impl.h \
  ../../lightsky/draw/depthObject.h \
  ../../lightsky/draw/generic/depthObject_impl.h \
  ../../lightsky/draw/framebuffer.h \
@@ -245,9 +245,9 @@ main.h:
 
 ../../lightsky/draw/generic/boundingBox_impl.h:
 
-../../lightsky/draw/bufferObject.h:
+../../lightsky/draw/vertexBuffer.h:
 
-../../lightsky/draw/generic/bufferObject_impl.h:
+../../lightsky/draw/generic/vertexBuffer_impl.h:
 
 ../../lightsky/draw/depthObject.h:
 

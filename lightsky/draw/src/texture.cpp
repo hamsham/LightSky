@@ -35,7 +35,7 @@ bool getGpuHandle(unsigned& texId) {
 /*-------------------------------------
     Constructor
 -------------------------------------*/
-texture::texture(ls_tex_desc_t td) :
+texture::texture(tex_desc_t td) :
     dimensions{td},
     texId{0}
 {}

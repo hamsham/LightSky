@@ -22,8 +22,8 @@ build/Debug/MinGW32_Qt-Windows/_ext/1644805454/meshModel.o: \
  ../lightsky/math/generic/mat_utils_impl.h ../lightsky/math/perlinNoise.h \
  ../lightsky/utils/randomNum.h \
  ../lightsky/math/generic/perlinNoise_impl.h ../lightsky/draw/meshModel.h \
- ../lightsky/draw/bufferObject.h \
- ../lightsky/draw/generic/bufferObject_impl.h ../lightsky/draw/mesh.h \
+ ../lightsky/draw/vertexBuffer.h \
+ ../lightsky/draw/generic/vertexBuffer_impl.h ../lightsky/draw/mesh.h \
  ../lightsky/draw/atlas.h ../lightsky/draw/fontResource.h \
  ../lightsky/utils/resource.h ../lightsky/utils/setup.h \
  ../lightsky/utils/string_utils.h \
@@ -126,9 +126,9 @@ build/Debug/MinGW32_Qt-Windows/_ext/1644805454/meshModel.o: \
 
 ../lightsky/draw/meshModel.h:
 
-../lightsky/draw/bufferObject.h:
+../lightsky/draw/vertexBuffer.h:
 
-../lightsky/draw/generic/bufferObject_impl.h:
+../lightsky/draw/generic/vertexBuffer_impl.h:
 
 ../lightsky/draw/mesh.h:
 

@@ -74,7 +74,7 @@ class imageResource final : public ls::utils::resource {
          * LS_RGBA_32F
          * where N is 8, 16, or 32
          */
-        pixel_format_t intFormat = LS_DEFAULT_PIXEL_FORMAT;
+        pixel_format_t intFormat = COLOR_FMT_DEFAULT;
         
         
         /**
@@ -90,7 +90,7 @@ class imageResource final : public ls::utils::resource {
          * LS_RGB16F
          * LS_RGBA32F
          */
-        pixel_layout_t extFormat = LS_DEFAULT_PIXEL_LAYOUT;
+        pixel_layout_t extFormat = COLOR_LAYOUT_DEFAULT;
 
     public:
         /**

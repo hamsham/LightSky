@@ -23,13 +23,13 @@ namespace draw {
     of rasterized fragments.
 -----------------------------------------------------------------------------*/
 enum compare_func_t : int {
-    LS_DEPTH_ALWAYS     = GL_ALWAYS,
-    LS_DEPTH_NEVER      = GL_NEVER,
-    LS_DEPTH_LESS       = GL_LESS,
-    LS_DEPTH_EQUAL      = GL_EQUAL,
-    LS_DEPTH_LEQUAL     = GL_LEQUAL,
-    LS_DEPTH_GEQUAL     = GL_GEQUAL,
-    LS_DEPTH_NEQUAL     = GL_NOTEQUAL
+    DEPTH_FNC_ALWAYS     = GL_ALWAYS,
+    DEPTH_FNC_NEVER      = GL_NEVER,
+    DEPTH_FNC_LESS       = GL_LESS,
+    DEPTH_FNC_EQUAL      = GL_EQUAL,
+    DEPTH_FNC_LEQUAL     = GL_LEQUAL,
+    DEPTH_FNC_GEQUAL     = GL_GEQUAL,
+    DEPTH_FNC_NEQUAL     = GL_NOTEQUAL
 };
 
 /**----------------------------------------------------------------------------
@@ -59,7 +59,7 @@ class depthObject {
          * by comparing it to the one rendered before. This member is applied
          * to the function "glDepthFunc()"
          */
-        compare_func_t depthFunc = LS_DEPTH_LESS;
+        compare_func_t depthFunc = DEPTH_FNC_LESS;
         
         /**
          * A GLboolean flag that, used with glDepthMask(), determines if a
@@ -206,7 +206,7 @@ class depthObject {
          * @param cf
          * The comparison function to be used when rendering pixel fragments.
          */
-        void setDepthFunc(compare_func_t cf = LS_DEPTH_LESS);
+        void setDepthFunc(compare_func_t cf = DEPTH_FNC_LESS);
         
         /**
          * Get the depth-comparison function used by this depth object.

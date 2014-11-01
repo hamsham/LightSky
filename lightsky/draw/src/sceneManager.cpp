@@ -32,7 +32,7 @@ sceneManager::~sceneManager() {
  * Constructor
  */
 sceneManager::sceneManager() :
-    defaultTex{ls_tex_desc_t::LS_TEX_2D},
+    defaultTex{tex_desc_t::TEX_DESC_2D},
     texMgr{},
     meshMgr{},
     atlasMgr{},
@@ -125,9 +125,9 @@ bool sceneManager::initDefaultTexture() {
     }
     
     if (!defaultTex.init(
-        0, LS_RGBA_32F,
+        0, COLOR_FMT_RGBA_32F,
         math::vec2i{2},
-        LS_RGBA, COLOR_TYPE_FLOAT,
+        COLOR_LAYOUT_RGBA, COLOR_TYPE_FLOAT,
         (void*)checkeredCol)
     ) {
         LS_LOG_ERR("\tUnable to initialize a default texture for draw models.");
@@ -136,10 +136,10 @@ bool sceneManager::initDefaultTexture() {
         return false;
     }
     else {
-        defaultTex.setParameter(LS_TEX_MIN_FILTER, LS_FILTER_NEAREST);
-        defaultTex.setParameter(LS_TEX_MAG_FILTER, LS_FILTER_NEAREST);
-        defaultTex.setParameter(LS_TEX_WRAP_S, LS_TEX_REPEAT);
-        defaultTex.setParameter(LS_TEX_WRAP_T, LS_TEX_REPEAT);
+        defaultTex.setParameter(TEX_PARAM_MIN_FILTER, TEX_FILTER_NEAREST);
+        defaultTex.setParameter(TEX_PARAM_MAG_FILTER, TEX_FILTER_NEAREST);
+        defaultTex.setParameter(TEX_PARAM_WRAP_S, TEX_PARAM_REPEAT);
+        defaultTex.setParameter(TEX_PARAM_WRAP_T, TEX_PARAM_REPEAT);
         LOG_GL_ERR();
     }
     

@@ -13,7 +13,7 @@
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/blendObject.h"
 #include "lightsky/draw/boundingBox.h"
-#include "lightsky/draw/bufferObject.h"
+#include "lightsky/draw/vertexBuffer.h"
 #include "lightsky/draw/color.h"
 #include "lightsky/draw/context.h"
 #include "lightsky/draw/display.h"

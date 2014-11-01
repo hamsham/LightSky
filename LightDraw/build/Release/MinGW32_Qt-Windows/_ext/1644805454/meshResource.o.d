@@ -32,8 +32,8 @@ build/Release/MinGW32_Qt-Windows/_ext/1644805454/meshResource.o: \
  ../lightsky/draw/generic/texture_impl.h \
  ../lightsky/draw/generic/atlas_impl.h ../lightsky/draw/boundingBox.h \
  ../lightsky/draw/generic/boundingBox_impl.h \
- ../lightsky/draw/bufferObject.h \
- ../lightsky/draw/generic/bufferObject_impl.h ../lightsky/draw/renderer.h \
+ ../lightsky/draw/vertexBuffer.h \
+ ../lightsky/draw/generic/vertexBuffer_impl.h ../lightsky/draw/renderer.h \
  ../lightsky/draw/display.h ../lightsky/draw/generic/display_impl.h \
  ../lightsky/draw/generic/renderer_impl.h ../lightsky/draw/vertex.h \
  ../lightsky/draw/generic/mesh_impl.h ../lightsky/draw/geometry.h \
@@ -156,9 +156,9 @@ build/Release/MinGW32_Qt-Windows/_ext/1644805454/meshResource.o: \
 
 ../lightsky/draw/generic/boundingBox_impl.h:
 
-../lightsky/draw/bufferObject.h:
+../lightsky/draw/vertexBuffer.h:
 
-../lightsky/draw/generic/bufferObject_impl.h:
+../lightsky/draw/generic/vertexBuffer_impl.h:
 
 ../lightsky/draw/renderer.h:
 

@@ -86,7 +86,7 @@ bool atlas::init(const fontResource& fr) {
     // Let OpenGL know that fonts only use 1-byte per pixel
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     
-    if (!atlasTex.init(0, LS_R_8, maxGlyphSize*dimensions, LS_R, COLOR_TYPE_UNSIGNED_BYTE, nullptr)) {
+    if (!atlasTex.init(0, COLOR_FMT_R_8, maxGlyphSize*dimensions, COLOR_LAYOUT_R, COLOR_TYPE_UNSIGNED_BYTE, nullptr)) {
         LOG_GL_ERR();
         LS_LOG_ERR("\tAn error occurred while allocating space for a font atlas.\n");
         delete [] entries;
@@ -108,7 +108,7 @@ bool atlas::init(const fontResource& fr) {
             
             atlasTex.modify(
                 vec2i{x*maxGlyphSize[0], y*maxGlyphSize[1]},
-                pGlyph.size, LS_GRAY, COLOR_TYPE_UNSIGNED_BYTE, pGlyph.pData
+                pGlyph.size, COLOR_LAYOUT_GRAY, COLOR_TYPE_UNSIGNED_BYTE, pGlyph.pData
             );
             
             const float fDimension = (float)dimensions;
@@ -134,8 +134,8 @@ bool atlas::init(const fontResource& fr) {
         }
     }
     
-    atlasTex.setParameter(LS_TEX_WRAP_S, LS_TEX_CLAMP_BORDER);
-    atlasTex.setParameter(LS_TEX_WRAP_T, LS_TEX_CLAMP_BORDER);
+    atlasTex.setParameter(TEX_PARAM_WRAP_S, TEX_PARAM_CLAMP_BORDER);
+    atlasTex.setParameter(TEX_PARAM_WRAP_T, TEX_PARAM_CLAMP_BORDER);
     atlasTex.unbind();
     LOG_GL_ERR();
     

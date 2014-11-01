@@ -308,8 +308,8 @@ void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
     ls::draw::texture* fbDepthTex = pScene->getTexture(0);
     ls::draw::texture* fbColorTex = pScene->getTexture(1);
     
-    fbDepthTex->init(0, ls::draw::LS_GRAY_8, fbRes, ls::draw::LS_GRAY, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
-    fbColorTex->init(0, ls::draw::LS_RGB_8, fbRes, ls::draw::LS_RGB, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    fbDepthTex->init(0, ls::draw::COLOR_FMT_GRAY_8, fbRes, ls::draw::COLOR_LAYOUT_GRAY, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    fbColorTex->init(0, ls::draw::COLOR_FMT_RGB_8, fbRes, ls::draw::COLOR_LAYOUT_RGB, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
     
 }
 
@@ -363,9 +363,9 @@ bool fbState::initFileData() {
     || !pSphereMesh
     || !pMeshLoader->loadSphere(16)
     || !pSphereMesh->init(*pMeshLoader)
-    || !fbDepthTex->init(0, ls::draw::LS_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, ls::draw::LS_GRAY, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
-    || !fbColorTex->init(0, ls::draw::LS_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, ls::draw::LS_RGB, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
-    || !noiseTex->init(0, ls::draw::LS_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, ls::draw::LS_R, ls::draw::COLOR_TYPE_FLOAT, nullptr)
+    || !fbDepthTex->init(0, ls::draw::COLOR_FMT_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, ls::draw::COLOR_LAYOUT_GRAY, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
+    || !fbColorTex->init(0, ls::draw::COLOR_FMT_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, ls::draw::COLOR_LAYOUT_RGB, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
+    || !noiseTex->init(0, ls::draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, ls::draw::COLOR_LAYOUT_R, ls::draw::COLOR_TYPE_FLOAT, nullptr)
     ) {
         ret = false;
     }
@@ -392,11 +392,12 @@ void fbState::regenerateNoise() {
     
     ls::draw::texture* const pTexture = pScene->getTexture(2);
     pTexture->bind();
-    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, ls::draw::LS_R, ls::draw::COLOR_TYPE_FLOAT, noiseTable.data());
-    pTexture->setParameter(ls::draw::LS_TEX_MIN_FILTER, ls::draw::LS_FILTER_LINEAR);
-    pTexture->setParameter(ls::draw::LS_TEX_MAG_FILTER, ls::draw::LS_FILTER_NEAREST);
-    pTexture->setParameter(ls::draw::LS_TEX_WRAP_S, ls::draw::LS_TEX_REPEAT);
-    pTexture->setParameter(ls::draw::LS_TEX_WRAP_T, ls::draw::LS_TEX_REPEAT);
+    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, ls::draw::COLOR_LAYOUT_R, ls::draw::COLOR_TYPE_FLOAT, noiseTable.data());
+    
+    pTexture->setParameter(ls::draw::TEX_PARAM_MIN_FILTER,  ls::draw::TEX_FILTER_LINEAR);
+    pTexture->setParameter(ls::draw::TEX_PARAM_MAG_FILTER,  ls::draw::TEX_FILTER_NEAREST);
+    pTexture->setParameter(ls::draw::TEX_PARAM_WRAP_S,      ls::draw::TEX_PARAM_REPEAT);
+    pTexture->setParameter(ls::draw::TEX_PARAM_WRAP_T,      ls::draw::TEX_PARAM_REPEAT);
     pTexture->unbind();
     
     futureNoise = std::move(std::async(
@@ -512,27 +513,27 @@ bool fbState::initFramebuffers() {
     
     // setup the test framebuffer depth texture
     pDepthTex->bind();
-        pDepthTex->setParameter(ls::draw::LS_TEX_MIN_FILTER, ls::draw::LS_FILTER_LINEAR);
-        pDepthTex->setParameter(ls::draw::LS_TEX_MAG_FILTER, ls::draw::LS_FILTER_LINEAR);
-        pDepthTex->setParameter(ls::draw::LS_TEX_WRAP_S, ls::draw::LS_TEX_CLAMP_EDGE);
-        pDepthTex->setParameter(ls::draw::LS_TEX_WRAP_T, ls::draw::LS_TEX_CLAMP_EDGE);
+        pDepthTex->setParameter(ls::draw::TEX_PARAM_MIN_FILTER, ls::draw::TEX_FILTER_LINEAR);
+        pDepthTex->setParameter(ls::draw::TEX_PARAM_MAG_FILTER, ls::draw::TEX_FILTER_LINEAR);
+        pDepthTex->setParameter(ls::draw::TEX_PARAM_WRAP_S,     ls::draw::TEX_PARAM_CLAMP_EDGE);
+        pDepthTex->setParameter(ls::draw::TEX_PARAM_WRAP_T,     ls::draw::TEX_PARAM_CLAMP_EDGE);
     pDepthTex->unbind();
     
     LOG_GL_ERR();
     
     // framebuffer color texture
     pColorTex->bind();
-        pColorTex->setParameter(ls::draw::LS_TEX_MIN_FILTER, ls::draw::LS_FILTER_LINEAR);
-        pColorTex->setParameter(ls::draw::LS_TEX_MAG_FILTER, ls::draw::LS_FILTER_LINEAR);
-        pColorTex->setParameter(ls::draw::LS_TEX_WRAP_S, ls::draw::LS_TEX_CLAMP_EDGE);
-        pColorTex->setParameter(ls::draw::LS_TEX_WRAP_T, ls::draw::LS_TEX_CLAMP_EDGE);
+        pColorTex->setParameter(ls::draw::TEX_PARAM_MIN_FILTER, ls::draw::TEX_FILTER_LINEAR);
+        pColorTex->setParameter(ls::draw::TEX_PARAM_MAG_FILTER, ls::draw::TEX_FILTER_LINEAR);
+        pColorTex->setParameter(ls::draw::TEX_PARAM_WRAP_S,     ls::draw::TEX_PARAM_CLAMP_EDGE);
+        pColorTex->setParameter(ls::draw::TEX_PARAM_WRAP_T,     ls::draw::TEX_PARAM_CLAMP_EDGE);
     pColorTex->unbind();
     
     LOG_GL_ERR();
     
     testFb.bind();
-        testFb.attachTexture(ls::draw::FBO_ATTACHMENT_DEPTH, ls::draw::FBO_2D_TARGET, *pDepthTex);
-        testFb.attachTexture(ls::draw::FBO_ATTACHMENT_0, ls::draw::FBO_2D_TARGET, *pColorTex);
+        testFb.attachTexture(ls::draw::FBO_ATTACHMENT_DEPTH,    ls::draw::FBO_2D_TARGET, *pDepthTex);
+        testFb.attachTexture(ls::draw::FBO_ATTACHMENT_0,        ls::draw::FBO_2D_TARGET, *pColorTex);
     testFb.unbind();
     
     LOG_GL_ERR();

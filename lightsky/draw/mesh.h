@@ -10,7 +10,7 @@
 
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/boundingBox.h"
-#include "lightsky/draw/bufferObject.h"
+#include "lightsky/draw/vertexBuffer.h"
 #include "lightsky/draw/renderer.h"
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/vertex.h"

@@ -1,5 +1,5 @@
-build/Release/MinGW32_Qt-Windows/_ext/1644805454/bufferObject.o: \
- ../lightsky/draw/src/bufferObject.cpp ../lightsky/draw/bufferObject.h \
+build/Release/MinGW32_Qt-Windows/_ext/1644805454/vertexBuffer.o: \
+ ../lightsky/draw/src/vertexBuffer.cpp ../lightsky/draw/vertexBuffer.h \
  ../lightsky/draw/setup.h ../lightsky/setup/setup.h \
  ../lightsky/setup/compiler.h ../lightsky/setup/arch.h \
  ../lightsky/setup/os.h ../lightsky/setup/macros.h \
@@ -22,9 +22,9 @@ build/Release/MinGW32_Qt-Windows/_ext/1644805454/bufferObject.o: \
  ../lightsky/math/generic/mat_utils_impl.h ../lightsky/math/perlinNoise.h \
  ../lightsky/utils/randomNum.h \
  ../lightsky/math/generic/perlinNoise_impl.h \
- ../lightsky/draw/generic/bufferObject_impl.h
+ ../lightsky/draw/generic/vertexBuffer_impl.h
 
-../lightsky/draw/bufferObject.h:
+../lightsky/draw/vertexBuffer.h:
 
 ../lightsky/draw/setup.h:
 
@@ -108,4 +108,4 @@ build/Release/MinGW32_Qt-Windows/_ext/1644805454/bufferObject.o: \
 
 ../lightsky/math/generic/perlinNoise_impl.h:
 
-../lightsky/draw/generic/bufferObject_impl.h:
+../lightsky/draw/generic/vertexBuffer_impl.h:

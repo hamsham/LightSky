@@ -8,7 +8,6 @@
         <itemPath>../lightsky/draw/generic/atlas_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/blendObject_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/boundingBox_impl.h</itemPath>
-        <itemPath>../lightsky/draw/generic/bufferObject_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/context_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/depthObject_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/display_impl.h</itemPath>
@@ -24,11 +23,11 @@
         <itemPath>../lightsky/draw/generic/shaderObject_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/shaderProgram_impl.h</itemPath>
         <itemPath>../lightsky/draw/generic/texture_impl.h</itemPath>
+        <itemPath>../lightsky/draw/generic/vertexBuffer_impl.h</itemPath>
       </logicalFolder>
       <itemPath>../lightsky/draw/atlas.h</itemPath>
       <itemPath>../lightsky/draw/blendObject.h</itemPath>
       <itemPath>../lightsky/draw/boundingBox.h</itemPath>
-      <itemPath>../lightsky/draw/bufferObject.h</itemPath>
       <itemPath>../lightsky/draw/color.h</itemPath>
       <itemPath>../lightsky/draw/context.h</itemPath>
       <itemPath>../lightsky/draw/depthObject.h</itemPath>
@@ -50,6 +49,7 @@
       <itemPath>../lightsky/draw/texture.h</itemPath>
       <itemPath>../lightsky/draw/vertex.h</itemPath>
       <itemPath>../lightsky/draw/vertexArray.h</itemPath>
+      <itemPath>../lightsky/draw/vertexBuffer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -61,7 +61,6 @@
       <itemPath>../lightsky/draw/src/atlas.cpp</itemPath>
       <itemPath>../lightsky/draw/src/blendObject.cpp</itemPath>
       <itemPath>../lightsky/draw/src/boundingBox.cpp</itemPath>
-      <itemPath>../lightsky/draw/src/bufferObject.cpp</itemPath>
       <itemPath>../lightsky/draw/src/context.cpp</itemPath>
       <itemPath>../lightsky/draw/src/depthObject.cpp</itemPath>
       <itemPath>../lightsky/draw/src/display.cpp</itemPath>
@@ -79,6 +78,7 @@
       <itemPath>../lightsky/draw/src/shaderProgram.cpp</itemPath>
       <itemPath>../lightsky/draw/src/texture.cpp</itemPath>
       <itemPath>../lightsky/draw/src/vertexArray.cpp</itemPath>
+      <itemPath>../lightsky/draw/src/vertexBuffer.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -157,8 +157,6 @@
       </item>
       <item path="../lightsky/draw/boundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/draw/bufferObject.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/context.h" ex="false" tool="3" flavor2="0">
@@ -184,11 +182,6 @@
             flavor2="0">
       </item>
       <item path="../lightsky/draw/generic/boundingBox_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../lightsky/draw/generic/bufferObject_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -268,6 +261,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../lightsky/draw/generic/vertexBuffer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../lightsky/draw/geometry.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/imageResource.h" ex="false" tool="3" flavor2="0">
@@ -298,11 +296,6 @@
             flavor2="0">
       </item>
       <item path="../lightsky/draw/src/boundingBox.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="../lightsky/draw/src/bufferObject.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -371,11 +364,18 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../lightsky/draw/src/vertexBuffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="../lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/vertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/vertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/vertexBuffer.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -446,8 +446,6 @@
       </item>
       <item path="../lightsky/draw/boundingBox.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/draw/bufferObject.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/context.h" ex="false" tool="3" flavor2="0">
@@ -473,11 +471,6 @@
             flavor2="0">
       </item>
       <item path="../lightsky/draw/generic/boundingBox_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../lightsky/draw/generic/bufferObject_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -557,6 +550,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../lightsky/draw/generic/vertexBuffer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../lightsky/draw/geometry.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/imageResource.h" ex="false" tool="3" flavor2="0">
@@ -587,11 +585,6 @@
             flavor2="0">
       </item>
       <item path="../lightsky/draw/src/boundingBox.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="../lightsky/draw/src/bufferObject.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -660,11 +653,18 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../lightsky/draw/src/vertexBuffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="../lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/vertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/draw/vertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../lightsky/draw/vertexBuffer.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

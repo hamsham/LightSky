@@ -128,63 +128,63 @@ void getPixelFormat(
     LS_LOG_MSG("\tImage Bits Per Pixel: ", bpp);
     
     // setup some default values in case nothing below returns.
-    intFmt = LS_INVALID_PIXEL_FORMAT;
-    extFmt = LS_INVALID_PIXEL_LAYOUT;
+    intFmt = COLOR_FMT_INVALID;
+    extFmt = COLOR_LAYOUT_INVALID;
     
     // Get the data type of the image. Convert to an internal format
     const FREE_IMAGE_TYPE dataType = FreeImage_GetImageType(pImg);
     
     if (dataType == FIT_BITMAP) {
-        if (bpp == 8)   intFmt = LS_GRAY_8;     extFmt = LS_GRAY;
-        if (bpp == 16)  intFmt = LS_RG_8;       extFmt = LS_RG;
-        if (bpp == 24)  intFmt = LS_RGB_8;      extFmt = LS_RGB;
-        if (bpp == 32)  intFmt = LS_RGBA_8;     extFmt = LS_RGBA;
+        if (bpp == 8)   intFmt = COLOR_FMT_GRAY_8;     extFmt = COLOR_LAYOUT_GRAY;
+        if (bpp == 16)  intFmt = COLOR_FMT_RG_8;       extFmt = COLOR_LAYOUT_RG;
+        if (bpp == 24)  intFmt = COLOR_FMT_RGB_8;      extFmt = COLOR_LAYOUT_RGB;
+        if (bpp == 32)  intFmt = COLOR_FMT_RGBA_8;     extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_INT16) {
-        if (bpp == 16)  intFmt = LS_GRAY_16I;   extFmt = LS_GRAY;
-        if (bpp == 32)  intFmt = LS_RG_16I;     extFmt = LS_RG;
-        if (bpp == 48)  intFmt = LS_RGB_16I;    extFmt = LS_RGB;
-        if (bpp == 64)  intFmt = LS_RGBA_16I;   extFmt = LS_RGBA;
+        if (bpp == 16)  intFmt = COLOR_FMT_GRAY_16I;   extFmt = COLOR_LAYOUT_GRAY;
+        if (bpp == 32)  intFmt = COLOR_FMT_RG_16I;     extFmt = COLOR_LAYOUT_RG;
+        if (bpp == 48)  intFmt = COLOR_FMT_RGB_16I;    extFmt = COLOR_LAYOUT_RGB;
+        if (bpp == 64)  intFmt = COLOR_FMT_RGBA_16I;   extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_UINT16) {
-        if (bpp == 16)  intFmt = LS_GRAY_16U;   extFmt = LS_GRAY;
-        if (bpp == 32)  intFmt = LS_RG_16U;     extFmt = LS_RG;
-        if (bpp == 48)  intFmt = LS_RGB_16U;    extFmt = LS_RGB;
-        if (bpp == 64)  intFmt = LS_RGBA_16U;   extFmt = LS_RGBA;
+        if (bpp == 16)  intFmt = COLOR_FMT_GRAY_16U;   extFmt = COLOR_LAYOUT_GRAY;
+        if (bpp == 32)  intFmt = COLOR_FMT_RG_16U;     extFmt = COLOR_LAYOUT_RG;
+        if (bpp == 48)  intFmt = COLOR_FMT_RGB_16U;    extFmt = COLOR_LAYOUT_RGB;
+        if (bpp == 64)  intFmt = COLOR_FMT_RGBA_16U;   extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_INT32) {
-        if (bpp == 32)  intFmt = LS_GRAY_32I;   extFmt = LS_GRAY;
-        if (bpp == 64)  intFmt = LS_RG_32I;     extFmt = LS_RG;
-        if (bpp == 96)  intFmt = LS_RGB_32I;    extFmt = LS_RGB;
-        if (bpp == 128) intFmt = LS_RGBA_32I;   extFmt = LS_RGBA;
+        if (bpp == 32)  intFmt = COLOR_FMT_GRAY_32I;   extFmt = COLOR_LAYOUT_GRAY;
+        if (bpp == 64)  intFmt = COLOR_FMT_RG_32I;     extFmt = COLOR_LAYOUT_RG;
+        if (bpp == 96)  intFmt = COLOR_FMT_RGB_32I;    extFmt = COLOR_LAYOUT_RGB;
+        if (bpp == 128) intFmt = COLOR_FMT_RGBA_32I;   extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_UINT32) {
-        if (bpp == 32)  intFmt = LS_GRAY_32U;   extFmt = LS_GRAY;
-        if (bpp == 64)  intFmt = LS_RG_32U;     extFmt = LS_RG;
-        if (bpp == 96)  intFmt = LS_RGB_32U;    extFmt = LS_RGB;
-        if (bpp == 128) intFmt = LS_RGBA_32U;   extFmt = LS_RGBA;
+        if (bpp == 32)  intFmt = COLOR_FMT_GRAY_32U;   extFmt = COLOR_LAYOUT_GRAY;
+        if (bpp == 64)  intFmt = COLOR_FMT_RG_32U;     extFmt = COLOR_LAYOUT_RG;
+        if (bpp == 96)  intFmt = COLOR_FMT_RGB_32U;    extFmt = COLOR_LAYOUT_RGB;
+        if (bpp == 128) intFmt = COLOR_FMT_RGBA_32U;   extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_FLOAT) {
-        if (bpp == 32)  intFmt = LS_GRAY_32F;   extFmt = LS_GRAY;
-        if (bpp == 64)  intFmt = LS_RG_32F;     extFmt = LS_RG;
-        if (bpp == 96)  intFmt = LS_RGB_32F;    extFmt = LS_RGB;
-        if (bpp == 128) intFmt = LS_RGBA_32F;   extFmt = LS_RGBA;
+        if (bpp == 32)  intFmt = COLOR_FMT_GRAY_32F;   extFmt = COLOR_LAYOUT_GRAY;
+        if (bpp == 64)  intFmt = COLOR_FMT_RG_32F;     extFmt = COLOR_LAYOUT_RG;
+        if (bpp == 96)  intFmt = COLOR_FMT_RGB_32F;    extFmt = COLOR_LAYOUT_RGB;
+        if (bpp == 128) intFmt = COLOR_FMT_RGBA_32F;   extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_RGB16) {
-        intFmt = LS_RGB_16F;
-        extFmt = LS_RGB;
+        intFmt = COLOR_FMT_RGB_16F;
+        extFmt = COLOR_LAYOUT_RGB;
     }
     else if (dataType == FIT_RGBA16) {
-        intFmt = LS_RGBA_16F;
-        extFmt = LS_RGBA;
+        intFmt = COLOR_FMT_RGBA_16F;
+        extFmt = COLOR_LAYOUT_RGBA;
     }
     else if (dataType == FIT_RGBF) {
-        intFmt = LS_RGB_32F;
-        extFmt = LS_RGB;
+        intFmt = COLOR_FMT_RGB_32F;
+        extFmt = COLOR_LAYOUT_RGB;
     }
     else if (dataType == FIT_RGBAF) {
-        intFmt = LS_RGBA_32F;
-        extFmt = LS_RGBA;
+        intFmt = COLOR_FMT_RGBA_32F;
+        extFmt = COLOR_LAYOUT_RGBA;
     }
 }
 
@@ -236,10 +236,10 @@ imageResource& imageResource::operator =(imageResource&& img) {
     img.bitsPerPixel = 0;
     
     intFormat = img.intFormat;
-    img.intFormat = LS_DEFAULT_PIXEL_FORMAT;
+    img.intFormat = COLOR_FMT_DEFAULT;
     
     extFormat = img.extFormat;
-    img.extFormat = LS_DEFAULT_PIXEL_LAYOUT;
+    img.extFormat = COLOR_LAYOUT_DEFAULT;
     
     return *this;
 }
@@ -325,8 +325,8 @@ void imageResource::unload() {
     imgSize = math::vec2i{0};
     pixelType = COLOR_TYPE_DEFAULT;
     bitsPerPixel = 0;
-    intFormat = LS_DEFAULT_PIXEL_FORMAT;
-    extFormat = LS_DEFAULT_PIXEL_LAYOUT;
+    intFormat = COLOR_FMT_DEFAULT;
+    extFormat = COLOR_LAYOUT_DEFAULT;
 }
 
 /*-------------------------------------

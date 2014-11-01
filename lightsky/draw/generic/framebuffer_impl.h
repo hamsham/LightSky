@@ -67,7 +67,7 @@ inline void framebuffer::unbind() const {
 inline void framebuffer::blit(
     const math::vec2i& srcOrig, const math::vec2i& srcSize,
     const math::vec2i& dstOrig, const math::vec2i& dstSize,
-    fbo_mask_t mask, ls_tex_filter_t filter
+    fbo_mask_t mask, tex_filter_t filter
 ) const {
     glBlitFramebuffer(
         srcOrig[0], srcOrig[1], srcSize[0], srcSize[1],

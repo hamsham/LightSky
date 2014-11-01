@@ -5,15 +5,15 @@ namespace draw {
 /*-------------------------------------
     Constructor
 -------------------------------------*/
-template <buffer_t bufferType>
-bufferObject<bufferType>::bufferObject() {
+template <vbo_use_t bufferType>
+vertexBuffer_t<bufferType>::vertexBuffer_t() {
 }
 
 /*-------------------------------------
     Move Constructor
 -------------------------------------*/
-template <buffer_t bufferType>
-bufferObject<bufferType>::bufferObject(bufferObject&& vb) :
+template <vbo_use_t bufferType>
+vertexBuffer_t<bufferType>::vertexBuffer_t(vertexBuffer_t&& vb) :
     vbo{vb.vbo}
 {
     vb.vbo = 0;
@@ -22,16 +22,16 @@ bufferObject<bufferType>::bufferObject(bufferObject&& vb) :
 /*-------------------------------------
     Destructor
 -------------------------------------*/
-template <buffer_t bufferType>
-bufferObject<bufferType>::~bufferObject() {
+template <vbo_use_t bufferType>
+vertexBuffer_t<bufferType>::~vertexBuffer_t() {
     terminate();
 }
 
 /*-------------------------------------
     Move Operator
 -------------------------------------*/
-template <buffer_t bufferType>
-bufferObject<bufferType>& bufferObject<bufferType>::operator=(bufferObject&& vb) {
+template <vbo_use_t bufferType>
+vertexBuffer_t<bufferType>& vertexBuffer_t<bufferType>::operator=(vertexBuffer_t&& vb) {
     vbo = vb.vbo;
     vb.vbo = 0;
     return *this;
@@ -40,8 +40,8 @@ bufferObject<bufferType>& bufferObject<bufferType>::operator=(bufferObject&& vb)
 /*-------------------------------------
     Buffer initialization
 -------------------------------------*/
-template <buffer_t bufferType>
-inline bool bufferObject<bufferType>::init() {
+template <vbo_use_t bufferType>
+inline bool vertexBuffer_t<bufferType>::init() {
     if (!vbo) {
         glGenBuffers(1, &vbo);
     }
@@ -52,8 +52,8 @@ inline bool bufferObject<bufferType>::init() {
     Terminate the vertex buffer and release all of its resources back to
     the GPU.
 -------------------------------------*/
-template <buffer_t bufferType>
-inline void bufferObject<bufferType>::terminate() {
+template <vbo_use_t bufferType>
+inline void vertexBuffer_t<bufferType>::terminate() {
     glDeleteBuffers(1, &vbo);
     vbo = 0;
 }
@@ -61,43 +61,43 @@ inline void bufferObject<bufferType>::terminate() {
 /*-------------------------------------
     Get the GPU-assigned handle of this buffer object
 -------------------------------------*/
-template <buffer_t bufferType>
-inline unsigned bufferObject<bufferType>::getId() const {
+template <vbo_use_t bufferType>
+inline unsigned vertexBuffer_t<bufferType>::getId() const {
     return vbo;
 }
 
 /*-------------------------------------
     Determine if there is data used by this object
 -------------------------------------*/
-template <buffer_t bufferType>
-inline bool bufferObject<bufferType>::isValid() const {
+template <vbo_use_t bufferType>
+inline bool vertexBuffer_t<bufferType>::isValid() const {
     return vbo != 0;
 }
 
 /*-------------------------------------
     Bind this vertex buffer to the current global rendering context.
 -------------------------------------*/
-template <buffer_t bufferType>
-inline void bufferObject<bufferType>::bind() const {
+template <vbo_use_t bufferType>
+inline void vertexBuffer_t<bufferType>::bind() const {
     glBindBuffer(bufferType, vbo);
 }
 
 /*-------------------------------------
     Unbind this vertex buffer object from the current render context.
 -------------------------------------*/
-template <buffer_t bufferType>
-inline void bufferObject<bufferType>::unbind() const {
+template <vbo_use_t bufferType>
+inline void vertexBuffer_t<bufferType>::unbind() const {
     glBindBuffer(bufferType, 0);
 }
 
 /*-------------------------------------
     Set the data within the buffer to whatever is set at "pData."
 -------------------------------------*/
-template <buffer_t bufferType>
-inline void bufferObject<bufferType>::setData(
+template <vbo_use_t bufferType>
+inline void vertexBuffer_t<bufferType>::setData(
     ptrdiff_t size,
     const void* pData,
-    buffer_usage_t
+    vbo_rw_t
     usage
 ) {
     glBufferData(bufferType, size, pData, usage);
@@ -107,8 +107,8 @@ inline void bufferObject<bufferType>::setData(
     Modify the data within a buffer to contain whatever is in "pData."
     at an offset of a specified amount of bytes.
 -------------------------------------*/
-template <buffer_t bufferType>
-inline void bufferObject<bufferType>::setSubData(
+template <vbo_use_t bufferType>
+inline void vertexBuffer_t<bufferType>::setSubData(
     ptrdiff_t offset,
     ptrdiff_t size,
     const void* pData
@@ -120,11 +120,11 @@ inline void bufferObject<bufferType>::setSubData(
     Map the contents of the buffer into memory in order to perform a DMA
     transfer of data to the GPU.
 -------------------------------------*/
-template <buffer_t bufferType>
-inline void* bufferObject<bufferType>::mapData(
+template <vbo_use_t bufferType>
+inline void* vertexBuffer_t<bufferType>::mapData(
     ptrdiff_t offset,
     ptrdiff_t range,
-    buffer_access_t access
+    vbo_map_t access
 ) {
     return glMapBufferRange(bufferType, offset, range, access);
 }
@@ -133,8 +133,8 @@ inline void* bufferObject<bufferType>::mapData(
     Notify the GPU that all data has been uploaded to the requested
     location in memory and that the DMA transfer can now be performed.
 -------------------------------------*/
-template <buffer_t bufferType>
-inline bool bufferObject<bufferType>::unmapData() {
+template <vbo_use_t bufferType>
+inline bool vertexBuffer_t<bufferType>::unmapData() {
     return glUnmapBuffer(bufferType);
 }
 

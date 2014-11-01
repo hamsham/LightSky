@@ -20,47 +20,47 @@ namespace draw {
 /**----------------------------------------------------------------------------
  * Parameters for creating or modifying texture objects.
 -----------------------------------------------------------------------------*/
-enum ls_tex_param_t : int {
-    LS_TEX_INVALID      = -1,
+enum tex_param_t : int {
+    TEX_PARAM_INVALID       = -1,
 
-    LS_TEX_WIDTH        = GL_TEXTURE_WIDTH,
-    LS_TEX_HEIGHT       = GL_TEXTURE_HEIGHT,
-    LS_TEX_DEPTH        = GL_TEXTURE_DEPTH,
+    TEX_PARAM_WIDTH         = GL_TEXTURE_WIDTH,
+    TEX_PARAM_HEIGHT        = GL_TEXTURE_HEIGHT,
+    TEX_PARAM_DEPTH         = GL_TEXTURE_DEPTH,
 
-    LS_TEX_MIN_FILTER   = GL_TEXTURE_MIN_FILTER,
-    LS_TEX_MAG_FILTER   = GL_TEXTURE_MAG_FILTER,
+    TEX_PARAM_MIN_FILTER    = GL_TEXTURE_MIN_FILTER,
+    TEX_PARAM_MAG_FILTER    = GL_TEXTURE_MAG_FILTER,
 
-    LS_TEX_WRAP_S       = GL_TEXTURE_WRAP_S,
-    LS_TEX_WRAP_T       = GL_TEXTURE_WRAP_T,
-    LS_TEX_WRAP_R       = GL_TEXTURE_WRAP_R,
+    TEX_PARAM_WRAP_S        = GL_TEXTURE_WRAP_S,
+    TEX_PARAM_WRAP_T        = GL_TEXTURE_WRAP_T,
+    TEX_PARAM_WRAP_R        = GL_TEXTURE_WRAP_R,
     
-    LS_TEX_CLAMP_EDGE   = GL_CLAMP_TO_EDGE,
-    LS_TEX_CLAMP_BORDER = GL_CLAMP_TO_BORDER,
-    LS_TEX_REPEAT       = GL_REPEAT,
+    TEX_PARAM_CLAMP_EDGE    = GL_CLAMP_TO_EDGE,
+    TEX_PARAM_CLAMP_BORDER  = GL_CLAMP_TO_BORDER,
+    TEX_PARAM_REPEAT        = GL_REPEAT,
 };
 
 /**----------------------------------------------------------------------------
  * Framebuffer filtering specifiers
 -----------------------------------------------------------------------------*/
-enum ls_tex_filter_t : int {
-    LS_FILTER_LINEAR            = GL_LINEAR,
-    LS_FILTER_NEAREST           = GL_NEAREST,
+enum tex_filter_t : int {
+    TEX_FILTER_LINEAR            = GL_LINEAR,
+    TEX_FILTER_NEAREST           = GL_NEAREST,
     
-    LS_FILTER_LINEAR_NEAREST    = GL_LINEAR_MIPMAP_NEAREST,
-    LS_FILTER_NEAREST_NEAREST   = GL_NEAREST_MIPMAP_NEAREST,
+    TEX_FILTER_LINEAR_NEAREST    = GL_LINEAR_MIPMAP_NEAREST,
+    TEX_FILTER_NEAREST_NEAREST   = GL_NEAREST_MIPMAP_NEAREST,
     
-    LS_FILTER_LINEAR_LINEAR     = GL_LINEAR_MIPMAP_LINEAR,
-    LS_FILTER_NEAREST_LINEAR    = GL_NEAREST_MIPMAP_LINEAR
+    TEX_FILTER_LINEAR_LINEAR     = GL_LINEAR_MIPMAP_LINEAR,
+    TEX_FILTER_NEAREST_LINEAR    = GL_NEAREST_MIPMAP_LINEAR
 };
 
 /**----------------------------------------------------------------------------
  * Descriptors for different texture types
 -----------------------------------------------------------------------------*/
-enum ls_tex_desc_t : int {
-    LS_TEX_1D           = GL_TEXTURE_1D,
-    LS_TEX_2D           = GL_TEXTURE_2D,
-    LS_TEX_3D           = GL_TEXTURE_3D,
-    LS_TEX_RECT         = GL_TEXTURE_RECTANGLE,
+enum tex_desc_t : int {
+    TEX_DESC_1D     = GL_TEXTURE_1D,
+    TEX_DESC_2D     = GL_TEXTURE_2D,
+    TEX_DESC_3D     = GL_TEXTURE_3D,
+    TEX_DESC_RECT   = GL_TEXTURE_RECTANGLE,
 };
 
 /**----------------------------------------------------------------------------
@@ -73,7 +73,7 @@ class texture {
          * a texture object. This provides information to the GPU in order to
          * determine if *this is a 1D, 2D, 3D texture, and so on.
          */
-        ls_tex_desc_t dimensions;
+        tex_desc_t dimensions;
         
         /**
          * Texture ID
@@ -85,7 +85,7 @@ class texture {
         /**
          * @brief Constructor
          */
-        texture(ls_tex_desc_t td = LS_TEX_2D);
+        texture(tex_desc_t td = TEX_DESC_2D);
         
         /**
          * @brief Copy Constructor -- DELETED
@@ -292,7 +292,7 @@ class texture {
          * @return the GPU-descriptor that's used to apply *this texture object
          * onto polygons.
          */
-        inline ls_tex_desc_t getTextType() const;
+        inline tex_desc_t getTextType() const;
         
         /**
          * Get the maximum texture size supported by OpenGL.

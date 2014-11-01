@@ -118,7 +118,7 @@ inline void texture::terminate() {
 -------------------------------------*/
 inline unsigned texture::getWidth() const {
     int w = 0;
-    glGetTexLevelParameteriv(dimensions, 0, LS_TEX_WIDTH, &w);
+    glGetTexLevelParameteriv(dimensions, 0, TEX_PARAM_WIDTH, &w);
     return w;
 }
 
@@ -127,7 +127,7 @@ inline unsigned texture::getWidth() const {
 -------------------------------------*/
 inline unsigned texture::getHeight() const {
     int h = 0;
-    glGetTexLevelParameteriv(dimensions, 0, LS_TEX_HEIGHT, &h);
+    glGetTexLevelParameteriv(dimensions, 0, TEX_PARAM_HEIGHT, &h);
     return h;
 }
 
@@ -136,14 +136,14 @@ inline unsigned texture::getHeight() const {
 -------------------------------------*/
 inline unsigned texture::getDepth() const {
     int d = 0;
-    glGetTexLevelParameteriv(dimensions, 0, LS_TEX_DEPTH, &d);
+    glGetTexLevelParameteriv(dimensions, 0, TEX_PARAM_DEPTH, &d);
     return d;
 }
 
 /*-------------------------------------
     Get the texture type of that this texture uses in OpenGL
 -------------------------------------*/
-inline ls_tex_desc_t texture::getTextType() const {
+inline tex_desc_t texture::getTextType() const {
     return dimensions;
 }
 

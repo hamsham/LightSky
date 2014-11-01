@@ -115,16 +115,16 @@ void framebuffer::attachTexture(
     int mipmapLevel,
     int layer
 ) {
-    const ls_tex_desc_t desc = tex.getTextType();
+    const tex_desc_t desc = tex.getTextType();
     const unsigned texId = tex.getId();
     
-    if (desc == LS_TEX_1D) {
+    if (desc == TEX_DESC_1D) {
         glFramebufferTexture1D(access, attachment, target, texId, mipmapLevel);
     }
-    else if (desc == LS_TEX_2D || desc == LS_TEX_RECT) {
+    else if (desc == TEX_DESC_2D || desc == TEX_DESC_RECT) {
         glFramebufferTexture2D(access, attachment, target, texId, mipmapLevel);
     }
-    else if (desc == LS_TEX_3D) {
+    else if (desc == TEX_DESC_3D) {
         glFramebufferTexture3D(access, attachment, target, texId, mipmapLevel, layer);
     }
     else {

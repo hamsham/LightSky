@@ -8,7 +8,7 @@
 #ifndef __LS_DRAW_MESH_MODEL_H__
 #define	__LS_DRAW_MESH_MODEL_H__
 
-#include "lightsky/draw/bufferObject.h"
+#include "lightsky/draw/vertexBuffer.h"
 #include "lightsky/draw/mesh.h"
 #include "lightsky/draw/texture.h"
 #include "lightsky/draw/vertexArray.h"

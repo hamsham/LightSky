@@ -161,7 +161,7 @@ bool meshModel::init(const mesh& m, const texture& t) {
 void meshModel::setNumInstances(int instanceCount, const math::mat4* const modelMatrices) {
     LS_DEBUG_ASSERT(instanceCount > 0);
     modelVbo.bind();
-    modelVbo.setData(sizeof(math::mat4)*instanceCount, modelMatrices, LS_DYNAMIC_DRAW);
+    modelVbo.setData(sizeof(math::mat4)*instanceCount, modelMatrices, VBO_DYNAMIC_DRAW);
     modelVbo.unbind();
     LOG_GL_ERR();
     

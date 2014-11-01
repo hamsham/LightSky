@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1644805454/atlas.o \
 	${OBJECTDIR}/_ext/1644805454/blendObject.o \
 	${OBJECTDIR}/_ext/1644805454/boundingBox.o \
-	${OBJECTDIR}/_ext/1644805454/bufferObject.o \
 	${OBJECTDIR}/_ext/1644805454/context.o \
 	${OBJECTDIR}/_ext/1644805454/depthObject.o \
 	${OBJECTDIR}/_ext/1644805454/display.o \
@@ -55,7 +54,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1644805454/shaderObject.o \
 	${OBJECTDIR}/_ext/1644805454/shaderProgram.o \
 	${OBJECTDIR}/_ext/1644805454/texture.o \
-	${OBJECTDIR}/_ext/1644805454/vertexArray.o
+	${OBJECTDIR}/_ext/1644805454/vertexArray.o \
+	${OBJECTDIR}/_ext/1644805454/vertexBuffer.o
 
 
 # C Compiler Flags
@@ -98,11 +98,6 @@ ${OBJECTDIR}/_ext/1644805454/boundingBox.o: ../lightsky/draw/src/boundingBox.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1644805454
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -s -I.. -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1644805454/boundingBox.o ../lightsky/draw/src/boundingBox.cpp
-
-${OBJECTDIR}/_ext/1644805454/bufferObject.o: ../lightsky/draw/src/bufferObject.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1644805454
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1644805454/bufferObject.o ../lightsky/draw/src/bufferObject.cpp
 
 ${OBJECTDIR}/_ext/1644805454/context.o: ../lightsky/draw/src/context.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1644805454
@@ -188,6 +183,11 @@ ${OBJECTDIR}/_ext/1644805454/vertexArray.o: ../lightsky/draw/src/vertexArray.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1644805454
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -s -I.. -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1644805454/vertexArray.o ../lightsky/draw/src/vertexArray.cpp
+
+${OBJECTDIR}/_ext/1644805454/vertexBuffer.o: ../lightsky/draw/src/vertexBuffer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1644805454
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -s -I.. -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1644805454/vertexBuffer.o ../lightsky/draw/src/vertexBuffer.cpp
 
 # Subprojects
 .build-subprojects:

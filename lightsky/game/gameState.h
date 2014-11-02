@@ -10,24 +10,6 @@
 
 #include "lightsky/game/system.h"
 
-/*-------------------------------------
-    Forward declarations
--------------------------------------*/
-struct SDL_WindowEvent;
-struct SDL_KeyboardEvent;
-struct SDL_TextInputEvent;
-struct SDL_MouseMotionEvent;
-struct SDL_MouseButtonEvent;
-struct SDL_MouseWheelEvent;
-struct SDL_ControllerDeviceEvent;
-struct SDL_ControllerAxisEvent;
-struct SDL_ControllerButtonEvent;
-struct SDL_JoyDeviceEvent;
-struct SDL_JoyAxisEvent;
-struct SDL_JoyBallEvent;
-struct SDL_JoyButtonEvent;
-struct SDL_JoyHatEvent;
-
 namespace ls {
 namespace game {
 
@@ -70,6 +52,13 @@ class gameState {
         game_state_t currentState = GAME_STOPPED;
         
         /**
+         * A simple boolean check to determine if a game state should be passed
+         * hardware events from SDL (such as those from a controller or the
+         * graphics context).
+         */
+        bool useHardwareEvents = false;
+        
+        /**
          * Used by the parent subsystem to help with gameState management.
          * 
          * @param sys
@@ -91,199 +80,7 @@ class gameState {
          * @param evt
          * A reference to an SDL_KeyboardEvent
          */
-        virtual void onKeyboardUpEvent(const SDL_KeyboardEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a keyboard key
-         * is pressed.
-         * 
-         * @param evt
-         * A reference to an SDL_KeyboardEvent
-         */
-        virtual void onKeyboardDownEvent(const SDL_KeyboardEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a keyboard key
-         * is used for text entry.
-         * 
-         * @param evt
-         * A reference to an SDL_TextInputEvent
-         */
-        virtual void onKeyboardTextEvent(const SDL_TextInputEvent& evt);
-        
-        /*---------------------------------------------------------------------
-            Window Events
-        ---------------------------------------------------------------------*/
-        /**
-         * Event which allows a game state to input events when the current
-         * SDL display has been modified.
-         * 
-         * @param evt
-         * A reference to an SDL_WindowEvent
-         */
-        virtual void onWindowEvent(const SDL_WindowEvent& evt);
-        
-        /*---------------------------------------------------------------------
-            Mouse Events
-        ---------------------------------------------------------------------*/
-        /**
-         * Event which allows a game state to input events when the mouse has
-         * moved.
-         * 
-         * @param evt
-         * A reference to an SDL_MouseMotionEvent
-         */
-        virtual void onMouseMoveEvent(const SDL_MouseMotionEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a button on the
-         * user's mouse has been depressed.
-         * 
-         * @param evt
-         * A reference to an SDL_MouseButtonEvent
-         */
-        virtual void onMouseButtonUpEvent(const SDL_MouseButtonEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a button on the
-         * user's mouse has been engaged.
-         * 
-         * @param evt
-         * A reference to an SDL_MouseButtonEvent
-         */
-        virtual void onMouseButtonDownEvent(const SDL_MouseButtonEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when the scroll wheel
-         * on the user's mouse has moved.
-         * 
-         * @param evt
-         * A reference to an SDL_MouseWheelEvent
-         */
-        virtual void onMouseWheelEvent(const SDL_MouseWheelEvent& evt);
-        
-        /*---------------------------------------------------------------------
-            Controller Events
-        ---------------------------------------------------------------------*/
-        /**
-         * Event which allows a game state to input events when a controller
-         * has been plugged in.
-         * 
-         * @param evt
-         * A reference to an SDL_ControllerDeviceEvent
-         */
-        virtual void onControllerAddedEvent(const SDL_ControllerDeviceEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a controller
-         * has disconnected.
-         * 
-         * @param evt
-         * A reference to an SDL_ControllerDeviceEvent
-         */
-        virtual void onControllerRemovedEvent(const SDL_ControllerDeviceEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a controller
-         * has been remapped.
-         * 
-         * @param evt
-         * A reference to an SDL_ControllerDeviceEvent
-         */
-        virtual void onControllerRemappedEvent(const SDL_ControllerDeviceEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a controller
-         * has modified its axes.
-         * 
-         * @param evt
-         * A reference to an SDL_ControllerAxisEvent
-         */
-        virtual void onControllerAxisEvent(const SDL_ControllerAxisEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a controller
-         * had a button released.
-         * 
-         * @param evt
-         * A reference to an SDL_ControllerButtonEvent
-         */
-        virtual void onControllerButtonUpEvent(const SDL_ControllerButtonEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a controller
-         * had a button pressed.
-         * 
-         * @param evt
-         * A reference to an SDL_ControllerButtonEvent
-         */
-        virtual void onControllerButtonDownEvent(const SDL_ControllerButtonEvent& evt);
-        
-        /*---------------------------------------------------------------------
-            Joystick Events
-        ---------------------------------------------------------------------*/
-        /**
-         * Event which allows a game state to input events when a joystick
-         * has been plugged.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyDeviceEvent
-         */
-        virtual void onJoyAddEvent(const SDL_JoyDeviceEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a joystick
-         * has been disconnected.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyDeviceEvent
-         */
-        virtual void onJoyRemoveEvent(const SDL_JoyDeviceEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a joystick
-         * has modified its axes.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyAxisEvent
-         */
-        virtual void onJoyAxisEvent(const SDL_JoyAxisEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a joystick
-         * has changed it's trackball position.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyBallEvent
-         */
-        virtual void onJoyBallEvent(const SDL_JoyBallEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a joystick
-         * had a button pressed.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyButtonEvent
-         */
-        virtual void onJoyButtonDownEvent(const SDL_JoyButtonEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a joystick
-         * had a button released.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyButtonEvent
-         */
-        virtual void onJoyButtonUpEvent(const SDL_JoyButtonEvent& evt);
-        
-        /**
-         * Event which allows a game state to input events when a joystick
-         * hat button event has occurred.
-         * 
-         * @param evt
-         * A reference to an SDL_JoyHatEvent
-         */
-        virtual void onJoyHatEvent(const SDL_JoyHatEvent& evt);
+        virtual void onSystemEvent(const SDL_Event& evt);
         
         /*---------------------------------------------------------------------
             System Events

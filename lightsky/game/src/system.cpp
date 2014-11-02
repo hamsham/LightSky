@@ -151,7 +151,8 @@ void system::run() {
     while (SDL_PollEvent(&pEvent)) {
         // Hardware events passed through SDL
         for (unsigned i = 0; i < gameList.size(); ++i) {
-            passHardwareEvents(pEvent, gameList[i]);
+            gameState* const pState = gameList[i];
+            pState->onSystemEvent(pEvent);
         }
     }
 
@@ -168,43 +169,6 @@ void system::run() {
     renderContext.makeCurrent(disp);
     renderContext.flip(disp);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-/*-------------------------------------
-    Update Game States
--------------------------------------*/
-void system::passHardwareEvents(const SDL_Event& event, gameState* const pState) {
-    switch (event.type) {
-        case SDL_WINDOWEVENT:               pState->onWindowEvent(event.window);                break;
-        
-        case SDL_KEYUP:                     pState->onKeyboardUpEvent(event.key);               break;
-        case SDL_KEYDOWN:                   pState->onKeyboardDownEvent(event.key);             break;
-        
-        case SDL_TEXTINPUT:                 pState->onKeyboardTextEvent(event.text);            break;
-        
-        case SDL_MOUSEMOTION:               pState->onMouseMoveEvent(event.motion);             break;
-        case SDL_MOUSEBUTTONUP:             pState->onMouseButtonUpEvent(event.button);         break;
-        case SDL_MOUSEBUTTONDOWN:           pState->onMouseButtonDownEvent(event.button);       break;
-        case SDL_MOUSEWHEEL:                pState->onMouseWheelEvent(event.wheel);             break;
-        
-        case SDL_CONTROLLERAXISMOTION:      pState->onControllerAxisEvent(event.caxis);         break;
-        case SDL_CONTROLLERBUTTONDOWN:      pState->onControllerButtonDownEvent(event.cbutton); break;
-        case SDL_CONTROLLERBUTTONUP:        pState->onControllerButtonUpEvent(event.cbutton);   break;
-        case SDL_CONTROLLERDEVICEADDED:     pState->onControllerAddedEvent(event.cdevice);      break;
-        case SDL_CONTROLLERDEVICEREMOVED:   pState->onControllerRemovedEvent(event.cdevice);    break;
-        case SDL_CONTROLLERDEVICEREMAPPED:  pState->onControllerRemappedEvent(event.cdevice);   break;
-        
-        case SDL_JOYAXISMOTION:             pState->onJoyAxisEvent(event.jaxis);                break;
-        case SDL_JOYBALLMOTION:             pState->onJoyBallEvent(event.jball);                break;
-        case SDL_JOYBUTTONDOWN:             pState->onJoyButtonDownEvent(event.jbutton);        break;
-        case SDL_JOYBUTTONUP:               pState->onJoyButtonUpEvent(event.jbutton);          break;
-        case SDL_JOYDEVICEADDED:            pState->onJoyAddEvent(event.jdevice);               break;
-        case SDL_JOYDEVICEREMOVED:          pState->onJoyRemoveEvent(event.jdevice);            break;
-        case SDL_JOYHATMOTION:              pState->onJoyHatEvent(event.jhat);                  break;
-        
-        case SDL_QUIT:  stop();
-        default:        break;
-    }
 }
 
 /*-------------------------------------

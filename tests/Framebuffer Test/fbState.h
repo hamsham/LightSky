@@ -57,15 +57,12 @@ class fbState final : virtual public ls::game::gameState {
         // allows textures to be generated on another thread
         std::future<std::vector<float>> futureNoise;
         
-        virtual void    onKeyboardUpEvent       (const SDL_KeyboardEvent&) override;
-        virtual void    onKeyboardDownEvent     (const SDL_KeyboardEvent&) override;
-        virtual void    onKeyboardTextEvent     (const SDL_TextInputEvent&) override;
-        virtual void    onWindowEvent           (const SDL_WindowEvent&) override;
-        
-        virtual void    onMouseMoveEvent        (const SDL_MouseMotionEvent&) override;
-        virtual void    onMouseButtonUpEvent    (const SDL_MouseButtonEvent&) override;
-        virtual void    onMouseButtonDownEvent  (const SDL_MouseButtonEvent&) override;
-        virtual void    onMouseWheelEvent       (const SDL_MouseWheelEvent&) override;
+        virtual void    onSystemEvent           (const SDL_Event&) override;
+        void            onKeyboardUpEvent       (const SDL_KeyboardEvent&);
+        void            onKeyboardDownEvent     (const SDL_KeyboardEvent&);
+        void            onWindowEvent           (const SDL_WindowEvent&);
+        void            onMouseMoveEvent        (const SDL_MouseMotionEvent&);
+        void            onMouseWheelEvent       (const SDL_MouseWheelEvent&);
         
         void            updateKeyStates         (float);
         

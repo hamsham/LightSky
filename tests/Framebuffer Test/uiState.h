@@ -38,13 +38,13 @@ class uiState final : virtual public ls::game::gameState {
         
     public:
         uiState         ();
-        uiState         (const uiState&)      = delete;
+        uiState         (const uiState&)    = delete;
         uiState         (uiState&&);
         
         ~uiState        ();
         
-        uiState&        operator=             (const uiState&) = delete;
-        uiState&        operator=             (uiState&&);
+        uiState&        operator=           (const uiState&) = delete;
+        uiState&        operator=           (uiState&&);
         
         bool            onStart             () override;
         void            onRun               (float) override;

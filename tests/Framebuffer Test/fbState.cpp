@@ -12,6 +12,8 @@
 
 #include "fbState.h"
 
+namespace draw = ls::draw;
+
 typedef math::perlinNoise_t<float> perlinNoise;
 
 enum {
@@ -103,7 +105,7 @@ std::vector<float> generateNoiseTexture(int w, int h) {
             const float wIter = (float)j;
             
             const math::vec3&& pos = math::vec3{wIter/width, hIter/height, 0.5f};
-            const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25);
+            const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25f);
             noiseTable[i * h + j] = 0.5f * (0.5f+perlin);
         }
     }
@@ -170,8 +172,19 @@ fbState& fbState::operator=(fbState&& state) {
 }
 
 /******************************************************************************
- * Hardware Events
+ * System Events
 ******************************************************************************/
+void fbState::onSystemEvent(const SDL_Event& e) {
+    switch (e.type) {
+        case SDL_WINDOWEVENT:   this->onWindowEvent(e.window);      break;
+        case SDL_KEYUP:         this->onKeyboardUpEvent(e.key);     break;
+        case SDL_KEYDOWN:       this->onKeyboardDownEvent(e.key);   break;
+        case SDL_MOUSEMOTION:   this->onMouseMoveEvent(e.motion);   break;
+        case SDL_MOUSEWHEEL:    this->onMouseWheelEvent(e.wheel);  break;
+        default: break;
+    }
+}
+
 /******************************************************************************
  * Key Up Event
 ******************************************************************************/
@@ -223,15 +236,9 @@ void fbState::updateKeyStates(float dt) {
         math::dot(math::getAxisZ(orientation), pos)
     };
     
-    const math::mat4& viewMatrix = pMatStack->getMatrix(ls::draw::MATRIX_USE_VIEW);
+    const math::mat4& viewMatrix = pMatStack->getMatrix(draw::MATRIX_USE_VIEW);
     const math::mat4&& movement = math::translate(viewMatrix, translation);
-    pMatStack->loadMatrix(ls::draw::MATRIX_USE_VIEW, movement);
-}
-
-/******************************************************************************
- * Text Events
-******************************************************************************/
-void fbState::onKeyboardTextEvent(const SDL_TextInputEvent&) {
+    pMatStack->loadMatrix(draw::MATRIX_USE_VIEW, movement);
 }
 
 /******************************************************************************
@@ -240,7 +247,7 @@ void fbState::onKeyboardTextEvent(const SDL_TextInputEvent&) {
 void fbState::onWindowEvent(const SDL_WindowEvent& e) {
     if (e.event == SDL_WINDOWEVENT_RESIZED) {
         resetGlViewport();
-        pMatStack->loadMatrix(ls::draw::MATRIX_USE_PROJECTION, get3dViewport());
+        pMatStack->loadMatrix(draw::MATRIX_USE_PROJECTION, get3dViewport());
     }
 }
 
@@ -284,18 +291,6 @@ void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
 }
 
 /******************************************************************************
- * Mouse Button Up Event
-******************************************************************************/
-void fbState::onMouseButtonUpEvent(const SDL_MouseButtonEvent&) {
-}
-
-/******************************************************************************
- * Mouse Button Down Event
-******************************************************************************/
-void fbState::onMouseButtonDownEvent(const SDL_MouseButtonEvent&) {
-}
-
-/******************************************************************************
  * Mouse Wheel Event
 ******************************************************************************/
 void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
@@ -305,11 +300,11 @@ void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
     fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
     fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
     
-    ls::draw::texture* fbDepthTex = pScene->getTexture(0);
-    ls::draw::texture* fbColorTex = pScene->getTexture(1);
+    draw::texture* fbDepthTex = pScene->getTexture(0);
+    draw::texture* fbColorTex = pScene->getTexture(1);
     
-    fbDepthTex->init(0, ls::draw::COLOR_FMT_GRAY_8, fbRes, ls::draw::COLOR_LAYOUT_GRAY, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
-    fbColorTex->init(0, ls::draw::COLOR_FMT_RGB_8, fbRes, ls::draw::COLOR_LAYOUT_RGB, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, fbRes, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    fbColorTex->init(0, draw::COLOR_FMT_RGB_8, fbRes, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
     
 }
 
@@ -317,8 +312,8 @@ void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
  * Allocate internal class memory
 ******************************************************************************/
 bool fbState::initMemory() {
-    pMatStack       = new ls::draw::matrixStack{};
-    pScene          = new ls::draw::sceneManager{};
+    pMatStack       = new draw::matrixStack{};
+    pScene          = new draw::sceneManager{};
     pKeyStates      = new bool[TEST_MAX_KEYBORD_STATES];
     pModelMatrices  = new math::mat4[TEST_MAX_SCENE_INSTANCES];
     
@@ -352,20 +347,20 @@ bool fbState::initMemory() {
 ******************************************************************************/
 bool fbState::initFileData() {
     
-    ls::draw::meshResource* pMeshLoader = new ls::draw::meshResource{};
-    ls::draw::mesh* pSphereMesh         = new ls::draw::mesh{};
-    ls::draw::texture* fbDepthTex       = new ls::draw::texture{};
-    ls::draw::texture* fbColorTex       = new ls::draw::texture{};
-    ls::draw::texture* noiseTex         = new ls::draw::texture{};
-    bool ret                    = true;
+    draw::meshResource* pMeshLoader = new draw::meshResource{};
+    draw::mesh* pSphereMesh         = new draw::mesh{};
+    draw::texture* fbDepthTex       = new draw::texture{};
+    draw::texture* fbColorTex       = new draw::texture{};
+    draw::texture* noiseTex         = new draw::texture{};
+    bool ret                        = true;
     
     if (!pMeshLoader
     || !pSphereMesh
     || !pMeshLoader->loadSphere(16)
     || !pSphereMesh->init(*pMeshLoader)
-    || !fbDepthTex->init(0, ls::draw::COLOR_FMT_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, ls::draw::COLOR_LAYOUT_GRAY, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
-    || !fbColorTex->init(0, ls::draw::COLOR_FMT_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, ls::draw::COLOR_LAYOUT_RGB, ls::draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
-    || !noiseTex->init(0, ls::draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, ls::draw::COLOR_LAYOUT_R, ls::draw::COLOR_TYPE_FLOAT, nullptr)
+    || !fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
+    || !fbColorTex->init(0, draw::COLOR_FMT_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
+    || !noiseTex->init(0, draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, nullptr)
     ) {
         ret = false;
     }
@@ -390,14 +385,14 @@ bool fbState::initFileData() {
 void fbState::regenerateNoise() {
     std::vector<float>&& noiseTable = futureNoise.get();
     
-    ls::draw::texture* const pTexture = pScene->getTexture(2);
+    draw::texture* const pTexture = pScene->getTexture(2);
     pTexture->bind();
-    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, ls::draw::COLOR_LAYOUT_R, ls::draw::COLOR_TYPE_FLOAT, noiseTable.data());
+    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, noiseTable.data());
     
-    pTexture->setParameter(ls::draw::TEX_PARAM_MIN_FILTER,  ls::draw::TEX_FILTER_LINEAR);
-    pTexture->setParameter(ls::draw::TEX_PARAM_MAG_FILTER,  ls::draw::TEX_FILTER_NEAREST);
-    pTexture->setParameter(ls::draw::TEX_PARAM_WRAP_S,      ls::draw::TEX_PARAM_REPEAT);
-    pTexture->setParameter(ls::draw::TEX_PARAM_WRAP_T,      ls::draw::TEX_PARAM_REPEAT);
+    pTexture->setParameter(draw::TEX_PARAM_MIN_FILTER,  draw::TEX_FILTER_LINEAR);
+    pTexture->setParameter(draw::TEX_PARAM_MAG_FILTER,  draw::TEX_FILTER_LINEAR);
+    pTexture->setParameter(draw::TEX_PARAM_WRAP_S,      draw::TEX_PARAM_REPEAT);
+    pTexture->setParameter(draw::TEX_PARAM_WRAP_T,      draw::TEX_PARAM_REPEAT);
     pTexture->unbind();
     
     futureNoise = std::move(std::async(
@@ -416,14 +411,14 @@ bool fbState::initMatrices() {
     
     // setup the matrix stacks
     pMatStack->loadMatrix(
-        ls::draw::MATRIX_USE_PROJECTION,
+        draw::MATRIX_USE_PROJECTION,
         math::perspective(
             TEST_PROJECTION_FOV, aspect[0]/aspect[1],
             TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
         )
     );
     pMatStack->loadMatrix(
-        ls::draw::MATRIX_USE_VIEW,
+        draw::MATRIX_USE_VIEW,
         math::lookAt(math::vec3((float)TEST_MAX_SCENE_OBJECTS), math::vec3{0.f}, math::vec3{0.f, 1.f, 0.f})
     );
     pMatStack->constructVp();
@@ -458,8 +453,8 @@ bool fbState::initMatrices() {
  * Initialize the program shaders
 ******************************************************************************/
 bool fbState::initShaders() {
-    ls::draw::vertexShader vertShader;
-    ls::draw::fragmentShader fragShader;
+    draw::vertexShader vertShader;
+    draw::fragmentShader fragShader;
 
     if (!vertShader.compile(meshVSData)
     ||  !fragShader.compile(meshFSData)
@@ -484,14 +479,14 @@ bool fbState::initShaders() {
  * Create the draw models that will be used for rendering
 ******************************************************************************/
 bool fbState::initDrawModels() {
-    ls::draw::meshModel* const pModel = new ls::draw::meshModel{};
+    draw::meshModel* const pModel = new draw::meshModel{};
     if (pModel == nullptr) {
         LS_LOG_ERR("Unable to generate test draw model");
         return false;
     }
     else {
-        ls::draw::mesh* const pMesh = pScene->getMesh(0);
-        ls::draw::texture* const pTexture = pScene->getTexture(2);
+        draw::mesh* const pMesh = pScene->getMesh(0);
+        draw::texture* const pTexture = pScene->getTexture(2);
         pModel->init(*pMesh, *pTexture);
         
         // lights, camera, batch!
@@ -508,37 +503,37 @@ bool fbState::initDrawModels() {
  * Initialize the framebuffers
 ******************************************************************************/
 bool fbState::initFramebuffers() {
-    ls::draw::texture* const pDepthTex = pScene->getTexture(0);
-    ls::draw::texture* const pColorTex = pScene->getTexture(1);
+    draw::texture* const pDepthTex = pScene->getTexture(0);
+    draw::texture* const pColorTex = pScene->getTexture(1);
     
     // setup the test framebuffer depth texture
     pDepthTex->bind();
-        pDepthTex->setParameter(ls::draw::TEX_PARAM_MIN_FILTER, ls::draw::TEX_FILTER_LINEAR);
-        pDepthTex->setParameter(ls::draw::TEX_PARAM_MAG_FILTER, ls::draw::TEX_FILTER_LINEAR);
-        pDepthTex->setParameter(ls::draw::TEX_PARAM_WRAP_S,     ls::draw::TEX_PARAM_CLAMP_EDGE);
-        pDepthTex->setParameter(ls::draw::TEX_PARAM_WRAP_T,     ls::draw::TEX_PARAM_CLAMP_EDGE);
+        pDepthTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
+        pDepthTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
+        pDepthTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
+        pDepthTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
     pDepthTex->unbind();
     
     LOG_GL_ERR();
     
     // framebuffer color texture
     pColorTex->bind();
-        pColorTex->setParameter(ls::draw::TEX_PARAM_MIN_FILTER, ls::draw::TEX_FILTER_LINEAR);
-        pColorTex->setParameter(ls::draw::TEX_PARAM_MAG_FILTER, ls::draw::TEX_FILTER_LINEAR);
-        pColorTex->setParameter(ls::draw::TEX_PARAM_WRAP_S,     ls::draw::TEX_PARAM_CLAMP_EDGE);
-        pColorTex->setParameter(ls::draw::TEX_PARAM_WRAP_T,     ls::draw::TEX_PARAM_CLAMP_EDGE);
+        pColorTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
+        pColorTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
+        pColorTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
+        pColorTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
     pColorTex->unbind();
     
     LOG_GL_ERR();
     
     testFb.bind();
-        testFb.attachTexture(ls::draw::FBO_ATTACHMENT_DEPTH,    ls::draw::FBO_2D_TARGET, *pDepthTex);
-        testFb.attachTexture(ls::draw::FBO_ATTACHMENT_0,        ls::draw::FBO_2D_TARGET, *pColorTex);
+        testFb.attachTexture(draw::FBO_ATTACHMENT_DEPTH,    draw::FBO_2D_TARGET, *pDepthTex);
+        testFb.attachTexture(draw::FBO_ATTACHMENT_0,        draw::FBO_2D_TARGET, *pColorTex);
     testFb.unbind();
     
     LOG_GL_ERR();
     
-    if (ls::draw::framebuffer::getStatus(testFb) != ls::draw::FBO_COMPLETE) {
+    if (draw::framebuffer::getStatus(testFb) != draw::FBO_COMPLETE) {
         return false;
     }
     
@@ -549,10 +544,10 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 ******************************************************************************/
 void fbState::setRendererParams() {
-    constexpr ls::draw::color gray = ls::draw::lsGray;
+    constexpr draw::color gray = draw::lsGray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
     
-    ls::draw::renderer renderer;
+    draw::renderer renderer;
     renderer.setDepthTesting(true);
     renderer.setFaceCulling(true);
 }
@@ -577,7 +572,7 @@ bool fbState::onStart() {
     }
     else {
         setRendererParams();
-        getParentSystem().getDisplay().setFullScreenMode(ls::draw::FULLSCREEN_WINDOW);
+        getParentSystem().getDisplay().setFullScreenMode(draw::FULLSCREEN_WINDOW);
     }
     
     return true;
@@ -621,10 +616,10 @@ void fbState::onRun(float dt) {
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack. Just greab the view matrix
-    pMatStack->pushMatrix(ls::draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
+    pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
-    const math::mat4& viewDir = pMatStack->getMatrix(ls::draw::MATRIX_USE_VIEW);
+    const math::mat4& viewDir = pMatStack->getMatrix(draw::MATRIX_USE_VIEW);
     const math::vec3 camPos = math::vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
     
     meshProg.bind();
@@ -633,7 +628,7 @@ void fbState::onRun(float dt) {
     
     drawScene();
     
-    pMatStack->popMatrix(ls::draw::MATRIX_USE_VIEW);
+    pMatStack->popMatrix(draw::MATRIX_USE_VIEW);
 }
 
 /******************************************************************************
@@ -642,12 +637,12 @@ void fbState::onRun(float dt) {
 void fbState::onPause(float dt) {
     updateKeyStates(dt);
     
-    pMatStack->pushMatrix(ls::draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
+    pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
     drawScene();
     
-    pMatStack->popMatrix(ls::draw::MATRIX_USE_VIEW);
+    pMatStack->popMatrix(draw::MATRIX_USE_VIEW);
 }
 
 /******************************************************************************
@@ -665,8 +660,8 @@ math::mat4 fbState::get3dViewport() const {
  * Update the renderer's viewport with the current window resolution
 ******************************************************************************/
 void fbState::resetGlViewport() {
-    const ls::draw::display& disp = getParentSystem().getDisplay();
-    ls::draw::renderer renderer;
+    const draw::display& disp = getParentSystem().getDisplay();
+    draw::renderer renderer;
     renderer.setViewport(math::vec2i{0}, disp.getResolution());
 }
 
@@ -677,17 +672,17 @@ void fbState::drawScene() {
     LOG_GL_ERR();
     
     // setup a viewport for a custom framebuffer
-    ls::draw::renderer renderer;
+    draw::renderer renderer;
     renderer.setViewport(math::vec2i{0}, fbRes);
 
     // use render to the framebuffer's color attachment
-    static const ls::draw::fbo_attach_t fboDrawAttachments[] = {ls::draw::FBO_ATTACHMENT_0};
+    static const draw::fbo_attach_t fboDrawAttachments[] = {draw::FBO_ATTACHMENT_0};
 
     // setup the framebuffer for draw operations
-    testFb.setAccessType(ls::draw::FBO_ACCESS_W);
+    testFb.setAccessType(draw::FBO_ACCESS_W);
     testFb.bind();
     testFb.setDrawTargets(1, fboDrawAttachments);
-    testFb.clear((ls::draw::fbo_mask_t)(ls::draw::FBO_DEPTH_BIT | ls::draw::FBO_COLOR_BIT));
+    testFb.clear((draw::fbo_mask_t)(draw::FBO_DEPTH_BIT | draw::FBO_COLOR_BIT));
     
     // setup a view matrix for the opaque mesh shader
     meshProg.bind();
@@ -695,21 +690,21 @@ void fbState::drawScene() {
     meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
     
     // draw a test mesh
-    ls::draw::meshModel* const pTestModel = pScene->getModelList()[0];
+    draw::meshModel* const pTestModel = pScene->getModelList()[0];
     pTestModel->draw();
     
     // restore draw operations to the default GL framebuffer
     testFb.unbind();
     
     // setup the custom framebuffer for read operations
-    testFb.setAccessType(ls::draw::FBO_ACCESS_R);
+    testFb.setAccessType(draw::FBO_ACCESS_R);
     testFb.bind();
 
     // blit the custom framebuffer to OpenGL's backbuffer
     testFb.blit(
         math::vec2i{0}, fbRes,
         math::vec2i{0}, this->getParentSystem().getDisplay().getResolution(),
-        ls::draw::FBO_COLOR_BIT
+        draw::FBO_COLOR_BIT
     );
     
     // restore framebuffer reads to OpenGL's backbuffer

@@ -144,7 +144,8 @@ bool uiState::initShaders() {
         LOG_GL_ERR();
     }
     
-    if (!fontProg.attachShaders(vertShader, fontFragShader) || !fontProg.link()) {
+    if (!fontProg.attachShaders(vertShader, fontFragShader)
+    || !fontProg.link()) {
         return false;
     }
     else {
@@ -160,6 +161,7 @@ bool uiState::initShaders() {
 bool uiState::initDrawModels() {
     // font/text model
     ls::draw::meshModel* const pTextModel = new ls::draw::meshModel{};
+    
     if (pTextModel == nullptr) {
         LS_LOG_ERR("Unable to generate test text model");
         return false;

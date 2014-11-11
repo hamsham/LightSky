@@ -22,6 +22,7 @@
       <itemPath>../lightsky/utils/endian.h</itemPath>
       <itemPath>../lightsky/utils/hash.h</itemPath>
       <itemPath>../lightsky/utils/log.h</itemPath>
+      <itemPath>../lightsky/utils/pointer.h</itemPath>
       <itemPath>../lightsky/utils/randomNum.h</itemPath>
       <itemPath>../lightsky/utils/resource.h</itemPath>
       <itemPath>../lightsky/utils/setup.h</itemPath>
@@ -46,6 +47,12 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="pointer_test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/pointer_test.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -143,6 +150,8 @@
       </item>
       <item path="../lightsky/utils/log.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../lightsky/utils/pointer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../lightsky/utils/randomNum.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/utils/resource.h" ex="false" tool="3" flavor2="0">
@@ -175,6 +184,23 @@
       <item path="../lightsky/utils/tuple.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/utils/utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/pointer_test_debug</output>
+        </linkerTool>
+      </folder>
+      <item path="tests/pointer_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -269,6 +295,8 @@
       </item>
       <item path="../lightsky/utils/log.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../lightsky/utils/pointer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../lightsky/utils/randomNum.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/utils/resource.h" ex="false" tool="3" flavor2="0">
@@ -301,6 +329,24 @@
       <item path="../lightsky/utils/tuple.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../lightsky/utils/utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/pointer_test</output>
+          <stripSymbols>true</stripSymbols>
+        </linkerTool>
+      </folder>
+      <item path="tests/pointer_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

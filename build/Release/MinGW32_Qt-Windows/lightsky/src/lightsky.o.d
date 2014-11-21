@@ -53,10 +53,11 @@ build/Release/MinGW32_Qt-Windows/lightsky/src/lightsky.o: \
  lightsky/script/variable.h lightsky/script/generic/variable_impl.h \
  lightsky/script/functor.h lightsky/script/generic/functor_impl.h \
  lightsky/script/factory.h lightsky/game/game.h lightsky/game/setup.h \
- lightsky/game/gameState.h lightsky/game/system.h \
- lightsky/game/generic/system_impl.h \
- lightsky/game/generic/gameState_impl.h lightsky/game/manager.h \
- lightsky/game/generic/manager_impl.h
+ lightsky/game/dispatcher.h lightsky/game/event.h \
+ lightsky/game/gameState.h lightsky/game/generic/gameState_impl.h \
+ lightsky/game/manager.h lightsky/game/generic/manager_impl.h \
+ lightsky/game/subscriber.h lightsky/game/system.h \
+ lightsky/game/generic/system_impl.h
 
 lightsky/lightsky.h:
 
@@ -278,14 +279,20 @@ lightsky/game/game.h:
 
 lightsky/game/setup.h:
 
+lightsky/game/dispatcher.h:
+
+lightsky/game/event.h:
+
 lightsky/game/gameState.h:
-
-lightsky/game/system.h:
-
-lightsky/game/generic/system_impl.h:
 
 lightsky/game/generic/gameState_impl.h:
 
 lightsky/game/manager.h:
 
 lightsky/game/generic/manager_impl.h:
+
+lightsky/game/subscriber.h:
+
+lightsky/game/system.h:
+
+lightsky/game/generic/system_impl.h:

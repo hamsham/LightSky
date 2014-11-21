@@ -8,22 +8,21 @@
 #ifndef __LS_GAME_GAME_STATE_H__
 #define	__LS_GAME_GAME_STATE_H__
 
-#include "lightsky/game/system.h"
-
 namespace ls {
 namespace game {
+
+class system;
 
 /**----------------------------------------------------------------------------
     A game_state_t is a type used in order to help manage interactions between
     ls::game::system objects and different game state objects.
 -----------------------------------------------------------------------------*/
-enum game_state_t : unsigned {
-    GAME_INVALID = (unsigned)-1,
-    
-    GAME_PAUSED     = 0,
-    GAME_RUNNING    = 1,
-    GAME_STOPPED    = 2,
-    GAME_INIT       = 3
+enum class game_state_t : int {
+    INVALID = -1,
+    PAUSED  = 0,
+    RUNNING = 1,
+    STOPPED = 2,
+    INIT    = 3
 };
 
 /**----------------------------------------------------------------------------
@@ -49,14 +48,7 @@ class gameState {
          * The current state that is used by *this. This variable is also
          * assigned by the parent subsystem and should not be modified.
          */
-        game_state_t currentState = GAME_STOPPED;
-        
-        /**
-         * A simple boolean check to determine if a game state should be passed
-         * hardware events from SDL (such as those from a controller or the
-         * graphics context).
-         */
-        bool useHardwareEvents = false;
+        game_state_t currentState = game_state_t::INVALID;
         
         /**
          * Used by the parent subsystem to help with gameState management.
@@ -71,16 +63,17 @@ class gameState {
         // subsystem.
         
         /*---------------------------------------------------------------------
-            Keyboard Events
+            SDL Hardware Events
         ---------------------------------------------------------------------*/
         /**
-         * Event which allows a game state to input events when a keyboard key
-         * is disengaged.
+         * Event which allows a game state access to hardware events from SDL.
          * 
          * @param evt
-         * A reference to an SDL_KeyboardEvent
+         * A reference to an SDL_Event
          */
+        /*
         virtual void onSystemEvent(const SDL_Event& evt);
+        */
         
         /*---------------------------------------------------------------------
             System Events

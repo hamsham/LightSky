@@ -8,6 +8,8 @@
 #ifndef __LS_SETUP_MACROS_H__
 #define __LS_SETUP_MACROS_H__
 
+#include <type_traits>
+
 /*
  * Preprocessor Stringify
  */
@@ -16,16 +18,18 @@
 #endif /* LS_STRINGIFY */
 
 /*
- * Minimum value
+ * Maxumum value
  */
-#ifndef LS_MIN
+#ifndef LS_MAX
     #define LS_MAX(x, y) ((x > y) ? x : y)
 #endif
 
 /*
- * Maxumum Value
+ * Minimum Value
  */
-#define LS_MIN(x, y) ((x < y) ? x : y)
+#ifndef LS_MIN
+    #define LS_MIN(x, y) ((x < y) ? x : y)
+#endif
 
 /*
  * Get the number of elements contained in a stack-allocated array.
@@ -54,6 +58,15 @@
  */
 #ifndef LS_DEFINE_CLASS_TYPE
     #define LS_DEFINE_CLASS_TYPE(name, ...) template class name<__VA_ARGS__>
+#endif
+
+/*
+ * The LS_ENUM_VAL macro will extract the numerical value of any type declared
+ * using "enum class." A compiler error will be thrown if the input argument is
+ * not an enumeration.
+ */
+#ifndef LS_ENUM_VAL
+    #define LS_ENUM_VAL( x ) static_cast<std::underlying_type<decltype(x)>::type>(x)
 #endif
 
 #endif /* __LS_SETUP_MACROS_H__ */

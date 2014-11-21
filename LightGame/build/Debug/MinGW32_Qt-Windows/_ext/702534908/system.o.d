@@ -1,16 +1,13 @@
 build/Debug/MinGW32_Qt-Windows/_ext/702534908/system.o: \
- ../lightsky/game/src/system.cpp ../lightsky/game/gameState.h \
- ../lightsky/game/system.h ../lightsky/draw/context.h \
- ../lightsky/draw/display.h ../lightsky/draw/setup.h \
+ ../lightsky/game/src/system.cpp ../lightsky/utils/assert.h \
+ ../lightsky/setup/macros.h ../lightsky/game/setup.h \
  ../lightsky/setup/setup.h ../lightsky/setup/compiler.h \
- ../lightsky/setup/arch.h ../lightsky/setup/os.h \
- ../lightsky/setup/macros.h ../lightsky/utils/assert.h \
- ../lightsky/utils/hash.h ../lightsky/utils/generic/hash_impl.h \
- ../lightsky/utils/log.h ../lightsky/utils/generic/log_impl.h \
- ../lightsky/math/math.h ../lightsky/math/setup.h \
- ../lightsky/math/types.h ../lightsky/math/fixed.h \
- ../lightsky/math/generic/fixed_impl.h ../lightsky/math/mat2.h \
- ../lightsky/math/scalar_utils.h \
+ ../lightsky/setup/arch.h ../lightsky/setup/os.h ../lightsky/utils/hash.h \
+ ../lightsky/utils/generic/hash_impl.h ../lightsky/utils/log.h \
+ ../lightsky/utils/generic/log_impl.h ../lightsky/math/math.h \
+ ../lightsky/math/setup.h ../lightsky/math/types.h \
+ ../lightsky/math/fixed.h ../lightsky/math/generic/fixed_impl.h \
+ ../lightsky/math/mat2.h ../lightsky/math/scalar_utils.h \
  ../lightsky/math/generic/scalar_utils_impl.h ../lightsky/math/vec2.h \
  ../lightsky/math/generic/vec2_impl.h \
  ../lightsky/math/generic/mat2_impl.h ../lightsky/math/mat3.h \
@@ -23,21 +20,15 @@ build/Debug/MinGW32_Qt-Windows/_ext/702534908/system.o: \
  ../lightsky/math/generic/quat_utils_impl.h ../lightsky/math/mat_utils.h \
  ../lightsky/math/generic/mat_utils_impl.h ../lightsky/math/perlinNoise.h \
  ../lightsky/utils/randomNum.h \
- ../lightsky/math/generic/perlinNoise_impl.h \
- ../lightsky/draw/generic/display_impl.h \
- ../lightsky/draw/generic/context_impl.h ../lightsky/game/setup.h \
- ../lightsky/game/generic/system_impl.h \
- ../lightsky/game/generic/gameState_impl.h
+ ../lightsky/math/generic/perlinNoise_impl.h ../lightsky/game/gameState.h \
+ ../lightsky/game/generic/gameState_impl.h ../lightsky/game/system.h \
+ ../lightsky/game/generic/system_impl.h
 
-../lightsky/game/gameState.h:
+../lightsky/utils/assert.h:
 
-../lightsky/game/system.h:
+../lightsky/setup/macros.h:
 
-../lightsky/draw/context.h:
-
-../lightsky/draw/display.h:
-
-../lightsky/draw/setup.h:
+../lightsky/game/setup.h:
 
 ../lightsky/setup/setup.h:
 
@@ -46,10 +37,6 @@ build/Debug/MinGW32_Qt-Windows/_ext/702534908/system.o: \
 ../lightsky/setup/arch.h:
 
 ../lightsky/setup/os.h:
-
-../lightsky/setup/macros.h:
-
-../lightsky/utils/assert.h:
 
 ../lightsky/utils/hash.h:
 
@@ -119,12 +106,10 @@ build/Debug/MinGW32_Qt-Windows/_ext/702534908/system.o: \
 
 ../lightsky/math/generic/perlinNoise_impl.h:
 
-../lightsky/draw/generic/display_impl.h:
-
-../lightsky/draw/generic/context_impl.h:
-
-../lightsky/game/setup.h:
-
-../lightsky/game/generic/system_impl.h:
+../lightsky/game/gameState.h:
 
 ../lightsky/game/generic/gameState_impl.h:
+
+../lightsky/game/system.h:
+
+../lightsky/game/generic/system_impl.h:

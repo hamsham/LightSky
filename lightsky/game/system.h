@@ -9,13 +9,7 @@
 #define	__LS_GAME_SYSTEM_H__
 
 #include <vector>
-
-#include "lightsky/draw/context.h"
-#include "lightsky/draw/display.h"
-#include "lightsky/utils/randomNum.h"
-#include "lightsky/game/setup.h"
-
-union SDL_Event;
+#include <cstdint> // uint64_t
 
 namespace ls {
 namespace game {
@@ -33,13 +27,13 @@ class system {
         /**
          * Stores the previous hardware time since the last update.
          */
-        float prevTime = 0;
+        uint64_t prevTime = 0;
         
         /**
          * Duration of the last "tick," or the last time that the "run()"
          * function had been called.
          */
-        float tickTime = 0.f;
+        uint64_t tickTime = 0;
         
         /**
          * A vector of game states. The game will stop running when there are
@@ -48,36 +42,6 @@ class system {
          * a game running.
          */
         std::vector<gameState*> gameList;
-        
-        /**
-         * Display object owned by *this.
-         */
-        ls::draw::display* pDisplay = nullptr;
-        
-        /**
-         * OpenGL render context owned by *this.
-         */
-        ls::draw::context renderContext = {};
-        
-        /**
-         * Pseudo-Random Number Generator.
-         */
-        ls::utils::randomNum* prng = nullptr;
-        
-        /**
-         * @brief Update all game states in the list.
-         * 
-         * This method will iterate through all game states and pass hardware
-         * events to them. After the events are passed to each state, then the
-         * game states will be queried for their current state. States that are
-         * stopped will be removed from the state stack, others will have their
-         * 'onStart()' or 'onPause()' method called.
-         * 
-         * @param tickTime
-         * The amount of time, in milliseconds, which has passed since the
-         * last update.
-         */
-        void updateGameStates(float tickTime);
     
     public:
         /**
@@ -110,7 +74,7 @@ class system {
          * The subsystem destructor will call "terminate()," releasing the
          * memory of all gameState objects held within the gameStack.
          */
-        ~system();
+        virtual ~system();
         
         /**
          * @brief Copy operator -- DELETED
@@ -145,7 +109,7 @@ class system {
          * @return TRUE if this object was successfully initialized. FALSE if
          * something went wrong.
          */
-        bool init(ls::draw::display& disp, bool useVsync = true);
+        virtual bool init();
         
         /**
          * @brief Terminate *this and all sub-states.
@@ -162,7 +126,7 @@ class system {
          * events, and call their methods to start, stop, pause, or update.
          * This method must be called in a program's main loop.
          */
-        void run();
+        virtual void run();
         
         /**
          * @brief Stop
@@ -221,7 +185,7 @@ class system {
          * A pointer to the desired game state contained in *this.
          * 
          * @return The index of the game state held within the game list.
-         * GAME_INVALID if the state was not found.
+         * UINT_MAX if the state was not found.
          */
         unsigned getGameStateIndex(gameState* const pState);
         
@@ -233,56 +197,12 @@ class system {
         unsigned getGameStackSize() const;
         
         /**
-         * Get a reference to the current display object.
-         * 
-         * @return a const reference to a display object.
-         */
-        const ls::draw::display& getDisplay() const;
-        
-        /**
-         * Get a reference to the current display object.
-         * 
-         * @return a reference to a display object.
-         */
-        ls::draw::display& getDisplay();
-        
-        /**
-         * Get a constant reference to the object responsible for managing the
-         * OpenGL render context.
-         * 
-         * @return a const reference to a ls::draw::context object.
-         */
-        const ls::draw::context& getContext() const;
-        
-        /**
-         * Get a reference to the object responsible for managing the OpenGL
-         * render context.
-         * 
-         * @return a reference to an ls::draw::context object.
-         */
-        ls::draw::context& getContext();
-        
-        /**
-         * Get a reference to the system prng (pseudo-random number generator).
-         * 
-         * @return a const reference to a ls::utils::randomNum object.
-         */
-        const ls::utils::randomNum& getPrng() const;
-        
-        /**
-         * Get a reference to the system prng (pseudo-random number generator).
-         * 
-         * @return a reference to a ls::utils::randomNum object.
-         */
-        ls::utils::randomNum& getPrng();
-        
-        /**
          * Get the current number of ticks per frame (in milliseconds).
          * 
-         * @return A floating point number which represents the number of
+         * @return An unsigned integral number which represents the number of
          * milliseconds which have passed since the last complete update.
          */
-        float getTickTime() const;
+        uint64_t getTickTime() const;
         
         /**
          * Determine if *this system is still running and operational.

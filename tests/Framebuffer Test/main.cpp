@@ -10,9 +10,10 @@
 bool initLs();
 void terminateLs();
 
-namespace {
+namespace global {
     ls::game::system* pSystem = nullptr;
     ls::draw::display* pDisplay = nullptr;
+    //ls::draw::context* pContext = nullptr;
 }
 
 /*
@@ -36,16 +37,16 @@ int main(int argc, char** argv) {
     }
     
     // push some states and run the game
-    if (!pSystem->pushGameState(new controlState{})
-    ||  !pSystem->pushGameState(new fbState{})
-    ||  !pSystem->pushGameState(new uiState{})
+    if (!global::pSystem->pushGameState(new controlState{})
+    ||  !global::pSystem->pushGameState(new fbState{})
+    ||  !global::pSystem->pushGameState(new uiState{})
     ) {
         terminateLs();
         return -1;
     }
     
-    while (pSystem->isRunning()) {
-        pSystem->run();
+    while (global::pSystem->isRunning()) {
+        global::pSystem->run();
     }
     
     terminateLs();
@@ -64,14 +65,14 @@ bool initLs() {
         return false;
     }
     
-    pDisplay = new(std::nothrow) ls::draw::display{};
-    if (!pDisplay || !pDisplay->init(ls::math::vec2i{800, 600})) {
+    global::pDisplay = new(std::nothrow) ls::draw::display{};
+    if (!global::pDisplay || !global::pDisplay->init(ls::math::vec2i{800, 600})) {
         std::cerr << "Unable to create a display object for LightSky." << std::endl;
         return false;
     }
     
-    pSystem = new(std::nothrow) ls::game::system();
-    if (!pSystem || !pSystem->init(*pDisplay, true)) {
+    global::pSystem = new(std::nothrow) ls::game::system();
+    if (!global::pSystem || !global::pSystem->init()) {
         std::cerr << "Failed to initialize the LightSky system manager.\n" << std::endl;
         return false;
     }
@@ -84,11 +85,11 @@ bool initLs() {
  * Terminate lightSky
  */
 void terminateLs() {
-    delete pSystem;
-    pSystem = nullptr;
+    delete global::pSystem;
+    global::pSystem = nullptr;
     
-    delete pDisplay;
-    pDisplay = nullptr;
+    delete global::pDisplay;
+    global::pDisplay = nullptr;
     
     ls::game::global::terminate();
     

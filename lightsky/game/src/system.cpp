@@ -7,10 +7,11 @@
 
 #include <new> // std::nothrow
 #include <utility> // std::move
+#include <chrono> // std::chrono::steady_clock, std::chrono::milliseconds
 
-#include <GL/glew.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_timer.h>
+#include "lightsky/utils/assert.h"
+
+#include "lightsky/game/setup.h"
 
 #include "lightsky/game/gameState.h"
 #include "lightsky/game/system.h"
@@ -29,31 +30,20 @@ system::system() {
 -------------------------------------*/
 system::system(system&& ss) :
     prevTime{ss.prevTime},
-    gameList{std::move(ss.gameList)},
-    pDisplay{std::move(ss.pDisplay)},
-    renderContext{std::move(ss.renderContext)},
-    prng{ss.prng}
-{
-    ss.pDisplay = nullptr;
-    ss.prng = nullptr;
-}
+    gameList{std::move(ss.gameList)}
+{}
 
 /*-------------------------------------
     SubSystem Move Operator
 -------------------------------------*/
 system& system::operator=(system&& ss) {
     prevTime = ss.prevTime;
-    ss.prevTime = 0.f;
+    ss.prevTime = 0;
+    
+    tickTime = ss.tickTime;
+    ss.tickTime = 0;
     
     gameList = std::move(ss.gameList);
-    
-    pDisplay = pDisplay;
-    ss.pDisplay = nullptr;
-    
-    renderContext = std::move(ss.renderContext);
-    
-    prng = ss.prng;
-    ss.prng = nullptr;
     
     return *this;
 }
@@ -68,7 +58,7 @@ system::~system() {
 /*-------------------------------------
     Initialize the subsystem using LightSky's own display system
 -------------------------------------*/
-bool system::init(ls::draw::display& disp, bool useVsync) {
+bool system::init() {
     terminate();
     
     LS_LOG_GAME_MSG(
@@ -76,31 +66,6 @@ bool system::init(ls::draw::display& disp, bool useVsync) {
         "Initializing a LightSky Sub-System at ", this, "\n",
         "----------------------------------------"
     );
-    
-    // make sure there's a display object running
-    if (!disp.isRunning()) {
-        LS_LOG_GAME_ERR("Cannot start the LS subsystem ", this, " with no display running.\n");
-        return false;
-    }
-    else {
-        pDisplay = &disp;
-    }
-    
-    if (!renderContext.init(disp, useVsync)) {
-        LS_LOG_GAME_ERR("\tUnable to create an OpenGL context for the current display.\n");
-        terminate();
-        return false;
-    }
-    LS_LOG_GAME_MSG("Successfully initialized OpenGL context for ", this, ".\n");
-    
-    prng = new(std::nothrow) ls::utils::randomNum(SDL_GetPerformanceCounter());
-    if (prng == nullptr) {
-        LS_LOG_GAME_ERR("Failed to initialize the random number generator for ", this, ".\n");
-        terminate();
-        return false;
-    }
-    LS_LOG_GAME_MSG("Successfully initialized the random number generator for ", this, ".\n");
-    
     LS_LOG_GAME_MSG(
         "----------------------------------------\n",
         "Successfully initialized the Sub-System ", this, "\n",
@@ -114,19 +79,13 @@ bool system::init(ls::draw::display& disp, bool useVsync) {
     SubSystem Termination
 -------------------------------------*/
 void system::terminate() {
-    prevTime = 0.f;
+    prevTime = 0;
     
     for (gameState* state : gameList) {
         state->onStop();
     }
     
     gameList.clear();
-    renderContext.terminate();
-    
-    pDisplay = nullptr;
-    
-    delete prng;
-    prng = nullptr;
 }
 
 /*-------------------------------------
@@ -134,72 +93,50 @@ void system::terminate() {
 -------------------------------------*/
 void system::run() {
     if (!gameList.size()) {
-        LS_LOG_GAME_ERR("No game states are available!\n", SDL_GetError(), '\n');
+        LS_LOG_GAME_ERR("No game states are available!");
         this->stop();
         return;
     }
     
-    // Ensure the display is still open
-#ifdef LS_DEBUG
-    if (!pDisplay || !pDisplay->isRunning()) {
-        this->stop();
-        return;
-    }
-#endif
-    
-    SDL_Event pEvent;
-    while (SDL_PollEvent(&pEvent)) {
-        // Hardware events passed through SDL
+    /*
+    while (this->hasEvents()) {
+     event* const pEvent = this->getNextEvent();
         for (unsigned i = 0; i < gameList.size(); ++i) {
             gameState* const pState = gameList[i];
             pState->onSystemEvent(pEvent);
         }
     }
-
+    */
+    
     // Frame Time Management
-    const float currTime = (float)SDL_GetTicks(); // SDL uses millisecond timing.
+    const uint64_t currTime =
+        std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now().time_since_epoch()
+        ).count();
     tickTime = currTime-prevTime;
     prevTime = currTime;
 
     // Game state management
-    updateGameStates(tickTime);
-
-    // Render to the screen after all events have been processed
-    ls::draw::display& disp = *pDisplay;
-    renderContext.makeCurrent(disp);
-    renderContext.flip(disp);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-/*-------------------------------------
-    Update the states in the game stack
--------------------------------------*/
-void system::updateGameStates(float tickTime) {
     for(unsigned i = 0; i < gameList.size(); ++i) {
         switch(gameList[i]->getState()) {
-            
-            case GAME_RUNNING:
+            case game_state_t::RUNNING:
                 gameList[i]->onRun(tickTime);
                 break;
-            
-            case GAME_PAUSED:
+            case game_state_t::PAUSED:
                 gameList[i]->onPause(tickTime);
                 break;
-            
-            case GAME_STOPPED:
+            case game_state_t::STOPPED:
                 popGameState(i);
                 i -= 1;
                 break;
-            
-            case GAME_INIT:
+            case game_state_t::INIT:
                 if (gameList[i]->onStart() == true) {
-                    gameList[i]->setState(GAME_RUNNING);
+                    gameList[i]->setState(game_state_t::RUNNING);
                 }
                 else {
                     LS_LOG_GAME_ERR("ERROR: A new gameState was unable to start.");
-                    gameList[i]->setState(GAME_STOPPED);
+                    gameList[i]->setState(game_state_t::STOPPED);
                 }
-            
             default:
                 break;
         }
@@ -216,7 +153,7 @@ bool system::pushGameState(gameState* const pState) {
     }
     
     pState->setParentSystem(*this);
-    pState->setState(GAME_INIT);
+    pState->setState(game_state_t::INIT);
     gameList.push_back(pState);
     
     return true;
@@ -278,7 +215,7 @@ unsigned system::getGameStateIndex(gameState* const pState) {
         }
     }
     
-    return GAME_INVALID;
+    return UINT_MAX;
 }
 
 /*-------------------------------------
@@ -286,10 +223,10 @@ unsigned system::getGameStateIndex(gameState* const pState) {
     all off of the stack.
 -------------------------------------*/
 void system::stop() {
-    tickTime = 0.f;
+    tickTime = 0;
     
     for (gameState* state : gameList) {
-        state->setState(GAME_STOPPED);
+        state->setState(game_state_t::STOPPED);
     }
 }
 

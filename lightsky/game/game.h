@@ -10,8 +10,11 @@
 
 #include "lightsky/game/setup.h"
 
+#include "lightsky/game/dispatcher.h"
+#include "lightsky/game/event.h"
 #include "lightsky/game/gameState.h"
 #include "lightsky/game/manager.h"
+#include "lightsky/game/subscriber.h"
 #include "lightsky/game/system.h"
 
 namespace ls {

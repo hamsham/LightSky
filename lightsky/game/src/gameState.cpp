@@ -29,7 +29,7 @@ gameState::gameState(gameState&& gs) :
     pSystem{gs.pSystem},
     currentState{gs.currentState}
 {
-    gs.currentState = GAME_STOPPED;
+    gs.currentState = game_state_t::STOPPED;
 }
 
 /*-------------------------------------
@@ -39,7 +39,7 @@ gameState& gameState::operator=(gameState&& gs) {
     pSystem = gs.pSystem;
     
     currentState = gs.currentState;
-    gs.currentState = GAME_STOPPED;
+    gs.currentState = game_state_t::STOPPED;
     
     return *this;
 }
@@ -54,8 +54,10 @@ void gameState::setParentSystem(system& pSys) {
 /*-------------------------------------
  Run a custom function if SDL generated an event.
 -------------------------------------*/
+/*
 void gameState::onSystemEvent(const SDL_Event&) {
 }
+*/
 
 /*-------------------------------------
     The onStart method is called by the parent subsystem when *this

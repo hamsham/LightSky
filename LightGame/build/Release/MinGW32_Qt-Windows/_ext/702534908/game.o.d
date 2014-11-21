@@ -21,14 +21,12 @@ build/Release/MinGW32_Qt-Windows/_ext/702534908/game.o: \
  ../lightsky/math/generic/quat_utils_impl.h ../lightsky/math/mat_utils.h \
  ../lightsky/math/generic/mat_utils_impl.h ../lightsky/math/perlinNoise.h \
  ../lightsky/utils/randomNum.h \
- ../lightsky/math/generic/perlinNoise_impl.h ../lightsky/game/gameState.h \
- ../lightsky/game/system.h ../lightsky/draw/context.h \
- ../lightsky/draw/display.h ../lightsky/draw/setup.h \
- ../lightsky/draw/generic/display_impl.h \
- ../lightsky/draw/generic/context_impl.h \
- ../lightsky/game/generic/system_impl.h \
- ../lightsky/game/generic/gameState_impl.h ../lightsky/game/manager.h \
- ../lightsky/game/generic/manager_impl.h
+ ../lightsky/math/generic/perlinNoise_impl.h \
+ ../lightsky/game/dispatcher.h ../lightsky/game/event.h \
+ ../lightsky/game/gameState.h ../lightsky/game/generic/gameState_impl.h \
+ ../lightsky/game/manager.h ../lightsky/game/generic/manager_impl.h \
+ ../lightsky/game/subscriber.h ../lightsky/game/system.h \
+ ../lightsky/game/generic/system_impl.h
 
 ../lightsky/game/game.h:
 
@@ -114,24 +112,20 @@ build/Release/MinGW32_Qt-Windows/_ext/702534908/game.o: \
 
 ../lightsky/math/generic/perlinNoise_impl.h:
 
+../lightsky/game/dispatcher.h:
+
+../lightsky/game/event.h:
+
 ../lightsky/game/gameState.h:
-
-../lightsky/game/system.h:
-
-../lightsky/draw/context.h:
-
-../lightsky/draw/display.h:
-
-../lightsky/draw/setup.h:
-
-../lightsky/draw/generic/display_impl.h:
-
-../lightsky/draw/generic/context_impl.h:
-
-../lightsky/game/generic/system_impl.h:
 
 ../lightsky/game/generic/gameState_impl.h:
 
 ../lightsky/game/manager.h:
 
 ../lightsky/game/generic/manager_impl.h:
+
+../lightsky/game/subscriber.h:
+
+../lightsky/game/system.h:
+
+../lightsky/game/generic/system_impl.h:

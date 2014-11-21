@@ -10,51 +10,9 @@ inline unsigned system::getGameStackSize() const {
 }
 
 /*-------------------------------------
-    Get a reference to the current display object.
--------------------------------------*/
-inline const ls::draw::display& system::getDisplay() const {
-    return *pDisplay;
-}
-
-/*-------------------------------------
-    Get a reference to the current display object.
--------------------------------------*/
-inline ls::draw::display& system::getDisplay() {
-    return *pDisplay;
-}
-
-/*-------------------------------------
-    Get a reference to the current render context.
--------------------------------------*/
-inline const ls::draw::context& system::getContext() const {
-    return renderContext;
-}
-
-/*-------------------------------------
-    Get a reference to the current render context.
--------------------------------------*/
-inline ls::draw::context& system::getContext() {
-    return renderContext;
-}
-
-/*-------------------------------------
-    Get a reference to the system prng (pseudo-random number generator).
--------------------------------------*/
-inline const ls::utils::randomNum& system::getPrng() const {
-    return *prng;
-}
-
-/*-------------------------------------
-    Get a reference to the system prng (pseudo-random number generator).
--------------------------------------*/
-inline ls::utils::randomNum& system::getPrng() {
-    return *prng;
-}
-
-/*-------------------------------------
     Get the current number of ticks per frame (in milliseconds).
 -------------------------------------*/
-inline float system::getTickTime() const {
+inline uint64_t system::getTickTime() const {
     return tickTime;
 }
 

@@ -18,5 +18,10 @@ enum {
 
 namespace math = ls::math;
 
+namespace global {
+    extern ls::game::system* pSystem = nullptr;
+    extern ls::draw::display* pDisplay = nullptr;
+}
+
 #endif	/* MAIN_H */
 

@@ -46,7 +46,7 @@
           <developmentMode>4</developmentMode>
           <standard>8</standard>
           <incDir>
-            <pElem>../..</pElem>
+            <pElem>../../include</pElem>
           </incDir>
           <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++</commandLine>
           <preprocessorList>
@@ -147,7 +147,7 @@
           <stripSymbols>true</stripSymbols>
           <standard>8</standard>
           <incDir>
-            <pElem>../..</pElem>
+            <pElem>../../include</pElem>
           </incDir>
           <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++</commandLine>
           <preprocessorList>

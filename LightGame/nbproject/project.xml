@@ -16,6 +16,8 @@
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>../lightsky/game</sourceRootElem>
+                <sourceRootElem>../include/lightsky/math</sourceRootElem>
+                <sourceRootElem>../src/math</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

@@ -15,6 +15,8 @@
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>../lightsky/draw</sourceRootElem>
+                <sourceRootElem>../include/lightsky/draw</sourceRootElem>
+                <sourceRootElem>../src/draw</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

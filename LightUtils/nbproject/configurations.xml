@@ -5,29 +5,30 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="generic" displayName="generic" projectFiles="true">
-        <itemPath>../lightsky/utils/generic/bits_impl.h</itemPath>
-        <itemPath>../lightsky/utils/generic/btree_impl.h</itemPath>
-        <itemPath>../lightsky/utils/generic/byteSize_impl.h</itemPath>
-        <itemPath>../lightsky/utils/generic/hash_impl.h</itemPath>
-        <itemPath>../lightsky/utils/generic/resource_impl.h</itemPath>
-        <itemPath>../lightsky/utils/generic/string_utils_impl.h</itemPath>
-        <itemPath>../lightsky/utils/generic/tuple_impl.h</itemPath>
-        <itemPath>../lightsky/utils/utils.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/bits_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/btree_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/byteSize_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/hash_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/log_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/resource_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/string_utils_impl.h</itemPath>
+        <itemPath>../include/lightsky/utils/generic/tuple_impl.h</itemPath>
       </logicalFolder>
-      <itemPath>../lightsky/utils/assert.h</itemPath>
-      <itemPath>../lightsky/utils/bits.h</itemPath>
-      <itemPath>../lightsky/utils/btree.h</itemPath>
-      <itemPath>../lightsky/utils/byteSize.h</itemPath>
-      <itemPath>../lightsky/utils/dataResource.h</itemPath>
-      <itemPath>../lightsky/utils/endian.h</itemPath>
-      <itemPath>../lightsky/utils/hash.h</itemPath>
-      <itemPath>../lightsky/utils/log.h</itemPath>
-      <itemPath>../lightsky/utils/pointer.h</itemPath>
-      <itemPath>../lightsky/utils/randomNum.h</itemPath>
-      <itemPath>../lightsky/utils/resource.h</itemPath>
-      <itemPath>../lightsky/utils/setup.h</itemPath>
-      <itemPath>../lightsky/utils/string_utils.h</itemPath>
-      <itemPath>../lightsky/utils/tuple.h</itemPath>
+      <itemPath>../include/lightsky/utils/assert.h</itemPath>
+      <itemPath>../include/lightsky/utils/bits.h</itemPath>
+      <itemPath>../include/lightsky/utils/btree.h</itemPath>
+      <itemPath>../include/lightsky/utils/byteSize.h</itemPath>
+      <itemPath>../include/lightsky/utils/dataResource.h</itemPath>
+      <itemPath>../include/lightsky/utils/endian.h</itemPath>
+      <itemPath>../include/lightsky/utils/hash.h</itemPath>
+      <itemPath>../include/lightsky/utils/log.h</itemPath>
+      <itemPath>../include/lightsky/utils/pointer.h</itemPath>
+      <itemPath>../include/lightsky/utils/randomNum.h</itemPath>
+      <itemPath>../include/lightsky/utils/resource.h</itemPath>
+      <itemPath>../include/lightsky/utils/setup.h</itemPath>
+      <itemPath>../include/lightsky/utils/string_utils.h</itemPath>
+      <itemPath>../include/lightsky/utils/tuple.h</itemPath>
+      <itemPath>../include/lightsky/utils/utils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -36,12 +37,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../lightsky/utils/src/assert.cpp</itemPath>
-      <itemPath>../lightsky/utils/src/dataResource.cpp</itemPath>
-      <itemPath>../lightsky/utils/src/randomNum.cpp</itemPath>
-      <itemPath>../lightsky/utils/src/resource.cpp</itemPath>
-      <itemPath>../lightsky/utils/src/string_utils.cpp</itemPath>
-      <itemPath>../lightsky/utils/src/tuple.cpp</itemPath>
+      <itemPath>../src/utils/assert.cpp</itemPath>
+      <itemPath>../src/utils/dataResource.cpp</itemPath>
+      <itemPath>../src/utils/randomNum.cpp</itemPath>
+      <itemPath>../src/utils/resource.cpp</itemPath>
+      <itemPath>../src/utils/string_utils.cpp</itemPath>
+      <itemPath>../src/utils/tuple.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -62,7 +63,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../lightsky/utils</Elem>
+    <Elem>../include/lightsky/utils</Elem>
+    <Elem>../src/utils</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -76,7 +78,7 @@
         <ccTool>
           <standard>8</standard>
           <incDir>
-            <pElem>..</pElem>
+            <pElem>../include</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
           <preprocessorList>
@@ -99,91 +101,105 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="../lightsky/utils/assert.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/assert.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/bits.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/bits.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/btree.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/btree.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/byteSize.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/dataResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/endian.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/generic/bits_impl.h"
+      <item path="../include/lightsky/utils/byteSize.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/btree_impl.h"
+      <item path="../include/lightsky/utils/dataResource.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/byteSize_impl.h"
+      <item path="../include/lightsky/utils/endian.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/generic/bits_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/hash_impl.h"
+      <item path="../include/lightsky/utils/generic/btree_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/resource_impl.h"
+      <item path="../include/lightsky/utils/generic/byteSize_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/string_utils_impl.h"
+      <item path="../include/lightsky/utils/generic/hash_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/tuple_impl.h"
+      <item path="../include/lightsky/utils/generic/log_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/hash.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/log.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/pointer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/randomNum.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/resource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/setup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/src/assert.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/src/dataResource.cpp"
+      <item path="../include/lightsky/utils/generic/resource_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/src/randomNum.cpp"
+      <item path="../include/lightsky/utils/generic/string_utils_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/src/resource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/src/string_utils.cpp"
+      <item path="../include/lightsky/utils/generic/tuple_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/src/tuple.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../include/lightsky/utils/hash.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/string_utils.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/log.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/tuple.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/pointer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="../lightsky/utils/utils.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/randomNum.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/string_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/tuple.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../src/utils/assert.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/dataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/randomNum.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/resource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/string_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/tuple.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -218,7 +234,7 @@
           <stripSymbols>true</stripSymbols>
           <standard>8</standard>
           <incDir>
-            <pElem>..</pElem>
+            <pElem>../include</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse</commandLine>
         </ccTool>
@@ -244,91 +260,105 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="../lightsky/utils/assert.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/assert.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/bits.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/bits.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/btree.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/btree.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/byteSize.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/dataResource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/endian.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/generic/bits_impl.h"
+      <item path="../include/lightsky/utils/byteSize.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/btree_impl.h"
+      <item path="../include/lightsky/utils/dataResource.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/byteSize_impl.h"
+      <item path="../include/lightsky/utils/endian.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/generic/bits_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/hash_impl.h"
+      <item path="../include/lightsky/utils/generic/btree_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/resource_impl.h"
+      <item path="../include/lightsky/utils/generic/byteSize_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/string_utils_impl.h"
+      <item path="../include/lightsky/utils/generic/hash_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/generic/tuple_impl.h"
+      <item path="../include/lightsky/utils/generic/log_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/hash.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/log.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/pointer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/randomNum.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/resource.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/setup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/src/assert.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/src/dataResource.cpp"
+      <item path="../include/lightsky/utils/generic/resource_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/src/randomNum.cpp"
+      <item path="../include/lightsky/utils/generic/string_utils_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/src/resource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/utils/src/string_utils.cpp"
+      <item path="../include/lightsky/utils/generic/tuple_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/utils/src/tuple.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../include/lightsky/utils/hash.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/string_utils.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/log.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../lightsky/utils/tuple.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/pointer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="../lightsky/utils/utils.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/utils/randomNum.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/string_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/tuple.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/utils/utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../src/utils/assert.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/dataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/randomNum.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/resource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/string_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/tuple.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>

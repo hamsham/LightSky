@@ -35,12 +35,19 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/702534908/dispatcher.o \
-	${OBJECTDIR}/_ext/702534908/game.o \
-	${OBJECTDIR}/_ext/702534908/gameState.o \
-	${OBJECTDIR}/_ext/702534908/manager.o \
-	${OBJECTDIR}/_ext/702534908/subscriber.o \
-	${OBJECTDIR}/_ext/702534908/system.o
+	${OBJECTDIR}/_ext/1019118654/fixed.o \
+	${OBJECTDIR}/_ext/1019118654/mat2.o \
+	${OBJECTDIR}/_ext/1019118654/mat3.o \
+	${OBJECTDIR}/_ext/1019118654/mat4.o \
+	${OBJECTDIR}/_ext/1019118654/mat_utils.o \
+	${OBJECTDIR}/_ext/1019118654/perlinNoise.o \
+	${OBJECTDIR}/_ext/1019118654/quat.o \
+	${OBJECTDIR}/_ext/1019118654/quat_utils.o \
+	${OBJECTDIR}/_ext/1019118654/scalar_utils.o \
+	${OBJECTDIR}/_ext/1019118654/vec2.o \
+	${OBJECTDIR}/_ext/1019118654/vec3.o \
+	${OBJECTDIR}/_ext/1019118654/vec4.o \
+	${OBJECTDIR}/_ext/1019118654/vec_utils.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -75,35 +82,70 @@ build/liblightgame_d.a: ${OBJECTFILES}
 	${AR} -rv build/liblightgame_d.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightgame_d.a
 
-${OBJECTDIR}/_ext/702534908/dispatcher.o: ../lightsky/game/src/dispatcher.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
+${OBJECTDIR}/_ext/1019118654/fixed.o: ../src/math/fixed.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/dispatcher.o ../lightsky/game/src/dispatcher.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/fixed.o ../src/math/fixed.cpp
 
-${OBJECTDIR}/_ext/702534908/game.o: ../lightsky/game/src/game.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
+${OBJECTDIR}/_ext/1019118654/mat2.o: ../src/math/mat2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/game.o ../lightsky/game/src/game.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat2.o ../src/math/mat2.cpp
 
-${OBJECTDIR}/_ext/702534908/gameState.o: ../lightsky/game/src/gameState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
+${OBJECTDIR}/_ext/1019118654/mat3.o: ../src/math/mat3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/gameState.o ../lightsky/game/src/gameState.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat3.o ../src/math/mat3.cpp
 
-${OBJECTDIR}/_ext/702534908/manager.o: ../lightsky/game/src/manager.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
+${OBJECTDIR}/_ext/1019118654/mat4.o: ../src/math/mat4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/manager.o ../lightsky/game/src/manager.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat4.o ../src/math/mat4.cpp
 
-${OBJECTDIR}/_ext/702534908/subscriber.o: ../lightsky/game/src/subscriber.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
+${OBJECTDIR}/_ext/1019118654/mat_utils.o: ../src/math/mat_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/subscriber.o ../lightsky/game/src/subscriber.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat_utils.o ../src/math/mat_utils.cpp
 
-${OBJECTDIR}/_ext/702534908/system.o: ../lightsky/game/src/system.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
+${OBJECTDIR}/_ext/1019118654/perlinNoise.o: ../src/math/perlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/system.o ../lightsky/game/src/system.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/perlinNoise.o ../src/math/perlinNoise.cpp
+
+${OBJECTDIR}/_ext/1019118654/quat.o: ../src/math/quat.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat.o ../src/math/quat.cpp
+
+${OBJECTDIR}/_ext/1019118654/quat_utils.o: ../src/math/quat_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat_utils.o ../src/math/quat_utils.cpp
+
+${OBJECTDIR}/_ext/1019118654/scalar_utils.o: ../src/math/scalar_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/scalar_utils.o ../src/math/scalar_utils.cpp
+
+${OBJECTDIR}/_ext/1019118654/vec2.o: ../src/math/vec2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec2.o ../src/math/vec2.cpp
+
+${OBJECTDIR}/_ext/1019118654/vec3.o: ../src/math/vec3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec3.o ../src/math/vec3.cpp
+
+${OBJECTDIR}/_ext/1019118654/vec4.o: ../src/math/vec4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec4.o ../src/math/vec4.cpp
+
+${OBJECTDIR}/_ext/1019118654/vec_utils.o: ../src/math/vec_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec_utils.o ../src/math/vec_utils.cpp
 
 # Subprojects
 .build-subprojects:
@@ -118,85 +160,176 @@ ${TESTDIR}/event_test_debug: ${TESTDIR}/tests/event_test.o ${OBJECTFILES:%.o=%_n
 ${TESTDIR}/tests/event_test.o: tests/event_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I.. -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/event_test.o tests/event_test.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/event_test.o tests/event_test.cpp
 
 
-${OBJECTDIR}/_ext/702534908/dispatcher_nomain.o: ${OBJECTDIR}/_ext/702534908/dispatcher.o ../lightsky/game/src/dispatcher.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/702534908/dispatcher.o`; \
+${OBJECTDIR}/_ext/1019118654/fixed_nomain.o: ${OBJECTDIR}/_ext/1019118654/fixed.o ../src/math/fixed.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/fixed.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/dispatcher_nomain.o ../lightsky/game/src/dispatcher.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/fixed_nomain.o ../src/math/fixed.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/702534908/dispatcher.o ${OBJECTDIR}/_ext/702534908/dispatcher_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/fixed.o ${OBJECTDIR}/_ext/1019118654/fixed_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/702534908/game_nomain.o: ${OBJECTDIR}/_ext/702534908/game.o ../lightsky/game/src/game.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/702534908/game.o`; \
+${OBJECTDIR}/_ext/1019118654/mat2_nomain.o: ${OBJECTDIR}/_ext/1019118654/mat2.o ../src/math/mat2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/mat2.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/game_nomain.o ../lightsky/game/src/game.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat2_nomain.o ../src/math/mat2.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/702534908/game.o ${OBJECTDIR}/_ext/702534908/game_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/mat2.o ${OBJECTDIR}/_ext/1019118654/mat2_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/702534908/gameState_nomain.o: ${OBJECTDIR}/_ext/702534908/gameState.o ../lightsky/game/src/gameState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/702534908/gameState.o`; \
+${OBJECTDIR}/_ext/1019118654/mat3_nomain.o: ${OBJECTDIR}/_ext/1019118654/mat3.o ../src/math/mat3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/mat3.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/gameState_nomain.o ../lightsky/game/src/gameState.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat3_nomain.o ../src/math/mat3.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/702534908/gameState.o ${OBJECTDIR}/_ext/702534908/gameState_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/mat3.o ${OBJECTDIR}/_ext/1019118654/mat3_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/702534908/manager_nomain.o: ${OBJECTDIR}/_ext/702534908/manager.o ../lightsky/game/src/manager.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/702534908/manager.o`; \
+${OBJECTDIR}/_ext/1019118654/mat4_nomain.o: ${OBJECTDIR}/_ext/1019118654/mat4.o ../src/math/mat4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/mat4.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/manager_nomain.o ../lightsky/game/src/manager.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat4_nomain.o ../src/math/mat4.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/702534908/manager.o ${OBJECTDIR}/_ext/702534908/manager_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/mat4.o ${OBJECTDIR}/_ext/1019118654/mat4_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/702534908/subscriber_nomain.o: ${OBJECTDIR}/_ext/702534908/subscriber.o ../lightsky/game/src/subscriber.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/702534908/subscriber.o`; \
+${OBJECTDIR}/_ext/1019118654/mat_utils_nomain.o: ${OBJECTDIR}/_ext/1019118654/mat_utils.o ../src/math/mat_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/mat_utils.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/subscriber_nomain.o ../lightsky/game/src/subscriber.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat_utils_nomain.o ../src/math/mat_utils.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/702534908/subscriber.o ${OBJECTDIR}/_ext/702534908/subscriber_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/mat_utils.o ${OBJECTDIR}/_ext/1019118654/mat_utils_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/702534908/system_nomain.o: ${OBJECTDIR}/_ext/702534908/system.o ../lightsky/game/src/system.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/702534908
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/702534908/system.o`; \
+${OBJECTDIR}/_ext/1019118654/perlinNoise_nomain.o: ${OBJECTDIR}/_ext/1019118654/perlinNoise.o ../src/math/perlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/perlinNoise.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/702534908/system_nomain.o ../lightsky/game/src/system.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/perlinNoise_nomain.o ../src/math/perlinNoise.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/702534908/system.o ${OBJECTDIR}/_ext/702534908/system_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/perlinNoise.o ${OBJECTDIR}/_ext/1019118654/perlinNoise_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/quat_nomain.o: ${OBJECTDIR}/_ext/1019118654/quat.o ../src/math/quat.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/quat.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat_nomain.o ../src/math/quat.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/quat.o ${OBJECTDIR}/_ext/1019118654/quat_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/quat_utils_nomain.o: ${OBJECTDIR}/_ext/1019118654/quat_utils.o ../src/math/quat_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/quat_utils.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat_utils_nomain.o ../src/math/quat_utils.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/quat_utils.o ${OBJECTDIR}/_ext/1019118654/quat_utils_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/scalar_utils_nomain.o: ${OBJECTDIR}/_ext/1019118654/scalar_utils.o ../src/math/scalar_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/scalar_utils.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/scalar_utils_nomain.o ../src/math/scalar_utils.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/scalar_utils.o ${OBJECTDIR}/_ext/1019118654/scalar_utils_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/vec2_nomain.o: ${OBJECTDIR}/_ext/1019118654/vec2.o ../src/math/vec2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/vec2.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec2_nomain.o ../src/math/vec2.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/vec2.o ${OBJECTDIR}/_ext/1019118654/vec2_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/vec3_nomain.o: ${OBJECTDIR}/_ext/1019118654/vec3.o ../src/math/vec3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/vec3.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec3_nomain.o ../src/math/vec3.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/vec3.o ${OBJECTDIR}/_ext/1019118654/vec3_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/vec4_nomain.o: ${OBJECTDIR}/_ext/1019118654/vec4.o ../src/math/vec4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/vec4.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec4_nomain.o ../src/math/vec4.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/vec4.o ${OBJECTDIR}/_ext/1019118654/vec4_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1019118654/vec_utils_nomain.o: ${OBJECTDIR}/_ext/1019118654/vec_utils.o ../src/math/vec_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019118654/vec_utils.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec_utils_nomain.o ../src/math/vec_utils.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019118654/vec_utils.o ${OBJECTDIR}/_ext/1019118654/vec_utils_nomain.o;\
 	fi
 
 # Run Test Targets

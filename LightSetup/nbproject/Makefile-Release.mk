@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/904064829/setup.o
+	${OBJECTDIR}/_ext/1522246397/setup.o
 
 
 # C Compiler Flags
@@ -64,10 +64,10 @@ build/liblightsetup.a: ${OBJECTFILES}
 	${AR} -rv build/liblightsetup.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightsetup.a
 
-${OBJECTDIR}/_ext/904064829/setup.o: ../lightsky/setup/src/setup.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/904064829
+${OBJECTDIR}/_ext/1522246397/setup.o: ../src/setup/setup.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1522246397
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/904064829/setup.o ../lightsky/setup/src/setup.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522246397/setup.o ../src/setup/setup.cpp
 
 # Subprojects
 .build-subprojects:

@@ -12,7 +12,8 @@
                 <make-dep-project>../LightSetup</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../lightsky/utils</sourceRootElem>
+                <sourceRootElem>../include/lightsky/utils</sourceRootElem>
+                <sourceRootElem>../src/utils</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/lightsky/src/lightsky.o
+	${OBJECTDIR}/src/lightsky.o
 
 
 # C Compiler Flags
@@ -64,10 +64,10 @@ build/liblightsky_d.a: ${OBJECTFILES}
 	${AR} -rv build/liblightsky_d.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightsky_d.a
 
-${OBJECTDIR}/lightsky/src/lightsky.o: lightsky/src/lightsky.cpp 
-	${MKDIR} -p ${OBJECTDIR}/lightsky/src
+${OBJECTDIR}/src/lightsky.o: src/lightsky.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lightsky/src/lightsky.o lightsky/src/lightsky.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -Iinclude -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lightsky.o src/lightsky.cpp
 
 # Subprojects
 .build-subprojects:

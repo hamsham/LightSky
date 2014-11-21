@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/387083285/factory.o \
-	${OBJECTDIR}/_ext/387083285/functor.o \
-	${OBJECTDIR}/_ext/387083285/scriptable.o \
-	${OBJECTDIR}/_ext/387083285/setup.o \
-	${OBJECTDIR}/_ext/387083285/variable.o
+	${OBJECTDIR}/_ext/53083909/factory.o \
+	${OBJECTDIR}/_ext/53083909/functor.o \
+	${OBJECTDIR}/_ext/53083909/scriptable.o \
+	${OBJECTDIR}/_ext/53083909/setup.o \
+	${OBJECTDIR}/_ext/53083909/variable.o
 
 
 # C Compiler Flags
@@ -68,30 +68,30 @@ build/liblightscript.a: ${OBJECTFILES}
 	${AR} -rv build/liblightscript.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightscript.a
 
-${OBJECTDIR}/_ext/387083285/factory.o: ../lightsky/script/src/factory.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/387083285
+${OBJECTDIR}/_ext/53083909/factory.o: ../src/script/factory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/387083285/factory.o ../lightsky/script/src/factory.cpp
+	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/factory.o ../src/script/factory.cpp
 
-${OBJECTDIR}/_ext/387083285/functor.o: ../lightsky/script/src/functor.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/387083285
+${OBJECTDIR}/_ext/53083909/functor.o: ../src/script/functor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/387083285/functor.o ../lightsky/script/src/functor.cpp
+	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/functor.o ../src/script/functor.cpp
 
-${OBJECTDIR}/_ext/387083285/scriptable.o: ../lightsky/script/src/scriptable.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/387083285
+${OBJECTDIR}/_ext/53083909/scriptable.o: ../src/script/scriptable.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/387083285/scriptable.o ../lightsky/script/src/scriptable.cpp
+	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptable.o ../src/script/scriptable.cpp
 
-${OBJECTDIR}/_ext/387083285/setup.o: ../lightsky/script/src/setup.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/387083285
+${OBJECTDIR}/_ext/53083909/setup.o: ../src/script/setup.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/387083285/setup.o ../lightsky/script/src/setup.cpp
+	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/setup.o ../src/script/setup.cpp
 
-${OBJECTDIR}/_ext/387083285/variable.o: ../lightsky/script/src/variable.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/387083285
+${OBJECTDIR}/_ext/53083909/variable.o: ../src/script/variable.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/387083285/variable.o ../lightsky/script/src/variable.cpp
+	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/variable.o ../src/script/variable.cpp
 
 # Subprojects
 .build-subprojects:

@@ -75,22 +75,22 @@ fb_test_debug.exe: ${OBJECTFILES}
 ${OBJECTDIR}/controlState.o: controlState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
 
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/uiState.o: uiState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
 
 # Subprojects
 .build-subprojects:

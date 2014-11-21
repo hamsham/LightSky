@@ -5,15 +5,15 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="generic" displayName="generic" projectFiles="true">
-        <itemPath>../lightsky/script/generic/functor_impl.h</itemPath>
-        <itemPath>../lightsky/script/generic/variable_impl.h</itemPath>
+        <itemPath>../include/lightsky/script/generic/functor_impl.h</itemPath>
+        <itemPath>../include/lightsky/script/generic/variable_impl.h</itemPath>
       </logicalFolder>
-      <itemPath>../lightsky/script/factory.h</itemPath>
-      <itemPath>../lightsky/script/functor.h</itemPath>
-      <itemPath>../lightsky/script/script.h</itemPath>
-      <itemPath>../lightsky/script/scriptable.h</itemPath>
-      <itemPath>../lightsky/script/setup.h</itemPath>
-      <itemPath>../lightsky/script/variable.h</itemPath>
+      <itemPath>../include/lightsky/script/factory.h</itemPath>
+      <itemPath>../include/lightsky/script/functor.h</itemPath>
+      <itemPath>../include/lightsky/script/script.h</itemPath>
+      <itemPath>../include/lightsky/script/scriptable.h</itemPath>
+      <itemPath>../include/lightsky/script/setup.h</itemPath>
+      <itemPath>../include/lightsky/script/variable.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -22,11 +22,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../lightsky/script/src/factory.cpp</itemPath>
-      <itemPath>../lightsky/script/src/functor.cpp</itemPath>
-      <itemPath>../lightsky/script/src/scriptable.cpp</itemPath>
-      <itemPath>../lightsky/script/src/setup.cpp</itemPath>
-      <itemPath>../lightsky/script/src/variable.cpp</itemPath>
+      <itemPath>../src/script/factory.cpp</itemPath>
+      <itemPath>../src/script/functor.cpp</itemPath>
+      <itemPath>../src/script/scriptable.cpp</itemPath>
+      <itemPath>../src/script/setup.cpp</itemPath>
+      <itemPath>../src/script/variable.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -42,6 +42,8 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../lightsky/script</Elem>
+    <Elem>../include/lightsky/script</Elem>
+    <Elem>../src/script</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -55,7 +57,7 @@
         <ccTool>
           <standard>8</standard>
           <incDir>
-            <pElem>..</pElem>
+            <pElem>../include</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
           <preprocessorList>
@@ -88,43 +90,52 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="../lightsky/script/factory.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/functor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/generic/functor_impl.h"
+      <item path="../include/lightsky/script/factory.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/generic/variable_impl.h"
+      <item path="../include/lightsky/script/functor.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/script.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/scriptable.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/setup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/factory.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/functor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/scriptable.cpp"
+      <item path="../include/lightsky/script/generic/functor_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/src/setup.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/variable.cpp"
+      <item path="../include/lightsky/script/generic/variable_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/variable.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/script/script.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/scriptable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/variable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../src/script/factory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/functor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/setup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/variable.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -142,7 +153,7 @@
           <stripSymbols>true</stripSymbols>
           <standard>8</standard>
           <incDir>
-            <pElem>..</pElem>
+            <pElem>../include</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse</commandLine>
         </ccTool>
@@ -178,43 +189,52 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="../lightsky/script/factory.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/functor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/generic/functor_impl.h"
+      <item path="../include/lightsky/script/factory.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/generic/variable_impl.h"
+      <item path="../include/lightsky/script/functor.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/script.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/scriptable.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/setup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/factory.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/functor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/scriptable.cpp"
+      <item path="../include/lightsky/script/generic/functor_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/src/setup.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../lightsky/script/src/variable.cpp"
+      <item path="../include/lightsky/script/generic/variable_impl.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
-      <item path="../lightsky/script/variable.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/script/script.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/scriptable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/variable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../src/script/factory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/functor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/setup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/variable.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

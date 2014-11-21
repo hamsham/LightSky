@@ -35,19 +35,19 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1522330350/fixed.o \
-	${OBJECTDIR}/_ext/1522330350/mat2.o \
-	${OBJECTDIR}/_ext/1522330350/mat3.o \
-	${OBJECTDIR}/_ext/1522330350/mat4.o \
-	${OBJECTDIR}/_ext/1522330350/mat_utils.o \
-	${OBJECTDIR}/_ext/1522330350/perlinNoise.o \
-	${OBJECTDIR}/_ext/1522330350/quat.o \
-	${OBJECTDIR}/_ext/1522330350/quat_utils.o \
-	${OBJECTDIR}/_ext/1522330350/scalar_utils.o \
-	${OBJECTDIR}/_ext/1522330350/vec2.o \
-	${OBJECTDIR}/_ext/1522330350/vec3.o \
-	${OBJECTDIR}/_ext/1522330350/vec4.o \
-	${OBJECTDIR}/_ext/1522330350/vec_utils.o
+	${OBJECTDIR}/_ext/1019118654/fixed.o \
+	${OBJECTDIR}/_ext/1019118654/mat2.o \
+	${OBJECTDIR}/_ext/1019118654/mat3.o \
+	${OBJECTDIR}/_ext/1019118654/mat4.o \
+	${OBJECTDIR}/_ext/1019118654/mat_utils.o \
+	${OBJECTDIR}/_ext/1019118654/perlinNoise.o \
+	${OBJECTDIR}/_ext/1019118654/quat.o \
+	${OBJECTDIR}/_ext/1019118654/quat_utils.o \
+	${OBJECTDIR}/_ext/1019118654/scalar_utils.o \
+	${OBJECTDIR}/_ext/1019118654/vec2.o \
+	${OBJECTDIR}/_ext/1019118654/vec3.o \
+	${OBJECTDIR}/_ext/1019118654/vec4.o \
+	${OBJECTDIR}/_ext/1019118654/vec_utils.o
 
 
 # C Compiler Flags
@@ -76,70 +76,70 @@ build/liblightmath.a: ${OBJECTFILES}
 	${AR} -rv build/liblightmath.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightmath.a
 
-${OBJECTDIR}/_ext/1522330350/fixed.o: ../lightsky/math/src/fixed.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/fixed.o: ../src/math/fixed.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/fixed.o ../lightsky/math/src/fixed.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/fixed.o ../src/math/fixed.cpp
 
-${OBJECTDIR}/_ext/1522330350/mat2.o: ../lightsky/math/src/mat2.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/mat2.o: ../src/math/mat2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/mat2.o ../lightsky/math/src/mat2.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat2.o ../src/math/mat2.cpp
 
-${OBJECTDIR}/_ext/1522330350/mat3.o: ../lightsky/math/src/mat3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/mat3.o: ../src/math/mat3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/mat3.o ../lightsky/math/src/mat3.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat3.o ../src/math/mat3.cpp
 
-${OBJECTDIR}/_ext/1522330350/mat4.o: ../lightsky/math/src/mat4.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/mat4.o: ../src/math/mat4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/mat4.o ../lightsky/math/src/mat4.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat4.o ../src/math/mat4.cpp
 
-${OBJECTDIR}/_ext/1522330350/mat_utils.o: ../lightsky/math/src/mat_utils.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/mat_utils.o: ../src/math/mat_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/mat_utils.o ../lightsky/math/src/mat_utils.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat_utils.o ../src/math/mat_utils.cpp
 
-${OBJECTDIR}/_ext/1522330350/perlinNoise.o: ../lightsky/math/src/perlinNoise.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/perlinNoise.o: ../src/math/perlinNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/perlinNoise.o ../lightsky/math/src/perlinNoise.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/perlinNoise.o ../src/math/perlinNoise.cpp
 
-${OBJECTDIR}/_ext/1522330350/quat.o: ../lightsky/math/src/quat.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/quat.o: ../src/math/quat.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/quat.o ../lightsky/math/src/quat.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat.o ../src/math/quat.cpp
 
-${OBJECTDIR}/_ext/1522330350/quat_utils.o: ../lightsky/math/src/quat_utils.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/quat_utils.o: ../src/math/quat_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/quat_utils.o ../lightsky/math/src/quat_utils.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat_utils.o ../src/math/quat_utils.cpp
 
-${OBJECTDIR}/_ext/1522330350/scalar_utils.o: ../lightsky/math/src/scalar_utils.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/scalar_utils.o: ../src/math/scalar_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/scalar_utils.o ../lightsky/math/src/scalar_utils.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/scalar_utils.o ../src/math/scalar_utils.cpp
 
-${OBJECTDIR}/_ext/1522330350/vec2.o: ../lightsky/math/src/vec2.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/vec2.o: ../src/math/vec2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/vec2.o ../lightsky/math/src/vec2.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec2.o ../src/math/vec2.cpp
 
-${OBJECTDIR}/_ext/1522330350/vec3.o: ../lightsky/math/src/vec3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/vec3.o: ../src/math/vec3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/vec3.o ../lightsky/math/src/vec3.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec3.o ../src/math/vec3.cpp
 
-${OBJECTDIR}/_ext/1522330350/vec4.o: ../lightsky/math/src/vec4.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/vec4.o: ../src/math/vec4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/vec4.o ../lightsky/math/src/vec4.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec4.o ../src/math/vec4.cpp
 
-${OBJECTDIR}/_ext/1522330350/vec_utils.o: ../lightsky/math/src/vec_utils.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522330350
+${OBJECTDIR}/_ext/1019118654/vec_utils.o: ../src/math/vec_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522330350/vec_utils.o ../lightsky/math/src/vec_utils.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec_utils.o ../src/math/vec_utils.cpp
 
 # Subprojects
 .build-subprojects:

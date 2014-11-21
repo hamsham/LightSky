@@ -35,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/528976753/assert.o \
-	${OBJECTDIR}/_ext/528976753/dataResource.o \
-	${OBJECTDIR}/_ext/528976753/randomNum.o \
-	${OBJECTDIR}/_ext/528976753/resource.o \
-	${OBJECTDIR}/_ext/528976753/string_utils.o \
-	${OBJECTDIR}/_ext/528976753/tuple.o
+	${OBJECTDIR}/_ext/1519963337/assert.o \
+	${OBJECTDIR}/_ext/1519963337/dataResource.o \
+	${OBJECTDIR}/_ext/1519963337/randomNum.o \
+	${OBJECTDIR}/_ext/1519963337/resource.o \
+	${OBJECTDIR}/_ext/1519963337/string_utils.o \
+	${OBJECTDIR}/_ext/1519963337/tuple.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -75,35 +75,35 @@ build/liblightutils.a: ${OBJECTFILES}
 	${AR} -rv build/liblightutils.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightutils.a
 
-${OBJECTDIR}/_ext/528976753/assert.o: ../lightsky/utils/src/assert.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
+${OBJECTDIR}/_ext/1519963337/assert.o: ../src/utils/assert.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/assert.o ../lightsky/utils/src/assert.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assert.o ../src/utils/assert.cpp
 
-${OBJECTDIR}/_ext/528976753/dataResource.o: ../lightsky/utils/src/dataResource.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
+${OBJECTDIR}/_ext/1519963337/dataResource.o: ../src/utils/dataResource.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/dataResource.o ../lightsky/utils/src/dataResource.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp
 
-${OBJECTDIR}/_ext/528976753/randomNum.o: ../lightsky/utils/src/randomNum.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
+${OBJECTDIR}/_ext/1519963337/randomNum.o: ../src/utils/randomNum.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/randomNum.o ../lightsky/utils/src/randomNum.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/randomNum.o ../src/utils/randomNum.cpp
 
-${OBJECTDIR}/_ext/528976753/resource.o: ../lightsky/utils/src/resource.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
+${OBJECTDIR}/_ext/1519963337/resource.o: ../src/utils/resource.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/resource.o ../lightsky/utils/src/resource.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/resource.o ../src/utils/resource.cpp
 
-${OBJECTDIR}/_ext/528976753/string_utils.o: ../lightsky/utils/src/string_utils.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
+${OBJECTDIR}/_ext/1519963337/string_utils.o: ../src/utils/string_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/string_utils.o ../lightsky/utils/src/string_utils.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/string_utils.o ../src/utils/string_utils.cpp
 
-${OBJECTDIR}/_ext/528976753/tuple.o: ../lightsky/utils/src/tuple.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
+${OBJECTDIR}/_ext/1519963337/tuple.o: ../src/utils/tuple.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/tuple.o ../lightsky/utils/src/tuple.cpp
+	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/tuple.o ../src/utils/tuple.cpp
 
 # Subprojects
 .build-subprojects:
@@ -118,85 +118,85 @@ ${TESTDIR}/TestFiles/pointer_test: ${TESTDIR}/tests/pointer_test.o ${OBJECTFILES
 ${TESTDIR}/tests/pointer_test.o: tests/pointer_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I.. -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/pointer_test.o tests/pointer_test.cpp
+	$(COMPILE.cc) -O3 -s -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/pointer_test.o tests/pointer_test.cpp
 
 
-${OBJECTDIR}/_ext/528976753/assert_nomain.o: ${OBJECTDIR}/_ext/528976753/assert.o ../lightsky/utils/src/assert.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/528976753/assert.o`; \
+${OBJECTDIR}/_ext/1519963337/assert_nomain.o: ${OBJECTDIR}/_ext/1519963337/assert.o ../src/utils/assert.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/assert.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/assert_nomain.o ../lightsky/utils/src/assert.cpp;\
+	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assert_nomain.o ../src/utils/assert.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/528976753/assert.o ${OBJECTDIR}/_ext/528976753/assert_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/assert.o ${OBJECTDIR}/_ext/1519963337/assert_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/528976753/dataResource_nomain.o: ${OBJECTDIR}/_ext/528976753/dataResource.o ../lightsky/utils/src/dataResource.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/528976753/dataResource.o`; \
+${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o: ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/dataResource.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/dataResource_nomain.o ../lightsky/utils/src/dataResource.cpp;\
+	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o ../src/utils/dataResource.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/528976753/dataResource.o ${OBJECTDIR}/_ext/528976753/dataResource_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/dataResource.o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/528976753/randomNum_nomain.o: ${OBJECTDIR}/_ext/528976753/randomNum.o ../lightsky/utils/src/randomNum.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/528976753/randomNum.o`; \
+${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o: ${OBJECTDIR}/_ext/1519963337/randomNum.o ../src/utils/randomNum.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/randomNum.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/randomNum_nomain.o ../lightsky/utils/src/randomNum.cpp;\
+	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o ../src/utils/randomNum.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/528976753/randomNum.o ${OBJECTDIR}/_ext/528976753/randomNum_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/randomNum.o ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/528976753/resource_nomain.o: ${OBJECTDIR}/_ext/528976753/resource.o ../lightsky/utils/src/resource.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/528976753/resource.o`; \
+${OBJECTDIR}/_ext/1519963337/resource_nomain.o: ${OBJECTDIR}/_ext/1519963337/resource.o ../src/utils/resource.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/resource.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/resource_nomain.o ../lightsky/utils/src/resource.cpp;\
+	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/resource_nomain.o ../src/utils/resource.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/528976753/resource.o ${OBJECTDIR}/_ext/528976753/resource_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/resource.o ${OBJECTDIR}/_ext/1519963337/resource_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/528976753/string_utils_nomain.o: ${OBJECTDIR}/_ext/528976753/string_utils.o ../lightsky/utils/src/string_utils.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/528976753/string_utils.o`; \
+${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o: ${OBJECTDIR}/_ext/1519963337/string_utils.o ../src/utils/string_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/string_utils.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/string_utils_nomain.o ../lightsky/utils/src/string_utils.cpp;\
+	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o ../src/utils/string_utils.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/528976753/string_utils.o ${OBJECTDIR}/_ext/528976753/string_utils_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/string_utils.o ${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/528976753/tuple_nomain.o: ${OBJECTDIR}/_ext/528976753/tuple.o ../lightsky/utils/src/tuple.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/528976753
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/528976753/tuple.o`; \
+${OBJECTDIR}/_ext/1519963337/tuple_nomain.o: ${OBJECTDIR}/_ext/1519963337/tuple.o ../src/utils/tuple.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/tuple.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I.. -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/528976753/tuple_nomain.o ../lightsky/utils/src/tuple.cpp;\
+	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o ../src/utils/tuple.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/528976753/tuple.o ${OBJECTDIR}/_ext/528976753/tuple_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/tuple.o ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o;\
 	fi
 
 # Run Test Targets

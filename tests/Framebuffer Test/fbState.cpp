@@ -10,6 +10,7 @@
 
 #include <SDL2/SDL_events.h>
 
+#include "display.h"
 #include "fbState.h"
 
 namespace draw = ls::draw;
@@ -174,7 +175,7 @@ fbState& fbState::operator=(fbState&& state) {
 /******************************************************************************
  * System Events
 ******************************************************************************/
-void fbState::onSystemEvent(const SDL_Event& e) {
+void fbState::onEvent(const SDL_Event& e) {
     switch (e.type) {
         case SDL_WINDOWEVENT:   this->onWindowEvent(e.window);      break;
         case SDL_KEYUP:         this->onKeyboardUpEvent(e.key);     break;
@@ -213,8 +214,8 @@ void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
 /******************************************************************************
  * Keyboard States
 ******************************************************************************/
-void fbState::updateKeyStates(float dt) {
-    const float moveSpeed = 0.05f * dt;
+void fbState::updateKeyStates() {
+    const float moveSpeed = 0.05f * (float)getTickTime();
     math::vec3 pos = {0.f};
     
     if (pKeyStates[SDL_SCANCODE_W]) {
@@ -256,7 +257,7 @@ void fbState::onWindowEvent(const SDL_WindowEvent& e) {
 ******************************************************************************/
 void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // Prevent the orientation from drifting by keeping track of the relative mouse offset
-    if (this->getState() == ls::game::GAME_PAUSED
+    if (this->getState() == ls::game::game_state_t::PAUSED
     || SDL_GetRelativeMouseMode() == SDL_FALSE
     || (mouseX == e.xrel && mouseY == e.yrel)
     ) {
@@ -274,7 +275,7 @@ void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // be LERPed without the need for multiplying it by the last time delta.
     // As a result, the camera's movement becomes as smooth and natural as possible.
     
-    const math::vec2&& fRes = (math::vec2)getParentSystem().getDisplay().getResolution();
+    const math::vec2&& fRes = (math::vec2)global::pDisplay->getResolution();
     const math::vec2&& mouseDelta = math::vec2{(float)mouseX, (float)mouseY} / fRes;
     
     // Always lerp to the 
@@ -296,7 +297,7 @@ void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
 void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
     fbRes += e.y * 10;
     
-    const math::vec2i displayRes = getParentSystem().getDisplay().getResolution();
+    const math::vec2i displayRes =global::pDisplay->getResolution();
     fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
     fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
     
@@ -407,7 +408,7 @@ void fbState::regenerateNoise() {
  * Initialize the model, view, and projection matrices
 ******************************************************************************/
 bool fbState::initMatrices() {
-    const math::vec2&& aspect = (math::vec2)getParentSystem().getDisplay().getResolution();
+    const math::vec2&& aspect = (math::vec2)global::pDisplay->getResolution();
     
     // setup the matrix stacks
     pMatStack->loadMatrix(
@@ -572,7 +573,7 @@ bool fbState::onStart() {
     }
     else {
         setRendererParams();
-        getParentSystem().getDisplay().setFullScreenMode(draw::FULLSCREEN_WINDOW);
+       global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
     }
     
     return true;
@@ -611,8 +612,8 @@ void fbState::onStop() {
 /******************************************************************************
  * Running state
 ******************************************************************************/
-void fbState::onRun(float dt) {
-    updateKeyStates(dt);
+void fbState::onRun() {
+    updateKeyStates();
     
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack. Just greab the view matrix
@@ -634,8 +635,8 @@ void fbState::onRun(float dt) {
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
-void fbState::onPause(float dt) {
-    updateKeyStates(dt);
+void fbState::onPause() {
+    updateKeyStates();
     
     pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
     pMatStack->constructVp();
@@ -649,7 +650,7 @@ void fbState::onPause(float dt) {
  * get a 2d viewport for 2d/gui drawing
 ******************************************************************************/
 math::mat4 fbState::get3dViewport() const {
-    const math::vec2i displayRes = getParentSystem().getDisplay().getResolution();
+    const math::vec2i displayRes =global::pDisplay->getResolution();
     return math::perspective(
         TEST_PROJECTION_FOV, (float)displayRes[0]/displayRes[1],
         TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
@@ -660,7 +661,7 @@ math::mat4 fbState::get3dViewport() const {
  * Update the renderer's viewport with the current window resolution
 ******************************************************************************/
 void fbState::resetGlViewport() {
-    const draw::display& disp = getParentSystem().getDisplay();
+    const display& disp = *global::pDisplay;
     draw::renderer renderer;
     renderer.setViewport(math::vec2i{0}, disp.getResolution());
 }
@@ -703,7 +704,7 @@ void fbState::drawScene() {
     // blit the custom framebuffer to OpenGL's backbuffer
     testFb.blit(
         math::vec2i{0}, fbRes,
-        math::vec2i{0}, this->getParentSystem().getDisplay().getResolution(),
+        math::vec2i{0}, global::pDisplay->getResolution(),
         draw::FBO_COLOR_BIT
     );
     

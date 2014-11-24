@@ -13,7 +13,6 @@
                 <make-dep-project>../LightSetup</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../lightsky/script</sourceRootElem>
                 <sourceRootElem>../include/lightsky/script</sourceRootElem>
                 <sourceRootElem>../src/script</sourceRootElem>
             </sourceRootList>

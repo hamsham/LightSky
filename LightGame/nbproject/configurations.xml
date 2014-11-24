@@ -5,36 +5,18 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="generic" displayName="generic" projectFiles="true">
-        <itemPath>../include/lightsky/math/generic/fixed_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/mat2_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/mat3_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/mat4_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/mat_utils_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/perlinNoise_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/quat_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/quat_utils_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/scalar_utils_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/vec2_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/vec3_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/vec4_impl.h</itemPath>
-        <itemPath>../include/lightsky/math/generic/vec_utils_impl.h</itemPath>
+        <itemPath>../include/lightsky/game/generic/gameState_impl.h</itemPath>
+        <itemPath>../include/lightsky/game/generic/manager_impl.h</itemPath>
+        <itemPath>../include/lightsky/game/generic/system_impl.h</itemPath>
       </logicalFolder>
-      <itemPath>../include/lightsky/math/fixed.h</itemPath>
-      <itemPath>../include/lightsky/math/mat2.h</itemPath>
-      <itemPath>../include/lightsky/math/mat3.h</itemPath>
-      <itemPath>../include/lightsky/math/mat4.h</itemPath>
-      <itemPath>../include/lightsky/math/mat_utils.h</itemPath>
-      <itemPath>../include/lightsky/math/math.h</itemPath>
-      <itemPath>../include/lightsky/math/perlinNoise.h</itemPath>
-      <itemPath>../include/lightsky/math/quat.h</itemPath>
-      <itemPath>../include/lightsky/math/quat_utils.h</itemPath>
-      <itemPath>../include/lightsky/math/scalar_utils.h</itemPath>
-      <itemPath>../include/lightsky/math/setup.h</itemPath>
-      <itemPath>../include/lightsky/math/types.h</itemPath>
-      <itemPath>../include/lightsky/math/vec2.h</itemPath>
-      <itemPath>../include/lightsky/math/vec3.h</itemPath>
-      <itemPath>../include/lightsky/math/vec4.h</itemPath>
-      <itemPath>../include/lightsky/math/vec_utils.h</itemPath>
+      <itemPath>../include/lightsky/game/dispatcher.h</itemPath>
+      <itemPath>../include/lightsky/game/event.h</itemPath>
+      <itemPath>../include/lightsky/game/game.h</itemPath>
+      <itemPath>../include/lightsky/game/gameState.h</itemPath>
+      <itemPath>../include/lightsky/game/manager.h</itemPath>
+      <itemPath>../include/lightsky/game/setup.h</itemPath>
+      <itemPath>../include/lightsky/game/subscriber.h</itemPath>
+      <itemPath>../include/lightsky/game/system.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -43,19 +25,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../src/math/fixed.cpp</itemPath>
-      <itemPath>../src/math/mat2.cpp</itemPath>
-      <itemPath>../src/math/mat3.cpp</itemPath>
-      <itemPath>../src/math/mat4.cpp</itemPath>
-      <itemPath>../src/math/mat_utils.cpp</itemPath>
-      <itemPath>../src/math/perlinNoise.cpp</itemPath>
-      <itemPath>../src/math/quat.cpp</itemPath>
-      <itemPath>../src/math/quat_utils.cpp</itemPath>
-      <itemPath>../src/math/scalar_utils.cpp</itemPath>
-      <itemPath>../src/math/vec2.cpp</itemPath>
-      <itemPath>../src/math/vec3.cpp</itemPath>
-      <itemPath>../src/math/vec4.cpp</itemPath>
-      <itemPath>../src/math/vec_utils.cpp</itemPath>
+      <itemPath>../src/game/dispatcher.cpp</itemPath>
+      <itemPath>../src/game/gameState.cpp</itemPath>
+      <itemPath>../src/game/manager.cpp</itemPath>
+      <itemPath>../src/game/subscriber.cpp</itemPath>
+      <itemPath>../src/game/system.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -76,9 +50,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../lightsky/game</Elem>
-    <Elem>../include/lightsky/math</Elem>
-    <Elem>../src/math</Elem>
+    <Elem>../src/game</Elem>
+    <Elem>../include/lightsky/game</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -145,143 +118,55 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="../include/lightsky/math/fixed.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/generic/fixed_impl.h"
+      <item path="../include/lightsky/game/dispatcher.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat2_impl.h"
+      <item path="../include/lightsky/game/event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/gameState.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat3_impl.h"
+      <item path="../include/lightsky/game/generic/gameState_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat4_impl.h"
+      <item path="../include/lightsky/game/generic/manager_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat_utils_impl.h"
+      <item path="../include/lightsky/game/generic/system_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/perlinNoise_impl.h"
+      <item path="../include/lightsky/game/manager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/subscriber.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/quat_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../include/lightsky/game/system.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/quat_utils_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/dispatcher.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/scalar_utils_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/gameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/vec2_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/vec3_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/subscriber.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/vec4_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/generic/vec_utils_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat2.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat3.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat4.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/math.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/perlinNoise.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/quat.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/quat_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/scalar_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/setup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/types.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec2.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec3.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec4.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../src/math/fixed.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat2.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat3.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/perlinNoise.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/quat.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/quat_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/scalar_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec2.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec3.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec_utils.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../src/game/system.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles">
         <linkerTool>
@@ -414,143 +299,55 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="../include/lightsky/math/fixed.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/generic/fixed_impl.h"
+      <item path="../include/lightsky/game/dispatcher.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat2_impl.h"
+      <item path="../include/lightsky/game/event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/gameState.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat3_impl.h"
+      <item path="../include/lightsky/game/generic/gameState_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat4_impl.h"
+      <item path="../include/lightsky/game/generic/manager_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/mat_utils_impl.h"
+      <item path="../include/lightsky/game/generic/system_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/perlinNoise_impl.h"
+      <item path="../include/lightsky/game/manager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/lightsky/game/subscriber.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/quat_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../include/lightsky/game/system.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/quat_utils_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/dispatcher.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/scalar_utils_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/gameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/vec2_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/vec3_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../src/game/subscriber.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../include/lightsky/math/generic/vec4_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/generic/vec_utils_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat2.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat3.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat4.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/mat_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/math.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/perlinNoise.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/quat.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/quat_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/scalar_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/setup.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/types.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec2.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec3.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec4.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../include/lightsky/math/vec_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../src/math/fixed.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat2.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat3.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/mat_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/perlinNoise.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/quat.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/quat_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/scalar_utils.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec2.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec3.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/math/vec_utils.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../src/game/system.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles">
         <linkerTool>

@@ -35,9 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/context.o \
 	${OBJECTDIR}/controlState.o \
+	${OBJECTDIR}/display.o \
+	${OBJECTDIR}/eventState.o \
 	${OBJECTDIR}/fbState.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/mainSystem.o \
 	${OBJECTDIR}/uiState.o
 
 
@@ -45,8 +49,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++
-CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++
+CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb
+CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -55,7 +59,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightUtils/build/liblightutils_d.a ../../LightMath/build/liblightmath_d.a -lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2.dll -lSDL2main
+LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2.dll -lSDL2main
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -65,17 +69,32 @@ fb_test_debug.exe: ../../LightGame/build/liblightgame_d.a
 
 fb_test_debug.exe: ../../LightDraw/build/liblightdraw_d.a
 
-fb_test_debug.exe: ../../LightUtils/build/liblightutils_d.a
-
 fb_test_debug.exe: ../../LightMath/build/liblightmath_d.a
+
+fb_test_debug.exe: ../../LightUtils/build/liblightutils_d.a
 
 fb_test_debug.exe: ${OBJECTFILES}
 	${LINK.cc} -o fb_test_debug ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/context.o: context.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/context.o context.cpp
 
 ${OBJECTDIR}/controlState.o: controlState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
+
+${OBJECTDIR}/display.o: display.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
+
+${OBJECTDIR}/eventState.o: eventState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventState.o eventState.cpp
 
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -86,6 +105,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/mainSystem.o: mainSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -O2 -w -DLS_DEBUG -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mainSystem.o mainSystem.cpp
 
 ${OBJECTDIR}/uiState.o: uiState.cpp 
 	${MKDIR} -p ${OBJECTDIR}

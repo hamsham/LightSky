@@ -70,7 +70,6 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../lightsky/math</Elem>
     <Elem>../include/lightsky/math</Elem>
     <Elem>../src/math</Elem>
   </sourceRootList>

@@ -11,7 +11,10 @@
 #include <future>
 #include <vector>
 
+#include "lightsky/game/gameState.h"
+
 #include "main.h"
+#include "eventState.h"
 
 /**
  * Default resolutions for the framebuffer object test.
@@ -37,7 +40,7 @@ std::vector<float> generateNoiseTexture(int w, int h);
 /**
  * Framebuffer testing state
  */
-class fbState final : virtual public ls::game::gameState {
+class fbState final : virtual public ls::game::gameState, public eventState {
     /*
      * Event Management
      */
@@ -57,14 +60,13 @@ class fbState final : virtual public ls::game::gameState {
         // allows textures to be generated on another thread
         std::future<std::vector<float>> futureNoise;
         
-        virtual void    onSystemEvent           (const SDL_Event&) override;
         void            onKeyboardUpEvent       (const SDL_KeyboardEvent&);
         void            onKeyboardDownEvent     (const SDL_KeyboardEvent&);
         void            onWindowEvent           (const SDL_WindowEvent&);
         void            onMouseMoveEvent        (const SDL_MouseMotionEvent&);
         void            onMouseWheelEvent       (const SDL_MouseWheelEvent&);
         
-        void            updateKeyStates         (float);
+        void            updateKeyStates         ();
         
         bool            initMemory              ();
         bool            initFileData            ();
@@ -82,18 +84,20 @@ class fbState final : virtual public ls::game::gameState {
         void            drawScene               ();
         
     public:
+        virtual ~fbState();
+        
         fbState         ();
         fbState         (const fbState&)        = delete;
         fbState         (fbState&&);
         
-        ~fbState        ();
-        
         fbState&        operator=               (const fbState&) = delete;
         fbState&        operator=               (fbState&&);
         
+        void            onEvent                 (const SDL_Event&) override;
+        
         bool            onStart                 () override;
-        void            onRun                   (float) override;
-        void            onPause                 (float) override;
+        void            onRun                   () override;
+        void            onPause                 () override;
         void            onStop                  () override;
 };
 

@@ -10,17 +10,10 @@ inline unsigned system::getGameStackSize() const {
 }
 
 /*-------------------------------------
-    Get the current number of ticks per frame (in milliseconds).
--------------------------------------*/
-inline uint64_t system::getTickTime() const {
-    return tickTime;
-}
-
-/*-------------------------------------
     Determine if *this is still running
 -------------------------------------*/
 inline bool system::isRunning() const {
-    return gameList.size() > 0;
+    return gameState::isRunning() && gameList.size() > 0;
 }
 
 } // end game namespace

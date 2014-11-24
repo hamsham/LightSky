@@ -14,7 +14,9 @@
                 <make-dep-project>../../LightMath</make-dep-project>
                 <make-dep-project>../../LightUtils</make-dep-project>
             </make-dep-projects>
-            <sourceRootList/>
+            <sourceRootList>
+                <sourceRootElem>.</sourceRootElem>
+            </sourceRootList>
             <confList>
                 <confElem>
                     <name>Debug</name>

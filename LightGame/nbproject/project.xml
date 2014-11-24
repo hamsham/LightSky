@@ -15,9 +15,8 @@
                 <make-dep-project>../LightMath</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../lightsky/game</sourceRootElem>
-                <sourceRootElem>../include/lightsky/math</sourceRootElem>
-                <sourceRootElem>../src/math</sourceRootElem>
+                <sourceRootElem>../src/game</sourceRootElem>
+                <sourceRootElem>../include/lightsky/game</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

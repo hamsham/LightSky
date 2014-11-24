@@ -12,7 +12,6 @@
                 <make-dep-project>../LightSetup</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../lightsky/math</sourceRootElem>
                 <sourceRootElem>../include/lightsky/math</sourceRootElem>
                 <sourceRootElem>../src/math</sourceRootElem>
             </sourceRootList>

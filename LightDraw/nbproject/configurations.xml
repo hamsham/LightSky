@@ -8,9 +8,7 @@
         <itemPath>../include/lightsky/draw/generic/atlas_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/blendObject_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/boundingBox_impl.h</itemPath>
-        <itemPath>../include/lightsky/draw/generic/context_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/depthObject_impl.h</itemPath>
-        <itemPath>../include/lightsky/draw/generic/display_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/fontResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/framebuffer_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/imageResource_impl.h</itemPath>
@@ -29,9 +27,7 @@
       <itemPath>../include/lightsky/draw/blendObject.h</itemPath>
       <itemPath>../include/lightsky/draw/boundingBox.h</itemPath>
       <itemPath>../include/lightsky/draw/color.h</itemPath>
-      <itemPath>../include/lightsky/draw/context.h</itemPath>
       <itemPath>../include/lightsky/draw/depthObject.h</itemPath>
-      <itemPath>../include/lightsky/draw/display.h</itemPath>
       <itemPath>../include/lightsky/draw/draw.h</itemPath>
       <itemPath>../include/lightsky/draw/fontResource.h</itemPath>
       <itemPath>../include/lightsky/draw/framebuffer.h</itemPath>
@@ -61,9 +57,7 @@
       <itemPath>../src/draw/atlas.cpp</itemPath>
       <itemPath>../src/draw/blendObject.cpp</itemPath>
       <itemPath>../src/draw/boundingBox.cpp</itemPath>
-      <itemPath>../src/draw/context.cpp</itemPath>
       <itemPath>../src/draw/depthObject.cpp</itemPath>
-      <itemPath>../src/draw/display.cpp</itemPath>
       <itemPath>../src/draw/fontResource.cpp</itemPath>
       <itemPath>../src/draw/framebuffer.cpp</itemPath>
       <itemPath>../src/draw/geometry.cpp</itemPath>
@@ -93,7 +87,6 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../lightsky/draw</Elem>
     <Elem>../include/lightsky/draw</Elem>
     <Elem>../src/draw</Elem>
   </sourceRootList>
@@ -167,14 +160,10 @@
       </item>
       <item path="../include/lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/context.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/depthObject.h"
             ex="false"
             tool="3"
             flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/draw.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -203,17 +192,7 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/context_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/generic/depthObject_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/generic/display_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -352,11 +331,7 @@
       </item>
       <item path="../src/draw/boundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../src/draw/context.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/display.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/fontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -465,14 +440,10 @@
       </item>
       <item path="../include/lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/context.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/depthObject.h"
             ex="false"
             tool="3"
             flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/draw.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -501,17 +472,7 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/context_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/generic/depthObject_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/generic/display_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -650,11 +611,7 @@
       </item>
       <item path="../src/draw/boundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../src/draw/context.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/display.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/fontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>

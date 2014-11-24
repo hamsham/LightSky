@@ -11,10 +11,10 @@
 #include <vector>
 #include <cstdint> // uint64_t
 
+#include "lightsky/game/gameState.h"
+
 namespace ls {
 namespace game {
-
-class gameState;
 
 /**----------------------------------------------------------------------------
  * The system object commands all hardware events and passes them to any
@@ -22,18 +22,12 @@ class gameState;
  * when this object gets destroyed, therefore, all gameState objects managed by
  * a subSystem must be created using the "new" operator.
 -----------------------------------------------------------------------------*/
-class system {
+class system : public gameState {
     private:
         /**
          * Stores the previous hardware time since the last update.
          */
-        uint64_t prevTime = 0;
-        
-        /**
-         * Duration of the last "tick," or the last time that the "run()"
-         * function had been called.
-         */
-        uint64_t tickTime = 0;
+        uint64_t prevTime;
         
         /**
          * A vector of game states. The game will stop running when there are
@@ -42,6 +36,22 @@ class system {
          * a game running.
          */
         std::vector<gameState*> gameList;
+        
+    protected:
+        /**
+         * @brief Update the amount of milliseconds which have passed since the
+         * last update.
+         */
+        void updateTickTime();
+        
+        /**
+         * @brief Update all internal game states.
+         * 
+         * @param tickTime
+         * The time, in milliseconds, which have passed since the last call to
+         * "onUpdate()".
+         */
+        void updateGameStates();
     
     public:
         /**
@@ -109,32 +119,32 @@ class system {
          * @return TRUE if this object was successfully initialized. FALSE if
          * something went wrong.
          */
-        virtual bool init();
-        
-        /**
-         * @brief Terminate *this and all sub-states.
-         * 
-         * This method will free all memory and resources of all game states
-         * managed by this container.
-         */
-        void terminate();
+        virtual bool start() final;
         
         /**
          * @brief Begin a game loop
          * 
-         * This method will iterate through all gameStates , pass them hardware
-         * events, and call their methods to start, stop, pause, or update.
-         * This method must be called in a program's main loop.
+         * This method will call "onRun()", iterate through all sub states, and
+         * call their methods to start, stop, pause, or update. This method
+         * must be called in a program's main loop.
          */
-        virtual void run();
+        virtual void run() final;
         
         /**
-         * @brief Stop
+         * @brief Run an idle game loop
+         * 
+         * Updates the internal timer but does not update internal game states.
+         */
+        virtual void pause() final;
+        
+        /**
+         * @brief Stop *this and all sub-states.
          * 
          * This method will iterate through each managed game state and stop
-         * them, thereby destroying each owned state.
+         * them, thereby destroying each owned state. All memory and resources
+         * used by *this will be freed.
          */
-        void stop();
+        virtual void stop() final;
         
         /**
          * Push a game state onto the state list. All prior states will be
@@ -168,6 +178,11 @@ class system {
         void popGameState(unsigned index);
         
         /**
+         * @brief Remove all game states within *this.
+         */
+        void clearStateList();
+        
+        /**
          * Get a game state using an index.
          * 
          * @param index
@@ -177,6 +192,17 @@ class system {
          * out of bounds.
          */
         gameState const* getGameState(unsigned index) const;
+        
+        /**
+         * Get a game state using an index.
+         * 
+         * @param index
+         * The index of the desired gamestate contained in *this.
+         * 
+         * @return a pointer to the desired game state. Null if the index was
+         * out of bounds.
+         */
+        gameState* getGameState(unsigned index);
         
         /**
          * @brief Get the index of a game state.
@@ -197,14 +223,6 @@ class system {
         unsigned getGameStackSize() const;
         
         /**
-         * Get the current number of ticks per frame (in milliseconds).
-         * 
-         * @return An unsigned integral number which represents the number of
-         * milliseconds which have passed since the last complete update.
-         */
-        uint64_t getTickTime() const;
-        
-        /**
          * Determine if *this system is still running and operational.
          * This function has the same effect as querying
          * this->getGameStackSize() > 0
@@ -212,7 +230,7 @@ class system {
          * @return TRUE if the game list has something pushed onto it, FALSE
          * if otherwise.
          */
-        bool isRunning() const;
+        virtual bool isRunning() const override;
 };
 
 } // end game namespace

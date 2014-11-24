@@ -11,6 +11,8 @@
 #include <SDL2/SDL.h>
 
 #include "lightsky/game/gameState.h"
+
+#include "display.h"
 #include "controlState.h"
 
 /******************************************************************************
@@ -41,7 +43,7 @@ controlState& controlState::operator=(controlState&& state) {
 /******************************************************************************
  * System Events
 ******************************************************************************/
-void controlState::onSystemEvent(const SDL_Event& e) {
+void controlState::onEvent(const SDL_Event& e) {
     switch (e.type) {
         case SDL_WINDOWEVENT:       this->onWindowEvent(e.window);          break;
         case SDL_KEYUP:             this->onKeyboardUpEvent(e.key);         break;
@@ -61,8 +63,8 @@ void controlState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
         getParentSystem().stop();
     }
     else if (key == SDL_SCANCODE_F11) {
-        bool fullscreen = getParentSystem().getDisplay().getFullScreenState();
-        getParentSystem().getDisplay().setFullScreenState(!fullscreen);
+        bool fullscreen = global::pDisplay->getFullScreenState();
+        global::pDisplay->setFullScreenState(!fullscreen);
     }
     else {
         pKeyStates[key] = false;
@@ -121,12 +123,12 @@ void controlState::onStop() {
 /******************************************************************************
  * Running state
 ******************************************************************************/
-void controlState::onRun(float) {
+void controlState::onRun() {
 }
 
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
-void controlState::onPause(float) {
+void controlState::onPause() {
 }
 

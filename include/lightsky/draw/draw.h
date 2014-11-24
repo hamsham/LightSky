@@ -15,8 +15,6 @@
 #include "lightsky/draw/boundingBox.h"
 #include "lightsky/draw/vertexBuffer.h"
 #include "lightsky/draw/color.h"
-#include "lightsky/draw/context.h"
-#include "lightsky/draw/display.h"
 #include "lightsky/draw/depthObject.h"
 #include "lightsky/draw/fontResource.h"
 #include "lightsky/draw/framebuffer.h"

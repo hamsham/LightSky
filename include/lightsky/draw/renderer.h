@@ -12,7 +12,6 @@
 
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/color.h"
-#include "lightsky/draw/display.h"
 
 namespace ls {
 namespace draw {

@@ -41,7 +41,6 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../lightsky/script</Elem>
     <Elem>../include/lightsky/script</Elem>
     <Elem>../src/script</Elem>
   </sourceRootList>

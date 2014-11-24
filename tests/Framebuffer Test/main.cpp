@@ -1,97 +1,116 @@
 
 #include <new> // std::nothrow
 
+#include <SDL2/SDL.h>
+
 #include "lightsky/lightsky.h"
 
-#include "controlState.h"
-#include "fbState.h"
-#include "uiState.h"
-
-bool initLs();
-void terminateLs();
+#include "display.h"
+#include "mainSystem.h"
 
 namespace global {
-    ls::game::system* pSystem = nullptr;
-    ls::draw::display* pDisplay = nullptr;
-    //ls::draw::context* pContext = nullptr;
+    display* pDisplay = nullptr;
+    context renderContext;
 }
+
+bool initSubsystems();
+void terminateSubsystems();
 
 /*
  * Main
  */
-int main(int argc, char** argv) {
-    std::cout << "Initializing LightSky.\n";
+int main() {
+    mainSystem* pSystem = nullptr;
     
-    /*
-     * Game Initialization
-     */
-    std::cout << "Parameter count: " << argc;
-    for (int argCount = 0; argCount < argc; ++argCount) {
-        std::cout << '\t' << argCount << ":\t" << argv[argCount] << '\n';
+    if (!initSubsystems()) {
+        std::cerr << "Unable to initialize SDL." << std::endl;
+        goto quitTest;
     }
-    std::cout << std::endl;
+    std::cout << "LightSky Successfully initialized.\n" << std::endl;
     
-    if (!initLs()) {
-        terminateLs();
-        return false;
+    global::pDisplay = new(std::nothrow) display();
+    if (!global::pDisplay || !global::pDisplay->init(math::vec2i{800, 600})) {
+        std::cerr << "Unable to create a display." << std::endl;
+        goto quitTest;
     }
     
-    // push some states and run the game
-    if (!global::pSystem->pushGameState(new controlState{})
-    ||  !global::pSystem->pushGameState(new fbState{})
-    ||  !global::pSystem->pushGameState(new uiState{})
-    ) {
-        terminateLs();
-        return -1;
+    if (!global::renderContext.init(*global::pDisplay)) {
+        std::cerr << "Unable to create a render context." << std::endl;
+        goto quitTest;
     }
     
-    while (global::pSystem->isRunning()) {
-        global::pSystem->run();
+    pSystem = new(std::nothrow) mainSystem{};
+    if (!pSystem || !pSystem->start()) {
+        std::cerr << "Unable to create the main program." << std::endl;
+        goto quitTest;
     }
     
-    terminateLs();
+    std::cout << "Successfully created the main program." << std::endl;
+    while (pSystem->isRunning()) {
+        global::renderContext.makeCurrent(*global::pDisplay);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        pSystem->run();
+        global::renderContext.flip(*global::pDisplay);
+    }
+    
+    quitTest:
+    delete pSystem;
+    global::renderContext.terminate();
+    delete global::pDisplay;
+    terminateSubsystems();
+    std::cout << "LightSky successfully terminated.\n" << std::endl;
     
     return 0;
 }
 
-/*
- * Initialize Light Sky
- */
-bool initLs() {
-    if (!ls::game::global::init()) {
-        std::cerr
-            << "Unable to initialize LightSky."
-            << std::endl;
-        return false;
+/*-------------------------------------
+    initialization.
+-------------------------------------*/
+bool initSubsystems() {
+    if (SDL_WasInit(0) == SDL_INIT_EVERYTHING) {
+        return true;
     }
     
-    global::pDisplay = new(std::nothrow) ls::draw::display{};
-    if (!global::pDisplay || !global::pDisplay->init(ls::math::vec2i{800, 600})) {
-        std::cerr << "Unable to create a display object for LightSky." << std::endl;
+    SDL_SetMainReady();
+    
+    /*
+     * Setup the necessary parameters for OpenGL 3.3
+     */
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS,
+        SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG
+#ifdef LS_DEBUG
+        | SDL_GL_CONTEXT_DEBUG_FLAG
+#endif
+    );
+    
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+        LS_LOG_GAME_ERR(
+            "Unable to initialize SDL due to error ", (int)SDL_GetError(), '\n',
+            "Complain to your local programmer.\n"
+        );
         return false;
     }
+    LS_LOG_GAME_MSG(
+        "Successfully initialized SDL.\n",
+        SDL_GetError(), '\n'
+    );
+    SDL_ClearError();
     
-    global::pSystem = new(std::nothrow) ls::game::system();
-    if (!global::pSystem || !global::pSystem->init()) {
-        std::cerr << "Failed to initialize the LightSky system manager.\n" << std::endl;
-        return false;
-    }
-    
-    std::cout << "LightSky Successfully initialized.\n" << std::endl;;
     return true;
 }
 
-/*
- * Terminate lightSky
- */
-void terminateLs() {
-    delete global::pSystem;
-    global::pSystem = nullptr;
-    
-    delete global::pDisplay;
-    global::pDisplay = nullptr;
-    
-    ls::game::global::terminate();
-    
-    std::cout << "LightSky successfully terminated.\n" << std::endl;
+/*-------------------------------------
+    termination
+-------------------------------------*/
+void terminateSubsystems() {
+    if (SDL_WasInit(0)) {
+        SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
+        SDL_Quit();
+    }
 }

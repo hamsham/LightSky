@@ -8,6 +8,8 @@
 #ifndef __LS_GAME_GAME_STATE_H__
 #define	__LS_GAME_GAME_STATE_H__
 
+#include <cstdint>
+
 namespace ls {
 namespace game {
 
@@ -18,11 +20,10 @@ class system;
     ls::game::system objects and different game state objects.
 -----------------------------------------------------------------------------*/
 enum class game_state_t : int {
-    INVALID = -1,
-    PAUSED  = 0,
-    RUNNING = 1,
-    STOPPED = 2,
-    INIT    = 3
+    PAUSED      = 0,
+    RUNNING     = 1,
+    STOPPED     = 2,
+    STARTING    = 3
 };
 
 /**----------------------------------------------------------------------------
@@ -38,17 +39,23 @@ class gameState {
     
     private:
         /**
-         * A "const" pointer to the parent lsSubsystem which manages *this.
-         * this pointer is assigned automatically when a system is pushed onto
-         * the subsystem's stack. Do not try to modify this.
+         * Duration of the last "tick," or the last time that the "run()"
+         * function had been called.
          */
-        mutable system* pSystem; // set by an lsSubsystem upon initialization
+        uint64_t tickTime = 0;
         
         /**
          * The current state that is used by *this. This variable is also
          * assigned by the parent subsystem and should not be modified.
          */
-        game_state_t currentState = game_state_t::INVALID;
+        game_state_t currentState = game_state_t::STOPPED;
+        
+        /**
+         * A "const" pointer to the parent lsSubsystem which manages *this.
+         * this pointer is assigned automatically when a system is pushed onto
+         * the subsystem's stack. Do not try to modify this.
+         */
+        mutable system* pSystem; // set by an lsSubsystem upon initialization
         
         /**
          * Used by the parent subsystem to help with gameState management.
@@ -57,24 +64,43 @@ class gameState {
          * A reference to the parent subsystem.
          */
         void setParentSystem(system& sys);
+
+        /**
+         * The start() method is called by the parent subsystem when *this
+         * object has been notified to start. This performs any
+         * pre-initialization, then calls "onStart()" for client code
+         * initializations.
+         * This is primarily for internal system objects to override.
+         * 
+         * @return bool
+         * TRUE to indicate that *this has successfully initialized, FALSE if
+         * otherwise.
+         */
+        virtual bool start();
+        
+        /**
+         * This method is used to perform any runtime tasks which need to
+         * execute before/after client code is run through "onRun()".
+         * This is primarily for internal system objects to override.
+         */
+        virtual void run();
+        
+        /**
+         * "Pause()" perform idle runtime tasks which need to execute before
+         * or after client code is run through "onPause()".
+         * This is primarily for internal system objects to override.
+         */
+        virtual void pause();
+        
+        /**
+         * The "setop()" method is called by the parent subsystem to indicate
+         * that *this game state should terminate.  This calls "onStop()" for
+         * any client-side cleanup, then performs internal resource cleanup.
+         * This is primarily for internal system objects to override.
+         */
+        virtual void stop();
         
     protected:
-        // All hardware and "on###()" methods are called by their parent
-        // subsystem.
-        
-        /*---------------------------------------------------------------------
-            SDL Hardware Events
-        ---------------------------------------------------------------------*/
-        /**
-         * Event which allows a game state access to hardware events from SDL.
-         * 
-         * @param evt
-         * A reference to an SDL_Event
-         */
-        /*
-        virtual void onSystemEvent(const SDL_Event& evt);
-        */
-        
         /*---------------------------------------------------------------------
             System Events
         ---------------------------------------------------------------------*/
@@ -97,22 +123,24 @@ class gameState {
         /**
          * This method is used to tell the current game state that it should
          * update its child components/variables/state.
-         * 
-         * @param tickTime
-         * A floating-point number to indicate how many milliseconds
-         * have passed since the last parent system update.
          */
-        virtual void onRun(float tickTime);
+        virtual void onRun();
         
         /**
          * This method is used by the parent subsystem to tell *this game state
          * that it's paused.
-         * 
-         * @param tickTime
-         * A floating-point number to indicate how many milliseconds
-         * have passed since the last parent system update.
          */
-        virtual void onPause(float tickTime);
+        virtual void onPause();
+        
+        /**
+         * Set the number of milliseconds which have passed since the last time
+         * *this had been updated.
+         * 
+         * @param millisElapsed
+         * An unsigned integral type, indicating the number of elapsed
+         * milliseconds.
+         */
+        void setTickTime(uint64_t millisElapsed);
         
     public:
         /**
@@ -192,6 +220,47 @@ class gameState {
          * @return A reference to *this object's managing lsSubsystem.
          */
         system& getParentSystem() const;
+        
+        /**
+         * @brief Check if the current state is running.
+         * 
+         * @return True if this object's current state is set to
+         * game_state_t::RUNNING, return false if not.
+         */
+        virtual bool isRunning() const;
+        
+        /**
+         * @brief Check if the current state is paused.
+         * 
+         * @return True if this object's current state is set to
+         * game_state_t::PAUSED, return false if not.
+         */
+        virtual bool isPaused() const;
+        
+        /**
+         * @brief Check if the current state is initializing.
+         * 
+         * @return True if this object's current state is set to
+         * game_state_t::STARTING, return false if not.
+         */
+        virtual bool isStarting() const;
+        
+        /**
+         * @brief Check if the current state is stopped.
+         * 
+         * @return True if this object's current state is set to
+         * game_state_t::STOPPED, return false if not.
+         */
+        virtual bool isStopped() const;
+        
+        /**
+         * @brief Get the amount of milliseconds which have passed since the
+         * last time *this had been updated by by a parent system object.
+         * 
+         * @return An unsigned integral type containing the milliseconds
+         * elapsed since the last parent system update.
+         */
+        uint64_t getTickTime() const;
 };
 
 } // end game namespace

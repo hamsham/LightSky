@@ -17,27 +17,4 @@
 #include "lightsky/game/subscriber.h"
 #include "lightsky/game/system.h"
 
-namespace ls {
-namespace game {
-namespace global {
-
-/**
- *  @brief LightSky Initialization
- *  
- *  @return TRUE if the framework was able to initialize properly, or FALSE if
- *  not.
- */
-bool init();
-
-/**
- *  @brief LightSky termination.
- *  
- *  Frees all extra resources used by the framework.
- */
-void terminate();
-
-} // end global namespace
-} // end game namespace
-} // end ls namespace
-
 #endif	/* __LS_GAME_H__ */

@@ -7,6 +7,7 @@
 
 #include <utility>
 
+#include "display.h"
 #include "uiState.h"
 
 #define TEST_FONT_FILE L"./FiraSans-Regular.otf"
@@ -209,7 +210,7 @@ bool uiState::onStart() {
     }
     else {
         setRendererParams();
-        getParentSystem().getDisplay().setFullScreenMode(ls::draw::FULLSCREEN_WINDOW);
+       global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
     }
     
     return true;
@@ -233,15 +234,15 @@ void uiState::onStop() {
 /******************************************************************************
  * Running state
 ******************************************************************************/
-void uiState::onRun(float dt) {
+void uiState::onRun() {
     // Regenerate a string mesh using the frame's timing information.
-    secondTimer += dt;
-    if (secondTimer >= 1000.f) {
+    secondTimer += getTickTime();
+    if (secondTimer >= 1000) {
         ls::draw::atlas* const pStringAtlas = pScene->getAtlas(0);
         ls::draw::mesh* const pStringMesh = pScene->getMesh(0);
         const std::string&& timingStr = getTimingStr();
         pStringMesh->init(*pStringAtlas, timingStr);
-        secondTimer = 0.f;
+        secondTimer = 0;
     }
     
     drawScene();
@@ -250,8 +251,8 @@ void uiState::onRun(float dt) {
 /******************************************************************************
  * Pausing state
 ******************************************************************************/
-void uiState::onPause(float dt) {
-    onRun(dt);
+void uiState::onPause() {
+    onRun();
 }
 
 /******************************************************************************
@@ -259,14 +260,14 @@ void uiState::onPause(float dt) {
 ******************************************************************************/
 std::string uiState::getTimingStr() const {
     const float tickTime = getParentSystem().getTickTime();// * 0.001f;
-    return std::to_string(tickTime) + "MS\n" + std::to_string(1.f/tickTime) + "FPS";
+    return std::to_string(tickTime) + "MS\n" + std::to_string(1/tickTime) + "FPS";
 }
 
 /******************************************************************************
  * get a 2d viewport for 2d/gui drawing
 ******************************************************************************/
 math::mat4 uiState::get2dViewport() const {
-    const ls::draw::display& display = getParentSystem().getDisplay();
+    const display& display = *global::pDisplay;
     const math::vec2&& displayRes = (math::vec2)display.getResolution();
     
     return math::ortho(
@@ -281,7 +282,7 @@ math::mat4 uiState::get2dViewport() const {
 ******************************************************************************/
 void uiState::resetGlViewport() {
     ls::draw::renderer renderer;
-    renderer.setViewport(math::vec2i{0}, getParentSystem().getDisplay().getResolution());
+    renderer.setViewport(math::vec2i{0},global::pDisplay->getResolution());
 }
 
 /******************************************************************************
@@ -297,7 +298,7 @@ void uiState::drawScene() {
     fontProg.setUniformValue(fontMvpId, orthoProj);
     
     // setup some UI parameters with a resolution-independent model matrix
-    const ls::draw::display& disp   = getParentSystem().getDisplay();
+    const display& disp = *global::pDisplay;
     const math::vec2&& res  = (math::vec2)disp.getResolution();
     math::mat4 modelMat     = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
     modelMat                = math::scale(modelMat, math::vec3{math::length(res)*0.01f});

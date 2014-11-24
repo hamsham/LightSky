@@ -8,12 +8,15 @@
 #ifndef UISTATE_H
 #define	UISTATE_H
 
+#include "lightsky/game/gameState.h"
+
 #include "main.h"
+#include "eventState.h"
 
 /**
  * Text/UI testing state
  */
-class uiState final : virtual public ls::game::gameState {
+class uiState final : virtual public ls::game::gameState, public eventState {
     /*
      * Event Management
      */
@@ -37,18 +40,18 @@ class uiState final : virtual public ls::game::gameState {
         void            drawScene           ();
         
     public:
+        virtual ~uiState();
+        
         uiState         ();
         uiState         (const uiState&)    = delete;
         uiState         (uiState&&);
-        
-        ~uiState        ();
         
         uiState&        operator=           (const uiState&) = delete;
         uiState&        operator=           (uiState&&);
         
         bool            onStart             () override;
-        void            onRun               (float) override;
-        void            onPause             (float) override;
+        void            onRun               () override;
+        void            onPause             () override;
         void            onStop              () override;
 };
 

@@ -1,5 +1,5 @@
 /* 
- * File:   game/system.cpp
+ * File:   game/ganeSystem.cpp
  * Author: Miles Lacey
  * 
  * Created on November 15, 2013, 9:53 PM
@@ -14,7 +14,7 @@
 #include "lightsky/game/setup.h"
 
 #include "lightsky/game/gameState.h"
-#include "lightsky/game/system.h"
+#include "lightsky/game/gameSystem.h"
 
 namespace ls {
 namespace game {
@@ -22,8 +22,8 @@ namespace game {
 /*-------------------------------------
     SubSystem Constructor
 -------------------------------------*/
-system::system() :
-    gameState{},
+gameSystem::gameSystem() :
+    tickTime{0},
     prevTime{0},
     gameList{}
 {}
@@ -31,8 +31,8 @@ system::system() :
 /*-------------------------------------
     SubSystem Move Construction
 -------------------------------------*/
-system::system(system&& ss) :
-    gameState{std::move(ss)},
+gameSystem::gameSystem(gameSystem&& ss) :
+    tickTime{ss.tickTime},
     prevTime{ss.prevTime},
     gameList{std::move(ss.gameList)}
 {}
@@ -40,8 +40,9 @@ system::system(system&& ss) :
 /*-------------------------------------
     SubSystem Move Operator
 -------------------------------------*/
-system& system::operator=(system&& ss) {
-    gameState::operator=(std::move(ss));
+gameSystem& gameSystem::operator=(gameSystem&& ss) {
+    tickTime = ss.tickTime;
+    ss.tickTime = 0;
     
     prevTime = ss.prevTime;
     ss.prevTime = 0;
@@ -54,86 +55,40 @@ system& system::operator=(system&& ss) {
 /*-------------------------------------
     SubSystem Destructor
 -------------------------------------*/
-system::~system() {
-}
-
-/*-------------------------------------
-    Initialize the subsystem using LightSky's own display system
--------------------------------------*/
-bool system::start() {
-    setState(game_state_t::STARTING);
-    
-    if (!onStart()) {
-        setState(game_state_t::STOPPED);
-        return false;
-    }
-    
-    setState(game_state_t::RUNNING);
-    return true;
-}
-
-/*-------------------------------------
-    SubSystem Running
--------------------------------------*/
-void system::run() {
-    updateTickTime();
-    onRun();
-    updateGameStates();
-}
-
-/*-------------------------------------
-    SubSystem Running
--------------------------------------*/
-void system::pause() {
-    updateTickTime();
-    onPause();
-}
-
-/*-------------------------------------
-    SubSystem Termination
--------------------------------------*/
-void system::stop() {
-    clearStateList();
-    
-    onStop();
-    
-    pSystem = nullptr;
-    
-    setState(game_state_t::STOPPED);
-    setTickTime(0);
-    prevTime = 0;
+gameSystem::~gameSystem() {
+    stop();
 }
 
 /*-------------------------------------
     SubSystem Tick Time
 -------------------------------------*/
-void system::updateTickTime() {
+void gameSystem::updateTickTime() {
     // Frame Time Management
     const uint64_t currTime = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::steady_clock::now().time_since_epoch()
     ).count();
-    setTickTime(currTime-prevTime);
+    
+    tickTime = currTime-prevTime;
     prevTime = currTime;
 }
 
 /*-------------------------------------
     Update all internal game states.
 -------------------------------------*/
-void system::updateGameStates() {
+void gameSystem::updateGameStates() {
     if (!gameList.size()) {
         LS_LOG_GAME_ERR("No game states are available!");
     }
     
     for(unsigned i = 0; i < gameList.size(); ++i) {
         gameState* const pState = gameList[i];
-        pState->setTickTime(this->getTickTime());
         
-        switch(pState->getState()) {
+        switch(pState->getStateStatus()) {
             case game_state_t::RUNNING:
-                pState->run();
+                pState->onRun();
                 break;
             case game_state_t::PAUSED:
-                pState->pause();
+                pState->onPause();
                 break;
             case game_state_t::STOPPED:
                 popGameState(i);
@@ -141,13 +96,13 @@ void system::updateGameStates() {
                 break;
             case game_state_t::STARTING:
                 // if a state starts successfully, run it on the next iteration
-                if (pState->start() == true) {
-                    pState->setState(game_state_t::RUNNING);
+                if (pState->onStart() == true) {
+                    pState->setStateStatus(game_state_t::RUNNING);
                 }
                 else {
                     // stop a state and delete it on the next iteration.
                     LS_LOG_GAME_ERR("ERROR: A new gameState was unable to start.");
-                    pState->setState(game_state_t::STOPPED);
+                    pState->setStateStatus(game_state_t::STOPPED);
                 }
                 break;
             default:
@@ -160,7 +115,7 @@ void system::updateGameStates() {
 /*-------------------------------------
     SubSystem State Addition
 -------------------------------------*/
-bool system::pushGameState(gameState* const pState) {
+bool gameSystem::pushGameState(gameState* const pState) {
     if (pState == nullptr) {
         LS_LOG_GAME_ERR("ERROR: A null pointer was pushed onto the game stack.\n");
         return false;
@@ -168,7 +123,7 @@ bool system::pushGameState(gameState* const pState) {
     
     // states will be started in the "updateGameStates()" method.
     pState->setParentSystem(*this);
-    pState->setState(game_state_t::STARTING);
+    pState->setStateStatus(game_state_t::STARTING);
     gameList.push_back(pState);
     
     return true;
@@ -177,7 +132,7 @@ bool system::pushGameState(gameState* const pState) {
 /*-------------------------------------
     SubSystem State Addition
 -------------------------------------*/
-void system::popGameState() {
+void gameSystem::popGameState() {
     LS_DEBUG_ASSERT(gameList.size());
     popGameState(gameList.size()-1);
 }
@@ -185,7 +140,7 @@ void system::popGameState() {
 /*-------------------------------------
     SubSystem State Removal
 -------------------------------------*/
-void system::popGameState(gameState* const pState) {
+void gameSystem::popGameState(gameState* const pState) {
     for (unsigned i = 0; i < gameList.size(); ++i) {
         if (gameList[i] == pState) {
             popGameState(i);
@@ -197,11 +152,11 @@ void system::popGameState(gameState* const pState) {
 /*-------------------------------------
     SubSystem State Removal
 -------------------------------------*/
-void system::popGameState(unsigned index) {
+void gameSystem::popGameState(unsigned index) {
     LS_DEBUG_ASSERT(index < gameList.size());
     
     // onStop() was moved to here in order to terminate states in a consistent manner.
-    gameList[index]->stop();
+    gameList[index]->onStop();
     delete gameList[index]; // no guarantee that onStop() is in a state's destructor.
     gameList.erase(gameList.begin() + index);
 }
@@ -209,7 +164,7 @@ void system::popGameState(unsigned index) {
 /*-------------------------------------
     Clear SubSystem States
 -------------------------------------*/
-void system::clearStateList() {
+void gameSystem::clearGameStates() {
     while (gameList.size()) {
         popGameState();
     }
@@ -218,7 +173,7 @@ void system::clearStateList() {
 /*-------------------------------------
     SubSystem State Retrieval
 -------------------------------------*/
-gameState const* system::getGameState(unsigned index) const {
+gameState const* gameSystem::getGameState(unsigned index) const {
     LS_DEBUG_ASSERT(index < gameList.size());
     return gameList[index];
 }
@@ -226,7 +181,7 @@ gameState const* system::getGameState(unsigned index) const {
 /*-------------------------------------
     SubSystem State Retrieval
 -------------------------------------*/
-gameState* system::getGameState(unsigned index) {
+gameState* gameSystem::getGameState(unsigned index) {
     LS_DEBUG_ASSERT(index < gameList.size());
     return gameList[index];
 }
@@ -234,7 +189,7 @@ gameState* system::getGameState(unsigned index) {
 /*-------------------------------------
     SubSystem State Indexing
 -------------------------------------*/
-unsigned system::getGameStateIndex(gameState* const pState) {
+unsigned gameSystem::getGameStateIndex(gameState* const pState) const {
     for (unsigned i = 0; i < gameList.size(); ++i) {
         if (gameList[i] == pState) {
             return i;

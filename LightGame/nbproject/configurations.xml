@@ -6,17 +6,17 @@
                    projectFiles="true">
       <logicalFolder name="generic" displayName="generic" projectFiles="true">
         <itemPath>../include/lightsky/game/generic/gameState_impl.h</itemPath>
+        <itemPath>../include/lightsky/game/generic/gameSystem_impl.h</itemPath>
         <itemPath>../include/lightsky/game/generic/manager_impl.h</itemPath>
-        <itemPath>../include/lightsky/game/generic/system_impl.h</itemPath>
       </logicalFolder>
       <itemPath>../include/lightsky/game/dispatcher.h</itemPath>
       <itemPath>../include/lightsky/game/event.h</itemPath>
       <itemPath>../include/lightsky/game/game.h</itemPath>
       <itemPath>../include/lightsky/game/gameState.h</itemPath>
+      <itemPath>../include/lightsky/game/gameSystem.h</itemPath>
       <itemPath>../include/lightsky/game/manager.h</itemPath>
       <itemPath>../include/lightsky/game/setup.h</itemPath>
       <itemPath>../include/lightsky/game/subscriber.h</itemPath>
-      <itemPath>../include/lightsky/game/system.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -27,9 +27,9 @@
                    projectFiles="true">
       <itemPath>../src/game/dispatcher.cpp</itemPath>
       <itemPath>../src/game/gameState.cpp</itemPath>
+      <itemPath>../src/game/gameSystem.cpp</itemPath>
       <itemPath>../src/game/manager.cpp</itemPath>
       <itemPath>../src/game/subscriber.cpp</itemPath>
-      <itemPath>../src/game/system.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -132,17 +132,22 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/game/gameSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/game/generic/gameState_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/game/generic/manager_impl.h"
+      <item path="../include/lightsky/game/generic/gameSystem_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/game/generic/system_impl.h"
+      <item path="../include/lightsky/game/generic/manager_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -156,17 +161,15 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/game/system.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../src/game/dispatcher.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/game/gameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/game/gameSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/game/manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/game/subscriber.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/game/system.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles">
         <linkerTool>
@@ -313,17 +316,22 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/game/gameSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/game/generic/gameState_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/game/generic/manager_impl.h"
+      <item path="../include/lightsky/game/generic/gameSystem_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/game/generic/system_impl.h"
+      <item path="../include/lightsky/game/generic/manager_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -337,17 +345,15 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/game/system.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../src/game/dispatcher.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/game/gameState.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/game/gameSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/game/manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/game/subscriber.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/game/system.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles">
         <linkerTool>

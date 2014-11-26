@@ -5,21 +5,21 @@ namespace game {
 /*-------------------------------------
     Get the current state of *this object.
 -------------------------------------*/
-inline game_state_t gameState::getState() const {
+inline game_state_t gameState::getStateStatus() const {
     return currentState;
 }
         
 /*-------------------------------------
     Set the operational state of *this.
 -------------------------------------*/
-inline void gameState::setState(game_state_t s) {
+inline void gameState::setStateStatus(game_state_t s) {
     currentState = s;
 }
 
 /*-------------------------------------
     Get the parent subsystem that manages *this.
 -------------------------------------*/
-inline system& gameState::getParentSystem() const {
+inline gameSystem& gameState::getParentSystem() const {
     return *pSystem;
 }
 
@@ -49,20 +49,6 @@ inline bool gameState::isStarting() const {
 -------------------------------------*/
 inline bool gameState::isStopped() const {
     return currentState == game_state_t::STOPPED;
-}
-
-/*-------------------------------------
-    Set the number of elapsed milliseconds.
--------------------------------------*/
-inline void gameState::setTickTime(uint64_t millisElapsed) {
-    tickTime = millisElapsed;
-}
-
-/*-------------------------------------
-    Set the number of elapsed milliseconds.
--------------------------------------*/
-inline uint64_t gameState::getTickTime() const {
-    return tickTime;
 }
 
 } // end game namespace

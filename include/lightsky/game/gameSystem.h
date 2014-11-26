@@ -5,16 +5,16 @@
  * Created on November 15, 2013, 9:53 PM
  */
 
-#ifndef __LS_GAME_SYSTEM_H__
-#define	__LS_GAME_SYSTEM_H__
+#ifndef __LS_GAME_GAME_SYSTEM_H__
+#define	__LS_GAME_GAME_SYSTEM_H__
 
 #include <vector>
 #include <cstdint> // uint64_t
 
-#include "lightsky/game/gameState.h"
-
 namespace ls {
 namespace game {
+
+class gameState;
 
 /**----------------------------------------------------------------------------
  * The system object commands all hardware events and passes them to any
@@ -22,8 +22,13 @@ namespace game {
  * when this object gets destroyed, therefore, all gameState objects managed by
  * a subSystem must be created using the "new" operator.
 -----------------------------------------------------------------------------*/
-class system : public gameState {
+class gameSystem {
     private:
+        /**
+         * Stores the previous hardware time since the last update.
+         */
+        uint64_t tickTime;
+        
         /**
          * Stores the previous hardware time since the last update.
          */
@@ -59,7 +64,7 @@ class system : public gameState {
          * 
          * Initializes all members in *this to their default values.
          */
-        system();
+        gameSystem();
         
         /**
          * @brief Copy Constructor -- DELETED
@@ -67,7 +72,7 @@ class system : public gameState {
          * Deleted as this would require a copy of all game states held by this
          * object.
          */
-        system(const system&) = delete;
+        gameSystem(const gameSystem&) = delete;
         
         /**
          * @brief Move constructor
@@ -76,7 +81,7 @@ class system : public gameState {
          * An r-value reference to another state object who's members will be
          * moved into *this.
          */
-        system(system&& sys);
+        gameSystem(gameSystem&& sys);
         
         /**
          * @brief Destructor
@@ -84,7 +89,7 @@ class system : public gameState {
          * The subsystem destructor will call "terminate()," releasing the
          * memory of all gameState objects held within the gameStack.
          */
-        virtual ~system();
+        virtual ~gameSystem();
         
         /**
          * @brief Copy operator -- DELETED
@@ -92,7 +97,7 @@ class system : public gameState {
          * This method has been deleted in order to avoid a copy of all
          * gameStates managed by this container.
          */
-        system& operator=(const system&) = delete;
+        gameSystem& operator=(const gameSystem&) = delete;
         
         /**
          * @brief Move operator
@@ -103,7 +108,7 @@ class system : public gameState {
          * 
          * @return A reference to *this.
          */
-        system& operator=(system&& sys);
+        gameSystem& operator=(gameSystem&& sys);
         
         /**
          * @brief SubSystem initialization
@@ -119,7 +124,7 @@ class system : public gameState {
          * @return TRUE if this object was successfully initialized. FALSE if
          * something went wrong.
          */
-        virtual bool start() final;
+        virtual bool start();
         
         /**
          * @brief Begin a game loop
@@ -128,14 +133,14 @@ class system : public gameState {
          * call their methods to start, stop, pause, or update. This method
          * must be called in a program's main loop.
          */
-        virtual void run() final;
+        virtual void run();
         
         /**
          * @brief Run an idle game loop
          * 
          * Updates the internal timer but does not update internal game states.
          */
-        virtual void pause() final;
+        virtual void pause();
         
         /**
          * @brief Stop *this and all sub-states.
@@ -144,7 +149,7 @@ class system : public gameState {
          * them, thereby destroying each owned state. All memory and resources
          * used by *this will be freed.
          */
-        virtual void stop() final;
+        virtual void stop();
         
         /**
          * Push a game state onto the state list. All prior states will be
@@ -180,7 +185,7 @@ class system : public gameState {
         /**
          * @brief Remove all game states within *this.
          */
-        void clearStateList();
+        void clearGameStates();
         
         /**
          * Get a game state using an index.
@@ -213,7 +218,7 @@ class system : public gameState {
          * @return The index of the game state held within the game list.
          * UINT_MAX if the state was not found.
          */
-        unsigned getGameStateIndex(gameState* const pState);
+        unsigned getGameStateIndex(gameState* const pState) const;
         
         /**
          * Get the number of game states contained within *this.
@@ -223,20 +228,39 @@ class system : public gameState {
         unsigned getGameStackSize() const;
         
         /**
-         * Determine if *this system is still running and operational.
+         * @brief Get the time, in milliseconds, which have passed since the
+         * last call to either "run()" or "pause()"
+         * 
+         * @return A 64-bit unsigned integral type which represents the time in
+         * milliseconds which have passed since the last system update.
+         */
+        uint64_t getTickTime() const;
+        
+        /**
+         * @brief Get the time, in milliseconds, of the last call to either
+         * "run()" or "pause()"
+         * 
+         * @return A 64-bit unsigned integral type which represents the time in
+         * milliseconds of the last update.
+         */
+        uint64_t getUpdateTime() const;
+        
+        /**
+         * @brief Determine if *this system still has states to run.
+         * 
          * This function has the same effect as querying
          * this->getGameStackSize() > 0
          * 
          * @return TRUE if the game list has something pushed onto it, FALSE
          * if otherwise.
          */
-        virtual bool isRunning() const override;
+        virtual bool isRunnable() const;
 };
 
 } // end game namespace
 } // end ls namespace
 
-#include "lightsky/game/generic/system_impl.h"
+#include "lightsky/game/generic/gameSystem_impl.h"
 
-#endif	/* __LS_GAME_SYSTEM_H__ */
+#endif	/* __LS_GAME_GAME_SYSTEM_H__ */
 

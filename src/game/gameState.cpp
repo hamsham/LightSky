@@ -14,7 +14,6 @@ namespace game {
     Destructor
 -------------------------------------*/
 gameState::~gameState() {
-    stop();
 }
 
 /*-------------------------------------
@@ -27,7 +26,6 @@ gameState::gameState() {
     Move Constructor
 -------------------------------------*/
 gameState::gameState(gameState&& gs) :
-    tickTime{gs.tickTime},
     currentState{gs.currentState},
     pSystem{gs.pSystem}
 {
@@ -38,9 +36,6 @@ gameState::gameState(gameState&& gs) :
     Move Operator
 -------------------------------------*/
 gameState& gameState::operator=(gameState&& gs) {
-    
-    tickTime = gs.tickTime;
-    gs.tickTime = 0;
     
     currentState = gs.currentState;
     gs.currentState = game_state_t::STOPPED;
@@ -53,48 +48,34 @@ gameState& gameState::operator=(gameState&& gs) {
 /*-------------------------------------
     Parent Sub-System Assignment.
 -------------------------------------*/
-void gameState::setParentSystem(system& pSys) {
+void gameState::setParentSystem(gameSystem& pSys) {
     pSystem = &pSys;
 }
 
 /*-------------------------------------
-    The onStart method is called by the parent subsystem when *this
-    object has been notified to start. Place all memory allocations here.
+    Start the current system's running state.
 -------------------------------------*/
-bool gameState::start() {
-    setTickTime(0);
-    return onStart();
+bool gameState::onStart() {
+    return true;
 }
 
 /*-------------------------------------
-    This method is used to tell the current game state that it should
-    update its child components/variables/state.
+    Engage the current system's running state.
 -------------------------------------*/
-void gameState::run() {
-    onRun();
+void gameState::onRun() {
 }
 
 /*-------------------------------------
-    This method is used by the parent subsystem to tell *this game state
-    that it's paused.
+    Pause the current system's running state.
 -------------------------------------*/
-void gameState::pause() {
-    onPause();
+void gameState::onPause() {
 }
 
 /*-------------------------------------
-    The onStop method is used by the parent subsystem to indicate that
-    *this game state should terminate. Place all memory cleanup here.
+    Stop the current system's running state.
 -------------------------------------*/
-void gameState::stop() {
-    onStop();
-    setTickTime(0);
+void gameState::onStop() {
 }
-
-bool gameState::onStart() {return true;}
-void gameState::onRun() {}
-void gameState::onPause() {}
-void gameState::onStop() {}
 
 } // end game namespace
 } // end ls namespace

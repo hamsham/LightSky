@@ -37,9 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019297620/dispatcher.o \
 	${OBJECTDIR}/_ext/1019297620/gameState.o \
+	${OBJECTDIR}/_ext/1019297620/gameSystem.o \
 	${OBJECTDIR}/_ext/1019297620/manager.o \
-	${OBJECTDIR}/_ext/1019297620/subscriber.o \
-	${OBJECTDIR}/_ext/1019297620/system.o
+	${OBJECTDIR}/_ext/1019297620/subscriber.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -84,6 +84,11 @@ ${OBJECTDIR}/_ext/1019297620/gameState.o: ../src/game/gameState.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameState.o ../src/game/gameState.cpp
 
+${OBJECTDIR}/_ext/1019297620/gameSystem.o: ../src/game/gameSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameSystem.o ../src/game/gameSystem.cpp
+
 ${OBJECTDIR}/_ext/1019297620/manager.o: ../src/game/manager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
@@ -93,11 +98,6 @@ ${OBJECTDIR}/_ext/1019297620/subscriber.o: ../src/game/subscriber.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/subscriber.o ../src/game/subscriber.cpp
-
-${OBJECTDIR}/_ext/1019297620/system.o: ../src/game/system.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/system.o ../src/game/system.cpp
 
 # Subprojects
 .build-subprojects:
@@ -141,6 +141,19 @@ ${OBJECTDIR}/_ext/1019297620/gameState_nomain.o: ${OBJECTDIR}/_ext/1019297620/ga
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/gameState.o ${OBJECTDIR}/_ext/1019297620/gameState_nomain.o;\
 	fi
 
+${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o: ${OBJECTDIR}/_ext/1019297620/gameSystem.o ../src/game/gameSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019297620/gameSystem.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o ../src/game/gameSystem.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1019297620/gameSystem.o ${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o;\
+	fi
+
 ${OBJECTDIR}/_ext/1019297620/manager_nomain.o: ${OBJECTDIR}/_ext/1019297620/manager.o ../src/game/manager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019297620/manager.o`; \
@@ -165,19 +178,6 @@ ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o: ${OBJECTDIR}/_ext/1019297620/s
 	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o ../src/game/subscriber.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/subscriber.o ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o;\
-	fi
-
-${OBJECTDIR}/_ext/1019297620/system_nomain.o: ${OBJECTDIR}/_ext/1019297620/system.o ../src/game/system.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1019297620/system.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/system_nomain.o ../src/game/system.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/1019297620/system.o ${OBJECTDIR}/_ext/1019297620/system_nomain.o;\
 	fi
 
 # Run Test Targets

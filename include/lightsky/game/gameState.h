@@ -13,7 +13,7 @@
 namespace ls {
 namespace game {
 
-class system;
+class gameSystem;
 
 /**----------------------------------------------------------------------------
     A game_state_t is a type used in order to help manage interactions between
@@ -35,15 +35,9 @@ enum class game_state_t : int {
     when they are running.
 -----------------------------------------------------------------------------*/
 class gameState {
-    friend class system;
+    friend class gameSystem;
     
     private:
-        /**
-         * Duration of the last "tick," or the last time that the "run()"
-         * function had been called.
-         */
-        uint64_t tickTime = 0;
-        
         /**
          * The current state that is used by *this. This variable is also
          * assigned by the parent subsystem and should not be modified.
@@ -55,7 +49,7 @@ class gameState {
          * this pointer is assigned automatically when a system is pushed onto
          * the subsystem's stack. Do not try to modify this.
          */
-        mutable system* pSystem; // set by an lsSubsystem upon initialization
+        mutable gameSystem* pSystem; // set by an lsSubsystem upon initialization
         
         /**
          * Used by the parent subsystem to help with gameState management.
@@ -63,42 +57,7 @@ class gameState {
          * @param sys
          * A reference to the parent subsystem.
          */
-        void setParentSystem(system& sys);
-
-        /**
-         * The start() method is called by the parent subsystem when *this
-         * object has been notified to start. This performs any
-         * pre-initialization, then calls "onStart()" for client code
-         * initializations.
-         * This is primarily for internal system objects to override.
-         * 
-         * @return bool
-         * TRUE to indicate that *this has successfully initialized, FALSE if
-         * otherwise.
-         */
-        virtual bool start();
-        
-        /**
-         * This method is used to perform any runtime tasks which need to
-         * execute before/after client code is run through "onRun()".
-         * This is primarily for internal system objects to override.
-         */
-        virtual void run();
-        
-        /**
-         * "Pause()" perform idle runtime tasks which need to execute before
-         * or after client code is run through "onPause()".
-         * This is primarily for internal system objects to override.
-         */
-        virtual void pause();
-        
-        /**
-         * The "setop()" method is called by the parent subsystem to indicate
-         * that *this game state should terminate.  This calls "onStop()" for
-         * any client-side cleanup, then performs internal resource cleanup.
-         * This is primarily for internal system objects to override.
-         */
-        virtual void stop();
+        void setParentSystem(gameSystem& sys);
         
     protected:
         /*---------------------------------------------------------------------
@@ -131,16 +90,6 @@ class gameState {
          * that it's paused.
          */
         virtual void onPause();
-        
-        /**
-         * Set the number of milliseconds which have passed since the last time
-         * *this had been updated.
-         * 
-         * @param millisElapsed
-         * An unsigned integral type, indicating the number of elapsed
-         * milliseconds.
-         */
-        void setTickTime(uint64_t millisElapsed);
         
     public:
         /**
@@ -203,7 +152,7 @@ class gameState {
          * 
          * @return game_state_t
          */
-        game_state_t getState() const;
+        game_state_t getStateStatus() const;
         
         /**
          * Set the operational state of *this.
@@ -212,14 +161,14 @@ class gameState {
          * A game_state_t which will be used to set the current runtime state
          * of *this.
          */
-        void setState(game_state_t s);
+        void setStateStatus(game_state_t s);
         
         /*
          * Get the parent subsystem that manages *this.
          * 
          * @return A reference to *this object's managing lsSubsystem.
          */
-        system& getParentSystem() const;
+        gameSystem& getParentSystem() const;
         
         /**
          * @brief Check if the current state is running.
@@ -252,15 +201,6 @@ class gameState {
          * game_state_t::STOPPED, return false if not.
          */
         virtual bool isStopped() const;
-        
-        /**
-         * @brief Get the amount of milliseconds which have passed since the
-         * last time *this had been updated by by a parent system object.
-         * 
-         * @return An unsigned integral type containing the milliseconds
-         * elapsed since the last parent system update.
-         */
-        uint64_t getTickTime() const;
 };
 
 } // end game namespace

@@ -38,10 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/context.o \
 	${OBJECTDIR}/controlState.o \
 	${OBJECTDIR}/display.o \
-	${OBJECTDIR}/eventState.o \
 	${OBJECTDIR}/fbState.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/mainSystem.o \
 	${OBJECTDIR}/uiState.o
 
 
@@ -91,11 +89,6 @@ ${OBJECTDIR}/display.o: display.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
 
-${OBJECTDIR}/eventState.o: eventState.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventState.o eventState.cpp
-
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -105,11 +98,6 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
-
-${OBJECTDIR}/mainSystem.o: mainSystem.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mainSystem.o mainSystem.cpp
 
 ${OBJECTDIR}/uiState.o: uiState.cpp 
 	${MKDIR} -p ${OBJECTDIR}

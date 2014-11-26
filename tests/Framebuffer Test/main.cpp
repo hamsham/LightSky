@@ -5,20 +5,99 @@
 
 #include "lightsky/lightsky.h"
 
+#include "context.h"
 #include "display.h"
-#include "mainSystem.h"
+#include "fbState.h"
+#include "uiState.h"
 
 namespace global {
     display* pDisplay = nullptr;
     context renderContext;
 }
 
+/*-----------------------------------------------------------------------------
+ * Example System Object
+-----------------------------------------------------------------------------*/
+class mainSystem final : virtual public ls::game::gameSystem {
+    public:
+        mainSystem();
+        
+        mainSystem(const mainSystem&) = delete;
+        
+        mainSystem(mainSystem&&);
+        
+        virtual ~mainSystem();
+        
+        mainSystem& operator=(const mainSystem&) = delete;
+        
+        mainSystem& operator=(mainSystem&&);
+        
+        bool start() override;
+};
+
+/*-------------------------------------
+ * Destructor
+-------------------------------------*/
+mainSystem::~mainSystem() {
+}
+
+/*-------------------------------------
+ * Contstructor
+-------------------------------------*/
+mainSystem::mainSystem() {
+}
+
+/*-------------------------------------
+ * Move Constructor
+-------------------------------------*/
+mainSystem::mainSystem(mainSystem&& ms) :
+    gameSystem{std::move(ms)}
+{}
+
+/*-------------------------------------
+ * Move Operator
+-------------------------------------*/
+mainSystem& mainSystem::operator=(mainSystem&& ms) {
+    gameSystem::operator=(std::move(ms));
+    
+    return *this;
+}
+
+/*-------------------------------------
+ * System Startup
+-------------------------------------*/
+bool mainSystem::start() {
+    if (!gameSystem::start()) {
+        LS_LOG_ERR("Error: Unable to start the main program.");
+        return false;
+    }
+    
+    // push some states and run the game
+    if (!this->pushGameState(new fbState{})) {
+        LS_LOG_ERR("Error: Unable to start a framebuffer state.");
+    }
+    
+    if (!this->pushGameState(new uiState{})) {
+        LS_LOG_ERR("Error: Unable to start the UI state.");
+        clearGameStates();
+        return false;
+    }
+    
+    return true;
+}
+
+/*-----------------------------------------------------------------------------
+ * Main() Methids
+-----------------------------------------------------------------------------*/
+/*-------------------------------------
+ * Forward declarations
+-------------------------------------*/
 bool initSubsystems();
 void terminateSubsystems();
 
-/*
- * Main
- */
+/*-------------------------------------
+ * main()
+-------------------------------------*/
 int main() {
     mainSystem* pSystem = nullptr;
     
@@ -46,7 +125,7 @@ int main() {
     }
     
     std::cout << "Successfully created the main program." << std::endl;
-    while (pSystem->isRunning()) {
+    while (pSystem->isRunnable()) {
         global::renderContext.makeCurrent(*global::pDisplay);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         pSystem->run();

@@ -101,11 +101,11 @@ build/Debug/MinGW32_Qt-Windows/uiState.o: uiState.cpp display.h main.h \
  ../../include/lightsky/game/event.h \
  ../../include/lightsky/game/gameState.h \
  ../../include/lightsky/game/generic/gameState_impl.h \
+ ../../include/lightsky/game/gameSystem.h \
+ ../../include/lightsky/game/generic/gameSystem_impl.h \
  ../../include/lightsky/game/manager.h \
  ../../include/lightsky/game/generic/manager_impl.h \
- ../../include/lightsky/game/subscriber.h \
- ../../include/lightsky/game/system.h \
- ../../include/lightsky/game/generic/system_impl.h uiState.h eventState.h
+ ../../include/lightsky/game/subscriber.h uiState.h
 
 display.h:
 
@@ -331,16 +331,14 @@ main.h:
 
 ../../include/lightsky/game/generic/gameState_impl.h:
 
+../../include/lightsky/game/gameSystem.h:
+
+../../include/lightsky/game/generic/gameSystem_impl.h:
+
 ../../include/lightsky/game/manager.h:
 
 ../../include/lightsky/game/generic/manager_impl.h:
 
 ../../include/lightsky/game/subscriber.h:
 
-../../include/lightsky/game/system.h:
-
-../../include/lightsky/game/generic/system_impl.h:
-
 uiState.h:
-
-eventState.h:

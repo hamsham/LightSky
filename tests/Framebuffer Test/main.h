@@ -12,10 +12,6 @@
 
 #include "lightsky/lightsky.h"
 
-enum {
-    TEST_MAX_KEYBORD_STATES = 282, // according to https://wiki.libsdl.org/SDLScancodeLookup
-};
-
 namespace math = ls::math;
 
 class display;

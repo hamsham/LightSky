@@ -1,6 +1,6 @@
 build/Debug/MinGW32_Qt-Windows/controlState.o: controlState.cpp \
- ../../include/lightsky/game/gameState.h \
- ../../include/lightsky/game/generic/gameState_impl.h display.h main.h \
+ ../../include/lightsky/game/gameSystem.h \
+ ../../include/lightsky/game/generic/gameSystem_impl.h display.h main.h \
  ../../include/lightsky/lightsky.h ../../include/lightsky/setup/setup.h \
  ../../include/lightsky/setup/compiler.h \
  ../../include/lightsky/setup/arch.h ../../include/lightsky/setup/os.h \
@@ -101,16 +101,15 @@ build/Debug/MinGW32_Qt-Windows/controlState.o: controlState.cpp \
  ../../include/lightsky/game/game.h ../../include/lightsky/game/setup.h \
  ../../include/lightsky/game/dispatcher.h \
  ../../include/lightsky/game/event.h \
+ ../../include/lightsky/game/gameState.h \
+ ../../include/lightsky/game/generic/gameState_impl.h \
  ../../include/lightsky/game/manager.h \
  ../../include/lightsky/game/generic/manager_impl.h \
- ../../include/lightsky/game/subscriber.h \
- ../../include/lightsky/game/system.h \
- ../../include/lightsky/game/generic/system_impl.h controlState.h \
- eventState.h
+ ../../include/lightsky/game/subscriber.h controlState.h fbState.h
 
-../../include/lightsky/game/gameState.h:
+../../include/lightsky/game/gameSystem.h:
 
-../../include/lightsky/game/generic/gameState_impl.h:
+../../include/lightsky/game/generic/gameSystem_impl.h:
 
 display.h:
 
@@ -332,16 +331,16 @@ main.h:
 
 ../../include/lightsky/game/event.h:
 
+../../include/lightsky/game/gameState.h:
+
+../../include/lightsky/game/generic/gameState_impl.h:
+
 ../../include/lightsky/game/manager.h:
 
 ../../include/lightsky/game/generic/manager_impl.h:
 
 ../../include/lightsky/game/subscriber.h:
 
-../../include/lightsky/game/system.h:
-
-../../include/lightsky/game/generic/system_impl.h:
-
 controlState.h:
 
-eventState.h:
+fbState.h:

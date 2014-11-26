@@ -11,12 +11,11 @@
 #include "lightsky/game/gameState.h"
 
 #include "main.h"
-#include "eventState.h"
 
 /**
  * Text/UI testing state
  */
-class uiState final : virtual public ls::game::gameState, public eventState {
+class uiState final : virtual public ls::game::gameState {
     /*
      * Event Management
      */

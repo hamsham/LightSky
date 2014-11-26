@@ -8,8 +8,8 @@
 #include <chrono>
 #include <utility>
 
-#include <SDL2/SDL_events.h>
-
+#include "main.h"
+#include "controlState.h"
 #include "display.h"
 #include "fbState.h"
 
@@ -32,10 +32,10 @@ enum {
 #define VP_MATRIX_UNIFORM "vpMatrix"
 #define CAMERA_POSITION_UNIFORM "camPos"
 
-/*
+/*-----------------------------------------------------------------------------
  * This shader uses a Logarithmic Z-Buffer, thanks to
  * http://www.gamasutra.com/blogs/BranoKemen/20090812/2725/Logarithmic_Depth_Buffer.php
- */
+-----------------------------------------------------------------------------*/
 static const char meshVSData[] = R"***(
 #version 330 core
 
@@ -68,9 +68,9 @@ void main() {
 }
 )***";
 
-/*
+/*-----------------------------------------------------------------------------
  * Testing Alpha Masking for font rendering.
- */
+-----------------------------------------------------------------------------*/
 static const char meshFSData[] = R"***(
 #version 330 core
 
@@ -88,9 +88,9 @@ void main() {
 }
 )***";
 
-/******************************************************************************
+/*-----------------------------------------------------------------------------
  * Tests for loading perlin noise on another thread
-******************************************************************************/
+-----------------------------------------------------------------------------*/
 std::vector<float> generateNoiseTexture(int w, int h) {
     std::vector<float> noiseTable;
     noiseTable.resize(w*h);
@@ -114,22 +114,16 @@ std::vector<float> generateNoiseTexture(int w, int h) {
     return noiseTable;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Constructor & Destructor
-******************************************************************************/
+-------------------------------------*/
 fbState::fbState() :
     gameState()
-{
-    SDL_StopTextInput();
-    SDL_SetRelativeMouseMode(SDL_TRUE);
-}
+{}
 
 fbState::fbState(fbState&& state) :
     gameState{}
-{
-    SDL_StopTextInput();
-    SDL_SetRelativeMouseMode(SDL_TRUE);
-    
+{    
     *this = std::move(state);
 }
 
@@ -138,12 +132,6 @@ fbState::~fbState() {
 
 fbState& fbState::operator=(fbState&& state) {
     gameState::operator=(std::move(state));
-    
-    mouseX = state.mouseX;
-    state.mouseX = 0;
-    
-    mouseX = state.mouseY;
-    state.mouseY = 0;
     
     meshProg = std::move(state.meshProg);
     
@@ -154,9 +142,6 @@ fbState& fbState::operator=(fbState&& state) {
     
     pScene = state.pScene;
     state.pScene = nullptr;
-    
-    pKeyStates = state.pKeyStates;
-    state.pKeyStates = nullptr;
     
     pModelMatrices = state.pModelMatrices;
     state.pModelMatrices = nullptr;
@@ -172,165 +157,21 @@ fbState& fbState::operator=(fbState&& state) {
     return *this;
 }
 
-/******************************************************************************
- * System Events
-******************************************************************************/
-void fbState::onEvent(const SDL_Event& e) {
-    switch (e.type) {
-        case SDL_WINDOWEVENT:   this->onWindowEvent(e.window);      break;
-        case SDL_KEYUP:         this->onKeyboardUpEvent(e.key);     break;
-        case SDL_KEYDOWN:       this->onKeyboardDownEvent(e.key);   break;
-        case SDL_MOUSEMOTION:   this->onMouseMoveEvent(e.motion);   break;
-        case SDL_MOUSEWHEEL:    this->onMouseWheelEvent(e.wheel);  break;
-        default: break;
-    }
-}
-
-/******************************************************************************
- * Key Up Event
-******************************************************************************/
-void fbState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
-    const SDL_Keycode key = e.keysym.scancode;
-    
-    pKeyStates[key] = false;
-    
-    // Allow noise textures to be generated on another thread if one is not
-    // being generated already
-    if (key == SDL_SCANCODE_SPACE
-    && futureNoise.wait_for(std::chrono::seconds{0}) == std::future_status::ready
-    ) {
-        regenerateNoise();
-    }
-}
-
-/******************************************************************************
- * Key Down Event
-******************************************************************************/
-void fbState::onKeyboardDownEvent(const SDL_KeyboardEvent& e) {
-    const SDL_Keycode key = e.keysym.scancode;
-    pKeyStates[key] = true;
-}
-
-/******************************************************************************
- * Keyboard States
-******************************************************************************/
-void fbState::updateKeyStates() {
-    const float moveSpeed = 0.05f * (float)getTickTime();
-    math::vec3 pos = {0.f};
-    
-    if (pKeyStates[SDL_SCANCODE_W]) {
-        pos[2] += moveSpeed;
-    }
-    if (pKeyStates[SDL_SCANCODE_S]) {
-        pos[2] -= moveSpeed;
-    }
-    if (pKeyStates[SDL_SCANCODE_A]) {
-        pos[0] += moveSpeed;
-    }
-    if (pKeyStates[SDL_SCANCODE_D]) {
-        pos[0] -= moveSpeed;
-    }
-    
-    const math::vec3&& translation = {
-        math::dot(math::getAxisX(orientation), pos),
-        math::dot(math::getAxisY(orientation), pos),
-        math::dot(math::getAxisZ(orientation), pos)
-    };
-    
-    const math::mat4& viewMatrix = pMatStack->getMatrix(draw::MATRIX_USE_VIEW);
-    const math::mat4&& movement = math::translate(viewMatrix, translation);
-    pMatStack->loadMatrix(draw::MATRIX_USE_VIEW, movement);
-}
-
-/******************************************************************************
- * Window Event
-******************************************************************************/
-void fbState::onWindowEvent(const SDL_WindowEvent& e) {
-    if (e.event == SDL_WINDOWEVENT_RESIZED) {
-        resetGlViewport();
-        pMatStack->loadMatrix(draw::MATRIX_USE_PROJECTION, get3dViewport());
-    }
-}
-
-/******************************************************************************
- * Mouse Move Event
-******************************************************************************/
-void fbState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
-    // Prevent the orientation from drifting by keeping track of the relative mouse offset
-    if (this->getState() == ls::game::game_state_t::PAUSED
-    || SDL_GetRelativeMouseMode() == SDL_FALSE
-    || (mouseX == e.xrel && mouseY == e.yrel)
-    ) {
-        // I would rather quit the function than have unnecessary LERPs and
-        // quaternion multiplications.
-        return;
-    }
-    
-    mouseX = e.xrel;
-    mouseY = e.yrel;
-    
-    // Get the current mouse position and LERP from the previous mouse position.
-    // The mouse position is divided by the window's resolution in order to normalize
-    // the mouse delta between 0 and 1. This allows for the camera's orientation to
-    // be LERPed without the need for multiplying it by the last time delta.
-    // As a result, the camera's movement becomes as smooth and natural as possible.
-    
-    const math::vec2&& fRes = (math::vec2)global::pDisplay->getResolution();
-    const math::vec2&& mouseDelta = math::vec2{(float)mouseX, (float)mouseY} / fRes;
-    
-    // Always lerp to the 
-    const math::quat&& lerpX = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{mouseDelta[1], 0.f, 0.f, 1.f}, 1.f
-    );
-    
-    const math::quat&& lerpY = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{0.f, mouseDelta[0], 0.f, 1.f}, 1.f
-    );
-        
-    orientation *= lerpY * lerpX;
-    orientation = math::normalize(orientation);
-}
-
-/******************************************************************************
- * Mouse Wheel Event
-******************************************************************************/
-void fbState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
-    fbRes += e.y * 10;
-    
-    const math::vec2i displayRes =global::pDisplay->getResolution();
-    fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
-    fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
-    
-    draw::texture* fbDepthTex = pScene->getTexture(0);
-    draw::texture* fbColorTex = pScene->getTexture(1);
-    
-    fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, fbRes, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
-    fbColorTex->init(0, draw::COLOR_FMT_RGB_8, fbRes, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
-    
-}
-
-/******************************************************************************
+/*-------------------------------------
  * Allocate internal class memory
-******************************************************************************/
+-------------------------------------*/
 bool fbState::initMemory() {
     pMatStack       = new draw::matrixStack{};
     pScene          = new draw::sceneManager{};
-    pKeyStates      = new bool[TEST_MAX_KEYBORD_STATES];
     pModelMatrices  = new math::mat4[TEST_MAX_SCENE_INSTANCES];
     
     if (pMatStack == nullptr
     ||  pScene == nullptr
     ||  !pScene->init()
-    ||  pKeyStates == nullptr
     ||  pModelMatrices == nullptr
     ||  !testFb.init()
     ) {
         return false;
-    }
-    
-    // initialize the keybord
-    for (int i = 0;  i < TEST_MAX_KEYBORD_STATES; ++i) {
-        pKeyStates[i] = false;
     }
     
     futureNoise = std::move(std::async(
@@ -339,13 +180,16 @@ bool fbState::initMemory() {
         (int)TEST_NOISE_RESOLUTION,
         (int)TEST_NOISE_RESOLUTION
     ));
+    while (futureNoise.wait_for(std::chrono::seconds{0}) != std::future_status::ready) {
+        continue;
+    }
     
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Initialize resources from files
-******************************************************************************/
+-------------------------------------*/
 bool fbState::initFileData() {
     
     draw::meshResource* pMeshLoader = new draw::meshResource{};
@@ -380,10 +224,14 @@ bool fbState::initFileData() {
     return ret;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * regenerate a noise texture
-******************************************************************************/
+-------------------------------------*/
 void fbState::regenerateNoise() {
+    if (futureNoise.wait_for(std::chrono::seconds{0}) != std::future_status::ready) {
+        return;
+    }
+    
     std::vector<float>&& noiseTable = futureNoise.get();
     
     draw::texture* const pTexture = pScene->getTexture(2);
@@ -404,9 +252,9 @@ void fbState::regenerateNoise() {
     ));
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Initialize the model, view, and projection matrices
-******************************************************************************/
+-------------------------------------*/
 bool fbState::initMatrices() {
     const math::vec2&& aspect = (math::vec2)global::pDisplay->getResolution();
     
@@ -450,9 +298,9 @@ bool fbState::initMatrices() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Initialize the program shaders
-******************************************************************************/
+-------------------------------------*/
 bool fbState::initShaders() {
     draw::vertexShader vertShader;
     draw::fragmentShader fragShader;
@@ -476,9 +324,9 @@ bool fbState::initShaders() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Create the draw models that will be used for rendering
-******************************************************************************/
+-------------------------------------*/
 bool fbState::initDrawModels() {
     draw::meshModel* const pModel = new draw::meshModel{};
     if (pModel == nullptr) {
@@ -500,9 +348,9 @@ bool fbState::initDrawModels() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Initialize the framebuffers
-******************************************************************************/
+-------------------------------------*/
 bool fbState::initFramebuffers() {
     draw::texture* const pDepthTex = pScene->getTexture(0);
     draw::texture* const pColorTex = pScene->getTexture(1);
@@ -541,9 +389,9 @@ bool fbState::initFramebuffers() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Post-Initialization renderer parameters
-******************************************************************************/
+-------------------------------------*/
 void fbState::setRendererParams() {
     constexpr draw::color gray = draw::lsGray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
@@ -553,10 +401,25 @@ void fbState::setRendererParams() {
     renderer.setFaceCulling(true);
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Starting state
-******************************************************************************/
+-------------------------------------*/
 bool fbState::onStart() {
+    pControlState = new controlState{};
+    if (!pControlState) {
+        LS_LOG_ERR("Error: Unable to create a framebuffer control state.");
+        return false;
+    }
+    else {
+        pControlState->setFramebufferState(this);
+        ls::game::gameSystem& sys = getParentSystem();
+        if (!sys.pushGameState(pControlState)) {
+            LS_LOG_ERR("Error: Unable to start the framebuffer control state.");
+            delete pControlState;
+            return false;
+        }
+    }
+    
     if (!initMemory()) {
         LS_LOG_ERR("An error occurred while initializing the batch state.");
         return false;
@@ -579,42 +442,10 @@ bool fbState::onStart() {
     return true;
 }
 
-/******************************************************************************
- * Stopping state
-******************************************************************************/
-void fbState::onStop() {
-    mouseX = 0;
-    mouseY = 0;
-    
-    meshProg.terminate();
-    
-    testFb.terminate();
-    
-    orientation = math::quat{0.f, 0.f, 0.f, 1.f};
-
-    delete pMatStack;
-    pMatStack = nullptr;
-
-    delete pScene;
-    pScene = nullptr;
-
-    delete [] pKeyStates;
-    pKeyStates = nullptr;
-
-    delete [] pModelMatrices;
-    pModelMatrices = nullptr;
-    
-    futureNoise.wait();
-    
-    fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
-}
-
-/******************************************************************************
+/*-------------------------------------
  * Running state
-******************************************************************************/
+-------------------------------------*/
 void fbState::onRun() {
-    updateKeyStates();
-    
     // Meshes all contain their own model matrices. no need to use the ones in
     // the matrix stack. Just greab the view matrix
     pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
@@ -632,12 +463,10 @@ void fbState::onRun() {
     pMatStack->popMatrix(draw::MATRIX_USE_VIEW);
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Pausing state
-******************************************************************************/
-void fbState::onPause() {
-    updateKeyStates();
-    
+-------------------------------------*/
+void fbState::onPause() {    
     pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
     pMatStack->constructVp();
     
@@ -646,9 +475,38 @@ void fbState::onPause() {
     pMatStack->popMatrix(draw::MATRIX_USE_VIEW);
 }
 
-/******************************************************************************
+/*-------------------------------------
+ * Stopping state
+-------------------------------------*/
+void fbState::onStop() {
+    if (pControlState) {
+        pControlState->setStateStatus(ls::game::game_state_t::STOPPED);
+        pControlState = nullptr;
+    }
+    
+    meshProg.terminate();
+    
+    testFb.terminate();
+    
+    orientation = math::quat{0.f, 0.f, 0.f, 1.f};
+
+    delete pMatStack;
+    pMatStack = nullptr;
+
+    delete pScene;
+    pScene = nullptr;
+
+    delete [] pModelMatrices;
+    pModelMatrices = nullptr;
+    
+    futureNoise.wait();
+    
+    fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
+}
+
+/*-------------------------------------
  * get a 2d viewport for 2d/gui drawing
-******************************************************************************/
+-------------------------------------*/
 math::mat4 fbState::get3dViewport() const {
     const math::vec2i displayRes =global::pDisplay->getResolution();
     return math::perspective(
@@ -657,18 +515,9 @@ math::mat4 fbState::get3dViewport() const {
     );
 }
 
-/******************************************************************************
- * Update the renderer's viewport with the current window resolution
-******************************************************************************/
-void fbState::resetGlViewport() {
-    const display& disp = *global::pDisplay;
-    draw::renderer renderer;
-    renderer.setViewport(math::vec2i{0}, disp.getResolution());
-}
-
-/******************************************************************************
+/*-------------------------------------
  * Drawing a scene
-******************************************************************************/
+-------------------------------------*/
 void fbState::drawScene() {
     LOG_GL_ERR();
     
@@ -710,7 +559,68 @@ void fbState::drawScene() {
     
     // restore framebuffer reads to OpenGL's backbuffer
     testFb.unbind();
+}
+
+/*-------------------------------------
+ * Camera movement
+-------------------------------------*/
+void fbState::moveCamera(const math::vec3& deltaPos) {    
+    const math::vec3&& translation = {
+        math::dot(math::getAxisX(orientation), deltaPos),
+        math::dot(math::getAxisY(orientation), deltaPos),
+        math::dot(math::getAxisZ(orientation), deltaPos)
+    };
     
-    // reset the GL viewport back to normal
-    resetGlViewport();
+    const math::mat4& viewMatrix = pMatStack->getMatrix(draw::MATRIX_USE_VIEW);
+    const math::mat4&& movement = math::translate(viewMatrix, translation);
+    pMatStack->loadMatrix(draw::MATRIX_USE_VIEW, movement);
+}
+
+/*-------------------------------------
+ * Update the renderer's viewport with the current window resolution
+-------------------------------------*/
+void fbState::resizeFramebuffer(const math::vec2i& res) {
+    draw::renderer renderer;
+    renderer.setViewport(math::vec2i{0}, res);
+    
+    const math::mat4&& projection  = math::perspective(
+        TEST_PROJECTION_FOV, (float)res[0]/res[1],
+        TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
+    );
+    pMatStack->loadMatrix(draw::MATRIX_USE_PROJECTION, projection);
+}
+
+/*-------------------------------------
+ * Mouse Wheel Event
+-------------------------------------*/
+void fbState::scaleFramebuffer(const int deltaScale) {
+    fbRes += deltaScale;
+    
+    const math::vec2i displayRes =global::pDisplay->getResolution();
+    fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
+    fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
+    
+    draw::texture* fbDepthTex = pScene->getTexture(0);
+    draw::texture* fbColorTex = pScene->getTexture(1);
+    
+    fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, fbRes, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    fbColorTex->init(0, draw::COLOR_FMT_RGB_8, fbRes, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    
+}
+
+/*-------------------------------------
+ * Mouse Move Event
+-------------------------------------*/
+void fbState::rotateCamera(const math::vec3& deltaAngle) {
+    // Always lerp to the new mouse position
+    const math::quat&& lerpX = math::lerp(
+        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{deltaAngle[1], 0.f, 0.f, 1.f}, 1.f
+    );
+    
+    const math::quat&& lerpY = math::lerp(
+        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{0.f, deltaAngle[0], 0.f, 1.f}, 1.f
+    );
+        
+    orientation *= lerpY * lerpX;
+    orientation = math::normalize(orientation);
 }

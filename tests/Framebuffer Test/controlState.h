@@ -10,21 +10,34 @@
 
 #include "main.h"
 
-#include "eventState.h"
+#include "lightsky/game/gameState.h"
 
-/**
+class fbState;
+
+/**----------------------------------------------------------------------------
  * Global Controller testing state
- */
-class controlState final : virtual public ls::game::gameState, public eventState {
+-----------------------------------------------------------------------------*/
+class controlState final : virtual public ls::game::gameState {
+    
+    friend class fbState;
+    
     /*
      * Event Management
      */
     private:
+        int             mouseX                  = 0;
+        int             mouseY                  = 0;
         bool*           pKeyStates              = nullptr;
+        fbState*        pFbState                = nullptr;
+        // ^set by the state that instantiated *this
+        
+        void            setFramebufferState     (fbState* const);
         
         void            onKeyboardUpEvent       (const SDL_KeyboardEvent&);
         void            onKeyboardDownEvent     (const SDL_KeyboardEvent&);
         void            onWindowEvent           (const SDL_WindowEvent&);
+        void            onMouseMoveEvent        (const SDL_MouseMotionEvent&);
+        void            onMouseWheelEvent       (const SDL_MouseWheelEvent&);
         void            onMouseButtonDownEvent  (const SDL_MouseButtonEvent&);
         
     public:
@@ -37,11 +50,8 @@ class controlState final : virtual public ls::game::gameState, public eventState
         controlState&   operator=               (const controlState&) = delete;
         controlState&   operator=               (controlState&&);
         
-        void            onEvent                 (const SDL_Event&) override;
-        
         bool            onStart                 () override;
         void            onRun                   () override;
-        void            onPause                 () override;
         void            onStop                  () override;
 };
 

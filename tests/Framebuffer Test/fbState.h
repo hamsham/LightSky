@@ -14,17 +14,16 @@
 #include "lightsky/game/gameState.h"
 
 #include "main.h"
-#include "eventState.h"
 
-/**
+/**----------------------------------------------------------------------------
  * Default resolutions for the framebuffer object test.
- */
+-----------------------------------------------------------------------------*/
 enum fb_test_res_t : int {
     TEST_FRAMEBUFFER_WIDTH = 320,
     TEST_FRAMEBUFFER_HEIGHT = 240
 };
 
-/**
+/**----------------------------------------------------------------------------
  * Function to generate a perlin noise texture on another thread.
  * 
  * @param w
@@ -34,37 +33,37 @@ enum fb_test_res_t : int {
  * The height of the texture that should be generated.
  * 
  * @return A greyscale texture containing perlin noise
- */
+-----------------------------------------------------------------------------*/
 std::vector<float> generateNoiseTexture(int w, int h);
 
-/**
+/*-----------------------------------------------------------------------------
+ * Forward declarations
+-----------------------------------------------------------------------------*/
+class controlState;
+
+/**----------------------------------------------------------------------------
  * Framebuffer testing state
- */
-class fbState final : virtual public ls::game::gameState, public eventState {
+-----------------------------------------------------------------------------*/
+class fbState final : virtual public ls::game::gameState {
+    
+    friend class controlState;
+    
     /*
      * Event Management
      */
     private:
+        controlState*           pControlState   = nullptr;
         float                   secondTimer     = 0.f;
-        int                     mouseX          = 0;
-        int                     mouseY          = 0;
         ls::draw::shaderProgram meshProg        = {};
         ls::draw::framebuffer   testFb          = {};
         ls::draw::matrixStack*  pMatStack       = nullptr;
         ls::draw::sceneManager* pScene          = nullptr;
-        bool*                   pKeyStates      = nullptr;
         math::mat4*             pModelMatrices  = nullptr;
         math::vec2i             fbRes           = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         math::quat              orientation     = {};
         
         // allows textures to be generated on another thread
         std::future<std::vector<float>> futureNoise;
-        
-        void            onKeyboardUpEvent       (const SDL_KeyboardEvent&);
-        void            onKeyboardDownEvent     (const SDL_KeyboardEvent&);
-        void            onWindowEvent           (const SDL_WindowEvent&);
-        void            onMouseMoveEvent        (const SDL_MouseMotionEvent&);
-        void            onMouseWheelEvent       (const SDL_MouseWheelEvent&);
         
         void            updateKeyStates         ();
         
@@ -77,7 +76,6 @@ class fbState final : virtual public ls::game::gameState, public eventState {
         void            setRendererParams       ();
         
         math::mat4      get3dViewport           () const;
-        void            resetGlViewport         ();
         
         void            regenerateNoise         ();
         
@@ -93,12 +91,16 @@ class fbState final : virtual public ls::game::gameState, public eventState {
         fbState&        operator=               (const fbState&) = delete;
         fbState&        operator=               (fbState&&);
         
-        void            onEvent                 (const SDL_Event&) override;
-        
         bool            onStart                 () override;
         void            onRun                   () override;
         void            onPause                 () override;
         void            onStop                  () override;
+        
+        void            moveCamera              (const math::vec3& deltaPos);
+        void            resizeFramebuffer       (const math::vec2i& res);
+        void            scaleFramebuffer        (const int deltaScale);
+        void            rotateCamera            (const math::vec3& deltaAngle);
+        void            translateCamera         (const math::vec3& deltaPos);
 };
 
 #endif	/* FRAMEBUFFER_STATE_H */

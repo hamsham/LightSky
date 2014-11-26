@@ -55,9 +55,9 @@ void main() {
 }
 )***";
 
-/******************************************************************************
+/*-------------------------------------
  * Constructor & Destructor
-******************************************************************************/
+-------------------------------------*/
 uiState::uiState() {
 }
 
@@ -83,9 +83,9 @@ uiState& uiState::operator=(uiState&& state) {
     return *this;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Allocate internal class memory
-******************************************************************************/
+-------------------------------------*/
 bool uiState::initMemory() {
     pScene          = new ls::draw::sceneManager{};
     pBlender        = new ls::draw::blendObject{};
@@ -100,9 +100,9 @@ bool uiState::initMemory() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Initialize resources from files
-******************************************************************************/
+-------------------------------------*/
 bool uiState::initFileData() {
     
     ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
@@ -129,9 +129,9 @@ bool uiState::initFileData() {
     return ret;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Initialize the program shaders
-******************************************************************************/
+-------------------------------------*/
 bool uiState::initShaders() {
     ls::draw::vertexShader vertShader;
     ls::draw::fragmentShader fontFragShader;
@@ -156,9 +156,9 @@ bool uiState::initShaders() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Create the draw models that will be used for rendering
-******************************************************************************/
+-------------------------------------*/
 bool uiState::initDrawModels() {
     // font/text model
     ls::draw::meshModel* const pTextModel = new ls::draw::meshModel{};
@@ -181,20 +181,20 @@ bool uiState::initDrawModels() {
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Post-Initialization renderer parameters
-******************************************************************************/
+-------------------------------------*/
 void uiState::setRendererParams() {
     pBlender->setState(true);
     pBlender->setBlendEquation(ls::draw::BLEND_EQU_ADD, ls::draw::BLEND_EQU_ADD);
     pBlender->setBlendFunction(ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_1_SUB_SRC_ALPHA, ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_ZERO);
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Starting state
  * 
  * Resources that were already allocated are removed during "onStop()"
-******************************************************************************/
+-------------------------------------*/
 bool uiState::onStart() {
     if (!initMemory()) {
         LS_LOG_ERR("An error occurred while initializing the batch state.");
@@ -210,15 +210,39 @@ bool uiState::onStart() {
     }
     else {
         setRendererParams();
-       global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
+        global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
     }
     
     return true;
 }
 
-/******************************************************************************
+/*-------------------------------------
+ * Running state
+-------------------------------------*/
+void uiState::onRun() {
+    // Regenerate a string mesh using the frame's timing information.
+    secondTimer += getParentSystem().getTickTime();
+    if (secondTimer >= 1000) {
+        ls::draw::atlas* const pStringAtlas = pScene->getAtlas(0);
+        ls::draw::mesh* const pStringMesh = pScene->getMesh(0);
+        const std::string&& timingStr = getTimingStr();
+        pStringMesh->init(*pStringAtlas, timingStr);
+        secondTimer = 0;
+    }
+    
+    drawScene();
+}
+
+/*-------------------------------------
+ * Pausing state
+-------------------------------------*/
+void uiState::onPause() {
+    onRun();
+}
+
+/*-------------------------------------
  * Stopping state
-******************************************************************************/
+-------------------------------------*/
 void uiState::onStop() {
     secondTimer = 0.f;
     
@@ -231,41 +255,17 @@ void uiState::onStop() {
     pBlender = nullptr;
 }
 
-/******************************************************************************
- * Running state
-******************************************************************************/
-void uiState::onRun() {
-    // Regenerate a string mesh using the frame's timing information.
-    secondTimer += getTickTime();
-    if (secondTimer >= 1000) {
-        ls::draw::atlas* const pStringAtlas = pScene->getAtlas(0);
-        ls::draw::mesh* const pStringMesh = pScene->getMesh(0);
-        const std::string&& timingStr = getTimingStr();
-        pStringMesh->init(*pStringAtlas, timingStr);
-        secondTimer = 0;
-    }
-    
-    drawScene();
-}
-
-/******************************************************************************
- * Pausing state
-******************************************************************************/
-void uiState::onPause() {
-    onRun();
-}
-
-/******************************************************************************
+/*-------------------------------------
  * Get a string representing the current Ms/s and F/s
-******************************************************************************/
+-------------------------------------*/
 std::string uiState::getTimingStr() const {
     const float tickTime = getParentSystem().getTickTime();// * 0.001f;
     return std::to_string(tickTime) + "MS\n" + std::to_string(1/tickTime) + "FPS";
 }
 
-/******************************************************************************
+/*-------------------------------------
  * get a 2d viewport for 2d/gui drawing
-******************************************************************************/
+-------------------------------------*/
 math::mat4 uiState::get2dViewport() const {
     const display& display = *global::pDisplay;
     const math::vec2&& displayRes = (math::vec2)display.getResolution();
@@ -277,17 +277,17 @@ math::mat4 uiState::get2dViewport() const {
     );
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Update the renderer's viewport with the current window resolution
-******************************************************************************/
+-------------------------------------*/
 void uiState::resetGlViewport() {
     ls::draw::renderer renderer;
     renderer.setViewport(math::vec2i{0},global::pDisplay->getResolution());
 }
 
-/******************************************************************************
+/*-------------------------------------
  * Drawing a scene
-******************************************************************************/
+-------------------------------------*/
 void uiState::drawScene() {
     LOG_GL_ERR();
     resetGlViewport();

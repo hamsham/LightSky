@@ -7,10 +7,8 @@
       <itemPath>context.h</itemPath>
       <itemPath>controlState.h</itemPath>
       <itemPath>display.h</itemPath>
-      <itemPath>eventState.h</itemPath>
       <itemPath>fbState.h</itemPath>
       <itemPath>main.h</itemPath>
-      <itemPath>mainSystem.h</itemPath>
       <itemPath>uiState.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -36,10 +34,8 @@
       <itemPath>context.cpp</itemPath>
       <itemPath>controlState.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
-      <itemPath>eventState.cpp</itemPath>
       <itemPath>fbState.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>mainSystem.cpp</itemPath>
       <itemPath>uiState.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -165,10 +161,6 @@
       </item>
       <item path="earth.bmp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="eventState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="eventState.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
@@ -184,10 +176,6 @@
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="mainSystem.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="mainSystem.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="test_img.jpg" ex="false" tool="3" flavor2="0">
       </item>
@@ -313,10 +301,6 @@
       </item>
       <item path="earth.bmp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="eventState.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="eventState.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
@@ -332,10 +316,6 @@
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="mainSystem.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="mainSystem.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="test_img.jpg" ex="false" tool="3" flavor2="0">
       </item>

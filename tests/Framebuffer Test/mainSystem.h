@@ -8,7 +8,7 @@
 #ifndef MAINSYSTEM_H
 #define	MAINSYSTEM_H
 
-#include "lightsky/game/system.h"
+#include "lightsky/game/gameSystem.h"
 #include "display.h"
 #include "context.h"
 

@@ -10,7 +10,7 @@
 
 #include <SDL2/SDL_events.h>
 
-#include "lightsky/game/system.h"
+#include "lightsky/game/gameSystem.h"
 
 class eventState : virtual public ls::game::gameState {
     public:

@@ -18,11 +18,11 @@ mainSystem::mainSystem() {
 }
 
 mainSystem::mainSystem(mainSystem&& ms) :
-    system{std::move(ms)}
+    gameSystem{std::move(ms)}
 {}
 
 mainSystem& mainSystem::operator=(mainSystem&& ms) {
-    system::operator=(std::move(ms));
+    gameSystem::operator=(std::move(ms));
     
     return *this;
 }

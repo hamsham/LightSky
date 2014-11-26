@@ -98,7 +98,7 @@ class gameState {
         gameState();
         
         /**
-         * Copy Constructor -- DELETED
+         * @brief Copy Constructor -- DELETED
          * 
          * LightSky makes no attempts to copy game state objects.
          */
@@ -146,7 +146,8 @@ class gameState {
         gameState& operator=(gameState&& gs);
         
         /**
-         * Get the current state of *this object.
+         * @brief Get the current state of *this object.
+         * 
          * This object's state is used by the parent subsystem to determine when
          * it should go out of scope and terminate.
          * 
@@ -155,7 +156,7 @@ class gameState {
         game_state_t getStateStatus() const;
         
         /**
-         * Set the operational state of *this.
+         * @brief Set the operational state of *this.
          * 
          * @param s
          * A game_state_t which will be used to set the current runtime state
@@ -164,11 +165,18 @@ class gameState {
         void setStateStatus(game_state_t s);
         
         /*
-         * Get the parent subsystem that manages *this.
+         * @brief Get the parent subsystem that manages *this (const).
          * 
          * @return A reference to *this object's managing lsSubsystem.
          */
-        gameSystem& getParentSystem() const;
+        const gameSystem& getParentSystem() const;
+        
+        /*
+         * @brief Get the parent subsystem that manages *this.
+         * 
+         * @return A reference to *this object's managing lsSubsystem.
+         */
+        gameSystem& getParentSystem();
         
         /**
          * @brief Check if the current state is running.

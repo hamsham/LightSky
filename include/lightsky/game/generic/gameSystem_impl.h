@@ -6,7 +6,7 @@ namespace game {
     Initialize the subsystem using LightSky's own display system
 -------------------------------------*/
 inline bool gameSystem::start() {
-    return gameList.size() != 0;
+    return gameList.size() == 0;
 }
 
 /*-------------------------------------
@@ -35,7 +35,7 @@ inline void gameSystem::stop() {
 /*-------------------------------------
     Return The number of states managed by this system.
 -------------------------------------*/
-inline unsigned gameSystem::getGameStackSize() const {
+inline unsigned gameSystem::getNumGameStates() const {
     return gameList.size();
 }
 

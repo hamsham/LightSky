@@ -225,7 +225,7 @@ class gameSystem {
          * 
          * @return The number of states managed by this system.
          */
-        unsigned getGameStackSize() const;
+        unsigned getNumGameStates() const;
         
         /**
          * @brief Get the time, in milliseconds, which have passed since the

@@ -17,9 +17,16 @@ inline void gameState::setStateStatus(game_state_t s) {
 }
 
 /*-------------------------------------
+    Get the parent subsystem that manages *this (const).
+-------------------------------------*/
+inline const gameSystem& gameState::getParentSystem() const {
+    return *pSystem;
+}
+
+/*-------------------------------------
     Get the parent subsystem that manages *this.
 -------------------------------------*/
-inline gameSystem& gameState::getParentSystem() const {
+inline gameSystem& gameState::getParentSystem() {
     return *pSystem;
 }
 

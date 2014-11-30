@@ -13,7 +13,7 @@
 /*-------------------------------------
  * Extern Template Types
 -------------------------------------*/
-template class std::deque<ls::draw::mesh*>;
+template class std::deque<ls::draw::geometry*>;
 template class std::deque<ls::draw::meshModel*>;
 template class std::deque<ls::draw::texture*>;
 template class std::deque<ls::draw::atlas*>;
@@ -34,7 +34,7 @@ sceneManager::~sceneManager() {
 sceneManager::sceneManager() :
     defaultTex{tex_desc_t::TEX_DESC_2D},
     texMgr{},
-    meshMgr{},
+    geometryMgr{},
     atlasMgr{},
     drawMgr{}
 {}
@@ -45,7 +45,7 @@ sceneManager::sceneManager() :
 sceneManager::sceneManager(sceneManager&& sm) :
 defaultTex{std::move(sm.defaultTex)},
     texMgr{std::move(sm.texMgr)},
-    meshMgr{std::move(sm.meshMgr)},
+    geometryMgr{std::move(sm.geometryMgr)},
     atlasMgr{std::move(sm.atlasMgr)},
     drawMgr{std::move(sm.drawMgr)}
 {}
@@ -56,7 +56,7 @@ defaultTex{std::move(sm.defaultTex)},
 sceneManager& sceneManager::operator =(sceneManager&& sm) {
     defaultTex = std::move(sm.defaultTex);
     texMgr = std::move(sm.texMgr);
-    meshMgr = std::move(sm.meshMgr);
+    geometryMgr = std::move(sm.geometryMgr);
     atlasMgr = std::move(sm.atlasMgr);
     drawMgr = std::move(sm.drawMgr);
     
@@ -86,10 +86,10 @@ bool sceneManager::init() {
 void sceneManager::terminate() {
     defaultTex.terminate();
     
-    for (mesh* pMesh : meshMgr) {
-        delete pMesh;
+    for (geometry* pGeometry : geometryMgr) {
+        delete pGeometry;
     }
-    meshMgr.clear();
+    geometryMgr.clear();
     
     for (texture* pTex : texMgr) {
         delete pTex;
@@ -149,8 +149,8 @@ bool sceneManager::initDefaultTexture() {
 //-----------------------------------------------------------------------------
 //      Manager retrieval
 //-----------------------------------------------------------------------------
-meshList& sceneManager::getMeshList() {
-    return meshMgr;
+geometryList& sceneManager::getGeometryList() {
+    return geometryMgr;
 }
 
 textureList& sceneManager::getTextureList() {
@@ -168,8 +168,8 @@ drawList& sceneManager::getModelList() {
 //-----------------------------------------------------------------------------
 //      Manager retrieval (const)
 //-----------------------------------------------------------------------------
-const meshList& sceneManager::getMeshList() const {
-    return meshMgr;
+const geometryList& sceneManager::getGeometryList() const {
+    return geometryMgr;
 }
 
 const textureList& sceneManager::getTextureList() const {
@@ -187,9 +187,9 @@ const drawList& sceneManager::getModelList() const {
 //-----------------------------------------------------------------------------
 //      Resource "get" methods
 //-----------------------------------------------------------------------------
-mesh* sceneManager::getMesh(unsigned index) const {
-    LS_DEBUG_ASSERT(index < meshMgr.size());
-    return meshMgr[index];
+geometry* sceneManager::getGeometry(unsigned index) const {
+    LS_DEBUG_ASSERT(index < geometryMgr.size());
+    return geometryMgr[index];
 }
 
 texture* sceneManager::getTexture(unsigned index) const {
@@ -210,10 +210,10 @@ meshModel* sceneManager::getModel(unsigned index) const {
 //-----------------------------------------------------------------------------
 //      Resource deletion methods
 //-----------------------------------------------------------------------------
-void sceneManager::eraseMesh(unsigned index) {
-    mesh* pMesh = meshMgr[index];
-    delete pMesh;
-    meshMgr.erase(meshMgr.begin()+index);
+void sceneManager::eraseGeometry(unsigned index) {
+    geometry* pGeometry = geometryMgr[index];
+    delete pGeometry;
+    geometryMgr.erase(geometryMgr.begin()+index);
 }
 
 void sceneManager::eraseTexture(unsigned index) {
@@ -237,8 +237,8 @@ void sceneManager::eraseModel(unsigned index) {
 //-----------------------------------------------------------------------------
 //      Resource counts
 //-----------------------------------------------------------------------------
-unsigned sceneManager::getNumMeshes() const {
-    return meshMgr.size();
+unsigned sceneManager::getNumGeometries() const {
+    return geometryMgr.size();
 }
 
 unsigned sceneManager::getNumTextures() const {
@@ -256,10 +256,10 @@ unsigned sceneManager::getNumModels() const {
 //-----------------------------------------------------------------------------
 //      Resource management
 //-----------------------------------------------------------------------------
-unsigned sceneManager::manageMesh(mesh* const pMesh) {
-    if (pMesh != nullptr && this->containsMesh(pMesh) == false) {
-        const unsigned index = pMesh->getId();
-        meshMgr.push_back(pMesh);
+unsigned sceneManager::manageGeometry(geometry* const pGeometry) {
+    if (pGeometry != nullptr && this->containsGeometry(pGeometry) == false) {
+        const unsigned index = pGeometry->getId();
+        geometryMgr.push_back(pGeometry);
         return index;
     }
     
@@ -299,11 +299,11 @@ unsigned sceneManager::manageModel(meshModel* const pText) {
 //-----------------------------------------------------------------------------
 //      Resource un-management
 //-----------------------------------------------------------------------------
-mesh* sceneManager::unManageMesh(unsigned index) {
-    LS_DEBUG_ASSERT(index < meshMgr.size());
-    mesh* const pMesh = meshMgr[index];
-    meshMgr.erase(meshMgr.begin() + index);
-    return pMesh;
+geometry* sceneManager::unManageGeometry(unsigned index) {
+    LS_DEBUG_ASSERT(index < geometryMgr.size());
+    geometry* const pGeometry = geometryMgr[index];
+    geometryMgr.erase(geometryMgr.begin() + index);
+    return pGeometry;
 }
 
 texture* sceneManager::unManageTexture(unsigned index) {
@@ -330,14 +330,14 @@ meshModel* sceneManager::unManageModel(unsigned index) {
 //-----------------------------------------------------------------------------
 //      Resource queries
 //-----------------------------------------------------------------------------
-bool sceneManager::containsMesh(const mesh* const pMesh) const {
-    if (pMesh == nullptr) {
+bool sceneManager::containsGeometry(const geometry* const pGeometry) const {
+    if (pGeometry == nullptr) {
         return false;
     }
     else {
-        meshList::const_iterator iter = meshMgr.begin();
-        while (iter != meshMgr.end()) {
-            if (pMesh->getId() == (*iter)->getId()) {
+        geometryList::const_iterator iter = geometryMgr.begin();
+        while (iter != geometryMgr.end()) {
+            if (pGeometry->getId() == (*iter)->getId()) {
                 return true;
             }
             

@@ -10,11 +10,14 @@
 
 #include <string>
 
-#include "lightsky/draw/setup.h"
-#include "lightsky/utils/resource.h"
-#include "lightsky/draw/vertex.h"
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/boundingBox.h"
+#include "lightsky/draw/drawCommand.h"
+#include "lightsky/utils/resource.h"
+#include "lightsky/draw/setup.h"
+#include "lightsky/draw/vertex.h"
+
+class aiScene;
 
 namespace ls {
 namespace draw {
@@ -33,14 +36,27 @@ class meshResource final : public ls::utils::resource {
         
         /**
          * Contains the vertex data used by each mesh.
-         * This is implemented as an array of vertex arrays.
+         * This is implemented as an array of vertex structures.
          */
         vertex* pVertices = nullptr;
         
         /**
+         * Contains the number of indices used per mesh.
+         * This is implemented as a single array of unsigned short integers.
+         */
+        unsigned numIndices = 0;
+        
+        /**
+         * Contains the index data used to specify the location of each vertex
+         * of each mesh. This is implemented as an array of unsigned short
+         * integers.
+         */
+        draw_index_t* pIndices = nullptr;
+        
+        /**
          * Contains the resulting draw mode for each mesh after loading.
          */
-        draw_mode_t resultDrawMode = draw_mode_t::DRAW_MODE_DEFAULT;
+        draw_mode_t resultDrawMode = draw_mode_t::DEFAULT;
         
         /**
          * Allow the ability to generate the bounding area for a mesh
@@ -61,7 +77,19 @@ class meshResource final : public ls::utils::resource {
          * @return TRUE if the internal vertex buffer was successfully
          * allocated, or FALSE if not.
          */
-        bool initVertices(unsigned vertCount);
+        bool initVertices(unsigned vertCount, unsigned elementCount = 0);
+        
+        /**
+         * This is an internal loading function used to import data from ASSIMP.
+         * 
+         * @param pScene
+         * A constant pointer to a constant ASSIMP scene where imported mesh
+         * data is contained.
+         * 
+         * @return TRUE if the 3D mesh data was successfully imported, FALSE if
+         * something went wrong.
+         */
+        bool loadSceneData(const aiScene* const pScene);
         
     public:
         /**
@@ -112,6 +140,22 @@ class meshResource final : public ls::utils::resource {
          * @return a reference to *this.
          */
         meshResource& operator=(meshResource&& mr);
+
+        /**
+         *  Get the size, in bytes, of the stored vertex elements.
+         *  
+         *  @return a long integral type, used to determine how many bytes
+         *  are used by the vertex buffer.
+         */
+        long getVertexByteSize() const;
+
+        /**
+         *  Get the size, in bytes, of the stored index elements.
+         *  
+         *  @return a long integral type, used to determine how many bytes
+         *  are used by the index buffer.
+         */
+        long getIndexByteSize() const;
         
         /**
          * Get the number of loaded vertex variables in a mesh.
@@ -130,33 +174,27 @@ class meshResource final : public ls::utils::resource {
         vertex* getVertices() const;
         
         /**
+         * Get the number of loaded indices in a mesh.
+         * 
+         * @return An unsigned integral type, representing the number of
+         * indices contained within the mesh loaded by *this.
+         */
+        unsigned getNumIndices() const;
+        
+        /**
+         * Get the array of vertex element indices types of a loaded mesh.
+         * 
+         * @return A pointer to the internal array which contains the indices
+         * loaded by *this.
+         */
+        draw_index_t* getIndices() const;
+        
+        /**
          * @brief Unload
          * 
          * Free all memory used by *this.
          */
         virtual void unload() override;
-
-        /**
-         * @brief Load a 3D mesh file -- NOT YET IMPLEMENTED.
-         * 
-         * @param filename
-         * A string object containing the relative path name to a file that
-         * should be loadable into memory.
-         * 
-         * @return true if the file was successfully loaded. False if not.
-         */
-        bool loadFile(const std::string& filename) override;
-
-        /**
-         * @brief Save a mesh to a file -- NOT YET IMPLEMENTED
-         * 
-         * @param filename
-         * A string object containing the relative path name to a file that
-         * should be saved to the computer.
-         * 
-         * @return true if the file was successfully saved. False if not.
-         */
-        virtual bool saveFile(const std::string&) const override;
         
         /**
          * Get the draw mode that was generated while loading a mesh.
@@ -255,6 +293,28 @@ class meshResource final : public ls::utils::resource {
          * FALSE if an error occurred during the load.
          */
         bool loadSphere(unsigned resolution);
+
+        /**
+         * @brief Load a 3D mesh file -- NOT YET IMPLEMENTED.
+         * 
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be loadable into memory.
+         * 
+         * @return true if the file was successfully loaded. False if not.
+         */
+        bool loadFile(const std::string& filename) override;
+
+        /**
+         * @brief Save a mesh to a file -- NOT YET IMPLEMENTED
+         * 
+         * @param filename
+         * A string object containing the relative path name to a file that
+         * should be saved to the computer.
+         * 
+         * @return true if the file was successfully saved. False if not.
+         */
+        virtual bool saveFile(const std::string&) const override;
 };
 
 } // end draw namespace

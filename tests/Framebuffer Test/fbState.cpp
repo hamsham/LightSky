@@ -18,7 +18,7 @@ namespace draw = ls::draw;
 typedef math::perlinNoise_t<float> perlinNoise;
 
 enum {
-    TEST_MAX_SCENE_OBJECTS = 32,
+    TEST_MAX_SCENE_OBJECTS = 10,
     TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS,
     TEST_NOISE_RESOLUTION = 1024,
     TEST_NOISE_SAMPLES = 32
@@ -193,7 +193,7 @@ bool fbState::initMemory() {
 bool fbState::initFileData() {
     
     draw::meshResource* pMeshLoader = new draw::meshResource{};
-    draw::mesh* pSphereMesh         = new draw::mesh{};
+    draw::geometry* pSphereMesh     = new draw::geometry{};
     draw::texture* fbDepthTex       = new draw::texture{};
     draw::texture* fbColorTex       = new draw::texture{};
     draw::texture* noiseTex         = new draw::texture{};
@@ -201,7 +201,8 @@ bool fbState::initFileData() {
     
     if (!pMeshLoader
     || !pSphereMesh
-    || !pMeshLoader->loadSphere(16)
+    //|| !pMeshLoader->loadSphere(16)
+    || !pMeshLoader->loadFile("./testmesh.dae")
     || !pSphereMesh->init(*pMeshLoader)
     || !fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
     || !fbColorTex->init(0, draw::COLOR_FMT_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
@@ -210,7 +211,7 @@ bool fbState::initFileData() {
         ret = false;
     }
     else {
-        pScene->manageMesh(pSphereMesh); // test data at the mesh index 0
+        pScene->manageGeometry(pSphereMesh); // test data at the mesh index 0
         pScene->manageTexture(fbDepthTex);
         pScene->manageTexture(fbColorTex);
         pScene->manageTexture(noiseTex); // test texture at index 2
@@ -289,7 +290,13 @@ bool fbState::initMatrices() {
     for (int i = -numObjects; i < numObjects; ++i) {
         for (int j = -numObjects; j < numObjects; ++j) {
             for (int k = -numObjects; k < numObjects; ++k) {
-                pModelMatrices[matIter] = math::translate(math::mat4{TEST_INSTANCE_RADIUS}, math::vec3{(float)i,(float)j,(float)k});
+                pModelMatrices[matIter] = math::translate(
+                    math::mat4{TEST_INSTANCE_RADIUS}, math::vec3{
+                        (float)i*TEST_MAX_SCENE_OBJECTS,
+                        (float)j*TEST_MAX_SCENE_OBJECTS,
+                        (float)k*TEST_MAX_SCENE_OBJECTS
+                    }
+                );
                 ++matIter;
             }
         }
@@ -334,7 +341,7 @@ bool fbState::initDrawModels() {
         return false;
     }
     else {
-        draw::mesh* const pMesh = pScene->getMesh(0);
+        draw::geometry* const pMesh = pScene->getGeometry(0);
         draw::texture* const pTexture = pScene->getTexture(2);
         pModel->init(*pMesh, *pTexture);
         

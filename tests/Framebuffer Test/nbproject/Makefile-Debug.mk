@@ -57,7 +57,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2.dll -lSDL2main
+LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2.dll -lSDL2main -lassimp.dll
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

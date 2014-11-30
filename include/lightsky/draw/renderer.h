@@ -17,26 +17,6 @@ namespace ls {
 namespace draw {
 
 /**----------------------------------------------------------------------------
- * Draw modes for renderable types.
------------------------------------------------------------------------------*/
-enum draw_mode_t : int {
-    DRAW_MODE_POINTS                = GL_POINTS,
-    
-    DRAW_MODE_LINE_STRIP            = GL_LINE_STRIP,
-    DRAW_MODE_LINE_LOOP             = GL_LINE_LOOP,
-    DRAW_MODE_LINES                 = GL_LINES,
-    DRAW_MODE_LINE_STRIP_ADJACENCY  = GL_LINE_STRIP_ADJACENCY,
-    DRAW_MODE_LINES_ADJACENCY       = GL_LINES_ADJACENCY,
-    DRAW_MODE_TRI_STRIP             = GL_TRIANGLE_STRIP,
-    DRAW_MODE_TRI_FAN               = GL_TRIANGLE_FAN,
-    DRAW_MODE_TRIS                  = GL_TRIANGLES,
-    DRAW_MODE_TRI_STRIP_ADJACENCY   = GL_TRIANGLE_STRIP_ADJACENCY,
-    DRAW_MODE_TRIS_ADJACENCY        = GL_TRIANGLES_ADJACENCY,
-    
-    DRAW_MODE_DEFAULT               = DRAW_MODE_TRIS
-};
-
-/**----------------------------------------------------------------------------
  * @brief Winding order for polygons.
  * This also helps determine which faces won't be rendered if face culling is
  * enabled.

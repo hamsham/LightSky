@@ -3,6 +3,20 @@ namespace ls {
 namespace draw {
 
 /*-------------------------------------
+    Get the size, in bytes, of the vertex buffer.
+-------------------------------------*/
+inline long meshResource::getVertexByteSize() const {
+    return numVertices * sizeof(vertex);
+}
+
+/*-------------------------------------
+    Get the size, in bytes, of the index buffer.
+-------------------------------------*/
+inline long meshResource::getIndexByteSize() const {
+    return numIndices * sizeof(draw_index_t);
+}
+
+/*-------------------------------------
     Get the number of loaded vertex variables in a mesh
 -------------------------------------*/
 inline unsigned meshResource::getNumVertices() const {
@@ -14,6 +28,20 @@ inline unsigned meshResource::getNumVertices() const {
 -------------------------------------*/
 inline vertex* meshResource::getVertices() const {
     return pVertices;
+}
+
+/*-------------------------------------
+    Get the number of loaded indices in a mesh.
+-------------------------------------*/
+inline unsigned meshResource::getNumIndices() const {
+    return numIndices;
+}
+
+/*-------------------------------------
+    Get the array of vertex index elements of a loaded mesh
+-------------------------------------*/
+inline draw_index_t* meshResource::getIndices() const {
+    return pIndices;
 }
 
 /*-------------------------------------

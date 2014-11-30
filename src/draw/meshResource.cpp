@@ -9,9 +9,29 @@
 #include <utility>
 #include <string>
 
-#include "lightsky/draw/mesh.h"
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/mesh.h>
+#include <assimp/postprocess.h>
+
 #include "lightsky/draw/geometry.h"
+#include "lightsky/draw/geometry_utils.h"
 #include "lightsky/draw/meshResource.h"
+
+namespace {
+enum {
+    MESH_FILE_IMPORT_FLAGS = 0
+        | aiProcess_FindInstances
+        | aiProcess_JoinIdenticalVertices
+        | aiProcess_Triangulate
+        | aiProcess_GenNormals
+        | aiProcess_PreTransformVertices
+        | aiProcess_GenUVCoords
+        | aiProcess_TransformUVCoords
+        | aiProcess_OptimizeMeshes
+        | aiProcessPreset_TargetRealtime_Fast
+};
+}
 
 namespace ls {
 namespace draw {
@@ -36,6 +56,8 @@ meshResource::meshResource(meshResource&& ml) :
     resource{},
     numVertices{ml.numVertices},
     pVertices{ml.pVertices},
+    numIndices{ml.numIndices},
+    pIndices{ml.pIndices},
     resultDrawMode{ml.resultDrawMode},
     meshBounds{std::move(ml.meshBounds)}
 {
@@ -46,13 +68,17 @@ meshResource::meshResource(meshResource&& ml) :
     ml.dataSize = 0;
     ml.numVertices = 0;
     ml.pVertices = nullptr;
-    ml.resultDrawMode = draw_mode_t::DRAW_MODE_DEFAULT;
+    ml.numIndices = 0;
+    ml.pIndices = nullptr;
+    ml.resultDrawMode = draw_mode_t::DEFAULT;
 }
 
 /*-------------------------------------
     Mesh Loader move operator
 -------------------------------------*/
 meshResource& meshResource::operator=(meshResource&& ml) {
+    unload();
+    
     resource::pData = ml.pData;
     ml.pData = nullptr;
     
@@ -65,8 +91,14 @@ meshResource& meshResource::operator=(meshResource&& ml) {
     pVertices = ml.pVertices;
     ml.pVertices = nullptr;
     
+    numIndices = ml.numIndices;
+    ml.numIndices = 0;
+    
+    pIndices = ml.pIndices;
+    ml.pIndices = nullptr;
+    
     resultDrawMode = ml.resultDrawMode;
-    ml.resultDrawMode = draw_mode_t::DRAW_MODE_DEFAULT;
+    ml.resultDrawMode = draw_mode_t::DEFAULT;
     
     meshBounds = std::move(ml.meshBounds);
     
@@ -85,7 +117,12 @@ void meshResource::unload() {
     delete [] pVertices;
     pVertices = nullptr;
     
-    resultDrawMode = draw_mode_t::DRAW_MODE_DEFAULT;
+    numIndices = 0;
+    
+    delete [] pIndices;
+    pIndices = nullptr;
+    
+    resultDrawMode = draw_mode_t::DEFAULT;
     
     meshBounds.resetSize();
 }
@@ -93,9 +130,10 @@ void meshResource::unload() {
 /*-------------------------------------
     Initialize the arrays that will be used to contain the mesh data.
 -------------------------------------*/
-bool meshResource::initVertices(unsigned vertCount) {
+bool meshResource::initVertices(unsigned vertCount, unsigned indexCount) {
     unload();
     
+    // create the vertex buffer
     pVertices = new(std::nothrow) vertex [vertCount];
     
     if (pVertices == nullptr) {
@@ -103,30 +141,27 @@ bool meshResource::initVertices(unsigned vertCount) {
         unload();
         return false;
     }
-    else {
-        resource::dataSize = sizeof(vertex) * vertCount;
-        resource::pData = reinterpret_cast<char*>(pVertices);
-        LS_LOG_MSG("\tSuccessfully allocated a ", resource::dataSize, "-byte vertex buffer.");
-        numVertices = vertCount;
+    numVertices = vertCount;
+    
+    // create the index buffer
+    if (indexCount > 0) {
+        pIndices = new(std::nothrow) draw_index_t [indexCount];
+        
+        if (pIndices == nullptr) {
+            LS_LOG_ERR("\tUnable to allocate memory for ", indexCount, " indices.");
+            unload();
+            return false;
+        }
+        numIndices = indexCount;
     }
     
+    resource::dataSize
+        = (sizeof(vertex) * vertCount)
+        + (sizeof(draw_index_t) * indexCount);
+    resource::pData = reinterpret_cast<char*>(pVertices);
+    LS_LOG_MSG("\tSuccessfully allocated a ", resource::dataSize, "-byte vertex buffer.");
+    
     return true;
-}
-
-/*-------------------------------------
-    Load a set of meshes from a file
-    TODO
--------------------------------------*/
-bool meshResource::loadFile(const std::string&) {
-    unload();
-    return false;
-}
-
-/*-------------------------------------
-    Save a mesh to a file.
--------------------------------------*/
-bool meshResource::saveFile(const std::string&) const {
-    return false;
 }
 
 /*-------------------------------------
@@ -160,7 +195,7 @@ bool meshResource::loadQuad() {
     meshBounds.setBotFrontLeft(math::vec3{-1.f, -1.f, -LS_EPSILON});
     
     LS_LOG_MSG("\tSuccessfully loaded a quad mesh.\n");
-    resultDrawMode = draw_mode_t::DRAW_MODE_TRI_FAN;
+    resultDrawMode = draw_mode_t::TRI_FAN;
     return true;
 }
 
@@ -193,7 +228,7 @@ bool meshResource::loadPolygon(unsigned numPoints) {
     }
     
     LS_LOG_MSG("\tSuccessfully loaded a ", numPoints, "-sided polygon.\n");
-    resultDrawMode = draw_mode_t::DRAW_MODE_TRI_FAN;
+    resultDrawMode = draw_mode_t::TRI_FAN;
     return true;
 }
 
@@ -324,7 +359,7 @@ bool meshResource::loadCube() {
     meshBounds.setBotFrontLeft(math::vec3{-1.f, -1.f, -1.f});
     
     LS_LOG_MSG("\tSuccessfully loaded a cube mesh.\n");
-    resultDrawMode = draw_mode_t::DRAW_MODE_TRI_STRIP;
+    resultDrawMode = draw_mode_t::TRI_STRIP;
     return true;
 }
 
@@ -405,7 +440,7 @@ bool meshResource::loadCylinder(unsigned numSides) {
     
     
     LS_LOG_MSG("\tSuccessfully loaded a ", numSides, "-sided cylinder.\n");
-    resultDrawMode = draw_mode_t::DRAW_MODE_TRIS;
+    resultDrawMode = draw_mode_t::TRIANGLES;
     return true;
 }
 
@@ -471,7 +506,7 @@ bool meshResource::loadCone(unsigned numSides) {
     }
     
     LS_LOG_MSG("\tSuccessfully loaded a ", numSides, "-sided cone.\n");
-    resultDrawMode = draw_mode_t::DRAW_MODE_TRIS;
+    resultDrawMode = draw_mode_t::TRIANGLES;
     return true;
 }
 
@@ -537,8 +572,125 @@ bool meshResource::loadSphere(unsigned res) {
     }
     
     LS_LOG_MSG("\tSuccessfully loaded a ", totalVertCount, "-point sphere.\n");
-    resultDrawMode = draw_mode_t::DRAW_MODE_TRI_STRIP;
+    resultDrawMode = draw_mode_t::TRI_STRIP;
     return true;
+}
+
+/*-------------------------------------
+    Load a set of meshes from a file
+    TODO
+-------------------------------------*/
+bool meshResource::loadFile(const std::string& filename) {
+    unload();
+    LS_LOG_MSG("Attempting to load the 3D mesh file ", filename, '.');
+    
+    Assimp::Importer importer;
+    const aiScene* const pScene = importer.ReadFile(filename, MESH_FILE_IMPORT_FLAGS);
+    unsigned vertCount = 0;
+    unsigned indexCount = 0;
+    
+    if (pScene == nullptr) {
+        LS_LOG_ERR(
+            "\tERROR: Unable to load the 3D mesh file ", filename, '.',
+            "\n\tInternal Error: ", importer.GetErrorString(), '\n'
+        );
+        return false;
+    }
+    
+    // preprocess the scene in order to allocate all internal data at once.
+    for (unsigned meshIter = 0; meshIter < pScene->mNumMeshes; ++meshIter) {
+        const aiMesh* const pMesh = pScene->mMeshes[meshIter];
+        
+        vertCount += pMesh->mNumVertices;
+        
+        // make sure that the mesh is only made up of triangles
+        for (unsigned faceIter = 0; faceIter < pMesh->mNumFaces; ++faceIter) {
+            const aiFace& face = pMesh->mFaces[faceIter];
+            if (face.mNumIndices != 3) {
+                LS_LOG_ERR(
+                    "\tERROR: The 3D mesh file ", filename,
+                    " contains non-triangulated faces.\n"
+                );
+                return false;
+            }
+            indexCount += 3;
+        }
+    }
+    
+    // initialize the internal memory buffers
+    if (!initVertices(vertCount, indexCount)) {
+        LS_LOG_ERR(
+            "\tERROR: Unable to allocate memory to load the 3D mesh file ",
+            filename, ".\n"
+        );
+        return false;
+    }
+    
+    if (!loadSceneData(pScene)) {
+        LS_LOG_MSG("\tERROR: Unable to load data from the 3D mesh file ", filename, ".\n");
+        unload();
+        return false;
+    }
+    
+    LS_LOG_MSG("\tSuccessfully loaded the 3D mesh file ", filename, ".\n");
+    
+    resultDrawMode = draw_mode_t::TRIANGLES;
+    return true;
+}
+
+/*-------------------------------------
+    Import mesh file data.
+-------------------------------------*/
+bool meshResource::loadSceneData(const aiScene * const pScene) {
+    unsigned vertIter = 0;
+    unsigned indexIter = 0;
+    
+    // Loop through each scene mesh and load its vertices
+    for (unsigned meshIter = 0; meshIter < pScene->mNumMeshes; ++meshIter) {
+        const aiMesh* const pMesh = pScene->mMeshes[meshIter];
+        
+        for (unsigned v = 0; v < pMesh->mNumVertices; ++v) {
+            aiVector3D& inputVert = pMesh->mVertices[v];
+            vertex& internalVert = this->pVertices[vertIter++];
+            
+            internalVert.pos[0] = inputVert.x;
+            internalVert.pos[1] = inputVert.y;
+            internalVert.pos[2] = inputVert.z;
+            
+            this->meshBounds.compareAndUpdate(internalVert.pos);
+            
+            if (pMesh->HasTextureCoords(aiTextureType_NONE)) {
+                const aiVector3D& inputUv = pMesh->mTextureCoords[aiTextureType_NONE][v];
+                internalVert.uv[0] = inputUv.x;
+                internalVert.uv[1] = inputUv.y;
+            }
+            
+            if (pMesh->HasNormals()) {
+                const aiVector3D& inputNorm = pMesh->mNormals[v];
+                internalVert.norm[0] = inputNorm.x;
+                internalVert.norm[1] = inputNorm.y;
+                internalVert.norm[2] = inputNorm.z;
+            }
+        }
+        
+        // make sure that the mesh is only made up of triangles
+        for (unsigned faceIter = 0; faceIter < pMesh->mNumFaces; ++faceIter) {
+            const aiFace& face = pMesh->mFaces[faceIter];
+            draw_index_t* const indices = this->pIndices;
+            indices[indexIter++] = face.mIndices[0];
+            indices[indexIter++] = face.mIndices[1];
+            indices[indexIter++] = face.mIndices[2];
+        }
+    }
+    
+    return true;
+}
+
+/*-------------------------------------
+    Save a mesh to a file.
+-------------------------------------*/
+bool meshResource::saveFile(const std::string&) const {
+    return false;
 }
 
 } // end draw namespace

@@ -132,6 +132,7 @@
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2.dll</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
+            <linkerLibLibItem>assimp.dll</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -272,6 +273,7 @@
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
             <linkerLibLibItem>SDL2.dll</linkerLibLibItem>
+            <linkerLibLibItem>assimp.dll</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

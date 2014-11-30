@@ -28,13 +28,11 @@ meshModel::meshModel() {
 meshModel::meshModel(meshModel&& dm) :
     pMesh{dm.pMesh},
     pTexture{dm.pTexture},
-    numInstances{dm.numInstances},
     modelVbo{std::move(dm.modelVbo)},
     vao{std::move(dm.vao)}
 {
     dm.pMesh = nullptr;
     dm.pTexture = nullptr;
-    dm.numInstances = 1;
 }
 
 /*-------------------------------------
@@ -51,9 +49,6 @@ meshModel& meshModel::operator=(meshModel&& dm) {
     pTexture = dm.pTexture;
     dm.pTexture = nullptr;
     
-    numInstances = dm.numInstances;
-    dm.numInstances = 1;
-    
     modelVbo = std::move(dm.modelVbo);
     vao = std::move(dm.vao);
     
@@ -64,30 +59,33 @@ meshModel& meshModel::operator=(meshModel&& dm) {
     Helper function to ensure all vertex attributes are setup properly.
 -------------------------------------*/
 void meshModel::setVertexAttribs() {
-    const vertexBuffer& vbo = pMesh->vbo;
-    
     vao.bind();
-    vbo.bind();
+    
+    pMesh->getVertexBuffer().bind();
+    pMesh->getIndexBuffer().bind();
     
     // Vertex positions
-    vao.enableAttrib(VERTEX_ATTRIB_POS);
+    vao.enableAttrib(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_POS));
     vao.setAttribOffset(
-        VERTEX_ATTRIB_POS, LS_ARRAY_SIZE(vertex::pos.v),
-        GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)offsetof(vertex, pos.v)
+        LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_POS),
+        LS_ARRAY_SIZE(vertex::pos.v), GL_FLOAT, GL_FALSE, sizeof(vertex),
+        (GLvoid*)LS_ENUM_VAL(vertex_desc_t::ELEMENT_COUNT_POS)
     );
     
     // Vertex UVs
-    vao.enableAttrib(VERTEX_ATTRIB_TEX);
+    vao.enableAttrib(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_TEX));
     vao.setAttribOffset(
-        VERTEX_ATTRIB_TEX, LS_ARRAY_SIZE(vertex::uv.v),
-        GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)offsetof(vertex, uv.v)
+        LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_TEX),
+        LS_ARRAY_SIZE(vertex::uv.v), GL_FLOAT, GL_FALSE, sizeof(vertex),
+        (GLvoid*)LS_ENUM_VAL(vertex_desc_t::ELEMENT_COUNT_TEX)
     );
     
     // Vertex normals
-    vao.enableAttrib(VERTEX_ATTRIB_NORM);
+    vao.enableAttrib(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_NORM));
     vao.setAttribOffset(
-        VERTEX_ATTRIB_NORM, LS_ARRAY_SIZE(vertex::norm.v),
-        GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)offsetof(vertex, norm.v)
+        LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_NORM),
+        LS_ARRAY_SIZE(vertex::norm.v), GL_FLOAT, GL_FALSE, sizeof(vertex),
+        (GLvoid*)LS_ENUM_VAL(vertex_desc_t::ELEMENT_COUNT_NORM)
     );
     
     LOG_GL_ERR();
@@ -95,18 +93,21 @@ void meshModel::setVertexAttribs() {
     // setup the VBO/VAO for instancing
     modelVbo.bind();
     for (unsigned i = 0; i < 4; ++i) {
-        vao.enableAttrib(VERTEX_ATTRIB_MAT_ROW0+i);
+        vao.enableAttrib(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_MAT_ROW0)+i);
         vao.setAttribOffset(
-            VERTEX_ATTRIB_MAT_ROW0+i, 4, GL_FLOAT, GL_FALSE,
-            sizeof(math::mat4), (const GLvoid*)(sizeof(float)*i*4)
+            LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_MAT_ROW0)+i, 4, GL_FLOAT,
+            GL_FALSE, sizeof(math::mat4), (const GLvoid*)(sizeof(float)*i*4)
         );
-        vao.setAttribInstanceRate(VERTEX_ATTRIB_MAT_ROW0+i, 1);
+        vao.setAttribInstanceRate(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_MAT_ROW0)+i, 1);
     }
     
     LOG_GL_ERR();
     
     vao.unbind();
-    vbo.unbind();
+    
+    pMesh->getVertexBuffer().unbind();
+    pMesh->getIndexBuffer().unbind();
+    
     modelVbo.unbind();
     
     LOG_GL_ERR();
@@ -115,7 +116,6 @@ void meshModel::setVertexAttribs() {
 void meshModel::terminate() {
     pMesh = nullptr;
     pTexture = nullptr;
-    numInstances = 1;
     vao.terminate();
     modelVbo.terminate();
 }
@@ -123,11 +123,11 @@ void meshModel::terminate() {
 /*-------------------------------------
     Set the mesh to be used by this object during a draw operation.
 -------------------------------------*/
-bool meshModel::init(const mesh& m, const texture& t) {
+bool meshModel::init(const geometry& m, const texture& t) {
     // there's no telling what data might be pushed into the VAO. Get rid of it.
     vao.terminate();
     if (!vao.init()) {
-        LS_LOG_ERR("Unable to create a drawModel for mesh ", m.getId(), '.');
+        LS_LOG_ERR("Unable to create a drawModel for geometry ", m.getId(), '.');
         terminate();
         return false;
     }
@@ -148,6 +148,10 @@ bool meshModel::init(const mesh& m, const texture& t) {
     
     pMesh = &m;
     
+    drawParams = m.getDrawCommand();
+    const math::mat4 identity{1.f};
+    setNumInstances(1, &identity);
+    
     setVertexAttribs();
     setTexture(t);
     
@@ -165,14 +169,43 @@ void meshModel::setNumInstances(int instanceCount, const math::mat4* const model
     modelVbo.unbind();
     LOG_GL_ERR();
     
-    numInstances = instanceCount;
+    switch (drawParams.getDrawCommand()) {
+        case draw_command_t::ARRAYS: {
+            const drawArrays& da = drawParams.getDrawFunction().da;
+            drawParams.paramsArraysInstanced(da.first, da.count, instanceCount);
+            break;
+        }
+        case draw_command_t::ARRAYS_INSTANCED: {
+            const drawArraysInstanced& dai = drawParams.getDrawFunction().dai;
+            drawParams.paramsArraysInstanced(dai.first, dai.count, instanceCount);
+            break;
+        }
+        case draw_command_t::ELEMENTS: {
+            const drawElements& de = drawParams.getDrawFunction().de;
+            drawParams.paramsElementsInstanced(de.count, de.type, de.offset, instanceCount);
+            break;
+        }
+        case draw_command_t::ELEMENTS_RANGED: {
+            const drawElementsRanged& der = drawParams.getDrawFunction().der;
+            drawParams.paramsElementsInstanced(der.count, der.type, der.offset, instanceCount);
+            break;
+        }
+        case draw_command_t::ELEMENTS_INSTANCED: {
+            const drawElementsInstanced& dei = drawParams.getDrawFunction().dei;
+            drawParams.paramsElementsInstanced(dei.count, dei.type, dei.offset, instanceCount);
+            break;
+        }
+        default:
+            LS_DEBUG_ASSERT(false);
+            break;
+    }
 }
 
 /*-------------------------------------
     Change the model matrix for a single instance
 -------------------------------------*/
 void meshModel::modifyInstance(int index, const math::mat4& modelMatrix) {
-    LS_DEBUG_ASSERT(index >= 0 && index < numInstances);
+    LS_DEBUG_ASSERT(index >= 0);
     modelVbo.bind();
     modelVbo.setSubData(sizeof(math::mat4)*index, sizeof(math::mat4), &modelMatrix);
     modelVbo.unbind();

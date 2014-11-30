@@ -12,14 +12,14 @@
 
 #include "lightsky/draw/meshModel.h"
 #include "lightsky/draw/setup.h"
-#include "lightsky/draw/mesh.h"
+#include "lightsky/draw/geometry.h"
 #include "lightsky/draw/texture.h"
 #include "lightsky/draw/atlas.h"
 
 /*-------------------------------------
  * Extern Template Types
 -------------------------------------*/
-extern template class std::deque<ls::draw::mesh*>;
+extern template class std::deque<ls::draw::geometry*>;
 extern template class std::deque<ls::draw::meshModel*>;
 extern template class std::deque<ls::draw::texture*>;
 extern template class std::deque<ls::draw::atlas*>;
@@ -31,7 +31,7 @@ namespace draw {
  * Typedefs for the type of lists/arrays that can be returned by the scene
  * manager.
 -------------------------------------*/
-typedef std::deque<mesh*> meshList;
+typedef std::deque<geometry*> geometryList;
 typedef std::deque<meshModel*> drawList;
 typedef std::deque<texture*> textureList;
 typedef std::deque<atlas*> atlasList;
@@ -66,10 +66,10 @@ class sceneManager {
          */
         bool initDefaultTexture();
         
-        textureList texMgr;
-        meshList    meshMgr;
-        atlasList   atlasMgr;
-        drawList    drawMgr;
+        textureList     texMgr;
+        geometryList    geometryMgr;
+        atlasList       atlasMgr;
+        drawList        drawMgr;
         
     public:
         sceneManager();
@@ -91,42 +91,42 @@ class sceneManager {
          */
         const texture& getDefaultTexture() const;
         
-        meshList& getMeshList();
+        geometryList& getGeometryList();
         textureList& getTextureList();
         atlasList& getAtlasList();
         drawList& getModelList();
         
-        const meshList& getMeshList() const;
+        const geometryList& getGeometryList() const;
         const textureList& getTextureList() const;
         const atlasList& getAtlasList() const;
         const drawList& getModelList() const;
         
-        mesh* getMesh(unsigned index) const;
+        geometry* getGeometry(unsigned index) const;
         texture* getTexture(unsigned index) const;
         atlas* getAtlas(unsigned index) const;
         meshModel* getModel(unsigned index) const;
         
-        void eraseMesh(unsigned index);
+        void eraseGeometry(unsigned index);
         void eraseTexture(unsigned index);
         void eraseAtlas(unsigned index);
         void eraseModel(unsigned index);
         
-        unsigned getNumMeshes() const;
+        unsigned getNumGeometries() const;
         unsigned getNumTextures() const;
         unsigned getNumAtlases() const;
         unsigned getNumModels() const;
         
-        unsigned manageMesh(mesh* const);
+        unsigned manageGeometry(geometry* const);
         unsigned manageTexture(texture* const);
         unsigned manageAtlas(atlas* const);
         unsigned manageModel(meshModel* const);
         
-        mesh* unManageMesh(unsigned index);
+        geometry* unManageGeometry(unsigned index);
         texture* unManageTexture(unsigned index);
         atlas* unManageAtlas(unsigned index);
         meshModel* unManageModel(unsigned index);
         
-        bool containsMesh(const mesh* const) const;
+        bool containsGeometry(const geometry* const) const;
         bool containsTexture(const texture* const) const;
         bool containsAtlas(const atlas* const) const;
         bool containsModel(const meshModel* const) const;

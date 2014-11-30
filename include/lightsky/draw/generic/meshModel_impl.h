@@ -12,7 +12,7 @@ inline unsigned meshModel::getId() const {
 /*-------------------------------------
     Get the mesh that is currently used by this model
 -------------------------------------*/
-inline const mesh& meshModel::getMesh() const {
+inline const geometry& meshModel::getMesh() const {
     return *pMesh;
 }
 
@@ -31,14 +31,6 @@ inline void meshModel::setTexture(const texture& texRef) {
 }
 
 /*-------------------------------------
-    Get the number of instances that will be rendered when a call to
-    "draw()" is made.
--------------------------------------*/
-inline int meshModel::getNumInstances() const {
-    return numInstances;
-}
-
-/*-------------------------------------
     Determine if this current model is able to be rendered.
 -------------------------------------*/
 inline bool meshModel::canDraw() const {
@@ -50,20 +42,7 @@ inline bool meshModel::canDraw() const {
 -------------------------------------*/
 inline void meshModel::draw() const {
     pTexture->bind();
-    vao.bind();
-    glDrawArraysInstanced(pMesh->getDrawMode(), 0, pMesh->getNumVertices(), numInstances);
-    vao.unbind();
-    pTexture->unbind();
-}
-
-/*-------------------------------------
-    Render an instanced set of sub-meshes
--------------------------------------*/
-inline void meshModel::drawSubMesh(int startPos, int endPos) const {
-    pTexture->bind();
-    vao.bind();
-    glDrawArraysInstanced(pMesh->getDrawMode(), startPos, endPos, numInstances);
-    vao.unbind();
+    drawParams.draw(vao);
     pTexture->unbind();
 }
 

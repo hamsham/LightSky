@@ -11,11 +11,11 @@
         <itemPath>../include/lightsky/draw/generic/depthObject_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/fontResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/framebuffer_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/geometry_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/imageResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/matrixStack_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/meshModel_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/meshResource_impl.h</itemPath>
-        <itemPath>../include/lightsky/draw/generic/mesh_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/renderer_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/sceneManager_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/shaderObject_impl.h</itemPath>
@@ -29,12 +29,13 @@
       <itemPath>../include/lightsky/draw/color.h</itemPath>
       <itemPath>../include/lightsky/draw/depthObject.h</itemPath>
       <itemPath>../include/lightsky/draw/draw.h</itemPath>
+      <itemPath>../include/lightsky/draw/drawCommand.h</itemPath>
       <itemPath>../include/lightsky/draw/fontResource.h</itemPath>
       <itemPath>../include/lightsky/draw/framebuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/geometry.h</itemPath>
+      <itemPath>../include/lightsky/draw/geometry_utils.h</itemPath>
       <itemPath>../include/lightsky/draw/imageResource.h</itemPath>
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
-      <itemPath>../include/lightsky/draw/mesh.h</itemPath>
       <itemPath>../include/lightsky/draw/meshModel.h</itemPath>
       <itemPath>../include/lightsky/draw/meshResource.h</itemPath>
       <itemPath>../include/lightsky/draw/renderer.h</itemPath>
@@ -58,12 +59,13 @@
       <itemPath>../src/draw/blendObject.cpp</itemPath>
       <itemPath>../src/draw/boundingBox.cpp</itemPath>
       <itemPath>../src/draw/depthObject.cpp</itemPath>
+      <itemPath>../src/draw/drawCommand.cpp</itemPath>
       <itemPath>../src/draw/fontResource.cpp</itemPath>
       <itemPath>../src/draw/framebuffer.cpp</itemPath>
       <itemPath>../src/draw/geometry.cpp</itemPath>
+      <itemPath>../src/draw/geometry_utils.cpp</itemPath>
       <itemPath>../src/draw/imageResource.cpp</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
-      <itemPath>../src/draw/mesh.cpp</itemPath>
       <itemPath>../src/draw/meshModel.cpp</itemPath>
       <itemPath>../src/draw/meshResource.cpp</itemPath>
       <itemPath>../src/draw/sceneManager.cpp</itemPath>
@@ -167,6 +169,11 @@
       </item>
       <item path="../include/lightsky/draw/draw.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/drawCommand.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/fontResource.h"
             ex="false"
             tool="3"
@@ -207,6 +214,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/geometry_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/imageResource_impl.h"
             ex="false"
             tool="3"
@@ -223,11 +235,6 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/generic/meshResource_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/generic/mesh_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -267,6 +274,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/geometry_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/imageResource.h"
             ex="false"
             tool="3"
@@ -276,8 +288,6 @@
             ex="false"
             tool="3"
             flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/mesh.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/meshModel.h"
             ex="false"
@@ -333,17 +343,19 @@
       </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/drawCommand.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/fontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/framebuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/geometry.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/geometry_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/imageResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/meshModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -447,6 +459,11 @@
       </item>
       <item path="../include/lightsky/draw/draw.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/drawCommand.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/fontResource.h"
             ex="false"
             tool="3"
@@ -487,6 +504,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/geometry_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/imageResource_impl.h"
             ex="false"
             tool="3"
@@ -503,11 +525,6 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/generic/meshResource_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/generic/mesh_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -547,6 +564,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/geometry_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/imageResource.h"
             ex="false"
             tool="3"
@@ -556,8 +578,6 @@
             ex="false"
             tool="3"
             flavor2="0">
-      </item>
-      <item path="../include/lightsky/draw/mesh.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/meshModel.h"
             ex="false"
@@ -613,17 +633,19 @@
       </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/drawCommand.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/fontResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/framebuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/geometry.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/geometry_utils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/imageResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/meshModel.cpp" ex="false" tool="1" flavor2="0">
       </item>

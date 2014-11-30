@@ -71,15 +71,16 @@ build/Debug/MinGW32_Qt-Windows/fbState.o: fbState.cpp main.h \
  ../../include/lightsky/draw/framebuffer.h \
  ../../include/lightsky/draw/generic/framebuffer_impl.h \
  ../../include/lightsky/draw/geometry.h \
- ../../include/lightsky/draw/matrixStack.h \
- ../../include/lightsky/draw/generic/matrixStack_impl.h \
- ../../include/lightsky/draw/mesh.h \
+ ../../include/lightsky/draw/drawCommand.h \
+ ../../include/lightsky/draw/vertexArray.h \
  ../../include/lightsky/draw/renderer.h \
  ../../include/lightsky/draw/generic/renderer_impl.h \
  ../../include/lightsky/draw/vertex.h \
- ../../include/lightsky/draw/generic/mesh_impl.h \
+ ../../include/lightsky/draw/generic/geometry_impl.h \
+ ../../include/lightsky/draw/geometry_utils.h \
+ ../../include/lightsky/draw/matrixStack.h \
+ ../../include/lightsky/draw/generic/matrixStack_impl.h \
  ../../include/lightsky/draw/meshModel.h \
- ../../include/lightsky/draw/vertexArray.h \
  ../../include/lightsky/draw/generic/meshModel_impl.h \
  ../../include/lightsky/draw/meshResource.h \
  ../../include/lightsky/draw/generic/meshResource_impl.h \
@@ -268,11 +269,9 @@ main.h:
 
 ../../include/lightsky/draw/geometry.h:
 
-../../include/lightsky/draw/matrixStack.h:
+../../include/lightsky/draw/drawCommand.h:
 
-../../include/lightsky/draw/generic/matrixStack_impl.h:
-
-../../include/lightsky/draw/mesh.h:
+../../include/lightsky/draw/vertexArray.h:
 
 ../../include/lightsky/draw/renderer.h:
 
@@ -280,11 +279,15 @@ main.h:
 
 ../../include/lightsky/draw/vertex.h:
 
-../../include/lightsky/draw/generic/mesh_impl.h:
+../../include/lightsky/draw/generic/geometry_impl.h:
+
+../../include/lightsky/draw/geometry_utils.h:
+
+../../include/lightsky/draw/matrixStack.h:
+
+../../include/lightsky/draw/generic/matrixStack_impl.h:
 
 ../../include/lightsky/draw/meshModel.h:
-
-../../include/lightsky/draw/vertexArray.h:
 
 ../../include/lightsky/draw/generic/meshModel_impl.h:
 

@@ -39,12 +39,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/blendObject.o \
 	${OBJECTDIR}/_ext/1019371010/boundingBox.o \
 	${OBJECTDIR}/_ext/1019371010/depthObject.o \
+	${OBJECTDIR}/_ext/1019371010/drawCommand.o \
 	${OBJECTDIR}/_ext/1019371010/fontResource.o \
 	${OBJECTDIR}/_ext/1019371010/framebuffer.o \
 	${OBJECTDIR}/_ext/1019371010/geometry.o \
+	${OBJECTDIR}/_ext/1019371010/geometry_utils.o \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
-	${OBJECTDIR}/_ext/1019371010/mesh.o \
 	${OBJECTDIR}/_ext/1019371010/meshModel.o \
 	${OBJECTDIR}/_ext/1019371010/meshResource.o \
 	${OBJECTDIR}/_ext/1019371010/sceneManager.o \
@@ -102,6 +103,11 @@ ${OBJECTDIR}/_ext/1019371010/depthObject.o: ../src/draw/depthObject.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/depthObject.o ../src/draw/depthObject.cpp
 
+${OBJECTDIR}/_ext/1019371010/drawCommand.o: ../src/draw/drawCommand.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/drawCommand.o ../src/draw/drawCommand.cpp
+
 ${OBJECTDIR}/_ext/1019371010/fontResource.o: ../src/draw/fontResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
@@ -117,6 +123,11 @@ ${OBJECTDIR}/_ext/1019371010/geometry.o: ../src/draw/geometry.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/geometry.o ../src/draw/geometry.cpp
 
+${OBJECTDIR}/_ext/1019371010/geometry_utils.o: ../src/draw/geometry_utils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/geometry_utils.o ../src/draw/geometry_utils.cpp
+
 ${OBJECTDIR}/_ext/1019371010/imageResource.o: ../src/draw/imageResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
@@ -126,11 +137,6 @@ ${OBJECTDIR}/_ext/1019371010/matrixStack.o: ../src/draw/matrixStack.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/matrixStack.o ../src/draw/matrixStack.cpp
-
-${OBJECTDIR}/_ext/1019371010/mesh.o: ../src/draw/mesh.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/mesh.o ../src/draw/mesh.cpp
 
 ${OBJECTDIR}/_ext/1019371010/meshModel.o: ../src/draw/meshModel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

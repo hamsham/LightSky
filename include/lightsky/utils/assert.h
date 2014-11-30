@@ -86,7 +86,7 @@ void runtime_assert(bool condition, error_t type, const char* const msg);
     	#define LS_DEBUG_ASSERT( x ) LS_ASSERT(x)
     #endif
 #else
-    #define LS_DEBUG_ASSERT
+    #define LS_DEBUG_ASSERT( x )
 #endif /* DEBUG */
 
 /*-------------------------------------

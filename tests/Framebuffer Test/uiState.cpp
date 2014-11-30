@@ -87,8 +87,8 @@ uiState& uiState::operator=(uiState&& state) {
  * Allocate internal class memory
 -------------------------------------*/
 bool uiState::initMemory() {
-    pScene          = new ls::draw::sceneManager{};
-    pBlender        = new ls::draw::blendObject{};
+    pScene = new ls::draw::sceneManager{};
+    pBlender = new ls::draw::blendObject{};
     
     if (pScene == nullptr
     ||  !pScene->init()
@@ -106,7 +106,7 @@ bool uiState::initMemory() {
 bool uiState::initFileData() {
     
     ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
-    ls::draw::mesh* pFontMesh           = new ls::draw::mesh{};
+    ls::draw::geometry* pFontMesh       = new ls::draw::geometry{};
     ls::draw::atlas* pAtlas             = new ls::draw::atlas{};
     bool ret                            = true;
     
@@ -120,7 +120,7 @@ bool uiState::initFileData() {
         ret = false;
     }
     else {
-        pScene->manageMesh(pFontMesh);
+        pScene->manageGeometry(pFontMesh);
         pScene->manageAtlas(pAtlas);
     }
     
@@ -169,7 +169,7 @@ bool uiState::initDrawModels() {
     }
     else {
         pScene->manageModel(pTextModel);
-        ls::draw::mesh* const pTextMesh = pScene->getMeshList()[0];
+        ls::draw::geometry* const pTextMesh = pScene->getGeometryList()[0];
         pTextModel->init(*pTextMesh, pScene->getAtlas(0)->getTexture());
 
         math::mat4 modelMat = {1.f};
@@ -224,10 +224,15 @@ void uiState::onRun() {
     secondTimer += getParentSystem().getTickTime();
     if (secondTimer >= 1000) {
         ls::draw::atlas* const pStringAtlas = pScene->getAtlas(0);
-        ls::draw::mesh* const pStringMesh = pScene->getMesh(0);
+        ls::draw::geometry* const pStringMesh = pScene->getGeometry(0);
         const std::string&& timingStr = getTimingStr();
         pStringMesh->init(*pStringAtlas, timingStr);
         secondTimer = 0;
+        
+        pScene->getModel(0)->init(
+            *pScene->getGeometry(0),
+            pScene->getAtlas(0)->getTexture()
+        );
     }
     
     drawScene();
@@ -259,8 +264,10 @@ void uiState::onStop() {
  * Get a string representing the current Ms/s and F/s
 -------------------------------------*/
 std::string uiState::getTimingStr() const {
-    const float tickTime = getParentSystem().getTickTime();// * 0.001f;
-    return std::to_string(tickTime) + "MS\n" + std::to_string(1/tickTime) + "FPS";
+    const float tickTime = (float)getParentSystem().getTickTime();
+    return
+        "MPS: " + std::to_string(tickTime) +
+        "\nFPS:  " + std::to_string(1000.f/tickTime);
 }
 
 /*-------------------------------------

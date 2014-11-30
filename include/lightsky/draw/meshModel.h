@@ -9,7 +9,7 @@
 #define	__LS_DRAW_MESH_MODEL_H__
 
 #include "lightsky/draw/vertexBuffer.h"
-#include "lightsky/draw/mesh.h"
+#include "lightsky/draw/geometry.h"
 #include "lightsky/draw/texture.h"
 #include "lightsky/draw/vertexArray.h"
 
@@ -28,7 +28,7 @@ class meshModel final {
          * A pointer to the mesh that should be drawn using this model.
          * The "draw" methods should NOT be called if this is null.
          */
-        const mesh* pMesh = nullptr;
+        const geometry* pMesh = nullptr;
         
         /**
          * A pointer to the texture that should be applied when rendering this
@@ -36,13 +36,6 @@ class meshModel final {
          * The "draw" methods should NOT be called if this is null.
          */
         const texture* pTexture = nullptr;
-        
-        /**
-         * Counter of the number of instances that are currently reserved for
-         * drawing in the vao & vbo. This is also a cound of the number of model
-         * matrices that are held within the vbo.
-         */
-        int numInstances = 1;
         
         /**
          * Vertex Buffer that will be used specifically for model matrices.
@@ -53,6 +46,12 @@ class meshModel final {
          * Vertex array to be used with this mesh object
          */
         vertexArray vao = {};
+        
+        /**
+         * @brief Parameters used to draw instanced version of the mesh used by
+         * *this.
+         */
+        drawCommand drawParams;
         
         /**
          * Helper function to ensure all vertex attributes are setup properly.
@@ -130,7 +129,7 @@ class meshModel final {
          * @return TRUE if the mesh was successfully loaded with a VBO assigned
          * to handle model matrices, FALSE if otherwise.
          */
-        bool init(const mesh& meshRef, const texture& texRef);
+        bool init(const geometry& meshRef, const texture& texRef);
         
         /**
          * Clear all draw parameters to their default, null values and free any
@@ -146,7 +145,7 @@ class meshModel final {
          * 
          * @return a const reference to the mesh used by *this.
          */
-        const mesh& getMesh() const;
+        const geometry& getMesh() const;
         
         /**
          * Get the texture that is currently used by this model
@@ -162,15 +161,6 @@ class meshModel final {
          * A const reference to a texture
          */
         void setTexture(const texture& texRef);
-        
-        /**
-         * Get the number of instances that will be rendered when a call to
-         * "draw()" is made.
-         * 
-         * @return the number of meshes/model matrices rendered by/with this
-         * mesh.
-         */
-        int getNumInstances() const;
         
         /**
          * All meshes support instanced draws by default. This will set the
@@ -214,20 +204,6 @@ class meshModel final {
          * This method renders a mesh to the currently bound framebuffer.
          */
         void draw() const;
-        
-        /**
-         * Draw a single part of the total sub-meshes contained within *this.
-         * This function already takes the vertex counts into account.
-         * 
-         * @param startPos
-         * indicates the starting offset to the the mesh contained within *this
-         * that should be drawn.
-         * 
-         * @param endPos
-         * indicates the offset to the final sub-mesh contained within *this
-         * that should be drawn.
-         */
-        void drawSubMesh(int startPos, int endPos) const;
 };
 
 } // end draw namespace

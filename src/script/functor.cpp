@@ -24,7 +24,7 @@ functor::~functor() {
 /*-------------------------------------
     Constructor
 -------------------------------------*/
-functor::functor(variable** const pArguments, const func_ref_t pFunc) :
+functor::functor(variable** const pArguments, func_ref_t pFunc) :
     scriptable{},
     nextFunc{nullptr},
     pFunction{pFunc},
@@ -96,9 +96,11 @@ void functor::save(std::ostream& ostr) const {
 /*-----------------------------------------------------------------------------
     Built-In Types
 -----------------------------------------------------------------------------*/
+/*
 LS_SCRIPT_DEFINE_FUNC(empty, void) {
     (void)pArgs;
 };
+*/
 
 } // end script namespace
 } // end ls namespace

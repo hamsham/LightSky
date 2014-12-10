@@ -106,12 +106,12 @@ vec3_t<num_t> operator * (num_t n, const vec3_t<num_t>& v);
 /*-------------------------------------
     3D Vector Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(vec3f,    vec3_t, float);
-LS_DECLARE_CLASS_TYPE(vec3d,    vec3_t, double);
-LS_DECLARE_CLASS_TYPE(vec3i,    vec3_t, int);
-LS_DECLARE_CLASS_TYPE(vec3ui,   vec3_t, unsigned);
-LS_DECLARE_CLASS_TYPE(vec3x,    vec3_t, medp_t);
-LS_DECLARE_CLASS_TYPE(vec3,     vec3_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(vec3f,    vec3_t, float);
+LS_DECLARE_STRUCT_TYPE(vec3d,    vec3_t, double);
+LS_DECLARE_STRUCT_TYPE(vec3i,    vec3_t, int);
+LS_DECLARE_STRUCT_TYPE(vec3ui,   vec3_t, unsigned);
+LS_DECLARE_STRUCT_TYPE(vec3x,    vec3_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(vec3,     vec3_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

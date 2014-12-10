@@ -48,13 +48,13 @@ class tuple_t {
      *  @brief Destroy an object at a preallocated space within a buffer.
      */
     template <typename arg_t>
-    static constexpr void destroyObjects(char* buffer, unsigned offset, arg_t*);
+    static constexpr bool destroyObjects(char* buffer, unsigned offset, arg_t*);
 
     /**
      *  @brief Destroy an object at a preallocated space within a buffer.
      */
     template <typename arg_t, typename... args_t>
-    static inline void destroyObjects(char* buffer, unsigned offset, arg_t*, args_t*... args);
+    static inline bool destroyObjects(char* buffer, unsigned offset, arg_t*, args_t*... args);
     
     /*-------------------------------------------------------------------------
         Movements and copies

@@ -82,7 +82,7 @@ math::quat_t<num_t> math::lerp(const quat_t<num_t>& q1, const quat_t<num_t>& q2,
 -------------------------------------*/
 template <typename num_t> constexpr
 math::quat_t<num_t> math::nlerp(const quat_t<num_t>& q1, const quat_t<num_t>& q2, num_t percent) {
-    return normalize(lerp<num_t>(q1, q2));
+    return normalize(lerp<num_t>(q1, q2, percent));
 }
 
 /*-------------------------------------

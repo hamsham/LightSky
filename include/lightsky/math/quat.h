@@ -76,12 +76,12 @@ struct quat_t {
 /*-------------------------------------
     Quaternion Template Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(quatf,    quat_t, float);
-LS_DECLARE_CLASS_TYPE(quatd,    quat_t, double);
-LS_DECLARE_CLASS_TYPE(quati,    quat_t, int); // not recommended
-LS_DECLARE_CLASS_TYPE(quatui,   quat_t, unsigned); // not recommended
-LS_DECLARE_CLASS_TYPE(quatx,    quat_t, medp_t);
-LS_DECLARE_CLASS_TYPE(quat,     quat_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(quatf,    quat_t, float);
+LS_DECLARE_STRUCT_TYPE(quatd,    quat_t, double);
+LS_DECLARE_STRUCT_TYPE(quati,    quat_t, int); // not recommended
+LS_DECLARE_STRUCT_TYPE(quatui,   quat_t, unsigned); // not recommended
+LS_DECLARE_STRUCT_TYPE(quatx,    quat_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(quat,     quat_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

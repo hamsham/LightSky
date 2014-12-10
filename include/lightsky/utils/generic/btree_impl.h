@@ -66,7 +66,7 @@ bTreeNode<data_t>* bTree<key_t, data_t>::iterate(const key_t* k, bool createNode
     bTreeNode<data_t>*      bNodeIter   = &head;
     const utils::bitMask*   byteIter    = nullptr;
     
-    while (byteIter = ls::utils::getByte<key_t>(k, bytePos++)) {
+    while ((byteIter = ls::utils::getByte<key_t>(k, bytePos++))) {
         
         for (unsigned currBit = LS_BITS_PER_BYTE; currBit--;) {
 

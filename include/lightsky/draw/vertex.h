@@ -47,15 +47,15 @@ enum class vertex_attrib_t : int {
  * These enumerations can be used to describe vertex layouts to VAO objects.
 -----------------------------------------------------------------------------*/
 enum class vertex_desc_t : int {
-    ELEMENT_COUNT_POS = offsetof(vertex, pos.v),
-    ELEMENT_COUNT_TEX = offsetof(vertex, uv.v),
-    ELEMENT_COUNT_NORM = offsetof(vertex, norm.v),
+    ELEMENT_COUNT_POS = offsetof(vertex, pos),
+    ELEMENT_COUNT_TEX = offsetof(vertex, uv),
+    ELEMENT_COUNT_NORM = offsetof(vertex, norm),
     
-    ELEMENT_COUNT_MAT_ROW = offsetof(ls::math::mat4, m[0]),
-    ELEMENT_COUNT_MAT_ROW0 = offsetof(ls::math::mat4, m[0]),
-    ELEMENT_COUNT_MAT_ROW1 = offsetof(ls::math::mat4, m[4]),
-    ELEMENT_COUNT_MAT_ROW2 = offsetof(ls::math::mat4, m[8]),
-    ELEMENT_COUNT_MAT_ROW3 = offsetof(ls::math::mat4, m[12])
+    ELEMENT_COUNT_MAT_ROW = 0,
+    ELEMENT_COUNT_MAT_ROW0 = sizeof(ls::math::vec4)*0,
+    ELEMENT_COUNT_MAT_ROW1 = sizeof(ls::math::vec4)*1,
+    ELEMENT_COUNT_MAT_ROW2 = sizeof(ls::math::vec4)*2,
+    ELEMENT_COUNT_MAT_ROW3 = sizeof(ls::math::vec4)*3
 };
 
 } // end draw namespace

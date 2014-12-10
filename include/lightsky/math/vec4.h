@@ -107,12 +107,12 @@ vec4_t<num_t> operator * (num_t n, const vec4_t<num_t>& v);
 /*-------------------------------------
     4D Vector Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(vec4f,    vec4_t, float);
-LS_DECLARE_CLASS_TYPE(vec4d,    vec4_t, double);
-LS_DECLARE_CLASS_TYPE(vec4i,    vec4_t, int);
-LS_DECLARE_CLASS_TYPE(vec4ui,   vec4_t, unsigned);
-LS_DECLARE_CLASS_TYPE(vec4x,    vec4_t, medp_t);
-LS_DECLARE_CLASS_TYPE(vec4,     vec4_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(vec4f,    vec4_t, float);
+LS_DECLARE_STRUCT_TYPE(vec4d,    vec4_t, double);
+LS_DECLARE_STRUCT_TYPE(vec4i,    vec4_t, int);
+LS_DECLARE_STRUCT_TYPE(vec4ui,   vec4_t, unsigned);
+LS_DECLARE_STRUCT_TYPE(vec4x,    vec4_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(vec4,     vec4_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

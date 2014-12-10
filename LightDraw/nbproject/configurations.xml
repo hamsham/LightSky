@@ -105,7 +105,7 @@
           <standard>8</standard>
           <incDir>
             <pElem>../include</pElem>
-            <pElem>../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2</pElem>
+            <pElem>/usr/include/freetype2</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
           <preprocessorList>
@@ -392,7 +392,7 @@
           <standard>8</standard>
           <incDir>
             <pElem>../include</pElem>
-            <pElem>../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2</pElem>
+            <pElem>/usr/include/freetype2</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse</commandLine>
         </ccTool>

@@ -10,6 +10,14 @@ inline bool imageResource::saveFile(const std::string& filename) const {
 }
 
 /*-------------------------------------
+ * Saving Data (wide-string)
+-------------------------------------*/
+inline bool imageResource::saveFile(const std::wstring& filename) const {
+    const std::string&& file = ls::utils::convertWtoMb(filename);
+    return saveFile(file, img_file_t::IMG_FILE_PNG);
+}
+
+/*-------------------------------------
  * Get the pixel size of the currently loaded image
 -------------------------------------*/
 inline math::vec2i imageResource::getPixelSize() const {

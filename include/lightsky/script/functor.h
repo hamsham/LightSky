@@ -131,7 +131,7 @@ class functor : public scriptable {
          *  argument parameters to actual, native parameters and a return
          *  value.
          */
-        const func_ref_t pFunction;
+        func_ref_t pFunction;
         
         /**
          *  @brief An array of pointers to variables.
@@ -148,7 +148,7 @@ class functor : public scriptable {
          *  in order to properly initialize *this and all members contained in
          *  *this.
          */
-        functor(variable** const pArguments, const func_ref_t pFunc);
+        functor(variable** const pArguments, func_ref_t pFunc);
 
     public:
         /**
@@ -402,7 +402,7 @@ class functor_t final : public functor {
          *  A pointer to an array of pointers to scriptable variables (this
          *  will actually be the 'parameters' member in *this).
          */
-        static const func_ref_t functionImpl;
+        static func_ref_t functionImpl;
 
     public:
         /**
@@ -572,7 +572,7 @@ class functor_t<hashId, void> final : public functor {
          *  A pointer to an array of pointers to scriptable variables (this
          *  will actually be the 'parameters' member in *this).
          */
-        static const func_ref_t functionImpl;
+        static func_ref_t functionImpl;
 
     public:
         /**
@@ -809,7 +809,7 @@ class functor_t<hashId, void> final : public functor {
             []()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
     \
     template <> \
-    const ls::script::func_ref_t \
+    ls::script::func_ref_t \
     scriptFunc_##funcName::functionImpl = *[](ls::script::variable** const pArgs)->void
 
 /**
@@ -834,7 +834,7 @@ class functor_t<hashId, void> final : public functor {
 /*-----------------------------------------------------------------------------
     Built-In Types
 -----------------------------------------------------------------------------*/
-LS_SCRIPT_DECLARE_FUNC(empty, void);
+/* LS_SCRIPT_DECLARE_FUNC(empty, void); */
 
 #endif	/* __LS_SCRIPT_FUNCTOR_H__ */
 

@@ -29,7 +29,7 @@ void foo() {
 // empty function to keep IntelliSense from going crazy.
 }
 
-#include "lightSky/draw/fontResource.h"
+#include "lightsky/draw/fontResource.h"
 
 using ls::utils::resource;
 
@@ -47,10 +47,10 @@ void copyGlyph(glyph& pGlyph, const FT_GlyphSlot ftGlyph) {
     // in "points," or, 1/64th of a pixel.
     pGlyph.size = {ftBitmap.width, ftBitmap.rows};
     
-    pGlyph.bearing = {metrics.horiBearingX, metrics.horiBearingY};
+    pGlyph.bearing = {(int)metrics.horiBearingX, (int)metrics.horiBearingY};
     pGlyph.bearing /= 64;
     
-    pGlyph.advance = {metrics.horiAdvance, metrics.vertAdvance};
+    pGlyph.advance = {(int)metrics.horiAdvance, (int)metrics.vertAdvance};
     pGlyph.advance /= 64;
 
     // Copy the data from FreeType into the glyph

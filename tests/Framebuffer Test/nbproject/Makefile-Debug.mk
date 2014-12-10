@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -47,8 +47,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb
-CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb
+CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb -pthread
+CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb -pthread
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -57,21 +57,21 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2.dll -lSDL2main -lassimp.dll
+LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2 -lSDL2main -lassimp
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug
 
-fb_test_debug.exe: ../../LightGame/build/liblightgame_d.a
+fb_test_debug: ../../LightGame/build/liblightgame_d.a
 
-fb_test_debug.exe: ../../LightDraw/build/liblightdraw_d.a
+fb_test_debug: ../../LightDraw/build/liblightdraw_d.a
 
-fb_test_debug.exe: ../../LightMath/build/liblightmath_d.a
+fb_test_debug: ../../LightMath/build/liblightmath_d.a
 
-fb_test_debug.exe: ../../LightUtils/build/liblightutils_d.a
+fb_test_debug: ../../LightUtils/build/liblightutils_d.a
 
-fb_test_debug.exe: ${OBJECTFILES}
+fb_test_debug: ${OBJECTFILES}
 	${LINK.cc} -o fb_test_debug ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/context.o: context.cpp 
@@ -110,7 +110,7 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} fb_test_debug.exe
+	${RM} fb_test_debug
 
 # Subprojects
 .clean-subprojects:

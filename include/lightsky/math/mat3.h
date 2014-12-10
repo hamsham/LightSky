@@ -105,12 +105,12 @@ mat3_t<num_t> operator * (num_t n, const mat3_t<num_t>& m);
 /*-------------------------------------
     3x3 Matrix Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(mat3f,    mat3_t, float);
-LS_DECLARE_CLASS_TYPE(mat3d,    mat3_t, double);
-LS_DECLARE_CLASS_TYPE(mat3i,    mat3_t, int);
-LS_DECLARE_CLASS_TYPE(mat3ui,   mat3_t, unsigned);
-LS_DECLARE_CLASS_TYPE(mat3x,    mat3_t, medp_t);
-LS_DECLARE_CLASS_TYPE(mat3,     mat3_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(mat3f,    mat3_t, float);
+LS_DECLARE_STRUCT_TYPE(mat3d,    mat3_t, double);
+LS_DECLARE_STRUCT_TYPE(mat3i,    mat3_t, int);
+LS_DECLARE_STRUCT_TYPE(mat3ui,   mat3_t, unsigned);
+LS_DECLARE_STRUCT_TYPE(mat3x,    mat3_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(mat3,     mat3_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

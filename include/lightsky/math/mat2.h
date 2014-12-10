@@ -102,11 +102,11 @@ mat2_t<num_t> operator * (num_t n, const mat2_t<num_t>& m);
 /*-------------------------------------
     2x2 Matrix Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(mat2f,    mat2_t, float);
-LS_DECLARE_CLASS_TYPE(mat2d,    mat2_t, double);
-LS_DECLARE_CLASS_TYPE(mat2ui,   mat2_t, unsigned);
-LS_DECLARE_CLASS_TYPE(mat2x,    mat2_t, medp_t);
-LS_DECLARE_CLASS_TYPE(mat2,     mat2_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(mat2f,    mat2_t, float);
+LS_DECLARE_STRUCT_TYPE(mat2d,    mat2_t, double);
+LS_DECLARE_STRUCT_TYPE(mat2ui,   mat2_t, unsigned);
+LS_DECLARE_STRUCT_TYPE(mat2x,    mat2_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(mat2,     mat2_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

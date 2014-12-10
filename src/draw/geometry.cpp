@@ -164,7 +164,8 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     // Get pointers to the buffer data that will be filled with quads
     const atlasEntry* const pGlyphs = ta.getEntries();
     // The y-origin was found using a lot of testing. This was for resolution independence
-    float yPos = -((pGlyphs['\n'].bearing[1]*2.f)+pGlyphs['\n'].bearing[1]-pGlyphs['\n'].size[1]);
+    constexpr unsigned nl = (unsigned)'\n';
+    float yPos = -((pGlyphs[nl].bearing[1]*2.f)+pGlyphs[nl].bearing[1]-pGlyphs[nl].size[1]);
     float xPos = 0.f;
     
     for (unsigned i = 0; i < str.size(); ++i) {

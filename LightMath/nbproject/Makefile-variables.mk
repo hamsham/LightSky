@@ -7,13 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=MinGW32_Qt-Windows
+CND_PLATFORM_Debug=CLang-Linux-x86
 CND_ARTIFACT_DIR_Debug=build
 CND_ARTIFACT_NAME_Debug=liblightmath_d.a
 CND_ARTIFACT_PATH_Debug=build/liblightmath_d.a
-CND_PACKAGE_DIR_Debug=dist/Debug/MinGW32_Qt-Windows/package
+CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=LightMath.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW32_Qt-Windows/package/LightMath.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/LightMath.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW32_Qt-Windows
 CND_ARTIFACT_DIR_Release=build

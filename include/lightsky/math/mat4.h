@@ -110,12 +110,12 @@ mat4_t<num_t> operator * (num_t n, const mat4_t<num_t>& m);
 /*-------------------------------------
     4x4 Matrix Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(mat4f,    mat4_t, float);
-LS_DECLARE_CLASS_TYPE(mat4d,    mat4_t, double);
-LS_DECLARE_CLASS_TYPE(mat4i,    mat4_t, int);
-LS_DECLARE_CLASS_TYPE(mat4ui,   mat4_t, unsigned);
-LS_DECLARE_CLASS_TYPE(mat4x,    mat4_t, medp_t);
-LS_DECLARE_CLASS_TYPE(mat4,     mat4_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(mat4f,    mat4_t, float);
+LS_DECLARE_STRUCT_TYPE(mat4d,    mat4_t, double);
+LS_DECLARE_STRUCT_TYPE(mat4i,    mat4_t, int);
+LS_DECLARE_STRUCT_TYPE(mat4ui,   mat4_t, unsigned);
+LS_DECLARE_STRUCT_TYPE(mat4x,    mat4_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(mat4,     mat4_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

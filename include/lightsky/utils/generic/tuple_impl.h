@@ -30,9 +30,9 @@ bool tuple_t<data_t...>::constructObjects(char* buffer, unsigned offset, arg_t*,
 -------------------------------------*/
 template <typename... data_t>
 template <typename arg_t> constexpr
-void tuple_t<data_t...>::destroyObjects(char* buffer, unsigned offset, arg_t*) {
-    std::is_destructible<arg_t>()
-        ? reinterpret_cast<arg_t*>(buffer+offset)->~arg_t()
+bool tuple_t<data_t...>::destroyObjects(char* buffer, unsigned offset, arg_t*) {
+    return std::is_destructible<arg_t>()
+        ? reinterpret_cast<arg_t*>(buffer+offset)->~arg_t(), true
         : throw;
 }
 
@@ -41,11 +41,12 @@ void tuple_t<data_t...>::destroyObjects(char* buffer, unsigned offset, arg_t*) {
 -------------------------------------*/
 template <typename... data_t>
 template <typename arg_t, typename... args_t> inline
-void tuple_t<data_t...>::destroyObjects(char* buffer, unsigned offset, arg_t*, args_t*... args) {
+bool tuple_t<data_t...>::destroyObjects(char* buffer, unsigned offset, arg_t*, args_t*... args) {
     if (std::is_destructible<arg_t>()) {
         reinterpret_cast<arg_t*>(buffer+offset)->~arg_t();
     }
     destroyObjects<args_t...>(buffer, offset+sizeof(arg_t), args...);
+    return true;
 }
 
 /*-------------------------------------

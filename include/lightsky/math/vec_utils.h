@@ -528,7 +528,7 @@ N angleBetween(const vec4_t<N>& v1, const vec4_t<N>& v2);
  *  @return The number of radians in between v1 & v2.
  */
 template <typename N> inline
-N angleBetween(const vec3_t<N>& v1, const vec3_t<N>& v2, const vec3_t<N>& origin);
+N angleBetween(const vec4_t<N>& v1, const vec4_t<N>& v2, const vec4_t<N>& origin);
 
 /**
  *  @brief min

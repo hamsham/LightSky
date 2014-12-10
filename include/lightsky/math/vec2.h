@@ -105,12 +105,12 @@ vec2_t<num_t> operator * (num_t n, const vec2_t<num_t>& v);
 /*-------------------------------------
     2D Vector Specializations
 -------------------------------------*/
-LS_DECLARE_CLASS_TYPE(vec2f,    vec2_t, float);
-LS_DECLARE_CLASS_TYPE(vec2d,    vec2_t, double);
-LS_DECLARE_CLASS_TYPE(vec2i,    vec2_t, int);
-LS_DECLARE_CLASS_TYPE(vec2ui,   vec2_t, unsigned);
-LS_DECLARE_CLASS_TYPE(vec2x,    vec2_t, medp_t);
-LS_DECLARE_CLASS_TYPE(vec2,     vec2_t, LS_FLOAT);
+LS_DECLARE_STRUCT_TYPE(vec2f,    vec2_t, float);
+LS_DECLARE_STRUCT_TYPE(vec2d,    vec2_t, double);
+LS_DECLARE_STRUCT_TYPE(vec2i,    vec2_t, int);
+LS_DECLARE_STRUCT_TYPE(vec2ui,   vec2_t, unsigned);
+LS_DECLARE_STRUCT_TYPE(vec2x,    vec2_t, medp_t);
+LS_DECLARE_STRUCT_TYPE(vec2,     vec2_t, LS_FLOAT);
 
 } //end math namespace
 } //end ls namespace

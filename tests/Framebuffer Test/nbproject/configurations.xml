@@ -68,7 +68,7 @@
           <incDir>
             <pElem>../../include</pElem>
           </incDir>
-          <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb</commandLine>
+          <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb -pthread</commandLine>
           <preprocessorList>
             <Elem>LS_DEBUG</Elem>
             <Elem>SDL_MAIN_HANDLED</Elem>
@@ -126,13 +126,13 @@
                             OP="build/liblightutils_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>FreeImage</linkerLibLibItem>
+            <linkerLibLibItem>GLEW</linkerLibLibItem>
+            <linkerLibLibItem>GL</linkerLibLibItem>
+            <linkerLibLibItem>freeimage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
-            <linkerLibLibItem>SDL2.dll</linkerLibLibItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibLibItem>assimp.dll</linkerLibLibItem>
+            <linkerLibLibItem>assimp</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -204,7 +204,7 @@
           <incDir>
             <pElem>../../include</pElem>
           </incDir>
-          <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++</commandLine>
+          <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -pthread</commandLine>
           <preprocessorList>
             <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>

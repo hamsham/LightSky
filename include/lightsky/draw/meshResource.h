@@ -17,7 +17,7 @@
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/vertex.h"
 
-class aiScene;
+struct aiScene;
 
 namespace ls {
 namespace draw {

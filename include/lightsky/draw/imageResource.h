@@ -177,6 +177,21 @@ class imageResource final : public ls::utils::resource {
         bool saveFile(const std::string& filename, img_file_t filetype) const;
 
         /**
+         * @brief Save an image file in a specific format
+         * 
+         * @param filename
+         * A wide string object containing the relative path name to a file that
+         * should be saved to the computer.
+         * 
+         * @param filetype
+         * An img_file_t, representing the file format that should be used when
+         * saving image data.
+         * 
+         * @return true if the file was successfully saved. False if not.
+         */
+        virtual bool saveFile(const std::wstring& filename) const override;
+
+        /**
          * @brief Unload
          * 
          * Free all memory used by *this.

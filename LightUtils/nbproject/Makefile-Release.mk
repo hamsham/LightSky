@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1519963337/assert.o \
+	${OBJECTDIR}/_ext/1519963337/assertions.o \
 	${OBJECTDIR}/_ext/1519963337/dataResource.o \
 	${OBJECTDIR}/_ext/1519963337/randomNum.o \
 	${OBJECTDIR}/_ext/1519963337/resource.o \
@@ -75,35 +75,35 @@ build/liblightutils.a: ${OBJECTFILES}
 	${AR} -rv build/liblightutils.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightutils.a
 
-${OBJECTDIR}/_ext/1519963337/assert.o: ../src/utils/assert.cpp 
+${OBJECTDIR}/_ext/1519963337/assertions.o: ../src/utils/assertions.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assert.o ../src/utils/assert.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assertions.o ../src/utils/assertions.cpp
 
 ${OBJECTDIR}/_ext/1519963337/dataResource.o: ../src/utils/dataResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp
 
 ${OBJECTDIR}/_ext/1519963337/randomNum.o: ../src/utils/randomNum.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/randomNum.o ../src/utils/randomNum.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/randomNum.o ../src/utils/randomNum.cpp
 
 ${OBJECTDIR}/_ext/1519963337/resource.o: ../src/utils/resource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/resource.o ../src/utils/resource.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/resource.o ../src/utils/resource.cpp
 
 ${OBJECTDIR}/_ext/1519963337/string_utils.o: ../src/utils/string_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/string_utils.o ../src/utils/string_utils.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/string_utils.o ../src/utils/string_utils.cpp
 
 ${OBJECTDIR}/_ext/1519963337/tuple.o: ../src/utils/tuple.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/tuple.o ../src/utils/tuple.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/tuple.o ../src/utils/tuple.cpp
 
 # Subprojects
 .build-subprojects:
@@ -118,20 +118,20 @@ ${TESTDIR}/TestFiles/pointer_test: ${TESTDIR}/tests/pointer_test.o ${OBJECTFILES
 ${TESTDIR}/tests/pointer_test.o: tests/pointer_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/pointer_test.o tests/pointer_test.cpp
+	$(COMPILE.cc) -O3 -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/pointer_test.o tests/pointer_test.cpp
 
 
-${OBJECTDIR}/_ext/1519963337/assert_nomain.o: ${OBJECTDIR}/_ext/1519963337/assert.o ../src/utils/assert.cpp 
+${OBJECTDIR}/_ext/1519963337/assertions_nomain.o: ${OBJECTDIR}/_ext/1519963337/assertions.o ../src/utils/assertions.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/assert.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/assertions.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assert_nomain.o ../src/utils/assert.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assertions_nomain.o ../src/utils/assertions.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/1519963337/assert.o ${OBJECTDIR}/_ext/1519963337/assert_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/assertions.o ${OBJECTDIR}/_ext/1519963337/assertions_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o: ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp 
@@ -142,7 +142,7 @@ ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o: ${OBJECTDIR}/_ext/1519963337
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o ../src/utils/dataResource.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o ../src/utils/dataResource.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1519963337/dataResource.o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o;\
 	fi
@@ -155,7 +155,7 @@ ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o: ${OBJECTDIR}/_ext/1519963337/ra
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o ../src/utils/randomNum.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o ../src/utils/randomNum.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1519963337/randomNum.o ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o;\
 	fi
@@ -168,7 +168,7 @@ ${OBJECTDIR}/_ext/1519963337/resource_nomain.o: ${OBJECTDIR}/_ext/1519963337/res
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/resource_nomain.o ../src/utils/resource.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/resource_nomain.o ../src/utils/resource.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1519963337/resource.o ${OBJECTDIR}/_ext/1519963337/resource_nomain.o;\
 	fi
@@ -181,7 +181,7 @@ ${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o: ${OBJECTDIR}/_ext/1519963337
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o ../src/utils/string_utils.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o ../src/utils/string_utils.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1519963337/string_utils.o ${OBJECTDIR}/_ext/1519963337/string_utils_nomain.o;\
 	fi
@@ -194,7 +194,7 @@ ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o: ${OBJECTDIR}/_ext/1519963337/tuple.
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o ../src/utils/tuple.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o ../src/utils/tuple.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1519963337/tuple.o ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o;\
 	fi

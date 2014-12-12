@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=LightDraw.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/LightDraw.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW32_Qt-Windows
+CND_PLATFORM_Release=CLang-Linux-x86
 CND_ARTIFACT_DIR_Release=build
 CND_ARTIFACT_NAME_Release=liblightdraw.a
 CND_ARTIFACT_PATH_Release=build/liblightdraw.a
-CND_PACKAGE_DIR_Release=dist/Release/MinGW32_Qt-Windows/package
+CND_PACKAGE_DIR_Release=dist/Release/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Release=LightDraw.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW32_Qt-Windows/package/LightDraw.tar
+CND_PACKAGE_PATH_Release=dist/Release/CLang-Linux-x86/package/LightDraw.tar
 #
 # include compiler specific variables
 #

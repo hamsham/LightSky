@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -77,27 +77,27 @@ build/liblightgame.a: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/1019297620/dispatcher.o: ../src/game/dispatcher.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/dispatcher.o ../src/game/dispatcher.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/dispatcher.o ../src/game/dispatcher.cpp
 
 ${OBJECTDIR}/_ext/1019297620/gameState.o: ../src/game/gameState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameState.o ../src/game/gameState.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameState.o ../src/game/gameState.cpp
 
 ${OBJECTDIR}/_ext/1019297620/gameSystem.o: ../src/game/gameSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameSystem.o ../src/game/gameSystem.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameSystem.o ../src/game/gameSystem.cpp
 
 ${OBJECTDIR}/_ext/1019297620/manager.o: ../src/game/manager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/manager.o ../src/game/manager.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/manager.o ../src/game/manager.cpp
 
 ${OBJECTDIR}/_ext/1019297620/subscriber.o: ../src/game/subscriber.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019297620
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/subscriber.o ../src/game/subscriber.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/subscriber.o ../src/game/subscriber.cpp
 
 # Subprojects
 .build-subprojects:
@@ -112,7 +112,7 @@ ${TESTDIR}/event_test: ${TESTDIR}/tests/event_test.o ${OBJECTFILES:%.o=%_nomain.
 ${TESTDIR}/tests/event_test.o: tests/event_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/event_test.o tests/event_test.cpp
+	$(COMPILE.cc) -O3 -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/event_test.o tests/event_test.cpp
 
 
 ${OBJECTDIR}/_ext/1019297620/dispatcher_nomain.o: ${OBJECTDIR}/_ext/1019297620/dispatcher.o ../src/game/dispatcher.cpp 
@@ -123,7 +123,7 @@ ${OBJECTDIR}/_ext/1019297620/dispatcher_nomain.o: ${OBJECTDIR}/_ext/1019297620/d
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/dispatcher_nomain.o ../src/game/dispatcher.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/dispatcher_nomain.o ../src/game/dispatcher.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/dispatcher.o ${OBJECTDIR}/_ext/1019297620/dispatcher_nomain.o;\
 	fi
@@ -136,7 +136,7 @@ ${OBJECTDIR}/_ext/1019297620/gameState_nomain.o: ${OBJECTDIR}/_ext/1019297620/ga
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameState_nomain.o ../src/game/gameState.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameState_nomain.o ../src/game/gameState.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/gameState.o ${OBJECTDIR}/_ext/1019297620/gameState_nomain.o;\
 	fi
@@ -149,7 +149,7 @@ ${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o: ${OBJECTDIR}/_ext/1019297620/g
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o ../src/game/gameSystem.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o ../src/game/gameSystem.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/gameSystem.o ${OBJECTDIR}/_ext/1019297620/gameSystem_nomain.o;\
 	fi
@@ -162,7 +162,7 @@ ${OBJECTDIR}/_ext/1019297620/manager_nomain.o: ${OBJECTDIR}/_ext/1019297620/mana
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/manager_nomain.o ../src/game/manager.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/manager_nomain.o ../src/game/manager.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/manager.o ${OBJECTDIR}/_ext/1019297620/manager_nomain.o;\
 	fi
@@ -175,7 +175,7 @@ ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o: ${OBJECTDIR}/_ext/1019297620/s
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O3 -s -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o ../src/game/subscriber.cpp;\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o ../src/game/subscriber.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1019297620/subscriber.o ${OBJECTDIR}/_ext/1019297620/subscriber_nomain.o;\
 	fi

@@ -9,7 +9,7 @@
 #define	__LS_DRAW_SETUP_H__
 
 #include "lightsky/setup/setup.h"
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 #include "lightsky/utils/hash.h"
 #include "lightsky/utils/log.h"
 #include "lightsky/math/math.h"
@@ -35,43 +35,17 @@
     Debugging Various Messages.
 -------------------------------------*/
 #ifdef LS_DEBUG
-    #ifndef LS_LOG_MSG
-        #define LS_LOG_MSG(...) ls::utils::logMsg(__VA_ARGS__)
-    #endif
-    
-    #ifndef LS_LOG_ERR
-        #define LS_LOG_ERR(...) ls::utils::logErr(__VA_ARGS__)
-    #endif
-    
-namespace ls {
-namespace draw {
-    void printGlError(int line, const char* file);
-} // end draw namespace
-} // end ls namespace
-
+    namespace ls {
+    namespace draw {
+        void printGlError(int line, const char* file);
+    } // end draw namespace
+    } // end ls namespace
 #else
-    template <typename Arg>
-    constexpr void LS_LOG_MSG(const Arg&) {
-    }
-
-    template <typename Arg, typename... Args>
-    constexpr void LS_LOG_MSG(const Arg&, const Args&...) {
-    }
-
-    template <typename Arg>
-    constexpr void LS_LOG_ERR(const Arg&) {
-    }
-
-    template <typename Arg, typename... Args>
-    constexpr void LS_LOG_ERR(const Arg&, const Args&...) {
-    }
-    
-namespace ls {
-namespace draw {
-    inline void printGlError(int, const char*) {}
-} // end draw namespace
-} // end ls namespace
-
+    namespace ls {
+    namespace draw {
+        inline void printGlError(int, const char*) {}
+    } // end draw namespace
+    } // end ls namespace
 #endif
 
 #ifndef LOG_GL_ERR
@@ -79,4 +53,3 @@ namespace draw {
 #endif
 
 #endif	/* __LS_DRAW_SETUP_H__ */
-

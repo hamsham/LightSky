@@ -7,7 +7,7 @@
 
 #include <utility>
 
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/geometry.h"

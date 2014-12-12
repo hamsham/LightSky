@@ -67,7 +67,7 @@ build/liblightsky.a: ${OBJECTFILES}
 ${OBJECTDIR}/src/lightsky.o: src/lightsky.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -Iinclude -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lightsky.o src/lightsky.cpp
+	$(COMPILE.cc) -O3 -Iinclude -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/lightsky.o src/lightsky.cpp
 
 # Subprojects
 .build-subprojects:

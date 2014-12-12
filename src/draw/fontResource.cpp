@@ -108,7 +108,8 @@ fontResource& fontResource::operator =(fontResource&& f) {
     Unload all resources
 -------------------------------------*/
 void fontResource::unload() {
-    delete [] pData;
+    // Re-cast to a glyph pointer to avoid a crash caused by CLang.
+    delete [] reinterpret_cast<glyph*>(pData);
     pData = nullptr;
     
     dataSize = 0;

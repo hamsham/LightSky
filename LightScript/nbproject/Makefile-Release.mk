@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -71,27 +71,27 @@ build/liblightscript.a: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/53083909/factory.o: ../src/script/factory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/factory.o ../src/script/factory.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/factory.o ../src/script/factory.cpp
 
 ${OBJECTDIR}/_ext/53083909/functor.o: ../src/script/functor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/functor.o ../src/script/functor.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/functor.o ../src/script/functor.cpp
 
 ${OBJECTDIR}/_ext/53083909/scriptable.o: ../src/script/scriptable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptable.o ../src/script/scriptable.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptable.o ../src/script/scriptable.cpp
 
 ${OBJECTDIR}/_ext/53083909/setup.o: ../src/script/setup.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/setup.o ../src/script/setup.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/setup.o ../src/script/setup.cpp
 
 ${OBJECTDIR}/_ext/53083909/variable.o: ../src/script/variable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/variable.o ../src/script/variable.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/variable.o ../src/script/variable.cpp
 
 # Subprojects
 .build-subprojects:

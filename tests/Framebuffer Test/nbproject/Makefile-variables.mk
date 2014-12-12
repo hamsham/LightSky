@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=framebuffertest.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/framebuffertest.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW32_Qt-Windows
+CND_PLATFORM_Release=CLang-Linux-x86
 CND_ARTIFACT_DIR_Release=
 CND_ARTIFACT_NAME_Release=fb_test
 CND_ARTIFACT_PATH_Release=fb_test
-CND_PACKAGE_DIR_Release=dist/Release/MinGW32_Qt-Windows/package
+CND_PACKAGE_DIR_Release=dist/Release/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Release=framebuffertest.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW32_Qt-Windows/package/framebuffertest.tar
+CND_PACKAGE_PATH_Release=dist/Release/CLang-Linux-x86/package/framebuffertest.tar
 #
 # include compiler specific variables
 #

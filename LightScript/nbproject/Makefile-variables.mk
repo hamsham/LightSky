@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=LightScript.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/LightScript.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW32_Qt-Windows
+CND_PLATFORM_Release=CLang-Linux-x86
 CND_ARTIFACT_DIR_Release=build
 CND_ARTIFACT_NAME_Release=liblightscript.a
 CND_ARTIFACT_PATH_Release=build/liblightscript.a
-CND_PACKAGE_DIR_Release=dist/Release/MinGW32_Qt-Windows/package
+CND_PACKAGE_DIR_Release=dist/Release/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Release=LightScript.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW32_Qt-Windows/package/LightScript.tar
+CND_PACKAGE_PATH_Release=dist/Release/CLang-Linux-x86/package/LightScript.tar
 #
 # include compiler specific variables
 #

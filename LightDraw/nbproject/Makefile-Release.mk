@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -86,102 +86,102 @@ build/liblightdraw.a: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/1019371010/atlas.o: ../src/draw/atlas.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/atlas.o ../src/draw/atlas.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/atlas.o ../src/draw/atlas.cpp
 
 ${OBJECTDIR}/_ext/1019371010/blendObject.o: ../src/draw/blendObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/blendObject.o ../src/draw/blendObject.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/blendObject.o ../src/draw/blendObject.cpp
 
 ${OBJECTDIR}/_ext/1019371010/boundingBox.o: ../src/draw/boundingBox.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/boundingBox.o ../src/draw/boundingBox.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/boundingBox.o ../src/draw/boundingBox.cpp
 
 ${OBJECTDIR}/_ext/1019371010/depthObject.o: ../src/draw/depthObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/depthObject.o ../src/draw/depthObject.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/depthObject.o ../src/draw/depthObject.cpp
 
 ${OBJECTDIR}/_ext/1019371010/drawCommand.o: ../src/draw/drawCommand.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/drawCommand.o ../src/draw/drawCommand.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/drawCommand.o ../src/draw/drawCommand.cpp
 
 ${OBJECTDIR}/_ext/1019371010/fontResource.o: ../src/draw/fontResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/fontResource.o ../src/draw/fontResource.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/fontResource.o ../src/draw/fontResource.cpp
 
 ${OBJECTDIR}/_ext/1019371010/framebuffer.o: ../src/draw/framebuffer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/framebuffer.o ../src/draw/framebuffer.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/framebuffer.o ../src/draw/framebuffer.cpp
 
 ${OBJECTDIR}/_ext/1019371010/geometry.o: ../src/draw/geometry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/geometry.o ../src/draw/geometry.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/geometry.o ../src/draw/geometry.cpp
 
 ${OBJECTDIR}/_ext/1019371010/geometry_utils.o: ../src/draw/geometry_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/geometry_utils.o ../src/draw/geometry_utils.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/geometry_utils.o ../src/draw/geometry_utils.cpp
 
 ${OBJECTDIR}/_ext/1019371010/imageResource.o: ../src/draw/imageResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/imageResource.o ../src/draw/imageResource.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/imageResource.o ../src/draw/imageResource.cpp
 
 ${OBJECTDIR}/_ext/1019371010/matrixStack.o: ../src/draw/matrixStack.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/matrixStack.o ../src/draw/matrixStack.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/matrixStack.o ../src/draw/matrixStack.cpp
 
 ${OBJECTDIR}/_ext/1019371010/meshModel.o: ../src/draw/meshModel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshModel.o ../src/draw/meshModel.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshModel.o ../src/draw/meshModel.cpp
 
 ${OBJECTDIR}/_ext/1019371010/meshResource.o: ../src/draw/meshResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshResource.o ../src/draw/meshResource.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshResource.o ../src/draw/meshResource.cpp
 
 ${OBJECTDIR}/_ext/1019371010/sceneManager.o: ../src/draw/sceneManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/sceneManager.o ../src/draw/sceneManager.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/sceneManager.o ../src/draw/sceneManager.cpp
 
 ${OBJECTDIR}/_ext/1019371010/setup.o: ../src/draw/setup.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/setup.o ../src/draw/setup.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/setup.o ../src/draw/setup.cpp
 
 ${OBJECTDIR}/_ext/1019371010/shaderObject.o: ../src/draw/shaderObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/shaderObject.o ../src/draw/shaderObject.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/shaderObject.o ../src/draw/shaderObject.cpp
 
 ${OBJECTDIR}/_ext/1019371010/shaderProgram.o: ../src/draw/shaderProgram.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/shaderProgram.o ../src/draw/shaderProgram.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/shaderProgram.o ../src/draw/shaderProgram.cpp
 
 ${OBJECTDIR}/_ext/1019371010/texture.o: ../src/draw/texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/texture.o ../src/draw/texture.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/texture.o ../src/draw/texture.cpp
 
 ${OBJECTDIR}/_ext/1019371010/vertexArray.o: ../src/draw/vertexArray.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/vertexArray.o ../src/draw/vertexArray.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/vertexArray.o ../src/draw/vertexArray.cpp
 
 ${OBJECTDIR}/_ext/1019371010/vertexBuffer.o: ../src/draw/vertexBuffer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -I../../../../../../Qt/Tools/mingw482_32/i686-w64-mingw32/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/vertexBuffer.o ../src/draw/vertexBuffer.cpp
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/vertexBuffer.o ../src/draw/vertexBuffer.cpp
 
 # Subprojects
 .build-subprojects:

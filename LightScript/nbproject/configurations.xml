@@ -149,7 +149,6 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
-          <stripSymbols>true</stripSymbols>
           <standard>8</standard>
           <incDir>
             <pElem>../include</pElem>

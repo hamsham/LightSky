@@ -68,7 +68,7 @@
           <incDir>
             <pElem>../../include</pElem>
           </incDir>
-          <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb -pthread</commandLine>
+          <commandLine>-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread</commandLine>
           <preprocessorList>
             <Elem>LS_DEBUG</Elem>
             <Elem>SDL_MAIN_HANDLED</Elem>
@@ -119,7 +119,7 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="false"
+                            BL="true"
                             WD="../../LightUtils"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -199,7 +199,6 @@
         </cTool>
         <ccTool>
           <developmentMode>6</developmentMode>
-          <stripSymbols>true</stripSymbols>
           <standard>8</standard>
           <incDir>
             <pElem>../../include</pElem>
@@ -267,13 +266,13 @@
                             OP="build/liblightutils.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>FreeImage</linkerLibLibItem>
+            <linkerLibLibItem>GLEW</linkerLibLibItem>
+            <linkerLibLibItem>GL</linkerLibLibItem>
+            <linkerLibLibItem>freeimage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>
-            <linkerLibLibItem>SDL2.dll</linkerLibLibItem>
-            <linkerLibLibItem>assimp.dll</linkerLibLibItem>
+            <linkerLibLibItem>SDL2</linkerLibLibItem>
+            <linkerLibLibItem>assimp</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

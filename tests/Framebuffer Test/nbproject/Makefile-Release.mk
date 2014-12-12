@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -47,8 +47,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++
-CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++
+CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -pthread
+CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -pthread
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -57,52 +57,52 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightGame/build/liblightgame.a ../../LightDraw/build/liblightdraw.a ../../LightMath/build/liblightmath.a ../../LightUtils/build/liblightutils.a -lglew32 -lopengl32 -lFreeImage -lfreetype -lSDL2main -lSDL2.dll -lassimp.dll
+LDLIBSOPTIONS=../../LightGame/build/liblightgame.a ../../LightDraw/build/liblightdraw.a ../../LightMath/build/liblightmath.a ../../LightUtils/build/liblightutils.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2main -lSDL2 -lassimp
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test
 
-fb_test.exe: ../../LightGame/build/liblightgame.a
+fb_test: ../../LightGame/build/liblightgame.a
 
-fb_test.exe: ../../LightDraw/build/liblightdraw.a
+fb_test: ../../LightDraw/build/liblightdraw.a
 
-fb_test.exe: ../../LightMath/build/liblightmath.a
+fb_test: ../../LightMath/build/liblightmath.a
 
-fb_test.exe: ../../LightUtils/build/liblightutils.a
+fb_test: ../../LightUtils/build/liblightutils.a
 
-fb_test.exe: ${OBJECTFILES}
+fb_test: ${OBJECTFILES}
 	${LINK.cc} -o fb_test ${OBJECTFILES} ${LDLIBSOPTIONS} -s
 
 ${OBJECTDIR}/context.o: context.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/context.o context.cpp
+	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/context.o context.cpp
 
 ${OBJECTDIR}/controlState.o: controlState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
+	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
 
 ${OBJECTDIR}/display.o: display.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
+	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
 
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
+	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/uiState.o: uiState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
+	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
 
 # Subprojects
 .build-subprojects:
@@ -110,7 +110,7 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} fb_test.exe
+	${RM} fb_test
 
 # Subprojects
 .clean-subprojects:

@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -79,67 +79,67 @@ build/liblightmath.a: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/1019118654/fixed.o: ../src/math/fixed.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/fixed.o ../src/math/fixed.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/fixed.o ../src/math/fixed.cpp
 
 ${OBJECTDIR}/_ext/1019118654/mat2.o: ../src/math/mat2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat2.o ../src/math/mat2.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat2.o ../src/math/mat2.cpp
 
 ${OBJECTDIR}/_ext/1019118654/mat3.o: ../src/math/mat3.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat3.o ../src/math/mat3.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat3.o ../src/math/mat3.cpp
 
 ${OBJECTDIR}/_ext/1019118654/mat4.o: ../src/math/mat4.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat4.o ../src/math/mat4.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat4.o ../src/math/mat4.cpp
 
 ${OBJECTDIR}/_ext/1019118654/mat_utils.o: ../src/math/mat_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat_utils.o ../src/math/mat_utils.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/mat_utils.o ../src/math/mat_utils.cpp
 
 ${OBJECTDIR}/_ext/1019118654/perlinNoise.o: ../src/math/perlinNoise.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/perlinNoise.o ../src/math/perlinNoise.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/perlinNoise.o ../src/math/perlinNoise.cpp
 
 ${OBJECTDIR}/_ext/1019118654/quat.o: ../src/math/quat.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat.o ../src/math/quat.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat.o ../src/math/quat.cpp
 
 ${OBJECTDIR}/_ext/1019118654/quat_utils.o: ../src/math/quat_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat_utils.o ../src/math/quat_utils.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/quat_utils.o ../src/math/quat_utils.cpp
 
 ${OBJECTDIR}/_ext/1019118654/scalar_utils.o: ../src/math/scalar_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/scalar_utils.o ../src/math/scalar_utils.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/scalar_utils.o ../src/math/scalar_utils.cpp
 
 ${OBJECTDIR}/_ext/1019118654/vec2.o: ../src/math/vec2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec2.o ../src/math/vec2.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec2.o ../src/math/vec2.cpp
 
 ${OBJECTDIR}/_ext/1019118654/vec3.o: ../src/math/vec3.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec3.o ../src/math/vec3.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec3.o ../src/math/vec3.cpp
 
 ${OBJECTDIR}/_ext/1019118654/vec4.o: ../src/math/vec4.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec4.o ../src/math/vec4.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec4.o ../src/math/vec4.cpp
 
 ${OBJECTDIR}/_ext/1019118654/vec_utils.o: ../src/math/vec_utils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019118654
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec_utils.o ../src/math/vec_utils.cpp
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019118654/vec_utils.o ../src/math/vec_utils.cpp
 
 # Subprojects
 .build-subprojects:

@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW32_Qt-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=CLang-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -34,8 +34,7 @@ include Makefile
 OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
-OBJECTFILES= \
-	${OBJECTDIR}/_ext/1522246397/setup.o
+OBJECTFILES=
 
 
 # C Compiler Flags
@@ -63,11 +62,6 @@ build/liblightsetup.a: ${OBJECTFILES}
 	${RM} build/liblightsetup.a
 	${AR} -rv build/liblightsetup.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightsetup.a
-
-${OBJECTDIR}/_ext/1522246397/setup.o: ../src/setup/setup.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1522246397
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -s -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1522246397/setup.o ../src/setup/setup.cpp
 
 # Subprojects
 .build-subprojects:

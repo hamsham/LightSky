@@ -12,7 +12,7 @@
 #include <utility> // std::move()
 #include <typeinfo> // typeid(x)
 
-#include "lightsky/utils/assert.h" // LS_DEBUG_ASSERT
+#include "lightsky/utils/assertions.h" // LS_DEBUG_ASSERT
 
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
@@ -765,6 +765,9 @@ class functor_t<hashId, void> final : public functor {
     \
     typedef ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__> scriptFunc_##funcName; \
     \
+    template <> \
+    ls::script::func_ref_t scriptFunc_##funcName::functionImpl; \
+    \
     extern const ls::script::funcFactory scriptFactory_##funcName; \
     \
     extern template class ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__>
@@ -809,8 +812,8 @@ class functor_t<hashId, void> final : public functor {
             []()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
     \
     template <> \
-    ls::script::func_ref_t \
-    scriptFunc_##funcName::functionImpl = *[](ls::script::variable** const pArgs)->void
+    ls::script::func_ref_t scriptFunc_##funcName::functionImpl = \
+        *[](ls::script::variable** const pArgs)->void
 
 /**
  *  @brief Function Argument Accessibility
@@ -834,7 +837,6 @@ class functor_t<hashId, void> final : public functor {
 /*-----------------------------------------------------------------------------
     Built-In Types
 -----------------------------------------------------------------------------*/
-/* LS_SCRIPT_DECLARE_FUNC(empty, void); */
+LS_SCRIPT_DECLARE_FUNC(empty, void);
 
 #endif	/* __LS_SCRIPT_FUNCTOR_H__ */
-

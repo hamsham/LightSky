@@ -10,7 +10,7 @@
 
 #include "lightsky/utils/setup.h"
 
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 #include "lightsky/utils/bits.h"
 #include "lightsky/utils/btree.h"
 #include "lightsky/utils/byteSize.h"

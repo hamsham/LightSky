@@ -96,11 +96,9 @@ void functor::save(std::ostream& ostr) const {
 /*-----------------------------------------------------------------------------
     Built-In Types
 -----------------------------------------------------------------------------*/
-/*
 LS_SCRIPT_DEFINE_FUNC(empty, void) {
     (void)pArgs;
 };
-*/
 
 } // end script namespace
 } // end ls namespace

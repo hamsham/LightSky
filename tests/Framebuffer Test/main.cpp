@@ -169,13 +169,13 @@ bool initSubsystems() {
     );
     
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        LS_LOG_GAME_ERR(
+        LS_LOG_ERR(
             "Unable to initialize SDL due to error ", SDL_GetError(), '\n',
             "Complain to your local programmer.\n"
         );
         return false;
     }
-    LS_LOG_GAME_MSG(
+    LS_LOG_MSG(
         "Successfully initialized SDL.\n",
         SDL_GetError(), '\n'
     );

@@ -92,4 +92,33 @@ inline void logErr(const arg_t& arg, const args_t&... args);
 
 #include "lightsky/utils/generic/log_impl.h"
 
+/*-----------------------------------------------------------------------------
+    Debugging Various Messages.
+-----------------------------------------------------------------------------*/
+#ifdef LS_DEBUG
+    #ifndef LS_LOG_MSG
+        #define LS_LOG_MSG(...) ls::utils::logMsg(__VA_ARGS__)
+    #endif
+    
+    #ifndef LS_LOG_ERR
+        #define LS_LOG_ERR(...) ls::utils::logErr(__VA_ARGS__)
+    #endif
+#else
+    template <typename Arg>
+    inline void LS_LOG_MSG(const Arg&) {
+    }
+
+    template <typename Arg, typename... Args>
+    inline void LS_LOG_MSG(const Arg&, const Args&...) {
+    }
+
+    template <typename Arg>
+    inline void LS_LOG_ERR(const Arg&) {
+    }
+
+    template <typename Arg, typename... Args>
+    inline void LS_LOG_ERR(const Arg&, const Args&...) {
+    }
+#endif
+
 #endif /* __LS_UTILS_LOG_H__ */

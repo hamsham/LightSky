@@ -9,7 +9,7 @@
 #include <utility> // std::move
 #include <chrono> // std::chrono::steady_clock, std::chrono::milliseconds
 
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 
 #include "lightsky/game/setup.h"
 
@@ -77,7 +77,7 @@ void gameSystem::updateTickTime() {
 -------------------------------------*/
 void gameSystem::updateGameStates() {
     if (!gameList.size()) {
-        LS_LOG_GAME_ERR("No game states are available!");
+        LS_LOG_ERR("No game states are available!");
     }
     
     for(unsigned i = 0; i < gameList.size(); ++i) {
@@ -101,7 +101,7 @@ void gameSystem::updateGameStates() {
                 }
                 else {
                     // stop a state and delete it on the next iteration.
-                    LS_LOG_GAME_ERR("ERROR: A new gameState was unable to start.");
+                    LS_LOG_ERR("ERROR: A new gameState was unable to start.");
                     pState->setStateStatus(game_state_t::STOPPED);
                 }
                 break;
@@ -117,7 +117,7 @@ void gameSystem::updateGameStates() {
 -------------------------------------*/
 bool gameSystem::pushGameState(gameState* const pState) {
     if (pState == nullptr) {
-        LS_LOG_GAME_ERR("ERROR: A null pointer was pushed onto the game stack.\n");
+        LS_LOG_ERR("ERROR: A null pointer was pushed onto the game stack.\n");
         return false;
     }
     

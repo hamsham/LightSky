@@ -47,8 +47,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb -pthread
-CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -ggdb -pthread
+CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread
+CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -106,6 +106,7 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -114,6 +115,7 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

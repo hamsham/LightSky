@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=LightGame.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/LightGame.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW32_Qt-Windows
+CND_PLATFORM_Release=CLang-Linux-x86
 CND_ARTIFACT_DIR_Release=build
 CND_ARTIFACT_NAME_Release=liblightgame.a
 CND_ARTIFACT_PATH_Release=build/liblightgame.a
-CND_PACKAGE_DIR_Release=dist/Release/MinGW32_Qt-Windows/package
+CND_PACKAGE_DIR_Release=dist/Release/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Release=LightGame.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW32_Qt-Windows/package/LightGame.tar
+CND_PACKAGE_PATH_Release=dist/Release/CLang-Linux-x86/package/LightGame.tar
 #
 # include compiler specific variables
 #

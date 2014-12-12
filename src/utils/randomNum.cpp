@@ -2,7 +2,7 @@
 #include <chrono>
 #include <limits>
 
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 #include "lightsky/utils/randomNum.h"
 
 namespace ls {

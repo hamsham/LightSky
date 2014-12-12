@@ -10,7 +10,7 @@
 
 #include <climits>
 
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 
 #ifndef LS_BITS_PER_BYTE
     #define LS_BITS_PER_BYTE CHAR_BIT

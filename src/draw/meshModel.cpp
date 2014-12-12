@@ -7,7 +7,7 @@
 
 #include <utility>
 
-#include "lightsky/utils/assert.h"
+#include "lightsky/utils/assertions.h"
 
 #include "lightsky/draw/color.h"
 #include "lightsky/draw/meshModel.h"

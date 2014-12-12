@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=LightUtils.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/LightUtils.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW32_Qt-Windows
+CND_PLATFORM_Release=CLang-Linux-x86
 CND_ARTIFACT_DIR_Release=build
 CND_ARTIFACT_NAME_Release=liblightutils.a
 CND_ARTIFACT_PATH_Release=build/liblightutils.a
-CND_PACKAGE_DIR_Release=dist/Release/MinGW32_Qt-Windows/package
+CND_PACKAGE_DIR_Release=dist/Release/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Release=LightUtils.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW32_Qt-Windows/package/LightUtils.tar
+CND_PACKAGE_PATH_Release=dist/Release/CLang-Linux-x86/package/LightUtils.tar
 #
 # include compiler specific variables
 #

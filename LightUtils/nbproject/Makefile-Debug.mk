@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1519963337/assert.o \
+	${OBJECTDIR}/_ext/1519963337/assertions.o \
 	${OBJECTDIR}/_ext/1519963337/dataResource.o \
 	${OBJECTDIR}/_ext/1519963337/randomNum.o \
 	${OBJECTDIR}/_ext/1519963337/resource.o \
@@ -75,10 +75,10 @@ build/liblightutils_d.a: ${OBJECTFILES}
 	${AR} -rv build/liblightutils_d.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightutils_d.a
 
-${OBJECTDIR}/_ext/1519963337/assert.o: ../src/utils/assert.cpp 
+${OBJECTDIR}/_ext/1519963337/assertions.o: ../src/utils/assertions.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assert.o ../src/utils/assert.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assertions.o ../src/utils/assertions.cpp
 
 ${OBJECTDIR}/_ext/1519963337/dataResource.o: ../src/utils/dataResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
@@ -121,17 +121,17 @@ ${TESTDIR}/tests/pointer_test.o: tests/pointer_test.cpp
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/pointer_test.o tests/pointer_test.cpp
 
 
-${OBJECTDIR}/_ext/1519963337/assert_nomain.o: ${OBJECTDIR}/_ext/1519963337/assert.o ../src/utils/assert.cpp 
+${OBJECTDIR}/_ext/1519963337/assertions_nomain.o: ${OBJECTDIR}/_ext/1519963337/assertions.o ../src/utils/assertions.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/assert.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/assertions.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assert_nomain.o ../src/utils/assert.cpp;\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/assertions_nomain.o ../src/utils/assertions.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/1519963337/assert.o ${OBJECTDIR}/_ext/1519963337/assert_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/assertions.o ${OBJECTDIR}/_ext/1519963337/assertions_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o: ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp 

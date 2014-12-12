@@ -75,7 +75,7 @@ bool functor::load(std::istream& istr, varLoaderMap&, funcLoaderMap& flm) {
 
     // Create an instance of the next function if it wasn't in the functor loader
     if (nextFunc == nullptr && ptr != nullptr) {
-        nextFunc = flm[ptr] = (*gFuncFactory.at(nextType))();
+        nextFunc = flm[ptr] = (*gFuncFactory.getData(nextType))();
     }
 
     return true;

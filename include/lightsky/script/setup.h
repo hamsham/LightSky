@@ -8,9 +8,8 @@
 #ifndef __LS_SCRIPT_SETUP_H__
 #define	__LS_SCRIPT_SETUP_H__
 
-#include <map>
-
 #include "lightsky/setup/macros.h"
+#include "lightsky/utils/btree.h"
 #include "lightsky/utils/hash.h"
 
 namespace ls {
@@ -83,15 +82,15 @@ typedef functor* (*funcFactory)();
 /*
  * Lookup Trees for factories
  */
-typedef std::map<hash_t, varFactory> varFactoryMap;
+typedef ls::utils::bTree<hash_t, varFactory> varFactoryMap;
 
-typedef std::map<hash_t, funcFactory> funcFactoryMap;
+typedef ls::utils::bTree<hash_t, funcFactory> funcFactoryMap;
 
 /*
  * File loading maps
  */
-typedef std::map<void*, variable*> varLoaderMap;
-typedef std::map<void*, functor*> funcLoaderMap;
+typedef ls::utils::bTree<void*, variable*> varLoaderMap;
+typedef ls::utils::bTree<void*, functor*> funcLoaderMap;
 
 /*
  * Global script factory objects

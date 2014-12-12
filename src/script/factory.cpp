@@ -5,10 +5,6 @@
  * Created on June 26, 2013, 5:58 AM
  */
 
-#ifdef LS_MT
-    #include <mutex>
-#endif
-
 #include "lightsky/script/factory.h"
 
 namespace ls {
@@ -29,54 +25,24 @@ funcFactoryMap gFuncFactory;
 // If the pointer isn't NULL, run the function in order to return a
 // new instance of the requested object
 
-#ifdef LS_MT
+variable* createVariable(hash_t h) {
+    const varFactory* pFactory = gVarFactory.getData(h);
 
-    std::mutex gVarFactoryMutex;
-    std::mutex gFuncFactoryMutex;
-
-    variableBase* createVariable(hash_t h) {
-        gVarFactoryMutex.lock();
-        const varFactory_t pFactory = gVarFactory.at(h);
-        gVarFactoryMutex.unlock();
-
-        if (pFactory != nullptr) {
-            return pFactory();
-        }
-        return nullptr;
+    if (pFactory != nullptr) {
+        return (*pFactory)();
     }
+    return nullptr;
+}
 
-    functorBase* createFunctor(hash_t h) {
-        gFuncFactoryMutex.lock();
-        const funcFactory_t pFactory = gFuncFactory.at(h);
-        gFuncFactoryMutex.unlock();
+functor* createFunctor(hash_t h) {
+    const funcFactory* pFactory = gFuncFactory.getData(h);
 
-        if (pFactory != nullptr) {
-            return pFactory();
-        }
-        return nullptr;
+    if (pFactory != nullptr) {
+        return (*pFactory)();
     }
+    return nullptr;
+}
 
-#else /* LS_MT */
-
-    variable* createVariable(hash_t h) {
-        const varFactory pFactory = gVarFactory.at(h);
-
-        if (pFactory != nullptr) {
-            return pFactory();
-        }
-        return nullptr;
-    }
-
-    functor* createFunctor(hash_t h) {
-        const funcFactory pFactory = gFuncFactory.at(h);
-
-        if (pFactory != nullptr) {
-            return pFactory();
-        }
-        return nullptr;
-    }
-
-#endif /* LS_MT */
 
 } // end script namespace
 } // end ls namespace

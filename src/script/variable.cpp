@@ -49,7 +49,9 @@ variable::variable(variable&& v) :
 LS_SCRIPT_DEFINE_VAR(char, char);
 LS_SCRIPT_DEFINE_VAR(short, short);
 LS_SCRIPT_DEFINE_VAR(int, int);
+LS_SCRIPT_DEFINE_VAR(uint, unsigned);
 LS_SCRIPT_DEFINE_VAR(long, long);
+LS_SCRIPT_DEFINE_VAR(ulong, unsigned long);
 LS_SCRIPT_DEFINE_VAR(float, float);
 LS_SCRIPT_DEFINE_VAR(double, double);
 LS_SCRIPT_DEFINE_VAR(string, std::string);

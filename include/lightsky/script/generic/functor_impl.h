@@ -187,7 +187,7 @@ template <hash_t hashId, typename... args_t>
 bool functor_t<hashId, args_t...>::load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm) {
     functor::load(istr, vlm, flm);
 
-    for (int i = 0; i < sizeof...(args_t); ++i) {
+    for (unsigned i = 0; i < sizeof...(args_t); ++i) {
         void* ptr = nullptr;
         istr >> ptr;
         pArgs[ i ] = vlm[ ptr ];
@@ -202,7 +202,7 @@ template <hash_t hashId, typename... args_t>
 void functor_t<hashId, args_t...>::save(std::ostream& ostr) const {
     functor::save(ostr);
 
-    for (int i = 0; i < sizeof...(args_t); ++i) {
+    for (unsigned i = 0; i < sizeof...(args_t); ++i) {
         ostr << ' ' << (void*) pArgs[ i ];
     }
 }

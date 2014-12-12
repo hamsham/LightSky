@@ -24,7 +24,7 @@ namespace script {
  * This function will return NULL if the variable requested could not be
  * instantiated.
  */
-variable* createScriptVar(hash_t);
+variable* createVariable(hash_t);
 
 /**
  * Create a script function using the global functor factory
@@ -37,7 +37,7 @@ variable* createScriptVar(hash_t);
  * This function will return NULL if the functor requested could not be
  * instantiated.
  */
-functor* createScriptFunc(hash_t);
+functor* createFunctor(hash_t);
 
 } // end script namespace
 } // end ls namespace

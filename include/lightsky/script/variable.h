@@ -343,7 +343,9 @@ class variable_t final : public variable {
 LS_SCRIPT_DECLARE_VAR(char,     char);          // scriptVar_char
 LS_SCRIPT_DECLARE_VAR(short,    short);         // scriptVar_short
 LS_SCRIPT_DECLARE_VAR(int,      int);           // scriptVar_int
+LS_SCRIPT_DECLARE_VAR(uint,     unsigned);      // scriptVar_uint
 LS_SCRIPT_DECLARE_VAR(long,     long);          // scriptVar_long
+LS_SCRIPT_DECLARE_VAR(ulong,    unsigned long); // scriptVar_ulong
 LS_SCRIPT_DECLARE_VAR(float,    float);         // scriptVar_float
 LS_SCRIPT_DECLARE_VAR(double,   double);        // scriptVar_double
 LS_SCRIPT_DECLARE_VAR(string,   std::string);   // scriptVar_string

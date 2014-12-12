@@ -765,10 +765,10 @@ class functor_t<hashId, void> final : public functor {
     \
     typedef ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__> scriptFunc_##funcName; \
     \
+    extern const ls::script::funcFactory scriptFactory_##funcName; \
+    \
     template <> \
     ls::script::func_ref_t scriptFunc_##funcName::functionImpl; \
-    \
-    extern const ls::script::funcFactory scriptFactory_##funcName; \
     \
     extern template class ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__>
 
@@ -807,7 +807,7 @@ class functor_t<hashId, void> final : public functor {
 #define LS_SCRIPT_DEFINE_FUNC(funcName, ...) \
     template class ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__>; \
     \
-    const ls::script::funcFactory scriptFactory_##funcName = \
+    static const ls::script::funcFactory scriptFactory_##funcName = \
         ls::script::gFuncFactory[scriptHash_##funcName] = \
             []()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
     \

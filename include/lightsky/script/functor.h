@@ -17,6 +17,8 @@
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
 #include "lightsky/script/variable.h"
+#include "lightsky/script/factory.h"
+#include "lightsky/script/paramBytes.h"
 
 namespace ls {
 namespace script {
@@ -379,7 +381,6 @@ class functor : public scriptable {
 -----------------------------------------------------------------------------*/
 template <hash_t hashId, typename... args_t>
 class functor_t final : public functor {
-    
     private:
         /**
          *  @brief An array of pointers to scriptable variables.
@@ -557,7 +558,6 @@ class functor_t final : public functor {
 -----------------------------------------------------------------------------*/
 template <hash_t hashId>
 class functor_t<hashId, void> final : public functor {
-    
     private:
         /**
          *  @brief Implementation of the function to be run.
@@ -765,7 +765,7 @@ class functor_t<hashId, void> final : public functor {
     \
     typedef ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__> scriptFunc_##funcName; \
     \
-    extern const ls::script::funcFactory scriptFactory_##funcName; \
+    extern const ls::script::funcFactory& scriptFactory_##funcName; \
     \
     template <> \
     ls::script::func_ref_t scriptFunc_##funcName::functionImpl; \
@@ -807,7 +807,7 @@ class functor_t<hashId, void> final : public functor {
 #define LS_SCRIPT_DEFINE_FUNC(funcName, ...) \
     template class ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__>; \
     \
-    static const ls::script::funcFactory scriptFactory_##funcName = \
+    const ls::script::funcFactory& scriptFactory_##funcName = \
         ls::script::gFuncFactory[scriptHash_##funcName] = \
             []()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
     \
@@ -825,14 +825,14 @@ class functor_t<hashId, void> final : public functor {
  *          LS_SCRIPT_PARAM(0, scriptVar_int) += LS_SCRIPT_PARAM(1, scriptVar_int);
  *      };
  *  
- *      LS_SCRIPT_DEFINE_FUNC(strcat, scriptVar_string, scriptVar_string, scriptVar_string) {
- *          LS_SCRIPT_PARAM(0, scriptVar_string)
- *              = LS_SCRIPT_PARAM(1, scriptVar_string)
- *              + LS_SCRIPT_PARAM(2, scriptVar_string);
+ *      LS_SCRIPT_DEFINE_FUNC(strcat, std::string, std::, std::string) {
+ *          LS_SCRIPT_PARAM(0, std::string)
+ *              = LS_SCRIPT_PARAM(1, std::string)
+ *              + LS_SCRIPT_PARAM(2, std::string);
  *      };
  */
 #define LS_SCRIPT_PARAM(index, varType) \
-    static_cast<varType*>(pArgs[index])->data
+    static_cast<ls::script::variable_t<LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)), varType>*>(pArgs[index])->data
 
 /*-----------------------------------------------------------------------------
     Built-In Types

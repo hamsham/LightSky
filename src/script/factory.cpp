@@ -5,6 +5,8 @@
  * Created on June 26, 2013, 5:58 AM
  */
 
+#include "lightsky/utils/assertions.h"
+
 #include "lightsky/script/factory.h"
 
 namespace ls {
@@ -26,8 +28,9 @@ funcFactoryMap gFuncFactory;
 // new instance of the requested object
 
 variable* createVariable(hash_t h) {
-    const varFactory* pFactory = gVarFactory.getData(h);
-
+    LS_DEBUG_ASSERT(gVarFactory.hasData(h));
+    const varFactory pFactory = *gVarFactory.getData(h);
+    LS_DEBUG_ASSERT(pFactory != nullptr);
     if (pFactory != nullptr) {
         return (*pFactory)();
     }
@@ -35,8 +38,9 @@ variable* createVariable(hash_t h) {
 }
 
 functor* createFunctor(hash_t h) {
-    const funcFactory* pFactory = gFuncFactory.getData(h);
-
+    LS_DEBUG_ASSERT(gFuncFactory.hasData(h));
+    const funcFactory pFactory = *gFuncFactory.getData(h);
+    LS_DEBUG_ASSERT(pFactory != nullptr);
     if (pFactory != nullptr) {
         return (*pFactory)();
     }

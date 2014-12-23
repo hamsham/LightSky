@@ -9,8 +9,9 @@
 #define	__LS_SCRIPT_SETUP_H__
 
 #include "lightsky/setup/macros.h"
-#include "lightsky/utils/btree.h"
+
 #include "lightsky/utils/hash.h"
+#include "lightsky/utils/btree.h"
 
 namespace ls {
 namespace script {
@@ -73,30 +74,11 @@ typedef functor_t<0, void > emptyFunc;
     Containers
 -----------------------------------------------------------------------------*/
 /*
- * Script Factory Functions
- */
-typedef variable* (*varFactory)();
-
-typedef functor* (*funcFactory)();
-
-/*
- * Lookup Trees for factories
- */
-typedef ls::utils::bTree<hash_t, varFactory> varFactoryMap;
-
-typedef ls::utils::bTree<hash_t, funcFactory> funcFactoryMap;
-
-/*
  * File loading maps
  */
 typedef ls::utils::bTree<void*, variable*> varLoaderMap;
-typedef ls::utils::bTree<void*, functor*> funcLoaderMap;
 
-/*
- * Global script factory objects
- */
-extern varFactoryMap gVarFactory;
-extern funcFactoryMap gFuncFactory;
+typedef ls::utils::bTree<void*, functor*> funcLoaderMap;
 
 } // end script namespace
 } // end ls namespace

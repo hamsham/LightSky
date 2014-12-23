@@ -13,6 +13,7 @@
 
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
+#include "lightsky/script/factory.h"
 
 namespace ls {
 namespace script {
@@ -301,7 +302,7 @@ class variable_t final : public variable {
         \
         enum : ls::script::hash_t { scriptHash_##varName = LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)) }; \
         \
-        extern const ls::script::varFactory scriptFactory_##varName; \
+        extern const ls::script::varFactory& scriptFactory_##varName; \
         \
         typedef ls::script::variable_t<scriptHash_##varName, varType> scriptVar_##varName; \
         \
@@ -332,7 +333,7 @@ class variable_t final : public variable {
         \
         template class ls::script::variable_t<scriptHash_##varName, varType>; \
         \
-        const ls::script::varFactory scriptFactory_##varName = \
+        const ls::script::varFactory& scriptFactory_##varName = \
             ls::script::gVarFactory[ scriptHash_##varName ] = \
                 []()->ls::script::variable* { return new scriptVar_##varName{}; }
 #endif /* LS_SCRIPT_DEFINE_VAR */

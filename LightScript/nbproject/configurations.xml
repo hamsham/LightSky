@@ -10,6 +10,7 @@
       </logicalFolder>
       <itemPath>../include/lightsky/script/factory.h</itemPath>
       <itemPath>../include/lightsky/script/functor.h</itemPath>
+      <itemPath>../include/lightsky/script/paramBytes.h</itemPath>
       <itemPath>../include/lightsky/script/script.h</itemPath>
       <itemPath>../include/lightsky/script/scriptable.h</itemPath>
       <itemPath>../include/lightsky/script/setup.h</itemPath>
@@ -111,6 +112,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/script/generic/variable_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/paramBytes.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -244,6 +250,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/script/generic/variable_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/script/paramBytes.h"
             ex="false"
             tool="3"
             flavor2="0">

@@ -12,6 +12,23 @@
 
 namespace ls {
 namespace script {
+    
+/*
+ * Script Factory Functions
+ */
+typedef variable* (*varFactory)();
+
+typedef functor* (*funcFactory)();
+
+/*
+ * Lookup Trees for factories
+ */
+typedef ls::utils::bTree<hash_t, varFactory> varFactoryMap;
+
+typedef ls::utils::bTree<hash_t, funcFactory> funcFactoryMap;
+
+extern varFactoryMap gVarFactory;
+extern funcFactoryMap gFuncFactory;
 
 /**
  * Create a script variable using the global variable factory

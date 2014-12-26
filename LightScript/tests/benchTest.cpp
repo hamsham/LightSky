@@ -26,12 +26,10 @@ void printHello() {
 }
 
 int addNums(int num1, int num2) {
-    //std::cout << "Adding: " << num1 << '+' << num2 << '=' << num1+num2 << std::endl;
     return num1 + num2;
 }
 
 int subNums(int num1, int num2) {
-    //std::cout << "Subtracting: " << num1 << '-' << num2 << '=' << num1-num2 << std::endl;
     return num1 - num2;
 }
 
@@ -45,7 +43,7 @@ LS_SCRIPT_DEFINE_FUNC(printHello, void) {
 };
 
 /*
- * Bencharks without std::move
+ * Benchmarks without std::move
  */
 LS_SCRIPT_DECLARE_FUNC(addNums, scriptVar_int, scriptVar_int, scriptVar_int);
 LS_SCRIPT_DEFINE_FUNC(addNums, scriptVar_int, scriptVar_int, scriptVar_int) {
@@ -67,11 +65,10 @@ void nativeFunc() {
     
     hr_time t1, t2;
     t1 = chrono::steady_clock::now();
-    int (*pFunc)(int, int) = &addNums;
+    int (*pFunc[2])(int, int) = {&addNums, &subNums};
     
     for (unsigned i = 0; i < NUM_TEST_RUNS; ++i) {
-        testVar1 = pFunc(testVar2, testVar3);
-        pFunc = i%2 == 0 ? &subNums : &addNums;
+        testVar1 = (*pFunc[i%2])(testVar2, testVar3);
     }
     
     (void)testVar1;
@@ -94,18 +91,15 @@ void scriptBench() {
     std::cout << "Sub Hash: " << scriptHash_subNums << std::endl;
     std::cout << "Int Hash: " << scriptHash_int << std::endl;
     
-    ls::script::gFuncFactory[scriptHash_addNums] = scriptFactory_addNums;
-    ls::script::gFuncFactory[scriptHash_subNums] = scriptFactory_subNums;
-    
     std::cout << "Global functor factory size: " << ls::script::gFuncFactory.size() << std::endl;
     std::cout << "Global functor factory size: " << ls::script::gVarFactory.size() << std::endl;
-    
-    ls::script::functor* const testFunc1 = ls::script::createFunctor(scriptHash_addNums);
-    ls::script::functor* const testFunc2 = ls::script::createFunctor(scriptHash_subNums);
     
     ls::script::variable* const testVar1 = ls::script::createVariable(scriptHash_int);
     ls::script::variable* const testVar2 = ls::script::createVariable(scriptHash_int);
     ls::script::variable* const testVar3 = ls::script::createVariable(scriptHash_int);
+    
+    ls::script::functor* const testFunc1 = ls::script::createFunctor(scriptHash_addNums);
+    ls::script::functor* const testFunc2 = ls::script::createFunctor(scriptHash_subNums);
 /*
     ls::script::functor* const testFunc1 = scriptFactory_addNums();
     ls::script::functor* const testFunc2 = scriptFactory_subNums();

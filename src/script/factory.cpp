@@ -28,21 +28,21 @@ funcFactoryMap gFuncFactory;
 // new instance of the requested object
 
 variable* createVariable(hash_t h) {
-    LS_DEBUG_ASSERT(gVarFactory.hasData(h));
-    const varFactory pFactory = *gVarFactory.getData(h);
+    LS_DEBUG_ASSERT(gVarFactory.find(h) != gVarFactory.end());
+    const varFactory& pFactory = gVarFactory.at(h);
     LS_DEBUG_ASSERT(pFactory != nullptr);
     if (pFactory != nullptr) {
-        return (*pFactory)();
+        return pFactory();
     }
     return nullptr;
 }
 
 functor* createFunctor(hash_t h) {
-    LS_DEBUG_ASSERT(gFuncFactory.hasData(h));
-    const funcFactory pFactory = *gFuncFactory.getData(h);
+    LS_DEBUG_ASSERT(gFuncFactory.find(h) != gFuncFactory.end());
+    const funcFactory& pFactory = gFuncFactory.at(h);
     LS_DEBUG_ASSERT(pFactory != nullptr);
     if (pFactory != nullptr) {
-        return (*pFactory)();
+        return pFactory();
     }
     return nullptr;
 }

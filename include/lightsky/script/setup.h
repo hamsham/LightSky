@@ -8,10 +8,11 @@
 #ifndef __LS_SCRIPT_SETUP_H__
 #define	__LS_SCRIPT_SETUP_H__
 
+#include <map>
+
 #include "lightsky/setup/macros.h"
 
 #include "lightsky/utils/hash.h"
-#include "lightsky/utils/btree.h"
 
 namespace ls {
 namespace script {
@@ -76,9 +77,9 @@ typedef functor_t<0, void > emptyFunc;
 /*
  * File loading maps
  */
-typedef ls::utils::bTree<void*, variable*> varLoaderMap;
+typedef std::map<void*, variable*> varLoaderMap;
 
-typedef ls::utils::bTree<void*, functor*> funcLoaderMap;
+typedef std::map<void*, functor*> funcLoaderMap;
 
 } // end script namespace
 } // end ls namespace

@@ -9,7 +9,6 @@
 #define __LS_UTILS_BTREE__
 
 #include <iostream>
-#include <new>
 
 #include "lightsky/utils/bits.h"
 
@@ -118,13 +117,13 @@ template <typename data_t>
 bTreeNode<data_t>::bTreeNode(const bTreeNode& btn) :
     data{
         btn.data != nullptr
-            ? new(std::nothrow) data_t(*btn.data)
+            ? new data_t(*btn.data)
             : nullptr
     },
     subNodes{nullptr}
 {
     if (btn.subNodes != nullptr) {
-        subNodes = new(std::nothrow) bTreeNode[BNODE_MAX];
+        subNodes = new bTreeNode[BNODE_MAX];
         subNodes[BNODE_LEFT] = btn.subNodes[BNODE_LEFT];
         subNodes[BNODE_RIGHT] = btn.subNodes[BNODE_RIGHT];
     }
@@ -161,7 +160,7 @@ template <typename data_t>
 bTreeNode<data_t>& bTreeNode<data_t>::operator=(const bTreeNode& btn) {
     delete data;
     if (btn.data) {
-        data = new(std::nothrow) data_t;
+        data = new data_t;
         *data = *btn.data;
     }
     else {
@@ -170,13 +169,14 @@ bTreeNode<data_t>& bTreeNode<data_t>::operator=(const bTreeNode& btn) {
     
     delete subNodes;
     if (btn.subNodes) {
-        subNodes = new(std::nothrow) bTreeNode[BNODE_MAX];
+        subNodes = new bTreeNode[BNODE_MAX];
         subNodes[BNODE_LEFT] = btn.subNodes[BNODE_LEFT];
         subNodes[BNODE_RIGHT] = btn.subNodes[BNODE_RIGHT];
     }
     else {
         subNodes = nullptr;
     }
+    return *this;
 }
 
 /*-------------------------------------
@@ -196,6 +196,7 @@ bTreeNode<data_t>& bTreeNode<data_t>::operator=(bTreeNode&& btn) {
 -----------------------------------------------------------------------------*/
 /**
  *  @brief B-Tree
+ * 
  *  A simple tree container that allows for fast lookup of data.
  *  
  *  @todo
@@ -205,21 +206,35 @@ template <typename key_t, typename data_t>
 class bTree {
     private:
         /**
-         *  @brief head
-         *  The head tree which contains all child nodes and data.
+         *  @brief The head tree which contains all child nodes and data.
          */
         bTreeNode<data_t> head = bTreeNode<data_t>{};
         
         /**
-         *  @brief numNodes
-         *  Number of child nodes, not including the head node.
+         *  @brief Number of child nodes, not including the head node.
          */
         unsigned numNodes = 0;
         
         /**
-         *  @brief iterate
-         *  Iterates through the list of child nodes and returns whichever
-         *  node is referenced by a key.
+         *  @brief Iterates through the list of child nodes and returns
+         * whichever  node is referenced by a key.
+         *  
+         *  @param k
+         *  A key which indicates the child node that should be iterated to.
+         *  
+         *  @param createNodes
+         *  A boolean flag to determine if a child node should be created if
+         *  one does not exist at they key 'k.'
+         *  
+         *  @return
+         *  A pointer to a child node, referenced by 'k,' or NULL if one does
+         *  not exist.
+         */
+        const bTreeNode<data_t>* iterate(const key_t* k) const;
+        
+        /**
+         *  @brief Iterates through the list of child nodes and returns
+         * whichever  node is referenced by a key.
          *  
          *  @param k
          *  A key which indicates the child node that should be iterated to.
@@ -237,6 +252,7 @@ class bTree {
     public:
         /**
          *  @brief constructor
+         * 
          *  Creates an empty tree with no child nodes.
          */
         constexpr bTree();
@@ -251,6 +267,7 @@ class bTree {
         
         /**
          *  @brief Move constructor
+         * 
          *  Moves all data from the input parameter into *this without any
          *  copies.
          *  
@@ -261,6 +278,7 @@ class bTree {
         
         /**
          *  @brief destructor
+         * 
          *  Clears all data and resources used by *this.
          */
         ~bTree() {}
@@ -277,6 +295,7 @@ class bTree {
         
         /**
          *  @brief move operator
+         * 
          *  Moves all data from the input parameter into *this without any
          *  copies.
          *  
@@ -288,7 +307,22 @@ class bTree {
         bTree& operator=(bTree&& tree);
         
         /**
+         *  @brief subscript operator (const)
+         * 
+         *  Iterates through the tree of nodes and returns the data referenced
+         *  by a key. This operator behaves just like an std::map, where if an
+         *  object does not exist at the specified key, one will be created.
+         *  
+         *  @param k
+         *  A key used to reference a specific object in *this.
+         *  
+         *  @return a reference to a specific piece of data referenced by 'k.'
+         */
+        const data_t& operator [] (const key_t& k) const;
+        
+        /**
          *  @brief subscript operator
+         * 
          *  Iterates through the tree of nodes and returns the data referenced
          *  by a key. This operator behaves just like an std::map, where if an
          *  object does not exist at the specified key, one will be created.
@@ -301,8 +335,7 @@ class bTree {
         data_t& operator [] (const key_t& k);
         
         /**
-         *  @brief push
-         *  insert a piece of data into *this, referencing it by a key.
+         *  @brief Insert a piece of data into *this, referencing it by a key.
          *  
          *  @param k
          *  The key that will be used to reference the inserted data.
@@ -313,8 +346,7 @@ class bTree {
         void push(const key_t& k, const data_t& d);
         
         /**
-         *  @brief pop
-         *  Delete an object contained within *this.
+         *  @brief Delete an object contained within *this.
          *  
          *  @param k
          *  The key that will be used to reference the data to be deleted.
@@ -322,8 +354,8 @@ class bTree {
         void pop(const key_t& k);
         
         /**
-         *  @brief hasData
-         *  Check to see if there is data within the tree, referenced by a key.
+         *  @brief Check to see if there is data within the tree, referenced by
+         * a key.
          *  
          *  @param k
          *  The key that will be used to check for the existence of data in
@@ -332,32 +364,39 @@ class bTree {
          *  @return TRUE if there is data referenced by the key 'k,' FALSE if
          *  not.
          */
-        bool hasData(const key_t& k);
+        bool contains(const key_t& k) const;
         
         /**
-         *  @brief getData
-         *  Get a pointer to the data that's referenced by a key.
+         *  @brief Get a reference to the data that's referenced by a key.
          *  
          *  @param k
          *  The key that will be used to check for the existence of data in
          *  *this.
          *  
-         *  @return a pointer to the data referenced by 'k.' Returns NULL if
-         *  no data exists at 'k.'
+         *  @return a reference to the data referenced by 'k.'
          */
-        const data_t* getData(const key_t& k);
+        const data_t& at(const key_t& k) const;
         
         /**
-         *  @brief size
-         *  Get the number of nodes contained within *this.
+         *  @brief Get a reference to the data that's referenced by a key.
+         *  
+         *  @param k
+         *  The key that will be used to check for the existence of data in
+         *  *this.
+         *  
+         *  @return a reference to the data referenced by 'k.'
+         */
+        data_t& at(const key_t& k);
+        
+        /**
+         *  @brief Get the number of nodes contained within *this.
          *  
          *  @return the number of objects inserted into *this.
          */
         unsigned size() const { return numNodes; }
         
         /**
-         *  @brief clear
-         *  frees all objects and dynamic memory from *this.
+         *  @brief Frees all objects and dynamic memory from *this.
          */
         void clear();
 };

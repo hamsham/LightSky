@@ -18,7 +18,6 @@
 #include "lightsky/script/scriptable.h"
 #include "lightsky/script/variable.h"
 #include "lightsky/script/factory.h"
-#include "lightsky/script/paramBytes.h"
 
 namespace ls {
 namespace script {
@@ -779,13 +778,11 @@ class functor_t<hashId, void> final : public functor {
  *  native functions. For example, to use this, simply write as follows:
  *  
  *      LS_SCRIPT_DEFINE_FUNC(addNums, scriptVar_int, scriptVar_int) {
- *          LS_SCRIPT_PARAM(0, scriptVar_int) += LS_SCRIPT_PARAM(1, scriptVar_int);
+ *          LS_SCRIPT_PARAM(0, int) += LS_SCRIPT_PARAM(1, int);
  *      };
  *  
  *      LS_SCRIPT_DEFINE_FUNC(strcat, scriptVar_string, scriptVar_string, scriptVar_string) {
- *          LS_SCRIPT_PARAM(0, scriptVar_string)
- *              = LS_SCRIPT_PARAM(1, scriptVar_string)
- *              + LS_SCRIPT_PARAM(2, scriptVar_string);
+ *          LS_SCRIPT_PARAM(0, std::string) = LS_SCRIPT_PARAM(1, std::string) + LS_SCRIPT_PARAM(2, std::string);
  *      };
  *  
  *  Although a bit verbose, the process is actually quite painless once you get
@@ -809,7 +806,7 @@ class functor_t<hashId, void> final : public functor {
     \
     const ls::script::funcFactory& scriptFactory_##funcName = \
         ls::script::gFuncFactory[scriptHash_##funcName] = \
-            []()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
+            *[]()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
     \
     template <> \
     ls::script::func_ref_t scriptFunc_##funcName::functionImpl = \
@@ -822,13 +819,11 @@ class functor_t<hashId, void> final : public functor {
  *  For example, use it like this:
  *  
  *      LS_SCRIPT_DEFINE_FUNC(addNums, scriptVar_int, scriptVar_int) {
- *          LS_SCRIPT_PARAM(0, scriptVar_int) += LS_SCRIPT_PARAM(1, scriptVar_int);
+ *          LS_SCRIPT_PARAM(0, int) += LS_SCRIPT_PARAM(1, int);
  *      };
  *  
  *      LS_SCRIPT_DEFINE_FUNC(strcat, std::string, std::, std::string) {
- *          LS_SCRIPT_PARAM(0, std::string)
- *              = LS_SCRIPT_PARAM(1, std::string)
- *              + LS_SCRIPT_PARAM(2, std::string);
+ *          LS_SCRIPT_PARAM(0, std::string) = LS_SCRIPT_PARAM(1, std::string) + LS_SCRIPT_PARAM(2, std::string);
  *      };
  */
 #define LS_SCRIPT_PARAM(index, varType) \

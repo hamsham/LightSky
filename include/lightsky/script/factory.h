@@ -8,25 +8,24 @@
 #ifndef __LS_SCRIPT_FACTORY_H__
 #define	__LS_SCRIPT_FACTORY_H__
 
+#include <map>
+
 #include "lightsky/script/setup.h"
 
 namespace ls {
 namespace script {
-    
 /*
  * Script Factory Functions
  */
 typedef variable* (*varFactory)();
-
 typedef functor* (*funcFactory)();
+
+typedef std::map<hash_t, varFactory> varFactoryMap;
+typedef std::map<hash_t, funcFactory> funcFactoryMap;
 
 /*
  * Lookup Trees for factories
  */
-typedef ls::utils::bTree<hash_t, varFactory> varFactoryMap;
-
-typedef ls::utils::bTree<hash_t, funcFactory> funcFactoryMap;
-
 extern varFactoryMap gVarFactory;
 extern funcFactoryMap gFuncFactory;
 

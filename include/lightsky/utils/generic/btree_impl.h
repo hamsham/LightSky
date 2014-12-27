@@ -142,7 +142,7 @@ const data_t& bTree<key_t, data_t>::operator [](const key_t& k) const {
         throw ls::utils::error_t::ERROR;
     }
     
-    return *(iter->data);
+    return *iter->data;
 }
 
 /*-------------------------------------
@@ -153,7 +153,7 @@ data_t& bTree<key_t, data_t>::operator [](const key_t& k) {
     bTreeNode<data_t>* const iter = iterate(&k, true);
     
     if (!iter->data) {
-        iter->data = new data_t();
+        iter->data = new data_t{};
         ++numNodes;
     }
     
@@ -161,14 +161,30 @@ data_t& bTree<key_t, data_t>::operator [](const key_t& k) {
 }
 
 /*-------------------------------------
+    B-Tree Emplace
+-------------------------------------*/
+template <typename key_t, typename data_t>
+void bTree<key_t, data_t>::emplace(const key_t& k, data_t&& d) {
+    bTreeNode<data_t>* const iter = iterate(&k, true);
+    
+    if (!iter->data) {
+        iter->data = new data_t{std::move(d)};
+        ++numNodes;
+    }
+    else {
+        *iter->data = std::move(d);
+    }
+}
+
+/*-------------------------------------
     B-Tree Push
 -------------------------------------*/
 template <typename key_t, typename data_t>
 void bTree<key_t, data_t>::push(const key_t& k, const data_t& d) {
-    bTreeNode<data_t>* iter = iterate(&k, true);
+    bTreeNode<data_t>* const iter = iterate(&k, true);
     
     if (!iter->data) {
-        iter->data = new data_t(d);
+        iter->data = new data_t{d};
         ++numNodes;
     }
     else {
@@ -181,10 +197,11 @@ void bTree<key_t, data_t>::push(const key_t& k, const data_t& d) {
 -------------------------------------*/
 template <typename key_t, typename data_t>
 void bTree<key_t, data_t>::pop(const key_t& k) {
-    bTreeNode<data_t>* iter = iterate(&k, false);
+    bTreeNode<data_t>* const iter = iterate(&k, false);
 
-    if (!iter || !iter->data)
+    if (!iter || !iter->data) {
         return;
+    }
 
     delete iter->data;
     iter->data = nullptr;
@@ -196,8 +213,8 @@ void bTree<key_t, data_t>::pop(const key_t& k) {
 -------------------------------------*/
 template <typename key_t, typename data_t>
 bool bTree<key_t, data_t>::contains(const key_t& k) const {
-    const bTreeNode<data_t>* iter = iterate(&k);
-    return iter && (iter->data != nullptr);
+    const bTreeNode<data_t>* const iter = iterate(&k);
+    return iter && iter->data;
 }
 
 /*-------------------------------------
@@ -205,13 +222,13 @@ bool bTree<key_t, data_t>::contains(const key_t& k) const {
 -------------------------------------*/
 template <typename key_t, typename data_t>
 const data_t& bTree<key_t, data_t>::at(const key_t& k) const {
-    const bTreeNode<data_t>* iter = iterate(&k);
+    const bTreeNode<data_t>* const iter = iterate(&k);
     
     if (!iter || !iter->data) {
         throw ls::utils::error_t::ERROR;
     }
     
-    return *(iter->data);
+    return *iter->data;
 }
 
 /*-------------------------------------
@@ -219,13 +236,13 @@ const data_t& bTree<key_t, data_t>::at(const key_t& k) const {
 -------------------------------------*/
 template <typename key_t, typename data_t>
 data_t& bTree<key_t, data_t>::at(const key_t& k) {
-    bTreeNode<data_t>* iter = iterate(&k, false);
+    bTreeNode<data_t>* const iter = iterate(&k, false);
     
     if (!iter || !iter->data) {
         throw ls::utils::error_t::ERROR;
     }
     
-    return *(iter->data);
+    return *iter->data;
 }
 
 } // end utils namespace

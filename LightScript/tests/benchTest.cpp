@@ -18,42 +18,13 @@ namespace chrono = std::chrono;
 typedef chrono::steady_clock::time_point hr_time;
 typedef chrono::milliseconds hr_prec;
 
-/******************************************************************************
- * Generic Functions
-******************************************************************************/
-void printHello() {
-    std::cout << "Hello World" << std::endl;
+int addNums(int x, int y) {
+    return x + y;
 }
 
-int addNums(int num1, int num2) {
-    return num1 + num2;
+int subNums(int x, int y) {
+    return x - y;
 }
-
-int subNums(int num1, int num2) {
-    return num1 - num2;
-}
-
-/******************************************************************************
- * Script Registration
-******************************************************************************/
-LS_SCRIPT_DECLARE_FUNC(printHello, void);
-LS_SCRIPT_DEFINE_FUNC(printHello, void) {
-    (void)pArgs;
-    printHello();
-};
-
-/*
- * Benchmarks without std::move
- */
-LS_SCRIPT_DECLARE_FUNC(addNums, scriptVar_int, scriptVar_int, scriptVar_int);
-LS_SCRIPT_DEFINE_FUNC(addNums, scriptVar_int, scriptVar_int, scriptVar_int) {
-    LS_SCRIPT_PARAM(0, int) = addNums(LS_SCRIPT_PARAM(1, int), LS_SCRIPT_PARAM(2, int));
-};
-
-LS_SCRIPT_DECLARE_FUNC(subNums, scriptVar_int, scriptVar_int, scriptVar_int);
-LS_SCRIPT_DEFINE_FUNC(subNums, scriptVar_int, scriptVar_int, scriptVar_int) {
-    LS_SCRIPT_PARAM(0, int) = subNums(LS_SCRIPT_PARAM(1, int), LS_SCRIPT_PARAM(2, int));
-};
 
 /******************************************************************************
  * REFERENCE FUNCTION
@@ -87,27 +58,13 @@ void nativeFunc() {
  * SCRIPTED BENCHMARK
 ******************************************************************************/
 void scriptBench() {
-    std::cout << "Add Hash: " << scriptHash_addNums << std::endl;
-    std::cout << "Sub Hash: " << scriptHash_subNums << std::endl;
-    std::cout << "Int Hash: " << scriptHash_int << std::endl;
+    ls::script::functor* const testFunc1 = ls::script::createFunctor(ls::script::scriptHash_addInts);
+    ls::script::functor* const testFunc2 = ls::script::createFunctor(ls::script::scriptHash_subInts);
     
-    std::cout << "Global functor factory size: " << ls::script::gFuncFactory.size() << std::endl;
-    std::cout << "Global functor factory size: " << ls::script::gVarFactory.size() << std::endl;
+    ls::script::variable* const testVar1 = ls::script::createVariable(ls::script::scriptHash_int);
+    ls::script::variable* const testVar2 = ls::script::createVariable(ls::script::scriptHash_int);
+    ls::script::variable* const testVar3 = ls::script::createVariable(ls::script::scriptHash_int);
     
-    ls::script::variable* const testVar1 = ls::script::createVariable(scriptHash_int);
-    ls::script::variable* const testVar2 = ls::script::createVariable(scriptHash_int);
-    ls::script::variable* const testVar3 = ls::script::createVariable(scriptHash_int);
-    
-    ls::script::functor* const testFunc1 = ls::script::createFunctor(scriptHash_addNums);
-    ls::script::functor* const testFunc2 = ls::script::createFunctor(scriptHash_subNums);
-/*
-    ls::script::functor* const testFunc1 = scriptFactory_addNums();
-    ls::script::functor* const testFunc2 = scriptFactory_subNums();
-    
-    ls::script::variable* const testVar1 = scriptFactory_int();
-    ls::script::variable* const testVar2 = scriptFactory_int();
-    ls::script::variable* const testVar3 = scriptFactory_int();
-*/
     LS_SCRIPT_VAR_DATA(testVar1, int) = 42;
     LS_SCRIPT_VAR_DATA(testVar2, int) = 77;
     LS_SCRIPT_VAR_DATA(testVar3, int) = 13;

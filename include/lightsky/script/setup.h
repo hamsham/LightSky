@@ -11,7 +11,6 @@
 #include <map>
 
 #include "lightsky/setup/macros.h"
-
 #include "lightsky/utils/hash.h"
 
 namespace ls {

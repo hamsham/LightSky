@@ -8,7 +8,7 @@
 #ifndef __LS_SCRIPT_FACTORY_H__
 #define	__LS_SCRIPT_FACTORY_H__
 
-#include <map>
+#include <unordered_map>
 
 #include "lightsky/script/setup.h"
 
@@ -20,19 +20,13 @@ namespace script {
 typedef variable* (*varFactory)();
 typedef functor* (*funcFactory)();
 
-typedef std::map<hash_t, varFactory> varFactoryMap;
-typedef std::map<hash_t, funcFactory> funcFactoryMap;
-
-/*
- * Lookup Trees for factories
- */
-extern varFactoryMap gVarFactory;
-extern funcFactoryMap gFuncFactory;
+typedef std::unordered_map<hash_t, varFactory> varFactoryMap;
+typedef std::unordered_map<hash_t, funcFactory> funcFactoryMap;
 
 /**
  * Create a script variable using the global variable factory
  * 
- * @param hash_t
+ * @param factoryId
  * A hash value that determines the type of variable that should be returned.
  * 
  * @return a pointer to the script variable requested. This pointer must be
@@ -40,12 +34,12 @@ extern funcFactoryMap gFuncFactory;
  * This function will return NULL if the variable requested could not be
  * instantiated.
  */
-variable* createVariable(hash_t);
+variable* createVariable(hash_t factoryId);
 
 /**
  * Create a script function using the global functor factory
  * 
- * @param hash_t
+ * @param factoryId
  * A hash value that determines the type of functor that should be returned.
  * 
  * @return a pointer to the script functor requested. This pointer must be
@@ -53,7 +47,10 @@ variable* createVariable(hash_t);
  * This function will return NULL if the functor requested could not be
  * instantiated.
  */
-functor* createFunctor(hash_t);
+functor* createFunctor(hash_t factoryId);
+
+const varFactory& registerVarFactory(hash_t factoryId, const varFactory& pFactory);
+const funcFactory& registerFuncFactory(hash_t factoryId, const funcFactory& pFactory);
 
 } // end script namespace
 } // end ls namespace

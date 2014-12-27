@@ -11,6 +11,7 @@
       <itemPath>../include/lightsky/script/factory.h</itemPath>
       <itemPath>../include/lightsky/script/functor.h</itemPath>
       <itemPath>../include/lightsky/script/script.h</itemPath>
+      <itemPath>../include/lightsky/script/scriptMath.h</itemPath>
       <itemPath>../include/lightsky/script/scriptable.h</itemPath>
       <itemPath>../include/lightsky/script/setup.h</itemPath>
       <itemPath>../include/lightsky/script/variable.h</itemPath>
@@ -24,6 +25,7 @@
                    projectFiles="true">
       <itemPath>../src/script/factory.cpp</itemPath>
       <itemPath>../src/script/functor.cpp</itemPath>
+      <itemPath>../src/script/scriptMath.cpp</itemPath>
       <itemPath>../src/script/scriptable.cpp</itemPath>
       <itemPath>../src/script/setup.cpp</itemPath>
       <itemPath>../src/script/variable.cpp</itemPath>
@@ -120,6 +122,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/script/scriptMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/script/scriptable.h"
             ex="false"
             tool="3"
@@ -135,6 +142,8 @@
       <item path="../src/script/factory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/functor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptable.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -173,6 +182,9 @@
         </ccTool>
         <linkerTool>
           <output>benchTest</output>
+          <linkerLibItems>
+            <linkerLibFileItem>build/liblightscript_d.a</linkerLibFileItem>
+          </linkerLibItems>
         </linkerTool>
       </folder>
       <item path="tests/benchTest.cpp" ex="false" tool="1" flavor2="0">
@@ -253,6 +265,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/script/scriptMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/script/scriptable.h"
             ex="false"
             tool="3"
@@ -268,6 +285,8 @@
       <item path="../src/script/factory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/functor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptable.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -306,6 +325,9 @@
         </ccTool>
         <linkerTool>
           <output>benchTest</output>
+          <linkerLibItems>
+            <linkerLibFileItem>build/liblightscript.a</linkerLibFileItem>
+          </linkerLibItems>
         </linkerTool>
       </folder>
       <item path="tests/benchTest.cpp" ex="false" tool="1" flavor2="0">

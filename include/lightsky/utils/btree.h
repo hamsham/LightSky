@@ -8,7 +8,7 @@
 #ifndef __LS_UTILS_BTREE__
 #define __LS_UTILS_BTREE__
 
-#include <iostream>
+#include <utility> // std::move(...)
 
 #include "lightsky/utils/bits.h"
 
@@ -333,6 +333,17 @@ class bTree {
          *  @return a reference to a specific piece of data referenced by 'k.'
          */
         data_t& operator [] (const key_t& k);
+        
+        /**
+         *  @brief Insert a piece of data into *this, referencing it by a key.
+         *  
+         *  @param k
+         *  The key that will be used to reference the inserted data.
+         *  
+         *  @param d
+         *  The data that will be inserted into *this.
+         */
+        void emplace(const key_t& k, data_t&& d);
         
         /**
          *  @brief Insert a piece of data into *this, referencing it by a key.

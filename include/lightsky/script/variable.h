@@ -259,7 +259,7 @@ class variable_t final : public variable {
  */
 #ifndef LS_SCRIPT_VAR_DATA
     #define LS_SCRIPT_VAR_DATA( pVar, varName ) \
-        static_cast<scriptVar_##varName*>(pVar)->data
+        static_cast<ls::script::scriptVar_##varName*>(pVar)->data
 #endif /* LS_SCRIPT_VAR_DATA */
 
 /**
@@ -300,13 +300,13 @@ class variable_t final : public variable {
 #ifndef LS_SCRIPT_DECLARE_VAR
     #define LS_SCRIPT_DECLARE_VAR( varName, varType ) \
         \
-        enum : ls::script::hash_t { scriptHash_##varName = LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)) }; \
+        enum : hash_t { scriptHash_##varName = LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)) }; \
         \
-        extern const ls::script::varFactory& scriptFactory_##varName; \
+        extern const varFactory& scriptFactory_##varName; \
         \
-        typedef ls::script::variable_t<scriptHash_##varName, varType> scriptVar_##varName; \
+        typedef variable_t<scriptHash_##varName, varType> scriptVar_##varName; \
         \
-        extern template class ls::script::variable_t<scriptHash_##varName, varType>
+        extern template class variable_t<scriptHash_##varName, varType>
 #endif /* LS_SCRIPT_DECLARE_VAR */
 
 /**
@@ -331,16 +331,20 @@ class variable_t final : public variable {
 #ifndef LS_SCRIPT_DEFINE_VAR
     #define LS_SCRIPT_DEFINE_VAR( varName, varType ) \
         \
-        template class ls::script::variable_t<scriptHash_##varName, varType>; \
+        template class variable_t<scriptHash_##varName, varType>; \
         \
-        const ls::script::varFactory& scriptFactory_##varName = \
-            ls::script::gVarFactory[ scriptHash_##varName ] = \
-                []()->ls::script::variable* { return new scriptVar_##varName{}; }
+        const varFactory& scriptFactory_##varName = registerVarFactory( \
+            scriptHash_##varName, []()->variable* {return new scriptVar_##varName{};} \
+        );
+
 #endif /* LS_SCRIPT_DEFINE_VAR */
 
 /*-----------------------------------------------------------------------------
     Built-In types
 -----------------------------------------------------------------------------*/
+namespace ls {
+namespace script {
+    
 LS_SCRIPT_DECLARE_VAR(char,     char);          // scriptVar_char
 LS_SCRIPT_DECLARE_VAR(short,    short);         // scriptVar_short
 LS_SCRIPT_DECLARE_VAR(int,      int);           // scriptVar_int
@@ -350,5 +354,8 @@ LS_SCRIPT_DECLARE_VAR(ulong,    unsigned long); // scriptVar_ulong
 LS_SCRIPT_DECLARE_VAR(float,    float);         // scriptVar_float
 LS_SCRIPT_DECLARE_VAR(double,   double);        // scriptVar_double
 LS_SCRIPT_DECLARE_VAR(string,   std::string);   // scriptVar_string
+
+} // end script namespace
+} // end ls namespace
 
 #endif	/* __LS_SCRIPT_VARIABLE_H__ */

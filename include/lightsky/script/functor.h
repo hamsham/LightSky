@@ -802,15 +802,14 @@ class functor_t<hashId, void> final : public functor {
  *      
  */
 #define LS_SCRIPT_DEFINE_FUNC(funcName, ...) \
-    template class ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__>; \
+    template class functor_t<scriptHash_##funcName, __VA_ARGS__>; \
     \
-    const ls::script::funcFactory& scriptFactory_##funcName = \
-        ls::script::gFuncFactory[scriptHash_##funcName] = \
-            *[]()->ls::script::functor* { return new scriptFunc_##funcName{}; }; \
+    const funcFactory& scriptFactory_##funcName = registerFuncFactory( \
+        scriptHash_##funcName, []()->functor* {return new scriptFunc_##funcName{};} \
+    ); \
     \
     template <> \
-    ls::script::func_ref_t scriptFunc_##funcName::functionImpl = \
-        *[](ls::script::variable** const pArgs)->void
+    func_ref_t scriptFunc_##funcName::functionImpl = *[](variable** const pArgs)->void
 
 /**
  *  @brief Function Argument Accessibility
@@ -832,6 +831,10 @@ class functor_t<hashId, void> final : public functor {
 /*-----------------------------------------------------------------------------
     Built-In Types
 -----------------------------------------------------------------------------*/
-LS_SCRIPT_DECLARE_FUNC(empty, void);
+namespace ls {
+namespace script {
+    LS_SCRIPT_DECLARE_FUNC(empty, void);
+} // end script namespace
+} // end ls namespace
 
 #endif	/* __LS_SCRIPT_FUNCTOR_H__ */

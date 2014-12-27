@@ -40,9 +40,6 @@ variable::variable(variable&& v) :
     scriptable{std::move(v)}
 {}
 
-} // end script namespace
-} // end ls namespace
-
 /*-----------------------------------------------------------------------------
     Built-In types
 -----------------------------------------------------------------------------*/
@@ -55,3 +52,6 @@ LS_SCRIPT_DEFINE_VAR(ulong, unsigned long);
 LS_SCRIPT_DEFINE_VAR(float, float);
 LS_SCRIPT_DEFINE_VAR(double, double);
 LS_SCRIPT_DEFINE_VAR(string, std::string);
+
+} // end script namespace
+} // end ls namespace

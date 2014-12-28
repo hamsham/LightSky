@@ -40,9 +40,14 @@ struct pointer {
         }
         
         /**
-         * Constructor -- DELETED
+         * Constructor
+         * 
+         * Creates an empty pointer type. Which should not be dereferenced
+         * under any circumstances.
          */
-        pointer() = delete;
+        pointer() :
+            pData{nullptr}
+        {}
         
         /**
          * Pointer Constructor
@@ -184,6 +189,15 @@ struct pointer {
         }
         
         /**
+         * Retrieve the pointer to data contained within *this.
+         * 
+         * @return A pointer to a set of dynamically-allocated data.
+         */
+        data_t* get() {
+            return pData;
+        }
+        
+        /**
          * Swap the value of the pointers contained within *this and an input
          * pointer object.
          * 
@@ -192,7 +206,7 @@ struct pointer {
          */
         void swap(pointer& other) {
             data_t* temp = other.pData;
-            other.pdata = this->pData;
+            other.pData = this->pData;
             this->pData = temp;
         }
         
@@ -201,7 +215,16 @@ struct pointer {
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
-        constexpr data_t& operator *() {
+        const data_t& operator *() const {
+            return *pData;
+        }
+        
+        /**
+         * Retrieve a reference to the data contained within *this.
+         * 
+         * @return A reference to the dynamically-allocated data within *this.
+         */
+        data_t& operator *() {
             return *pData;
         }
         
@@ -232,7 +255,7 @@ struct pointer {
  * Array Pointer Type
  * (Specialized in order to allow for array-types)
 -----------------------------------------------------------------------------*/
-template <>
+//template <>
 template <typename data_t>
 struct pointer<data_t[]> {
     private:
@@ -259,9 +282,14 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Constructor -- DELETED
+         * Constructor
+         * 
+         * Creates an empty pointer type. Which should not be dereferenced
+         * under any circumstances.
          */
-        pointer() = delete;
+        pointer() :
+            pData{nullptr}
+        {}
         
         /**
          * Pointer Constructor
@@ -431,6 +459,15 @@ struct pointer<data_t[]> {
         }
         
         /**
+         * Retrieve the pointer to data contained within *this.
+         * 
+         * @return A pointer to a set of dynamically-allocated data.
+         */
+        data_t* get() {
+            return pData;
+        }
+        
+        /**
          * Swap the value of the pointers contained within *this and an input
          * pointer object.
          * 
@@ -439,7 +476,7 @@ struct pointer<data_t[]> {
          */
         void swap(pointer& other) {
             data_t* temp = other.pData;
-            other.pdata = this->pData;
+            other.pData = this->pData;
             this->pData = temp;
         }
         
@@ -448,7 +485,16 @@ struct pointer<data_t[]> {
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
-        constexpr data_t& operator *() {
+        const data_t& operator *() const {
+            return *pData;
+        }
+        
+        /**
+         * Retrieve a reference to the data contained within *this.
+         * 
+         * @return A reference to the dynamically-allocated data within *this.
+         */
+        data_t& operator *() {
             return *pData;
         }
         

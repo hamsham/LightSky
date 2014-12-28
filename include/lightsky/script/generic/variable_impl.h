@@ -28,7 +28,7 @@ variable& variable::operator =(variable&& v) {
 -------------------------------------*/
 inline
 script_base_t variable::getScriptType() const {
-    return script_base_t::SCRIPT_VAR;
+    return script_base_t::VARIABLE;
 }
 
 /*-----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ variable_t<hashId, type>& variable_t<hashId, type>::operator =(variable_t&& v) {
     Variable Object Type Data Loading
 -------------------------------------*/
 template <hash_t hashId, typename type>
-bool variable_t<hashId, type>::load(std::istream& istr, varLoaderMap&, funcLoaderMap&) {
+bool variable_t<hashId, type>::load(std::istream& istr, varImportMap_t&, funcImportMap_t&) {
     istr >> data;
     return true;
 }

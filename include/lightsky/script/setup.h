@@ -11,7 +11,9 @@
 #include <map>
 
 #include "lightsky/setup/macros.h"
+
 #include "lightsky/utils/hash.h"
+#include "lightsky/utils/pointer.h"
 
 namespace ls {
 namespace script {
@@ -19,66 +21,59 @@ namespace script {
 /*-----------------------------------------------------------------------------
     Hashing Setup
 -----------------------------------------------------------------------------*/
+/**
+ * @brief Hash type used to associate script types to a serializable ID.
+ */
 using ls::utils::hash_t;
 
+/**
+ * @brief Scripting function used internally for generating script IDs.
+ */
 #define LS_SCRIPT_HASH_FUNC( str ) ls::utils::hashFNV1( str )
 
 /*-----------------------------------------------------------------------------
     Data Type information
 -----------------------------------------------------------------------------*/
 enum class script_base_t {
-    SCRIPT_VAR,
-    SCRIPT_FUNC
+    VARIABLE,
+    FUNCTOR
 };
 
 /*-----------------------------------------------------------------------------
-    Scripting Object Declarations
+ Forward Declarations
 -----------------------------------------------------------------------------*/
-// Base class
 class scriptable;
-
-/*
- * variable types
- */
 class variable;
-
-template <hash_t, typename> class
-variable_t;
-
-/*
- * function types
- */
 class functor;
 
-/*
- * Functor with multiple arguments
- */
-template <hash_t hashId, typename...>
-class functor_t;
+/*-----------------------------------------------------------------------------
+ Dynamic Memory Types
+-----------------------------------------------------------------------------*/
+/**------------------------------------
+ * Dynamic Memory Management for script objects.
+------------------------------------*/
+template <class data_t> using pointer_t = ls::utils::pointer<data_t>;
 
 /*
- * Functor with no arguments
+ * Create an extern template for the dynamic pointer type.
  */
-template <hash_t hashId>
-class functor_t<hashId, void>;
-
-/*
- * Void/NULL functor
- */
-template <>
-class functor_t<0, void>;
-
-typedef functor_t<0, void > emptyFunc;
+} // end script namespace
+extern template struct ls::utils::pointer<ls::script::variable>;
+extern template struct ls::utils::pointer<ls::script::functor>;
+namespace script { // continue script namespace
 
 /*-----------------------------------------------------------------------------
     Containers
 -----------------------------------------------------------------------------*/
-/*
- * File loading maps
+/**
+ * @brief File loading map for variable objects.
  */
-typedef std::map<void*, variable*> varLoaderMap;
+typedef std::map<void*, pointer_t<variable>> varImportMap_t;
 
-typedef std::map<void*, functor*> funcLoaderMap;
+/**
+ * @brief File loading map for functor objects.
+ */
+typedef std::map<void*, pointer_t<functor>> funcImportMap_t;
 
 } // end script namespace
 } // end ls namespace

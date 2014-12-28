@@ -12,6 +12,8 @@
 #include <utility> // std::move()
 #include <typeinfo> // typeid(x)
 
+#include "lightsky/setup/macros.h"
+
 #include "lightsky/utils/assertions.h" // LS_DEBUG_ASSERT
 
 #include "lightsky/script/setup.h"
@@ -223,7 +225,7 @@ class functor : public scriptable {
          *  @return a pointer to the functor object which has been assigned to
          *  run after *this.
          */
-        inline functor* getNextFunc();
+        functor* getNextFunc();
         
         /**
          *  @brief Assign a functor to run after *this.
@@ -237,14 +239,14 @@ class functor : public scriptable {
          *  the function sequence will halt after this functor has completed
          *  its 'run()' method.
          */
-        inline void setNextFunc(functor* const f);
+        void setNextFunc(functor* const f);
         
         /**
          *  @brief Get *this object's scriptable type.
          *  
          *  @return script_base_t::SCRIPT_FUNC
          */
-        inline script_base_t getScriptType() const final;
+        script_base_t getScriptType() const final;
         
         /**
          *  @brief Get the run-time-type information of *this functor.
@@ -285,7 +287,7 @@ class functor : public scriptable {
          *  @return A pointer to an internal variable that will be used to run
          *  *this.
          */
-        inline variable* getArg(unsigned index) const;
+        variable* getArg(unsigned index) const;
         
         /**
          *  @brief Assign a variable to be functor argument.
@@ -305,7 +307,7 @@ class functor : public scriptable {
          *  A pointer to an variable object that will be used to run
          *  *this.
          */
-        inline void setArg(unsigned index, variable* v);
+        void setArg(unsigned index, variable* v);
         
         /**
          *  @brief Load functor data from an std::istream
@@ -330,7 +332,7 @@ class functor : public scriptable {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        virtual bool load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm);
+        virtual bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm);
 
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -369,7 +371,7 @@ class functor : public scriptable {
         /**
          *  @brief Run a functor at run-time.
          */
-        inline void run();
+        void run();
 };
 
 /**----------------------------------------------------------------------------
@@ -476,7 +478,7 @@ class functor_t final : public functor {
          *  @return hash_t
          *  A hash-code that identifies the RTTI information of *this.
          */
-        inline hash_t getScriptSubType() const final;
+        hash_t getScriptSubType() const final;
 
         /**
          *  @brief Retrieve the number of arguments required to run *this.
@@ -515,7 +517,7 @@ class functor_t final : public functor {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm) final;
+        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) final;
         
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -549,7 +551,7 @@ class functor_t final : public functor {
          *  information on what went wrong. This will be changed in the future
          *  in order to provide more convenient error tracking.
          */
-        inline bool compile() final;
+        bool compile() final;
 };
 
 /**----------------------------------------------------------------------------
@@ -645,7 +647,7 @@ class functor_t<hashId, void> final : public functor {
          *  @return hash_t
          *  A hash-code that identifies the RTTI information of *this.
          */
-        inline hash_t getScriptSubType() const final;
+        hash_t getScriptSubType() const final;
 
         /**
          *  @brief Retrieve the number of arguments required to run *this.
@@ -684,7 +686,7 @@ class functor_t<hashId, void> final : public functor {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm) final;
+        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) final;
         
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -718,7 +720,176 @@ class functor_t<hashId, void> final : public functor {
          *  information on what went wrong. This will be changed in the future
          *  in order to provide more convenient error tracking.
          */
-        inline bool compile() final;
+        bool compile() final;
+};
+
+/**----------------------------------------------------------------------------
+    @brief Null Functor Template Type
+-----------------------------------------------------------------------------*/
+template <>
+class functor_t<0, void> final : public functor {
+    private:
+        /**
+         *  @brief Implementation of the function to be run.
+         *  
+         *  This static member is defined through the LS_SCRIPT_DEFINE_FUNC
+         *  macro. The static functionImpl member is what will actually be
+         *  called when this function is run. Use this to define mappings of
+         *  internal argument indices to actual native function parameters and
+         *  return values.
+         *  
+         *  @param pArgs
+         *  A pointer to an array of pointers to scriptable variables (this
+         *  will actually be the 'parameters' member in *this).
+         */
+        static func_ref_t functionImpl;
+
+    public:
+        /**
+         *  @brief Destructor
+         *  
+         *  Frees all resources used by *this.
+         */
+        virtual ~functor_t();
+
+        /**
+         *  @brief Constructor
+         *  
+         *  Initializes *this and all base classes.
+         */
+        functor_t();
+
+        /**
+         *  @brief Copy Constructor
+         *  
+         *  Copies all data from a functor of the same type into *this.
+         *  
+         *  @param f
+         *  A constant reference to another functor of the same template type.
+         */
+        functor_t(const functor_t& f);
+        
+        /**
+         *  @brief Move Constructor
+         *  
+         *  Moves all data from a functor of the same type into *this without
+         *  performing any copies.
+         *  
+         *  @param f
+         *  An r-value reference to another functor of the same template type.
+         */
+        functor_t(functor_t&& f);
+
+        /**
+         *  @brief Copy Assignment
+         *  
+         *  Copies all data from a functor of the same type into *this.
+         *  
+         *  @param f
+         *  A constant reference to another functor of the same template type.
+         *  
+         *  @return a reference to *this.
+         */
+        functor_t& operator =(const functor_t& f);
+        
+        /**
+         *  @brief Move Assignment
+         *  
+         *  Moves all data from a functor of the same type into *this without
+         *  performing any copies.
+         *  
+         *  @param f
+         *  An r-value reference to another functor of the same template type.
+         *  
+         *  @return a reference to *this.
+         */
+        functor_t& operator =(functor_t&& f);
+
+        /**
+         *  @brief Get the run-time-type information of *this functor.
+         *  
+         *  This method will return a hash-code, indicating what type of
+         *  functor *this is. The has code is unique to types of functors, not
+         *  individual functor objects. This hash code is used by the global
+         *  script factories in order to generate a functor at run-time.
+         *  
+         *  @return hash_t
+         *  A hash-code that identifies the RTTI information of *this.
+         */
+        hash_t getScriptSubType() const final;
+
+        /**
+         *  @brief Retrieve the number of arguments required to run *this.
+         *  
+         *  The number of arguments to the functor is not always the same
+         *  number of arguments that *this functor's native function needs.
+         *  Functor arguments can be mapped to return values, or to sequences
+         *  of internal functions. It is up to the definition code to determine
+         *  where functor arguments are mapped.
+         *  
+         *  @return An unsigned integral type, indicating how many arguments
+         *  *this functor needs to run.
+         */
+        virtual unsigned getNumArgs() const final;
+
+        /**
+         *  @brief Load functor data from an std::istream
+         *  
+         *  A serialization method to will help reload data from a standard
+         *  input stream. This method uses the overloaded input stream operator
+         *  'std::istream::operator>> (T)' in order to load functor data into
+         *  *this.
+         *  
+         *  @param istr
+         *  A reference to a std::istream object which contains functor data
+         *  to be loaded into *this.
+         *  
+         *  @param vlm
+         *  A variable-loading factory that will be used to map variable data
+         *  from the input stream into *this.
+         *  
+         *  @param flm
+         *  A function-loading factory that will be used to map functor data
+         *  from the input stream into *this.
+         *  
+         *  @return a boolean value that will determine if data was
+         *  successfully loaded into *this (TRUE) or not (FALSE).
+         */
+        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) final;
+        
+        /**
+         *  @brief Save all data from *this into an std::ostream.
+         *  
+         *  In this instance, functors, references to other functors, and
+         *  variables are all saved using RTTI information. Scriptable objects
+         *  are not saved, just their type-info. All data is mapped to/from the
+         *  'loaderMap' objects in order to ensure cross-references are
+         *  maintained when reloaded from an input stream.
+         *  
+         *  @param ostr
+         *  A reference to an std::ostream object. 
+         */
+        void save(std::ostream& ostr) const final;
+
+        /**
+         *  @brief Compile/Verify function arguments
+         *  
+         *  This method ensures that a functor is safe to operate at run-time.
+         *  It uses custom RTTI information, combined with derived-type's
+         *  template parameters to ensure that the proper arguments are placed
+         *  in the correct order at run-time.
+         *  
+         *  @note Because the scripting system does not manage the order in
+         *  which you actually use arguments, please ensure that your
+         *  functor-mapping code is consistent with the derived functor's
+         *  template parameters.
+         *  
+         *  @return TRUE if a functor managed to compile correctly, FALSE if
+         *  not. If this function returns false, please check std::cerr for
+         *  information on what went wrong. This will be changed in the future
+         *  in order to provide more convenient error tracking.
+         */
+        bool compile() final;
 };
 
 } // end script namespace
@@ -764,7 +935,7 @@ class functor_t<hashId, void> final : public functor {
     \
     typedef ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__> scriptFunc_##funcName; \
     \
-    extern const ls::script::funcFactory& scriptFactory_##funcName; \
+    extern const ls::script::funcFactory_t& scriptFactory_##funcName; \
     \
     template <> \
     ls::script::func_ref_t scriptFunc_##funcName::functionImpl; \
@@ -802,14 +973,17 @@ class functor_t<hashId, void> final : public functor {
  *      
  */
 #define LS_SCRIPT_DEFINE_FUNC(funcName, ...) \
-    template class functor_t<scriptHash_##funcName, __VA_ARGS__>; \
+    template class ls::script::functor_t<scriptHash_##funcName, __VA_ARGS__>; \
     \
-    const funcFactory& scriptFactory_##funcName = registerFuncFactory( \
-        scriptHash_##funcName, []()->functor* {return new scriptFunc_##funcName{};} \
+    const ls::script::funcFactory_t& scriptFactory_##funcName = registerFuncFactory( \
+        scriptHash_##funcName, []()->ls::script::pointer_t<functor> { \
+            return ls::script::pointer_t<functor>{new scriptFunc_##funcName{}}; \
+        } \
     ); \
     \
     template <> \
-    func_ref_t scriptFunc_##funcName::functionImpl = *[](variable** const pArgs)->void
+    ls::script::func_ref_t scriptFunc_##funcName::functionImpl = \
+        *[](ls::script::variable** const pArgs)->void
 
 /**
  *  @brief Function Argument Accessibility
@@ -833,7 +1007,9 @@ class functor_t<hashId, void> final : public functor {
 -----------------------------------------------------------------------------*/
 namespace ls {
 namespace script {
-    LS_SCRIPT_DECLARE_FUNC(empty, void);
+    
+LS_SCRIPT_DECLARE_FUNC(empty, void);
+
 } // end script namespace
 } // end ls namespace
 

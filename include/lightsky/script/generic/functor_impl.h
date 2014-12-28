@@ -26,7 +26,7 @@ void functor::setNextFunc(functor* const f) {
 -------------------------------------*/
 inline
 script_base_t functor::getScriptType() const {
-    return script_base_t::SCRIPT_FUNC;
+    return script_base_t::FUNCTOR;
 }
 
 /*-------------------------------------
@@ -184,13 +184,13 @@ unsigned functor_t<hashId, args_t...>::getNumArgs() const {
     Load from an Input Stream
 -------------------------------------*/
 template <hash_t hashId, typename... args_t>
-bool functor_t<hashId, args_t...>::load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm) {
+bool functor_t<hashId, args_t...>::load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) {
     functor::load(istr, vlm, flm);
 
     for (unsigned i = 0; i < sizeof...(args_t); ++i) {
         void* ptr = nullptr;
         istr >> ptr;
-        pArgs[ i ] = vlm[ ptr ];
+        pArgs[i] = vlm[ptr].get();
     }
     return true;
 }
@@ -203,7 +203,7 @@ void functor_t<hashId, args_t...>::save(std::ostream& ostr) const {
     functor::save(ostr);
 
     for (unsigned i = 0; i < sizeof...(args_t); ++i) {
-        ostr << ' ' << (void*) pArgs[ i ];
+        ostr << ' ' << (void*) pArgs[i];
     }
 }
 
@@ -291,7 +291,7 @@ unsigned functor_t<hashId, void>::getNumArgs() const {
     Load from an Input Stream
 -------------------------------------*/
 template <hash_t hashId>
-bool functor_t<hashId, void>::load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm) {
+bool functor_t<hashId, void>::load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) {
     return functor::load(istr, vlm, flm);
 }
 

@@ -11,7 +11,9 @@
 #include "lightsky/script/setup.h"
 
 #include "lightsky/script/scriptable.h"
+
 #include "lightsky/script/variable.h"
+
 #include "lightsky/script/functor.h"
 
 #include "lightsky/script/factory.h"

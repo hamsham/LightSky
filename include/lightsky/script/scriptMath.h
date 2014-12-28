@@ -17,8 +17,61 @@
 namespace ls {
 namespace script {
 
+/*-----------------------------------------------------------------------------
+ Integers
+-----------------------------------------------------------------------------*/
+/*
+ * Addition
+ */
 LS_SCRIPT_DECLARE_FUNC(addInts, scriptVar_int, scriptVar_int, scriptVar_int);
+
+/*
+ * Subtraction
+ */
 LS_SCRIPT_DECLARE_FUNC(subInts, scriptVar_int, scriptVar_int, scriptVar_int);
+
+/*
+ * Multiplication
+ */
+LS_SCRIPT_DECLARE_FUNC(mulInts, scriptVar_int, scriptVar_int, scriptVar_int);
+
+/*
+ * Division
+ */
+LS_SCRIPT_DECLARE_FUNC(divInts, scriptVar_int, scriptVar_int, scriptVar_int);
+
+/*
+ * Modulus
+ */
+LS_SCRIPT_DECLARE_FUNC(modInts, scriptVar_int, scriptVar_int, scriptVar_int);
+
+/*-----------------------------------------------------------------------------
+ Floating-Point Numbers
+-----------------------------------------------------------------------------*/
+/*
+ * Addition
+ */
+LS_SCRIPT_DECLARE_FUNC(addFloats, scriptVar_float, scriptVar_float, scriptVar_float);
+
+/*
+ * Subtraction
+ */
+LS_SCRIPT_DECLARE_FUNC(subFloats, scriptVar_float, scriptVar_float, scriptVar_float);
+
+/*
+ * Multiplication
+ */
+LS_SCRIPT_DECLARE_FUNC(mulFloats, scriptVar_float, scriptVar_float, scriptVar_float);
+
+/*
+ * Division
+ */
+LS_SCRIPT_DECLARE_FUNC(divFloats, scriptVar_float, scriptVar_float, scriptVar_float);
+
+/*
+ * Modulus
+ */
+LS_SCRIPT_DECLARE_FUNC(modFloats, scriptVar_float, scriptVar_float, scriptVar_float);
 
 } // end script namespace
 } // end ls namespace

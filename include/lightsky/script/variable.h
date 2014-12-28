@@ -196,7 +196,7 @@ class variable_t final : public variable {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varLoaderMap& vlm, funcLoaderMap& flm);
+        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm);
 
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -300,13 +300,15 @@ class variable_t final : public variable {
 #ifndef LS_SCRIPT_DECLARE_VAR
     #define LS_SCRIPT_DECLARE_VAR( varName, varType ) \
         \
-        enum : hash_t { scriptHash_##varName = LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)) }; \
+        enum : ls::script::hash_t { \
+            scriptHash_##varName = LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)) \
+        }; \
         \
-        extern const varFactory& scriptFactory_##varName; \
+        extern const ls::script::varFactory_t& scriptFactory_##varName; \
         \
-        typedef variable_t<scriptHash_##varName, varType> scriptVar_##varName; \
+        typedef ls::script::variable_t<scriptHash_##varName, varType> scriptVar_##varName; \
         \
-        extern template class variable_t<scriptHash_##varName, varType>
+        extern template class ls::script::variable_t<scriptHash_##varName, varType>
 #endif /* LS_SCRIPT_DECLARE_VAR */
 
 /**
@@ -331,10 +333,12 @@ class variable_t final : public variable {
 #ifndef LS_SCRIPT_DEFINE_VAR
     #define LS_SCRIPT_DEFINE_VAR( varName, varType ) \
         \
-        template class variable_t<scriptHash_##varName, varType>; \
+        template class ls::script::variable_t<scriptHash_##varName, varType>; \
         \
-        const varFactory& scriptFactory_##varName = registerVarFactory( \
-            scriptHash_##varName, []()->variable* {return new scriptVar_##varName{};} \
+        const varFactory_t& scriptFactory_##varName = ls::script::registerVarFactory( \
+            scriptHash_##varName, []()->ls::script::pointer_t<ls::script::variable> { \
+                return ls::script::pointer_t<ls::script::variable>{new scriptVar_##varName}; \
+            } \
         );
 
 #endif /* LS_SCRIPT_DEFINE_VAR */

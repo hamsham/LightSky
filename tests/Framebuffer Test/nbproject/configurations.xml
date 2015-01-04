@@ -203,7 +203,7 @@
           <incDir>
             <pElem>../../include</pElem>
           </incDir>
-          <commandLine>-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -pthread</commandLine>
+          <commandLine>-Wall -Wextra -Werror -pedantic-errors -pthread</commandLine>
           <preprocessorList>
             <Elem>SDL_MAIN_HANDLED</Elem>
           </preprocessorList>

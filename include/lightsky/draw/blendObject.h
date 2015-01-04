@@ -8,8 +8,6 @@
 #ifndef __LS_DRAW_BLEND_OBJECT_H__
 #define	__LS_DRAW_BLEND_OBJECT_H__
 
-#include <GL/glew.h>
-
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/color.h"
 
@@ -99,7 +97,7 @@ class blendObject {
         /**
          * The color to be used when performing blending operations in OpenGL.
          */
-        color blendCol = lsBlank;
+        color::color blendCol = color::blank;
         
         /**
          * Class Member that's used to set the RGB blending equation in OpenGL.
@@ -339,7 +337,7 @@ class blendObject {
          * A constant reference to an color that should be used during
          * blending operations within OpenGL.
          */
-        void setBlendColor(const color& rgba = lsBlank);
+        void setBlendColor(const color::color& rgba = color::blank);
         
         /**
          * Get the current color that OpenGL is using for blending operations.
@@ -347,7 +345,7 @@ class blendObject {
          * @return a group of four floating-point numbers, representing the
          * RGBA colors that OpenGL is using for blending.
          */
-        color getBlendColor() const;
+        color::color getBlendColor() const;
 };
 
 } // end draw namespace

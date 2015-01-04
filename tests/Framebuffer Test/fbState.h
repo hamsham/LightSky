@@ -56,6 +56,7 @@ class fbState final : virtual public ls::game::gameState {
         float                   secondTimer     = 0.f;
         ls::draw::shaderProgram meshProg        = {};
         ls::draw::framebuffer   testFb          = {};
+        ls::draw::renderbuffer  testRb          = {};
         ls::draw::matrixStack*  pMatStack       = nullptr;
         ls::draw::sceneManager* pScene          = nullptr;
         math::mat4*             pModelMatrices  = nullptr;

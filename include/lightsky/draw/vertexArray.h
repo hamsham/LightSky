@@ -8,7 +8,7 @@
 #ifndef __LS_DRAW_VERTEX_ARRAY_H__
 #define	__LS_DRAW_VERTEX_ARRAY_H__
 
-#include <GL/glew.h>
+#include "lightsky/draw/setup.h"
 
 namespace ls {
 namespace draw {
@@ -24,7 +24,7 @@ class vertexArray {
         /**
          * A handle to the vertex array object residing on the GPU.
          */
-        unsigned vao = 0;
+        unsigned vaoId = 0;
 
     public:
         /**
@@ -195,22 +195,22 @@ namespace draw {
     the GPU.
 -------------------------------------*/
 inline void vertexArray::terminate() {
-    glDeleteVertexArrays(1, &vao);
-    vao = 0;
+    glDeleteVertexArrays(1, &vaoId);
+    vaoId = 0;
 }
 
 /*-------------------------------------
     Determine if there is data used by this object
 -------------------------------------*/
 inline bool vertexArray::isValid() const {
-    return vao != 0;
+    return vaoId != 0;
 }
 
 /*-------------------------------------
     Get the GPU-assigned ID for this VAO
 -------------------------------------*/
 inline unsigned vertexArray::getId() const {
-    return vao;
+    return vaoId;
 }
 
 /*-------------------------------------
@@ -262,7 +262,7 @@ inline void vertexArray::setAttribInstanceRate(int index, int instancesPerAttrib
     Bind this vertex array to the current global rendering context.
 -------------------------------------*/
 inline void vertexArray::bind() const {
-    glBindVertexArray(vao);
+    glBindVertexArray(vaoId);
 }
 
 /*-------------------------------------

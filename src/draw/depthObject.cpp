@@ -21,10 +21,10 @@ void depthObject::bind() const {
         glDisable(GL_DEPTH_TEST);
     }
     
-    glClearDepth(depthClearVal);
+    glClearDepthf(depthClearVal);
     glDepthFunc(depthFunc);
     glDepthMask(depthMask);
-    glDepthRange(depthNear, depthFar);
+    glDepthRangef(depthNear, depthFar);
 }
 
 /*-------------------------------------

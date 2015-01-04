@@ -101,14 +101,14 @@ inline blend_func_t blendObject::getBlendFunctionDstAlpha() const {
 /*-------------------------------------
     Set the color that should be used for blending operations in OpenGL.
 -------------------------------------*/
-inline void blendObject::setBlendColor(const color& rgba) {
+inline void blendObject::setBlendColor(const color::color& rgba) {
     blendCol = rgba;
 }
 
 /*-------------------------------------
     Get the current color that OpenGL is using for blending operations.
 -------------------------------------*/
-inline color blendObject::getBlendColor() const {
+inline color::color blendObject::getBlendColor() const {
     return blendCol;
 }
 

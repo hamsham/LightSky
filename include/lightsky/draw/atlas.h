@@ -54,7 +54,7 @@ class atlas {
         /**
          * Texture Rectangle used to store the texture atlas.
          */
-        texture atlasTex = {TEX_DESC_RECT};
+        texture atlasTex = {TEX_DESC_2D};
         
         /**
          * An array of atlas entries. The UVs for these entries is calculated

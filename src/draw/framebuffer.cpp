@@ -6,6 +6,7 @@
  */
 
 #include "lightsky/draw/setup.h"
+#include "lightsky/draw/renderbuffer.h"
 #include "lightsky/draw/framebuffer.h"
 
 namespace ls {
@@ -32,20 +33,11 @@ void framebuffer::printStatus(const framebuffer& fbo) {
         case FBO_INCOMPLETE_MISSING_ATTACHMENT:
             LS_LOG_ERR("Framebuffer ", fbo.getId(), " is missing attachments.");
             break;
-        case FBO_INCOMPLETE_DRAW_BUFFER:
-            LS_LOG_ERR("Framebuffer ", fbo.getId(), " contains an incomplete draw buffer.");
-            break;
-        case FBO_INCOMPLETE_READ_BUFFER:
-            LS_LOG_ERR("Framebuffer ", fbo.getId(), " contains an incomplete read buffer.");
-            break;
         case FBO_UNSUPPORTED:
             LS_LOG_ERR("Framebuffer ", fbo.getId(), " uses unsupported formats.");
             break;
         case FBO_INCOMPLETE_MULTISAMPLE:
             LS_LOG_ERR("Framebuffer ", fbo.getId(), " uses alternating samples.");
-            break;
-        case FBO_INCOMPLETE_LAYER_TARGETS:
-            LS_LOG_ERR("Framebuffer ", fbo.getId(), " has incomplete layer targets.");
             break;
     }
 }
@@ -108,28 +100,54 @@ void framebuffer::terminate() {
 /*-------------------------------------
     Attach a texture to the currently bound framebuffer
 -------------------------------------*/
-void framebuffer::attachTexture(
+void framebuffer::attachRenderTarget(
     fbo_attach_t attachment,
     texture_target_t target,
     const texture& tex,
     int mipmapLevel,
     int layer
 ) {
-    const tex_desc_t desc = tex.getTextType();
+    const tex_desc_t desc = tex.getTexType();
     const unsigned texId = tex.getId();
     
-    if (desc == TEX_DESC_1D) {
-        glFramebufferTexture1D(access, attachment, target, texId, mipmapLevel);
-    }
-    else if (desc == TEX_DESC_2D || desc == TEX_DESC_RECT) {
+    if (desc == TEX_DESC_2D) {
         glFramebufferTexture2D(access, attachment, target, texId, mipmapLevel);
     }
-    else if (desc == TEX_DESC_3D) {
-        glFramebufferTexture3D(access, attachment, target, texId, mipmapLevel, layer);
+    else if (desc == TEX_DESC_3D || desc == TEX_DESC_2D_ARRAY || desc == TEX_DESC_CUBE) {
+        glFramebufferTextureLayer(access, attachment, texId, mipmapLevel, layer);
     }
     else {
         LS_LOG_ERR("Attempting to load an unsupported texture type into a framebuffer.");
     }
+    LOG_GL_ERR();
+}
+
+/*-------------------------------------
+    Attach a texture to the currently bound framebuffer
+-------------------------------------*/
+void framebuffer::attachRenderTarget(fbo_attach_t attachment, const texture& tex) {
+    const tex_desc_t desc = tex.getTexType();
+    
+    if (desc == TEX_DESC_2D) {
+        attachRenderTarget(attachment, texture_target_t::FBO_2D_TARGET, tex);
+        return;
+    }
+    else if (desc == TEX_DESC_3D || desc == TEX_DESC_2D_ARRAY || desc == TEX_DESC_CUBE) {
+        attachRenderTarget(attachment, texture_target_t::FBO_3D_TARGET, tex);
+        return;
+    }
+    else {
+        LS_LOG_ERR("Attempting to load an unsupported texture type into a framebuffer.");
+    }
+}
+
+/*-------------------------------------
+    Attach a renderbuffer to the currently bound framebuffer
+-------------------------------------*/
+void framebuffer::attachRenderTarget(fbo_attach_t attachment, const renderbuffer& rbo) {
+    const unsigned rboId = rbo.getId();
+    glFramebufferRenderbuffer(access, attachment, GL_RENDERBUFFER, rboId);
+    LOG_GL_ERR();
 }
 
 } // end draw namespace

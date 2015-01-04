@@ -20,9 +20,9 @@ vertexArray::vertexArray() {
     Move Constructor
 -------------------------------------*/
 vertexArray::vertexArray(vertexArray&& va) :
-    vao{va.vao}
+    vaoId{va.vaoId}
 {
-    va.vao = 0;
+    va.vaoId = 0;
 }
 
 /*-------------------------------------
@@ -36,8 +36,8 @@ vertexArray::~vertexArray() {
     Move Operator
 -------------------------------------*/
 vertexArray& vertexArray::operator=(vertexArray&& va) {
-    vao = va.vao;
-    va.vao = 0;
+    vaoId = va.vaoId;
+    va.vaoId = 0;
     return *this;
 }
 
@@ -45,12 +45,12 @@ vertexArray& vertexArray::operator=(vertexArray&& va) {
     Array initialization.
 -------------------------------------*/
 bool vertexArray::init() {
-    if (vao != 0) {
+    if (vaoId != 0) {
         terminate();
     }
 
-    glGenVertexArrays(1, &vao);
-    return vao != 0;
+    glGenVertexArrays(1, &vaoId);
+    return vaoId != 0;
 }
 
 } // end draw namespace

@@ -3,6 +3,13 @@ namespace ls {
 namespace draw {
 
 /*-------------------------------------
+    Get the OpenGL ID used by *this.
+-------------------------------------*/
+inline unsigned shaderProgram::getId() const {
+    return programId;
+}
+
+/*-------------------------------------
     Bind this program to the current context
 -------------------------------------*/
 inline void shaderProgram::bind() const {
@@ -207,27 +214,6 @@ inline void shaderProgram::setUniformValue(GLint uniformId, const math::mat3& va
 -------------------------------------*/
 inline void shaderProgram::setUniformValue(GLint uniformId, const math::mat4& val, bool transpose) {
     glUniformMatrix4fv(uniformId, 1, transpose, &val[0]);
-}
-
-/*-------------------------------------
-    Bind data to a fragment shader
--------------------------------------*/
-inline void shaderProgram::bindFragDataLocation(GLuint colorNum, const GLchar* const name) {
-    glBindFragDataLocation(programId, colorNum, name);
-}
-
-/*-------------------------------------
-    Bind data to a fragment shader
--------------------------------------*/
-inline void shaderProgram::bindFragDataLocationIndex(GLuint colorNum, GLuint index, const GLchar* const name) {
-    glBindFragDataLocationIndexed(programId, colorNum, index, name);
-}
-
-/*-------------------------------------
-    Query the bindings of color indices to a user-defined varying out variable
--------------------------------------*/
-inline GLint shaderProgram::getFragDataIndex(const GLchar* const name) const {
-    return glGetFragDataIndex(programId, name);
 }
 
 /*-------------------------------------

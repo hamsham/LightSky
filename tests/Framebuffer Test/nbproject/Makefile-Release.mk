@@ -47,8 +47,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -pthread
-CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -static-libgcc -static-libstdc++ -pthread
+CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -pthread
+CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -pthread
 
 # Fortran Compiler Flags
 FFLAGS=

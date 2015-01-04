@@ -38,6 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/atlas.o \
 	${OBJECTDIR}/_ext/1019371010/blendObject.o \
 	${OBJECTDIR}/_ext/1019371010/boundingBox.o \
+	${OBJECTDIR}/_ext/1019371010/camera.o \
+	${OBJECTDIR}/_ext/1019371010/color.o \
 	${OBJECTDIR}/_ext/1019371010/depthObject.o \
 	${OBJECTDIR}/_ext/1019371010/drawCommand.o \
 	${OBJECTDIR}/_ext/1019371010/fontResource.o \
@@ -48,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
 	${OBJECTDIR}/_ext/1019371010/meshModel.o \
 	${OBJECTDIR}/_ext/1019371010/meshResource.o \
+	${OBJECTDIR}/_ext/1019371010/renderbuffer.o \
 	${OBJECTDIR}/_ext/1019371010/sceneManager.o \
 	${OBJECTDIR}/_ext/1019371010/setup.o \
 	${OBJECTDIR}/_ext/1019371010/shaderObject.o \
@@ -98,6 +101,16 @@ ${OBJECTDIR}/_ext/1019371010/boundingBox.o: ../src/draw/boundingBox.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/boundingBox.o ../src/draw/boundingBox.cpp
 
+${OBJECTDIR}/_ext/1019371010/camera.o: ../src/draw/camera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/camera.o ../src/draw/camera.cpp
+
+${OBJECTDIR}/_ext/1019371010/color.o: ../src/draw/color.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/color.o ../src/draw/color.cpp
+
 ${OBJECTDIR}/_ext/1019371010/depthObject.o: ../src/draw/depthObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
@@ -147,6 +160,11 @@ ${OBJECTDIR}/_ext/1019371010/meshResource.o: ../src/draw/meshResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshResource.o ../src/draw/meshResource.cpp
+
+${OBJECTDIR}/_ext/1019371010/renderbuffer.o: ../src/draw/renderbuffer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/renderbuffer.o ../src/draw/renderbuffer.cpp
 
 ${OBJECTDIR}/_ext/1019371010/sceneManager.o: ../src/draw/sceneManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

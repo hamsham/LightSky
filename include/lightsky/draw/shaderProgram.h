@@ -9,7 +9,6 @@
 #define	__LS_DRAW_SHADER_PROGRAM_H__
 
 #include <string>
-#include <GL/glew.h>
 
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/shaderObject.h"
@@ -97,27 +96,6 @@ class shaderProgram {
         bool attachShaders(const vertexShader& vs, const fragmentShader& fs);
         
         /**
-         * Attach a set of shader units to the program
-         * 
-         * @param vs
-         * A vertex shader unit that should be attached to *this.
-         * 
-         * @param gs
-         * A geometry shader unit that should be attached to *this.
-         * 
-         * @param fs
-         * A fragment shader unit that should be attached to *this.
-         * 
-         * @return TRUE if the input shader units were successfully attached to
-         * *this.
-         */
-        bool attachShaders(
-            const vertexShader& vs,
-            const geometryShader& gs,
-            const fragmentShader& fs
-        );
-        
-        /**
          * Link the attached shader units to this and create an entire GPU-side
          * shader program.
          * 
@@ -125,6 +103,15 @@ class shaderProgram {
          * attached shader units.
          */
         bool link();
+        
+        /**
+         * @brief Retrieve the OpenGL-assigned ID associated with the shader
+         * binary used by *this.
+         * 
+         * @return An unsigned integral type, identifying the shader program
+         * used by OpenGL.
+         */
+        unsigned getId() const;
         
         /**
          * Bind this program to the current context
@@ -307,21 +294,6 @@ class shaderProgram {
          * Set a uniform 4d matrix
          */
         void setUniformValue(GLint uniformId, const math::mat4& val, bool transpose = false);
-        
-        /**
-         * Bind data to a fragment shader
-         */
-        void bindFragDataLocation(GLuint colorNum, const GLchar* const name);
-        
-        /**
-         * Bind data to a fragment shader
-         */
-        void bindFragDataLocationIndex(GLuint colorNum, GLuint index, const GLchar* const name);
-        
-        /**
-         * Query the bindings of color indices to a user-defined varying out variable
-         */
-        GLint getFragDataIndex(const GLchar* const name) const;
         
         /**
          * Query the bindings of color numbers to user-defined varying out variables

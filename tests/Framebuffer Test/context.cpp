@@ -6,7 +6,7 @@
  */
 
 #include <SDL2/SDL_video.h>
-#include <GL/glew.h>
+#include <GLES3/gl3.h>
 
 #include "lightsky/draw/color.h"
 #include "lightsky/draw/renderer.h"
@@ -70,29 +70,13 @@ bool context::init(const display& disp, bool useVsync) {
     }
     LS_LOG_MSG("\tSuccessfully created a basic render context.");
     
-    // Setup GLEW so we can actually use OpenGL 3+
-    glewExperimental = true;
-    if (glewInit() != GLEW_OK) {
-        LS_LOG_ERR("\tUnable to initialize GLEW.\n");
-        terminate();
-        return false;
-    }
-    LS_LOG_MSG("\tSuccessfully initialized GLEW.");
-    
-    // Check if OpenGL 3.3 is up and running
-    if (!GLEW_VERSION_3_3) {
-        LS_LOG_ERR("\tOpenGL 3.3 is not supported by the current hardware\n.");
-        terminate();
-        return false;
-    }
-    
     // Quick setup in order to normalize OpenGL to the display coordinates.
     this->makeCurrent(disp);
     ls::draw::renderer tempRenderer;
     tempRenderer.setViewport(math::vec2i{0, 0}, disp.getResolution());
     
     // Set the default back buffer color
-    const ls::draw::color& mgcPnk = ls::draw::lsMagenta;
+    const ls::draw::color::color& mgcPnk = ls::draw::color::magenta;
     glClearColor(mgcPnk[0], mgcPnk[1], mgcPnk[2], mgcPnk[3]);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     

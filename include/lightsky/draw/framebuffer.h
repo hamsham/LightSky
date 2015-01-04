@@ -8,9 +8,8 @@
 #ifndef __LS_DRAW_FRAMEBUFFER_H__
 #define	__LS_DRAW_FRAMEBUFFER_H__
 
-#include <GL/glew.h>
-
 #include "lightsky/draw/setup.h"
+#include "lightsky/draw/renderbuffer.h"
 #include "lightsky/draw/texture.h"
 
 namespace ls {
@@ -46,12 +45,7 @@ enum fbo_attach_t : int {
  * Texture targets that can be bound to an FBO
 -----------------------------------------------------------------------------*/
 enum texture_target_t : int {
-    FBO_1D_TARGET           = GL_TEXTURE_1D,
-    
     FBO_2D_TARGET           = GL_TEXTURE_2D,
-    FBO_2D_MS_TARGET        = GL_TEXTURE_2D_MULTISAMPLE,
-    FBO_2D_MS_ARRAY_TARGET  = GL_TEXTURE_2D_MULTISAMPLE_ARRAY,
-    FBO_RECT_TARGET         = GL_TEXTURE_RECTANGLE,
     
     FBO_3D_TARGET           = GL_TEXTURE_3D,
     
@@ -80,11 +74,8 @@ enum fbo_status_t : int {
     FBO_UNDEFINED                       = GL_FRAMEBUFFER_UNDEFINED,
     FBO_INCOMPLETE_ATTACHMENT           = GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT,
     FBO_INCOMPLETE_MISSING_ATTACHMENT   = GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT,
-    FBO_INCOMPLETE_DRAW_BUFFER          = GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER,
-    FBO_INCOMPLETE_READ_BUFFER          = GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER,
     FBO_UNSUPPORTED                     = GL_FRAMEBUFFER_UNSUPPORTED,
-    FBO_INCOMPLETE_MULTISAMPLE          = GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE,
-    FBO_INCOMPLETE_LAYER_TARGETS        = GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS
+    FBO_INCOMPLETE_MULTISAMPLE          = GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE
 };
 
 /**----------------------------------------------------------------------------
@@ -332,13 +323,39 @@ class framebuffer final {
          * In the event that 'tex' is a 3D texture, this parameter specifies
          * which 3D layer to use for rendering.
          */
-        void attachTexture(
+        void attachRenderTarget(
             fbo_attach_t atch,
             texture_target_t trgt,
             const texture& tex,
             int mipmapLevel = 0,
             int layer = 0
         );
+        
+        /**
+         * Attach a texture to the currently bound framebuffer
+         * 
+         * @param atch
+         * Specifies the internal OpenGL color/depth/stencil attachment to use.
+         * This parameter must correlate to a fragment shader output.
+         * 
+         * @param tex
+         * A constant reference to a texture object to bind to this and use as
+         * a render target.
+         */
+        void attachRenderTarget(fbo_attach_t atch, const texture& tex);
+
+        /**
+         * Attach a render buffer to the currently bound framebuffer
+         *
+         * @param atch
+         * Specifies the internal OpenGL color/depth/stencil attachment to use.
+         * This parameter must correlate to a fragment shader output.
+         *
+         * @param rbo
+         * A constant reference to a renderbuffer object to bind to this for
+         * use as a render target.
+         */
+        void attachRenderTarget(fbo_attach_t atch, const renderbuffer& rbo);
 };
 
 } // end draw namespace

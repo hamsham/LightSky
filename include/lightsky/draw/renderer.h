@@ -8,8 +8,6 @@
 #ifndef __LS_DRAW_RENDERER_H__
 #define	__LS_DRAW_RENDERER_H__
 
-#include <GL/glew.h>
-
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/color.h"
 

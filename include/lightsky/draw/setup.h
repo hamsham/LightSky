@@ -8,28 +8,13 @@
 #ifndef __LS_DRAW_SETUP_H__
 #define	__LS_DRAW_SETUP_H__
 
+#include <GLES3/gl3.h>
+
 #include "lightsky/setup/setup.h"
 #include "lightsky/utils/assertions.h"
 #include "lightsky/utils/hash.h"
 #include "lightsky/utils/log.h"
 #include "lightsky/math/math.h"
-
-/*-----------------------------------------------------------------------------
-    Default Display Resolution
------------------------------------------------------------------------------*/
-/*-------------------------------------
-    Default Display Width
--------------------------------------*/
-#ifndef LS_DRAW_DEFAULT_DISPLAY_WIDTH
-    #define LS_DRAW_DEFAULT_DISPLAY_WIDTH 800
-#endif
-
-/*-------------------------------------
-    Default Display Height
--------------------------------------*/
-#ifndef LS_DRAW_DEFAULT_DISPLAY_HEIGHT
-    #define LS_DRAW_DEFAULT_DISPLAY_HEIGHT 600
-#endif
 
 /*-------------------------------------
     Debugging Various Messages.

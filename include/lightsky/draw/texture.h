@@ -8,11 +8,9 @@
 #ifndef __LS_DRAW_TEXTURE_H__
 #define	__LS_DRAW_TEXTURE_H__
 
-#include <GL/glew.h>
-
+#include "lightsky/draw/setup.h"
 #include "lightsky/draw/color.h"
 #include "lightsky/draw/imageResource.h"
-#include "lightsky/draw/setup.h"
 
 namespace ls {
 namespace draw {
@@ -23,19 +21,17 @@ namespace draw {
 enum tex_param_t : int {
     TEX_PARAM_INVALID       = -1,
 
-    TEX_PARAM_WIDTH         = GL_TEXTURE_WIDTH,
-    TEX_PARAM_HEIGHT        = GL_TEXTURE_HEIGHT,
-    TEX_PARAM_DEPTH         = GL_TEXTURE_DEPTH,
-
     TEX_PARAM_MIN_FILTER    = GL_TEXTURE_MIN_FILTER,
     TEX_PARAM_MAG_FILTER    = GL_TEXTURE_MAG_FILTER,
+    
+    TEX_PARAM_MIN_LOD       = GL_TEXTURE_MIN_LOD,
+    TEX_PARAM_MAX_LOD       = GL_TEXTURE_MAX_LOD,
 
     TEX_PARAM_WRAP_S        = GL_TEXTURE_WRAP_S,
     TEX_PARAM_WRAP_T        = GL_TEXTURE_WRAP_T,
     TEX_PARAM_WRAP_R        = GL_TEXTURE_WRAP_R,
     
     TEX_PARAM_CLAMP_EDGE    = GL_CLAMP_TO_EDGE,
-    TEX_PARAM_CLAMP_BORDER  = GL_CLAMP_TO_BORDER,
     TEX_PARAM_REPEAT        = GL_REPEAT,
 };
 
@@ -43,24 +39,24 @@ enum tex_param_t : int {
  * Framebuffer filtering specifiers
 -----------------------------------------------------------------------------*/
 enum tex_filter_t : int {
-    TEX_FILTER_LINEAR            = GL_LINEAR,
     TEX_FILTER_NEAREST           = GL_NEAREST,
+    TEX_FILTER_LINEAR            = GL_LINEAR,
     
-    TEX_FILTER_LINEAR_NEAREST    = GL_LINEAR_MIPMAP_NEAREST,
     TEX_FILTER_NEAREST_NEAREST   = GL_NEAREST_MIPMAP_NEAREST,
-    
-    TEX_FILTER_LINEAR_LINEAR     = GL_LINEAR_MIPMAP_LINEAR,
-    TEX_FILTER_NEAREST_LINEAR    = GL_NEAREST_MIPMAP_LINEAR
+    TEX_FILTER_NEAREST_LINEAR    = GL_NEAREST_MIPMAP_LINEAR,
+            
+    TEX_FILTER_LINEAR_NEAREST    = GL_LINEAR_MIPMAP_NEAREST,
+    TEX_FILTER_LINEAR_LINEAR     = GL_LINEAR_MIPMAP_LINEAR
 };
 
 /**----------------------------------------------------------------------------
  * Descriptors for different texture types
 -----------------------------------------------------------------------------*/
 enum tex_desc_t : int {
-    TEX_DESC_1D     = GL_TEXTURE_1D,
-    TEX_DESC_2D     = GL_TEXTURE_2D,
-    TEX_DESC_3D     = GL_TEXTURE_3D,
-    TEX_DESC_RECT   = GL_TEXTURE_RECTANGLE,
+    TEX_DESC_2D         = GL_TEXTURE_2D,
+    TEX_DESC_2D_ARRAY   = GL_TEXTURE_2D_ARRAY,
+    TEX_DESC_3D         = GL_TEXTURE_3D,
+    TEX_DESC_CUBE       = GL_TEXTURE_CUBE_MAP,
 };
 
 /**----------------------------------------------------------------------------
@@ -166,6 +162,46 @@ class texture {
         inline void setParameter(int paramName, float param) const;
         
         /**
+         * Create an OpenGL texture with no data.
+         * 
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init();
+
+        /**
+         * @brief Create a 1D OpenGL texture in a similar manner as a
+         * renderbuffer.
+         *
+         * This function delegates texture initialization by filling in default
+         * parameters required by other functions.
+         *
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init(pixel_format_t internalFormat, int size);
+
+        /**
+         * @brief Create a 1D OpenGL texture in a similar manner as a
+         * renderbuffer.
+         *
+         * This function delegates texture initialization by filling in default
+         * parameters required by other functions.
+         *
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init(pixel_format_t internalFormat, const math::vec2i& size);
+
+        /**
+         * @brief Create a 3D OpenGL texture in a similar manner as a
+         * renderbuffer.
+         *
+         * This function delegates texture initialization by filling in default
+         * parameters required by other functions.
+         *
+         * @return true if the operation was successful. False if otherwise.
+         */
+        bool init(pixel_format_t internalFormat, const math::vec3i& size);
+        
+        /**
          * Create an OpenGL texture by using preexisting image data.
          * 
          * @see OpenGL's documentation for glTexImage()
@@ -191,7 +227,7 @@ class texture {
         bool init(
             int             mipmapLevel,
             pixel_format_t  internalFormat,
-            math::vec2i     size,
+            const math::vec2i& size,
             pixel_layout_t  format,
             color_type_t    dataType,
             void* const     data
@@ -207,7 +243,7 @@ class texture {
         bool init(
             int              mipmapLevel,
             pixel_format_t   internalFormat,
-            math::vec3i      size,
+            const math::vec3i& size,
             pixel_layout_t   format,
             color_type_t     dataType,
             void* const      data
@@ -229,7 +265,7 @@ class texture {
          * 
          * @return true if the operation was successful. False if otherwise.
          */
-        bool init(int mipmapLevel, math::vec2i size, const imageResource&);
+        bool init(int mipmapLevel, const math::vec2i& size, const imageResource&);
         
         /**
          * Create an OpenGL texture by using preexisting image data.
@@ -238,7 +274,7 @@ class texture {
          * 
          * @return true if the operation was successful. False if otherwise.
          */
-        bool init(int mipmapLevel, math::vec3i size, const imageResource&);
+        bool init(int mipmapLevel, const math::vec3i& size, const imageResource&);
         
         /**
          * Modify the internal data of a texture.
@@ -250,12 +286,12 @@ class texture {
         /**
          * Modify the internal data of a texture.
          */
-        inline void modify(math::vec2i offset, math::vec2i size, int format, int dataType, void* data);
+        inline void modify(const math::vec2i& offset, const math::vec2i& size, int format, int dataType, void* data);
         
         /**
          * Modify the internal data of a texture.
          */
-        inline void modify(math::vec3i offset, math::vec3i size, int format, int dataType, void* data);
+        inline void modify(const math::vec3i& offset, const math::vec3i& size, int format, int dataType, void* data);
         
         /**
          * Release all memory referenced by *this.
@@ -263,36 +299,12 @@ class texture {
         inline void terminate();
         
         /**
-         * Get the width of the texture referenced by texId
-         * 
-         * @return an unsigned integral type which indicates the size, in
-         * pixels of the texture width used by *this.
-         */
-        inline unsigned getWidth() const;
-        
-        /**
-         * Get the height of the texture referenced by texId.
-         * 
-         * @return an unsigned integral type which indicates the size, in
-         * pixels of the texture height used by *this.
-         */
-        inline unsigned getHeight() const;
-        
-        /**
-         * Get the depth of the texture referenced by texId.
-         * 
-         * @return an unsigned integral type which indicates the size, in
-         * pixels of the texture depth used by *this.
-         */
-        inline unsigned getDepth() const;
-        
-        /**
          * Get the texture type of that this texture uses in OpenGL.
          * 
          * @return the GPU-descriptor that's used to apply *this texture object
          * onto polygons.
          */
-        inline tex_desc_t getTextType() const;
+        inline tex_desc_t getTexType() const;
         
         /**
          * Get the maximum texture size supported by OpenGL.

@@ -8,8 +8,6 @@
 #ifndef __LS_DRAW_DEPTH_OBJECT_H__
 #define	__LS_DRAW_DEPTH_OBJECT_H__
 
-#include <GL/glew.h>
-
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/color.h"
 
@@ -52,7 +50,7 @@ class depthObject {
          * always clamped to a value between 0 and 1, according to the OpenGL
          * documentation.
          */
-        double depthClearVal = 1.0;
+        float depthClearVal = 1.f;
         
         /**
          * Used to determine the if currently rendered fragment should be kept
@@ -69,19 +67,19 @@ class depthObject {
         
         /**
          * The near value that should be used by OpenGL's depth buffer. This
-         * value will be clamped between 0.0 and 1.0. This helps determine if
+         * value will be clamped between 0.f and 1.f. This helps determine if
          * a fragment is within the acceptable range of values that can be
          * rendered to the currently bound framebuffer.
          */
-        double depthNear = 0.0;
+        float depthNear = 0.f;
         
         /**
          * The furthest normalized value that should be used by OpenGL's depth
-         * buffer. This value will be clamped between 0.0 and 1.0. This helps
+         * buffer. This value will be clamped between 0.f and 1.f. This helps
          * determine if a fragment is within the acceptable range of values
          * that can be rendered to the currently bound framebuffer.
          */
-        double depthFar = 1.0;
+        float depthFar = 1.f;
         
     public:
         /**
@@ -185,18 +183,17 @@ class depthObject {
          * glClear(LS_DEPTH_BUFFER_BIT).
          * 
          * @param cv
-         * A double-precision float that will be clamped to the range of 0-1.
+         * A single-precision float that will be clamped to the range of 0-1.
          */
-        void setClearVal(double cv);
+        void setClearVal(float cv);
         
         /**
          * Get the value that's applied to the depth buffer when a call to
          * glClear(LS_DEPTH_BUFFER_BIT) has been made.
          * 
-         * @return double
-         * A double-precision float that will be clamped to the range of 0-1.
+         * @return A single-precision float, clamped to the range of 0-1.
          */
-        double getClearVal() const;
+        float getClearVal() const;
         
         /**
          * Set the function to be used when rendering fragments from the pixel
@@ -235,48 +232,46 @@ class depthObject {
         
         /**
          * Set the near value that will be used by OpenGL's depth buffer.
-         * This value will be clamped between 0.0 and 1.0.
+         * This value will be clamped between 0.f and 1.f.
          * 
          * @param near
          * Used to set the nearest renderable depth of a fragment output by the
          * pixel shader.
          */
-        void setDepthNear(double near = 0.0);
+        void setDepthNear(float near = 0.f);
         
         /**
          * Get the near value that will be used by OpenGL's depth buffer.
-         * This value will be clamped between 0.0 and 1.0.
+         * This value will be clamped between 0.f and 1.f.
          * 
-         * @return double
-         * A double-precision floating point value that is used to determine if
-         * a value is within the screen-space depth buffer.
+         * @return A single-precision floating point value that is used to
+         * determine if a value is within the screen-space depth buffer.
          */
-        double getDepthNear() const;
+        float getDepthNear() const;
         
         /**
          * Set the far value that will be used by OpenGL's depth buffer.
-         * This value will be clamped between 0.0 and 1.0.
+         * This value will be clamped between 0.f and 1.f.
          * 
-         * @param double
-         * A double-precision floating point value that will be used to
+         * @param A single-precision floating point value that will be used to
          * determine if a value is within the screen-space depth buffer.
          */
-        void setDepthFar(double far = 1.0);
+        void setDepthFar(float far = 1.f);
         
         /**
          * Get the far value that will be used by OpenGL's depth buffer.
-         * This value will be clamped between 0.0 and 1.0.
+         * This value will be clamped between 0.f and 1.f.
          * 
          * @param far
          * Used to set the farthest renderable depth of a fragment output by
          * the pixel shader.
          */
-        double getDepthFar();
+        float getDepthFar();
         
         /**
          * Set both the the near and far values that will be used by OpenGL's
          * depth buffer to determine if a fragment is of renderable depth.
-         * These value will be clamped between 0.0 and 1.0.
+         * These value will be clamped between 0.f and 1.f.
          * 
          * @param near
          * Used to set the nearest renderable depth of a fragment output by the
@@ -286,7 +281,7 @@ class depthObject {
          * Used to set the farthest renderable depth of a fragment output by
          * the pixel shader.
          */
-        void setDepthRange(double near = 0.0, double far = 1.0);
+        void setDepthRange(float near = 0.f, float far = 1.f);
 };
 
 } // end draw namespace

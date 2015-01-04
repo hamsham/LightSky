@@ -65,7 +65,7 @@ class variable : public scriptable {
          *  @return
          *  A reference to *this.
          */
-        inline variable& operator =(const variable& v);
+        variable& operator =(const variable& v);
         
         /**
          *  @brief Move Operator
@@ -78,7 +78,7 @@ class variable : public scriptable {
          *  @return
          *  A reference to *this.
          */
-        inline variable& operator =(variable&& v);
+        variable& operator =(variable&& v);
 
         /**
          *  @brief getScriptType
@@ -86,7 +86,7 @@ class variable : public scriptable {
          *  
          *  @return ls::script::script_base_t::SCRIPT_VAR
          */
-        inline script_base_t getScriptType() const final;
+        script_base_t getScriptType() const final;
         
         /**
          *  @brief 
@@ -196,7 +196,7 @@ class variable_t final : public variable {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm);
+        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) override;
 
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -207,7 +207,7 @@ class variable_t final : public variable {
          *  'std::istream::operator >> (T)' in order to save variable data from
          *  *this.
          */
-        inline void save(std::ostream& ostr) const;
+        void save(std::ostream& ostr) const override;
 
         /**
          *  @brief getScriptSubType
@@ -216,7 +216,7 @@ class variable_t final : public variable {
          *  @return A portable hash code, representing the hashed lexical name
          *  of the data type stored in *this.
          */
-        inline hash_t getScriptSubType() const final;
+        hash_t getScriptSubType() const final;
 };
 
 } // end script namespace

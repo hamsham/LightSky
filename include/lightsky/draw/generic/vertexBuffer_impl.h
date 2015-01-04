@@ -95,7 +95,7 @@ inline void vertexBuffer_t<bufferType>::unbind() const {
 -------------------------------------*/
 template <vbo_use_t bufferType>
 inline void vertexBuffer_t<bufferType>::setData(
-    ptrdiff_t size,
+    GLsizeiptr size,
     const void* pData,
     vbo_rw_t
     usage

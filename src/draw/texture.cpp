@@ -5,32 +5,10 @@
  * Created on January 27, 2014, 8:35 PM
  */
 
-#include <GL/glew.h>
-
 #include "lightsky/draw/texture.h"
 
 namespace ls {
 namespace draw {
-
-
-/**
- * Simple helper function that can help reduce a few lines of code
- * during texture initialization.
- * 
- * @return TRUE if the texture was created properly, FALSE if not.
- */
-bool getGpuHandle(unsigned& texId) {
-    if (!texId) {
-        glGenTextures(1, &texId);
-        LOG_GL_ERR();
-        
-        if (texId == 0) {
-            LS_LOG_ERR("Unable to generate a texture object");
-            return false;
-        }
-    }
-    return true;
-}
 
 /*-------------------------------------
     Constructor
@@ -70,24 +48,65 @@ texture& texture::operator=(texture&& t) {
 }
 
 /*-------------------------------------
+    Create an OpenGL texture with no data.
+-------------------------------------*/
+bool texture::init() {
+    if (!texId) {
+        glGenTextures(1, &texId);
+        LOG_GL_ERR();
+        
+        if (texId == 0) {
+            LS_LOG_ERR("Unable to generate a texture object");
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+/*-------------------------------------
+    Load 1D Textures
+-------------------------------------*/
+bool texture::init(pixel_format_t internalFormat, int size) {
+    const pixel_layout_t layout = getColorLayout(internalFormat);
+    return init(0, internalFormat, size, layout, color_type_t::COLOR_TYPE_DEFAULT, nullptr);
+}
+
+/*-------------------------------------
+    Load 2D Textures
+-------------------------------------*/
+bool texture::init(pixel_format_t internalFormat, const math::vec2i& size) {
+    const pixel_layout_t layout = getColorLayout(internalFormat);
+    return init(0, internalFormat, size, layout, color_type_t::COLOR_TYPE_DEFAULT, nullptr);
+}
+
+/*-------------------------------------
+    Load 3D Textures
+-------------------------------------*/
+bool texture::init(pixel_format_t internalFormat, const math::vec3i& size) {
+    const pixel_layout_t layout = getColorLayout(internalFormat);
+    return init(0, internalFormat, size, layout, color_type_t::COLOR_TYPE_DEFAULT, nullptr);
+}
+
+/*-------------------------------------
     Load 1D Textures
 -------------------------------------*/
 bool texture::init(
-    int                 mipmapLevel,
-    pixel_format_t   internalFormat,
-    int                 size,
-    pixel_layout_t   format,
-    color_type_t     dataType,
-    void* const         data
+    int             mipmapLevel,
+    pixel_format_t  internalFormat,
+    int             size,
+    pixel_layout_t  format,
+    color_type_t    dataType,
+    void* const     data
 ) {
-    if (!getGpuHandle(texId)) {
+    if (!init()) {
         return false;
     }
     
     glBindTexture(dimensions, texId);
     LOG_GL_ERR();
     
-    glTexImage1D(dimensions, mipmapLevel, internalFormat, size, 0, format, dataType, data);
+    glTexImage2D(dimensions, mipmapLevel, internalFormat, size, 0, 0, format, dataType, data);
     LOG_GL_ERR();
     
     return true;
@@ -97,14 +116,14 @@ bool texture::init(
     Load 2D Textures
 -------------------------------------*/
 bool texture::init(
-    int                 mipmapLevel,
+    int              mipmapLevel,
     pixel_format_t   internalFormat,
-    math::vec2i         size,
+    const math::vec2i& size,
     pixel_layout_t   format,
     color_type_t     dataType,
-    void* const         data
+    void* const      data
 ) {
-    if (!getGpuHandle(texId)) {
+    if (!init()) {
         return false;
     }
     
@@ -124,14 +143,14 @@ bool texture::init(
     Load 3D Textures
 -------------------------------------*/
 bool texture::init(
-    int                 mipmapLevel,
+    int              mipmapLevel,
     pixel_format_t   internalFormat,
-    math::vec3i         size,
+    const math::vec3i& size,
     pixel_layout_t   format,
     color_type_t     dataType,
-    void* const         data
+    void* const      data
 ) {
-    if (!getGpuHandle(texId)) {
+    if (!init()) {
         return false;
     }
     

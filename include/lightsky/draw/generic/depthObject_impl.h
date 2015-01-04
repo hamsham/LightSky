@@ -22,15 +22,15 @@ inline bool depthObject::getState() const {
     Set the value to be applied to the depth buffer after a call to
     glClear(LS_DEPTH_BUFFER_BIT).
 ---------------------------------------*/
-inline void depthObject::setClearVal(double clear) {
-    depthClearVal = math::clamp(clear, 0.0, 1.0);
+inline void depthObject::setClearVal(float clear) {
+    depthClearVal = math::clamp(clear, 0.f, 1.f);
 }
 
 /*-------------------------------------
     Get the value that's applied to the depth buffer when a call to
     glClear(LS_DEPTH_BUFFER_BIT) has been made.
 ---------------------------------------*/
-inline double depthObject::getClearVal() const {
+inline float depthObject::getClearVal() const {
     return depthClearVal;
 }
 
@@ -65,28 +65,28 @@ inline bool depthObject::getDepthMask() const {
 /*-------------------------------------
     Set the near value that will be used by OpenGL's depth buffer.
 ---------------------------------------*/
-inline void depthObject::setDepthNear(double near) {
-    depthNear = math::clamp(near, 0.0, 1.0);
+inline void depthObject::setDepthNear(float near) {
+    depthNear = math::clamp(near, 0.f, 1.f);
 }
 
 /*-------------------------------------
     Get the near value that will be used by OpenGL's depth buffer.
 ---------------------------------------*/
-inline double depthObject::getDepthNear() const {
+inline float depthObject::getDepthNear() const {
     return depthNear;
 }
 
 /*-------------------------------------
     Set the far value that will be used by OpenGL's depth buffer.
 ---------------------------------------*/
-inline void depthObject::setDepthFar(double far) {
-    depthFar = math::clamp(far, 0.0, 1.0);
+inline void depthObject::setDepthFar(float far) {
+    depthFar = math::clamp(far, 0.f, 1.f);
 }
 
 /*-------------------------------------
     Get the far value that will be used by OpenGL's depth buffer.
 ---------------------------------------*/
-inline double depthObject::getDepthFar() {
+inline float depthObject::getDepthFar() {
     return depthFar;
 }
 
@@ -94,9 +94,9 @@ inline double depthObject::getDepthFar() {
     Set both the the near and far values that will be used by OpenGL's
     depth buffer to determine if a fragment is of renderable depth.
 ---------------------------------------*/
-inline void depthObject::setDepthRange(double near, double far) {
-    depthNear = math::clamp(near, 0.0, 1.0);
-    depthFar = math::clamp(far, 0.0, 1.0);
+inline void depthObject::setDepthRange(float near, float far) {
+    depthNear = math::clamp(near, 0.f, 1.f);
+    depthFar = math::clamp(far, 0.f, 1.f);
 }
 
 } // end draw namespace

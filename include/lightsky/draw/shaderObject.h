@@ -9,7 +9,6 @@
 #define	__LS_DRAW_SHADER_OBJECT_H__
 
 #include <utility>
-#include <GL/glew.h>
 
 #include "lightsky/draw/setup.h"
 
@@ -21,7 +20,6 @@ namespace draw {
 -----------------------------------------------------------------------------*/
 enum shader_stage_t : unsigned {
     SHADER_STAGE_VERTEX     = GL_VERTEX_SHADER,
-    SHADER_STAGE_GEOMETRY   = GL_GEOMETRY_SHADER,
     SHADER_STAGE_FRAGMENT   = GL_FRAGMENT_SHADER
 };
 
@@ -115,7 +113,6 @@ class shaderObject {
     Typedefs and external templates
 -----------------------------------------------------------------------------*/
 LS_DECLARE_CLASS_TYPE(vertexShader, shaderObject, SHADER_STAGE_VERTEX);
-LS_DECLARE_CLASS_TYPE(geometryShader, shaderObject, SHADER_STAGE_GEOMETRY);
 LS_DECLARE_CLASS_TYPE(fragmentShader, shaderObject, SHADER_STAGE_FRAGMENT);
 
 } // end draw namespace

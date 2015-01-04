@@ -111,9 +111,9 @@ void sceneManager::terminate() {
 //      Static Implementations
 //-----------------------------------------------------------------------------
 // Default Texture color
-static constexpr color checkeredCol[] = {
-    lsMagenta,  lsBlack,
-    lsBlack,    lsMagenta
+static constexpr color::color checkeredCol[] = {
+    color::magenta, color::black,
+    color::black,   color::magenta
 };
 
 /*

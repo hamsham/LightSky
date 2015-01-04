@@ -8,7 +8,7 @@
 #ifndef __LS_DRAW_BUFFER_OBJECT_H__
 #define	__LS_DRAW_BUFFER_OBJECT_H__
 
-#include <GL/glew.h>
+#include <cstddef> // ptrdiff_t
 
 #include "lightsky/draw/setup.h"
 
@@ -25,7 +25,6 @@ namespace draw {
 enum vbo_use_t : GLenum {
     VBO_BUFFER_ARRAY                = GL_ARRAY_BUFFER,
     VBO_BUFFER_ELEMENT              = GL_ELEMENT_ARRAY_BUFFER,
-    VBO_BUFFER_TEXTURE              = GL_TEXTURE_BUFFER,
     VBO_BUFFER_TRANSFORM_FEEDBACK   = GL_TRANSFORM_FEEDBACK_BUFFER,
     VBO_BUFFER_UNIFORM_BUFFER       = GL_UNIFORM_BUFFER
 };
@@ -56,9 +55,7 @@ enum vbo_map_t : GLbitfield {
     VBO_MAP_BIT_INVALIDATE_RANGE    = GL_MAP_INVALIDATE_RANGE_BIT,
     VBO_MAP_BIT_INVALIDATE_BUFFER   = GL_MAP_INVALIDATE_BUFFER_BIT,
     VBO_MAP_BIT_FLUSH_EXPLICIT      = GL_MAP_FLUSH_EXPLICIT_BIT,
-    VBO_MAP_BIT_UNSYNCHRONIZED      = GL_MAP_UNSYNCHRONIZED_BIT,
-    VBO_MAP_BIT_PERSISTENT          = GL_MAP_PERSISTENT_BIT,
-    VBO_MAP_BIT_COHERENT            = GL_MAP_COHERENT_BIT
+    VBO_MAP_BIT_UNSYNCHRONIZED      = GL_MAP_UNSYNCHRONIZED_BIT
 };
 
 /*-----------------------------------------------------------------------------

@@ -8,8 +8,6 @@
 #ifndef __LS_DRAW_DRAW_COMMAND_H__
 #define	__LS_DRAW_DRAW_COMMAND_H__
 
-#include <GL/glew.h>
-
 #include "lightsky/setup/macros.h"
 
 #include "lightsky/draw/vertexArray.h"

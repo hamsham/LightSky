@@ -134,8 +134,8 @@ bool atlas::init(const fontResource& fr) {
         }
     }
     
-    atlasTex.setParameter(TEX_PARAM_WRAP_S, TEX_PARAM_CLAMP_BORDER);
-    atlasTex.setParameter(TEX_PARAM_WRAP_T, TEX_PARAM_CLAMP_BORDER);
+    atlasTex.setParameter(TEX_PARAM_WRAP_S, TEX_PARAM_CLAMP_EDGE);
+    atlasTex.setParameter(TEX_PARAM_WRAP_T, TEX_PARAM_CLAMP_EDGE);
     atlasTex.unbind();
     LOG_GL_ERR();
     

@@ -77,32 +77,6 @@ bool shaderProgram::attachShaders(
 }
 
 /*-------------------------------------
-    Attaching Shaders
--------------------------------------*/
-bool shaderProgram::attachShaders(
-    const vertexShader& vs,
-    const geometryShader& gs,
-    const fragmentShader& fs
-) {
-    if (programId != 0) {
-        glDeleteProgram(programId);
-    }
-    else {
-        programId = glCreateProgram();
-        if (programId == 0) {
-            LS_LOG_ERR("Unable to create a GLSL Program Handle.\n");
-            return false;
-        }
-    }
-    
-    glAttachShader(programId, vs.objectId);
-    glAttachShader(programId, gs.objectId);
-    glAttachShader(programId, fs.objectId);
-    
-    return true;
-}
-
-/*-------------------------------------
     Linking
 -------------------------------------*/
 bool shaderProgram::link() {

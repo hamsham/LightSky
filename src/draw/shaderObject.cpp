@@ -14,7 +14,6 @@ namespace draw {
     Typedefs and external templates
 -----------------------------------------------------------------------------*/
 LS_DEFINE_CLASS_TYPE(shaderObject, SHADER_STAGE_VERTEX);
-LS_DEFINE_CLASS_TYPE(shaderObject, SHADER_STAGE_GEOMETRY);
 LS_DEFINE_CLASS_TYPE(shaderObject, SHADER_STAGE_FRAGMENT);
 
 } // end draw namespace

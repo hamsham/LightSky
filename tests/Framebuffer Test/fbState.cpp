@@ -194,8 +194,7 @@ bool fbState::initFileData() {
     
     draw::meshResource* pMeshLoader = new draw::meshResource{};
     draw::geometry* pSphereMesh     = new draw::geometry{};
-    draw::texture* fbDepthTex       = new draw::texture{};
-    draw::texture* fbColorTex       = new draw::texture{};
+    draw::texture* pColorTex       = new draw::texture{};
     draw::texture* noiseTex         = new draw::texture{};
     bool ret                        = true;
     
@@ -204,16 +203,14 @@ bool fbState::initFileData() {
     //|| !pMeshLoader->loadSphere(16)
     || !pMeshLoader->loadFile("./testmesh.dae")
     || !pSphereMesh->init(*pMeshLoader)
-    || !fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
-    || !fbColorTex->init(0, draw::COLOR_FMT_RGB_8, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT}, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr)
+    || !pColorTex->init(draw::COLOR_FMT_DEFAULT, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})
     || !noiseTex->init(0, draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, nullptr)
     ) {
         ret = false;
     }
     else {
         pScene->manageGeometry(pSphereMesh); // test data at the mesh index 0
-        pScene->manageTexture(fbDepthTex);
-        pScene->manageTexture(fbColorTex);
+        pScene->manageTexture(pColorTex);
         pScene->manageTexture(noiseTex); // test texture at index 2
         
          // initialize the perlin noise texture
@@ -235,7 +232,7 @@ void fbState::regenerateNoise() {
     
     std::vector<float>&& noiseTable = futureNoise.get();
     
-    draw::texture* const pTexture = pScene->getTexture(2);
+    draw::texture* const pTexture = pScene->getTexture(1);
     pTexture->bind();
     pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, noiseTable.data());
     
@@ -342,7 +339,7 @@ bool fbState::initDrawModels() {
     }
     else {
         draw::geometry* const pMesh = pScene->getGeometry(0);
-        draw::texture* const pTexture = pScene->getTexture(2);
+        draw::texture* const pTexture = pScene->getTexture(1);
         pModel->init(*pMesh, *pTexture);
         
         // lights, camera, batch!
@@ -359,39 +356,37 @@ bool fbState::initDrawModels() {
  * Initialize the framebuffers
 -------------------------------------*/
 bool fbState::initFramebuffers() {
-    draw::texture* const pDepthTex = pScene->getTexture(0);
-    draw::texture* const pColorTex = pScene->getTexture(1);
+    if (!testRb.init(draw::rbo_format_t::RBO_FMT_DEPTH_32, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})) {
+        LS_LOG_ERR("An Error occurred while creating the test depth buffer.");
+        return false;
+    }
+    draw::texture* const pColorTex = pScene->getTexture(0);
     
     // setup the test framebuffer depth texture
-    pDepthTex->bind();
-        pDepthTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
-        pDepthTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
-        pDepthTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
-        pDepthTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
-    pDepthTex->unbind();
-    
     LOG_GL_ERR();
     
     // framebuffer color texture
     pColorTex->bind();
-        pColorTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
-        pColorTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
-        pColorTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
-        pColorTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
+    pColorTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
+    pColorTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
+    pColorTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
+    pColorTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
     pColorTex->unbind();
     
     LOG_GL_ERR();
     
     testFb.bind();
-        testFb.attachTexture(draw::FBO_ATTACHMENT_DEPTH,    draw::FBO_2D_TARGET, *pDepthTex);
-        testFb.attachTexture(draw::FBO_ATTACHMENT_0,        draw::FBO_2D_TARGET, *pColorTex);
-    testFb.unbind();
+    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_DEPTH, testRb);
+    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_0, *pColorTex);
     
     LOG_GL_ERR();
     
     if (draw::framebuffer::getStatus(testFb) != draw::FBO_COMPLETE) {
+        testFb.unbind();
         return false;
     }
+    
+    testFb.unbind();
     
     return true;
 }
@@ -400,7 +395,7 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 -------------------------------------*/
 void fbState::setRendererParams() {
-    constexpr draw::color gray = draw::lsGray;
+    constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
     
     draw::renderer renderer;
@@ -493,6 +488,7 @@ void fbState::onStop() {
     
     meshProg.terminate();
     
+    testRb.terminate();
     testFb.terminate();
     
     orientation = math::quat{0.f, 0.f, 0.f, 1.f};
@@ -566,6 +562,7 @@ void fbState::drawScene() {
     
     // restore framebuffer reads to OpenGL's backbuffer
     testFb.unbind();
+    LOG_GL_ERR();
 }
 
 /*-------------------------------------
@@ -603,16 +600,32 @@ void fbState::resizeFramebuffer(const math::vec2i& res) {
 void fbState::scaleFramebuffer(const int deltaScale) {
     fbRes += deltaScale;
     
-    const math::vec2i displayRes =global::pDisplay->getResolution();
+    const math::vec2i displayRes = global::pDisplay->getResolution();
     fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
     fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
     
-    draw::texture* fbDepthTex = pScene->getTexture(0);
-    draw::texture* fbColorTex = pScene->getTexture(1);
+    draw::texture* pColorTex = pScene->getTexture(0);
     
-    fbDepthTex->init(0, draw::COLOR_FMT_GRAY_8, fbRes, draw::COLOR_LAYOUT_GRAY, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
-    fbColorTex->init(0, draw::COLOR_FMT_RGB_8, fbRes, draw::COLOR_LAYOUT_RGB, draw::COLOR_TYPE_UNSIGNED_BYTE, nullptr);
+    testFb.bind();
+    LOG_GL_ERR();
     
+    if (!testRb.init(draw::rbo_format_t::RBO_FMT_DEPTH_32, fbRes)) {
+        LS_LOG_ERR("Error: Failed to resize the depth buffer.");
+        return;
+    }
+    LOG_GL_ERR();
+    
+    pColorTex->init(draw::COLOR_FMT_DEFAULT, fbRes);
+    LOG_GL_ERR();
+    
+    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_0, *pColorTex);
+    LOG_GL_ERR();
+    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_DEPTH, testRb);
+    LOG_GL_ERR();
+    draw::framebuffer::getStatus(testFb);
+    testFb.unbind();
+    
+    LOG_GL_ERR();
 }
 
 /*-------------------------------------

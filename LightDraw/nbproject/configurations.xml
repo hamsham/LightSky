@@ -23,6 +23,7 @@
         <itemPath>../include/lightsky/draw/generic/shaderObject_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/shaderProgram_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/texture_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/transform_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/vertexBuffer_impl.h</itemPath>
       </logicalFolder>
       <itemPath>../include/lightsky/draw/atlas.h</itemPath>
@@ -48,6 +49,7 @@
       <itemPath>../include/lightsky/draw/shaderObject.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderProgram.h</itemPath>
       <itemPath>../include/lightsky/draw/texture.h</itemPath>
+      <itemPath>../include/lightsky/draw/transform.h</itemPath>
       <itemPath>../include/lightsky/draw/vertex.h</itemPath>
       <itemPath>../include/lightsky/draw/vertexArray.h</itemPath>
       <itemPath>../include/lightsky/draw/vertexBuffer.h</itemPath>
@@ -80,6 +82,7 @@
       <itemPath>../src/draw/shaderObject.cpp</itemPath>
       <itemPath>../src/draw/shaderProgram.cpp</itemPath>
       <itemPath>../src/draw/texture.cpp</itemPath>
+      <itemPath>../src/draw/transform.cpp</itemPath>
       <itemPath>../src/draw/vertexArray.cpp</itemPath>
       <itemPath>../src/draw/vertexBuffer.cpp</itemPath>
     </logicalFolder>
@@ -283,6 +286,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/transform_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/vertexBuffer_impl.h"
             ex="false"
             tool="3"
@@ -347,6 +355,11 @@
       </item>
       <item path="../include/lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/transform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/vertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/vertexArray.h"
@@ -400,6 +413,8 @@
       <item path="../src/draw/shaderProgram.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/transform.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/vertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -595,6 +610,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/transform_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/vertexBuffer_impl.h"
             ex="false"
             tool="3"
@@ -659,6 +679,11 @@
       </item>
       <item path="../include/lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/transform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/vertex.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/vertexArray.h"
@@ -712,6 +737,8 @@
       <item path="../src/draw/shaderProgram.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/transform.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/vertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -56,6 +56,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/shaderObject.o \
 	${OBJECTDIR}/_ext/1019371010/shaderProgram.o \
 	${OBJECTDIR}/_ext/1019371010/texture.o \
+	${OBJECTDIR}/_ext/1019371010/transform.o \
 	${OBJECTDIR}/_ext/1019371010/vertexArray.o \
 	${OBJECTDIR}/_ext/1019371010/vertexBuffer.o
 
@@ -190,6 +191,11 @@ ${OBJECTDIR}/_ext/1019371010/texture.o: ../src/draw/texture.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/texture.o ../src/draw/texture.cpp
+
+${OBJECTDIR}/_ext/1019371010/transform.o: ../src/draw/transform.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/transform.o ../src/draw/transform.cpp
 
 ${OBJECTDIR}/_ext/1019371010/vertexArray.o: ../src/draw/vertexArray.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

@@ -165,16 +165,12 @@ void gameSystem::popGameState(unsigned index) {
     Clear SubSystem States
 -------------------------------------*/
 void gameSystem::clearGameStates() {
-    if (isRunnable() == true) {
-        for (unsigned i = 0; i < this->gameList.size(); ++i) {
-            gameList[i]->setStateStatus(game_state_t::STOPPED);
-        }
+    for (gameState* const pState : gameList) {
+        pState->setStateStatus(game_state_t::STOPPED);
+        delete pState;
     }
-    else {    
-        while (gameList.size()) {
-            popGameState();
-        }
-    }
+    
+    gameList.clear();
 }
 
 /*-------------------------------------

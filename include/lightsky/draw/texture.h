@@ -122,17 +122,24 @@ class texture {
          * @return An unsigned integral type that correlates to a texture on
          * the GPU.
          */
-        inline unsigned getId() const;
+        unsigned getId() const;
+        
+        /**
+         * @brief Determine if *this is able to be used for rendering.
+         * 
+         * @return TRUE if *this contains a valid texture ID, FALSE if not.
+         */
+        bool isValid() const;
         
         /**
          * Bind the current texture to OpenGL
          */
-        inline void bind() const;
+        void bind() const;
         
         /**
          * Unbind the current texture to OpenGL
          */
-        inline void unbind() const;
+        void unbind() const;
         
         /**
          * Set a integer texture parameter.
@@ -145,7 +152,7 @@ class texture {
          * @param param
          * The particular texture setting to use for *this.
          */
-        inline void setParameter(int paramName, int param) const;
+        void setParameter(int paramName, int param) const;
         
         /**
          * @brief Set a float texture parameter.
@@ -159,7 +166,7 @@ class texture {
          * @param param
          * The particular texture setting to use for *this.
          */
-        inline void setParameter(int paramName, float param) const;
+        void setParameter(int paramName, float param) const;
         
         /**
          * Create an OpenGL texture with no data.
@@ -281,22 +288,22 @@ class texture {
          * 
          * @see OpenGL's documentation for glTexImage()
          */
-        inline void modify(int offset, int size, int format, int dataType, void* data);
+        void modify(int offset, int size, int format, int dataType, void* data);
         
         /**
          * Modify the internal data of a texture.
          */
-        inline void modify(const math::vec2i& offset, const math::vec2i& size, int format, int dataType, void* data);
+        void modify(const math::vec2i& offset, const math::vec2i& size, int format, int dataType, void* data);
         
         /**
          * Modify the internal data of a texture.
          */
-        inline void modify(const math::vec3i& offset, const math::vec3i& size, int format, int dataType, void* data);
+        void modify(const math::vec3i& offset, const math::vec3i& size, int format, int dataType, void* data);
         
         /**
          * Release all memory referenced by *this.
          */
-        inline void terminate();
+        void terminate();
         
         /**
          * Get the texture type of that this texture uses in OpenGL.
@@ -304,7 +311,7 @@ class texture {
          * @return the GPU-descriptor that's used to apply *this texture object
          * onto polygons.
          */
-        inline tex_desc_t getTexType() const;
+        tex_desc_t getTexType() const;
         
         /**
          * Get the maximum texture size supported by OpenGL.

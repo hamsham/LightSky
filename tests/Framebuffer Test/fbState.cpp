@@ -332,7 +332,7 @@ bool fbState::initShaders() {
  * Create the draw models that will be used for rendering
 -------------------------------------*/
 bool fbState::initDrawModels() {
-    draw::meshModel* const pModel = new draw::meshModel{};
+    draw::sceneNode* const pModel = new draw::sceneNode{};
     if (pModel == nullptr) {
         LS_LOG_ERR("Unable to generate test draw model");
         return false;
@@ -543,7 +543,7 @@ void fbState::drawScene() {
     meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
     
     // draw a test mesh
-    draw::meshModel* const pTestModel = pScene->getModelList()[0];
+    draw::sceneNode* const pTestModel = pScene->getModelList()[0];
     pTestModel->draw();
     
     // restore draw operations to the default GL framebuffer

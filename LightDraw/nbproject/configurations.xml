@@ -40,11 +40,11 @@
       <itemPath>../include/lightsky/draw/geometry_utils.h</itemPath>
       <itemPath>../include/lightsky/draw/imageResource.h</itemPath>
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
-      <itemPath>../include/lightsky/draw/meshModel.h</itemPath>
       <itemPath>../include/lightsky/draw/meshResource.h</itemPath>
       <itemPath>../include/lightsky/draw/renderbuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/renderer.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneManager.h</itemPath>
+      <itemPath>../include/lightsky/draw/sceneNode.h</itemPath>
       <itemPath>../include/lightsky/draw/setup.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderObject.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderProgram.h</itemPath>
@@ -75,9 +75,9 @@
       <itemPath>../src/draw/imageResource.cpp</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
       <itemPath>../src/draw/meshModel.cpp</itemPath>
-      <itemPath>../src/draw/meshResource.cpp</itemPath>
       <itemPath>../src/draw/renderbuffer.cpp</itemPath>
       <itemPath>../src/draw/sceneManager.cpp</itemPath>
+      <itemPath>../src/draw/sceneNode.cpp</itemPath>
       <itemPath>../src/draw/setup.cpp</itemPath>
       <itemPath>../src/draw/shaderObject.cpp</itemPath>
       <itemPath>../src/draw/shaderProgram.cpp</itemPath>
@@ -99,8 +99,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../include/lightsky/draw</Elem>
-    <Elem>../src/draw</Elem>
+    <Elem>..</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -316,11 +315,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/meshModel.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/meshResource.h"
             ex="false"
             tool="3"
@@ -337,6 +331,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/sceneManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/sceneNode.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -400,11 +399,11 @@
       </item>
       <item path="../src/draw/meshModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../src/draw/meshResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/sceneNode.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/setup.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -640,11 +639,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/meshModel.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/meshResource.h"
             ex="false"
             tool="3"
@@ -661,6 +655,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/sceneManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/sceneNode.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -724,11 +723,11 @@
       </item>
       <item path="../src/draw/meshModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../src/draw/meshResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/sceneNode.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/setup.cpp" ex="false" tool="1" flavor2="0">
       </item>

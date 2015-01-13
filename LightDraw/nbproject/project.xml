@@ -14,8 +14,7 @@
                 <make-dep-project>../LightMath</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../include/lightsky/draw</sourceRootElem>
-                <sourceRootElem>../src/draw</sourceRootElem>
+                <sourceRootElem>..</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

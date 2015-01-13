@@ -10,6 +10,13 @@ inline unsigned texture::getId() const {
 }
 
 /*-------------------------------------
+ Determine if *this can be used during rendering operations.
+-------------------------------------*/
+inline unsigned texture::isValid() const {
+    return texId != 0;
+}
+
+/*-------------------------------------
     Bind the current texture to OpenGL
 -------------------------------------*/
 inline void texture::bind() const {

@@ -14,7 +14,7 @@
  * Extern Template Types
 -------------------------------------*/
 template class std::deque<ls::draw::geometry*>;
-template class std::deque<ls::draw::meshModel*>;
+template class std::deque<ls::draw::sceneNode*>;
 template class std::deque<ls::draw::texture*>;
 template class std::deque<ls::draw::atlas*>;
 
@@ -101,7 +101,7 @@ void sceneManager::terminate() {
     }
     atlasMgr.clear();
     
-    for (meshModel* pModel : drawMgr) {
+    for (sceneNode* pModel : drawMgr) {
         delete pModel;
     }
     drawMgr.clear();
@@ -202,7 +202,7 @@ atlas* sceneManager::getAtlas(unsigned index) const {
     return atlasMgr[index];
 }
 
-meshModel* sceneManager::getModel(unsigned index) const {
+sceneNode* sceneManager::getModel(unsigned index) const {
     LS_DEBUG_ASSERT(index < drawMgr.size());
     return drawMgr[index];
 }
@@ -229,7 +229,7 @@ void sceneManager::eraseAtlas(unsigned index) {
 }
 
 void sceneManager::eraseModel(unsigned index) {
-    meshModel* pDrawModel = drawMgr[index];
+    sceneNode* pDrawModel = drawMgr[index];
     delete pDrawModel;
     drawMgr.erase(drawMgr.begin()+index);
 }
@@ -286,7 +286,7 @@ unsigned sceneManager::manageAtlas(atlas* const pAtlas) {
     return INVALID_SCENE_ID;
 }
 
-unsigned sceneManager::manageModel(meshModel* const pText) {
+unsigned sceneManager::manageModel(sceneNode* const pText) {
     if (pText != nullptr && this->containsModel(pText) == false) {
         const unsigned index = pText->getId();
         drawMgr.push_back(pText);
@@ -320,9 +320,9 @@ atlas* sceneManager::unManageAtlas(unsigned index) {
     return pAtlas;
 }
 
-meshModel* sceneManager::unManageModel(unsigned index) {
+sceneNode* sceneManager::unManageModel(unsigned index) {
     LS_DEBUG_ASSERT(index < drawMgr.size());
-    meshModel* const pText = drawMgr[index];
+    sceneNode* const pText = drawMgr[index];
     drawMgr.erase(drawMgr.begin() + index);
     return pText;
 }
@@ -384,7 +384,7 @@ bool sceneManager::containsAtlas(const atlas* const pAtlas) const {
     return false;
 }
 
-bool sceneManager::containsModel(const meshModel* const pText) const {
+bool sceneManager::containsModel(const sceneNode* const pText) const {
     if (pText == nullptr) {
         return false;
     }

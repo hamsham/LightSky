@@ -10,7 +10,7 @@
 #include "lightsky/utils/assertions.h"
 
 #include "lightsky/draw/color.h"
-#include "lightsky/draw/meshModel.h"
+#include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/vertex.h"
 
 namespace ls {
@@ -19,38 +19,41 @@ namespace draw {
 /*-------------------------------------
     Constructor
 -------------------------------------*/
-meshModel::meshModel() {
+sceneNode::sceneNode() {
 }
 
 /*-------------------------------------
     Move Constructor
 -------------------------------------*/
-meshModel::meshModel(meshModel&& dm) :
-    pMesh{dm.pMesh},
-    pTexture{dm.pTexture},
-    modelVbo{std::move(dm.modelVbo)},
-    vao{std::move(dm.vao)}
+sceneNode::sceneNode(sceneNode&& s) :
+    pMesh{s.pMesh},
+    matrixVbo{std::move(s.matrixVbo)},
+    vao{std::move(s.vao)},
+    drawParams{std::move(s.drawParams)},
+    textureList{std::move(s.textureList)}
 {
-    dm.pMesh = nullptr;
-    dm.pTexture = nullptr;
+    s.pMesh = nullptr;
+    s.drawParams = {};
 }
 
 /*-------------------------------------
     Destructor
 -------------------------------------*/
-meshModel::~meshModel() {
+sceneNode::~sceneNode() {
     terminate();
 }
 
-meshModel& meshModel::operator=(meshModel&& dm) {
-    pMesh = dm.pMesh;
-    dm.pMesh = nullptr;
+sceneNode& sceneNode::operator=(sceneNode&& s) {
+    pMesh = s.pMesh;
+    s.pMesh = nullptr;
     
-    pTexture = dm.pTexture;
-    dm.pTexture = nullptr;
+    matrixVbo = std::move(s.matrixVbo);
     
-    modelVbo = std::move(dm.modelVbo);
-    vao = std::move(dm.vao);
+    vao = std::move(s.vao);
+    
+    drawParams = std::move(s.drawParams);
+    
+    textureList = std::move(s.textureList);
     
     return *this;
 }
@@ -58,7 +61,7 @@ meshModel& meshModel::operator=(meshModel&& dm) {
 /*-------------------------------------
     Helper function to ensure all vertex attributes are setup properly.
 -------------------------------------*/
-void meshModel::setVertexAttribs() {
+void sceneNode::setVertexAttribs() {
     vao.bind();
     
     pMesh->getVertexBuffer().bind();
@@ -91,7 +94,7 @@ void meshModel::setVertexAttribs() {
     LOG_GL_ERR();
     
     // setup the VBO/VAO for instancing
-    modelVbo.bind();
+    matrixVbo.bind();
     for (unsigned i = 0; i < 4; ++i) {
         vao.enableAttrib(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_MAT_ROW0)+i);
         vao.setAttribOffset(
@@ -108,22 +111,25 @@ void meshModel::setVertexAttribs() {
     pMesh->getVertexBuffer().unbind();
     pMesh->getIndexBuffer().unbind();
     
-    modelVbo.unbind();
+    matrixVbo.unbind();
     
     LOG_GL_ERR();
 }
 
-void meshModel::terminate() {
+/*-------------------------------------
+ Release all resouces.
+-------------------------------------*/
+void sceneNode::terminate() {
     pMesh = nullptr;
-    pTexture = nullptr;
     vao.terminate();
-    modelVbo.terminate();
+    matrixVbo.terminate();
+    textureList.clear();
 }
 
 /*-------------------------------------
     Set the mesh to be used by this object during a draw operation.
 -------------------------------------*/
-bool meshModel::init(const geometry& m, const texture& t) {
+bool sceneNode::init(const geometry& m) {
     // there's no telling what data might be pushed into the VAO. Get rid of it.
     vao.terminate();
     if (!vao.init()) {
@@ -133,8 +139,8 @@ bool meshModel::init(const geometry& m, const texture& t) {
     }
     
     // vbos are resized when any new data is pushed into them
-    if (modelVbo.isValid() == false) {
-        if (!modelVbo.init()) {
+    if (matrixVbo.isValid() == false) {
+        if (!matrixVbo.init()) {
             LS_LOG_ERR("\tUnable to initialize a model matrix buffer.");
             terminate();
             return false;
@@ -153,7 +159,6 @@ bool meshModel::init(const geometry& m, const texture& t) {
     setNumInstances(1, &identity);
     
     setVertexAttribs();
-    setTexture(t);
     
     return true;
 }
@@ -162,54 +167,38 @@ bool meshModel::init(const geometry& m, const texture& t) {
     All meshes support instanced draws by default. This will set the
     number of instances that will appear when drawing a mesh.
 -------------------------------------*/
-void meshModel::setNumInstances(int instanceCount, const math::mat4* const modelMatrices) {
+void sceneNode::setNumInstances(int instanceCount, const math::mat4* const modelMatrices) {
     LS_DEBUG_ASSERT(instanceCount > 0);
-    modelVbo.bind();
-    modelVbo.setData(sizeof(math::mat4)*instanceCount, modelMatrices, VBO_DYNAMIC_DRAW);
-    modelVbo.unbind();
+    matrixVbo.bind();
+    matrixVbo.setData(sizeof(math::mat4)*instanceCount, modelMatrices, VBO_DYNAMIC_DRAW);
+    matrixVbo.unbind();
     LOG_GL_ERR();
-    
-    switch (drawParams.getDrawCommand()) {
-        case draw_command_t::ARRAYS: {
-            const drawArrays& da = drawParams.getDrawFunction().da;
-            drawParams.paramsArraysInstanced(da.first, da.count, instanceCount);
-            break;
-        }
-        case draw_command_t::ARRAYS_INSTANCED: {
-            const drawArraysInstanced& dai = drawParams.getDrawFunction().dai;
-            drawParams.paramsArraysInstanced(dai.first, dai.count, instanceCount);
-            break;
-        }
-        case draw_command_t::ELEMENTS: {
-            const drawElements& de = drawParams.getDrawFunction().de;
-            drawParams.paramsElementsInstanced(de.count, de.type, de.offset, instanceCount);
-            break;
-        }
-        case draw_command_t::ELEMENTS_RANGED: {
-            const drawElementsRanged& der = drawParams.getDrawFunction().der;
-            drawParams.paramsElementsInstanced(der.count, der.type, der.offset, instanceCount);
-            break;
-        }
-        case draw_command_t::ELEMENTS_INSTANCED: {
-            const drawElementsInstanced& dei = drawParams.getDrawFunction().dei;
-            drawParams.paramsElementsInstanced(dei.count, dei.type, dei.offset, instanceCount);
-            break;
-        }
-        default:
-            LS_DEBUG_ASSERT(false);
-            break;
-    }
 }
 
 /*-------------------------------------
     Change the model matrix for a single instance
 -------------------------------------*/
-void meshModel::modifyInstance(int index, const math::mat4& modelMatrix) {
+void sceneNode::modifyInstance(int index, const math::mat4& modelMatrix) {
     LS_DEBUG_ASSERT(index >= 0);
-    modelVbo.bind();
-    modelVbo.setSubData(sizeof(math::mat4)*index, sizeof(math::mat4), &modelMatrix);
-    modelVbo.unbind();
+    matrixVbo.bind();
+    matrixVbo.setSubData(sizeof(math::mat4)*index, sizeof(math::mat4), &modelMatrix);
+    matrixVbo.unbind();
     LOG_GL_ERR();
+}
+
+/*-------------------------------------
+    Render all instances of the currently bound mesh to OpenGL.
+-------------------------------------*/
+void sceneNode::draw() const {
+    for (const texture* const pTex : textureList) {
+        pTex->bind();
+    }
+    
+    drawParams.draw(vao);
+    
+    for (const texture* const pTex : textureList) {
+        pTex->unbind();
+    }
 }
 
 } // end draw namespace

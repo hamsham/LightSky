@@ -49,9 +49,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
 	${OBJECTDIR}/_ext/1019371010/meshModel.o \
-	${OBJECTDIR}/_ext/1019371010/meshResource.o \
 	${OBJECTDIR}/_ext/1019371010/renderbuffer.o \
 	${OBJECTDIR}/_ext/1019371010/sceneManager.o \
+	${OBJECTDIR}/_ext/1019371010/sceneNode.o \
 	${OBJECTDIR}/_ext/1019371010/setup.o \
 	${OBJECTDIR}/_ext/1019371010/shaderObject.o \
 	${OBJECTDIR}/_ext/1019371010/shaderProgram.o \
@@ -157,11 +157,6 @@ ${OBJECTDIR}/_ext/1019371010/meshModel.o: ../src/draw/meshModel.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshModel.o ../src/draw/meshModel.cpp
 
-${OBJECTDIR}/_ext/1019371010/meshResource.o: ../src/draw/meshResource.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/meshResource.o ../src/draw/meshResource.cpp
-
 ${OBJECTDIR}/_ext/1019371010/renderbuffer.o: ../src/draw/renderbuffer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
@@ -171,6 +166,11 @@ ${OBJECTDIR}/_ext/1019371010/sceneManager.o: ../src/draw/sceneManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/sceneManager.o ../src/draw/sceneManager.cpp
+
+${OBJECTDIR}/_ext/1019371010/sceneNode.o: ../src/draw/sceneNode.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/sceneNode.o ../src/draw/sceneNode.cpp
 
 ${OBJECTDIR}/_ext/1019371010/setup.o: ../src/draw/setup.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

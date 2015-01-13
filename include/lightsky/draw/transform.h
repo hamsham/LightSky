@@ -17,6 +17,14 @@ namespace draw {
 class transform {
     private:
         /**
+         * @brief dirtyFlag
+         *
+         * A boolean object to determine if the internal model matrix in *this
+         * needs to be readjusted.
+         */
+        bool dirtyFlag;
+        
+        /**
          * @brief position
          *
          * Represents the position of a point in 3D catersian coordinates.
@@ -43,14 +51,6 @@ class transform {
          * Contains the position, size, and rotation of an object in 3D space.
          */
         math::mat4 modelMatrix;
-
-        /**
-         * @brief dirtyFlag
-         *
-         * A boolean object to determine if the internal model matrix in *this
-         * needs to be readjusted.
-         */
-        bool dirtyFlag;
 
     public:
         /**

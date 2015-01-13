@@ -10,7 +10,7 @@
 
 #include <deque>
 
-#include "lightsky/draw/meshModel.h"
+#include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/geometry.h"
 #include "lightsky/draw/texture.h"
@@ -20,7 +20,7 @@
  * Extern Template Types
 -------------------------------------*/
 extern template class std::deque<ls::draw::geometry*>;
-extern template class std::deque<ls::draw::meshModel*>;
+extern template class std::deque<ls::draw::sceneNode*>;
 extern template class std::deque<ls::draw::texture*>;
 extern template class std::deque<ls::draw::atlas*>;
 
@@ -32,7 +32,7 @@ namespace draw {
  * manager.
 -------------------------------------*/
 typedef std::deque<geometry*> geometryList;
-typedef std::deque<meshModel*> drawList;
+typedef std::deque<sceneNode*> drawList;
 typedef std::deque<texture*> textureList;
 typedef std::deque<atlas*> atlasList;
 
@@ -104,7 +104,7 @@ class sceneManager {
         geometry* getGeometry(unsigned index) const;
         texture* getTexture(unsigned index) const;
         atlas* getAtlas(unsigned index) const;
-        meshModel* getModel(unsigned index) const;
+        sceneNode* getModel(unsigned index) const;
         
         void eraseGeometry(unsigned index);
         void eraseTexture(unsigned index);
@@ -119,17 +119,17 @@ class sceneManager {
         unsigned manageGeometry(geometry* const);
         unsigned manageTexture(texture* const);
         unsigned manageAtlas(atlas* const);
-        unsigned manageModel(meshModel* const);
+        unsigned manageModel(sceneNode* const);
         
         geometry* unManageGeometry(unsigned index);
         texture* unManageTexture(unsigned index);
         atlas* unManageAtlas(unsigned index);
-        meshModel* unManageModel(unsigned index);
+        sceneNode* unManageModel(unsigned index);
         
         bool containsGeometry(const geometry* const) const;
         bool containsTexture(const texture* const) const;
         bool containsAtlas(const atlas* const) const;
-        bool containsModel(const meshModel* const) const;
+        bool containsModel(const sceneNode* const) const;
 };
 
 } // end draw namespace

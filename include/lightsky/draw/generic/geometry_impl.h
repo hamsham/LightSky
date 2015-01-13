@@ -32,6 +32,12 @@ bool geometry::initBufferObject(
     return true;
 }
 
+/*-------------------------------------
+    Determine if *this is renderable.
+-------------------------------------*/
+inline bool geometry::isValid() const {
+    return vbo.getId();
+}
 
 /*-------------------------------------
     Get an general identification to be used for this object

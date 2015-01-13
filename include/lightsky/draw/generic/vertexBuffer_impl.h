@@ -97,8 +97,7 @@ template <vbo_use_t bufferType>
 inline void vertexBuffer_t<bufferType>::setData(
     GLsizeiptr size,
     const void* pData,
-    vbo_rw_t
-    usage
+    vbo_rw_t usage
 ) {
     glBufferData(bufferType, size, pData, usage);
 }

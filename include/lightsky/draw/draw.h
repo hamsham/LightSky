@@ -22,7 +22,7 @@
 #include "lightsky/draw/geometry_utils.h"
 #include "lightsky/draw/imageResource.h"
 #include "lightsky/draw/matrixStack.h"
-#include "lightsky/draw/meshModel.h"
+#include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/meshResource.h"
 #include "lightsky/draw/renderbuffer.h"
 #include "lightsky/draw/renderer.h"

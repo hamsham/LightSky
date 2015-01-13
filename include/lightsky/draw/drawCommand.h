@@ -11,7 +11,6 @@
 #include "lightsky/setup/macros.h"
 
 #include "lightsky/draw/vertexArray.h"
-#include "lightsky/draw/vertexBuffer.h"
 
 namespace ls {
 namespace draw {
@@ -20,332 +19,86 @@ namespace draw {
  * Draw modes for renderable types.
 -----------------------------------------------------------------------------*/
 enum class draw_mode_t : int {
-    POINTS      = GL_POINTS,
-    
-    LINE_STRIP  = GL_LINE_STRIP,
-    LINE_LOOP   = GL_LINE_LOOP,
-    LINES       = GL_LINES,
-    
-    TRI_STRIP   = GL_TRIANGLE_STRIP,
-    TRI_FAN     = GL_TRIANGLE_FAN,
-    TRIANGLES   = GL_TRIANGLES,
-    
-    DEFAULT     = GL_TRIANGLES
+    POINTS                = GL_POINTS,
+
+    LINE_STRIP            = GL_LINE_STRIP,
+    LINE_LOOP             = GL_LINE_LOOP,
+    LINES                 = GL_LINES,
+    TRI_STRIP             = GL_TRIANGLE_STRIP,
+    TRI_FAN               = GL_TRIANGLE_FAN,
+    TRIS                  = GL_TRIANGLES,
+
+    DEFAULT               = GL_TRIANGLES
 };
 
 /**----------------------------------------------------------------------------
- * Draw modes for renderable types.
+ * Data type for the indices used during an indexed draw command.
 -----------------------------------------------------------------------------*/
-enum class draw_type_t : int {
-    UINT    = GL_UNSIGNED_INT,
-    USHORT  = GL_UNSIGNED_SHORT,
+typedef unsigned int draw_index_t;
+
+enum : int {
+    INDEX_DATA_UBYTE    = GL_UNSIGNED_BYTE,
+    INDEX_DATA_USHORT   = GL_UNSIGNED_SHORT,
+    INDEX_DATA_UINT     = GL_UNSIGNED_INT,
     
-    DEFAULT = GL_UNSIGNED_SHORT
+    INDEX_DATA_DEFAULT  = GL_UNSIGNED_INT,
+    INDEX_DATA_INVALID  = -1,
 };
 
-/**----------------------------------------------------------------------------
- * Index type for draw calls
------------------------------------------------------------------------------*/
-typedef unsigned short draw_index_t;
+/**------------------------------------
+ * @brief draw_index_pair_t
+ *
+ * Contains the index of the first vertex to be drawn in an OpenGL draw call
+ * and the total number of vertices to be rendered. Only glDrawArrays() and
+ * glDrawElements() are suppported as they pretty much cover 90% of typical
+ * render use cases.
+ *
+ * For a call to glDrawArrays(...), this pair specifies the "first" and "count"
+ * parameters, respectively.
+ *
+ * For a call to glDrawElements(...), this pair indicates the "indices*" and
+ * "count" parameters, in that order.
+-------------------------------------*/
+struct draw_index_pair_t {
+    unsigned first;
+    unsigned count;
+};
 
-/**----------------------------------------------------------------------------
- * Draw Parameter Identifiers
------------------------------------------------------------------------------*/
-enum class draw_command_t : int {
-    ARRAYS,
-    ARRAYS_INSTANCED,
+enum index_element_t : int {
+    INDEX_TYPE_UBYTE = GL_UNSIGNED_BYTE,
+    INDEX_TYPE_USHORT = GL_UNSIGNED_SHORT,
+    INDEX_TYPE_UINT = GL_UNSIGNED_INT,
     
-    ELEMENTS,
-    ELEMENTS_RANGED,
-    ELEMENTS_INSTANCED
-};
-
-/*-----------------------------------------------------------------------------
- * Draw Command Parameters
------------------------------------------------------------------------------*/
-/**------------------------------------
- * glDrawArrays(...)
--------------------------------------*/
-struct drawArrays {
-    int first;
-    int count;
+    INDEX_TYPE_DEFAULT = GL_UNSIGNED_INT
 };
 
 /**------------------------------------
- * glDrawArraysInstanced(...)
+ * @brief draw_index_list_t
+ *
+ * Mappings of mesh indices to their rendering parameters (first/count
+ * or index0/indexN).
 -------------------------------------*/
-struct drawArraysInstanced {
-    int first;
-    int count;
-    unsigned primCount;
-};
-
-/**------------------------------------
- * glDrawElements(...)
--------------------------------------*/
-struct drawElements {
-    int count;
-    draw_type_t type;
-    const void* offset;
-};
-
-/**------------------------------------
- * glDrawRangeElements(...)
--------------------------------------*/
-struct drawElementsRanged {
-    unsigned start;
-    unsigned end;
-    int count;
-    draw_type_t type;
-    const void* offset;
-};
-
-/**------------------------------------
- * glDrawElementsInstanced(...)
--------------------------------------*/
-struct drawElementsInstanced {
-    int count;
-    draw_type_t type;
-    const void* offset;
-    unsigned primCount;
-};
+typedef std::vector<draw_index_pair_t> draw_index_list_t;
 
 /**----------------------------------------------------------------------------
- * Draw Function used to bind commands.
+ * @brief Draw commands for rendering OpenGL Meshes.
+ *
+ * The draw command is a simple class which contains the basic information
+ * required to render an object within OpenGL. For example, it determines if
+ * the functions "glDrawElements()" or "glDrawArrays()" be used.It will also
+ * determine if GL_TRIANGLES will be used versus GL_TRIANGLE_STRIP.
 -----------------------------------------------------------------------------*/
-union drawFunction {
-    drawArrays              da;
-    drawElements            de;
-    drawElementsRanged      der;
-    drawArraysInstanced     dai;
-    drawElementsInstanced   dei;
+struct drawCommand {
+    draw_mode_t mode = draw_mode_t::DEFAULT;
+
+    unsigned first = 0;
+
+    unsigned count = 1;
+    
+    index_element_t indexType = INDEX_TYPE_DEFAULT;
+
+    void draw(const vertexArray& vao) const;
 };
-
-/**----------------------------------------------------------------------------
- * Draw Commands to use arrays or drawn elements.
------------------------------------------------------------------------------*/
-class drawCommand {
-    private:
-        draw_mode_t      mode           = draw_mode_t::DEFAULT;
-        draw_command_t  command         = draw_command_t::ARRAYS;
-        unsigned        numInstances    = 1;
-        drawFunction    drawFunc;
-        
-        /**
-         * Render a set of vertices.
-         */
-        void draw() const;
-        
-    public:
-        /**
-         * @brief Reset all parameters in *this to their default values.
-         */
-        void reset();
-        
-        /**
-         * @brief Set the method to draw primitives on the GPU (such as lines,
-         * points, or triangles).
-         * 
-         * @param drawMode
-         * An enumeration to indicate what type of primitive should be drawn
-         * on the GPU.
-         */
-        void setDrawMode(draw_mode_t drawMode);
-        
-        /**
-         * @brief Get the currently used draw mode.
-         * 
-         * @return An enumeration, indicating the current rendering method for
-         * polygon primitives.
-         */
-        draw_mode_t getDrawMode() const;
-        
-        /**
-         * @brief Get the currently used drawing command.
-         * 
-         * @return An enumeration, indicating what function is used to render
-         * polygons in OpenGL.
-         */
-        draw_command_t getDrawCommand() const;
-        
-        /**
-         * @brief get the draw function to be used by *this/
-         * 
-         * @return A constant reference to the draw function used to render
-         * vertex data through OpenGL.
-         */
-        const drawFunction& getDrawFunction() const;
-        
-        /**
-         * @brief Determine how many instances are going to be rendered when
-         * this draw command is used.
-         * 
-         * @param instanceCount
-         * An unsigned integral type, determining how many copies of each
-         * vertex batch are to be rendered.
-         */
-        void setNumInstances(unsigned instanceCount);
-        
-        /**
-         * Retrieve the number of instances which are currently being drawn.
-         * 
-         * @return an unsigned integral type which determines how many copies
-         * of each instance are to be drawn.
-         */
-        unsigned getNumInstances() const;
-        
-        /**
-         * @brief Draw a set of points from an array of vertices.
-         * 
-         * @param first
-         * Specifies the first element in the array of vertices to be drawn.
-         * 
-         * @param count
-         * Specifies the total number of vertices which are to be drawn.
-         */
-        void paramsArrays(int first, int count);
-        
-        /**
-         * @brief Draw a set of points from an array of vertices. This will
-         * draw each set of vertices multiple times.
-         * 
-         * @param first
-         * Specifies the first element in the array of vertices to be drawn.
-         * 
-         * @param count
-         * Specifies the total number of vertices which are to be drawn.
-         * 
-         * @param instanceCount
-         * Indicates the number of times to repeat the drawing of "count"
-         * vertices.
-         */
-        void paramsArraysInstanced(int first, int count, int instanceCount);
-        
-        /**
-         * @brief Draw vertices using index values.
-         * 
-         * @param count The number of vertices to be drawn.
-         * 
-         * @param indexType Determines if the elements are specified using
-         * unsigned integers or unsigned short integers.
-         * 
-         * @param pElements
-         * A pointer which specifies the offset of the first index element.
-         */
-        void paramsElements(int count, draw_type_t indexType, const void* const pElements);
-        
-        /**
-         * @brief Draw vertices using index values. This method also specifies
-         * the maximum and minimum values for all indices.
-         * 
-         * @param count The number of vertices to be drawn.
-         * 
-         * @param indexType Determines if the elements are specified using
-         * unsigned integers or unsigned short integers.
-         * 
-         * @param pElements
-         * A pointer which specifies the offset of the first index element.
-         * 
-         * @param rangeStart
-         * Determines the minimum values contained within the currently bound
-         * index buffer.
-         * 
-         * @param rangeEnd
-         * Determines the maximum values contained within the currently bound
-         * index buffer.
-         */
-        void paramsElementsRanged(int count, draw_type_t indexType, const void* const pElements, unsigned rangeStart, unsigned rangeEnd);
-        
-        /**
-         * @brief Draw instanced vertices using index values.
-         * 
-         * @param count The number of vertices to be drawn.
-         * 
-         * @param indexType Determines if the elements are specified using
-         * unsigned integers or unsigned short integers.
-         * 
-         * @param pElements
-         * A pointer which specifies the offset of the first index element.
-         * 
-         * @param instanceCount
-         * The number of duplicate vertices which will be drawn through OpenGL.
-         */
-        void paramsElementsInstanced(int count, draw_type_t indexType, const void* const pElements, int instanceCount);
-        
-        /**
-         * Render a set of vertices using a VAO.
-         * 
-         * @param vao
-         * A constant reference to a vertex array object.
-         */
-        void draw(const vertexArray& vao) const;
-        
-        /**
-         * Render a set of vertices using a VBO.
-         * 
-         * @param vbo
-         * A constant reference to a vertex buffer object.
-         */
-        void draw(const vertexBuffer& vbo) const;
-        
-        /**
-         * Render a set of vertices using a VBO + IBO.
-         * 
-         * @param vbo
-         * A constant reference to a vertex buffer object.
-         * 
-         * @param ibo
-         * A constant reference to an index buffer object.
-         */
-        void draw(const vertexBuffer& vbo, const indexBuffer& ibo) const;
-};
-
-/*-------------------------------------
- * Set the method to draw primitives on the GPU (such as lines,
- * points, or triangles).
--------------------------------------*/
-inline void drawCommand::setDrawMode(draw_mode_t drawMode) {
-    mode = drawMode;
-}
-
-/*-------------------------------------
- * Get the currently used draw mode.
--------------------------------------*/
-inline draw_mode_t drawCommand::getDrawMode() const {
-    return mode;
-}
-
-/*-------------------------------------
- * Get the currently used drawing command.
--------------------------------------*/
-inline draw_command_t drawCommand::getDrawCommand() const {
-    return command;
-}
-
-/*-------------------------------------
- * Get the draw function used by *this.
--------------------------------------*/
-inline const drawFunction& drawCommand::getDrawFunction() const {
-    return drawFunc;
-}
-
-/*-------------------------------------
- * Draw geometry using a single VAO
--------------------------------------*/
-inline void drawCommand::draw(const vertexArray& vao) const {
-    vao.bind();
-    draw();
-    vao.unbind();
-}
-
-/*-------------------------------------
- * Draw geometry using a VBO + VAO
--------------------------------------*/
-inline void drawCommand::draw(const vertexBuffer& vbo, const indexBuffer& ibo) const {
-    ibo.bind();
-    draw(vbo);
-    ibo.unbind();
-}
 
 } // end draw namespace
 } // end ls namespace

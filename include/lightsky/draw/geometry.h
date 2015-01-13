@@ -23,7 +23,7 @@ namespace draw {
     Forward declarations
 -----------------------------------------------------------------------------*/
 class meshResource;
-class meshModel;
+class sceneNode;
 
 /**----------------------------------------------------------------------------
  * @brief Mesh Properties
@@ -174,12 +174,21 @@ class geometry {
         geometry& operator=(geometry&& m);
         
         /**
+         * @brief Determine if *this is renderable to the currently bound
+         * framebuffer.
+         * 
+         * @return TRUE if *this contains a valid vertex buffer and renderable
+         * geometry, FALSE if not.
+         */
+        bool isValid() const;
+        
+        /**
          * Get an general identification to be used for this object
          * 
          * @return an unsigned integral variable representing the GPU-side
          * handle to the vertex buffer object used by *this.
          */
-        inline unsigned getId() const;
+        unsigned getId() const;
         
         /**
          * @brief Initialize

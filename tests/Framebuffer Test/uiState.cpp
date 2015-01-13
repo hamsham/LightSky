@@ -161,7 +161,7 @@ bool uiState::initShaders() {
 -------------------------------------*/
 bool uiState::initDrawModels() {
     // font/text model
-    ls::draw::meshModel* const pTextModel = new ls::draw::meshModel{};
+    ls::draw::sceneNode* const pTextModel = new ls::draw::sceneNode{};
     
     if (pTextModel == nullptr) {
         LS_LOG_ERR("Unable to generate test text model");
@@ -311,7 +311,7 @@ void uiState::drawScene() {
     modelMat                = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
     
     // model 1 has the string mesh already bound
-    ls::draw::meshModel* const pStringModel = pScene->getModelList()[0];
+    ls::draw::sceneNode* const pStringModel = pScene->getModelList()[0];
     pStringModel->setNumInstances(1, &modelMat);
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI

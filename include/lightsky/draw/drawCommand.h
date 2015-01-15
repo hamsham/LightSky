@@ -10,6 +10,8 @@
 
 #include "lightsky/setup/macros.h"
 
+#include "lightsky/draw/vertex.h"
+#include "lightsky/draw/vertexBuffer.h"
 #include "lightsky/draw/vertexArray.h"
 
 namespace ls {
@@ -36,13 +38,18 @@ enum class draw_mode_t : int {
 -----------------------------------------------------------------------------*/
 typedef unsigned int draw_index_t;
 
-enum : int {
-    INDEX_DATA_UBYTE    = GL_UNSIGNED_BYTE,
-    INDEX_DATA_USHORT   = GL_UNSIGNED_SHORT,
-    INDEX_DATA_UINT     = GL_UNSIGNED_INT,
+/**
+ * @brief index_element_t helps to determine two things for draw commands:
+ *      1. What the data type is for indices stored in the GPU/
+ *      2. If a draw command should run use glDrawArrays() or glDrawElements().
+ */
+enum index_element_t : int {
+    INDEX_TYPE_UBYTE = GL_UNSIGNED_BYTE,
+    INDEX_TYPE_USHORT = GL_UNSIGNED_SHORT,
+    INDEX_TYPE_UINT = GL_UNSIGNED_INT,
     
-    INDEX_DATA_DEFAULT  = GL_UNSIGNED_INT,
-    INDEX_DATA_INVALID  = -1,
+    INDEX_TYPE_DEFAULT = GL_UNSIGNED_INT,
+    INDEX_TYPE_INVALID  = -1
 };
 
 /**------------------------------------
@@ -64,14 +71,6 @@ struct draw_index_pair_t {
     unsigned count;
 };
 
-enum index_element_t : int {
-    INDEX_TYPE_UBYTE = GL_UNSIGNED_BYTE,
-    INDEX_TYPE_USHORT = GL_UNSIGNED_SHORT,
-    INDEX_TYPE_UINT = GL_UNSIGNED_INT,
-    
-    INDEX_TYPE_DEFAULT = GL_UNSIGNED_INT
-};
-
 /**------------------------------------
  * @brief draw_index_list_t
  *
@@ -89,15 +88,31 @@ typedef std::vector<draw_index_pair_t> draw_index_list_t;
  * determine if GL_TRIANGLES will be used versus GL_TRIANGLE_STRIP.
 -----------------------------------------------------------------------------*/
 struct drawCommand {
-    draw_mode_t mode = draw_mode_t::DEFAULT;
+    public:
+        draw_mode_t mode = draw_mode_t::DEFAULT;
 
-    unsigned first = 0;
+        unsigned first = 0;
 
-    unsigned count = 1;
-    
-    index_element_t indexType = INDEX_TYPE_DEFAULT;
+        unsigned count = 1;
 
-    void draw(const vertexArray& vao) const;
+        index_element_t indexType = INDEX_TYPE_DEFAULT;
+
+        void reset();
+
+        void draw(const vertexBuffer& vbo) const;
+
+        void draw(const vertexBuffer& vbo, const indexBuffer& ibo) const;
+
+        void draw(const vertexArray& vao) const;
+
+        void draw(const vertexArray& vao, unsigned instanceCount) const;
+
+    private:
+        void bindAttribs() const;
+        
+        void unbindAttribs() const;
+        
+        void setAttribPointers() const;
 };
 
 } // end draw namespace

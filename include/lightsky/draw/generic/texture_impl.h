@@ -12,7 +12,7 @@ inline unsigned texture::getId() const {
 /*-------------------------------------
  Determine if *this can be used during rendering operations.
 -------------------------------------*/
-inline unsigned texture::isValid() const {
+inline bool texture::isValid() const {
     return texId != 0;
 }
 
@@ -20,6 +20,7 @@ inline unsigned texture::isValid() const {
     Bind the current texture to OpenGL
 -------------------------------------*/
 inline void texture::bind() const {
+    glActiveTexture(slot);
     glBindTexture(dimensions, texId);
 }
 
@@ -28,6 +29,20 @@ inline void texture::bind() const {
 -------------------------------------*/
 inline void texture::unbind() const {
     glBindTexture(dimensions, 0);
+}
+
+/*-------------------------------------
+ * Set the active texture slot.
+-------------------------------------*/
+inline void texture::setTextureSlot(tex_slot_t activeSlot) {
+    slot = activeSlot;
+}
+
+/*-------------------------------------
+ * Get the active texture slot.
+-------------------------------------*/
+inline tex_slot_t texture::getTextureSlot() const {
+    return slot;
 }
 
 /*-------------------------------------
@@ -142,6 +157,7 @@ inline void texture::modify(
 inline void texture::terminate() {
     glDeleteTextures(1, &texId);
     texId = 0;
+    slot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
 }
 
 /*-------------------------------------

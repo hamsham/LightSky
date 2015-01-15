@@ -26,7 +26,7 @@ inline unsigned meshResource::getNumVertices() const {
 /*-------------------------------------
     Get the array of standard vertex types of a loaded mesh
 -------------------------------------*/
-inline vertex* meshResource::getVertices() const {
+inline const vertex* meshResource::getVertices() const {
     return pVertices;
 }
 
@@ -40,7 +40,7 @@ inline unsigned meshResource::getNumIndices() const {
 /*-------------------------------------
     Get the array of vertex index elements of a loaded mesh
 -------------------------------------*/
-inline draw_index_t* meshResource::getIndices() const {
+inline const draw_index_t* meshResource::getIndices() const {
     return pIndices;
 }
 

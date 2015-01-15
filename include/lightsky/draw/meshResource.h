@@ -9,15 +9,20 @@
 #define	__LS_DRAW_MESH_RESOURCE_H__
 
 #include <string>
+#include <unordered_map>
+
+#include "lightsky/utils/resource.h"
 
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/boundingBox.h"
 #include "lightsky/draw/drawCommand.h"
-#include "lightsky/utils/resource.h"
+#include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/vertex.h"
 
 struct aiScene;
+struct aiMesh;
+struct aiNode;
 
 namespace ls {
 namespace draw {
@@ -26,7 +31,17 @@ namespace draw {
  * The mesh resource can be used to load a mesh or meshes from a file. It can
  * also be used to generate basic primitives such as a sphere, cube, cone, etc.
  */
-class meshResource final : public ls::utils::resource {
+class meshResource final : public utils::resource {
+    public:
+        /**
+         * @brief meshVertexMap_t
+         *
+         * Maps an ASSIMP mesh to its starting index/ending index pair within an
+         * internal array of vertex indices. These index mappings will be used to
+         * import a scene heirarchy.
+         */
+        typedef std::unordered_map<const aiMesh*, sceneNode*> meshMap_t;
+        
     private:
         /**
          * Contains the number of vertices used per mesh.
@@ -78,18 +93,109 @@ class meshResource final : public ls::utils::resource {
          * allocated, or FALSE if not.
          */
         bool initVertices(unsigned vertCount, unsigned elementCount = 0);
-        
+
         /**
-         * This is an internal loading function used to import data from ASSIMP.
-         * 
-         * @param pScene
-         * A constant pointer to a constant ASSIMP scene where imported mesh
-         * data is contained.
-         * 
-         * @return TRUE if the 3D mesh data was successfully imported, FALSE if
-         * something went wrong.
+         * @brief Create a scene node for a generated primitive in order to
+         * create a default scene.
+         *
+         * This should be used at the very end of a mesh generation function in
+         * order to properly set the number of vertices.
+         *
+         * @param name
+         * A constant pointer to a constant null-terminated character string.
+         * This name will be used to instantiate a generated mesh.
+         *
+         * @return A scene node containing enough information to create a
+         * simple scene with a simple mesh primitive.
          */
-        bool loadSceneData(const aiScene* const pScene);
+        sceneNode createPrimitiveNode(const char* const name);
+
+        /**
+         * @brief Scan an ASSIMP scene and attempt to reserve all memory needed
+         * to import it.
+         *
+         * @param pScene
+         * A constant pointer to a constant ASSIMP scene.
+         *
+         * @param meshIndices
+         * A mapping of assimp meshes to their indices within an internal scene
+         * graph.
+         *
+         * @return TRUE if all memory required to import the scene was
+         * successfully allocated, FALSE if not.
+         */
+        bool preprocessMeshData(const aiScene* const pScene, draw_index_list_t& meshIndices);
+
+        /**
+         * @brief importMeshData
+         * Private method to retrieve data from a 3D mesh file using ASSIMP.
+         * Make sure all internal data has been preallocated before calling
+         * this method. All data attempted to be loaded using this function
+         * will be unloaded if this function fails.
+         *
+         * @param pScene
+         * A constant pointer to a constant aiScene structure.
+         *
+         * @param meshIndices
+         * A mapping of assimp meshes to their indices within an internal scene
+         * graph.
+         *
+         * @return TRUE if the mesh was successfully loaded from ASSIMP, FALSE
+         * if not.
+         */
+        bool importMeshData(const aiScene* const pScene, draw_index_list_t& meshIndices);
+
+        /**
+         * @brief importMeshFaces
+         *
+         * Iterate through all faces of a given mesh and add the points on each
+         * face to the internal array of vertex indices.
+         *
+         * @param pMesh
+         * A constant pointer to a constant ASSIMP mesh.
+         *
+         * @param baseVertex
+         * The mesh object's first vertex in the internal array of vertices.
+         *
+         * @param baseIndex
+         * The mesh object's first index in the internal array of indices.
+         *
+         * @param meshIndices
+         * A reference to the pair of indices, indicating the number of indices
+         * that a single mesh uses, as well as the offset to it's position in
+         * the internal array.
+         */
+        void importMeshFaces(
+            const aiMesh* const pMesh,
+            unsigned& baseVertex,
+            unsigned& baseIndex,
+            draw_index_pair_t& meshIndices
+        );
+
+        /**
+         * @brief readNodeHeirarchy
+         * Recursively reads and imports scene graph data from Assimp.
+         *
+         * @param pNode
+         * A pointer to a node in an Assimp scene graph.
+         *
+         * @param meshMap
+         * A map of meshes in a scene to their index values within the internal
+         * geometry array.
+         *
+         * @param parentId
+         * An index value of the parent sceneNode contained within an internal
+         * array of nodes.
+         *
+         * @return The index of the the last child node recursively placed into
+         * the scene node list.
+         */
+        unsigned readNodeHeirarchy(
+            const aiNode* const pNode,
+            const draw_index_list_t& meshMap,
+            const unsigned parentId,
+            const math::mat4& parentTransform = math::mat4{1.f}
+        );
         
     public:
         /**
@@ -110,11 +216,10 @@ class meshResource final : public ls::utils::resource {
          * Moves all data from the input parameter into *this. No copies are
          * performed during the operation.
          * 
-         * @param mr
+         * @param r
          * An r-value reference to a temporary mesh resource object.
          */
-        meshResource(meshResource&& mr);
-        
+        meshResource(meshResource&& r);
         
         /**
          * @brief Destructor
@@ -134,12 +239,12 @@ class meshResource final : public ls::utils::resource {
          * Moves all data from the input parameter into *this. No copies are
          * performed during the operation.
          * 
-         * @param mr
+         * @param r
          * An r-value reference to a temporary mesh resource object.
          * 
          * @return a reference to *this.
          */
-        meshResource& operator=(meshResource&& mr);
+        meshResource& operator=(meshResource&& r);
 
         /**
          *  Get the size, in bytes, of the stored vertex elements.
@@ -171,7 +276,7 @@ class meshResource final : public ls::utils::resource {
          * @return A pointer to the internal array which contains the vertices
          * loaded by *this.
          */
-        vertex* getVertices() const;
+        const vertex* getVertices() const;
         
         /**
          * Get the number of loaded indices in a mesh.
@@ -187,7 +292,7 @@ class meshResource final : public ls::utils::resource {
          * @return A pointer to the internal array which contains the indices
          * loaded by *this.
          */
-        draw_index_t* getIndices() const;
+        const draw_index_t* getIndices() const;
         
         /**
          * @brief Unload

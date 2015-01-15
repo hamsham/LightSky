@@ -263,6 +263,18 @@ class geometry {
          * @brief draw the geometry contained within *this.
          */
         void draw() const;
+
+        /**
+         * @brief Draw a piece of geometry.
+         *
+         * This method renders geometry to the currently bound framebuffer.
+         *
+         * @param indexPair
+         * Contains the starting offset (or element for indexed geometry) to
+         * the first vertex to be drawn and end offset (or element count for
+         * indexed geometry) to the last vertex to be drawn.
+         */
+        void draw(const draw_index_pair_t& indexPair) const;
 };
 
 } // end draw namespace

@@ -15,7 +15,8 @@ namespace draw {
 -------------------------------------*/
 texture::texture(tex_desc_t td) :
     dimensions{td},
-    texId{0}
+    texId{0},
+    slot{tex_slot_t::TEXTURE_SLOT_DEFAULT}
 {}
 
 /*-------------------------------------
@@ -23,9 +24,11 @@ texture::texture(tex_desc_t td) :
 -------------------------------------*/
 texture::texture(texture&& t) :
     dimensions{t.dimensions},
-    texId{t.texId}
+    texId{t.texId},
+    slot{t.slot}
 {
     t.texId = 0;
+    t.slot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
 }
         
 /*-------------------------------------*
@@ -43,6 +46,9 @@ texture& texture::operator=(texture&& t) {
     
     texId = t.texId;
     t.texId = 0;
+    
+    slot = t.slot;
+    t.slot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
     
     return *this;
 }

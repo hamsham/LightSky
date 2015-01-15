@@ -82,49 +82,66 @@ void geometry::terminate() {
     vbo.terminate();
     ibo.terminate();
     
-    bounds.resetSize();
     drawParams.reset();
+    bounds.resetSize();
 }
 
 /*-------------------------------------
     Load the data contained within a geometry loader onto the GPU
 -------------------------------------*/
-bool geometry::init(const meshResource& ml) {
-    LS_LOG_MSG("Attempting to send geometry vertex data to the GPU.");
-    terminate();
-    
-    if (!initBufferObject<vbo_use_t::VBO_BUFFER_ARRAY>(vbo, ml.getNumVertices(), sizeof(vertex))) {
+bool geometry::init(const meshResource& meshData) {
+    // vbos are resized when any new data is pushed into them
+
+    LOG_GL_ERR();
+    LS_LOG_MSG("Attempting to send mesh vertices to the GPU.");
+
+    if (!vbo.init()) {
+        LS_LOG_ERR("\tUnable to initialize a geometry vertex buffer.\n");
         terminate();
         return false;
     }
-    
-    bounds.resetSize();
-    
+
+    const unsigned vertexCount = meshData.getNumVertices();
+    const unsigned vertexSize = vertexCount*sizeof(vertex);
+
     vbo.bind();
-    vbo.setSubData(0, ml.getVertexByteSize(), ml.getVertices());
+    vbo.setData(vertexSize, meshData.getVertices(), vbo_rw_t::VBO_STATIC_DRAW);
     vbo.unbind();
-    LS_LOG_MSG("\tSuccessfully sent ", ml.getNumVertices(), " vertices to the GPU.\n");
+
+    LS_LOG_MSG("\tSuccessfully sent ", vertexCount, " vertices to the GPU.\n");
     LOG_GL_ERR();
-    
-    drawParams.setDrawMode(ml.getDrawMode());
-    
-    if (ml.getNumIndices() == 0) {
-        drawParams.paramsArrays(0, ml.getNumVertices());
+
+    drawParams.mode = meshData.getDrawMode();
+    drawParams.first = 0;
+    drawParams.count = meshData.getNumVertices();
+
+    // return early if there is no index data to be loaded
+    if (meshData.getNumIndices() == 0) {
+        return true;
     }
-    else {
-        if (!initBufferObject<vbo_use_t::VBO_BUFFER_ELEMENT>(ibo, ml.getNumIndices(), sizeof(draw_type_t))) {
-            terminate();
-            return false;
-        }
-        ibo.bind();
-        ibo.setSubData(0, ml.getIndexByteSize(), ml.getIndices());
-        ibo.unbind();
-        drawParams.paramsElements(ml.getNumIndices(), draw_type_t::DEFAULT, nullptr);
-        LS_LOG_MSG("\tSuccessfully sent ", ml.getNumIndices(), " indices to the GPU.\n");
+
+    LS_LOG_MSG("Attempting to send index data to the GPU.");
+
+    // load index data from the mesh resource object
+    if (!ibo.init()) {
+        LS_LOG_ERR("\tUnable to initialize a geometry index buffer.\n");
+        terminate();
+        return false;
     }
-    
-    bounds = ml.getBoundingBox();
-    
+
+    // update the index buffer & draw command if there were indices to load.
+    const unsigned indexCount = meshData.getNumIndices();
+    const unsigned indexSize = indexCount*sizeof(draw_index_t);
+
+    ibo.bind();
+    ibo.setData(indexSize, meshData.getIndices(), vbo_rw_t::VBO_STATIC_DRAW);
+    ibo.unbind();
+
+    LS_LOG_MSG("\tSuccessfully sent ", indexCount, " indices to the GPU.\n");
+    LOG_GL_ERR();
+
+    drawParams.count = meshData.getNumIndices();
+
     return true;
 }
 
@@ -213,8 +230,9 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     
     LS_LOG_MSG("\tSuccessfully sent a string of ", numVerts, " vertices to the GPU.\n");
     
-    drawParams.setDrawMode(draw_mode_t::TRIANGLES);
-    drawParams.paramsArraysInstanced(0, numVerts, 1);
+    drawParams.mode = draw_mode_t::TRIS;
+    drawParams.first = 0;
+    drawParams.count = numVerts;
     
     return true;
 }

@@ -15,6 +15,50 @@
 namespace ls {
 namespace draw {
 
+enum tex_slot_t : int {
+    TEXTURE_SLOT_0 = GL_TEXTURE0,
+    TEXTURE_SLOT_1 = GL_TEXTURE1,
+    TEXTURE_SLOT_2 = GL_TEXTURE2,
+    TEXTURE_SLOT_3 = GL_TEXTURE3,
+    TEXTURE_SLOT_4 = GL_TEXTURE4,
+    TEXTURE_SLOT_5 = GL_TEXTURE5,
+    TEXTURE_SLOT_6 = GL_TEXTURE6,
+    TEXTURE_SLOT_7 = GL_TEXTURE7,
+    TEXTURE_SLOT_8 = GL_TEXTURE8,
+    TEXTURE_SLOT_9 = GL_TEXTURE9,
+    
+    TEXTURE_SLOT_10 = GL_TEXTURE10,
+    TEXTURE_SLOT_11 = GL_TEXTURE11,
+    TEXTURE_SLOT_12 = GL_TEXTURE12,
+    TEXTURE_SLOT_13 = GL_TEXTURE13,
+    TEXTURE_SLOT_14 = GL_TEXTURE14,
+    TEXTURE_SLOT_15 = GL_TEXTURE15,
+    TEXTURE_SLOT_16 = GL_TEXTURE16,
+    TEXTURE_SLOT_17 = GL_TEXTURE17,
+    TEXTURE_SLOT_18 = GL_TEXTURE18,
+    TEXTURE_SLOT_19 = GL_TEXTURE19,
+    
+    TEXTURE_SLOT_20 = GL_TEXTURE20,
+    TEXTURE_SLOT_21 = GL_TEXTURE21,
+    TEXTURE_SLOT_22 = GL_TEXTURE22,
+    TEXTURE_SLOT_23 = GL_TEXTURE23,
+    TEXTURE_SLOT_24 = GL_TEXTURE24,
+    TEXTURE_SLOT_25 = GL_TEXTURE25,
+    TEXTURE_SLOT_26 = GL_TEXTURE26,
+    TEXTURE_SLOT_27 = GL_TEXTURE27,
+    TEXTURE_SLOT_28 = GL_TEXTURE28,
+    TEXTURE_SLOT_29 = GL_TEXTURE29,
+    
+    TEXTURE_SLOT_30 = GL_TEXTURE30,
+    TEXTURE_SLOT_31 = GL_TEXTURE31,
+    
+    TEXTURE_SLOT_DEFAULT = GL_TEXTURE0,
+    
+    TEXTURE_SLOT_AMBIENT = GL_TEXTURE0,
+    TEXTURE_SLOT_DIFFUSE = GL_TEXTURE1,
+    TEXTURE_SLOT_SPECULAR = GL_TEXTURE2
+};
+
 /**----------------------------------------------------------------------------
  * Parameters for creating or modifying texture objects.
 -----------------------------------------------------------------------------*/
@@ -76,6 +120,8 @@ class texture {
          * The handle to the current texture used by OpenGL.
          */
         unsigned texId = 0;
+        
+        tex_slot_t slot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
         
     public:
         /**
@@ -140,6 +186,23 @@ class texture {
          * Unbind the current texture to OpenGL
          */
         void unbind() const;
+        
+        /**
+         * @brief Set the texture slot which *this will be bound to when a
+         * call to "bind()" is made.
+         * 
+         * @param activeSlot
+         * An enumeration of the tex_slot_t type.
+         */
+        void setTextureSlot(tex_slot_t activeSlot);
+        
+        /**
+         * @brief Get the texture slot which *this will be bound to when a
+         * call to "bind()" is made.
+         * 
+         * @return An enumeration of the tex_slot_t type.
+         */
+        tex_slot_t getTextureSlot() const;
         
         /**
          * Set a integer texture parameter.

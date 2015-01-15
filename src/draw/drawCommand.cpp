@@ -12,12 +12,101 @@ namespace ls {
 namespace draw {
 
 /*------------------------------------
+    Reset the current members.
+-------------------------------------*/
+void drawCommand::reset() {
+    *this = drawCommand{};
+}
+
+/*-------------------------------------
+    Bind Vertex Attributes
+-------------------------------------*/
+void drawCommand::bindAttribs() const {
+    glEnableVertexAttribArray(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_POS));
+    glEnableVertexAttribArray(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_TEX));
+    glEnableVertexAttribArray(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_NORM));
+}
+
+/*-------------------------------------
+    Unbind Vertex Attributes
+-------------------------------------*/
+void drawCommand::unbindAttribs() const {
+    glDisableVertexAttribArray(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_POS));
+    glDisableVertexAttribArray(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_TEX));
+    glDisableVertexAttribArray(LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_NORM));
+}
+
+/*-------------------------------------
+    Set Vertex Attributes
+-------------------------------------*/
+void drawCommand::setAttribPointers() const {
+    // Vertex positions
+    glVertexAttribPointer(
+        LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_POS),
+        LS_ARRAY_SIZE(vertex::pos.v),
+        GL_FLOAT, GL_FALSE, sizeof(vertex),
+        (GLvoid*)vertex_offset_t::VERTEX_OFFSET_POS
+    );
+
+    // Vertex UVs
+    glVertexAttribPointer(
+        LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_TEX),
+        LS_ARRAY_SIZE(vertex::uv.v),
+        GL_FLOAT, GL_FALSE, sizeof(vertex),
+        (GLvoid*)vertex_offset_t::VERTEX_OFFSET_TEX
+    );
+
+    // Vertex normals
+    glVertexAttribPointer(
+        LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_NORM),
+        LS_ARRAY_SIZE(vertex::norm.v),
+        GL_FLOAT, GL_FALSE, sizeof(vertex),
+        (GLvoid*)vertex_offset_t::VERTEX_OFFSET_NORM
+    );
+}
+
+/*------------------------------------
+    Render a standard VBO
+-------------------------------------*/
+void drawCommand::draw(const vertexBuffer& vbo) const {
+    bindAttribs();
+    vbo.bind();
+
+    setAttribPointers();
+
+    glDrawArrays(LS_ENUM_VAL(mode), first, count);
+
+    vbo.unbind();
+    unbindAttribs();
+}
+
+/*------------------------------------
+    Render a VBO+IBO
+-------------------------------------*/
+void drawCommand::draw(const vertexBuffer& vbo, const indexBuffer& ibo) const {
+    bindAttribs();
+    vbo.bind();
+    ibo.bind();
+
+    setAttribPointers();
+
+    const uintptr_t offset = first;
+    glDrawElements(LS_ENUM_VAL(mode), count, indexType, (const void*)offset);
+
+    LOG_GL_ERR();
+
+    ibo.unbind();
+    vbo.unbind();
+    unbindAttribs();
+}
+
+/*------------------------------------
     Render a standard VAO
 -------------------------------------*/
 void drawCommand::draw(const vertexArray& vao) const {
     vao.bind();
     
-    if (indexType == INDEX_DATA_INVALID) {
+    if (indexType == INDEX_TYPE_INVALID) {
         glDrawArrays(LS_ENUM_VAL(mode), first, count);
     }
     else {
@@ -25,7 +114,26 @@ void drawCommand::draw(const vertexArray& vao) const {
         glDrawElements(LS_ENUM_VAL(mode), count, indexType, (const void*)offset);
     }
     
-    LS_LOG_GL_ERR();
+    LOG_GL_ERR();
+    
+    vao.unbind();
+}
+
+/*------------------------------------
+    Render a standard VAO
+-------------------------------------*/
+void drawCommand::draw(const vertexArray& vao, unsigned instanceCount) const {
+    vao.bind();
+    
+    if (indexType == INDEX_TYPE_INVALID) {
+        glDrawArraysInstanced(LS_ENUM_VAL(mode), first, count, instanceCount);
+    }
+    else {
+        const uintptr_t offset = first;
+        glDrawElementsInstanced(LS_ENUM_VAL(mode), count, indexType, (const void*)offset, instanceCount);
+    }
+    
+    LOG_GL_ERR();
     
     vao.unbind();
 }

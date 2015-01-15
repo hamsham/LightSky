@@ -78,7 +78,18 @@ inline const indexBuffer& geometry::getIndexBuffer() const {
  * Draw the geometry contained within *this.
 -------------------------------------*/
 inline void geometry::draw() const {
-    ibo.isValid() ? drawParams.draw(vbo) : drawParams.draw(vbo, ibo);
+    ibo.isValid() ? drawParams.draw(vbo, ibo) : drawParams.draw(vbo);
+}
+
+/*-------------------------------------
+    Render an sub-mesh
+-------------------------------------*/
+inline void geometry::draw(const draw_index_pair_t& indexPair) const {
+    drawCommand tempCommand = drawParams;
+    tempCommand.first = indexPair.first;
+    tempCommand.count = indexPair.count;
+
+    ibo.isValid() ? drawParams.draw(vbo, ibo) : drawParams.draw(vbo);
 }
 
 } // end draw namespace

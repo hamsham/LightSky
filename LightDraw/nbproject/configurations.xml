@@ -15,11 +15,10 @@
         <itemPath>../include/lightsky/draw/generic/geometry_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/imageResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/matrixStack_impl.h</itemPath>
-        <itemPath>../include/lightsky/draw/generic/meshResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/renderbuffer_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/renderer_impl.h</itemPath>
-        <itemPath>../include/lightsky/draw/generic/sceneManager_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/sceneMesh_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/sceneResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/shaderObject_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/shaderProgram_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/texture_impl.h</itemPath>
@@ -40,12 +39,11 @@
       <itemPath>../include/lightsky/draw/geometry_utils.h</itemPath>
       <itemPath>../include/lightsky/draw/imageResource.h</itemPath>
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
-      <itemPath>../include/lightsky/draw/meshResource.h</itemPath>
       <itemPath>../include/lightsky/draw/renderbuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/renderer.h</itemPath>
-      <itemPath>../include/lightsky/draw/sceneManager.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneMesh.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneNode.h</itemPath>
+      <itemPath>../include/lightsky/draw/sceneResource.h</itemPath>
       <itemPath>../include/lightsky/draw/setup.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderObject.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderProgram.h</itemPath>
@@ -75,11 +73,10 @@
       <itemPath>../src/draw/geometry_utils.cpp</itemPath>
       <itemPath>../src/draw/imageResource.cpp</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
-      <itemPath>../src/draw/meshResource.cpp</itemPath>
       <itemPath>../src/draw/renderbuffer.cpp</itemPath>
-      <itemPath>../src/draw/sceneManager.cpp</itemPath>
       <itemPath>../src/draw/sceneMesh.cpp</itemPath>
       <itemPath>../src/draw/sceneNode.cpp</itemPath>
+      <itemPath>../src/draw/sceneResource.cpp</itemPath>
       <itemPath>../src/draw/setup.cpp</itemPath>
       <itemPath>../src/draw/shaderObject.cpp</itemPath>
       <itemPath>../src/draw/shaderProgram.cpp</itemPath>
@@ -247,11 +244,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/meshResource_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/generic/renderbuffer_impl.h"
             ex="false"
             tool="3"
@@ -262,12 +254,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/sceneManager_impl.h"
+      <item path="../include/lightsky/draw/generic/sceneMesh_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/sceneMesh_impl.h"
+      <item path="../include/lightsky/draw/generic/sceneResource_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -317,11 +309,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/meshResource.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/renderbuffer.h"
             ex="false"
             tool="3"
@@ -332,17 +319,17 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/sceneManager.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/sceneMesh.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/sceneNode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/sceneResource.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -404,15 +391,13 @@
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../src/draw/meshResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/sceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/sceneResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/setup.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -578,11 +563,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/meshResource_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/generic/renderbuffer_impl.h"
             ex="false"
             tool="3"
@@ -593,12 +573,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/sceneManager_impl.h"
+      <item path="../include/lightsky/draw/generic/sceneMesh_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/sceneMesh_impl.h"
+      <item path="../include/lightsky/draw/generic/sceneResource_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -648,11 +628,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/meshResource.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/renderbuffer.h"
             ex="false"
             tool="3"
@@ -663,17 +638,17 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/sceneManager.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../include/lightsky/draw/sceneMesh.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/sceneNode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/sceneResource.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -735,15 +710,13 @@
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../src/draw/meshResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/sceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/sceneResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/setup.cpp" ex="false" tool="1" flavor2="0">
       </item>

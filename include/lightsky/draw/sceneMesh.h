@@ -52,7 +52,7 @@ class sceneMesh {
          * @brief pTextures contains pointers to the textures which should be
          * applied when rendering *this.
          */
-        std::vector<texture*> textureList;
+        std::vector<const texture*> textureList;
         
         /**
          * @brief Helper function to ensure all VAO attributes are setup
@@ -74,9 +74,15 @@ class sceneMesh {
         sceneMesh();
         
         /**
-         * @brief Copy Constructor -- DELETED
+         * @brief Copy Constructor
+         * 
+         * This copies the reference to the geometry contained within the input
+         * parameter and duplicates its matrix buffer.
+         * 
+         * @param m
+         * A constant reference to another sceneMesh object.
          */
-        sceneMesh(const sceneMesh&) = delete;
+        sceneMesh(const sceneMesh& m);
         
         /**
          * @brief Move Constructor
@@ -84,27 +90,35 @@ class sceneMesh {
          * Moves all data from the input parameter into *this. No copies are
          * performed.
          * 
-         * @param n
+         * @param m
          * An R-Value reference to an mesh that is about to go out of scope.
          */
-        sceneMesh(sceneMesh&&);
+        sceneMesh(sceneMesh&& m);
         
         /**
-         * @brief Copy Operator -- DELETED
+         * @brief Copy Operator
+         * 
+         * This copies the reference to the geometry contained within the input
+         * parameter and duplicates its matrix buffer.
+         * 
+         * @param m
+         * A constant reference to another sceneMesh object.
+         * 
+         * @return A reference to *this.
          */
-        sceneMesh& operator=(const sceneMesh&) = delete;
+        sceneMesh& operator=(const sceneMesh& m);
         
         /**
          * @brief Move Operator
          * 
          * Moves all data from the input parameter into *this.
          * 
-         * @param n
+         * @param m
          * An R-Value reference to a mesh that is about to go out of scope.
          * 
          * @return A reference to *this.
          */
-        sceneMesh& operator=(sceneMesh&&);
+        sceneMesh& operator=(sceneMesh&& m);
         
         /**
          * @brief Get the GPU-Assigned ID associated with this mesh model.
@@ -127,16 +141,23 @@ class sceneMesh {
         bool isValid() const;
         
         /**
-         * @brief Set the mesh and texture to be used by this object during a
-         * draw operation.
+         * @brief Set the geometry to be used by *this object during a draw
+         * operation.
          * 
          * @param g
          * A const reference to valid OpenGL-managed vertices.
          * 
+         * @param instanceCount
+         * The number of instances which should be allocated on the GPU for
+         * *this to draw. If the number is 1, the matrix buffer will be
+         * instantiated with a single identity matrix. If instanceCount is
+         * greater than 1, the matrix buffer will be uninitialized.
+         * 
          * @return TRUE if the mesh was successfully loaded with a VBO assigned
-         * to handle model matrices, FALSE if otherwise.
+         * to handle model matrices, FALSE if instanceCount is 0 or something
+         * went wrong during initialization..
          */
-        bool init(const geometry& g);
+        bool init(const geometry& g, unsigned instanceCount = 1);
         
         /**
          * @brief Set the specific vertices to be rendered from "pGeometry."
@@ -201,7 +222,7 @@ class sceneMesh {
          * 
          * @return A const reference to the list of textures used by *this.
          */
-        const texture** getTextures() const;
+        const std::vector<const texture*>& getTextures() const;
         
         /**
          * @brief Add a texture to be used by *this during a draw operation.
@@ -257,7 +278,7 @@ class sceneMesh {
         bool canDraw() const;
         
         /**
-         * @brief Draw a mesh
+         * @brief Draw a mesh using the geometry referenced by *this.
          * 
          * This method renders a mesh to the currently bound framebuffer.
          */

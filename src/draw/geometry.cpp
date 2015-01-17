@@ -11,7 +11,7 @@
 
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/geometry.h"
-#include "lightsky/draw/meshResource.h"
+#include "lightsky/draw/sceneResource.h"
 #include "lightsky/utils/resource.h"
 
 namespace ls {
@@ -50,6 +50,7 @@ geometry::geometry(geometry&& g) :
     vbo{std::move(g.vbo)},
     ibo{std::move(g.ibo)},
     drawParams{std::move(g.drawParams)},
+    submeshes{std::move(g.submeshes)},
     bounds{std::move(g.bounds)}
 {}
 
@@ -62,6 +63,9 @@ geometry& geometry::operator=(geometry&& g) {
     ibo = std::move(g.ibo);
     
     drawParams = g.drawParams;
+    g.drawParams.reset();;
+    
+    submeshes = std::move(g.submeshes);
     
     bounds = std::move(g.bounds);
     
@@ -81,15 +85,15 @@ geometry::~geometry() {
 void geometry::terminate() {
     vbo.terminate();
     ibo.terminate();
-    
     drawParams.reset();
+    submeshes.clear();
     bounds.resetSize();
 }
 
 /*-------------------------------------
     Load the data contained within a geometry loader onto the GPU
 -------------------------------------*/
-bool geometry::init(const meshResource& meshData) {
+bool geometry::init(const sceneResource& meshData) {
     // vbos are resized when any new data is pushed into them
 
     LOG_GL_ERR();
@@ -105,7 +109,7 @@ bool geometry::init(const meshResource& meshData) {
     const unsigned vertexSize = vertexCount*sizeof(vertex);
 
     vbo.bind();
-    vbo.setData(vertexSize, meshData.getVertices(), vbo_rw_t::VBO_STATIC_DRAW);
+    vbo.setData(vertexSize, meshData.getVertices().data(), vbo_rw_t::VBO_STATIC_DRAW);
     vbo.unbind();
 
     LS_LOG_MSG("\tSuccessfully sent ", vertexCount, " vertices to the GPU.\n");
@@ -134,13 +138,15 @@ bool geometry::init(const meshResource& meshData) {
     const unsigned indexSize = indexCount*sizeof(draw_index_t);
 
     ibo.bind();
-    ibo.setData(indexSize, meshData.getIndices(), vbo_rw_t::VBO_STATIC_DRAW);
+    ibo.setData(indexSize, meshData.getIndices().data(), vbo_rw_t::VBO_STATIC_DRAW);
     ibo.unbind();
 
     LS_LOG_MSG("\tSuccessfully sent ", indexCount, " indices to the GPU.\n");
     LOG_GL_ERR();
 
     drawParams.count = meshData.getNumIndices();
+    
+    submeshes = meshData.getMeshes();
 
     return true;
 }
@@ -233,6 +239,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     drawParams.mode = draw_mode_t::TRIS;
     drawParams.first = 0;
     drawParams.count = numVerts;
+    submeshes.push_back(draw_index_pair_t{0, numVerts});
     
     return true;
 }

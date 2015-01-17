@@ -1,14 +1,15 @@
 /* 
- * File:   draw/meshResource.h
+ * File:   draw/sceneResource.h
  * Author: Miles Lacey
  *
  * Created on April 2, 2014, 9:04 PM
  */
 
-#ifndef __LS_DRAW_MESH_RESOURCE_H__
-#define	__LS_DRAW_MESH_RESOURCE_H__
+#ifndef __LS_DRAW_SCENE_RESOURCE_H__
+#define	__LS_DRAW_SCENE_RESOURCE_H__
 
 #include <string>
+#include <vector>
 #include <unordered_map>
 
 #include "lightsky/utils/resource.h"
@@ -28,10 +29,10 @@ namespace ls {
 namespace draw {
 
 /**
- * The mesh resource can be used to load a mesh or meshes from a file. It can
- * also be used to generate basic primitives such as a sphere, cube, cone, etc.
+ * The scene resource can be used to load a 3D scene from a file. It can also
+ * be used to generate basic primitives such as a sphere, cube, cone, etc.
  */
-class meshResource final : public utils::resource {
+class sceneResource final : public utils::resource {
     public:
         /**
          * @brief meshVertexMap_t
@@ -42,41 +43,51 @@ class meshResource final : public utils::resource {
          */
         typedef std::unordered_map<const aiMesh*, sceneNode*> meshMap_t;
         
+        /**
+         * @brief the resourceNode object contains all of the data necessary
+         * to instantiate all of the sceneNode objects within a sceneGraph.
+         */
+        struct resourceNode {
+            unsigned parentIndex; // index in "nodeList" where the parent is.
+            std::string name;
+            std::vector<unsigned> meshIndices; // indices for referencing values in "meshList"
+            std::vector<unsigned> childIndices; // indices for referencing nodes in "nodeList"
+            math::mat4 transform; // use to build a ls::draw::transform. this is non-accumulated.
+        };
+        
     private:
         /**
-         * Contains the number of vertices used per mesh.
-         * This is implemented as a single array of unsigned integers.
-         */
-        unsigned numVertices = 0;
-        
-        /**
-         * Contains the vertex data used by each mesh.
-         * This is implemented as an array of vertex structures.
-         */
-        vertex* pVertices = nullptr;
-        
-        /**
-         * Contains the number of indices used per mesh.
-         * This is implemented as a single array of unsigned short integers.
-         */
-        unsigned numIndices = 0;
-        
-        /**
-         * Contains the index data used to specify the location of each vertex
-         * of each mesh. This is implemented as an array of unsigned short
-         * integers.
-         */
-        draw_index_t* pIndices = nullptr;
-        
-        /**
-         * Contains the resulting draw mode for each mesh after loading.
+         * Contains the resulting draw mode for each scene after loading.
          */
         draw_mode_t resultDrawMode = draw_mode_t::DEFAULT;
         
         /**
-         * Allow the ability to generate the bounding area for a mesh
+         * @brief Contains the interleaved vertex data used by each scene.
          */
-        boundingBox meshBounds = {};
+        std::vector<vertex> vertexList;
+        
+        /**
+         * @brief Contains the index data used to specify the location of each vertex
+         * of each mesh.
+         */
+        std::vector<draw_index_t> indexList;
+        
+        /**
+         * nodeList is a list of resource nodes that can be loaded by a
+         * sceneGraph object during instantiation.
+         */
+        std::vector<resourceNode> nodeList;
+        
+        /**
+         * @brief submeshes lists all of the indices which can be used to
+         * refer to subsets of vertex data in "vertexList"
+         */
+        draw_index_list_t meshList;
+        
+        /**
+         * Allow the ability to generate the bounding area for a scene
+         */
+        boundingBox totalBounds = {};
         
         /**
          * @brief Initialize
@@ -105,10 +116,10 @@ class meshResource final : public utils::resource {
          * A constant pointer to a constant null-terminated character string.
          * This name will be used to instantiate a generated mesh.
          *
-         * @return A scene node containing enough information to create a
+         * @return A resource node containing enough information to create a
          * simple scene with a simple mesh primitive.
          */
-        sceneNode createPrimitiveNode(const char* const name);
+        resourceNode createPrimitiveNode(const char* const name);
 
         /**
          * @brief Scan an ASSIMP scene and attempt to reserve all memory needed
@@ -117,14 +128,10 @@ class meshResource final : public utils::resource {
          * @param pScene
          * A constant pointer to a constant ASSIMP scene.
          *
-         * @param meshIndices
-         * A mapping of assimp meshes to their indices within an internal scene
-         * graph.
-         *
          * @return TRUE if all memory required to import the scene was
          * successfully allocated, FALSE if not.
          */
-        bool preprocessMeshData(const aiScene* const pScene, draw_index_list_t& meshIndices);
+        bool preprocessMeshData(const aiScene* const pScene);
 
         /**
          * @brief importMeshData
@@ -136,14 +143,10 @@ class meshResource final : public utils::resource {
          * @param pScene
          * A constant pointer to a constant aiScene structure.
          *
-         * @param meshIndices
-         * A mapping of assimp meshes to their indices within an internal scene
-         * graph.
-         *
          * @return TRUE if the mesh was successfully loaded from ASSIMP, FALSE
          * if not.
          */
-        bool importMeshData(const aiScene* const pScene, draw_index_list_t& meshIndices);
+        bool importMeshData(const aiScene* const pScene);
 
         /**
          * @brief importMeshFaces
@@ -179,10 +182,6 @@ class meshResource final : public utils::resource {
          * @param pNode
          * A pointer to a node in an Assimp scene graph.
          *
-         * @param meshMap
-         * A map of meshes in a scene to their index values within the internal
-         * geometry array.
-         *
          * @param parentId
          * An index value of the parent sceneNode contained within an internal
          * array of nodes.
@@ -190,25 +189,32 @@ class meshResource final : public utils::resource {
          * @return The index of the the last child node recursively placed into
          * the scene node list.
          */
-        unsigned readNodeHeirarchy(
-            const aiNode* const pNode,
-            const draw_index_list_t& meshMap,
-            const unsigned parentId,
-            const math::mat4& parentTransform = math::mat4{1.f}
-        );
+        unsigned readNodeHeirarchy(const aiNode* const pNode, const unsigned parentId);
         
     public:
+        /**
+         * @brief Destructor
+         * 
+         * Unloads all data contain within *this.
+         */
+        virtual ~sceneResource() override;
+        
         /**
          * @brief Constructor
          * 
          * Initializes all members contained within *this.
          */
-        meshResource();
+        sceneResource();
         
         /**
-         * @brief Copy Constructor -- DELETED
+         * @brief Copy Constructor
+         * 
+         * Copies all CPU-side data from the input parameter into *this.
+         * 
+         * @param r
+         * A constant reference to another sceneResource object.
          */
-        meshResource(const meshResource&) = delete;
+        sceneResource(const sceneResource& r);
         
         /**
          * @brief Move Constructor
@@ -219,19 +225,19 @@ class meshResource final : public utils::resource {
          * @param r
          * An r-value reference to a temporary mesh resource object.
          */
-        meshResource(meshResource&& r);
+        sceneResource(sceneResource&& r);
         
         /**
-         * @brief Destructor
+         * @brief Copy Operator
          * 
-         * Unloads all data contain within *this.
+         * Copies all CPU-side data from the input parameter into *this.
+         * 
+         * @param r
+         * A constant reference to another sceneResource object.
+         * 
+         * @return A reference to *this.
          */
-        virtual ~meshResource() override;
-        
-        /**
-         * @brief Copy Constructor -- DELETED
-         */
-        meshResource& operator=(const meshResource&) = delete;
+        sceneResource& operator=(const sceneResource& r);
         
         /**
          * @brief Move Operator
@@ -244,7 +250,7 @@ class meshResource final : public utils::resource {
          * 
          * @return a reference to *this.
          */
-        meshResource& operator=(meshResource&& r);
+        sceneResource& operator=(sceneResource&& r);
 
         /**
          *  Get the size, in bytes, of the stored vertex elements.
@@ -273,26 +279,59 @@ class meshResource final : public utils::resource {
         /**
          * Get the array of standard vertex types of a loaded mesh.
          * 
-         * @return A pointer to the internal array which contains the vertices
-         * loaded by *this.
+         * @return A constant reference to the internal array which contains
+         * the vertices loaded by *this.
          */
-        const vertex* getVertices() const;
+        const std::vector<vertex>& getVertices() const;
         
         /**
          * Get the number of loaded indices in a mesh.
          * 
          * @return An unsigned integral type, representing the number of
-         * indices contained within the mesh loaded by *this.
+         * indices contained within the scene loaded by *this.
          */
         unsigned getNumIndices() const;
         
         /**
          * Get the array of vertex element indices types of a loaded mesh.
          * 
-         * @return A pointer to the internal array which contains the indices
-         * loaded by *this.
+         * @return A constant reference to the internal array which contains
+         * the indices loaded by *this.
          */
-        const draw_index_t* getIndices() const;
+        const std::vector<draw_index_t>& getIndices() const;
+        
+        /**
+         * Get the number of loaded scene nodes.
+         * 
+         * @return An unsigned integral type, representing the number of
+         * nodes contained within the scene loaded by *this.
+         */
+        unsigned getNumNodes() const;
+        
+        /**
+         * Get the array of resource node types of a loaded scene.
+         * 
+         * @return A constant reference to the internal array which contains
+         * the nodes loaded by *this.
+         */
+        const std::vector<resourceNode>& getNodes() const;
+        
+        /**
+         * Get the number of sub-meshes indices in a scene.
+         * 
+         * @return An unsigned integral type, representing the number of
+         * geometrical subsets contained within the scene loaded by *this.
+         */
+        unsigned getNumMeshes() const;
+        
+        /**
+         * Get the array of index pairs of a loaded scene, representing
+         * individual meshes.
+         * 
+         * @return A constant reference to the internal array which contains
+         * the index pairs loaded by *this.
+         */
+        const draw_index_list_t& getMeshes() const;
         
         /**
          * @brief Unload
@@ -425,7 +464,7 @@ class meshResource final : public utils::resource {
 } // end draw namespace
 } // end ls namespace
 
-#include "lightsky/draw/generic/meshResource_impl.h"
+#include "lightsky/draw/generic/sceneResource_impl.h"
 
-#endif	/* __LS_DRAW_MESH_RESOURCE_H__ */
+#endif	/* __LS_DRAW_SCENE_RESOURCE_H__ */
 

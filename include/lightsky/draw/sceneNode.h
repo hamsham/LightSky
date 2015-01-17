@@ -12,6 +12,7 @@
 
 #include "lightsky/draw/sceneMesh.h"
 #include "lightsky/draw/texture.h"
+#include "lightsky/draw/transform.h"
 
 namespace ls {
 namespace draw {
@@ -22,69 +23,98 @@ namespace draw {
  * matrices that are bound to a mesh model, the more instances will be rendered
  * by OpenGL.
  */
-class sceneNode final {
-    private:
-        /**
-         * @brief geometryId contains the index value of the geometry being used
-         * in the parent scene object's array of GPU vertex data.
-         */
-        unsigned geometryId;
-
-        /**
-         * @brief pParent is a pointer to the parent scene node.
-         */
-        sceneNode* pParent;
+struct sceneNode final {
+    /**
+     * @brief nodeMeshIndex is the index if the mesh that *this refers to in
+     * the parent scene.
+     */
+    unsigned nodeMeshIndex;
     
-        /**
-         * @brief pMesh points to the mesh that should be drawn using *this.
-         */
-        sceneMesh* pMesh = nullptr;
-        
-    public:
-        /**
-         * @brief Default Constructor
-         */
-        sceneNode();
-        
-        /**
-         * @brief Copy Constructor -- DELETED
-         */
-        sceneNode(const sceneNode& n) = delete;
-        
-        /**
-         * @brief Move Constructor
-         * 
-         * Moves all data from the input parameter into *this. No copies are
-         * performed.
-         * 
-         * @param n
-         * An R-Value reference to a sceneNode that is about to go out of scope.
-         */
-        sceneNode(sceneNode&& n);
-        
-        /**
-         * @brief Destructor
-         * 
-         * Frees All memory and resources used by *this.
-         */
-        ~sceneNode();
-        
-        /**
-         * @brief Copy Operator -- DELETED
-         */
-        sceneNode& operator=(const sceneNode& s) = delete;
-        
-        /**
-         * @brief Move Operator
-         * 
-         * Moves all data from the input parameter into *this.
-         * 
-         * @param n
-         * An R-Value reference to a sceneNode that is about to go out of scope.
-         * 
-         * @return A reference to *this.
-         */
-        sceneNode& operator=(sceneNode&& n);
+    /**
+     * @brief nodeParent is a pointer to the parent scene node.
+     */
+    sceneNode* nodeParent;
+
+    /**
+     * @brief nodeName
+     *
+     * A std::string object containing the name of this node in a scene.
+     */
+    std::string nodeName;
+
+    /**
+     * @brief nodeTransform contains the position, orientation, and scale of
+     * *this in 3D cartesian coordinates.
+     */
+    transform nodeTransform;
+
+    /**
+     * @brief nodeChildren is an array of sub-nodes whose transformations are
+     * subject to the ones made by *this.
+     */
+    std::vector<sceneNode*> nodeChildren;
+
+    /**
+     * @brief Destructor
+     * 
+     * Frees All memory and resources used by *this.
+     */
+    ~sceneNode();
+
+    /**
+     * @brief Default Constructor
+     */
+    sceneNode();
+
+    /**
+     * @brief Copy Constructor
+     * 
+     * Copies all references from the input parameter into *this.
+     * 
+     * @param n
+     * A constant reference to another node object.
+     */
+    sceneNode(const sceneNode& n);
+
+    /**
+     * @brief Move Constructor
+     * 
+     * Moves all data from the input parameter into *this. No copies are
+     * performed.
+     * 
+     * @param n
+     * An R-Value reference to a sceneNode that is about to go out of scope.
+     */
+    sceneNode(sceneNode&& n);
+
+    /**
+     * @brief Copy Operator
+     * 
+     * Copies all references from the input parameter into *this.
+     * 
+     * @param n
+     * A constant reference to another node object.
+     * 
+     * @return A reference to *this.
+     */
+    sceneNode& operator=(const sceneNode& s);
+
+    /**
+     * @brief Move Operator
+     * 
+     * Moves all data from the input parameter into *this.
+     * 
+     * @param n
+     * An R-Value reference to a sceneNode that is about to go out of scope.
+     * 
+     * @return A reference to *this.
+     */
+    sceneNode& operator=(sceneNode&& n);
+    
+    /**
+     * @brief Reset all parameters to their default values.
+     */
+    void reset();
 };
 
 } // end draw namespace

@@ -192,7 +192,7 @@ bool fbState::initMemory() {
 -------------------------------------*/
 bool fbState::initFileData() {
     
-    draw::meshResource* pMeshLoader = new draw::meshResource{};
+    draw::sceneResource* pMeshLoader = new draw::sceneResource{};
     draw::geometry* pSphereMesh     = new draw::geometry{};
     draw::texture* pColorTex       = new draw::texture{};
     draw::texture* noiseTex         = new draw::texture{};

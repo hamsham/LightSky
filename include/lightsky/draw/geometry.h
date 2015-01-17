@@ -8,7 +8,8 @@
 #ifndef __LS_DRAW_MESH_H__
 #define	__LS_DRAW_MESH_H__
 
-#include "lightsky/draw/atlas.h"
+#include <vector>
+
 #include "lightsky/draw/boundingBox.h"
 #include "lightsky/draw/drawCommand.h"
 #include "lightsky/draw/renderer.h"
@@ -22,8 +23,10 @@ namespace draw {
 /*-----------------------------------------------------------------------------
     Forward declarations
 -----------------------------------------------------------------------------*/
-class meshResource;
-class sceneNode;
+class atlas;
+struct atlasEntry;
+class sceneResource;
+struct sceneNode;
 
 /**----------------------------------------------------------------------------
  * @brief Mesh Properties
@@ -51,22 +54,28 @@ enum geometry_property_t: int {
 class geometry {
     private:
         /**
-         * Vertex Buffer Object to be used with this geometry
+         * @brief Vertex Buffer Object to be used with this geometry
          */
         vertexBuffer vbo;
         
         /**
-         * Index Buffer Object to be used with this geometry
+         * @brief Index Buffer Object to be used with this geometry
          */
         indexBuffer ibo;
         
         /**
-         * OpenGL parameters for drawing vertices.
+         * @brief OpenGL parameters for drawing vertices.
          */
         drawCommand drawParams;
         
         /**
-         * Allow the geometry class to contain some sort of bounding area.
+         * @brief All sub-meshes contained in *this can be referenced through
+         * the "submeshes" member.
+         */
+        draw_index_list_t submeshes;
+        
+        /**
+         * @brief "bounds" determines bounding area for this set of geometry.
          */
         boundingBox bounds;
         
@@ -202,7 +211,7 @@ class geometry {
          * @return TRUE if the data was successfully sent to the GPU, or FALSE
          * if an error occurred.
          */
-        bool init(const meshResource& mr);
+        bool init(const sceneResource& mr);
         
         /**
          * @brief Initialize
@@ -231,21 +240,6 @@ class geometry {
         void terminate();
         
         /**
-         * Get the current Draw command for *this geometry.
-         * 
-         * @return an "drawCommand" structure, containing the proper parameters
-         * that should be used to render the vertices within *this.
-         */
-        const drawCommand& getDrawCommand() const;
-        
-        /**
-         * Get the maximum vertex bounds for this geometry object.
-         * 
-         * @return a constant reference to a boundingBox objext.
-         */
-        const boundingBox& getBounds() const;
-        
-        /**
          * Get the internal vertex buffer used by *this.
          * 
          * @return A constant reference to a vertex buffer object.
@@ -258,6 +252,32 @@ class geometry {
          * @return A constant reference to an index buffer object.
          */
         const indexBuffer& getIndexBuffer() const;
+        
+        /**
+         * Get the current Draw command for *this geometry.
+         * 
+         * @return an "drawCommand" structure, containing the proper parameters
+         * that should be used to render the vertices within *this.
+         */
+        const drawCommand& getDrawCommand() const;
+        
+        /**
+         * @brief Get the list of indices which represent sub-geometry, or
+         * "meshes". These indices can be used to draw subsets of a geometry
+         * object, initialize a mesh object, or be used to add a mesh to a
+         * sceneNode object.
+         * 
+         * @return A constant reference to the list of indices used to render
+         * *this.
+         */
+        const draw_index_list_t& getSubGeometry() const;
+        
+        /**
+         * Get the maximum vertex bounds for this geometry object.
+         * 
+         * @return a constant reference to a boundingBox objext.
+         */
+        const boundingBox& getBounds() const;
         
         /**
          * @brief draw the geometry contained within *this.

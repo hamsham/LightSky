@@ -47,20 +47,6 @@ inline unsigned geometry::getId() const {
 }
 
 /*-------------------------------------
-    Get the current Draw parameters for this geometry.
--------------------------------------*/
-inline const drawCommand& geometry::getDrawCommand() const {
-    return drawParams;
-}
-
-/*-------------------------------------
-    Get the maximum vertex bounds for this geometry.
--------------------------------------*/
-inline const boundingBox& geometry::getBounds() const {
-    return bounds;
-}
-
-/*-------------------------------------
  * Get the internal vertex buffer used by *this.
 -------------------------------------*/
 inline const vertexBuffer& geometry::getVertexBuffer() const {
@@ -72,6 +58,27 @@ inline const vertexBuffer& geometry::getVertexBuffer() const {
 -------------------------------------*/
 inline const indexBuffer& geometry::getIndexBuffer() const {
     return ibo;
+}
+
+/*-------------------------------------
+    Get the current Draw parameters for this geometry.
+-------------------------------------*/
+inline const drawCommand& geometry::getDrawCommand() const {
+    return drawParams;
+}
+
+/*-------------------------------------
+    Get the available sub-geometry in *this.
+-------------------------------------*/
+inline const draw_index_list_t& geometry::getSubGeometry() const {
+    return submeshes;
+}
+
+/*-------------------------------------
+    Get the maximum vertex bounds for this geometry.
+-------------------------------------*/
+inline const boundingBox& geometry::getBounds() const {
+    return bounds;
 }
 
 /*-------------------------------------

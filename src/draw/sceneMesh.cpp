@@ -13,9 +13,23 @@ namespace ls {
 namespace draw {
 
 /*-------------------------------------
+ Destructor
+-------------------------------------*/
+sceneMesh::~sceneMesh() {
+    terminate();
+}
+
+/*-------------------------------------
     Constructor
 -------------------------------------*/
 sceneMesh::sceneMesh() {
+}
+
+/*-------------------------------------
+    Copy Constructor
+-------------------------------------*/
+sceneMesh::sceneMesh(const sceneMesh& m) {
+    this->operator=(m);
 }
 
 /*-------------------------------------
@@ -26,7 +40,7 @@ sceneMesh::sceneMesh(sceneMesh&& m) :
     pGeometry{m.pGeometry},
     matrixVbo{std::move(m.matrixVbo)},
     vao{std::move(m.vao)},
-    submeshIndices{std::move(m.submeshIndices)},
+    submeshIndices{m.submeshIndices.first, m.submeshIndices.count},
     textureList{std::move(m.textureList)}
 {
     m.numInstances = 0;
@@ -52,6 +66,35 @@ sceneMesh& sceneMesh::operator=(sceneMesh&& m) {
     m.submeshIndices = {};
     
     textureList = std::move(m.textureList);
+    
+    return *this;
+}
+
+/*-------------------------------------
+ * Copy Operator
+-------------------------------------*/
+sceneMesh& sceneMesh::operator=(const sceneMesh& m) {
+    terminate();
+    
+    if (&m == this || !m.getId() || !m.getGeometry()) {
+        return *this;
+    }
+    
+    if (!init(*m.pGeometry, m.numInstances)) {
+        return *this;
+    }
+    
+    // copy the input geometry data if there are too many instances
+    glBindBuffer(GL_COPY_READ_BUFFER, m.matrixVbo.getId());
+    glBindBuffer(GL_COPY_WRITE_BUFFER, matrixVbo.getId());
+
+    glCopyBufferSubData(GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, 0, 0, sizeof(math::mat4)*m.numInstances);
+
+    glBindBuffer(GL_COPY_READ_BUFFER, 0);
+    glBindBuffer(GL_COPY_WRITE_BUFFER, 0);
+    
+    submeshIndices = m.submeshIndices;
+    textureList = m.textureList;
     
     return *this;
 }
@@ -128,9 +171,15 @@ void sceneMesh::terminate() {
 /*-------------------------------------
     Set the mesh to be used by this object during a draw operation.
 -------------------------------------*/
-bool sceneMesh::init(const geometry& g) {
+bool sceneMesh::init(const geometry& g, unsigned instanceCount) {
     // there's no telling what data might be pushed into the VAO. Get rid of it.
     vao.terminate();
+    
+    if (!instanceCount) {
+        LS_LOG_ERR("Attempted to initialize a sceneMesh with no instances.");
+        return false;
+    }
+    
     if (!vao.init()) {
         LS_LOG_ERR("Unable to create a drawModel for geometry ", g.getId(), '.');
         terminate();
@@ -144,19 +193,19 @@ bool sceneMesh::init(const geometry& g) {
             terminate();
             return false;
         }
-        else {
-            // ensure at lease one model matrix is available on initialization.
-            const math::mat4 identityMat = {1.f};
-            setNumInstances(1, &identityMat);
-        }
+    }
+    
+    if (instanceCount == 1) {
+        const math::mat4 identity{1.f};
+        setNumInstances(1, &identity);
+    }
+    else {
+        setNumInstances(instanceCount, nullptr);
     }
     
     pGeometry = &g;
     submeshIndices.first = g.getDrawCommand().first;
     submeshIndices.count = g.getDrawCommand().count;
-    
-    const math::mat4 identity{1.f};
-    setNumInstances(1, &identity);
     
     setVertexAttribs();
     
@@ -197,7 +246,7 @@ void sceneMesh::addTexture(const texture& texRef) {
     Remove a texture from *this.
 -------------------------------------*/
 void sceneMesh::removeTexture(unsigned texIndex) {
-    LS_DEBUG_ASSERT(texIndex < textureList.size);
+    LS_DEBUG_ASSERT(texIndex < textureList.size());
     textureList.erase(textureList.begin() + texIndex);
 }
 
@@ -220,7 +269,7 @@ void sceneMesh::setNumInstances(int instanceCount, const math::mat4* const model
 -------------------------------------*/
 void sceneMesh::modifyInstance(int index, const math::mat4& modelMatrix) {
     LS_DEBUG_ASSERT(index >= 0);
-    LS_DEBUG_ASSERT(index < instanceCount);
+    LS_DEBUG_ASSERT((unsigned)index < numInstances);
     
     matrixVbo.bind();
     matrixVbo.setSubData(sizeof(math::mat4)*index, sizeof(math::mat4), &modelMatrix);
@@ -232,19 +281,27 @@ void sceneMesh::modifyInstance(int index, const math::mat4& modelMatrix) {
     Render all instances of the currently bound mesh to OpenGL.
 -------------------------------------*/
 void sceneMesh::draw() const {
-    LS_DEBUG_ASSERT(this->isValid);
+    LS_DEBUG_ASSERT(this->isValid());
     
-    for (const texture* const pTex : textureList) {
-        pTex->bind();
+    if (textureList.size()) {
+        for (const texture* const pTex : textureList) {
+            pTex->bind();
+        }
+
+        drawCommand tempCommand = pGeometry->getDrawCommand();
+        tempCommand.first = submeshIndices.first;
+        tempCommand.count = submeshIndices.count;
+        tempCommand.draw(vao, numInstances);
+
+        for (const texture* const pTex : textureList) {
+            pTex->unbind();
+        }
     }
-    
-    drawCommand tempCommand = pGeometry->getDrawCommand();
-    tempCommand.first = submeshIndices.first;
-    tempCommand.count = submeshIndices.count;
-    tempCommand.draw(vao, numInstances);
-    
-    for (const texture* const pTex : textureList) {
-        pTex->unbind();
+    else {
+        drawCommand tempCommand = pGeometry->getDrawCommand();
+        tempCommand.first = submeshIndices.first;
+        tempCommand.count = submeshIndices.count;
+        tempCommand.draw(vao, numInstances);
     }
 }
 

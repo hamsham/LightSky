@@ -49,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
 	${OBJECTDIR}/_ext/1019371010/renderbuffer.o \
+	${OBJECTDIR}/_ext/1019371010/sceneGraph.o \
 	${OBJECTDIR}/_ext/1019371010/sceneMesh.o \
 	${OBJECTDIR}/_ext/1019371010/sceneNode.o \
 	${OBJECTDIR}/_ext/1019371010/sceneResource.o \
@@ -156,6 +157,11 @@ ${OBJECTDIR}/_ext/1019371010/renderbuffer.o: ../src/draw/renderbuffer.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/renderbuffer.o ../src/draw/renderbuffer.cpp
+
+${OBJECTDIR}/_ext/1019371010/sceneGraph.o: ../src/draw/sceneGraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/sceneGraph.o ../src/draw/sceneGraph.cpp
 
 ${OBJECTDIR}/_ext/1019371010/sceneMesh.o: ../src/draw/sceneMesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

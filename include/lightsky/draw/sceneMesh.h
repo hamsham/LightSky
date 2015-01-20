@@ -22,20 +22,9 @@ namespace draw {
 class sceneMesh {
     private:
         /**
-         * @brief numInstances determines how many instances are rendered by
-         * this mesh through the GPU.
-         */
-        unsigned numInstances = 0;
-        
-        /**
          * @brief pMesh points to the mesh that should be drawn using *this.
          */
         const geometry* pGeometry = nullptr;
-        
-        /**
-         * Vertex Buffer that will be used specifically for model matrices.
-         */
-        vertexBuffer matrixVbo = {};
         
         /**
          * Vertex array to be used with this mesh object
@@ -145,19 +134,12 @@ class sceneMesh {
          * operation.
          * 
          * @param g
-         * A const reference to valid OpenGL-managed vertices.
+         * A constant reference to valid OpenGL-managed vertices.
          * 
-         * @param instanceCount
-         * The number of instances which should be allocated on the GPU for
-         * *this to draw. If the number is 1, the matrix buffer will be
-         * instantiated with a single identity matrix. If instanceCount is
-         * greater than 1, the matrix buffer will be uninitialized.
-         * 
-         * @return TRUE if the mesh was successfully loaded with a VBO assigned
-         * to handle model matrices, FALSE if instanceCount is 0 or something
-         * went wrong during initialization..
+         * @return TRUE if the mesh was successfully loaded with a VAO, FALSE
+         * if something went wrong during initialization..
          */
-        bool init(const geometry& g, unsigned instanceCount = 1);
+        bool init(const geometry& g);
         
         /**
          * @brief Set the specific vertices to be rendered from "pGeometry."
@@ -175,14 +157,6 @@ class sceneMesh {
          * "pGeometry" which are used by *this during each call to "draw()."
          */
         const draw_index_pair_t& getIndices() const;
-        
-        /**
-         * @brief Set the specific vertices to be rendered from "pGeometry."
-         * 
-         * @return A draw_index_pair_t, determining the subset of vertices in
-         * "pGeometry" which are used by *this during each call to "draw()."
-         */
-        draw_index_pair_t& getIndices();
         
         /**
          * @brief Clear all draw parameters to their default, null values and
@@ -240,34 +214,6 @@ class sceneMesh {
          * An index value to the texture in *this to be removed.
          */
         void removeTexture(unsigned texIndex);
-        
-        /**
-         * @brief All meshes support instanced draws by default. This will set
-         * the number of instances that will appear when drawing a mesh.
-         * 
-         * @param instanceCount
-         * The number of instances (and modelMatrices) that will be drawn by
-         * this mesh.
-         * 
-         * @param modelMatrices
-         * A pointer to an array of model matrices that will be applied to each
-         * mesh instance.
-         */
-        void setNumInstances(int instanceCount, const math::mat4* const modelMatrices = nullptr);
-        
-        /**
-         * @brief Change the model matrix for a single instance
-         * 
-         * @param index
-         * The index to specify which model matrix in *this should be modified.
-         * Model matrices are sent directly to an instance/array buffer on the
-         * GPU.
-         * 
-         * @param modelMatrix
-         * A constant reference to a model matrix which is to replace the one
-         * on the GPU, specified by 'index.'
-         */
-        void modifyInstance(int index, const math::mat4& modelMatrix);
         
         /**
          * @brief Determine if this current model is able to be rendered.

@@ -111,7 +111,7 @@ color_type_t getBitmapSize(FIBITMAP* pImg) {
         
         // unknown
         default:
-            return COLOR_TYPE_INVALID;
+            dataType = COLOR_TYPE_INVALID;
             LS_LOG_MSG("\tImage pixel type: INVALID");
             break;
     }

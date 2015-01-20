@@ -9,13 +9,17 @@
 #define	__LS_DRAW_SCENE_NODE_H__
 
 #include <vector>
+#include <deque>
 
 #include "lightsky/draw/sceneMesh.h"
-#include "lightsky/draw/texture.h"
 #include "lightsky/draw/transform.h"
 
 namespace ls {
 namespace draw {
+
+struct sceneNode;
+
+typedef std::deque<sceneNode> scene_node_list_t;
 
 /**
  * A sceneNode represents a single renderable mesh that can be drawn multiple
@@ -24,12 +28,6 @@ namespace draw {
  * by OpenGL.
  */
 struct sceneNode final {
-    /**
-     * @brief nodeMeshIndex is the index if the mesh that *this refers to in
-     * the parent scene.
-     */
-    unsigned nodeMeshIndex;
-    
     /**
      * @brief nodeParent is a pointer to the parent scene node.
      */
@@ -43,10 +41,16 @@ struct sceneNode final {
     std::string nodeName;
 
     /**
-     * @brief nodeTransform contains the position, orientation, and scale of
-     * *this in 3D cartesian coordinates.
+     * @brief nodeTransforms contains the position, orientation, and scale of
+     * *this node's mesh instances in 3D Cartesian coordinates.
      */
     transform nodeTransform;
+    
+    /**
+     * @brief nodeMeshes is the indices of the mesh that *this refers to in the
+     * parent scene.
+     */
+    std::vector<sceneMesh*> nodeMeshes;
 
     /**
      * @brief nodeChildren is an array of sub-nodes whose transformations are

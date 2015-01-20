@@ -64,6 +64,15 @@ class transform {
         transform();
 
         /**
+         * @brief Matrix Constructor
+         *
+         * @param modelMat
+         * A constant reference to a matrix which will be used to pre-transform
+         * *this during construction.
+         */
+        transform(const math::mat4& modelMat);
+
+        /**
          * @brief Copy Constructor
          *
          * @param t

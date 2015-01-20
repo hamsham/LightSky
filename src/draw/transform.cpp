@@ -26,6 +26,17 @@ transform::transform() :
 {}
 
 /*-------------------------------------
+ * Matrix Constructor
+-------------------------------------*/
+transform::transform(const math::mat4& modelMat) :
+    dirtyFlag{false},
+    position{modelMat[3][0], modelMat[3][1], modelMat[3][2]},
+    scaling{modelMat[0][0], modelMat[1][1], modelMat[2][2]},
+    orientation{math::matToQuat(modelMatrix)},
+    modelMatrix{modelMat}
+{}
+
+/*-------------------------------------
  * Copy Constructor
 -------------------------------------*/
 transform::transform(const transform& t) :

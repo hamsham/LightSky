@@ -41,6 +41,7 @@
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
       <itemPath>../include/lightsky/draw/renderbuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/renderer.h</itemPath>
+      <itemPath>../include/lightsky/draw/sceneGraph.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneMesh.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneNode.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneResource.h</itemPath>
@@ -74,6 +75,7 @@
       <itemPath>../src/draw/imageResource.cpp</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
       <itemPath>../src/draw/renderbuffer.cpp</itemPath>
+      <itemPath>../src/draw/sceneGraph.cpp</itemPath>
       <itemPath>../src/draw/sceneMesh.cpp</itemPath>
       <itemPath>../src/draw/sceneNode.cpp</itemPath>
       <itemPath>../src/draw/sceneResource.cpp</itemPath>
@@ -319,6 +321,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/sceneGraph.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/sceneMesh.h"
             ex="false"
             tool="3"
@@ -392,6 +399,8 @@
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/sceneGraph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -638,6 +647,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/sceneGraph.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/sceneMesh.h"
             ex="false"
             tool="3"
@@ -711,6 +725,8 @@
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/sceneGraph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/sceneMesh.cpp" ex="false" tool="1" flavor2="0">
       </item>

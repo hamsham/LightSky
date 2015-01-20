@@ -17,13 +17,6 @@ inline const draw_index_pair_t& sceneMesh::getIndices() const {
 }
 
 /*-------------------------------------
- * Get the subset of vertices to render
--------------------------------------*/
-inline draw_index_pair_t& sceneMesh::getIndices() {
-    return submeshIndices;
-}
-
-/*-------------------------------------
     Get the GPU-Assigned ID associated with this mesh model.
 -------------------------------------*/
 inline unsigned sceneMesh::getId() const {

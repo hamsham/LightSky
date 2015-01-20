@@ -67,8 +67,8 @@ class sceneResource final : public utils::resource {
         std::vector<vertex> vertexList;
         
         /**
-         * @brief Contains the index data used to specify the location of each vertex
-         * of each mesh.
+         * @brief Contains the index data used to specify the location of each
+         * mesh object's range of vertices.
          */
         std::vector<draw_index_t> indexList;
         

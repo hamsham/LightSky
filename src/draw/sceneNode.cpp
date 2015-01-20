@@ -26,10 +26,10 @@ sceneNode::~sceneNode() {
     Constructor
 -------------------------------------*/
 sceneNode::sceneNode() :
-    nodeMeshIndex{},
     nodeParent{nullptr},
     nodeName{"Empty"},
     nodeTransform{},
+    nodeMeshes{},
     nodeChildren{}
 {}
 
@@ -37,10 +37,10 @@ sceneNode::sceneNode() :
     Copy Constructor
 -------------------------------------*/
 sceneNode::sceneNode(const sceneNode& s) :
-    nodeMeshIndex{s.nodeMeshIndex},
     nodeParent{s.nodeParent},
     nodeName{s.nodeName},
     nodeTransform{s.nodeTransform},
+    nodeMeshes{s.nodeMeshes},
     nodeChildren{s.nodeChildren}
 {}
 
@@ -48,13 +48,12 @@ sceneNode::sceneNode(const sceneNode& s) :
     Move Constructor
 -------------------------------------*/
 sceneNode::sceneNode(sceneNode&& s) :
-    nodeMeshIndex{std::move(s.nodeMeshIndex)},
     nodeParent{s.nodeParent},
     nodeName{std::move(s.nodeName)},
     nodeTransform{std::move(s.nodeTransform)},
+    nodeMeshes{std::move(s.nodeMeshes)},
     nodeChildren{std::move(s.nodeChildren)}
 {
-    s.nodeMeshIndex = 0; // root node
     s.nodeParent = nullptr;
 }
 
@@ -62,10 +61,10 @@ sceneNode::sceneNode(sceneNode&& s) :
     Copy Operator
 -------------------------------------*/
 sceneNode& sceneNode::operator=(const sceneNode& s) {
-    nodeMeshIndex = s.nodeMeshIndex;
     nodeParent = s.nodeParent;
     nodeName = s.nodeName;
     nodeTransform = s.nodeTransform;
+    nodeMeshes = s.nodeMeshes;
     nodeChildren = s.nodeChildren;
     
     return *this;
@@ -75,14 +74,12 @@ sceneNode& sceneNode::operator=(const sceneNode& s) {
     Move Operator
 -------------------------------------*/
 sceneNode& sceneNode::operator=(sceneNode&& s) {
-    nodeMeshIndex = s.nodeMeshIndex;
-    s.nodeMeshIndex = 0;
-    
     nodeParent = s.nodeParent;
     s.nodeParent = nullptr;
     
     nodeName = std::move(s.nodeName);
     nodeTransform = std::move(s.nodeTransform);
+    nodeMeshes = std::move(s.nodeMeshes);
     nodeChildren = std::move(s.nodeChildren);
     
     return *this;
@@ -92,7 +89,12 @@ sceneNode& sceneNode::operator=(sceneNode&& s) {
     Reset
 -------------------------------------*/
 void sceneNode::reset() {
-    *this = std::move(sceneNode{});
+    nodeParent = nullptr;
+    
+    nodeName.clear();
+    nodeTransform = transform{};
+    nodeMeshes.clear();
+    nodeChildren.clear();
 }
 
 } // end draw namespace

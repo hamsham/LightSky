@@ -256,7 +256,7 @@ const void* tuple_t<data_t...>::getObjectAtIndex(unsigned index, unsigned offset
 template <typename... data_t>
 template <typename arg_t, typename... args_t> constexpr
 const void* tuple_t<data_t...>::getObjectAtIndex(unsigned index, unsigned offset, arg_t*, args_t*...) const {
-    return index == 0
+    return (index == 0)
         ? (const void*)(dataBuffer+offset)
         : getObjectAtIndex<args_t...>(index-1, sizeof(arg_t)+offset, ((args_t*)nullptr)...);
 }

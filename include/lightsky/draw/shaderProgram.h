@@ -93,7 +93,7 @@ class shaderProgram {
          * @return TRUE if the input shader units were successfully attached to
          * *this.
          */
-        bool attachShaders(const vertexShader& vs, const fragmentShader& fs);
+        bool init(const vertexShader& vs, const fragmentShader& fs);
         
         /**
          * Link the attached shader units to this and create an entire GPU-side

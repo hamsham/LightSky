@@ -21,15 +21,15 @@ class uiState final : virtual public ls::game::gameState {
      */
     private:
         float                   secondTimer = 0.f;
+        ls::draw::atlas         fontAtlas   = {};
+        ls::draw::geometry      fontGeom    = {};
         ls::draw::shaderProgram fontProg    = {};
-        ls::draw::sceneManager* pScene      = nullptr;
         ls::draw::blendObject*  pBlender    = {};
         
         bool            initMemory          ();
         bool            initFileData        ();
         bool            initShaders         ();
-        bool            initDrawModels      ();
-        void            setRendererParams   ();
+        void            setRendererParams  ();
         
         std::string     getTimingStr        () const;
         

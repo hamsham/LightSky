@@ -14,14 +14,14 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=clang
-CCC=clang++
-CXX=clang++
+CC=gcc
+CCC=g++
+CXX=g++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=CLang-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/boundingBox.o \
 	${OBJECTDIR}/_ext/1019371010/camera.o \
 	${OBJECTDIR}/_ext/1019371010/color.o \
+	${OBJECTDIR}/_ext/1019371010/defaultRenderStage.o \
 	${OBJECTDIR}/_ext/1019371010/depthObject.o \
 	${OBJECTDIR}/_ext/1019371010/drawCommand.o \
 	${OBJECTDIR}/_ext/1019371010/fontResource.o \
@@ -48,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/geometry_utils.o \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
+	${OBJECTDIR}/_ext/1019371010/renderStage.o \
 	${OBJECTDIR}/_ext/1019371010/renderbuffer.o \
 	${OBJECTDIR}/_ext/1019371010/sceneGraph.o \
 	${OBJECTDIR}/_ext/1019371010/sceneMesh.o \
@@ -113,6 +115,11 @@ ${OBJECTDIR}/_ext/1019371010/color.o: ../src/draw/color.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/color.o ../src/draw/color.cpp
 
+${OBJECTDIR}/_ext/1019371010/defaultRenderStage.o: ../src/draw/defaultRenderStage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/defaultRenderStage.o ../src/draw/defaultRenderStage.cpp
+
 ${OBJECTDIR}/_ext/1019371010/depthObject.o: ../src/draw/depthObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
@@ -152,6 +159,11 @@ ${OBJECTDIR}/_ext/1019371010/matrixStack.o: ../src/draw/matrixStack.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/matrixStack.o ../src/draw/matrixStack.cpp
+
+${OBJECTDIR}/_ext/1019371010/renderStage.o: ../src/draw/renderStage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/renderStage.o ../src/draw/renderStage.cpp
 
 ${OBJECTDIR}/_ext/1019371010/renderbuffer.o: ../src/draw/renderbuffer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

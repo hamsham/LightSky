@@ -73,10 +73,9 @@ uiState::~uiState() {
 uiState& uiState::operator=(uiState&& state) {
     gameState::operator=(std::move(state));
     
+    fontAtlas = std::move(state.fontAtlas);
+    fontGeom = std::move(state.fontGeom);
     fontProg = std::move(state.fontProg);
-    
-    pScene = state.pScene;
-    state.pScene = nullptr;
     
     pBlender = std::move(state.pBlender);
     
@@ -87,13 +86,9 @@ uiState& uiState::operator=(uiState&& state) {
  * Allocate internal class memory
 -------------------------------------*/
 bool uiState::initMemory() {
-    pScene = new ls::draw::sceneManager{};
     pBlender = new ls::draw::blendObject{};
     
-    if (pScene == nullptr
-    ||  !pScene->init()
-    ||  !pBlender
-    ) {
+    if (!pBlender) {
         return false;
     }
     
@@ -106,22 +101,14 @@ bool uiState::initMemory() {
 bool uiState::initFileData() {
     
     ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
-    ls::draw::geometry* pFontMesh       = new ls::draw::geometry{};
-    ls::draw::atlas* pAtlas             = new ls::draw::atlas{};
-    bool ret                            = true;
+    bool ret = true;
     
     if (!pFontLoader
-    || !pFontMesh
-    || !pAtlas
     || !pFontLoader->loadFile(TEST_FONT_FILE)
-    || !pAtlas->init(*pFontLoader)
-    || !pFontMesh->init(*pAtlas, "Hello World")
+    || !fontAtlas.init(*pFontLoader)
+    || !fontGeom.init(fontAtlas, "Hello World")
     ) {
         ret = false;
-    }
-    else {
-        pScene->manageGeometry(pFontMesh);
-        pScene->manageAtlas(pAtlas);
     }
     
     delete pFontLoader;
@@ -136,8 +123,8 @@ bool uiState::initShaders() {
     ls::draw::vertexShader vertShader;
     ls::draw::fragmentShader fontFragShader;
 
-    if (!vertShader.compile(meshVSData)
-    ||  !fontFragShader.compile(fontFSData)
+    if (!vertShader.init(meshVSData)
+    ||  !fontFragShader.init(fontFSData)
     ) {
         return false;
     }
@@ -145,38 +132,13 @@ bool uiState::initShaders() {
         LOG_GL_ERR();
     }
     
-    if (!fontProg.attachShaders(vertShader, fontFragShader)
+    if (!fontProg.init(vertShader, fontFragShader)
     || !fontProg.link()) {
         return false;
     }
     else {
         LOG_GL_ERR();
     }
-    
-    return true;
-}
-
-/*-------------------------------------
- * Create the draw models that will be used for rendering
--------------------------------------*/
-bool uiState::initDrawModels() {
-    // font/text model
-    ls::draw::sceneNode* const pTextModel = new ls::draw::sceneNode{};
-    
-    if (pTextModel == nullptr) {
-        LS_LOG_ERR("Unable to generate test text model");
-        return false;
-    }
-    else {
-        pScene->manageModel(pTextModel);
-        ls::draw::geometry* const pTextMesh = pScene->getGeometryList()[0];
-        pTextModel->init(*pTextMesh, pScene->getAtlas(0)->getTexture());
-
-        math::mat4 modelMat = {1.f};
-        pTextModel->setNumInstances(1, &modelMat);
-    }
-    
-    LOG_GL_ERR();
     
     return true;
 }
@@ -196,14 +158,9 @@ void uiState::setRendererParams() {
  * Resources that were already allocated are removed during "onStop()"
 -------------------------------------*/
 bool uiState::onStart() {
-    if (!initMemory()) {
-        LS_LOG_ERR("An error occurred while initializing the batch state.");
-        return false;
-    }
-    
-    if (!initFileData()
+    if (!initMemory()
+    ||  !initFileData()
     ||  !initShaders()
-    ||  !initDrawModels()
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
         return false;
@@ -223,16 +180,9 @@ void uiState::onRun() {
     // Regenerate a string mesh using the frame's timing information.
     secondTimer += getParentSystem().getTickTime();
     if (secondTimer >= 1000) {
-        ls::draw::atlas* const pStringAtlas = pScene->getAtlas(0);
-        ls::draw::geometry* const pStringMesh = pScene->getGeometry(0);
         const std::string&& timingStr = getTimingStr();
-        pStringMesh->init(*pStringAtlas, timingStr);
+        fontGeom.init(fontAtlas, timingStr);
         secondTimer = 0;
-        
-        pScene->getModel(0)->init(
-            *pScene->getGeometry(0),
-            pScene->getAtlas(0)->getTexture()
-        );
     }
     
     drawScene();
@@ -251,10 +201,9 @@ void uiState::onPause() {
 void uiState::onStop() {
     secondTimer = 0.f;
     
+    fontAtlas.terminate();
+    fontGeom.terminate();
     fontProg.terminate();
-    
-    delete pScene;
-    pScene = nullptr;
     
     delete pBlender;
     pBlender = nullptr;
@@ -288,8 +237,8 @@ math::mat4 uiState::get2dViewport() const {
  * Update the renderer's viewport with the current window resolution
 -------------------------------------*/
 void uiState::resetGlViewport() {
-    ls::draw::renderer renderer;
-    renderer.setViewport(math::vec2i{0},global::pDisplay->getResolution());
+    const math::vec2i& displayRes = global::pDisplay->getResolution();
+    glViewport(0, 0, displayRes[0], displayRes[1]);
 }
 
 /*-------------------------------------
@@ -300,25 +249,21 @@ void uiState::drawScene() {
     resetGlViewport();
     
     fontProg.bind();
-    const GLint fontMvpId           = fontProg.getUniformLocation("vpMatrix");
-    const math::mat4&& orthoProj    = get2dViewport();
+    const GLint fontMvpId = fontProg.getUniformLocation("vpMatrix");
+    const math::mat4&& orthoProj = get2dViewport();
     fontProg.setUniformValue(fontMvpId, orthoProj);
     
     // setup some UI parameters with a resolution-independent model matrix
     const display& disp = *global::pDisplay;
-    const math::vec2&& res  = (math::vec2)disp.getResolution();
-    math::mat4 modelMat     = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
-    modelMat                = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
+    const math::vec2&& res = (math::vec2)disp.getResolution();
+    math::mat4 modelMat = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
     
-    // model 1 has the string mesh already bound
-    ls::draw::sceneNode* const pStringModel = pScene->getModelList()[0];
-    pStringModel->setNumInstances(1, &modelMat);
+    modelMat = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI
-    ls::draw::renderer renderer;
-    renderer.setDepthTesting(false);
+    glDisable(GL_DEPTH_TEST);
     pBlender->bind();
-    pStringModel->draw();
+    fontGeom.draw();
     pBlender->unbind();
-    renderer.setDepthTesting(true);
+    glEnable(GL_DEPTH_TEST);
 }

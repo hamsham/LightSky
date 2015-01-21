@@ -15,8 +15,9 @@
         <itemPath>../include/lightsky/draw/generic/geometry_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/imageResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/matrixStack_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/renderStage_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/renderbuffer_impl.h</itemPath>
-        <itemPath>../include/lightsky/draw/generic/renderer_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/sceneGraph_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/sceneMesh_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/sceneResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/shaderObject_impl.h</itemPath>
@@ -30,6 +31,7 @@
       <itemPath>../include/lightsky/draw/boundingBox.h</itemPath>
       <itemPath>../include/lightsky/draw/camera.h</itemPath>
       <itemPath>../include/lightsky/draw/color.h</itemPath>
+      <itemPath>../include/lightsky/draw/defaultRenderStage.h</itemPath>
       <itemPath>../include/lightsky/draw/depthObject.h</itemPath>
       <itemPath>../include/lightsky/draw/draw.h</itemPath>
       <itemPath>../include/lightsky/draw/drawCommand.h</itemPath>
@@ -39,8 +41,8 @@
       <itemPath>../include/lightsky/draw/geometry_utils.h</itemPath>
       <itemPath>../include/lightsky/draw/imageResource.h</itemPath>
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
+      <itemPath>../include/lightsky/draw/renderStage.h</itemPath>
       <itemPath>../include/lightsky/draw/renderbuffer.h</itemPath>
-      <itemPath>../include/lightsky/draw/renderer.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneGraph.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneMesh.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneNode.h</itemPath>
@@ -66,6 +68,7 @@
       <itemPath>../src/draw/boundingBox.cpp</itemPath>
       <itemPath>../src/draw/camera.cpp</itemPath>
       <itemPath>../src/draw/color.cpp</itemPath>
+      <itemPath>../src/draw/defaultRenderStage.cpp</itemPath>
       <itemPath>../src/draw/depthObject.cpp</itemPath>
       <itemPath>../src/draw/drawCommand.cpp</itemPath>
       <itemPath>../src/draw/fontResource.cpp</itemPath>
@@ -74,6 +77,7 @@
       <itemPath>../src/draw/geometry_utils.cpp</itemPath>
       <itemPath>../src/draw/imageResource.cpp</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
+      <itemPath>../src/draw/renderStage.cpp</itemPath>
       <itemPath>../src/draw/renderbuffer.cpp</itemPath>
       <itemPath>../src/draw/sceneGraph.cpp</itemPath>
       <itemPath>../src/draw/sceneMesh.cpp</itemPath>
@@ -174,6 +178,11 @@
       </item>
       <item path="../include/lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/defaultRenderStage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/depthObject.h"
             ex="false"
             tool="3"
@@ -246,12 +255,17 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/renderStage_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/renderbuffer_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/renderer_impl.h"
+      <item path="../include/lightsky/draw/generic/sceneGraph_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -311,12 +325,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/renderbuffer.h"
+      <item path="../include/lightsky/draw/renderStage.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/renderer.h"
+      <item path="../include/lightsky/draw/renderbuffer.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -382,6 +396,8 @@
       </item>
       <item path="../src/draw/color.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/defaultRenderStage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/drawCommand.cpp" ex="false" tool="1" flavor2="0">
@@ -397,6 +413,8 @@
       <item path="../src/draw/imageResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/renderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -500,6 +518,11 @@
       </item>
       <item path="../include/lightsky/draw/color.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/defaultRenderStage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/depthObject.h"
             ex="false"
             tool="3"
@@ -572,12 +595,17 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/renderStage_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/renderbuffer_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/generic/renderer_impl.h"
+      <item path="../include/lightsky/draw/generic/sceneGraph_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -637,12 +665,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/renderbuffer.h"
+      <item path="../include/lightsky/draw/renderStage.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/renderer.h"
+      <item path="../include/lightsky/draw/renderbuffer.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -708,6 +736,8 @@
       </item>
       <item path="../src/draw/color.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/defaultRenderStage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/drawCommand.cpp" ex="false" tool="1" flavor2="0">
@@ -723,6 +753,8 @@
       <item path="../src/draw/imageResource.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/renderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/renderbuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>

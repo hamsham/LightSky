@@ -14,14 +14,14 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=clang
-CCC=clang++
-CXX=clang++
+CC=gcc
+CCC=g++
+CXX=g++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=CLang-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -57,11 +57,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightGame/build/liblightgame.a ../../LightDraw/build/liblightdraw.a ../../LightMath/build/liblightmath.a ../../LightUtils/build/liblightutils.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2main -lSDL2 -lassimp
+LDLIBSOPTIONS=../../LightScript/build/liblightscript.a ../../LightGame/build/liblightgame.a ../../LightDraw/build/liblightdraw.a ../../LightMath/build/liblightmath.a ../../LightUtils/build/liblightutils.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2main -lSDL2 -lassimp
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test
+
+fb_test: ../../LightScript/build/liblightscript.a
 
 fb_test: ../../LightGame/build/liblightgame.a
 

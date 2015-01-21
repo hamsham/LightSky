@@ -24,69 +24,12 @@ enum {
     TEST_NOISE_SAMPLES = 32
 };
 
-#define TEST_PROJECTION_FOV 60.f
-#define TEST_PROJECTION_NEAR 0.01f
-#define TEST_PROJECTION_FAR 10.f
-#define TEST_INSTANCE_RADIUS 0.5f
 
-#define VP_MATRIX_UNIFORM "vpMatrix"
-#define CAMERA_POSITION_UNIFORM "camPos"
-
-/*-----------------------------------------------------------------------------
- * This shader uses a Logarithmic Z-Buffer, thanks to
- * http://www.gamasutra.com/blogs/BranoKemen/20090812/2725/Logarithmic_Depth_Buffer.php
------------------------------------------------------------------------------*/
-static const char meshVSData[] = R"***(
-#version 330 core
-
-layout (location = 0) in vec3 inPos;
-layout (location = 1) in vec2 inUv;
-layout (location = 2) in vec3 inNorm;
-layout (location = 3) in mat4 inModelMat;
-
-uniform mat4 vpMatrix;
-uniform vec3 camPos = vec3(0.0, 0.0, 1.0);
-
-out vec3 eyeDir;
-out vec3 nrmCoords;
-out vec2 uvCoords;
-
-const float NEAR = 1.0;
-const float FAR = 10.0;
-
-void main() {
-    mat4 mvpMatrix = vpMatrix * inModelMat;
-    gl_Position = mvpMatrix * vec4(inPos, 1.0);
-    gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
-    
-    // Use this to make the camera act as either a specular or point light
-    //eyeDir = camPos - inPos;
-
-    eyeDir = camPos;
-    nrmCoords = inNorm;
-    uvCoords = inUv;
-}
-)***";
-
-/*-----------------------------------------------------------------------------
- * Testing Alpha Masking for font rendering.
------------------------------------------------------------------------------*/
-static const char meshFSData[] = R"***(
-#version 330 core
-
-in vec3 eyeDir;
-in vec3 nrmCoords;
-in vec2 uvCoords;
-
-uniform sampler2D tex;
-
-out vec4 outFragCol;
-
-void main() {
-    float lightIntensity = dot(eyeDir, normalize(nrmCoords));
-    outFragCol = texture(tex, uvCoords).rrra * lightIntensity;
-}
-)***";
+static constexpr float TEST_PROJECTION_FOV = 60.f;
+static constexpr float TEST_PROJECTION_NEAR = 0.01f;
+static constexpr float TEST_PROJECTION_FAR = 10.f;
+static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
+static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
 
 /*-----------------------------------------------------------------------------
  * Tests for loading perlin noise on another thread
@@ -133,18 +76,18 @@ fbState::~fbState() {
 fbState& fbState::operator=(fbState&& state) {
     gameState::operator=(std::move(state));
     
-    meshProg = std::move(state.meshProg);
+    pControlState = state.pControlState;
+    pControlState->setFramebufferState(this);
+    state.pControlState = nullptr;
     
     testFb = std::move(state.testFb);
-    
-    pMatStack = state.pMatStack;
-    state.pMatStack = nullptr;
+    testRb = std::move(state.testRb);
     
     pScene = state.pScene;
     state.pScene = nullptr;
     
-    pModelMatrices = state.pModelMatrices;
-    state.pModelMatrices = nullptr;
+    pScene = state.pScene;
+    state.pScene = nullptr;
     
     fbRes = state.fbRes;
     state.fbRes = math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
@@ -161,25 +104,22 @@ fbState& fbState::operator=(fbState&& state) {
  * Allocate internal class memory
 -------------------------------------*/
 bool fbState::initMemory() {
-    pMatStack       = new draw::matrixStack{};
-    pScene          = new draw::sceneManager{};
-    pModelMatrices  = new math::mat4[TEST_MAX_SCENE_INSTANCES];
+    pScene = new draw::sceneGraph{};
+    pRenderer = new draw::defaultRenderStage{};
     
-    if (pMatStack == nullptr
-    ||  pScene == nullptr
-    ||  !pScene->init()
-    ||  pModelMatrices == nullptr
+    if (!pScene
+    ||  !pRenderer
+    || !pRenderer->init()
     ||  !testFb.init()
     ) {
         return false;
     }
     
-    futureNoise = std::move(std::async(
-        std::launch::async,
-        &generateNoiseTexture,
-        (int)TEST_NOISE_RESOLUTION,
-        (int)TEST_NOISE_RESOLUTION
-    ));
+    futureNoise = std::move(
+        std::async(std::launch::async, &generateNoiseTexture, TEST_NOISE_RESOLUTION, TEST_NOISE_RESOLUTION)
+    );
+    
+    // prepare an initial perlin noise texture.
     while (futureNoise.wait_for(std::chrono::seconds{0}) != std::future_status::ready) {
         continue;
     }
@@ -193,25 +133,21 @@ bool fbState::initMemory() {
 bool fbState::initFileData() {
     
     draw::sceneResource* pMeshLoader = new draw::sceneResource{};
-    draw::geometry* pSphereMesh     = new draw::geometry{};
-    draw::texture* pColorTex       = new draw::texture{};
-    draw::texture* noiseTex         = new draw::texture{};
-    bool ret                        = true;
+    draw::texture* pColorTex = new draw::texture{};
+    draw::texture* noiseTex = new draw::texture{};
+    bool ret = true;
     
     if (!pMeshLoader
-    || !pSphereMesh
-    //|| !pMeshLoader->loadSphere(16)
-    || !pMeshLoader->loadFile("./testmesh.dae")
-    || !pSphereMesh->init(*pMeshLoader)
+    || !pMeshLoader->loadFile(TEST_SCENE_FILE)
+    || !pScene->init(*pMeshLoader)
     || !pColorTex->init(draw::COLOR_FMT_DEFAULT, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})
     || !noiseTex->init(0, draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, nullptr)
     ) {
         ret = false;
     }
     else {
-        pScene->manageGeometry(pSphereMesh); // test data at the mesh index 0
-        pScene->manageTexture(pColorTex);
-        pScene->manageTexture(noiseTex); // test texture at index 2
+        pScene->getTextureList().push_back(pColorTex);
+        pScene->getTextureList().push_back(noiseTex); // last texture in the scene's texture list.
         
          // initialize the perlin noise texture
         regenerateNoise();
@@ -232,124 +168,19 @@ void fbState::regenerateNoise() {
     
     std::vector<float>&& noiseTable = futureNoise.get();
     
-    draw::texture* const pTexture = pScene->getTexture(1);
-    pTexture->bind();
-    pTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, noiseTable.data());
+    draw::texture* const pPerlinTexture = pScene->getTextureList().back();
+    pPerlinTexture->bind();
+    pPerlinTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, noiseTable.data());
     
-    pTexture->setParameter(draw::TEX_PARAM_MIN_FILTER,  draw::TEX_FILTER_LINEAR);
-    pTexture->setParameter(draw::TEX_PARAM_MAG_FILTER,  draw::TEX_FILTER_LINEAR);
-    pTexture->setParameter(draw::TEX_PARAM_WRAP_S,      draw::TEX_PARAM_REPEAT);
-    pTexture->setParameter(draw::TEX_PARAM_WRAP_T,      draw::TEX_PARAM_REPEAT);
-    pTexture->unbind();
+    pPerlinTexture->setParameter(draw::TEX_PARAM_MIN_FILTER,  draw::TEX_FILTER_LINEAR);
+    pPerlinTexture->setParameter(draw::TEX_PARAM_MAG_FILTER,  draw::TEX_FILTER_LINEAR);
+    pPerlinTexture->setParameter(draw::TEX_PARAM_WRAP_S,      draw::TEX_PARAM_REPEAT);
+    pPerlinTexture->setParameter(draw::TEX_PARAM_WRAP_T,      draw::TEX_PARAM_REPEAT);
+    pPerlinTexture->unbind();
     
-    futureNoise = std::move(std::async(
-        std::launch::async,
-        &generateNoiseTexture,
-        (int)TEST_NOISE_RESOLUTION,
-        (int)TEST_NOISE_RESOLUTION
-    ));
-}
-
-/*-------------------------------------
- * Initialize the model, view, and projection matrices
--------------------------------------*/
-bool fbState::initMatrices() {
-    const math::vec2&& aspect = (math::vec2)global::pDisplay->getResolution();
-    
-    // setup the matrix stacks
-    pMatStack->loadMatrix(
-        draw::MATRIX_USE_PROJECTION,
-        math::perspective(
-            TEST_PROJECTION_FOV, aspect[0]/aspect[1],
-            TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
-        )
+    futureNoise = std::move(
+        std::async(std::launch::async, &generateNoiseTexture, TEST_NOISE_RESOLUTION, TEST_NOISE_RESOLUTION)
     );
-    pMatStack->loadMatrix(
-        draw::MATRIX_USE_VIEW,
-        math::lookAt(math::vec3((float)TEST_MAX_SCENE_OBJECTS), math::vec3{0.f}, math::vec3{0.f, 1.f, 0.f})
-    );
-    pMatStack->constructVp();
-    
-    meshProg.bind();
-    const GLint mvpId = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
-    LOG_GL_ERR();
-    
-    if (mvpId == -1) {
-        return false;
-    }
-    else {
-        meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
-    }
-    
-    // initialize the test mesh translations
-    unsigned matIter = 0;
-    const int numObjects = TEST_MAX_SCENE_OBJECTS/2;
-    for (int i = -numObjects; i < numObjects; ++i) {
-        for (int j = -numObjects; j < numObjects; ++j) {
-            for (int k = -numObjects; k < numObjects; ++k) {
-                pModelMatrices[matIter] = math::translate(
-                    math::mat4{TEST_INSTANCE_RADIUS}, math::vec3{
-                        (float)i*TEST_MAX_SCENE_OBJECTS,
-                        (float)j*TEST_MAX_SCENE_OBJECTS,
-                        (float)k*TEST_MAX_SCENE_OBJECTS
-                    }
-                );
-                ++matIter;
-            }
-        }
-    }
-    
-    return true;
-}
-
-/*-------------------------------------
- * Initialize the program shaders
--------------------------------------*/
-bool fbState::initShaders() {
-    draw::vertexShader vertShader;
-    draw::fragmentShader fragShader;
-
-    if (!vertShader.compile(meshVSData)
-    ||  !fragShader.compile(meshFSData)
-    ) {
-        return false;
-    }
-    else {
-        LOG_GL_ERR();
-    }
-    
-    if (!meshProg.attachShaders(vertShader, fragShader) || !meshProg.link()) {
-        return false;
-    }
-    else {
-        LOG_GL_ERR();
-    }
-    
-    return true;
-}
-
-/*-------------------------------------
- * Create the draw models that will be used for rendering
--------------------------------------*/
-bool fbState::initDrawModels() {
-    draw::sceneNode* const pModel = new draw::sceneNode{};
-    if (pModel == nullptr) {
-        LS_LOG_ERR("Unable to generate test draw model");
-        return false;
-    }
-    else {
-        draw::geometry* const pMesh = pScene->getGeometry(0);
-        draw::texture* const pTexture = pScene->getTexture(1);
-        pModel->init(*pMesh, *pTexture);
-        
-        // lights, camera, batch!
-        pModel->setNumInstances(TEST_MAX_SCENE_INSTANCES, pModelMatrices);
-        pScene->manageModel(pModel);
-    }
-    
-    LOG_GL_ERR();
-    
-    return true;
 }
 
 /*-------------------------------------
@@ -360,7 +191,9 @@ bool fbState::initFramebuffers() {
         LS_LOG_ERR("An Error occurred while creating the test depth buffer.");
         return false;
     }
-    draw::texture* const pColorTex = pScene->getTexture(0);
+    
+    std::vector<draw::texture*>& texList = pScene->getTextureList();
+    draw::texture* const pColorTex = texList[texList.size()-2];
     
     // setup the test framebuffer depth texture
     LOG_GL_ERR();
@@ -395,12 +228,16 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 -------------------------------------*/
 void fbState::setRendererParams() {
+    draw::camera* const pMainCam = pScene->getCameraList().front();
+    pMainCam->setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
+    pMainCam->makePerspective();
+    
     constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
     
-    draw::renderer renderer;
-    renderer.setDepthTesting(true);
-    renderer.setFaceCulling(true);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 }
 
 /*-------------------------------------
@@ -422,16 +259,9 @@ bool fbState::onStart() {
         }
     }
     
-    if (!initMemory()) {
-        LS_LOG_ERR("An error occurred while initializing the batch state.");
-        return false;
-    }
-    
-    if (!initFileData()
-    ||  !initShaders()
+    if (!initMemory()
+    ||  !initFileData()
     ||  !initFramebuffers()
-    ||  !initMatrices()
-    ||  !initDrawModels()
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
         return false;
@@ -448,33 +278,21 @@ bool fbState::onStart() {
  * Running state
 -------------------------------------*/
 void fbState::onRun() {
-    // Meshes all contain their own model matrices. no need to use the ones in
-    // the matrix stack. Just greab the view matrix
-    pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
-    pMatStack->constructVp();
+    draw::camera* pMainCam = pScene->getCameraList().front();
+    pMainCam->setOrientation(orientation);
     
-    const math::mat4& viewDir = pMatStack->getMatrix(draw::MATRIX_USE_VIEW);
-    const math::vec3 camPos = math::vec3{viewDir[0][2], viewDir[1][2], viewDir[2][2]};
-    
-    meshProg.bind();
-    const GLuint mvpId = meshProg.getUniformLocation(CAMERA_POSITION_UNIFORM);
-    meshProg.setUniformValue(mvpId, camPos);
-    
+    pScene->update(this->getParentSystem().getTickTime());
     drawScene();
-    
-    pMatStack->popMatrix(draw::MATRIX_USE_VIEW);
 }
 
 /*-------------------------------------
  * Pausing state
 -------------------------------------*/
-void fbState::onPause() {    
-    pMatStack->pushMatrix(draw::MATRIX_USE_VIEW, math::quatToMat4(orientation));
-    pMatStack->constructVp();
+void fbState::onPause() {
+    draw::camera* pMainCam = pScene->getCameraList().front();
+    pMainCam->setOrientation(orientation);
     
     drawScene();
-    
-    pMatStack->popMatrix(draw::MATRIX_USE_VIEW);
 }
 
 /*-------------------------------------
@@ -486,25 +304,19 @@ void fbState::onStop() {
         pControlState = nullptr;
     }
     
-    meshProg.terminate();
-    
     testRb.terminate();
     testFb.terminate();
     
-    orientation = math::quat{0.f, 0.f, 0.f, 1.f};
-
-    delete pMatStack;
-    pMatStack = nullptr;
-
     delete pScene;
     pScene = nullptr;
-
-    delete [] pModelMatrices;
-    pModelMatrices = nullptr;
     
-    futureNoise.wait();
+    delete pRenderer;
+    pRenderer = nullptr;
     
     fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
+    orientation = math::quat{0.f, 0.f, 0.f, 1.f};
+    
+    futureNoise.wait();
 }
 
 /*-------------------------------------
@@ -525,8 +337,7 @@ void fbState::drawScene() {
     LOG_GL_ERR();
     
     // setup a viewport for a custom framebuffer
-    draw::renderer renderer;
-    renderer.setViewport(math::vec2i{0}, fbRes);
+    glViewport(0, 0, fbRes[0], fbRes[1]);
 
     // use render to the framebuffer's color attachment
     static const draw::fbo_attach_t fboDrawAttachments[] = {draw::FBO_ATTACHMENT_0};
@@ -537,14 +348,8 @@ void fbState::drawScene() {
     testFb.setDrawTargets(1, fboDrawAttachments);
     testFb.clear((draw::fbo_mask_t)(draw::FBO_DEPTH_BIT | draw::FBO_COLOR_BIT));
     
-    // setup a view matrix for the opaque mesh shader
-    meshProg.bind();
-    const GLuint mvpId = meshProg.getUniformLocation(VP_MATRIX_UNIFORM);
-    meshProg.setUniformValue(mvpId, pMatStack->getVpMatrix());
-    
     // draw a test mesh
-    draw::sceneNode* const pTestModel = pScene->getModelList()[0];
-    pTestModel->draw();
+    pRenderer->draw(*pScene);
     
     // restore draw operations to the default GL framebuffer
     testFb.unbind();
@@ -575,23 +380,19 @@ void fbState::moveCamera(const math::vec3& deltaPos) {
         math::dot(math::getAxisZ(orientation), deltaPos)
     };
     
-    const math::mat4& viewMatrix = pMatStack->getMatrix(draw::MATRIX_USE_VIEW);
-    const math::mat4&& movement = math::translate(viewMatrix, translation);
-    pMatStack->loadMatrix(draw::MATRIX_USE_VIEW, movement);
+    draw::camera* pMainCam = pScene->getCameraList().front();
+    pMainCam->move(translation);
 }
 
 /*-------------------------------------
  * Update the renderer's viewport with the current window resolution
 -------------------------------------*/
 void fbState::resizeFramebuffer(const math::vec2i& res) {
-    draw::renderer renderer;
-    renderer.setViewport(math::vec2i{0}, res);
+    glViewport(0, 0, res[0], res[1]);
     
-    const math::mat4&& projection  = math::perspective(
-        TEST_PROJECTION_FOV, (float)res[0]/res[1],
-        TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR
-    );
-    pMatStack->loadMatrix(draw::MATRIX_USE_PROJECTION, projection);
+    draw::camera* pMainCam = pScene->getCameraList().front();
+    pMainCam->setProjectionParams(TEST_PROJECTION_FOV, res[0], res[1], TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
+    pMainCam->makePerspective();
 }
 
 /*-------------------------------------
@@ -604,7 +405,8 @@ void fbState::scaleFramebuffer(const int deltaScale) {
     fbRes[0] = math::clamp(fbRes[0], (int)TEST_FRAMEBUFFER_WIDTH, displayRes[0]);
     fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
     
-    draw::texture* pColorTex = pScene->getTexture(0);
+    std::vector<draw::texture*>& texList = pScene->getTextureList();
+    draw::texture* pColorTex = texList[texList.size()-2];
     
     testFb.bind();
     LOG_GL_ERR();

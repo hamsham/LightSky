@@ -55,7 +55,7 @@ void shaderProgram::terminate() {
 /*-------------------------------------
     Attaching Shaders
 -------------------------------------*/
-bool shaderProgram::attachShaders(
+bool shaderProgram::init(
     const vertexShader& vs,
     const fragmentShader& fs
 ) {

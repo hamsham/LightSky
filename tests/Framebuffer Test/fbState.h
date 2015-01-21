@@ -54,12 +54,10 @@ class fbState final : virtual public ls::game::gameState {
     private:
         controlState*           pControlState   = nullptr;
         float                   secondTimer     = 0.f;
-        ls::draw::shaderProgram meshProg        = {};
         ls::draw::framebuffer   testFb          = {};
         ls::draw::renderbuffer  testRb          = {};
-        ls::draw::matrixStack*  pMatStack       = nullptr;
-        ls::draw::sceneManager* pScene          = nullptr;
-        math::mat4*             pModelMatrices  = nullptr;
+        ls::draw::sceneGraph*   pScene          = nullptr;
+        ls::draw::defaultRenderStage* pRenderer = nullptr;
         math::vec2i             fbRes           = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         math::quat              orientation     = {};
         
@@ -70,9 +68,7 @@ class fbState final : virtual public ls::game::gameState {
         
         bool            initMemory              ();
         bool            initFileData            ();
-        bool            initShaders             ();
-        bool            initMatrices            ();
-        bool            initDrawModels          ();
+        bool            initRenderer            ();
         bool            initFramebuffers        ();
         void            setRendererParams       ();
         

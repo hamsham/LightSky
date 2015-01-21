@@ -96,7 +96,7 @@ inline void geometry::draw(const draw_index_pair_t& indexPair) const {
     tempCommand.first = indexPair.first;
     tempCommand.count = indexPair.count;
 
-    ibo.isValid() ? drawParams.draw(vbo, ibo) : drawParams.draw(vbo);
+    ibo.isValid() ? tempCommand.draw(vbo, ibo) : tempCommand.draw(vbo);
 }
 
 } // end draw namespace

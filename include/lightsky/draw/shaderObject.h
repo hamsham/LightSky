@@ -101,7 +101,7 @@ class shaderObject {
          * @return TRUE if the shader was successfully compiled, FALSE if
          * otherwise.
          */
-        bool compile(const char* data, int size = 0);
+        bool init(const char* data, int size = 0);
         
         /**
          * Get a shader's GPU-assigned ID

@@ -11,13 +11,13 @@
 #include <vector>
 #include <deque>
 
-#include "lightsky/draw/sceneMesh.h"
 #include "lightsky/draw/transform.h"
 
 namespace ls {
 namespace draw {
 
 struct sceneNode;
+class sceneMesh;
 
 typedef std::deque<sceneNode> scene_node_list_t;
 

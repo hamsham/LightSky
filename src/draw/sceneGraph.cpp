@@ -61,8 +61,10 @@ sceneGraph& sceneGraph::operator=(sceneGraph&& s) {
 /*-------------------------------------
  * Scene Loading
 -------------------------------------*/
-bool sceneGraph::init(const sceneResource& r) {
-    terminate();
+bool sceneGraph::init(const sceneResource& r, bool append) {
+    if (append == false) {
+        terminate();
+    }
     
     LS_LOG_MSG("Attempting to initialize a scene graph from a scene resource.");
     
@@ -87,6 +89,11 @@ bool sceneGraph::init(const sceneResource& r) {
         return false;
     }
     
+    if (cameraList.empty()) {
+        camera* pCamera = new camera{};
+        cameraList.push_back(pCamera);
+    }
+    
     LS_LOG_MSG("\tSuccessfully initialized a scene graph from a scene resource.");
     
     return true;
@@ -96,13 +103,15 @@ bool sceneGraph::init(const sceneResource& r) {
  * Scene Geometry Loading
 -------------------------------------*/
 bool sceneGraph::importGeometry(const sceneResource& r) {
-    geometry* const pGeometry = new(std::nothrow) geometry{};
+    geometry* const pGeometry = new geometry{};
     
     if (!pGeometry) {
         LS_LOG_ERR("\tUnable to allocate geometry data while importing a scene resource.");
         return false;
     }
     else {
+        // add the geometry data the the back of geometryList in the event of
+        // an appended import.
         geometryList.push_back(pGeometry);
     }
     
@@ -122,7 +131,7 @@ bool sceneGraph::importMeshes(const sceneResource& r) {
     const draw_index_list_t& rIndexList = r.getMeshes();
     
     for (const draw_index_pair_t& rIndices : rIndexList) {
-        sceneMesh* const pMesh = new(std::nothrow) sceneMesh{};
+        sceneMesh* const pMesh = new sceneMesh{};
 
         if (!pMesh) {
             LS_LOG_ERR("\tUnable to allocate mesh data while importing a scene resource.");
@@ -136,6 +145,8 @@ bool sceneGraph::importMeshes(const sceneResource& r) {
             continue;
         }
         
+        // retrieve the last geometry object as it will contain the geometry
+        // data from an appended import.
         const geometry* const pGeometry = geometryList.back();
         if (!pMesh->init(*pGeometry)) {
             LS_LOG_ERR("\tUnable to initialize mesh data while importing a scene resource.");
@@ -157,26 +168,29 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
     nodeList.resize(nodeOffset + r.getNumNodes());
     
     rootNode.nodeChildren.push_back(&nodeList[nodeOffset]);
-    nodeList.back().nodeParent = &rootNode;
+    
+    if (nodeList.size()) {
+        nodeList[nodeOffset].nodeParent = &rootNode;
+    }
     
     for (unsigned i = 0; i < r.getNumNodes(); ++i) {
-        const sceneResource::resourceNode& rNode = r.getNodes()[i];
-        sceneNode& thisNode = nodeList[nodeOffset + i];
+        const sceneResource::resourceNode& importNode = r.getNodes()[i];
+        sceneNode& newNode = nodeList[nodeOffset + i];
         
-        thisNode.nodeParent = &nodeList[nodeOffset + rNode.parentIndex];
-        thisNode.nodeName = rNode.name;
+        newNode.nodeParent = &nodeList[nodeOffset + importNode.parentIndex];
+        newNode.nodeName = importNode.name;
         
-        thisNode.nodeMeshes.reserve(rNode.meshIndices.size());
-        for (unsigned meshIndex : rNode.meshIndices) {
-            thisNode.nodeMeshes.push_back(meshList[meshOffset + meshIndex]);
+        newNode.nodeMeshes.reserve(importNode.meshIndices.size());
+        for (unsigned meshIndex : importNode.meshIndices) {
+            newNode.nodeMeshes.push_back(meshList[meshOffset + meshIndex]);
         }
         
-        thisNode.nodeChildren.reserve(rNode.childIndices.size());
-        for (unsigned childIndex : rNode.childIndices) {
-            thisNode.nodeChildren.push_back(&nodeList[nodeOffset + childIndex]);
+        newNode.nodeChildren.reserve(importNode.childIndices.size());
+        for (unsigned childIndex : importNode.childIndices) {
+            newNode.nodeChildren.push_back(&nodeList[nodeOffset + childIndex]);
         }
         
-        thisNode.nodeTransform.setTransform(rNode.transform);
+        newNode.nodeTransform.setTransform(importNode.transform);
     }
     
     return true;
@@ -190,28 +204,62 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
  * overflow bug that used to occur, causing either a driver crash or kernel
  * panic.
 -------------------------------------*/
-/*
-void sceneGraph::updateScene(uint64_t millisElapsed) {
-    pCamera->update();
-
-    for (sceneNode& node : this->nodeList) {
-        updateSceneNode(millisElapsed, &node);
+void sceneGraph::update(uint64_t millisElapsed) {
+    camera* const pMainCam = cameraList.front();
+    
+    if (pMainCam) {
+        pMainCam->update();
     }
+    
+    // seed the node stack
+    const math::mat4& pRootTrans = rootNode.nodeTransform.getTransform();
+    updateStack.emplace(nodeStackInfo{&rootNode, 0, pRootTrans});
+
+    // iterate rather than recurse.
+    while (!updateStack.empty()) {
+
+        // pull off the top sceneNode and model matrix for updating.
+        nodeStackInfo& currentIter = updateStack.top();
+        sceneNode* const pNode = currentIter.pNode;
+        
+        // Meat & Potatoes
+        updateSceneNode(millisElapsed, *pNode);
+
+        // get a reference to the index of the currently selected child node.
+        unsigned& nextChildIndex = currentIter.childIter;
+
+        // check if the child node is valid, remove the current node if not
+        if (nextChildIndex < pNode->nodeChildren.size()) {
+            // increment the child reference to the next node.
+            sceneNode* pChild = pNode->nodeChildren[nextChildIndex++];
+
+            // push the next child node's matrix onto the stack
+            // augment it by the parent transform
+            const math::mat4& modelMat = updateStack.top().modelMatrix;
+            const math::mat4& childModelMat = pChild->nodeTransform.getTransform();
+
+            // stack the currently used node and push its next child onto the stack
+            updateStack.emplace(nodeStackInfo{pChild, 0, modelMat * childModelMat});
+        }
+        else {
+            updateStack.pop();
+        }
+    }
+
+    LS_DEBUG_ASSERT(updateStack.empty());
 }
-*/
 
 /*-------------------------------------
  * Individual node updating
 -------------------------------------*/
-/*
-void sceneGraph::updateSceneNode(uint64_t, sceneNode* const pNode) {
-    transform& modelTransform = pNode->nodeTransform;
+void sceneGraph::updateSceneNode(uint64_t millisElapsed, sceneNode& node) {
+    (void)millisElapsed;
+    transform& modelTransform = node.nodeTransform;
 
     if (modelTransform.isDirty()) {
         modelTransform.applyTransforms();
     }
 }
-*/
 
 /*-------------------------------------
  * Resource termination helper function.

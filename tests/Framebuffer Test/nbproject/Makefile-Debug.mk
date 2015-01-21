@@ -14,14 +14,14 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=clang
-CCC=clang++
-CXX=clang++
+CC=gcc
+CCC=g++
+CXX=g++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=CLang-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -57,11 +57,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2 -lSDL2main -lassimp
+LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2 -lSDL2main -lassimp
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug
+
+fb_test_debug: ../../LightScript/build/liblightscript_d.a
 
 fb_test_debug: ../../LightGame/build/liblightgame_d.a
 
@@ -106,7 +108,6 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -115,7 +116,6 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

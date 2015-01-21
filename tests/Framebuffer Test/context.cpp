@@ -9,7 +9,6 @@
 #include <GLES3/gl3.h>
 
 #include "lightsky/draw/color.h"
-#include "lightsky/draw/renderer.h"
 
 #include "main.h"
 #include "context.h"
@@ -72,8 +71,8 @@ bool context::init(const display& disp, bool useVsync) {
     
     // Quick setup in order to normalize OpenGL to the display coordinates.
     this->makeCurrent(disp);
-    ls::draw::renderer tempRenderer;
-    tempRenderer.setViewport(math::vec2i{0, 0}, disp.getResolution());
+    const math::vec2i&& displayRes = disp.getResolution();
+    glViewport(0, 0, displayRes[0], displayRes[1]);
     
     // Set the default back buffer color
     const ls::draw::color::color& mgcPnk = ls::draw::color::magenta;

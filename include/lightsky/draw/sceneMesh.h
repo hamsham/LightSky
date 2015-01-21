@@ -35,7 +35,7 @@ class sceneMesh {
          * @brief submeshIndices sets the specific indices of "pGeometry" that
          * will be rendered.
          */
-        draw_index_pair_t submeshIndices = {};
+        draw_index_pair_t submeshIndices = {0, 0};
         
         /**
          * @brief pTextures contains pointers to the textures which should be

@@ -79,6 +79,18 @@
           <output>fb_test_debug</output>
           <linkerLibItems>
             <linkerLibProjectItem>
+              <makeArtifact PL="../../LightScript"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="false"
+                            WD="../../LightScript"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="build/liblightscript_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
               <makeArtifact PL="../../LightGame"
                             CT="3"
                             CN="Debug"
@@ -119,7 +131,7 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="true"
+                            BL="false"
                             WD="../../LightUtils"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -218,6 +230,18 @@
           <output>fb_test</output>
           <stripSymbols>true</stripSymbols>
           <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../LightScript"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="false"
+                            WD="../../LightScript"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="build/liblightscript.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../../LightGame"
                             CT="3"

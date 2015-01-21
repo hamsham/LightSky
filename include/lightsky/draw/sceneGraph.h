@@ -8,6 +8,7 @@
 #ifndef __LS_DRAW_SCENE_GRAPH_H__
 #define	__LS_DRAW_SCENE_GRAPH_H__
 
+#include <stack>
 #include <vector>
 
 #include "lightsky/draw/sceneNode.h"
@@ -34,6 +35,25 @@ class sceneResource;
 -----------------------------------------------------------------------------*/
 class sceneGraph {
     private:
+        /**
+         * @brief The renderStackInfo struct is used specifically during draw
+         * operations in order to ensure scene geometry is properly transformed
+         * when drawn to a framebuffer.
+         */
+        struct nodeStackInfo {
+            sceneNode* pNode;
+            unsigned childIter;
+            math::mat4 modelMatrix;
+        };
+
+        /**
+         * @brief updateStack is an STL stack which maintains each scene node's
+         * hierarchy of parent->child transformations. It was made a class
+         * member rather than function variable due to the fact that STL
+         * containers keep their maximum size if reallocated.
+         */
+        std::stack<nodeStackInfo> updateStack;
+        
         /**
          * @brief rootNode
          *
@@ -83,9 +103,62 @@ class sceneGraph {
          */
         scene_node_list_t nodeList;
         
+        /**
+         * @brief Import a set of geometry into the scene graph.
+         * 
+         * @param r
+         * A constant reference to a scene resource object, containing geometry
+         * data which can be imported onto the GPU through *this.
+         * 
+         * @return TRUE if all geometry loaded onto the GPU correctly, FALSE if
+         * something went wrong.
+         */
         bool importGeometry(const sceneResource& r);
+        
+        /**
+         * @brief Initialize all mesh objects from the scene resource object
+         * into *this in order to draw geometry.
+         * 
+         * @param r
+         * A constant reference to a scene resource object containing valid mesh
+         * information.
+         * 
+         * @return TRUE if all mesh data loaded onto the GPU correctly, FALSE
+         * if something went wrong.
+         */
         bool importMeshes(const sceneResource& r);
+        
+        /**
+         * @brief Import the scene's node hierarchy from a scene resource
+         * object.
+         * 
+         * @param r
+         * A constant reference to a scene resource object containing a valid
+         * sceneNode hierarchy.
+         * 
+         * @param meshOffset
+         * The index offset to the last mesh in *this object's mesh array. This
+         * parameter will be greater than zero if the imported node hierarchy
+         * is appended to the scene graph's previous data set.
+         * 
+         * @return TRUE if all scene nodes from the resource object loaded
+         * successfully, FALSE if not.
+         */
         bool importNodes(const sceneResource& r, const unsigned meshOffset);
+    
+    protected:
+        /**
+         * @brief Update the animations and transformations for a single node
+         * in *this.
+         * 
+         * @param millisElapsed
+         * The number of milliseconds which have passed since the last call to
+         * "update()."
+         * 
+         * @param node
+         * A reference to the scene node object which is to be updated.
+         */
+        void updateSceneNode(uint64_t millisElapsed, sceneNode& node);
 
     public:
         /**
@@ -93,7 +166,7 @@ class sceneGraph {
          *
          * Releases all memory used by *this by calling "terminate()"
          */
-        ~sceneGraph();
+        virtual ~sceneGraph();
 
         /**
          * @brief Constructor
@@ -147,11 +220,16 @@ class sceneGraph {
          * @param r
          * A constant reference to a sceneResource object containing renderable
          * scene data.
+         * 
+         * @param append
+         * Set this parameter to TRUE if the imported scene resource object's
+         * data should be added to *this. Set this parameter to FALSE if the
+         * data in *this should be freed before importing.
          *
          * @return TRUE if all data was successfully loaded into *this and
          * the GPU, FALSE if not.
          */
-        bool init(const sceneResource& r);
+        bool init(const sceneResource& r, bool append = false);
 
         /**
          * @brief Release all memory and resources used by *this.
@@ -159,6 +237,15 @@ class sceneGraph {
          * This method will reset all parameters to their default values.
          */
         void terminate();
+        
+        /**
+         * @brief Update all animations and transformations in the scene.
+         * 
+         * @param millisElapsed
+         * The number of milliseconds which have passed since the last call to
+         * "update()."
+         */
+        void update(uint64_t millisElapsed);
 
         /**
          * @brief Retrieve the root node from which all scene data is based
@@ -258,92 +345,10 @@ class sceneGraph {
         scene_node_list_t& getNodeList();
 };
 
-/*-------------------------------------
- * Get the root node in *this (const).
--------------------------------------*/
-inline const sceneNode& sceneGraph::getRootNode() const {
-    return rootNode;
-}
-
-/*-------------------------------------
- * Get the root node in *this.
--------------------------------------*/
-inline sceneNode& sceneGraph::getRootNode() {
-    return rootNode;
-}
-
-/*-------------------------------------
- * Get the list of textures used in *this (const).
--------------------------------------*/
-inline const std::vector<texture*>& sceneGraph::getTextureList() const {
-    return textureList;
-}
-
-/*-------------------------------------
- * Get the list of textures used in *this
--------------------------------------*/
-inline std::vector<texture*>& sceneGraph::getTextureList() {
-    return textureList;
-}
-
-/*-------------------------------------
- * Get the list of geometry used in *this (const).
--------------------------------------*/
-inline const std::vector<geometry*>& sceneGraph::getGeometryList() const {
-    return geometryList;
-}
-
-/*-------------------------------------
- * Get the list of geometry used in *this
--------------------------------------*/
-inline std::vector<geometry*>& sceneGraph::getGeometryList() {
-    return geometryList;
-}
-
-/*-------------------------------------
- * Get the list of meshes used in *this (const).
--------------------------------------*/
-inline const std::vector<sceneMesh*>& sceneGraph::getMeshList() const {
-    return meshList;
-}
-
-/*-------------------------------------
- * Get the list of meshes used in *this
--------------------------------------*/
-inline std::vector<sceneMesh*>& sceneGraph::getMeshList() {
-    return meshList;
-}
-
-/*-------------------------------------
- * Get the list of nodes used in *this (const).
--------------------------------------*/
-inline const scene_node_list_t& sceneGraph::getNodeList() const {
-    return nodeList;
-}
-
-/*-------------------------------------
- * Get the list of nodes used in *this.
--------------------------------------*/
-inline scene_node_list_t& sceneGraph::getNodeList() {
-    return nodeList;
-}
-
-/*-------------------------------------
- * Get the camera transformation (const)
--------------------------------------*/
-inline const std::vector<camera*>& sceneGraph::getCameraList() const {
-    return cameraList;
-}
-
-/*-------------------------------------
- * Get the camera transformation
--------------------------------------*/
-inline std::vector<camera*>& sceneGraph::getCameraList() {
-    return cameraList;
-}
-
 } // end draw namepsace
 } // end ls namespace
+
+#include "lightsky/draw/generic/sceneGraph_impl.h"
 
 #endif	/* __LS_DRAW_SCENE_GRAPH_H__ */
 

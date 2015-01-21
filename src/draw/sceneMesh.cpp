@@ -42,7 +42,7 @@ sceneMesh::sceneMesh(sceneMesh&& m) :
     textureList{std::move(m.textureList)}
 {
     m.pGeometry = nullptr;
-    m.submeshIndices = {};
+    m.submeshIndices = {0, 0};
 }
 
 /*-------------------------------------
@@ -55,7 +55,7 @@ sceneMesh& sceneMesh::operator=(sceneMesh&& m) {
     vao = std::move(m.vao);
     
     submeshIndices = std::move(m.submeshIndices);
-    m.submeshIndices = {};
+    m.submeshIndices = {0, 0};
     
     textureList = std::move(m.textureList);
     

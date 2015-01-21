@@ -9,9 +9,7 @@
 
 #include "lightsky/utils/assertions.h"
 
-#include "lightsky/draw/color.h"
 #include "lightsky/draw/sceneNode.h"
-#include "lightsky/draw/vertex.h"
 
 namespace ls {
 namespace draw {

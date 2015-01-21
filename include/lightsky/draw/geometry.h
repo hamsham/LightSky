@@ -12,7 +12,6 @@
 
 #include "lightsky/draw/boundingBox.h"
 #include "lightsky/draw/drawCommand.h"
-#include "lightsky/draw/renderer.h"
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/vertex.h"
 #include "lightsky/draw/vertexBuffer.h"

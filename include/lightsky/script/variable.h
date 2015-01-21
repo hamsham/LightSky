@@ -339,7 +339,7 @@ class variable_t final : public variable {
             scriptHash_##varName, []()->ls::script::pointer_t<ls::script::variable> { \
                 return ls::script::pointer_t<ls::script::variable>{new scriptVar_##varName}; \
             } \
-        );
+        )
 
 #endif /* LS_SCRIPT_DEFINE_VAR */
 

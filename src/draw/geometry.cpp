@@ -97,7 +97,7 @@ bool geometry::init(const sceneResource& meshData) {
     // vbos are resized when any new data is pushed into them
 
     LOG_GL_ERR();
-    LS_LOG_MSG("Attempting to send mesh vertices to the GPU.");
+    LS_LOG_MSG("Attempting to send geometry data to the GPU.");
 
     if (!vbo.init()) {
         LS_LOG_ERR("\tUnable to initialize a geometry vertex buffer.\n");

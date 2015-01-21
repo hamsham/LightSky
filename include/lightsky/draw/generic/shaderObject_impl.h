@@ -53,7 +53,7 @@ inline void shaderObject<shaderType>::terminate() {
     Shader Loading
 -------------------------------------*/
 template <shader_stage_t shaderType>
-bool shaderObject<shaderType>::compile(const char* data, int size) {
+bool shaderObject<shaderType>::init(const char* data, int size) {
     LS_LOG_MSG("Attempting to load a shader object.");
     
     terminate();

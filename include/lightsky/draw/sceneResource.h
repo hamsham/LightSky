@@ -48,11 +48,11 @@ class sceneResource final : public utils::resource {
          * to instantiate all of the sceneNode objects within a sceneGraph.
          */
         struct resourceNode {
-            unsigned parentIndex; // index in "nodeList" where the parent is.
-            std::string name;
-            std::vector<unsigned> meshIndices; // indices for referencing values in "meshList"
-            std::vector<unsigned> childIndices; // indices for referencing nodes in "nodeList"
-            math::mat4 transform; // use to build a ls::draw::transform. this is non-accumulated.
+            unsigned parentIndex = 0; // index in "nodeList" where the parent is.
+            std::string name = "";
+            std::vector<unsigned> meshIndices = {}; // indices for referencing values in "meshList"
+            std::vector<unsigned> childIndices = {}; // indices for referencing nodes in "nodeList"
+            math::mat4 transform = {}; // use to build a ls::draw::transform. this is non-accumulated.
         };
         
     private:

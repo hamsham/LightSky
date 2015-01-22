@@ -26,8 +26,8 @@ enum {
 
 
 static constexpr float TEST_PROJECTION_FOV = 60.f;
-static constexpr float TEST_PROJECTION_NEAR = 0.01f;
-static constexpr float TEST_PROJECTION_FAR = 10.f;
+static constexpr float TEST_PROJECTION_NEAR = 0.1f;
+static constexpr float TEST_PROJECTION_FAR = 100.f;
 static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
 static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
 
@@ -86,14 +86,11 @@ fbState& fbState::operator=(fbState&& state) {
     pScene = state.pScene;
     state.pScene = nullptr;
     
-    pScene = state.pScene;
-    state.pScene = nullptr;
+    pRenderer = state.pRenderer;
+    state.pRenderer = nullptr;
     
     fbRes = state.fbRes;
     state.fbRes = math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
-    
-    orientation = state.orientation;
-    state.orientation = math::quat{};
     
     futureNoise = std::move(state.futureNoise);
     
@@ -138,7 +135,8 @@ bool fbState::initFileData() {
     bool ret = true;
     
     if (!pMeshLoader
-    || !pMeshLoader->loadFile(TEST_SCENE_FILE)
+    //|| !pMeshLoader->loadFile(TEST_SCENE_FILE)
+    || !pMeshLoader->loadSphere(32)
     || !pScene->init(*pMeshLoader)
     || !pColorTex->init(draw::COLOR_FMT_DEFAULT, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})
     || !noiseTex->init(0, draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, nullptr)
@@ -148,6 +146,7 @@ bool fbState::initFileData() {
     else {
         pScene->getTextureList().push_back(pColorTex);
         pScene->getTextureList().push_back(noiseTex); // last texture in the scene's texture list.
+        pScene->getMeshList().back()->addTexture(*noiseTex);
         
          // initialize the perlin noise texture
         regenerateNoise();
@@ -231,6 +230,9 @@ void fbState::setRendererParams() {
     draw::camera* const pMainCam = pScene->getCameraList().front();
     pMainCam->setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
     pMainCam->makePerspective();
+    pMainCam->lockYAxis(true);
+    pMainCam->setViewMode(draw::camera_view_t::VIEW_NORMAL);
+    pMainCam->lookAt(math::vec3{5.f}, math::vec3{0.f});
     
     constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
@@ -278,9 +280,6 @@ bool fbState::onStart() {
  * Running state
 -------------------------------------*/
 void fbState::onRun() {
-    draw::camera* pMainCam = pScene->getCameraList().front();
-    pMainCam->setOrientation(orientation);
-    
     pScene->update(this->getParentSystem().getTickTime());
     drawScene();
 }
@@ -289,9 +288,6 @@ void fbState::onRun() {
  * Pausing state
 -------------------------------------*/
 void fbState::onPause() {
-    draw::camera* pMainCam = pScene->getCameraList().front();
-    pMainCam->setOrientation(orientation);
-    
     drawScene();
 }
 
@@ -314,7 +310,6 @@ void fbState::onStop() {
     pRenderer = nullptr;
     
     fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
-    orientation = math::quat{0.f, 0.f, 0.f, 1.f};
     
     futureNoise.wait();
 }
@@ -338,18 +333,26 @@ void fbState::drawScene() {
     
     // setup a viewport for a custom framebuffer
     glViewport(0, 0, fbRes[0], fbRes[1]);
+    LOG_GL_ERR();
 
     // use render to the framebuffer's color attachment
     static const draw::fbo_attach_t fboDrawAttachments[] = {draw::FBO_ATTACHMENT_0};
 
     // setup the framebuffer for draw operations
     testFb.setAccessType(draw::FBO_ACCESS_W);
+    LOG_GL_ERR();
     testFb.bind();
+    LOG_GL_ERR();
     testFb.setDrawTargets(1, fboDrawAttachments);
+    LOG_GL_ERR();
     testFb.clear((draw::fbo_mask_t)(draw::FBO_DEPTH_BIT | draw::FBO_COLOR_BIT));
+    LOG_GL_ERR();
     
     // draw a test mesh
+    pRenderer->bind();
+    LOG_GL_ERR();
     pRenderer->draw(*pScene);
+    pRenderer->unbind();
     
     // restore draw operations to the default GL framebuffer
     testFb.unbind();
@@ -373,15 +376,9 @@ void fbState::drawScene() {
 /*-------------------------------------
  * Camera movement
 -------------------------------------*/
-void fbState::moveCamera(const math::vec3& deltaPos) {    
-    const math::vec3&& translation = {
-        math::dot(math::getAxisX(orientation), deltaPos),
-        math::dot(math::getAxisY(orientation), deltaPos),
-        math::dot(math::getAxisZ(orientation), deltaPos)
-    };
-    
+void fbState::moveCamera(const math::vec3& deltaPos) {
     draw::camera* pMainCam = pScene->getCameraList().front();
-    pMainCam->move(translation);
+    pMainCam->move(deltaPos);
 }
 
 /*-------------------------------------
@@ -434,15 +431,6 @@ void fbState::scaleFramebuffer(const int deltaScale) {
  * Mouse Move Event
 -------------------------------------*/
 void fbState::rotateCamera(const math::vec3& deltaAngle) {
-    // Always lerp to the new mouse position
-    const math::quat&& lerpX = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{deltaAngle[1], 0.f, 0.f, 1.f}, 1.f
-    );
-    
-    const math::quat&& lerpY = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{0.f, deltaAngle[0], 0.f, 1.f}, 1.f
-    );
-        
-    orientation *= lerpY * lerpX;
-    orientation = math::normalize(orientation);
+    draw::camera* pMainCam = pScene->getCameraList().front();
+    pMainCam->rotate(deltaAngle);
 }

@@ -220,10 +220,9 @@ void controlState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // the mouse delta between 0 and 1. This allows for the camera's orientation to
     // be LERPed without the need for multiplying it by the last time delta.
     // As a result, the camera's movement becomes as smooth and natural as possible.
-    
     const math::vec2&& fRes = (math::vec2)global::pDisplay->getResolution();
     const math::vec3&& mouseDelta = math::vec3{
-        (float)mouseX/fRes[0], (float)mouseY/fRes[1], 0.f
+        (float)-mouseY/fRes[1], (float)-mouseX/fRes[0], 0.f
     };
     
     pFbState->rotateCamera(mouseDelta);

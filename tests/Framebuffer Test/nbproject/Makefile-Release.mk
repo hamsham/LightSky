@@ -79,35 +79,40 @@ fb_test: ${OBJECTFILES}
 ${OBJECTDIR}/context.o: context.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/context.o context.cpp
+	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/context.o context.cpp
 
 ${OBJECTDIR}/controlState.o: controlState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
+	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controlState.o controlState.cpp
 
 ${OBJECTDIR}/display.o: display.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
+	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.cpp
 
 ${OBJECTDIR}/fbState.o: fbState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
+	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fbState.o fbState.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/uiState.o: uiState.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
+	$(COMPILE.cc) -O3 -s -DSDL_MAIN_HANDLED -I../../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/uiState.o uiState.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Release
+	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Release
+	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Release
+	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Release
+	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -116,6 +121,11 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

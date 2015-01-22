@@ -58,42 +58,46 @@ bool shaderObject<shaderType>::init(const char* data, int size) {
     
     terminate();
     
-    GLuint shaderId;
-    shaderId = glCreateShader(shaderType);
+    GLuint tempId = glCreateShader(shaderType);
+    
+    if (!tempId) {
+        LS_LOG_ERR("\tFailed to create a shader object.");
+        return false;
+    }
     
     // If the size is zero, opengl will just look for null-termination in the data
     if (size == 0) {
-        glShaderSource(shaderId, 1, &data, nullptr);
+        glShaderSource(tempId, 1, &data, nullptr);
     }
     else {
-        glShaderSource(shaderId, 1, &data, &size);
+        glShaderSource(tempId, 1, &data, &size);
     }
     
-    glCompileShader(shaderId);
+    glCompileShader(tempId);
     
     GLint shaderStatus;
-    glGetShaderiv(shaderId, GL_COMPILE_STATUS, &shaderStatus);
+    glGetShaderiv(tempId, GL_COMPILE_STATUS, &shaderStatus);
     
     if (shaderStatus != GL_TRUE) {
         GLint infoLogLength = 0;
         GLchar* infoLogData = nullptr;
 
         // Get the length of the shader's error log
-        glGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &infoLogLength);
+        glGetShaderiv(tempId, GL_INFO_LOG_LENGTH, &infoLogLength);
 
         // Allocate some memory to temporarilt store the log data
         infoLogData = new GLchar[infoLogLength+1]; // +1 for null-termination
         infoLogData[infoLogLength] = '\0';
 
-        glGetShaderInfoLog(shaderId, infoLogLength, nullptr, infoLogData);
+        glGetShaderInfoLog(tempId, infoLogLength, nullptr, infoLogData);
         LS_LOG_ERR("\tShader Compilation error:\n", infoLogData, '\n');
 
         delete [] infoLogData;
-        glDeleteShader(shaderId);
+        glDeleteShader(tempId);
         return false;
     }
     
-    objectId = shaderId;
+    objectId = tempId;
     
     LS_LOG_MSG("\tSuccessfully loaded a shader object.\n");
     return true;

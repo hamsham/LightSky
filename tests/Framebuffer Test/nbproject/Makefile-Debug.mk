@@ -47,8 +47,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread
-CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread
+CCFLAGS=-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread -static-libstdc++ -static-libgcc -flto
+CXXFLAGS=-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread -static-libstdc++ -static-libgcc -flto
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -57,7 +57,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lGLEW -lGL -lfreeimage -lfreetype -lSDL2 -lSDL2main -lassimp
+LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lGL -lassimp -lSDL2 -lSDL2main -lfreeimage -lfreetype
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -108,6 +108,11 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Debug
+	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Debug
+	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Debug
+	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Debug
+	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -116,6 +121,11 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

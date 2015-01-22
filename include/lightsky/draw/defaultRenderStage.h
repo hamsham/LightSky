@@ -182,6 +182,7 @@ class defaultRenderStage final : public renderStage {
 -------------------------------------*/
 inline void defaultRenderStage::bind() {
     shaderBinary.bind();
+    LOG_GL_ERR();
 }
 
 /*-------------------------------------
@@ -189,6 +190,7 @@ inline void defaultRenderStage::bind() {
 -------------------------------------*/
 inline void defaultRenderStage::unbind() {
     shaderBinary.unbind();
+    LOG_GL_ERR();
 }
 
 /*-------------------------------------
@@ -196,7 +198,9 @@ inline void defaultRenderStage::unbind() {
 -------------------------------------*/
 inline void defaultRenderStage::drawSceneNode(const sceneGraph& scene, const sceneNode& node) {
     shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform(), false);
+    LOG_GL_ERR();
     renderStage::drawSceneNode(scene, node);
+    LOG_GL_ERR();
 }
 
 /*-------------------------------------
@@ -204,7 +208,9 @@ inline void defaultRenderStage::drawSceneNode(const sceneGraph& scene, const sce
 -------------------------------------*/
 inline void defaultRenderStage::drawNodeMesh(const sceneNode& node, const sceneMesh& mesh) {
     (void)node;
+    LOG_GL_ERR();
     mesh.draw();
+    LOG_GL_ERR();
 }
 
 } // end draw namespace

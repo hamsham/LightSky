@@ -99,7 +99,7 @@ void terminateSubsystems();
  * main()
 -------------------------------------*/
 int main() {
-    mainSystem* pSystem = nullptr;
+    mainSystem sys{};
     
     if (!initSubsystems()) {
         std::cerr << "Unable to initialize SDL." << std::endl;
@@ -118,22 +118,21 @@ int main() {
         goto quitTest;
     }
     
-    pSystem = new(std::nothrow) mainSystem{};
-    if (!pSystem || !pSystem->start()) {
+    if (!sys.start()) {
         std::cerr << "Unable to create the main program." << std::endl;
         goto quitTest;
     }
     
     std::cout << "Successfully created the main program." << std::endl;
-    while (pSystem->isRunnable()) {
+    while (sys.isRunnable()) {
         global::renderContext.makeCurrent(*global::pDisplay);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        pSystem->run();
+        sys.run();
         global::renderContext.flip(*global::pDisplay);
     }
     
     quitTest:
-    delete pSystem;
+    sys.stop();
     global::renderContext.terminate();
     delete global::pDisplay;
     terminateSubsystems();

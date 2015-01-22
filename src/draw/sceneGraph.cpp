@@ -127,8 +127,12 @@ bool sceneGraph::importGeometry(const sceneResource& r) {
  * Scene Mesh Loading
 -------------------------------------*/
 bool sceneGraph::importMeshes(const sceneResource& r) {
-    meshList.reserve(r.getNumMeshes());
+    if (geometryList.empty()) {
+        return true;
+    }
+
     const draw_index_list_t& rIndexList = r.getMeshes();
+    meshList.reserve(meshList.size() + rIndexList.size());
     
     for (const draw_index_pair_t& rIndices : rIndexList) {
         sceneMesh* const pMesh = new sceneMesh{};
@@ -139,10 +143,6 @@ bool sceneGraph::importMeshes(const sceneResource& r) {
         }
         else {
             meshList.push_back(pMesh);
-        }
-
-        if (geometryList.empty()) {
-            continue;
         }
         
         // retrieve the last geometry object as it will contain the geometry
@@ -164,14 +164,17 @@ bool sceneGraph::importMeshes(const sceneResource& r) {
  * Scene Node Loading
 -------------------------------------*/
 bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) {
+    if (!r.getNumNodes() || !r.getNumMeshes()) {
+        return true;
+    }
+    
     const unsigned nodeOffset = nodeList.size();
     nodeList.resize(nodeOffset + r.getNumNodes());
     
+    // insert the last node in "nodeList" into the root node
     rootNode.nodeChildren.push_back(&nodeList[nodeOffset]);
     
-    if (nodeList.size()) {
-        nodeList[nodeOffset].nodeParent = &rootNode;
-    }
+    nodeList[nodeOffset].nodeParent = &rootNode;
     
     for (unsigned i = 0; i < r.getNumNodes(); ++i) {
         const sceneResource::resourceNode& importNode = r.getNodes()[i];
@@ -181,8 +184,10 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
         newNode.nodeName = importNode.name;
         
         newNode.nodeMeshes.reserve(importNode.meshIndices.size());
+        
         for (unsigned meshIndex : importNode.meshIndices) {
-            newNode.nodeMeshes.push_back(meshList[meshOffset + meshIndex]);
+            sceneMesh* const pMesh = meshList[meshOffset + meshIndex];
+            newNode.nodeMeshes.push_back(pMesh);
         }
         
         newNode.nodeChildren.reserve(importNode.childIndices.size());
@@ -205,10 +210,8 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
  * panic.
 -------------------------------------*/
 void sceneGraph::update(uint64_t millisElapsed) {
-    camera* const pMainCam = cameraList.front();
-    
-    if (pMainCam) {
-        pMainCam->update();
+    for (camera* const pCam : cameraList) {
+        pCam->update();
     }
     
     // seed the node stack

@@ -493,7 +493,7 @@ class camera {
          * @param up
          * The direction which determines which way is upwards.
          */
-        void lookAt(const math::vec3& eye, const math::vec3& point, const math::vec3& up);
+        void lookAt(const math::vec3& eye, const math::vec3& point, const math::vec3& up = {0.f, 1.f, 0.f});
 
         /**
          * @brief Look at a point using the camera's current position and

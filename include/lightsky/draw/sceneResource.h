@@ -49,7 +49,7 @@ class sceneResource final : public utils::resource {
          */
         struct resourceNode {
             unsigned parentIndex = 0; // index in "nodeList" where the parent is.
-            std::string name = "";
+            std::string name = {};
             std::vector<unsigned> meshIndices = {}; // indices for referencing values in "meshList"
             std::vector<unsigned> childIndices = {}; // indices for referencing nodes in "nodeList"
             math::mat4 transform = {}; // use to build a ls::draw::transform. this is non-accumulated.

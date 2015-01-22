@@ -93,9 +93,9 @@ struct drawCommand {
 
         unsigned first = 0;
 
-        unsigned count = 1;
+        unsigned count = 0;
 
-        index_element_t indexType = INDEX_TYPE_DEFAULT;
+        index_element_t indexType = INDEX_TYPE_INVALID;
 
         void reset();
 

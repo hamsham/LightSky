@@ -140,7 +140,7 @@ void sceneMesh::terminate() {
 -------------------------------------*/
 bool sceneMesh::init(const geometry& g) {
     // there's no telling what data might be pushed into the VAO. Get rid of it.
-    vao.terminate();
+    terminate();
     
     if (!vao.init()) {
         LS_LOG_ERR("Unable to create a drawModel for geometry ", g.getId(), '.');
@@ -200,6 +200,8 @@ void sceneMesh::removeTexture(unsigned texIndex) {
 -------------------------------------*/
 void sceneMesh::draw() const {
     LS_DEBUG_ASSERT(this->isValid());
+    
+    LOG_GL_ERR();
     
     if (textureList.size()) {
         for (const texture* const pTex : textureList) {

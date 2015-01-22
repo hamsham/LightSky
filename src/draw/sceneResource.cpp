@@ -631,7 +631,7 @@ bool sceneResource::loadSphere(unsigned res) {
                 const float ex  = LS_COS(theta1) * LS_SIN(theta3);
                 const float ey  = LS_SIN(theta1);
                 const float ez  = LS_COS(theta1) * LS_COS(theta3);
-                pVert->pos      = math::vec3{ex, ey, -ez};
+                pVert->pos      = math::normalize(math::vec3{ex, ey, -ez});
                 pVert->uv       = math::vec2{-j/fNumSides, 2.f*i/fNumSides};
                 pVert->norm     = pVert->pos;
                 
@@ -642,7 +642,7 @@ bool sceneResource::loadSphere(unsigned res) {
                 const float ex  = LS_COS(theta2) * LS_SIN(theta3);
                 const float ey  = LS_SIN(theta2);
                 const float ez  = LS_COS(theta2) * LS_COS(theta3);
-                pVert->pos      = math::vec3{ex, ey, -ez};
+                pVert->pos      = math::normalize(math::vec3{ex, ey, -ez});
                 pVert->uv       = math::vec2{-j/fNumSides , 2.f*(i+1)/fNumSides};
                 pVert->norm     = pVert->pos;
                 
@@ -662,6 +662,7 @@ bool sceneResource::loadSphere(unsigned res) {
     Load a set of meshes from a file
 -------------------------------------*/
 bool sceneResource::loadFile(const std::string& filename) {
+    unload();
     LS_LOG_MSG("Attempting to load 3D mesh file ", filename, '.');
 
     Assimp::Importer fileImporter;
@@ -720,13 +721,7 @@ bool sceneResource::preprocessMeshData(const aiScene * const pScene) {
     unsigned numVertices = 0;
     unsigned numIndices = 0;
 
-    try {
-        meshList.resize(pScene->mNumMeshes);
-    }
-    catch(...) {
-        LS_LOG_ERR("\tError: Unable to allocate index data!\n");
-        return false;
-    }
+    meshList.resize(pScene->mNumMeshes);
 
     for (unsigned meshIter = 0; meshIter < pScene->mNumMeshes; ++meshIter) {
         const aiMesh* const pMesh = pScene->mMeshes[meshIter];
@@ -874,7 +869,7 @@ unsigned sceneResource::readNodeHeirarchy(const aiNode* const pNode, const unsig
 
     // recursively load node children
     for (unsigned childIter = 0; childIter < pNode->mNumChildren; ++childIter) {
-        childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], nodeList.size());
+        childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], currentIndex);
     }
 
     return currentIndex;

@@ -5,8 +5,8 @@
  * Created on August 2, 2014, 8:44 PM
  */
 
-#include <SDL2/SDL_video.h>
 #include <GLES3/gl3.h>
+#include <SDL2/SDL_video.h>
 
 #include "lightsky/draw/color.h"
 

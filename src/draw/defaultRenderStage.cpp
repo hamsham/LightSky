@@ -28,9 +28,9 @@ const char* DEFAULT_VP_MATRIX_UNIFORM = "vpMatrix";
 const char defaultVertShader[] = u8R"***(
 #version 330 core
 
-layout (location = 0) in vec3 pos;
-layout (location = 1) in vec2 tex;
-layout (location = 2) in vec3 nrm;
+layout (location = 0) in vec3 inPos;
+layout (location = 1) in vec2 inTex;
+layout (location = 2) in vec3 inNorm;
 
 uniform mat4 vpMatrix;
 uniform mat4 modelMatrix;
@@ -39,20 +39,19 @@ out vec3 fragVertNormal;
 out vec3 fragEyeDirection;
 out vec2 fragUvCoords;
 
-const float NEAR = 1.0;
-const float FAR = 10.0;
+//const float NEAR = 1.0;
+//const float FAR = 10.0;
 
 void main() {
-    //mat4 mvpMatrix = vpMatrix * modelMatrix;
-    //gl_Position = mvpMatrix * vec4(pos, 1.0);
-
     mat4 mvpMatrix = vpMatrix * modelMatrix;
-    gl_Position = mvpMatrix * vec4(pos, 1.0);
-    gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
+    gl_Position = mvpMatrix * vec4(inPos, 1.0);
 
-    fragVertNormal = normalize(vec4(mvpMatrix * vec4(nrm, 0.0)).xyz);
-    fragEyeDirection = vec3(0.0, 1.0, 0.0)-gl_Position.xyz;
-    fragUvCoords = tex;
+    //gl_Position = mvpMatrix * vec4(inPos, 1.0);
+    //gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
+
+    fragVertNormal = vec4(modelMatrix * vec4(inNorm, 0.0)).xyz;
+    fragEyeDirection = vec3(-vpMatrix[0][3], -vpMatrix[1][3], -vpMatrix[2][3]);
+    fragUvCoords = inTex;
 }
 )***";
 
@@ -76,7 +75,9 @@ float getDiffuseIntensity(in vec3 vertNorm, in vec3 lightDir) {
 }
 
 void main() {
-    float diffuseIntensity = getDiffuseIntensity(fragVertNormal, fragEyeDirection);
+    vec3 vertNormal = normalize(fragVertNormal);
+    vec3 eyeDirection = normalize(fragEyeDirection);
+    float diffuseIntensity = getDiffuseIntensity(vertNormal, eyeDirection);
     fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
 }
 )***";

@@ -113,7 +113,7 @@ void drawCommand::draw(const vertexArray& vao) const {
         const uintptr_t offset = first;
         glDrawElements(LS_ENUM_VAL(mode), count, indexType, (const void*)offset);
     }
-    
+
     LOG_GL_ERR();
     
     vao.unbind();

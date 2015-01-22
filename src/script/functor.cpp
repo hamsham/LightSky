@@ -97,7 +97,6 @@ void functor::save(std::ostream& ostr) const {
 /*-----------------------------------------------------------------------------
     NULL Functor Template Type.
 -----------------------------------------------------------------------------*/
-template <>
 func_ref_t functor_t<0, void>::functionImpl = *[](variable** const)->void {    
 };
 

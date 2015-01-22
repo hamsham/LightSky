@@ -16,7 +16,7 @@
  * This shader uses a Logarithmic Z-Buffer, thanks to
  * http://www.gamasutra.com/blogs/BranoKemen/20090812/2725/Logarithmic_Depth_Buffer.php
  */
-static const char meshVSData[] = R"***(
+static constexpr char meshVSData[] = u8R"***(
 #version 330 core
 
 layout (location = 0) in vec3 inPos;
@@ -37,7 +37,7 @@ void main() {
 /*
  * Testing Alpha Masking for font rendering.
  */
-static const char fontFSData[] = R"***(
+static constexpr char fontFSData[] = u8R"***(
 #version 330
 
 precision lowp float;

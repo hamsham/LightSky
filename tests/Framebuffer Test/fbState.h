@@ -59,7 +59,6 @@ class fbState final : virtual public ls::game::gameState {
         ls::draw::sceneGraph*   pScene          = nullptr;
         ls::draw::defaultRenderStage* pRenderer = nullptr;
         math::vec2i             fbRes           = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
-        math::quat              orientation     = {};
         
         // allows textures to be generated on another thread
         std::future<std::vector<float>> futureNoise;

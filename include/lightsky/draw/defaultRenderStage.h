@@ -49,33 +49,6 @@ class defaultRenderStage final : public renderStage {
          * shaders.
          */
         shaderProgram shaderBinary;
-        
-        /**
-         * @brief Iterate through all nodes in a scene graph and render them
-         * to the currently bound framebuffer.
-         * 
-         * @param scene
-         * A constant reference to the current scene that contains renderable
-         * scene nodes.
-         * 
-         * @param node
-         * A constant reference to the scene node which contains scene meshes
-         * that are to be rendered.
-         */
-        virtual void drawSceneNode(const sceneGraph& scene, const sceneNode& node);
-
-        /**
-         * @brief Render a mesh object contained within a scene node.
-         * 
-         * @param node
-         * A constant reference to the node which references "mesh."
-         * 
-         * @param mesh
-         * A constant reference to the mesh which is to be rendered to the
-         * currently bound framebuffer.
-         */
-        virtual void drawNodeMesh(const sceneNode& node, const sceneMesh& mesh) override;
-
 
     public:
         /**
@@ -176,42 +149,6 @@ class defaultRenderStage final : public renderStage {
          */
         virtual void draw(const sceneGraph& scene) override;
 };
-
-/*-------------------------------------
- * Bind for rendering
--------------------------------------*/
-inline void defaultRenderStage::bind() {
-    shaderBinary.bind();
-    LOG_GL_ERR();
-}
-
-/*-------------------------------------
- * Unbind from OpenGL
--------------------------------------*/
-inline void defaultRenderStage::unbind() {
-    shaderBinary.unbind();
-    LOG_GL_ERR();
-}
-
-/*-------------------------------------
- * Draw a scene node
--------------------------------------*/
-inline void defaultRenderStage::drawSceneNode(const sceneGraph& scene, const sceneNode& node) {
-    shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform(), false);
-    LOG_GL_ERR();
-    renderStage::drawSceneNode(scene, node);
-    LOG_GL_ERR();
-}
-
-/*-------------------------------------
- * Draw a node mesh
--------------------------------------*/
-inline void defaultRenderStage::drawNodeMesh(const sceneNode& node, const sceneMesh& mesh) {
-    (void)node;
-    LOG_GL_ERR();
-    mesh.draw();
-    LOG_GL_ERR();
-}
 
 } // end draw namespace
 } // end ls namespace

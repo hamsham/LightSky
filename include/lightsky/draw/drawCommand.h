@@ -49,7 +49,7 @@ enum index_element_t : int {
     INDEX_TYPE_UINT = GL_UNSIGNED_INT,
     
     INDEX_TYPE_DEFAULT = GL_UNSIGNED_INT,
-    INDEX_TYPE_INVALID  = -1
+    INDEX_TYPE_NONE  = -1
 };
 
 /**------------------------------------
@@ -95,7 +95,7 @@ struct drawCommand {
 
         unsigned count = 0;
 
-        index_element_t indexType = INDEX_TYPE_INVALID;
+        index_element_t indexType = INDEX_TYPE_NONE;
 
         void reset();
 

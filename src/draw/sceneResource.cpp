@@ -704,9 +704,16 @@ bool sceneResource::loadFile(const std::string& filename) {
         const aiNode* const pRootNode = pScene->mRootNode;
         readNodeHeirarchy(pRootNode, 0);
     }
-
-    LS_LOG_MSG("\tSuccessfully loaded the 3D mesh ", filename, "!\n");
+    
     resultDrawMode = draw_mode_t::TRIS;
+
+    LS_LOG_MSG(
+        "\tSuccessfully loaded the 3D mesh file  \"", filename, "\"!\n",
+        "\tTotal Vertices: ", getNumVertices(), '\n',
+        "\tTotal Indices:  ", getNumIndices(), '\n',
+        "\tTotal Meshes:   ", getNumMeshes(), '\n',
+        "\tTotal Nodes:    ", getNumNodes(), '\n'
+    );
 
     return true;
 }
@@ -720,8 +727,6 @@ bool sceneResource::preprocessMeshData(const aiScene * const pScene) {
     // of vertex+index data.
     unsigned numVertices = 0;
     unsigned numIndices = 0;
-
-    meshList.resize(pScene->mNumMeshes);
 
     for (unsigned meshIter = 0; meshIter < pScene->mNumMeshes; ++meshIter) {
         const aiMesh* const pMesh = pScene->mMeshes[meshIter];
@@ -746,7 +751,14 @@ bool sceneResource::preprocessMeshData(const aiScene * const pScene) {
         }
     }
 
-    return initVertices(numVertices, numIndices);
+    if (!initVertices(numVertices, numIndices)) {
+        return false;
+    }
+    else {
+        meshList.resize(pScene->mNumMeshes);
+    }
+    
+    return true;
 }
 
 /*-------------------------------------
@@ -837,7 +849,7 @@ void sceneResource::importMeshFaces(
 unsigned sceneResource::readNodeHeirarchy(const aiNode* const pNode, const unsigned parentId) {
     // add a new scene node to the list
     const unsigned currentIndex = nodeList.size();
-    nodeList.emplace_back(resourceNode{});
+    nodeList.push_back(resourceNode{});
     resourceNode& currentNode = nodeList.back();
 
     currentNode.parentIndex = parentId;
@@ -869,9 +881,11 @@ unsigned sceneResource::readNodeHeirarchy(const aiNode* const pNode, const unsig
 
     // recursively load node children
     for (unsigned childIter = 0; childIter < pNode->mNumChildren; ++childIter) {
+        // return the index of each child node and place it into "childIndices."
         childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], currentIndex);
     }
 
+    // return the index of *this in "nodeList."
     return currentIndex;
 }
 

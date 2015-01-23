@@ -24,32 +24,39 @@ namespace draw {
 -------------------------------------*/
 sceneGraph::~sceneGraph() {
     terminate();
+    delete pMainCamera;
 }
 
 /*-------------------------------------
  * Constructor
 -------------------------------------*/
-sceneGraph::sceneGraph() {
-}
+sceneGraph::sceneGraph() :
+    pMainCamera{new camera{}}
+{}
 
 /*-------------------------------------
  * Move Constructor
 -------------------------------------*/
 sceneGraph::sceneGraph(sceneGraph&& s) :
     rootNode{std::move(s.rootNode)},
-    cameraList{std::move(s.cameraList)},
+    pMainCamera{std::move(s.pMainCamera)},
     textureList{std::move(s.textureList)},
     geometryList{std::move(s.geometryList)},
     meshList{std::move(s.meshList)},
     nodeList{std::move(s.nodeList)}
-{}
+{
+    s.pMainCamera = nullptr;
+}
 
 /*-------------------------------------
  * Move Operator
 -------------------------------------*/
 sceneGraph& sceneGraph::operator=(sceneGraph&& s) {
     rootNode = std::move(s.rootNode);
-    cameraList = std::move(s.cameraList);
+    
+    pMainCamera = std::move(s.pMainCamera);
+    s.pMainCamera = nullptr;
+    
     textureList = std::move(s.textureList);
     geometryList = std::move(s.geometryList);
     meshList = std::move(s.meshList);
@@ -89,12 +96,7 @@ bool sceneGraph::init(const sceneResource& r, bool append) {
         return false;
     }
     
-    if (cameraList.empty()) {
-        camera* pCamera = new camera{};
-        cameraList.push_back(pCamera);
-    }
-    
-    LS_LOG_MSG("\tSuccessfully initialized a scene graph from a scene resource.");
+    LS_LOG_MSG("\tSuccessfully initialized a scene graph from a scene resource.\n");
     
     return true;
 }
@@ -164,6 +166,8 @@ bool sceneGraph::importMeshes(const sceneResource& r) {
  * Scene Node Loading
 -------------------------------------*/
 bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) {
+    LS_LOG_MSG("Loading scene nodes from a resource object.");
+    
     if (!r.getNumNodes() || !r.getNumMeshes()) {
         return true;
     }
@@ -180,6 +184,7 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
         const sceneResource::resourceNode& importNode = r.getNodes()[i];
         sceneNode& newNode = nodeList[nodeOffset + i];
         
+        //newNode.nodeParent = &nodeList[nodeOffset + importNode.parentIndex];
         newNode.nodeParent = &nodeList[nodeOffset + importNode.parentIndex];
         newNode.nodeName = importNode.name;
         
@@ -196,7 +201,12 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
         }
         
         newNode.nodeTransform.setTransform(importNode.transform);
+        
+        LS_LOG_MSG("\tAdded node \"", newNode.nodeName, "\" to a scene graph.");
     }
+    
+    
+    LS_LOG_MSG("\tSuccessfully imported ", nodeList.size(), " nodes into a scene graph.");
     
     return true;
 }
@@ -210,9 +220,7 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
  * panic.
 -------------------------------------*/
 void sceneGraph::update(uint64_t millisElapsed) {
-    for (camera* const pCam : cameraList) {
-        pCam->update();
-    }
+    pMainCamera->update();
     
     // seed the node stack
     const math::mat4& pRootTrans = rootNode.nodeTransform.getTransform();
@@ -234,15 +242,15 @@ void sceneGraph::update(uint64_t millisElapsed) {
         // check if the child node is valid, remove the current node if not
         if (nextChildIndex < pNode->nodeChildren.size()) {
             // increment the child reference to the next node.
-            sceneNode* pChild = pNode->nodeChildren[nextChildIndex++];
+            sceneNode* const pChild = pNode->nodeChildren[nextChildIndex++];
 
             // push the next child node's matrix onto the stack
             // augment it by the parent transform
-            const math::mat4& modelMat = updateStack.top().modelMatrix;
             const math::mat4& childModelMat = pChild->nodeTransform.getTransform();
+            const math::mat4& accumulatedMatrix = updateStack.top().modelMatrix;
 
             // stack the currently used node and push its next child onto the stack
-            updateStack.emplace(nodeStackInfo{pChild, 0, modelMat * childModelMat});
+            updateStack.emplace(nodeStackInfo{pChild, 0, accumulatedMatrix * childModelMat});
         }
         else {
             updateStack.pop();
@@ -280,12 +288,21 @@ struct sceneDeleter {
 void sceneGraph::terminate() {
     rootNode.reset();
     
-    std::for_each(cameraList.begin(),   cameraList.end(),   sceneDeleter<camera>{});
+    
     std::for_each(textureList.begin(),  textureList.end(),  sceneDeleter<texture>{});
+    textureList.clear();
+    textureList.shrink_to_fit();
+    
     std::for_each(geometryList.begin(), geometryList.end(), sceneDeleter<geometry>{});
+    geometryList.clear();
+    geometryList.shrink_to_fit();
+    
     std::for_each(meshList.begin(),     meshList.end(),     sceneDeleter<sceneMesh>{});
+    meshList.clear();
+    meshList.shrink_to_fit();
     
     nodeList.clear();
+    nodeList.shrink_to_fit();
 }
 
 } // end draw namepsace

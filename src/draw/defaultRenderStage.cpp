@@ -49,8 +49,8 @@ void main() {
     //gl_Position = mvpMatrix * vec4(inPos, 1.0);
     //gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
 
-    fragVertNormal = vec4(modelMatrix * vec4(inNorm, 0.0)).xyz;
-    fragEyeDirection = vec3(-vpMatrix[0][3], -vpMatrix[1][3], -vpMatrix[2][3]);
+    fragVertNormal = normalize(vec4(modelMatrix * vec4(inNorm, 0.0)).xyz);
+    fragEyeDirection = normalize(vec3(-vpMatrix[0][3], -vpMatrix[1][3], -vpMatrix[2][3]));
     fragUvCoords = inTex;
 }
 )***";
@@ -75,10 +75,9 @@ float getDiffuseIntensity(in vec3 vertNorm, in vec3 lightDir) {
 }
 
 void main() {
-    vec3 vertNormal = normalize(fragVertNormal);
-    vec3 eyeDirection = normalize(fragEyeDirection);
-    float diffuseIntensity = getDiffuseIntensity(vertNormal, eyeDirection);
-    fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
+    float diffuseIntensity = getDiffuseIntensity(fragVertNormal, fragEyeDirection);
+    //fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
+    fragOutColor = vec4(0.5, 0.5, 0.5, 1.0) * diffuseIntensity;
 }
 )***";
 
@@ -196,15 +195,30 @@ void defaultRenderStage::terminate() {
  * Draw a scene
 -------------------------------------*/
 void defaultRenderStage::draw(const sceneGraph& scene) {
-    const camera* const pMainCam = scene.getCameraList().front();
-    if (!pMainCam) {
-        return;
-    }
+    const camera& mainCam = scene.getMainCamera();
+    shaderBinary.setUniformValue(vpMatUniformId, mainCam.getVPMatrix());
     
-    shaderBinary.setUniformValue(vpMatUniformId, pMainCam->getVPMatrix(), false);
-    renderStage::draw(scene);
+    for (const sceneNode& node : scene.getNodeList()) {
+        shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        for (const sceneMesh* const pMesh : node.nodeMeshes) {
+            pMesh->draw();
+        }
+    }
 }
 
+/*-------------------------------------
+ * Bind for rendering
+-------------------------------------*/
+void defaultRenderStage::bind() {
+    shaderBinary.bind();
+}
+
+/*-------------------------------------
+ * Unbind from OpenGL
+-------------------------------------*/
+void defaultRenderStage::unbind() {
+    shaderBinary.unbind();
+}
 
 } // end draw namespace
 } // end ls namespace

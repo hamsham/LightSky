@@ -84,14 +84,12 @@ transform& transform::operator=(transform&& t) {
  * Apply all transformations to the model matrix
 -------------------------------------*/
 void transform::applyTransforms() {
-    const math::mat4 newTransform{
+    modelMatrix = math::mat4{
         scaling[0],     0.f,            0.f,        0.f,
         0.f,            scaling[1],     0.f,        0.f,
         0.f,            0.f,            scaling[2], 0.f,
         position[0],    position[1],    position[2],1.f
-    };
-
-    modelMatrix = newTransform * math::quatToMat4(orientation);
+    } * math::quatToMat4(orientation);
 
     dirtyFlag = false;
 }
@@ -177,7 +175,7 @@ void transform::setTransform(const math::mat4& newTransform) {
     position[0] = modelMatrix[3][0];
     position[1] = modelMatrix[3][1];
     position[2] = modelMatrix[3][2];
-
+    
     scaling[0] = modelMatrix[0][0];
     scaling[1] = modelMatrix[1][1];
     scaling[2] = modelMatrix[2][2];

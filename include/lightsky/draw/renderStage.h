@@ -73,7 +73,7 @@ class renderStage {
          * @param mesh
          * A constant reference to the scene mesh that is being rendered.
          */
-        virtual void drawNodeMesh(const sceneNode& node, const sceneMesh& mesh) = 0;
+        virtual void drawNodeMesh(const sceneNode& node, const sceneMesh& mesh);
 
     public:
         /**

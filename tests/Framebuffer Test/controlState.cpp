@@ -152,9 +152,6 @@ void controlState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
             pState->setStateStatus(ls::game::game_state_t::STOPPED);
         }
     }
-    else if (key == SDL_SCANCODE_SPACE) {
-        pFbState->regenerateNoise();
-    }
     else if (key == SDL_SCANCODE_F11) {
         bool fullscreen = global::pDisplay->getFullScreenState();
         global::pDisplay->setFullScreenState(!fullscreen);

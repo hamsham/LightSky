@@ -23,6 +23,20 @@ inline sceneNode& sceneGraph::getRootNode() {
 }
 
 /*-------------------------------------
+ * Camera Retrieval (const code smell).
+-------------------------------------*/
+inline const camera& sceneGraph::getMainCamera() const {
+    return *pMainCamera;
+}
+
+/*-------------------------------------
+ * Camera Retrieval
+-------------------------------------*/
+inline camera& sceneGraph::getMainCamera() {
+    return *pMainCamera;
+}
+
+/*-------------------------------------
  * Get the list of textures used in *this (const).
 -------------------------------------*/
 inline const std::vector<texture*>& sceneGraph::getTextureList() const {
@@ -76,20 +90,6 @@ inline const scene_node_list_t& sceneGraph::getNodeList() const {
 -------------------------------------*/
 inline scene_node_list_t& sceneGraph::getNodeList() {
     return nodeList;
-}
-
-/*-------------------------------------
- * Get the camera transformation (const)
--------------------------------------*/
-inline const std::vector<camera*>& sceneGraph::getCameraList() const {
-    return cameraList;
-}
-
-/*-------------------------------------
- * Get the camera transformation
--------------------------------------*/
-inline std::vector<camera*>& sceneGraph::getCameraList() {
-    return cameraList;
 }
 
 } // end draw namepsace

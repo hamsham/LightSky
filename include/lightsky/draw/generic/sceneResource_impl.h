@@ -54,7 +54,7 @@ inline unsigned sceneResource::getNumNodes() const {
 /*-------------------------------------
     Get the node array
 -------------------------------------*/
-inline const std::vector<sceneResource::resourceNode>& sceneResource::getNodes() const {
+inline const std::deque<sceneResource::resourceNode>& sceneResource::getNodes() const {
     return nodeList;
 }
 

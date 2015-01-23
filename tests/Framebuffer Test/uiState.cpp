@@ -22,14 +22,14 @@ static constexpr char meshVSData[] = u8R"***(
 layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inUv;
 layout (location = 2) in vec3 inNorm;
-layout (location = 3) in mat4 inModelMat;
 
 uniform mat4 vpMatrix;
+uniform mat4 modelMatrix;
 
 out vec2 uvCoords;
 
 void main() {
-    gl_Position = vpMatrix * inModelMat * vec4(inPos, 1.0);
+    gl_Position = vpMatrix * modelMatrix * vec4(inPos, 1.0);
     uvCoords = inUv;
 }
 )***";
@@ -245,25 +245,30 @@ void uiState::resetGlViewport() {
  * Drawing a scene
 -------------------------------------*/
 void uiState::drawScene() {
+    fontProg.bind();
     LOG_GL_ERR();
+    
     resetGlViewport();
     
-    fontProg.bind();
-    const GLint fontMvpId = fontProg.getUniformLocation("vpMatrix");
-    const math::mat4&& orthoProj = get2dViewport();
-    fontProg.setUniformValue(fontMvpId, orthoProj);
-    
     // setup some UI parameters with a resolution-independent model matrix
-    const display& disp = *global::pDisplay;
-    const math::vec2&& res = (math::vec2)disp.getResolution();
-    math::mat4 modelMat = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
+    const display* const disp       = global::pDisplay;
+    const math::vec2&& res          = (math::vec2)disp->getResolution();
+    math::mat4&& modelMat           = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
+    modelMat                        = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
+    fontProg.setUniformValue        (fontProg.getUniformLocation("modelMatrix"), modelMat);
     
-    modelMat = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
+    const math::mat4&& orthoProj    = get2dViewport();
+    fontProg.setUniformValue        (fontProg.getUniformLocation("vpMatrix"), orthoProj);
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI
     glDisable(GL_DEPTH_TEST);
     pBlender->bind();
+    fontAtlas.getTexture().bind();
     fontGeom.draw();
+    fontAtlas.getTexture().unbind();
     pBlender->unbind();
     glEnable(GL_DEPTH_TEST);
+    
+    fontProg.unbind();
+    LOG_GL_ERR();
 }

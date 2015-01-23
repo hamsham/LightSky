@@ -67,7 +67,7 @@ class sceneGraph {
          * Contains a list of view/projection transformations used to render
          * sceneNodes onto a framebuffer.
          */
-        std::vector<camera*> cameraList;
+        camera* pMainCamera;
 
         /**
          * @brief textureList
@@ -264,20 +264,20 @@ class sceneGraph {
         sceneNode& getRootNode();
 
         /**
-         * @brief Get a constant reference to the list of cameras in *this.
+         * @brief Get a constant reference to primary camera in the scene.
          *
-         * @return A constant reference to the cameras used for rendering the
-         * scene.
+         * @return A constant reference to the main camera used for rendering.
+         * If there is no camera in *this, a camera will be dynamically created.
          */
-        const std::vector<camera*>& getCameraList() const;
+        const camera& getMainCamera() const;
 
         /**
-         * @brief Get a reference to the list of cameras in *this.
+         * @brief Get a reference to primary camera in the scene.
          *
-         * @return A constant reference to the cameras used for rendering the
-         * scene.
+         * @return A reference to the main camera used for rendering. If there
+         * is no camera in *this, a camera will be dynamically created.
          */
-        std::vector<camera*>& getCameraList();
+        camera& getMainCamera();
 
         /**
          * @brief Get the array of textures used by *this scene object's

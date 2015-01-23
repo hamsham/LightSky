@@ -10,6 +10,7 @@
 
 #include <string>
 #include <vector>
+#include <deque>
 #include <unordered_map>
 
 #include "lightsky/utils/resource.h"
@@ -76,7 +77,7 @@ class sceneResource final : public utils::resource {
          * nodeList is a list of resource nodes that can be loaded by a
          * sceneGraph object during instantiation.
          */
-        std::vector<resourceNode> nodeList;
+        std::deque<resourceNode> nodeList;
         
         /**
          * @brief submeshes lists all of the indices which can be used to
@@ -314,7 +315,7 @@ class sceneResource final : public utils::resource {
          * @return A constant reference to the internal array which contains
          * the nodes loaded by *this.
          */
-        const std::vector<resourceNode>& getNodes() const;
+        const std::deque<resourceNode>& getNodes() const;
         
         /**
          * Get the number of sub-meshes indices in a scene.

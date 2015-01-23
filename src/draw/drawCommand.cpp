@@ -106,7 +106,7 @@ void drawCommand::draw(const vertexBuffer& vbo, const indexBuffer& ibo) const {
 void drawCommand::draw(const vertexArray& vao) const {
     vao.bind();
     
-    if (indexType == INDEX_TYPE_INVALID) {
+    if (indexType == INDEX_TYPE_NONE) {
         glDrawArrays(LS_ENUM_VAL(mode), first, count);
     }
     else {
@@ -125,7 +125,7 @@ void drawCommand::draw(const vertexArray& vao) const {
 void drawCommand::draw(const vertexArray& vao, unsigned instanceCount) const {
     vao.bind();
     
-    if (indexType == INDEX_TYPE_INVALID) {
+    if (indexType == INDEX_TYPE_NONE) {
         glDrawArraysInstanced(LS_ENUM_VAL(mode), first, count, instanceCount);
     }
     else {

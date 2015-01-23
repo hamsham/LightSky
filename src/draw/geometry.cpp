@@ -240,6 +240,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     drawParams.mode = draw_mode_t::TRIS;
     drawParams.first = 0;
     drawParams.count = numVerts;
+    drawParams.indexType = index_element_t::INDEX_TYPE_NONE;
     submeshes.push_back(draw_index_pair_t{0, numVerts});
     
     return true;

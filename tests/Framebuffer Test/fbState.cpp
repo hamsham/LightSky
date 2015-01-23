@@ -15,13 +15,9 @@
 
 namespace draw = ls::draw;
 
-typedef math::perlinNoise_t<float> perlinNoise;
-
 enum {
     TEST_MAX_SCENE_OBJECTS = 10,
-    TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS,
-    TEST_NOISE_RESOLUTION = 1024,
-    TEST_NOISE_SAMPLES = 32
+    TEST_MAX_SCENE_INSTANCES = TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS*TEST_MAX_SCENE_OBJECTS
 };
 
 
@@ -31,30 +27,10 @@ static constexpr float TEST_PROJECTION_FAR = 100.f;
 static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
 static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
 
-/*-----------------------------------------------------------------------------
- * Tests for loading perlin noise on another thread
------------------------------------------------------------------------------*/
-std::vector<float> generateNoiseTexture(int w, int h) {
-    std::vector<float> noiseTable;
-    noiseTable.resize(w*h);
-    const float width = (float)w;
-    const float height = (float)h;
-    perlinNoise noise{};
-    
-    for (int i = 0; i < h; ++i) {
-        // cache all casts to reduce how many are done per iteration
-        const float hIter = (float)i;
-        
-        for (int j = 0; j < w; ++j) {
-            const float wIter = (float)j;
-            
-            const math::vec3&& pos = math::vec3{wIter/width, hIter/height, 0.5f};
-            const float perlin = noise.getOctaveNoise(pos*TEST_NOISE_SAMPLES, 4, 0.25f);
-            noiseTable[i * h + j] = 0.5f * (0.5f+perlin);
-        }
-    }
-    
-    return noiseTable;
+/*-------------------------------------
+ * Destructor
+-------------------------------------*/
+fbState::~fbState() {
 }
 
 /*-------------------------------------
@@ -64,15 +40,18 @@ fbState::fbState() :
     gameState()
 {}
 
+/*-------------------------------------
+ * Move Constructor
+-------------------------------------*/
 fbState::fbState(fbState&& state) :
     gameState{}
 {    
     *this = std::move(state);
 }
 
-fbState::~fbState() {
-}
-
+/*-------------------------------------
+ * Move Operator
+-------------------------------------*/
 fbState& fbState::operator=(fbState&& state) {
     gameState::operator=(std::move(state));
     
@@ -92,8 +71,6 @@ fbState& fbState::operator=(fbState&& state) {
     fbRes = state.fbRes;
     state.fbRes = math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
     
-    futureNoise = std::move(state.futureNoise);
-    
     return *this;
 }
 
@@ -101,124 +78,49 @@ fbState& fbState::operator=(fbState&& state) {
  * Allocate internal class memory
 -------------------------------------*/
 bool fbState::initMemory() {
+    draw::sceneResource* const pMeshLoader = new draw::sceneResource{};
     pScene = new draw::sceneGraph{};
     pRenderer = new draw::defaultRenderStage{};
-    
-    if (!pScene
-    ||  !pRenderer
-    || !pRenderer->init()
-    ||  !testFb.init()
-    ) {
-        return false;
-    }
-    
-    futureNoise = std::move(
-        std::async(std::launch::async, &generateNoiseTexture, TEST_NOISE_RESOLUTION, TEST_NOISE_RESOLUTION)
-    );
-    
-    // prepare an initial perlin noise texture.
-    while (futureNoise.wait_for(std::chrono::seconds{0}) != std::future_status::ready) {
-        continue;
-    }
-    
-    return true;
-}
-
-/*-------------------------------------
- * Initialize resources from files
--------------------------------------*/
-bool fbState::initFileData() {
-    
-    draw::sceneResource* pMeshLoader = new draw::sceneResource{};
     draw::texture* pColorTex = new draw::texture{};
-    draw::texture* noiseTex = new draw::texture{};
     bool ret = true;
     
-    if (!pMeshLoader
-    //|| !pMeshLoader->loadFile(TEST_SCENE_FILE)
-    || !pMeshLoader->loadSphere(32)
-    || !pScene->init(*pMeshLoader)
+    pScene->getTextureList().push_back(pColorTex);
+    
+    if (!ret
+    || !pMeshLoader->loadFile(TEST_SCENE_FILE)
+    //|| !pMeshLoader->loadSphere(32)
+    || !pScene->init(*pMeshLoader, true)
     || !pColorTex->init(draw::COLOR_FMT_DEFAULT, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})
-    || !noiseTex->init(0, draw::COLOR_FMT_R_32F, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, nullptr)
+    || !pRenderer->init()
     ) {
         ret = false;
     }
-    else {
-        pScene->getTextureList().push_back(pColorTex);
-        pScene->getTextureList().push_back(noiseTex); // last texture in the scene's texture list.
-        pScene->getMeshList().back()->addTexture(*noiseTex);
-        
-         // initialize the perlin noise texture
-        regenerateNoise();
+    
+    if (ret) {
+        pColorTex->bind();
+        pColorTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
+        pColorTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
+        pColorTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
+        pColorTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
+        pColorTex->unbind();
     }
     
     delete pMeshLoader;
-    
     return ret;
-}
-
-/*-------------------------------------
- * regenerate a noise texture
--------------------------------------*/
-void fbState::regenerateNoise() {
-    if (futureNoise.wait_for(std::chrono::seconds{0}) != std::future_status::ready) {
-        return;
-    }
-    
-    std::vector<float>&& noiseTable = futureNoise.get();
-    
-    draw::texture* const pPerlinTexture = pScene->getTextureList().back();
-    pPerlinTexture->bind();
-    pPerlinTexture->modify(0, math::vec2i{TEST_NOISE_RESOLUTION}, draw::COLOR_LAYOUT_R, draw::COLOR_TYPE_FLOAT, noiseTable.data());
-    
-    pPerlinTexture->setParameter(draw::TEX_PARAM_MIN_FILTER,  draw::TEX_FILTER_LINEAR);
-    pPerlinTexture->setParameter(draw::TEX_PARAM_MAG_FILTER,  draw::TEX_FILTER_LINEAR);
-    pPerlinTexture->setParameter(draw::TEX_PARAM_WRAP_S,      draw::TEX_PARAM_REPEAT);
-    pPerlinTexture->setParameter(draw::TEX_PARAM_WRAP_T,      draw::TEX_PARAM_REPEAT);
-    pPerlinTexture->unbind();
-    
-    futureNoise = std::move(
-        std::async(std::launch::async, &generateNoiseTexture, TEST_NOISE_RESOLUTION, TEST_NOISE_RESOLUTION)
-    );
 }
 
 /*-------------------------------------
  * Initialize the framebuffers
 -------------------------------------*/
 bool fbState::initFramebuffers() {
-    if (!testRb.init(draw::rbo_format_t::RBO_FMT_DEPTH_32, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})) {
+    if (!testFb.init()
+    ||  !testRb.init(draw::rbo_format_t::RBO_FMT_DEPTH_32, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})
+    ) {
         LS_LOG_ERR("An Error occurred while creating the test depth buffer.");
         return false;
     }
     
-    std::vector<draw::texture*>& texList = pScene->getTextureList();
-    draw::texture* const pColorTex = texList[texList.size()-2];
-    
-    // setup the test framebuffer depth texture
-    LOG_GL_ERR();
-    
-    // framebuffer color texture
-    pColorTex->bind();
-    pColorTex->setParameter(draw::TEX_PARAM_MIN_FILTER, draw::TEX_FILTER_LINEAR);
-    pColorTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
-    pColorTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
-    pColorTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
-    pColorTex->unbind();
-    
-    LOG_GL_ERR();
-    
-    testFb.bind();
-    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_DEPTH, testRb);
-    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_0, *pColorTex);
-    
-    LOG_GL_ERR();
-    
-    if (draw::framebuffer::getStatus(testFb) != draw::FBO_COMPLETE) {
-        testFb.unbind();
-        return false;
-    }
-    
-    testFb.unbind();
+    scaleFramebuffer(0);
     
     return true;
 }
@@ -227,12 +129,12 @@ bool fbState::initFramebuffers() {
  * Post-Initialization renderer parameters
 -------------------------------------*/
 void fbState::setRendererParams() {
-    draw::camera* const pMainCam = pScene->getCameraList().front();
-    pMainCam->setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
-    pMainCam->makePerspective();
-    pMainCam->lockYAxis(true);
-    pMainCam->setViewMode(draw::camera_view_t::VIEW_NORMAL);
-    pMainCam->lookAt(math::vec3{5.f}, math::vec3{0.f});
+    draw::camera& mainCam = pScene->getMainCamera();
+    mainCam.setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
+    mainCam.makePerspective();
+    mainCam.lockYAxis(true);
+    mainCam.setViewMode(draw::camera_view_t::VIEW_NORMAL);
+    mainCam.lookAt(math::vec3{10.f}, math::vec3{0.f});
     
     constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
@@ -262,7 +164,6 @@ bool fbState::onStart() {
     }
     
     if (!initMemory()
-    ||  !initFileData()
     ||  !initFramebuffers()
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
@@ -310,8 +211,6 @@ void fbState::onStop() {
     pRenderer = nullptr;
     
     fbRes = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
-    
-    futureNoise.wait();
 }
 
 /*-------------------------------------
@@ -333,43 +232,29 @@ void fbState::drawScene() {
     
     // setup a viewport for a custom framebuffer
     glViewport(0, 0, fbRes[0], fbRes[1]);
-    LOG_GL_ERR();
 
     // use render to the framebuffer's color attachment
-    static const draw::fbo_attach_t fboDrawAttachments[] = {draw::FBO_ATTACHMENT_0};
+    static constexpr draw::fbo_attach_t fboDrawAttachments[] = {draw::FBO_ATTACHMENT_0};
 
     // setup the framebuffer for draw operations
     testFb.setAccessType(draw::FBO_ACCESS_W);
-    LOG_GL_ERR();
     testFb.bind();
-    LOG_GL_ERR();
     testFb.setDrawTargets(1, fboDrawAttachments);
-    LOG_GL_ERR();
     testFb.clear((draw::fbo_mask_t)(draw::FBO_DEPTH_BIT | draw::FBO_COLOR_BIT));
-    LOG_GL_ERR();
     
     // draw a test mesh
     pRenderer->bind();
-    LOG_GL_ERR();
     pRenderer->draw(*pScene);
     pRenderer->unbind();
     
-    // restore draw operations to the default GL framebuffer
+    // restore draw operations to the default GL framebuffer, bind it for
+    // reading, then blit
     testFb.unbind();
-    
-    // setup the custom framebuffer for read operations
     testFb.setAccessType(draw::FBO_ACCESS_R);
     testFb.bind();
-
-    // blit the custom framebuffer to OpenGL's backbuffer
-    testFb.blit(
-        math::vec2i{0}, fbRes,
-        math::vec2i{0}, global::pDisplay->getResolution(),
-        draw::FBO_COLOR_BIT
-    );
-    
-    // restore framebuffer reads to OpenGL's backbuffer
+    testFb.blit(math::vec2i{0}, fbRes, math::vec2i{0}, global::pDisplay->getResolution(), draw::FBO_COLOR_BIT);
     testFb.unbind();
+    
     LOG_GL_ERR();
 }
 
@@ -377,8 +262,8 @@ void fbState::drawScene() {
  * Camera movement
 -------------------------------------*/
 void fbState::moveCamera(const math::vec3& deltaPos) {
-    draw::camera* pMainCam = pScene->getCameraList().front();
-    pMainCam->move(deltaPos);
+    draw::camera& mainCam = pScene->getMainCamera();
+    mainCam.move(deltaPos);
 }
 
 /*-------------------------------------
@@ -387,9 +272,9 @@ void fbState::moveCamera(const math::vec3& deltaPos) {
 void fbState::resizeFramebuffer(const math::vec2i& res) {
     glViewport(0, 0, res[0], res[1]);
     
-    draw::camera* pMainCam = pScene->getCameraList().front();
-    pMainCam->setProjectionParams(TEST_PROJECTION_FOV, res[0], res[1], TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
-    pMainCam->makePerspective();
+    draw::camera& mainCam = pScene->getMainCamera();
+    mainCam.setProjectionParams(TEST_PROJECTION_FOV, res[0], res[1], TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
+    mainCam.makePerspective();
 }
 
 /*-------------------------------------
@@ -403,27 +288,26 @@ void fbState::scaleFramebuffer(const int deltaScale) {
     fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
     
     std::vector<draw::texture*>& texList = pScene->getTextureList();
-    draw::texture* pColorTex = texList[texList.size()-2];
+    draw::texture* pColorTex = texList.front();
     
     testFb.bind();
     LOG_GL_ERR();
     
-    if (!testRb.init(draw::rbo_format_t::RBO_FMT_DEPTH_32, fbRes)) {
-        LS_LOG_ERR("Error: Failed to resize the depth buffer.");
-        return;
+    if (pColorTex->init(draw::COLOR_FMT_DEFAULT, fbRes)) {
+        testFb.attachRenderTarget(draw::FBO_ATTACHMENT_0, *pColorTex);
+        pColorTex->unbind();
     }
     LOG_GL_ERR();
     
-    pColorTex->init(draw::COLOR_FMT_DEFAULT, fbRes);
+    if (testRb.init(draw::rbo_format_t::RBO_FMT_DEPTH_32, fbRes)) {
+        testFb.attachRenderTarget(draw::FBO_ATTACHMENT_DEPTH, testRb);
+        testRb.unbind();
+    }
     LOG_GL_ERR();
     
-    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_0, *pColorTex);
-    LOG_GL_ERR();
-    testFb.attachRenderTarget(draw::FBO_ATTACHMENT_DEPTH, testRb);
-    LOG_GL_ERR();
-    draw::framebuffer::getStatus(testFb);
+    LS_DEBUG_ASSERT(draw::framebuffer::getStatus(testFb) == draw::FBO_COMPLETE);
+    
     testFb.unbind();
-    
     LOG_GL_ERR();
 }
 
@@ -431,6 +315,6 @@ void fbState::scaleFramebuffer(const int deltaScale) {
  * Mouse Move Event
 -------------------------------------*/
 void fbState::rotateCamera(const math::vec3& deltaAngle) {
-    draw::camera* pMainCam = pScene->getCameraList().front();
-    pMainCam->rotate(deltaAngle);
+    draw::camera& mainCam = pScene->getMainCamera();
+    mainCam.rotate(deltaAngle);
 }

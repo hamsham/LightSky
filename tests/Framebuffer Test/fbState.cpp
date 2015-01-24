@@ -26,6 +26,7 @@ static constexpr float TEST_PROJECTION_NEAR = 0.1f;
 static constexpr float TEST_PROJECTION_FAR = 100.f;
 static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
 static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
+//static constexpr char TEST_SCENE_FILE[] = "./Bob.md5mesh";
 
 /*-------------------------------------
  * Destructor

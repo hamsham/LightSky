@@ -219,6 +219,7 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
  * overflow bug that used to occur, causing either a driver crash or kernel
  * panic.
 -------------------------------------*/
+/*
 void sceneGraph::update(uint64_t millisElapsed) {
     pMainCamera->update();
     
@@ -247,10 +248,10 @@ void sceneGraph::update(uint64_t millisElapsed) {
             // push the next child node's matrix onto the stack
             // augment it by the parent transform
             const math::mat4& childModelMat = pChild->nodeTransform.getTransform();
-            const math::mat4& accumulatedMatrix = updateStack.top().modelMatrix;
+            //const math::mat4& accumulatedMatrix = updateStack.top().modelMatrix;
 
             // stack the currently used node and push its next child onto the stack
-            updateStack.emplace(nodeStackInfo{pChild, 0, accumulatedMatrix * childModelMat});
+            updateStack.emplace(nodeStackInfo{pChild, 0, childModelMat});
         }
         else {
             updateStack.pop();
@@ -258,6 +259,18 @@ void sceneGraph::update(uint64_t millisElapsed) {
     }
 
     LS_DEBUG_ASSERT(updateStack.empty());
+}
+*/
+
+/*-------------------------------------
+ * Scene updating (linear)
+-------------------------------------*/
+void sceneGraph::update(uint64_t millisElapsed) {
+    pMainCamera->update();
+    
+    for (sceneNode&node : nodeList) {
+        updateSceneNode(millisElapsed, node);
+    }
 }
 
 /*-------------------------------------

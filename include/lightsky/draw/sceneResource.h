@@ -190,7 +190,11 @@ class sceneResource final : public utils::resource {
          * @return The index of the the last child node recursively placed into
          * the scene node list.
          */
-        unsigned readNodeHeirarchy(const aiNode* const pNode, const unsigned parentId);
+        unsigned readNodeHeirarchy(
+            const aiNode* const pNode,
+            const unsigned parentId,
+            const math::mat4 parentTransform = math::mat4{1.f}
+        );
         
     public:
         /**

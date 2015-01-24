@@ -14,6 +14,7 @@
 #include <assimp/mesh.h>
 #include <assimp/postprocess.h>
 
+#include "lightsky/draw/transform.h"
 #include "lightsky/draw/geometry.h"
 #include "lightsky/draw/geometry_utils.h"
 #include "lightsky/draw/sceneResource.h"
@@ -846,7 +847,11 @@ void sceneResource::importMeshFaces(
 /*-------------------------------------
     Read and import all meshes in a scene
 -------------------------------------*/
-unsigned sceneResource::readNodeHeirarchy(const aiNode* const pNode, const unsigned parentId) {
+unsigned sceneResource::readNodeHeirarchy(
+    const aiNode* const pNode,
+    const unsigned parentId,
+    const math::mat4 parentTransform
+) {
     // add a new scene node to the list
     const unsigned currentIndex = nodeList.size();
     nodeList.push_back(resourceNode{});
@@ -868,12 +873,12 @@ unsigned sceneResource::readNodeHeirarchy(const aiNode* const pNode, const unsig
 
     // import the node's model matrix
     const aiMatrix4x4& nodeMat = pNode->mTransformation;
-    currentNode.transform = {
+    currentNode.transform = math::mat4{
         nodeMat.a1, nodeMat.b1, nodeMat.c1, nodeMat.d1,
         nodeMat.a2, nodeMat.b2, nodeMat.c2, nodeMat.d2,
         nodeMat.a3, nodeMat.b3, nodeMat.c3, nodeMat.d3,
         nodeMat.a4, nodeMat.b4, nodeMat.c4, nodeMat.d4
-    };
+    } * parentTransform;
 
     // allocate memory for the child nodes
     std::vector<unsigned>& childIndices = currentNode.childIndices;
@@ -882,7 +887,7 @@ unsigned sceneResource::readNodeHeirarchy(const aiNode* const pNode, const unsig
     // recursively load node children
     for (unsigned childIter = 0; childIter < pNode->mNumChildren; ++childIter) {
         // return the index of each child node and place it into "childIndices."
-        childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], currentIndex);
+        childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], currentIndex, currentNode.transform);
     }
 
     // return the index of *this in "nodeList."

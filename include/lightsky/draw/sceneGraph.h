@@ -8,7 +8,7 @@
 #ifndef __LS_DRAW_SCENE_GRAPH_H__
 #define	__LS_DRAW_SCENE_GRAPH_H__
 
-#include <stack>
+//#include <stack>
 #include <vector>
 
 #include "lightsky/draw/sceneNode.h"
@@ -40,11 +40,13 @@ class sceneGraph {
          * operations in order to ensure scene geometry is properly transformed
          * when drawn to a framebuffer.
          */
+        /*
         struct nodeStackInfo {
             sceneNode* pNode;
             unsigned childIter;
             math::mat4 modelMatrix;
         };
+        */
 
         /**
          * @brief updateStack is an STL stack which maintains each scene node's
@@ -52,7 +54,7 @@ class sceneGraph {
          * member rather than function variable due to the fact that STL
          * containers keep their maximum size if reallocated.
          */
-        std::stack<nodeStackInfo> updateStack;
+        //std::stack<nodeStackInfo> updateStack;
         
         /**
          * @brief rootNode

@@ -28,6 +28,7 @@ inline void texture::bind() const {
     Unbind the current texture to OpenGL
 -------------------------------------*/
 inline void texture::unbind() const {
+    glActiveTexture(slot);
     glBindTexture(dimensions, 0);
 }
 
@@ -64,53 +65,13 @@ inline void texture::setParameter(int paramName, float param) const {
 /*-------------------------------------
     Create an OpenGL texture by using preexisting image data.
 -------------------------------------*/
-inline bool texture::init(
-    int mipmapLevel,
-    int size,
-    const imageResource& resource
-) {
+inline bool texture::init(const imageResource& resource, int mipmapLevel) {
     return init(
         mipmapLevel,
         resource.getInternalFormat(),
-        size,
+        resource.getPixelSize(),
         resource.getExternalFormat(),
         resource.getPixelType(),
-        resource.getData()
-    );
-}
-
-/*-------------------------------------
-    Create an OpenGL texture by using preexisting image data.
--------------------------------------*/
-inline bool texture::init(
-    int mipmapLevel,
-    const math::vec2i& size,
-    const imageResource& resource
-) {
-    return init(
-        mipmapLevel,
-        resource.getInternalFormat(),
-        size,
-        resource.getExternalFormat(),
-        resource.getPixelType(),
-        resource.getData()
-    );
-}
-
-/*-------------------------------------
-    Create an OpenGL texture by using preexisting image data.
--------------------------------------*/
-inline bool texture::init(
-    int mipmapLevel,
-    const math::vec3i& size,
-    const imageResource& resource
-) {
-    return init(
-        mipmapLevel,
-        (pixel_format_t)resource.getInternalFormat(),
-        size,
-        (pixel_layout_t)resource.getExternalFormat(),
-        (color_type_t)resource.getPixelType(),
         resource.getData()
     );
 }

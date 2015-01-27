@@ -57,7 +57,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a -lGL -lassimp -lSDL2 -lSDL2main -lfreeimage -lfreetype
+LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a ../../LightSetup/build/liblightsetup_d.a -lGL -lassimp -lSDL2 -lSDL2main -lfreeimage -lfreetype
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -72,6 +72,8 @@ fb_test_debug: ../../LightDraw/build/liblightdraw_d.a
 fb_test_debug: ../../LightMath/build/liblightmath_d.a
 
 fb_test_debug: ../../LightUtils/build/liblightutils_d.a
+
+fb_test_debug: ../../LightSetup/build/liblightsetup_d.a
 
 fb_test_debug: ${OBJECTFILES}
 	${LINK.cc} -o fb_test_debug ${OBJECTFILES} ${LDLIBSOPTIONS}
@@ -108,11 +110,6 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Debug
-	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Debug
-	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Debug
-	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Debug
-	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -121,11 +118,6 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

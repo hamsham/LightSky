@@ -76,8 +76,8 @@ float getDiffuseIntensity(in vec3 vertNorm, in vec3 lightDir) {
 
 void main() {
     float diffuseIntensity = getDiffuseIntensity(fragVertNormal, fragEyeDirection);
-    //fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
-    fragOutColor = vec4(0.5, 0.5, 0.5, 1.0) * diffuseIntensity;
+    fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
+    //fragOutColor = vec4(0.5, 0.5, 0.5, 1.0) * diffuseIntensity;
 }
 )***";
 

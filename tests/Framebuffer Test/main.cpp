@@ -76,13 +76,13 @@ bool mainSystem::start() {
     if (!this->pushGameState(new fbState{})) {
         LS_LOG_ERR("Error: Unable to start a framebuffer state.");
     }
-    
+    /*
     if (!this->pushGameState(new uiState{})) {
         LS_LOG_ERR("Error: Unable to start the UI state.");
         clearGameStates();
         return false;
     }
-    
+    */
     return true;
 }
 

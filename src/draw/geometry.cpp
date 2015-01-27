@@ -147,7 +147,10 @@ bool geometry::init(const sceneResource& meshData) {
     drawParams.count = meshData.getNumIndices();
     drawParams.indexType = index_element_t::INDEX_TYPE_DEFAULT;
     
-    submeshes = meshData.getMeshes();
+    submeshes.reserve(meshData.getNumMeshes());
+    for (const sceneResource::resourceMesh& rSubMesh : meshData.getMeshes()) {
+        submeshes.push_back(rSubMesh.indices);
+    }
 
     return true;
 }

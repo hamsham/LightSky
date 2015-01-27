@@ -68,8 +68,23 @@ inline unsigned sceneResource::getNumMeshes() const {
 /*-------------------------------------
     Get the array index pairs for a mesh.
 -------------------------------------*/
-inline const draw_index_list_t& sceneResource::getMeshes() const {
+inline const std::vector<sceneResource::resourceMesh>& sceneResource::getMeshes() const {
     return meshList;
+}
+
+/*-------------------------------------
+    Get the texture count.
+-------------------------------------*/
+inline unsigned sceneResource::getNumTextureTypes(tex_slot_t slot) const {
+    return textureSet.count(slot) ? textureSet.at(slot).size() : 0;
+}
+
+/*-------------------------------------
+    Get the array textures.
+-------------------------------------*/
+inline const std::map<tex_slot_t, std::vector<sceneResource::resourceTexture>>&
+sceneResource::getTextures() const {
+    return textureSet;
 }
 
 /*-------------------------------------

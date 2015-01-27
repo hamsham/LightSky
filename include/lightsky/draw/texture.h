@@ -54,9 +54,10 @@ enum tex_slot_t : int {
     
     TEXTURE_SLOT_DEFAULT = GL_TEXTURE0,
     
-    TEXTURE_SLOT_AMBIENT = GL_TEXTURE0,
-    TEXTURE_SLOT_DIFFUSE = GL_TEXTURE1,
-    TEXTURE_SLOT_SPECULAR = GL_TEXTURE2
+    TEXTURE_SLOT_DIFFUSE = GL_TEXTURE0,
+    TEXTURE_SLOT_AMBIENT = GL_TEXTURE1,
+    TEXTURE_SLOT_NORMAL = GL_TEXTURE2,
+    TEXTURE_SLOT_SPECULAR = GL_TEXTURE3
 };
 
 /**----------------------------------------------------------------------------
@@ -320,31 +321,15 @@ class texture {
         );
         
         /**
-         * Create an OpenGL texture by using preexisting image data.
+         * Create a 2D OpenGL texture by using preexisting image data.
          * 
-         * @see OpenGL's documentation for glTexImage()
-         * 
-         * @return true if the operation was successful. False if otherwise.
-         */
-        bool init(int mipmapLevel, int size, const imageResource&);
-        
-        /**
-         * Create an OpenGL texture by using preexisting image data.
-         * 
-         * @see OpenGL's documentation for glTexImage()
+         * @param resource
+         * A constant reference to an imageResource object containing pixel
+         * data to load into *this.
          * 
          * @return true if the operation was successful. False if otherwise.
          */
-        bool init(int mipmapLevel, const math::vec2i& size, const imageResource&);
-        
-        /**
-         * Create an OpenGL texture by using preexisting image data.
-         * 
-         * @see OpenGL's documentation for glTexImage()
-         * 
-         * @return true if the operation was successful. False if otherwise.
-         */
-        bool init(int mipmapLevel, const math::vec3i& size, const imageResource&);
+        bool init(const imageResource& resource, int mipmapLevel = 0);
         
         /**
          * Modify the internal data of a texture.

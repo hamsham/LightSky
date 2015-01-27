@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 #include <deque>
-#include <unordered_map>
+#include <map>
 
 #include "lightsky/utils/resource.h"
 
@@ -20,11 +20,13 @@
 #include "lightsky/draw/drawCommand.h"
 #include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/setup.h"
+#include "lightsky/draw/texture.h"
 #include "lightsky/draw/vertex.h"
 
 struct aiScene;
 struct aiMesh;
 struct aiNode;
+struct aiMaterial;
 
 namespace ls {
 namespace draw {
@@ -35,25 +37,35 @@ namespace draw {
  */
 class sceneResource final : public utils::resource {
     public:
-        /**
-         * @brief meshVertexMap_t
-         *
-         * Maps an ASSIMP mesh to its starting index/ending index pair within an
-         * internal array of vertex indices. These index mappings will be used to
-         * import a scene heirarchy.
-         */
-        typedef std::unordered_map<const aiMesh*, sceneNode*> meshMap_t;
+        enum : unsigned {
+            INVALID_SCENE_RESOURCE = (unsigned)-1
+        };
         
         /**
          * @brief the resourceNode object contains all of the data necessary
          * to instantiate all of the sceneNode objects within a sceneGraph.
          */
         struct resourceNode {
-            unsigned parentIndex = 0; // index in "nodeList" where the parent is.
-            std::string name = {};
-            std::vector<unsigned> meshIndices = {}; // indices for referencing values in "meshList"
-            std::vector<unsigned> childIndices = {}; // indices for referencing nodes in "nodeList"
-            math::mat4 transform = {}; // use to build a ls::draw::transform. this is non-accumulated.
+            std::string nodeName = {};
+            std::vector<unsigned> nodeMeshes = {}; // indices for referencing values in "meshList"
+            std::vector<unsigned> nodeChildren = {}; // indices for referencing nodes in "nodeList"
+            math::mat4 nodeTransform = {}; // use to build a ls::draw::transform. this is non-accumulated.
+            unsigned nodeParentId = 0; // index in "nodeList" where the parent is.
+        };
+        
+        struct resourceMesh {
+            draw_index_pair_t indices = {};
+            unsigned textureIndex = 0;
+        };
+        
+        /**
+         * @brief resourceTexture structure contains basic information for a
+         * scene graph object to load textures into the current OpenGL context
+         * and using the correct texture slot.
+         */
+        struct resourceTexture {
+            std::string texPath = "";
+            tex_slot_t texSlot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
         };
         
     private:
@@ -81,9 +93,18 @@ class sceneResource final : public utils::resource {
         
         /**
          * @brief submeshes lists all of the indices which can be used to
-         * refer to subsets of vertex data in "vertexList"
+         * refer to subsets of vertex data in "vertexList". Also contains each
+         * mesh object's texture index.
          */
-        draw_index_list_t meshList;
+        std::vector<resourceMesh> meshList;
+        
+        /**
+         * @brief textureList is a set of texture resource objects, containing
+         * the paths to various texture objects that can be loaded by a scene.
+         * The reason textures are not loaded directly into memory is to allow
+         * a client program to stream textures in on another thread.
+         */
+        std::map<tex_slot_t, std::vector<resourceTexture>> textureSet;
         
         /**
          * Allow the ability to generate the bounding area for a scene
@@ -175,6 +196,30 @@ class sceneResource final : public utils::resource {
             unsigned& baseIndex,
             draw_index_pair_t& meshIndices
         );
+        
+        /**
+         * @brief Scan an assimp scene and load all paths and slots for the
+         * textures referenced by a mesh.
+         * 
+         * @param pScene
+         * A constant pointer to a constant ASSIMP scene.
+         * 
+         * @return TRUE if all texture paths were successfully imported, FALSE
+         * if not.
+         */
+        bool importTexturePaths(const aiScene* const pScene);
+        
+        /**
+         * @brief Import a single texture path from Assimp
+         * 
+         * @param Material
+         * A constant pointer to a constant ASSIMP material.
+         * 
+         * @param slotType
+         * An ASSIMP aiTextureType, representing the type of texture to be
+         * loaded.
+         */
+        void importSingleTexturePath(const aiMaterial* const pMaterial, int slotType);
 
         /**
          * @brief readNodeHeirarchy
@@ -336,7 +381,27 @@ class sceneResource final : public utils::resource {
          * @return A constant reference to the internal array which contains
          * the index pairs loaded by *this.
          */
-        const draw_index_list_t& getMeshes() const;
+        const std::vector<resourceMesh>& getMeshes() const;
+        
+        /**
+         * Get the number of types texture available for importing.
+         * 
+         * @param slot
+         * The specific texture slot type to query for texture counts.
+         * 
+         * @return An unsigned integral type, containing the number of
+         * textures found in a 3D scene file.
+         */
+        unsigned getNumTextureTypes(tex_slot_t slot = tex_slot_t::TEXTURE_SLOT_DEFAULT) const;
+        
+        /**
+         * Get the array of texture paths, determining where a texture can
+         * be loaded from.
+         * 
+         * @return A constant reference to the map of arrays which contains
+         * the resourceTexture objects available to load from disk.
+         */
+        const std::map<tex_slot_t, std::vector<resourceTexture>>& getTextures() const;
         
         /**
          * @brief Unload

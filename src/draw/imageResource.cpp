@@ -135,40 +135,40 @@ void getPixelFormat(
     const FREE_IMAGE_TYPE dataType = FreeImage_GetImageType(pImg);
     
     if (dataType == FIT_BITMAP) {
-        if (bpp == 8)   intFmt = COLOR_FMT_R_8;         extFmt = COLOR_LAYOUT_R;
-        if (bpp == 16)  intFmt = COLOR_FMT_RG_8;        extFmt = COLOR_LAYOUT_RG;
-        if (bpp == 24)  intFmt = COLOR_FMT_RGB_8;       extFmt = COLOR_LAYOUT_RGB;
-        if (bpp == 32)  intFmt = COLOR_FMT_RGBA_8;      extFmt = COLOR_LAYOUT_RGBA;
+        if (bpp == 8)   {intFmt = COLOR_FMT_R_8;         extFmt = COLOR_LAYOUT_R;}
+        if (bpp == 16)  {intFmt = COLOR_FMT_RG_8;        extFmt = COLOR_LAYOUT_RG;}
+        if (bpp == 24)  {intFmt = COLOR_FMT_RGB_8;       extFmt = COLOR_LAYOUT_RGB;}
+        if (bpp == 32)  {intFmt = COLOR_FMT_RGBA_8;      extFmt = COLOR_LAYOUT_RGBA;}
     }
     else if (dataType == FIT_INT16) {
-        if (bpp == 16)  intFmt = COLOR_FMT_R_16I;       extFmt = COLOR_LAYOUT_R;
-        if (bpp == 32)  intFmt = COLOR_FMT_RG_16I;      extFmt = COLOR_LAYOUT_RG;
-        if (bpp == 48)  intFmt = COLOR_FMT_RGB_16I;     extFmt = COLOR_LAYOUT_RGB;
-        if (bpp == 64)  intFmt = COLOR_FMT_RGBA_16I;    extFmt = COLOR_LAYOUT_RGBA;
+        if (bpp == 16)  {intFmt = COLOR_FMT_R_16I;       extFmt = COLOR_LAYOUT_R;}
+        if (bpp == 32)  {intFmt = COLOR_FMT_RG_16I;      extFmt = COLOR_LAYOUT_RG;}
+        if (bpp == 48)  {intFmt = COLOR_FMT_RGB_16I;     extFmt = COLOR_LAYOUT_RGB;}
+        if (bpp == 64)  {intFmt = COLOR_FMT_RGBA_16I;    extFmt = COLOR_LAYOUT_RGBA;}
     }
     else if (dataType == FIT_UINT16) {
-        if (bpp == 16)  intFmt = COLOR_FMT_R_16U;       extFmt = COLOR_LAYOUT_R;
-        if (bpp == 32)  intFmt = COLOR_FMT_RG_16U;      extFmt = COLOR_LAYOUT_RG;
-        if (bpp == 48)  intFmt = COLOR_FMT_RGB_16U;     extFmt = COLOR_LAYOUT_RGB;
-        if (bpp == 64)  intFmt = COLOR_FMT_RGBA_16U;    extFmt = COLOR_LAYOUT_RGBA;
+        if (bpp == 16)  {intFmt = COLOR_FMT_R_16U;       extFmt = COLOR_LAYOUT_R;}
+        if (bpp == 32)  {intFmt = COLOR_FMT_RG_16U;      extFmt = COLOR_LAYOUT_RG;}
+        if (bpp == 48)  {intFmt = COLOR_FMT_RGB_16U;     extFmt = COLOR_LAYOUT_RGB;}
+        if (bpp == 64)  {intFmt = COLOR_FMT_RGBA_16U;    extFmt = COLOR_LAYOUT_RGBA;}
     }
     else if (dataType == FIT_INT32) {
-        if (bpp == 32)  intFmt = COLOR_FMT_R_32I;       extFmt = COLOR_LAYOUT_R;
-        if (bpp == 64)  intFmt = COLOR_FMT_RG_32I;      extFmt = COLOR_LAYOUT_RG;
-        if (bpp == 96)  intFmt = COLOR_FMT_RGB_32I;     extFmt = COLOR_LAYOUT_RGB;
-        if (bpp == 128) intFmt = COLOR_FMT_RGBA_32I;    extFmt = COLOR_LAYOUT_RGBA;
+        if (bpp == 32)  {intFmt = COLOR_FMT_R_32I;       extFmt = COLOR_LAYOUT_R;}
+        if (bpp == 64)  {intFmt = COLOR_FMT_RG_32I;      extFmt = COLOR_LAYOUT_RG;}
+        if (bpp == 96)  {intFmt = COLOR_FMT_RGB_32I;     extFmt = COLOR_LAYOUT_RGB;}
+        if (bpp == 128) {intFmt = COLOR_FMT_RGBA_32I;    extFmt = COLOR_LAYOUT_RGBA;}
     }
     else if (dataType == FIT_UINT32) {
-        if (bpp == 32)  intFmt = COLOR_FMT_R_32U;       extFmt = COLOR_LAYOUT_R;
-        if (bpp == 64)  intFmt = COLOR_FMT_RG_32U;      extFmt = COLOR_LAYOUT_RG;
-        if (bpp == 96)  intFmt = COLOR_FMT_RGB_32U;     extFmt = COLOR_LAYOUT_RGB;
-        if (bpp == 128) intFmt = COLOR_FMT_RGBA_32U;    extFmt = COLOR_LAYOUT_RGBA;
+        if (bpp == 32)  {intFmt = COLOR_FMT_R_32U;       extFmt = COLOR_LAYOUT_R;}
+        if (bpp == 64)  {intFmt = COLOR_FMT_RG_32U;      extFmt = COLOR_LAYOUT_RG;}
+        if (bpp == 96)  {intFmt = COLOR_FMT_RGB_32U;     extFmt = COLOR_LAYOUT_RGB;}
+        if (bpp == 128) {intFmt = COLOR_FMT_RGBA_32U;    extFmt = COLOR_LAYOUT_RGBA;}
     }
     else if (dataType == FIT_FLOAT) {
-        if (bpp == 32)  intFmt = COLOR_FMT_R_32F;       extFmt = COLOR_LAYOUT_R;
-        if (bpp == 64)  intFmt = COLOR_FMT_RG_32F;      extFmt = COLOR_LAYOUT_RG;
-        if (bpp == 96)  intFmt = COLOR_FMT_RGB_32F;     extFmt = COLOR_LAYOUT_RGB;
-        if (bpp == 128) intFmt = COLOR_FMT_RGBA_32F;    extFmt = COLOR_LAYOUT_RGBA;
+        if (bpp == 32)  {intFmt = COLOR_FMT_R_32F;       extFmt = COLOR_LAYOUT_R;}
+        if (bpp == 64)  {intFmt = COLOR_FMT_RG_32F;      extFmt = COLOR_LAYOUT_RG;}
+        if (bpp == 96)  {intFmt = COLOR_FMT_RGB_32F;     extFmt = COLOR_LAYOUT_RGB;}
+        if (bpp == 128) {intFmt = COLOR_FMT_RGBA_32F;    extFmt = COLOR_LAYOUT_RGBA;}
     }
     else if (dataType == FIT_RGB16) {
         intFmt = COLOR_FMT_RGB_16F;

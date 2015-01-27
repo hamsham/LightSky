@@ -67,8 +67,13 @@ enum index_element_t : int {
  * "count" parameters, in that order.
 -------------------------------------*/
 struct draw_index_pair_t {
-    unsigned first;
-    unsigned count;
+    unsigned first = 0;
+    unsigned count = 0;
+    
+    draw_index_pair_t(unsigned f = 0, unsigned c = 0) : 
+        first{f},
+        count{c}
+    {}
 };
 
 /**------------------------------------

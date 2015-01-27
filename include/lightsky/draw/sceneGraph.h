@@ -72,15 +72,6 @@ class sceneGraph {
         camera* pMainCamera;
 
         /**
-         * @brief textureList
-         *
-         * Contains a list of all textures used by *this. Meshes will be
-         * assigned an index to reference a single renderable geometry contained
-         * within this array.
-         */
-        std::vector<texture*> textureList;
-
-        /**
          * @brief geometryList
          *
          * Contains a list of all geometry used by *this. Meshes will be
@@ -88,6 +79,15 @@ class sceneGraph {
          * within this array.
          */
         std::vector<geometry*> geometryList;
+
+        /**
+         * @brief textureList
+         *
+         * Contains a list of all textures used by *this. Meshes will be
+         * assigned an index to reference a single renderable geometry contained
+         * within this array.
+         */
+        std::vector<texture*> textureList;
 
         /**
          * @brief meshList
@@ -118,6 +118,18 @@ class sceneGraph {
         bool importGeometry(const sceneResource& r);
         
         /**
+         * @brief Import a set of textures into the scene graph.
+         * 
+         * @param r
+         * A constant reference to a scene resource object, containing file
+         * paths to texture data which can be imported by *this.
+         * 
+         * @return TRUE if all texture files loaded onto the GPU correctly,
+         * FALSE if something went wrong.
+         */
+        bool importTextures(const sceneResource& r);
+        
+        /**
          * @brief Initialize all mesh objects from the scene resource object
          * into *this in order to draw geometry.
          * 
@@ -125,10 +137,15 @@ class sceneGraph {
          * A constant reference to a scene resource object containing valid mesh
          * information.
          * 
+         * @param textureOffset
+         * The index offset to the last texture in *this object's texture array.
+         * This parameter will be greater than zero if the imported scene data
+         * is appended to the scene graph's previous data set.
+         * 
          * @return TRUE if all mesh data loaded onto the GPU correctly, FALSE
          * if something went wrong.
          */
-        bool importMeshes(const sceneResource& r);
+        bool importMeshes(const sceneResource& r, const unsigned textureOffset);
         
         /**
          * @brief Import the scene's node hierarchy from a scene resource

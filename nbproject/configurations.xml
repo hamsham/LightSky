@@ -53,36 +53,6 @@
           <output>build/liblightsky_d.a</output>
         </archiverTool>
         <requiredProjects>
-          <makeArtifact PL="LightSetup"
-                        CT="3"
-                        CN="Debug"
-                        AC="true"
-                        BL="true"
-                        WD="LightSetup"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="build/liblightsetup_d.a">
-          </makeArtifact>
-          <makeArtifact PL="LightUtils"
-                        CT="3"
-                        CN="Debug"
-                        AC="true"
-                        BL="true"
-                        WD="LightUtils"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="build/liblightutils_d.a">
-          </makeArtifact>
-          <makeArtifact PL="LightMath"
-                        CT="3"
-                        CN="Debug"
-                        AC="true"
-                        BL="true"
-                        WD="LightMath"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="build/liblightmath_d.a">
-          </makeArtifact>
           <makeArtifact PL="LightScript"
                         CT="3"
                         CN="Debug"
@@ -92,6 +62,16 @@
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="build/liblightscript_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightGame"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightGame"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightgame_d.a">
           </makeArtifact>
           <makeArtifact PL="LightDraw"
                         CT="3"
@@ -103,15 +83,35 @@
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="build/liblightdraw_d.a">
           </makeArtifact>
-          <makeArtifact PL="LightGame"
+          <makeArtifact PL="LightMath"
                         CT="3"
                         CN="Debug"
                         AC="true"
                         BL="true"
-                        WD="LightGame"
+                        WD="LightMath"
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="build/liblightgame_d.a">
+                        OP="build/liblightmath_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightUtils"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightUtils"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightutils_d.a">
+          </makeArtifact>
+          <makeArtifact PL="LightSetup"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="LightSetup"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightsetup_d.a">
           </makeArtifact>
         </requiredProjects>
       </compileType>

@@ -178,7 +178,7 @@ class vertexBuffer_t {
          * dynamic and will be updated on a regular basis.
          * 
          */
-        void setData(ptrdiff_t size, const void* pData, vbo_rw_t usage);
+        void setData(ptrdiff_t size, const void* const pData, vbo_rw_t usage);
         
         /**
          * Modify the data within a buffer to contain whatever is in "pData."

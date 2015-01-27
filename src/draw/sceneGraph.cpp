@@ -11,6 +11,7 @@
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/camera.h"
 #include "lightsky/draw/geometry.h"
+#include "lightsky/draw/imageResource.h"
 #include "lightsky/draw/sceneMesh.h"
 #include "lightsky/draw/sceneResource.h"
 #include "lightsky/draw/sceneGraph.h"
@@ -31,7 +32,12 @@ sceneGraph::~sceneGraph() {
  * Constructor
 -------------------------------------*/
 sceneGraph::sceneGraph() :
-    pMainCamera{new camera{}}
+    rootNode{},
+    pMainCamera{new camera{}},
+    geometryList{},
+    textureList{},
+    meshList{},
+    nodeList{}
 {}
 
 /*-------------------------------------
@@ -40,8 +46,8 @@ sceneGraph::sceneGraph() :
 sceneGraph::sceneGraph(sceneGraph&& s) :
     rootNode{std::move(s.rootNode)},
     pMainCamera{std::move(s.pMainCamera)},
-    textureList{std::move(s.textureList)},
     geometryList{std::move(s.geometryList)},
+    textureList{std::move(s.textureList)},
     meshList{std::move(s.meshList)},
     nodeList{std::move(s.nodeList)}
 {
@@ -57,8 +63,8 @@ sceneGraph& sceneGraph::operator=(sceneGraph&& s) {
     pMainCamera = std::move(s.pMainCamera);
     s.pMainCamera = nullptr;
     
-    textureList = std::move(s.textureList);
     geometryList = std::move(s.geometryList);
+    textureList = std::move(s.textureList);
     meshList = std::move(s.meshList);
     nodeList = std::move(s.nodeList);
 
@@ -81,9 +87,15 @@ bool sceneGraph::init(const sceneResource& r, bool append) {
         return false;
     }
     
+    const unsigned textureOffset = textureList.size();
+    if (!importTextures(r)) {
+        LS_LOG_ERR("\tFailed to load texture data from a scene resource.\n");
+        // failure to load textures is not an unrecoverable error.
+    }
+    
     const unsigned meshOffset = meshList.size();
     if (r.getNumMeshes()) {
-        if (!importMeshes(r)) {
+        if (!importMeshes(r, textureOffset)) {
             LS_LOG_ERR("\tFailed to load mesh data from a scene resource.\n");
             terminate();
             return false;
@@ -126,17 +138,81 @@ bool sceneGraph::importGeometry(const sceneResource& r) {
 }
 
 /*-------------------------------------
+ * Scene Texture Loading
+-------------------------------------*/
+bool sceneGraph::importTextures(const sceneResource& r) {
+    bool ret = true;
+    const unsigned textureOffset = textureList.size();
+    textureList.reserve(textureList.size() + textureOffset);
+    
+    imageResource loader{};
+    
+    for (const std::pair<tex_slot_t, std::vector<sceneResource::resourceTexture>>& rTextureList : r.getTextures()) {
+        for (const sceneResource::resourceTexture& rTexture : rTextureList.second) {
+            
+            const std::string& rTexturePath = rTexture.texPath;
+            const tex_slot_t rTexSlot = rTexture.texSlot;
+            
+            LS_LOG_MSG("Loading texture ", textureList.size(), '.');
+            if (rTexturePath.empty()) {
+                LS_LOG_ERR("\tUnsupported texture data found within a scene resource.");
+                textureList.push_back(nullptr);
+                continue;
+            }
+            
+            // the imageLoader class provides logging. no need to add extra.
+            if (!loader.loadFile(rTexturePath)) {
+                textureList.push_back(nullptr); // non-fatal error
+                ret = false;
+                continue;
+            }
+            
+            texture* const pTexture = new texture{};
+            if (!pTexture) {
+                LS_LOG_ERR("\tUnable to allocate texture data while importing a scene resource.");
+                textureList.push_back(nullptr); // non-fatal error
+                ret = false;
+                continue;
+            }
+            
+            // add the geometry data the the back of textureList in the event of
+            // an appended import.
+            textureList.push_back(pTexture);
+            pTexture->setTextureSlot(rTexSlot);
+
+            if (!pTexture->init(loader)) {
+                LS_LOG_ERR("\tUnable to load texture data while importing a scene resource.");
+                ret = false;
+            }
+            
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_BLUE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_RED);
+            pTexture->setParameter(TEX_PARAM_MIN_FILTER, TEX_FILTER_NEAREST);
+            pTexture->setParameter(TEX_PARAM_MAG_FILTER, TEX_FILTER_LINEAR_NEAREST);
+            pTexture->setParameter(TEX_PARAM_WRAP_S,     TEX_PARAM_CLAMP_EDGE);
+            pTexture->setParameter(TEX_PARAM_WRAP_T,     TEX_PARAM_CLAMP_EDGE);
+            LOG_GL_ERR();
+            
+            pTexture->unbind();
+            LOG_GL_ERR();
+        }
+    }
+    
+    
+    return ret;
+}
+
+/*-------------------------------------
  * Scene Mesh Loading
 -------------------------------------*/
-bool sceneGraph::importMeshes(const sceneResource& r) {
+bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffset) {
     if (geometryList.empty()) {
         return true;
     }
 
-    const draw_index_list_t& rIndexList = r.getMeshes();
-    meshList.reserve(meshList.size() + rIndexList.size());
+    meshList.reserve(meshList.size() + r.getNumMeshes());
     
-    for (const draw_index_pair_t& rIndices : rIndexList) {
+    for (const sceneResource::resourceMesh& rMesh : r.getMeshes()) {
         sceneMesh* const pMesh = new sceneMesh{};
 
         if (!pMesh) {
@@ -154,9 +230,21 @@ bool sceneGraph::importMeshes(const sceneResource& r) {
             LS_LOG_ERR("\tUnable to initialize mesh data while importing a scene resource.");
             return false;
         }
-        else {
-            pMesh->setIndices(rIndices);
+        
+        pMesh->setIndices(rMesh.indices);
+        
+        if (rMesh.textureIndex != sceneResource::INVALID_SCENE_RESOURCE) {
+            texture* const pTex = textureList[textureOffset + rMesh.textureIndex];
+            if (pTex != nullptr) {
+                pMesh->addTexture(*pTex);
+            }
         }
+        
+        LS_LOG_MSG(
+            "\tMesh ", meshList.size()-1,
+            " contains texture ",
+            rMesh.textureIndex, '-', textureList[textureOffset+rMesh.textureIndex]->isValid()
+        );
     }
     
     return true;
@@ -185,26 +273,25 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
         sceneNode& newNode = nodeList[nodeOffset + i];
         
         //newNode.nodeParent = &nodeList[nodeOffset + importNode.parentIndex];
-        newNode.nodeParent = &nodeList[nodeOffset + importNode.parentIndex];
-        newNode.nodeName = importNode.name;
+        newNode.nodeParent = &nodeList[nodeOffset + importNode.nodeParentId];
+        newNode.nodeName = importNode.nodeName;
         
-        newNode.nodeMeshes.reserve(importNode.meshIndices.size());
+        newNode.nodeMeshes.reserve(importNode.nodeMeshes.size());
         
-        for (unsigned meshIndex : importNode.meshIndices) {
+        for (unsigned meshIndex : importNode.nodeMeshes) {
             sceneMesh* const pMesh = meshList[meshOffset + meshIndex];
             newNode.nodeMeshes.push_back(pMesh);
         }
         
-        newNode.nodeChildren.reserve(importNode.childIndices.size());
-        for (unsigned childIndex : importNode.childIndices) {
+        newNode.nodeChildren.reserve(importNode.nodeChildren.size());
+        for (unsigned childIndex : importNode.nodeChildren) {
             newNode.nodeChildren.push_back(&nodeList[nodeOffset + childIndex]);
         }
         
-        newNode.nodeTransform.setTransform(importNode.transform);
+        newNode.nodeTransform.setTransform(importNode.nodeTransform);
         
         LS_LOG_MSG("\tAdded node \"", newNode.nodeName, "\" to a scene graph.");
     }
-    
     
     LS_LOG_MSG("\tSuccessfully imported ", nodeList.size(), " nodes into a scene graph.");
     
@@ -301,14 +388,13 @@ struct sceneDeleter {
 void sceneGraph::terminate() {
     rootNode.reset();
     
+    std::for_each(geometryList.begin(), geometryList.end(), sceneDeleter<geometry>{});
+    geometryList.clear();
+    geometryList.shrink_to_fit();
     
     std::for_each(textureList.begin(),  textureList.end(),  sceneDeleter<texture>{});
     textureList.clear();
     textureList.shrink_to_fit();
-    
-    std::for_each(geometryList.begin(), geometryList.end(), sceneDeleter<geometry>{});
-    geometryList.clear();
-    geometryList.shrink_to_fit();
     
     std::for_each(meshList.begin(),     meshList.end(),     sceneDeleter<sceneMesh>{});
     meshList.clear();

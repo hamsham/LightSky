@@ -83,7 +83,7 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="true"
+                            BL="false"
                             WD="../../LightScript"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -95,7 +95,7 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="true"
+                            BL="false"
                             WD="../../LightGame"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -107,7 +107,7 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="true"
+                            BL="false"
                             WD="../../LightDraw"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -119,7 +119,7 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="true"
+                            BL="false"
                             WD="../../LightMath"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -131,11 +131,23 @@
                             CT="3"
                             CN="Debug"
                             AC="true"
-                            BL="true"
+                            BL="false"
                             WD="../../LightUtils"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="build/liblightutils_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../LightSetup"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="false"
+                            WD="../../LightSetup"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="build/liblightsetup_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibLibItem>GL</linkerLibLibItem>

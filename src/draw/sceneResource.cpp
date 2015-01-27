@@ -26,7 +26,7 @@ namespace {
  * These meshes were hand-selected through much trial & error. Do not touch
  * unless you want a swarm of bees hidden in your breakfast cereal box.
 -----------------------------------------------------------------------------*/
-enum mesh_file_flags_t : unsigned int {
+enum : unsigned int {
     DEFAULT_IMPORT_FLAGS = 0
         | aiProcess_GenUVCoords
         | aiProcess_TransformUVCoords
@@ -41,13 +41,6 @@ enum mesh_file_flags_t : unsigned int {
         | aiProcess_FindDegenerates
         | aiProcess_FindInvalidData
         | aiProcess_ValidateDataStructure
-        | 0,
-
-    DEBUG_IMPORT_FLAGS = 0
-        | aiProcess_GenUVCoords
-        | aiProcess_TransformUVCoords
-        | aiProcess_Triangulate
-        | aiProcess_GenNormals
         | 0
 };
 
@@ -56,18 +49,6 @@ enum mesh_invalid_prim_t : int {
         | aiPrimitiveType_LINE
         | aiPrimitiveType_POINT
         | aiPrimitiveType_POLYGON
-};
-
-enum mesh_invalid_node_t : int {
-    INVALID_NODE_FLAGS = 0
-        | aiComponent_ANIMATIONS
-        | aiComponent_TANGENTS_AND_BITANGENTS
-        | aiComponent_COLORS
-        | aiComponent_BONEWEIGHTS
-        | aiComponent_TEXTURES
-        | aiComponent_LIGHTS
-        | aiComponent_CAMERAS
-        | aiComponent_MATERIALS
 };
 }
 
@@ -96,6 +77,7 @@ sceneResource::sceneResource(const sceneResource& r) :
     indexList{r.indexList},
     nodeList{r.nodeList},
     meshList{r.meshList},
+    textureSet{r.textureSet},
     totalBounds{r.totalBounds}
 {
     this->pData = reinterpret_cast<char*>(vertexList.data());
@@ -112,6 +94,7 @@ sceneResource::sceneResource(sceneResource&& r) :
     indexList{std::move(r.indexList)},
     nodeList{std::move(r.nodeList)},
     meshList{std::move(r.meshList)},
+    textureSet{std::move(r.textureSet)},
     totalBounds{std::move(r.totalBounds)}
 {
     this->pData = r.pData;
@@ -135,6 +118,7 @@ sceneResource& sceneResource::operator=(const sceneResource& r) {
     indexList = r.indexList;
     nodeList = r.nodeList;
     meshList = r.meshList;
+    textureSet = r.textureSet;
     totalBounds = r.totalBounds;
     
     this->pData = reinterpret_cast<char*>(vertexList.data());
@@ -166,6 +150,8 @@ sceneResource& sceneResource::operator=(sceneResource&& r) {
     
     meshList = std::move(r.meshList);
     
+    textureSet = std::move(r.textureSet);
+    
     totalBounds = std::move(r.totalBounds);
     
     return *this;
@@ -188,6 +174,8 @@ void sceneResource::unload() {
     nodeList.clear();
     
     meshList.clear();
+    
+    textureSet.clear();
     
     totalBounds.resetSize();
 }
@@ -227,16 +215,17 @@ bool sceneResource::initVertices(unsigned vertCount, unsigned indexCount) {
 sceneResource::resourceNode sceneResource::createPrimitiveNode(const char * const name) {
     resourceNode primNode;
 
-    primNode.parentIndex = 0;
-    primNode.meshIndices.push_back(0);
-    primNode.name = name;
-    primNode.childIndices.clear();
-    primNode.transform = math::mat4{1.f};
+    primNode.nodeParentId = 0;
+    primNode.nodeMeshes.push_back(0);
+    primNode.nodeName = name;
+    primNode.nodeChildren.clear();
+    primNode.nodeTransform = math::mat4{1.f};
     
-    draw_index_pair_t subMeshIndices;
-    subMeshIndices.first = 0;
-    subMeshIndices.count = vertexList.size();
-    meshList.push_back(subMeshIndices);
+    resourceMesh m;
+    m.indices.first = 0;
+    m.indices.count = vertexList.size();
+    m.textureIndex = INVALID_SCENE_RESOURCE;
+    meshList.push_back(m);
 
     return primNode;
 }
@@ -670,12 +659,11 @@ bool sceneResource::loadFile(const std::string& filename) {
 
     // prevent bad primitives
     fileImporter.SetPropertyInteger(AI_CONFIG_PP_SBP_REMOVE, INVALID_PRIM_IMPORT_FLAGS);
-    fileImporter.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, INVALID_NODE_FLAGS);
     fileImporter.SetPropertyInteger(AI_CONFIG_PP_FD_REMOVE, 1);
     fileImporter.SetExtraVerbose(true);
 
     // load
-    const aiScene* const pScene = fileImporter.ReadFile(filename.c_str(), mesh_file_flags_t::DEFAULT_IMPORT_FLAGS);
+    const aiScene* const pScene = fileImporter.ReadFile(filename.c_str(), DEFAULT_IMPORT_FLAGS);
 
     if (!pScene) {
         LS_LOG_ERR(
@@ -706,6 +694,10 @@ bool sceneResource::loadFile(const std::string& filename) {
         readNodeHeirarchy(pRootNode, 0);
     }
     
+    if (!importTexturePaths(pScene)) {
+        LS_LOG_ERR("\tA recoverable error occurred while importing texture data.");
+    }
+    
     resultDrawMode = draw_mode_t::TRIS;
 
     LS_LOG_MSG(
@@ -713,7 +705,8 @@ bool sceneResource::loadFile(const std::string& filename) {
         "\tTotal Vertices: ", getNumVertices(), '\n',
         "\tTotal Indices:  ", getNumIndices(), '\n',
         "\tTotal Meshes:   ", getNumMeshes(), '\n',
-        "\tTotal Nodes:    ", getNumNodes(), '\n'
+        "\tTotal Nodes:    ", getNumNodes(), '\n',
+        "\tTotal Texs:     ", getNumTextureTypes(), '\n'
     );
 
     return true;
@@ -795,15 +788,16 @@ bool sceneResource::importMeshData(const aiScene* const pScene) {
 
             // Always check for texture coords so the loader doesn't crash
             // "aiTextureType_DIFFUSE" is the default UV channel.
-            if (pMesh->HasTextureCoords(aiTextureType_DIFFUSE)) {
-                const aiVector3D& tex = pMesh->mTextureCoords[aiTextureType_DIFFUSE][vertIter];
+            if (pMesh->HasTextureCoords(0)) {
+                const aiVector3D& tex = pMesh->mTextureCoords[0][vertIter];
                 vert.uv[0] = tex.x;
                 vert.uv[1] = tex.y;
             }
         }
 
         // load all face data
-        importMeshFaces(pMesh, baseVertex, baseIndex, meshList[meshIter]);
+        importMeshFaces(pMesh, baseVertex, baseIndex, meshList[meshIter].indices);
+        meshList[meshIter].textureIndex = pMesh->mMaterialIndex;
     }
 
     return true;
@@ -845,6 +839,77 @@ void sceneResource::importMeshFaces(
 }
 
 /*-------------------------------------
+    Read and import all texture paths
+-------------------------------------*/
+bool sceneResource::importTexturePaths(const aiScene* const pScene) {
+    for (unsigned i = 0; i < pScene->mNumMaterials; ++i) {
+        const aiMaterial* const pMaterial = pScene->mMaterials[i];
+        importSingleTexturePath(pMaterial, aiTextureType_DIFFUSE);
+        importSingleTexturePath(pMaterial, aiTextureType_AMBIENT);
+        importSingleTexturePath(pMaterial, aiTextureType_NORMALS);
+        importSingleTexturePath(pMaterial, aiTextureType_SPECULAR);
+    }
+    
+    return true;
+}
+
+/*-------------------------------------
+    Read and import a single texture path
+-------------------------------------*/
+void sceneResource::importSingleTexturePath(const aiMaterial* const pMaterial, int slotType) {
+    // make sure there's a convention for converting aiTextureTypes to tex_slot_t types.
+    tex_slot_t outSlot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
+    const unsigned totalTexCount = pMaterial->GetTextureCount((aiTextureType)slotType);
+    
+    switch (slotType) {
+        case aiTextureType::aiTextureType_DIFFUSE:
+            outSlot = tex_slot_t::TEXTURE_SLOT_DIFFUSE;
+            LS_LOG_MSG("\tLocated ", totalTexCount, " diffuse textures.");
+            break;
+        case aiTextureType::aiTextureType_AMBIENT:
+            outSlot = tex_slot_t::TEXTURE_SLOT_AMBIENT;
+            LS_LOG_MSG("\tLocated ", totalTexCount, " ambient textures.");
+            break;
+        case aiTextureType::aiTextureType_NORMALS:
+            outSlot = tex_slot_t::TEXTURE_SLOT_NORMAL;
+            LS_LOG_MSG("\tLocated ", totalTexCount, " normal textures.");
+            break;
+        case aiTextureType::aiTextureType_SPECULAR:
+            outSlot = tex_slot_t::TEXTURE_SLOT_SPECULAR;
+            LS_LOG_MSG("\tLocated ", totalTexCount, " specular textures.");
+            break;
+            
+        // TODO: other textures are unsupported at the moment.
+        default:
+            outSlot = tex_slot_t::TEXTURE_SLOT_DEFAULT;
+            LS_LOG_MSG("\tLocated ", totalTexCount, " miscellaneous textures.");
+            break;
+    }
+    
+    // get the appropriate texture slot array from *this.
+    std::vector<resourceTexture>& outTexList = textureSet[outSlot];
+    
+    // iterate
+    for (unsigned i = 0; i < totalTexCount; ++i) {
+        outTexList.emplace_back(resourceTexture{});
+        resourceTexture& outTex = outTexList.back();
+        outTex.texSlot = outSlot;
+        
+        // assimp will automatically clear and populate "inPath".
+        aiString inPath;
+        if (pMaterial->GetTexture((aiTextureType)slotType, i, &inPath, nullptr, nullptr, nullptr, nullptr, nullptr) != AI_SUCCESS) {
+            outTex.texPath = "";
+        }
+        else {
+            // add the imported texture to the appropriate array in textureSet.
+            outTex.texPath = inPath.C_Str();
+        }
+        
+        LS_LOG_MSG("\tFound texture data at \"", outTex.texPath, "\".");
+    }
+}
+
+/*-------------------------------------
     Read and import all meshes in a scene
 -------------------------------------*/
 unsigned sceneResource::readNodeHeirarchy(
@@ -857,13 +922,13 @@ unsigned sceneResource::readNodeHeirarchy(
     nodeList.push_back(resourceNode{});
     resourceNode& currentNode = nodeList.back();
 
-    currentNode.parentIndex = parentId;
-    currentNode.name = pNode->mName.C_Str();
+    currentNode.nodeParentId = parentId;
+    currentNode.nodeName = pNode->mName.C_Str();
 
-    LS_LOG_MSG("\tLoaded scene node: ", currentNode.name, '.');
+    LS_LOG_MSG("\tLoaded scene node: ", currentNode.nodeName, '.');
 
     // map the internal indices to the assimp node's mesh list
-    std::vector<unsigned>& currentNodeMeshes = currentNode.meshIndices;
+    std::vector<unsigned>& currentNodeMeshes = currentNode.nodeMeshes;
     currentNodeMeshes.resize(pNode->mNumMeshes);
 
     for (unsigned meshIter = 0; meshIter < pNode->mNumMeshes; ++meshIter) {
@@ -873,7 +938,7 @@ unsigned sceneResource::readNodeHeirarchy(
 
     // import the node's model matrix
     const aiMatrix4x4& nodeMat = pNode->mTransformation;
-    currentNode.transform = math::mat4{
+    currentNode.nodeTransform = math::mat4{
         nodeMat.a1, nodeMat.b1, nodeMat.c1, nodeMat.d1,
         nodeMat.a2, nodeMat.b2, nodeMat.c2, nodeMat.d2,
         nodeMat.a3, nodeMat.b3, nodeMat.c3, nodeMat.d3,
@@ -881,13 +946,13 @@ unsigned sceneResource::readNodeHeirarchy(
     } * parentTransform;
 
     // allocate memory for the child nodes
-    std::vector<unsigned>& childIndices = currentNode.childIndices;
+    std::vector<unsigned>& childIndices = currentNode.nodeChildren;
     childIndices.resize(pNode->mNumChildren);
 
     // recursively load node children
     for (unsigned childIter = 0; childIter < pNode->mNumChildren; ++childIter) {
         // return the index of each child node and place it into "childIndices."
-        childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], currentIndex, currentNode.transform);
+        childIndices[childIter] = readNodeHeirarchy(pNode->mChildren[childIter], currentIndex, currentNode.nodeTransform);
     }
 
     // return the index of *this in "nodeList."

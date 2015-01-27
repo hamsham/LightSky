@@ -71,12 +71,12 @@ ${OBJECTDIR}/src/lightsky.o: src/lightsky.cpp
 
 # Subprojects
 .build-subprojects:
-	cd LightSetup && ${MAKE}  -f Makefile CONF=Debug
-	cd LightUtils && ${MAKE}  -f Makefile CONF=Debug
-	cd LightMath && ${MAKE}  -f Makefile CONF=Debug
 	cd LightScript && ${MAKE}  -f Makefile CONF=Debug
-	cd LightDraw && ${MAKE}  -f Makefile CONF=Debug
 	cd LightGame && ${MAKE}  -f Makefile CONF=Debug
+	cd LightDraw && ${MAKE}  -f Makefile CONF=Debug
+	cd LightMath && ${MAKE}  -f Makefile CONF=Debug
+	cd LightUtils && ${MAKE}  -f Makefile CONF=Debug
+	cd LightSetup && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -85,12 +85,12 @@ ${OBJECTDIR}/src/lightsky.o: src/lightsky.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd LightSetup && ${MAKE}  -f Makefile CONF=Debug clean
-	cd LightUtils && ${MAKE}  -f Makefile CONF=Debug clean
-	cd LightMath && ${MAKE}  -f Makefile CONF=Debug clean
 	cd LightScript && ${MAKE}  -f Makefile CONF=Debug clean
-	cd LightDraw && ${MAKE}  -f Makefile CONF=Debug clean
 	cd LightGame && ${MAKE}  -f Makefile CONF=Debug clean
+	cd LightDraw && ${MAKE}  -f Makefile CONF=Debug clean
+	cd LightMath && ${MAKE}  -f Makefile CONF=Debug clean
+	cd LightUtils && ${MAKE}  -f Makefile CONF=Debug clean
+	cd LightSetup && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

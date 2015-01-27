@@ -25,8 +25,8 @@ static constexpr float TEST_PROJECTION_FOV = 60.f;
 static constexpr float TEST_PROJECTION_NEAR = 0.1f;
 static constexpr float TEST_PROJECTION_FAR = 100.f;
 static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
-static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
-//static constexpr char TEST_SCENE_FILE[] = "./Bob.md5mesh";
+//static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
+static constexpr char TEST_SCENE_FILE[] = "./Bob.md5mesh";
 
 /*-------------------------------------
  * Destructor
@@ -85,12 +85,10 @@ bool fbState::initMemory() {
     draw::texture* pColorTex = new draw::texture{};
     bool ret = true;
     
-    pScene->getTextureList().push_back(pColorTex);
-    
     if (!ret
     || !pMeshLoader->loadFile(TEST_SCENE_FILE)
     //|| !pMeshLoader->loadSphere(32)
-    || !pScene->init(*pMeshLoader, true)
+    || !pScene->init(*pMeshLoader)
     || !pColorTex->init(draw::COLOR_FMT_DEFAULT, math::vec2i{TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT})
     || !pRenderer->init()
     ) {
@@ -103,6 +101,7 @@ bool fbState::initMemory() {
         pColorTex->setParameter(draw::TEX_PARAM_MAG_FILTER, draw::TEX_FILTER_LINEAR);
         pColorTex->setParameter(draw::TEX_PARAM_WRAP_S,     draw::TEX_PARAM_CLAMP_EDGE);
         pColorTex->setParameter(draw::TEX_PARAM_WRAP_T,     draw::TEX_PARAM_CLAMP_EDGE);
+        pScene->getTextureList().push_back(pColorTex);
         pColorTex->unbind();
     }
     
@@ -289,7 +288,7 @@ void fbState::scaleFramebuffer(const int deltaScale) {
     fbRes[1] = math::clamp(fbRes[1], (int)TEST_FRAMEBUFFER_HEIGHT, displayRes[1]);
     
     std::vector<draw::texture*>& texList = pScene->getTextureList();
-    draw::texture* pColorTex = texList.front();
+    draw::texture* pColorTex = texList.back();
     
     testFb.bind();
     LOG_GL_ERR();

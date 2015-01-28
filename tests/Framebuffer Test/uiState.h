@@ -26,16 +26,8 @@ class uiState final : virtual public ls::game::gameState {
         ls::draw::shaderProgram fontProg    = {};
         ls::draw::blendObject*  pBlender    = {};
         
-        bool            initMemory          ();
-        bool            initFileData        ();
-        bool            initShaders         ();
-        void            setRendererParams  ();
-        
         std::string     getTimingStr        () const;
-        
         math::mat4      get2dViewport       () const;
-        void            resetGlViewport     ();
-        
         void            drawScene           ();
         
     public:

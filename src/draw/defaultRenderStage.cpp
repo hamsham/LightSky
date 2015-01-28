@@ -26,7 +26,7 @@ const char* DEFAULT_VP_MATRIX_UNIFORM = "vpMatrix";
  * Default Vertex Shader (with diffuse lighting)
 -------------------------------------*/
 const char defaultVertShader[] = u8R"***(
-#version 330 core
+#version 300 es
 
 layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inTex;
@@ -49,8 +49,8 @@ void main() {
     //gl_Position = mvpMatrix * vec4(inPos, 1.0);
     //gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
 
-    fragVertNormal = normalize(vec4(modelMatrix * vec4(inNorm, 0.0)).xyz);
-    fragEyeDirection = normalize(vec3(-vpMatrix[0][3], -vpMatrix[1][3], -vpMatrix[2][3]));
+    fragVertNormal = vec4(modelMatrix * vec4(inNorm, 0.0)).xyz;
+    fragEyeDirection = vec3(-vpMatrix[0][3], -vpMatrix[1][3], -vpMatrix[2][3]);
     fragUvCoords = inTex;
 }
 )***";
@@ -59,7 +59,9 @@ void main() {
  * Default Fragment Shader (with diffuse lighting)
 -------------------------------------*/
 const char defaultFragShader[] = u8R"***(
-#version 330 core
+#version 300 es
+
+precision mediump float;
 
 in vec3 fragVertNormal;
 in vec3 fragEyeDirection;
@@ -71,13 +73,13 @@ out vec4 fragOutColor;
 
 float getDiffuseIntensity(in vec3 vertNorm, in vec3 lightDir) {
     float brightness = dot(vertNorm, lightDir);
-    return 0.5 + (0.5 * brightness);
+    //return 0.5 + (0.5 * brightness);
+    return brightness;
 }
 
 void main() {
-    float diffuseIntensity = getDiffuseIntensity(fragVertNormal, fragEyeDirection);
+    float diffuseIntensity = getDiffuseIntensity(normalize(fragVertNormal), normalize(fragEyeDirection));
     fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
-    //fragOutColor = vec4(0.5, 0.5, 0.5, 1.0) * diffuseIntensity;
 }
 )***";
 

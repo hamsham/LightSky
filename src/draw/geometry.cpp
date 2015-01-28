@@ -159,34 +159,80 @@ bool geometry::init(const sceneResource& meshData) {
     Text/String initialization
 -------------------------------------*/
 bool geometry::init(const atlas& ta, const std::string& str) {
-    terminate();
+    drawParams.reset();
+    submeshes.clear();
+    bounds.resetSize();
     
     LS_LOG_MSG("Attempting to load text geometry.");
     
     // determine the number of non-whitespace characters
     const unsigned numChars = getDrawableCharCount(str.c_str());
-    const unsigned numVerts = numChars*MESH_VERTS_PER_GLYPH;
-    const unsigned numBytes = numVerts * sizeof(vertex);
-    
-    if (!initBufferObject<vbo_use_t::VBO_BUFFER_ARRAY>(vbo, numVerts, sizeof(vertex))) {
-        LS_LOG_ERR("\tAn error occurred while initializing text geometry.\n");
-        return false;
-    }
-    
-    LOG_GL_ERR();
     
     // Attempt to get a pointer to an unsynchronized memory buffer
-    vertex* pVerts = (vertex*)vbo.mapData(
-        0, numBytes,
-        (vbo_map_t)(VBO_MAP_BIT_INVALIDATE_RANGE | VBO_MAP_BIT_WRITE | VBO_MAP_BIT_UNSYNCHRONIZED)
-    );
-    LOG_GL_ERR();
-    
+    const unsigned numVerts = numChars*MESH_VERTS_PER_GLYPH;
+    const unsigned numVertBytes = numVerts * sizeof(vertex);
+    vertex* pVerts =
+        mapBufferData<vertex, vbo_use_t::VBO_BUFFER_ARRAY>(vbo, numVerts, numVertBytes, "vertices");
     if (pVerts == nullptr) {
-        LS_LOG_ERR("\tUnable to send text data to the GPU through a DMA transfer.\n");
+        LS_LOG_ERR("\tUnable to send text vertex data to the GPU through a DMA transfer.\n");
+        vbo.unmapData();
         terminate();
         return false;
     }
+    
+    // Attempt to get a pointer to an unsynchronized memory buffer
+    const unsigned numIndices = numChars * MESH_INDICES_PER_GLYPH;
+    const unsigned numIndexBytes = numIndices * sizeof(draw_index_t);
+    draw_index_t* pIndices =
+        mapBufferData<draw_index_t, vbo_use_t::VBO_BUFFER_ELEMENT>(ibo, numIndices, numIndexBytes, "indices");
+    if (pIndices == nullptr) {
+        LS_LOG_ERR("\tUnable to send text index data to the GPU through a DMA transfer.\n");
+        vbo.unmapData();
+        ibo.unmapData();
+        terminate();
+        return false;
+    }
+    
+    genTextOffsets(ta, str, pVerts, pIndices);
+    
+    if (!vbo.unmapData() || !ibo.unmapData()) {
+        LS_LOG_ERR(
+            "\tAn error occurred while attempting to end a DMA transmission of text.\n"
+        );
+        terminate();
+        return false;
+    }
+    LOG_GL_ERR();
+    
+    vbo.unbind();
+    ibo.unbind();
+    
+    LS_LOG_MSG(
+        "\tSuccessfully sent a string to the GPU.",
+        "\n\t\tVertices:    ", numVerts,
+        "\n\t\tIndices:     ", numIndices,
+        '\n'
+    );
+    LOG_GL_ERR();
+    
+    drawParams.mode = draw_mode_t::TRIS;
+    drawParams.first = 0;
+    drawParams.count = numIndices;
+    drawParams.indexType = index_element_t::INDEX_TYPE_UINT;
+    submeshes.push_back(draw_index_pair_t{0, numIndices});
+    
+    return true;
+}
+
+/*-------------------------------------
+    Text/String Generation
+-------------------------------------*/
+void geometry::genTextOffsets(
+    const atlas& ta,
+    const std::string& str,
+    vertex* pVerts,
+    draw_index_t* pIndices
+) {
     
     // Get pointers to the buffer data that will be filled with quads
     const atlasEntry* const pGlyphs = ta.getEntries();
@@ -194,6 +240,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     constexpr unsigned nl = (unsigned)'\n';
     float yPos = -((pGlyphs[nl].bearing[1]*2.f)+pGlyphs[nl].bearing[1]-pGlyphs[nl].size[1]);
     float xPos = 0.f;
+    unsigned indexOffset = 0;
     
     for (unsigned i = 0; i < str.size(); ++i) {
         const unsigned currChar = (unsigned)str[i];
@@ -223,37 +270,28 @@ bool geometry::init(const atlas& ta, const std::string& str) {
             xPos += rGlyph.advance[0];
             uploadTextGlyph(xOffset, yOffset, rGlyph, pVerts);
             pVerts += MESH_VERTS_PER_GLYPH;
+            
+            *(pIndices++) = indexOffset+0;
+            *(pIndices++) = indexOffset+1;
+            *(pIndices++) = indexOffset+2;
+            *(pIndices++) = indexOffset+2;
+            *(pIndices++) = indexOffset+1;
+            *(pIndices++) = indexOffset+3;
+            indexOffset += MESH_INDICES_PER_GLYPH;
         }
     }
-    
-    if (!vbo.unmapData()) {
-        LS_LOG_ERR(
-            "\tAn error occurred while attempting to end a DMA transmission of text.\n"
-        );
-        vbo.unbind();
-        terminate();
-        return false;
-    }
-    LOG_GL_ERR();
-    
-    vbo.unbind();
-    
-    LS_LOG_MSG("\tSuccessfully sent a string of ", numVerts, " vertices to the GPU.\n");
-    
-    drawParams.mode = draw_mode_t::TRIS;
-    drawParams.first = 0;
-    drawParams.count = numVerts;
-    drawParams.indexType = index_element_t::INDEX_TYPE_NONE;
-    submeshes.push_back(draw_index_pair_t{0, numVerts});
-    
-    return true;
 }
 
 /*-------------------------------------
     Private helper function to upload a set of text vertices (or one
     glyph) to the GPU.
 -------------------------------------*/
-void geometry::uploadTextGlyph(float xOffset, float yOffset, const atlasEntry& rGlyph, vertex* pVerts) {
+void geometry::uploadTextGlyph(
+    float xOffset,
+    float yOffset,
+    const atlasEntry& rGlyph,
+    vertex* pVerts
+) {
     // 0--------2,3
     // |     /  |
     // |   /    |
@@ -279,24 +317,10 @@ void geometry::uploadTextGlyph(float xOffset, float yOffset, const atlasEntry& r
     bounds.compareAndUpdate(pVerts->pos);
     ++pVerts;
 
-    // 2nd triangle
-    pVerts->pos = {xOffset+rGlyph.size[0], yOffset+rGlyph.size[1], 0.f};
-    pVerts->uv = {rGlyph.uv[1][0], rGlyph.uv[0][1]};
-    pVerts->norm = {0.f, 0.f, 1.f};
-    bounds.compareAndUpdate(pVerts->pos);
-    ++pVerts;
-
-    pVerts->pos = {xOffset, yOffset, 0.f};
-    pVerts->uv = {rGlyph.uv[0][0], rGlyph.uv[1][1]};
-    pVerts->norm = {0.f, 0.f, 1.f};
-    bounds.compareAndUpdate(pVerts->pos);
-    ++pVerts;
-
     pVerts->pos = {xOffset+rGlyph.size[0],yOffset, 0.f};
     pVerts->uv = {rGlyph.uv[1][0], rGlyph.uv[1][1]};
     pVerts->norm = {0.f, 0.f, 1.f};
     bounds.compareAndUpdate(pVerts->pos);
-    ++pVerts;
 }
 
 } // end draw namespace

@@ -37,7 +37,6 @@ class controlState final : virtual public ls::game::gameState {
         void            onKeyboardDownEvent     (const SDL_KeyboardEvent&);
         void            onWindowEvent           (const SDL_WindowEvent&);
         void            onMouseMoveEvent        (const SDL_MouseMotionEvent&);
-        void            onMouseWheelEvent       (const SDL_MouseWheelEvent&);
         void            onMouseButtonDownEvent  (const SDL_MouseButtonEvent&);
         
     public:

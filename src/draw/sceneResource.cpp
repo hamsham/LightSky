@@ -31,7 +31,7 @@ enum : unsigned int {
         | aiProcess_GenUVCoords
         | aiProcess_TransformUVCoords
         | aiProcess_Triangulate
-        | aiProcess_GenNormals
+        | aiProcess_GenSmoothNormals
         | aiProcess_OptimizeMeshes
         //| aiProcess_OptimizeGraph // This flag may collapse too many subnodes to be useful.
         | aiProcess_FindInstances

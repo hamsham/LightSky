@@ -108,7 +108,7 @@ bool atlas::init(const fontResource& fr) {
             
             atlasTex.modify(
                 vec2i{x*maxGlyphSize[0], y*maxGlyphSize[1]},
-                pGlyph.size, COLOR_LAYOUT_GRAY, COLOR_TYPE_UNSIGNED_BYTE, pGlyph.pData
+                pGlyph.size, COLOR_LAYOUT_R, COLOR_TYPE_UNSIGNED_BYTE, pGlyph.pData
             );
             
             const float fDimension = (float)dimensions;
@@ -134,6 +134,9 @@ bool atlas::init(const fontResource& fr) {
         }
     }
     
+    atlasTex.setTextureSlot(tex_slot_t::TEXTURE_SLOT_DEFAULT);
+    atlasTex.setParameter(GL_TEXTURE_MIN_FILTER, TEX_FILTER_NEAREST);
+    atlasTex.setParameter(GL_TEXTURE_MIN_FILTER, TEX_FILTER_LINEAR);
     atlasTex.setParameter(TEX_PARAM_WRAP_S, TEX_PARAM_CLAMP_EDGE);
     atlasTex.setParameter(TEX_PARAM_WRAP_T, TEX_PARAM_CLAMP_EDGE);
     atlasTex.unbind();

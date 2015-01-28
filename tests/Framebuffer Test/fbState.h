@@ -39,20 +39,10 @@ class fbState final : virtual public ls::game::gameState {
      */
     private:
         controlState*           pControlState   = nullptr;
-        float                   secondTimer     = 0.f;
-        ls::draw::framebuffer   testFb          = {};
-        ls::draw::renderbuffer  testRb          = {};
         ls::draw::sceneGraph*   pScene          = nullptr;
         ls::draw::defaultRenderStage* pRenderer = nullptr;
-        math::vec2i             fbRes           = {TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT};
         
         bool            initMemory              ();
-        bool            initFramebuffers        ();
-        void            setRendererParams       ();
-        
-        math::mat4      get3dViewport           () const;
-        
-        void            drawScene               ();
         
     public:
         virtual ~fbState();
@@ -70,8 +60,6 @@ class fbState final : virtual public ls::game::gameState {
         void            onStop                  () override;
         
         void            moveCamera              (const math::vec3& deltaPos);
-        void            resizeFramebuffer       (const math::vec2i& res);
-        void            scaleFramebuffer        (const int deltaScale);
         void            rotateCamera            (const math::vec3& deltaAngle);
 };
 

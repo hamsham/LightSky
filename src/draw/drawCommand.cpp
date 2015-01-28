@@ -45,7 +45,7 @@ void drawCommand::setAttribPointers() const {
         LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_POS),
         LS_ARRAY_SIZE(vertex::pos.v),
         GL_FLOAT, GL_FALSE, sizeof(vertex),
-        (GLvoid*)vertex_offset_t::VERTEX_OFFSET_POS
+        (GLvoid*)LS_ENUM_VAL(vertex_desc_t::ELEMENT_COUNT_POS)
     );
 
     // Vertex UVs
@@ -53,7 +53,7 @@ void drawCommand::setAttribPointers() const {
         LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_TEX),
         LS_ARRAY_SIZE(vertex::uv.v),
         GL_FLOAT, GL_FALSE, sizeof(vertex),
-        (GLvoid*)vertex_offset_t::VERTEX_OFFSET_TEX
+        (GLvoid*)LS_ENUM_VAL(vertex_desc_t::ELEMENT_COUNT_TEX)
     );
 
     // Vertex normals
@@ -61,7 +61,7 @@ void drawCommand::setAttribPointers() const {
         LS_ENUM_VAL(vertex_attrib_t::VERTEX_ATTRIB_NORM),
         LS_ARRAY_SIZE(vertex::norm.v),
         GL_FLOAT, GL_FALSE, sizeof(vertex),
-        (GLvoid*)vertex_offset_t::VERTEX_OFFSET_NORM
+        (GLvoid*)LS_ENUM_VAL(vertex_desc_t::ELEMENT_COUNT_NORM)
     );
 }
 
@@ -69,35 +69,35 @@ void drawCommand::setAttribPointers() const {
     Render a standard VBO
 -------------------------------------*/
 void drawCommand::draw(const vertexBuffer& vbo) const {
-    bindAttribs();
     vbo.bind();
 
+    bindAttribs();
     setAttribPointers();
 
     glDrawArrays(LS_ENUM_VAL(mode), first, count);
+    unbindAttribs();
 
     vbo.unbind();
-    unbindAttribs();
 }
 
 /*------------------------------------
     Render a VBO+IBO
 -------------------------------------*/
 void drawCommand::draw(const vertexBuffer& vbo, const indexBuffer& ibo) const {
-    bindAttribs();
     vbo.bind();
     ibo.bind();
 
+    bindAttribs();
     setAttribPointers();
 
     const uintptr_t offset = first;
     glDrawElements(LS_ENUM_VAL(mode), count, indexType, (const void*)offset);
 
+    unbindAttribs();
     LOG_GL_ERR();
 
     ibo.unbind();
     vbo.unbind();
-    unbindAttribs();
 }
 
 /*------------------------------------

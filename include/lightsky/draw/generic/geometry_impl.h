@@ -6,9 +6,9 @@ namespace draw {
 /*-------------------------------------
     Helper function to initialize vertex buffers objects
 -------------------------------------*/
-template <vbo_use_t vbo_type>
+template <vbo_use_t vboType>
 bool geometry::initBufferObject(
-    vertexBuffer_t<vbo_type>& vbo,
+    vertexBuffer_t<vboType>& bo,
     unsigned numItems,
     unsigned elementSize,
     vbo_rw_t usage
@@ -18,18 +18,44 @@ bool geometry::initBufferObject(
         return false;
     }
     
-    if (vbo.isValid() == false) {
-        if (vbo.init() == false) {
-            LS_LOG_ERR("\tUnable to initialize a geometry VBO.");
+    if (bo.isValid() == false) {
+        if (bo.init() == false) {
+            LS_LOG_ERR("\tUnable to initialize a geometry buffer object.");
             return false;
         }
     }
     
-    vbo.bind();
-    vbo.setData(numItems*elementSize, nullptr, usage);
+    bo.bind();
+    bo.setData(numItems*elementSize, nullptr, usage);
     
     LS_LOG_MSG("\tInitialized a geometry buffer object with ", numItems, " items.");
     return true;
+}
+
+/*-------------------------------------
+    Text/String buffer object initialization helper
+-------------------------------------*/
+template <typename data_t, vbo_use_t vboType>
+data_t* geometry::mapBufferData(
+    vertexBuffer_t<vboType>& bo,
+    const unsigned elementCount,
+    const unsigned byteCount,
+    const char* const bufferStr
+) {
+    if (!initBufferObject<vboType>(bo, elementCount, sizeof(data_t), vbo_rw_t::VBO_STREAM_DRAW)) {
+        LS_LOG_ERR("\tAn error occurred while initializing text geometry ", bufferStr, ".\n");
+        return nullptr;
+    }
+    LOG_GL_ERR();
+    
+    // Attempt to get a pointer to an unsynchronized memory buffer
+    data_t* pBuffer = (data_t*)bo.mapData(
+        0, byteCount,
+        (vbo_map_t)(VBO_MAP_BIT_INVALIDATE_RANGE | VBO_MAP_BIT_WRITE | VBO_MAP_BIT_UNSYNCHRONIZED)
+    );
+    LOG_GL_ERR();
+    
+    return pBuffer;
 }
 
 /*-------------------------------------

@@ -38,7 +38,8 @@ enum geometry_property_t: int {
     /*
      * Text/String geometry properties
      */
-    MESH_VERTS_PER_GLYPH = 6,
+    MESH_VERTS_PER_GLYPH = 4,
+    MESH_INDICES_PER_GLYPH = 6,
     MESH_SPACES_PER_TAB = 4
 };
 
@@ -111,6 +112,54 @@ class geometry {
             unsigned elementSize,
             vbo_rw_t usage = vbo_rw_t::VBO_STATIC_DRAW
         );
+        
+        /**
+         * @brief Map a VBO or IBO in preparation for sending data to the GPU.
+         * @param bo
+         * A reference to a buffer object of type vbo_t.
+         * 
+         * @param elementCount
+         * The number of elements which are to be sent to the GPU.
+         * 
+         * @param byteCount
+         * The size, in bytes, of the total amount of data to be sent to the
+         * GPU.
+         * 
+         * @param bufferStr
+         * A null-terminated character string which can be used to logging.
+         * 
+         * @return A pointer to a buffer of type data_t which can be used to
+         * send data to OpenGL, or NULL if something went wrong.
+         */
+        template <typename data_t, vbo_use_t vboType>
+        data_t* mapBufferData(
+            vertexBuffer_t<vboType>& bo,
+            const unsigned elementCount,
+            const unsigned byteCount,
+            const char* const bufferStr
+        );
+        
+        /**
+         * @brief Generate the offsets for a string's character according to
+         * it's atlas entries, them place the offsets into a vertex and index
+         * buffer mapping.
+         * 
+         * @param a
+         * A constant reference to a character atlas.
+         * 
+         * @param str
+         * A constant reference to a string object which will be used to
+         * generate a polygonal representation on the GPU.
+         * 
+         * @param pMappedVerts
+         * A pointer to the GPU-mapped vertex buffer object which will contain
+         * the generated atlas/string vertices.
+         * 
+         * @param pMappedIndx
+         * A pointer to the GPU-mapped index buffer object which will contain
+         * index values for the above vertex buffer.
+         */
+        void genTextOffsets(const atlas& a, const std::string& str, vertex* pMappedVerts, draw_index_t* pMappedIndx);
         
         /**
          * Private helper function to upload a number of text vertices to the

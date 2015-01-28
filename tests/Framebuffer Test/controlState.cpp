@@ -94,6 +94,9 @@ bool controlState::onStart() {
  * Running state
 -------------------------------------*/
 void controlState::onRun() {
+    const math::vec2i&& displayRes = global::pDisplay->getResolution();
+    glViewport(0, 0, displayRes[0], displayRes[1]);
+    
     SDL_Event e;
     
     while (SDL_PollEvent(&e)) {
@@ -102,7 +105,6 @@ void controlState::onRun() {
             case SDL_KEYUP:             this->onKeyboardUpEvent(e.key);         break;
             case SDL_KEYDOWN:           this->onKeyboardDownEvent(e.key);       break;
             case SDL_MOUSEMOTION:       this->onMouseMoveEvent(e.motion);       break;
-            case SDL_MOUSEWHEEL:        this->onMouseWheelEvent(e.wheel);       break;
             case SDL_MOUSEBUTTONDOWN:   this->onMouseButtonDownEvent(e.button); break;
             default: break;
         }
@@ -176,9 +178,6 @@ void controlState::onWindowEvent(const SDL_WindowEvent& e) {
     if (e.event == SDL_WINDOWEVENT_CLOSE) {
         getParentSystem().stop();
     }
-    else if (e.event == SDL_WINDOWEVENT_RESIZED) {
-        pFbState->resizeFramebuffer(math::vec2i{e.data1, e.data2});
-    }
 }
 
 /*-------------------------------------
@@ -223,11 +222,4 @@ void controlState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     };
     
     pFbState->rotateCamera(mouseDelta);
-}
-
-/*-------------------------------------
- * Mouse wheel event
--------------------------------------*/
-void controlState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
-    pFbState->scaleFramebuffer(e.y * 10);
 }

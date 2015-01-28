@@ -13,34 +13,32 @@
 #define TEST_FONT_FILE L"./FiraSans-Regular.otf"
 
 /*
- * This shader uses a Logarithmic Z-Buffer, thanks to
- * http://www.gamasutra.com/blogs/BranoKemen/20090812/2725/Logarithmic_Depth_Buffer.php
+ * Font Vertex Shader
  */
 static constexpr char meshVSData[] = u8R"***(
-#version 330 core
+#version 300 es
 
 layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inUv;
 layout (location = 2) in vec3 inNorm;
 
-uniform mat4 vpMatrix;
-uniform mat4 modelMatrix;
+uniform mat4 mvpMatrix;
 
 out vec2 uvCoords;
 
 void main() {
-    gl_Position = vpMatrix * modelMatrix * vec4(inPos, 1.0);
+    gl_Position = mvpMatrix * vec4(inPos, 1.0);
     uvCoords = inUv;
 }
 )***";
 
 /*
- * Testing Alpha Masking for font rendering.
+ * Font Fragment Shader
  */
 static constexpr char fontFSData[] = u8R"***(
-#version 330
+#version 300 es
 
-precision lowp float;
+precision mediump float;
 
 in vec2 uvCoords;
 
@@ -83,94 +81,42 @@ uiState& uiState::operator=(uiState&& state) {
 }
 
 /*-------------------------------------
- * Allocate internal class memory
--------------------------------------*/
-bool uiState::initMemory() {
-    pBlender = new ls::draw::blendObject{};
-    
-    if (!pBlender) {
-        return false;
-    }
-    
-    return true;
-}
-
-/*-------------------------------------
- * Initialize resources from files
--------------------------------------*/
-bool uiState::initFileData() {
-    
-    ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
-    bool ret = true;
-    
-    if (!pFontLoader
-    || !pFontLoader->loadFile(TEST_FONT_FILE)
-    || !fontAtlas.init(*pFontLoader)
-    || !fontGeom.init(fontAtlas, "Hello World")
-    ) {
-        ret = false;
-    }
-    
-    delete pFontLoader;
-    
-    return ret;
-}
-
-/*-------------------------------------
- * Initialize the program shaders
--------------------------------------*/
-bool uiState::initShaders() {
-    ls::draw::vertexShader vertShader;
-    ls::draw::fragmentShader fontFragShader;
-
-    if (!vertShader.init(meshVSData)
-    ||  !fontFragShader.init(fontFSData)
-    ) {
-        return false;
-    }
-    else {
-        LOG_GL_ERR();
-    }
-    
-    if (!fontProg.init(vertShader, fontFragShader)
-    || !fontProg.link()) {
-        return false;
-    }
-    else {
-        LOG_GL_ERR();
-    }
-    
-    return true;
-}
-
-/*-------------------------------------
- * Post-Initialization renderer parameters
--------------------------------------*/
-void uiState::setRendererParams() {
-    pBlender->setState(true);
-    pBlender->setBlendEquation(ls::draw::BLEND_EQU_ADD, ls::draw::BLEND_EQU_ADD);
-    pBlender->setBlendFunction(ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_1_SUB_SRC_ALPHA, ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_ZERO);
-}
-
-/*-------------------------------------
  * Starting state
  * 
  * Resources that were already allocated are removed during "onStop()"
 -------------------------------------*/
 bool uiState::onStart() {
-    if (!initMemory()
-    ||  !initFileData()
-    ||  !initShaders()
+    bool ret = true;
+    ls::draw::vertexShader vertShader;
+    ls::draw::fragmentShader fontFragShader;
+    
+    ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
+    pBlender = new ls::draw::blendObject{};
+    
+    if (!vertShader.init(meshVSData)
+    || !fontFragShader.init(fontFSData)
+    || !fontProg.init(vertShader, fontFragShader)
+    || !fontProg.link()
+    || !pFontLoader
+    || !pFontLoader->loadFile(TEST_FONT_FILE)
+    || !fontAtlas.init(*pFontLoader)
+    || !fontGeom.init(fontAtlas, "Hello World")
+    || !pBlender
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
-        return false;
+        ret = false;
     }
     else {
-        setRendererParams();
-        global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
+        pBlender->setState(true);
+        pBlender->setBlendEquation(ls::draw::BLEND_EQU_ADD, ls::draw::BLEND_EQU_ADD);
+        pBlender->setBlendFunction(ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_1_SUB_SRC_ALPHA, ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_ZERO);
     }
     
-    return true;
+    delete pFontLoader;
+    
+    global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
+    LOG_GL_ERR();
+    return ret;
 }
 
 /*-------------------------------------
@@ -234,40 +180,31 @@ math::mat4 uiState::get2dViewport() const {
 }
 
 /*-------------------------------------
- * Update the renderer's viewport with the current window resolution
--------------------------------------*/
-void uiState::resetGlViewport() {
-    const math::vec2i& displayRes = global::pDisplay->getResolution();
-    glViewport(0, 0, displayRes[0], displayRes[1]);
-}
-
-/*-------------------------------------
  * Drawing a scene
 -------------------------------------*/
 void uiState::drawScene() {
-    fontProg.bind();
     LOG_GL_ERR();
     
-    resetGlViewport();
-    
     // setup some UI parameters with a resolution-independent model matrix
-    const display* const disp       = global::pDisplay;
-    const math::vec2&& res          = (math::vec2)disp->getResolution();
-    math::mat4&& modelMat           = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
-    modelMat                        = math::scale(modelMat, math::vec3{math::length(res)*0.01f});
-    fontProg.setUniformValue        (fontProg.getUniformLocation("modelMatrix"), modelMat);
+    const display* const disp   = global::pDisplay;
+    const math::vec2&& res      = (math::vec2)disp->getResolution();
+    math::mat4&& modelMat       = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
+    modelMat                    = math::scale(modelMat, math::vec3{math::length(res)*0.05f});
+    modelMat                    = get2dViewport() * modelMat;
     
-    const math::mat4&& orthoProj    = get2dViewport();
-    fontProg.setUniformValue        (fontProg.getUniformLocation("vpMatrix"), orthoProj);
+    fontProg.bind();
+    fontProg.setUniformValue    (fontProg.getUniformLocation("mvpMatrix"), modelMat);
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI
     glDisable(GL_DEPTH_TEST);
-    pBlender->bind();
+    glDisable(GL_CULL_FACE);
+    //pBlender->bind();
     fontAtlas.getTexture().bind();
     fontGeom.draw();
     fontAtlas.getTexture().unbind();
-    pBlender->unbind();
+    //pBlender->unbind();
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
     
     fontProg.unbind();
     LOG_GL_ERR();

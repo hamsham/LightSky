@@ -302,7 +302,6 @@
                             OP="build/liblightutils.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>GLEW</linkerLibLibItem>
             <linkerLibLibItem>GL</linkerLibLibItem>
             <linkerLibLibItem>freeimage</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>

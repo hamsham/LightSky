@@ -228,7 +228,7 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
         FT_Error ftErr;
         unsigned charIndex = FT_Get_Char_Index(ftFace, i);
         
-        ftErr = FT_Load_Glyph(ftFace, charIndex, FT_LOAD_RENDER);
+        ftErr = FT_Load_Glyph(ftFace, charIndex, FT_LOAD_TARGET_LIGHT); // delayed bitmap generation
         
         if (ftErr) {
             LS_LOG_ERR(
@@ -241,7 +241,7 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
             return false;
         }
         
-        ftErr = FT_Render_Glyph(ftFace->glyph, FT_RENDER_MODE_NORMAL);
+        ftErr = FT_Render_Glyph(ftFace->glyph, FT_RENDER_MODE_LIGHT);
         if (ftErr) {
             LS_LOG_ERR(
                 "\tUnable to render the glyph at index ", charIndex,

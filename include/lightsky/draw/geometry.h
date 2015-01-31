@@ -91,11 +91,11 @@ class geometry {
          * indicate to OpenGL that the buffer will be a Vertex Buffer, Index
          * Buffer, or any other acceptable usage type.
          * 
-         * @param numVerts
-         * The number of vertices that will be allocated on the GPU.
+         * @param numItems
+         * The number of items to be contained within the index buffer.
          * 
          * @param elementSize
-         * The size, in bytes, of a single element in the buffer.
+         * The size, in bytes, of an individual element in the vertex buffer.
          * 
          * @param usage
          * The draw usage of the internal buffer contained within *this. This
@@ -110,7 +110,7 @@ class geometry {
             vertexBuffer_t<vbo_type>& vbo,
             unsigned numItems,
             unsigned elementSize,
-            vbo_rw_t usage = vbo_rw_t::VBO_STATIC_DRAW
+            const vbo_rw_t usage = vbo_rw_t::VBO_STATIC_DRAW
         );
         
         /**
@@ -120,10 +120,6 @@ class geometry {
          * 
          * @param elementCount
          * The number of elements which are to be sent to the GPU.
-         * 
-         * @param byteCount
-         * The size, in bytes, of the total amount of data to be sent to the
-         * GPU.
          * 
          * @param bufferStr
          * A null-terminated character string which can be used to logging.
@@ -135,7 +131,6 @@ class geometry {
         data_t* mapBufferData(
             vertexBuffer_t<vboType>& bo,
             const unsigned elementCount,
-            const unsigned byteCount,
             const char* const bufferStr
         );
         
@@ -159,7 +154,7 @@ class geometry {
          * A pointer to the GPU-mapped index buffer object which will contain
          * index values for the above vertex buffer.
          */
-        void genTextOffsets(const atlas& a, const std::string& str, vertex* pMappedVerts, draw_index_t* pMappedIndx);
+        void genTextData(const atlas& a, const std::string& str, vertex* pMappedVerts, draw_index_t* pMappedIndx);
         
         /**
          * Private helper function to upload a number of text vertices to the
@@ -179,7 +174,7 @@ class geometry {
          * A pointer to the DMA-mapped buffer of vertices where the current
          * glyph is to be sent.
          */
-        void uploadTextGlyph(float xOffset, float yOffset, const atlasEntry& rGlyph, vertex* pVerts);
+        void genTextVertices(float xOffset, float yOffset, const atlasEntry& rGlyph, vertex* pVerts);
         
     public:
         /**
@@ -260,6 +255,78 @@ class geometry {
          * if an error occurred.
          */
         bool init(const sceneResource& mr);
+        
+        /**
+         * @brief Initialize a geometry object using raw vertex data.
+         * 
+         * @param pVertices
+         * A pointer to the array of vertices from which *this will read data
+         * from.
+         * 
+         * @param numVertices
+         * The number of vertices in the "pVertices" array.
+         * 
+         * @param renderMode
+         * An optional parameter, allowing for the render mode of the imported
+         * geometry to be specified.
+         * 
+         * @param pBounds
+         * A pointer to the bounding box which can be used to specify the size,
+         * in cartesian coordinates, of *this. If pBounds is NULL, the bounding
+         * box contained in *this will be discovered by iterating through all
+         * of the vertices in "pVertices."
+         * 
+         * @return TRUE if all vertices successfully imported into *this, or
+         * FALSE if not.
+         */
+        bool init(
+            const vertex* const pVertices, const unsigned numVertices,
+            const draw_mode_t renderMode = draw_mode_t::DEFAULT,
+            const boundingBox* const pBounds = nullptr
+        );
+        
+        /**
+         * @brief Initialize a geometry object using raw vertex and index data.
+         * 
+         * @param pVertices
+         * A pointer to the array of vertices from which *this will read data
+         * from.
+         * 
+         * @param numVertices
+         * The number of vertices in the "pVertices" array.
+         * 
+         * @param pIndices
+         * A pointer to the array of index data from which *this will read data
+         * vertex array values.
+         * 
+         * @param numIndices
+         * The number of indices in the "pIndices" array.
+         * 
+         * @param indexType
+         * An enumeration, describing the data type of each index value in
+         * "pIndices",
+         * 
+         * @param renderMode
+         * An optional parameter, allowing for the render mode of the imported
+         * geometry to be specified.
+         * 
+         * @param pBounds
+         * A pointer to the bounding box which can be used to specify the size,
+         * in cartesian coordinates, of *this. If pBounds is NULL, the bounding
+         * box contained in *this will be discovered by iterating through all
+         * of the vertices in "pVertices."
+         * 
+         * 
+         * @return TRUE if all vertices successfully imported into *this, or
+         * FALSE if not.
+         */
+        bool init(
+            const vertex* const pVertices, const unsigned numVertices,
+            const void* const pIndices, const unsigned numIndices,
+            const index_element_t indexType = index_element_t::INDEX_TYPE_DEFAULT,
+            const draw_mode_t renderMode = draw_mode_t::DEFAULT,
+            const boundingBox* const pBounds = nullptr
+        );
         
         /**
          * @brief Initialize

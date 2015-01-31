@@ -7,6 +7,7 @@
 
 #include <utility>
 
+#include "lightsky/draw/setup.h"
 #include "lightsky/draw/atlas.h"
 #include "lightsky/draw/color.h"
 
@@ -98,6 +99,8 @@ bool atlas::init(const fontResource& fr) {
     
     // Upload the data
     numEntries = fr.numGlyphs;
+    const float fDimension = (float)dimensions;
+    const math::vec2&& fMaxGlyphSize = (math::vec2)maxGlyphSize*dimensions;
     int iter = 0;
     
     for (int x = 0; x < dimensions; ++x) {
@@ -111,14 +114,14 @@ bool atlas::init(const fontResource& fr) {
                 pGlyph.size, COLOR_LAYOUT_R, COLOR_TYPE_UNSIGNED_BYTE, pGlyph.pData
             );
             
-            const float fDimension = (float)dimensions;
-            
-            // Texture atlases use a rectangle texture. no need to normalize the UVs
-            // top-left uv coordinate for each glyph
+            // top-left glyph corner
             pEntry.uv[0] = vec2{(float)maxGlyphSize[0]*x, (float)maxGlyphSize[1]*y};
-            
-            // bottom left corner
+            // bottom right corner
             pEntry.uv[1] = pEntry.uv[0] + (vec2)pGlyph.size;
+            
+            // NORMALIZE ALL THE THINGS!!!
+            pEntry.uv[0] /= fMaxGlyphSize;
+            pEntry.uv[1] /= fMaxGlyphSize;
 
             // Add descriptor data for each glyoh.
             pEntry.advance = (vec2)pGlyph.advance;
@@ -135,8 +138,10 @@ bool atlas::init(const fontResource& fr) {
     }
     
     atlasTex.setTextureSlot(tex_slot_t::TEXTURE_SLOT_DEFAULT);
-    atlasTex.setParameter(GL_TEXTURE_MIN_FILTER, TEX_FILTER_NEAREST);
-    atlasTex.setParameter(GL_TEXTURE_MIN_FILTER, TEX_FILTER_LINEAR);
+    
+    // use linear philtering to generate pseudo signed-distance-field fonts.
+    atlasTex.setParameter(TEX_PARAM_MAG_FILTER, TEX_FILTER_LINEAR);
+    atlasTex.setParameter(TEX_PARAM_MIN_FILTER, TEX_FILTER_LINEAR);
     atlasTex.setParameter(TEX_PARAM_WRAP_S, TEX_PARAM_CLAMP_EDGE);
     atlasTex.setParameter(TEX_PARAM_WRAP_T, TEX_PARAM_CLAMP_EDGE);
     atlasTex.unbind();

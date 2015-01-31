@@ -71,6 +71,11 @@ enum tex_param_t : int {
     
     TEX_PARAM_MIN_LOD       = GL_TEXTURE_MIN_LOD,
     TEX_PARAM_MAX_LOD       = GL_TEXTURE_MAX_LOD,
+    
+    TEX_PARAM_SWIZZLE_R     = GL_TEXTURE_SWIZZLE_R,
+    TEX_PARAM_SWIZZLE_G     = GL_TEXTURE_SWIZZLE_G,
+    TEX_PARAM_SWIZZLE_B     = GL_TEXTURE_SWIZZLE_B,
+    TEX_PARAM_SWIZZLE_A     = GL_TEXTURE_SWIZZLE_A,
 
     TEX_PARAM_WRAP_S        = GL_TEXTURE_WRAP_S,
     TEX_PARAM_WRAP_T        = GL_TEXTURE_WRAP_T,
@@ -78,6 +83,16 @@ enum tex_param_t : int {
     
     TEX_PARAM_CLAMP_EDGE    = GL_CLAMP_TO_EDGE,
     TEX_PARAM_REPEAT        = GL_REPEAT,
+};
+
+/**----------------------------------------------------------------------------
+ * Parameters for Manipulating Texture Channels
+-----------------------------------------------------------------------------*/
+enum tex_channel_t : int {
+    TEX_CHANNEL_RED     = GL_RED,
+    TEX_CHANNEL_GREEN   = GL_GREEN,
+    TEX_CHANNEL_BLUE    = GL_BLUE,
+    TEX_CHANNEL_ALPHA   = GL_ALPHA
 };
 
 /**----------------------------------------------------------------------------

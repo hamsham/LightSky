@@ -185,12 +185,12 @@ bool sceneGraph::importTextures(const sceneResource& r) {
                 ret = false;
             }
             
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_BLUE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_RED);
-            pTexture->setParameter(TEX_PARAM_MIN_FILTER, TEX_FILTER_NEAREST);
-            pTexture->setParameter(TEX_PARAM_MAG_FILTER, TEX_FILTER_LINEAR);
-            pTexture->setParameter(TEX_PARAM_WRAP_S,     TEX_PARAM_CLAMP_EDGE);
-            pTexture->setParameter(TEX_PARAM_WRAP_T,     TEX_PARAM_CLAMP_EDGE);
+            pTexture->setParameter(TEX_PARAM_SWIZZLE_R,     TEX_CHANNEL_BLUE);
+            pTexture->setParameter(TEX_PARAM_SWIZZLE_B,     TEX_CHANNEL_RED);
+            pTexture->setParameter(TEX_PARAM_MIN_FILTER,    TEX_FILTER_NEAREST);
+            pTexture->setParameter(TEX_PARAM_MAG_FILTER,    TEX_FILTER_LINEAR);
+            pTexture->setParameter(TEX_PARAM_WRAP_S,        TEX_PARAM_CLAMP_EDGE);
+            pTexture->setParameter(TEX_PARAM_WRAP_T,        TEX_PARAM_CLAMP_EDGE);
             LOG_GL_ERR();
             
             pTexture->unbind();

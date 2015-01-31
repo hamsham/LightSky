@@ -161,11 +161,14 @@ bool defaultRenderStage::init() {
 
     LOG_GL_ERR();
 
+    shaderBinary.bind();
+    
     // attach the model matrix uniform to the scene graph
     modelMatUniformId = shaderBinary.getUniformLocation(DEFAULT_MODEL_MATRIX_UNIFORM);
     if (modelMatUniformId < 0) {
         LS_LOG_ERR("Unable to set the default render stage's model matrix uniform.");
         LOG_GL_ERR();
+        shaderBinary.unbind();
         return false;
     }
 
@@ -174,8 +177,11 @@ bool defaultRenderStage::init() {
     if (vpMatUniformId < 0) {
         LS_LOG_ERR("Unable to set the default render stage's view-projection matrix uniform.");
         LOG_GL_ERR();
+        shaderBinary.unbind();
         return false;
     }
+    
+    shaderBinary.unbind();
 
     LOG_GL_ERR();
 

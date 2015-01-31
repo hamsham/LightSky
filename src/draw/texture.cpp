@@ -112,7 +112,7 @@ bool texture::init(
     glBindTexture(dimensions, texId);
     LOG_GL_ERR();
     
-    glTexImage2D(dimensions, mipmapLevel, internalFormat, size, 0, 0, format, dataType, data);
+    glTexImage2D(dimensions, mipmapLevel, internalFormat, size, 1, 0, format, dataType, data);
     LOG_GL_ERR();
     
     return true;

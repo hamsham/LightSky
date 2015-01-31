@@ -38,13 +38,13 @@ void main() {
 static constexpr char fontFSData[] = u8R"***(
 #version 300 es
 
-precision mediump float;
+precision lowp float;
 
 in vec2 uvCoords;
 
 out vec4 outFragCol;
 
-uniform sampler2DRect texSampler;
+uniform sampler2D texSampler;
 uniform vec4 fontColor = vec4(0.0, 1.0, 1.0, 1.0);
 
 void main() {
@@ -93,15 +93,15 @@ bool uiState::onStart() {
     ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
     pBlender = new ls::draw::blendObject{};
     
-    if (!vertShader.init(meshVSData)
-    || !fontFragShader.init(fontFSData)
-    || !fontProg.init(vertShader, fontFragShader)
-    || !fontProg.link()
-    || !pFontLoader
-    || !pFontLoader->loadFile(TEST_FONT_FILE)
+    if (!pFontLoader
+    || !pFontLoader->loadFile(TEST_FONT_FILE, 48)
     || !fontAtlas.init(*pFontLoader)
     || !fontGeom.init(fontAtlas, "Hello World")
     || !pBlender
+    || !vertShader.init(meshVSData)
+    || !fontFragShader.init(fontFSData)
+    || !fontProg.init(vertShader, fontFragShader)
+    || !fontProg.link()
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
         ret = false;
@@ -114,6 +114,7 @@ bool uiState::onStart() {
     
     delete pFontLoader;
     
+    fontProg.unbind();
     global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
     LOG_GL_ERR();
     return ret;
@@ -189,7 +190,7 @@ void uiState::drawScene() {
     const display* const disp   = global::pDisplay;
     const math::vec2&& res      = (math::vec2)disp->getResolution();
     math::mat4&& modelMat       = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
-    modelMat                    = math::scale(modelMat, math::vec3{math::length(res)*0.05f});
+    modelMat                    = math::scale(modelMat, math::vec3{math::length(res)*0.025f});
     modelMat                    = get2dViewport() * modelMat;
     
     fontProg.bind();
@@ -197,14 +198,12 @@ void uiState::drawScene() {
 
     // setup parameters to draw a transparent mesh as a screen overlay/UI
     glDisable(GL_DEPTH_TEST);
-    glDisable(GL_CULL_FACE);
-    //pBlender->bind();
+    pBlender->bind();
     fontAtlas.getTexture().bind();
     fontGeom.draw();
     fontAtlas.getTexture().unbind();
-    //pBlender->unbind();
+    pBlender->unbind();
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
     
     fontProg.unbind();
     LOG_GL_ERR();

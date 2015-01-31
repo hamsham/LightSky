@@ -6,6 +6,13 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/vertex.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/draw/atlas.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/draw/geometry.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/generic/geometry_impl.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/drawCommand.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/geometry.h</file>
+        </group>
     </open-files>
 </project-private>

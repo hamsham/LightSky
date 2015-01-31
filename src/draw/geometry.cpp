@@ -94,64 +94,127 @@ void geometry::terminate() {
     Load the data contained within a geometry loader onto the GPU
 -------------------------------------*/
 bool geometry::init(const sceneResource& meshData) {
-    // vbos are resized when any new data is pushed into them
-
-    LOG_GL_ERR();
-    LS_LOG_MSG("Attempting to send geometry data to the GPU.");
-
-    if (!vbo.init()) {
-        LS_LOG_ERR("\tUnable to initialize a geometry vertex buffer.\n");
-        terminate();
+    // clear all non-used data before continuing
+    ibo.terminate();
+    
+    bool ret = true;
+    if (meshData.getIndices().empty()) {
+        ret = init(
+            meshData.getVertices().data(),
+            meshData.getVertices().size(),
+            meshData.getDrawMode(),
+            &meshData.getBoundingBox()
+        );
+    }
+    else {
+        ret = init(
+            meshData.getVertices().data(),
+            meshData.getVertices().size(),
+            meshData.getIndices().data(),
+            meshData.getIndices().size(),
+            index_element_t::INDEX_TYPE_DEFAULT,
+            meshData.getDrawMode(),
+            &meshData.getBoundingBox()
+        );
+    }
+    
+    if (!ret) {
         return false;
     }
-
-    const unsigned vertexCount = meshData.getNumVertices();
-    const unsigned vertexSize = vertexCount*sizeof(vertex);
-
-    vbo.bind();
-    vbo.setData(vertexSize, meshData.getVertices().data(), vbo_rw_t::VBO_STATIC_DRAW);
-    vbo.unbind();
-
-    LS_LOG_MSG("\tSuccessfully sent ", vertexCount, " vertices to the GPU.\n");
-    LOG_GL_ERR();
-
-    drawParams.mode = meshData.getDrawMode();
-    drawParams.first = 0;
-    drawParams.count = meshData.getNumVertices();
-
-    // return early if there is no index data to be loaded
-    if (meshData.getNumIndices() == 0) {
-        return true;
-    }
-
-    LS_LOG_MSG("Attempting to send index data to the GPU.");
-
-    // load index data from the mesh resource object
-    if (!ibo.init()) {
-        LS_LOG_ERR("\tUnable to initialize a geometry index buffer.\n");
-        terminate();
-        return false;
-    }
-
-    // update the index buffer & draw command if there were indices to load.
-    const unsigned indexCount = meshData.getNumIndices();
-    const unsigned indexSize = indexCount*sizeof(draw_index_t);
-
-    ibo.bind();
-    ibo.setData(indexSize, meshData.getIndices().data(), vbo_rw_t::VBO_STATIC_DRAW);
-    ibo.unbind();
-
-    LS_LOG_MSG("\tSuccessfully sent ", indexCount, " indices to the GPU.\n");
-    LOG_GL_ERR();
-
-    drawParams.count = meshData.getNumIndices();
-    drawParams.indexType = index_element_t::INDEX_TYPE_DEFAULT;
     
     submeshes.reserve(meshData.getNumMeshes());
     for (const sceneResource::resourceMesh& rSubMesh : meshData.getMeshes()) {
         submeshes.push_back(rSubMesh.indices);
     }
 
+    return true;
+}
+
+/*-------------------------------------
+    Vertex Buffer initialization
+-------------------------------------*/
+bool geometry::init(
+    const vertex* const pVertices,
+    const unsigned numVertices,
+    const draw_mode_t renderMode,
+    const boundingBox* const pBounds
+) {
+    // vbos are resized when any new data is pushed into them
+    LOG_GL_ERR();
+    LS_LOG_MSG("Attempting to send geometry vertices to the GPU.");
+
+    if (!initBufferObject<vbo_use_t::VBO_BUFFER_ARRAY>(vbo, numVertices, sizeof(vertex))) {
+        LS_LOG_ERR("\tUnable to initialize a geometry vertex buffer.\n");
+        terminate();
+        return false;
+    }
+
+    vbo.setSubData(0, numVertices*sizeof(vertex), pVertices);
+    vbo.unbind();
+
+    LOG_GL_ERR();
+    
+    drawParams.mode = renderMode;
+    drawParams.first = 0;
+    drawParams.count = numVertices;
+    
+    if (pBounds) {
+        bounds = *pBounds;
+    }
+    else {
+        // TODO: find out if this is undefined for mapped vertex buffers
+        for (unsigned i = 0; i < numVertices; ++i) {
+            bounds.compareAndUpdate(pVertices[i].pos);
+        }
+    }
+    
+    submeshes.push_back(draw_index_pair_t{0, numVertices});
+    
+    return true;
+}
+
+/*-------------------------------------
+    Vertex Buffer + index buffer initialization
+-------------------------------------*/
+bool geometry::init(
+    const vertex* const pVertices, const unsigned numVertices,
+    const void* const pIndices, const unsigned numIndices,
+    const index_element_t indexType,
+    const draw_mode_t renderMode,
+    const boundingBox* const pBounds
+) {
+    if (!init(pVertices, numVertices, renderMode, pBounds)) {
+        return false;
+    }
+    
+    LOG_GL_ERR();
+    LS_LOG_MSG("Attempting to send geometry indices to the GPU.");
+    
+    LS_DEBUG_ASSERT(indexType != index_element_t::INDEX_TYPE_NONE);
+    const unsigned indexElementSize = (indexType == index_element_t::INDEX_TYPE_UBYTE)
+        ? sizeof(unsigned char)
+        : (indexType == index_element_t::INDEX_TYPE_USHORT)
+            ? sizeof(unsigned short)
+            : sizeof(unsigned int);
+
+    if (!initBufferObject<vbo_use_t::VBO_BUFFER_ELEMENT>(ibo, numIndices, indexElementSize)) {
+        LS_LOG_ERR("\tUnable to initialize a geometry index buffer.\n");
+        terminate();
+        return false;
+    }
+
+    ibo.setSubData(0, numIndices*indexElementSize, pIndices);
+    ibo.unbind();
+
+    LOG_GL_ERR();
+    
+    drawParams.mode = renderMode;
+    drawParams.count = numIndices;
+    drawParams.indexType = indexType;
+    
+    // override the entry placed by the vertex buffer initialization
+    submeshes.back() = draw_index_pair_t{0, numIndices};
+    
     return true;
 }
 
@@ -169,10 +232,8 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     const unsigned numChars = getDrawableCharCount(str.c_str());
     
     // Attempt to get a pointer to an unsynchronized memory buffer
-    const unsigned numVerts = numChars*MESH_VERTS_PER_GLYPH;
-    const unsigned numVertBytes = numVerts * sizeof(vertex);
-    vertex* pVerts =
-        mapBufferData<vertex, vbo_use_t::VBO_BUFFER_ARRAY>(vbo, numVerts, numVertBytes, "vertices");
+    const unsigned numVerts = numChars * MESH_VERTS_PER_GLYPH;
+    vertex* pVerts = mapBufferData<vertex, vbo_use_t::VBO_BUFFER_ARRAY>(vbo, numVerts, "vertices");
     if (pVerts == nullptr) {
         LS_LOG_ERR("\tUnable to send text vertex data to the GPU through a DMA transfer.\n");
         vbo.unmapData();
@@ -182,9 +243,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     
     // Attempt to get a pointer to an unsynchronized memory buffer
     const unsigned numIndices = numChars * MESH_INDICES_PER_GLYPH;
-    const unsigned numIndexBytes = numIndices * sizeof(draw_index_t);
-    draw_index_t* pIndices =
-        mapBufferData<draw_index_t, vbo_use_t::VBO_BUFFER_ELEMENT>(ibo, numIndices, numIndexBytes, "indices");
+    draw_index_t* pIndices = mapBufferData<draw_index_t, vbo_use_t::VBO_BUFFER_ELEMENT>(ibo, numIndices, "indices");
     if (pIndices == nullptr) {
         LS_LOG_ERR("\tUnable to send text index data to the GPU through a DMA transfer.\n");
         vbo.unmapData();
@@ -193,7 +252,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
         return false;
     }
     
-    genTextOffsets(ta, str, pVerts, pIndices);
+    genTextData(ta, str, pVerts, pIndices);
     
     if (!vbo.unmapData() || !ibo.unmapData()) {
         LS_LOG_ERR(
@@ -227,7 +286,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
 /*-------------------------------------
     Text/String Generation
 -------------------------------------*/
-void geometry::genTextOffsets(
+void geometry::genTextData(
     const atlas& ta,
     const std::string& str,
     vertex* pVerts,
@@ -268,7 +327,7 @@ void geometry::genTextOffsets(
             const float yOffset = yPos+vertHang;
             const float xOffset = xPos+rGlyph.bearing[0];
             xPos += rGlyph.advance[0];
-            uploadTextGlyph(xOffset, yOffset, rGlyph, pVerts);
+            genTextVertices(xOffset, yOffset, rGlyph, pVerts);
             pVerts += MESH_VERTS_PER_GLYPH;
             
             *(pIndices++) = indexOffset+0;
@@ -277,7 +336,7 @@ void geometry::genTextOffsets(
             *(pIndices++) = indexOffset+2;
             *(pIndices++) = indexOffset+1;
             *(pIndices++) = indexOffset+3;
-            indexOffset += MESH_INDICES_PER_GLYPH;
+            indexOffset += MESH_VERTS_PER_GLYPH;
         }
     }
 }
@@ -286,7 +345,7 @@ void geometry::genTextOffsets(
     Private helper function to upload a set of text vertices (or one
     glyph) to the GPU.
 -------------------------------------*/
-void geometry::uploadTextGlyph(
+void geometry::genTextVertices(
     float xOffset,
     float yOffset,
     const atlasEntry& rGlyph,
@@ -298,7 +357,6 @@ void geometry::uploadTextGlyph(
     // | /      |
     // 1,4------5
     
-    // 1st triangle
     pVerts->pos = {xOffset, yOffset+rGlyph.size[1], 0.f};
     pVerts->uv = {rGlyph.uv[0][0], rGlyph.uv[0][1]};
     pVerts->norm = {0.f, 0.f, 1.f};
@@ -316,11 +374,12 @@ void geometry::uploadTextGlyph(
     pVerts->norm = {0.f, 0.f, 1.f};
     bounds.compareAndUpdate(pVerts->pos);
     ++pVerts;
-
+    
     pVerts->pos = {xOffset+rGlyph.size[0],yOffset, 0.f};
     pVerts->uv = {rGlyph.uv[1][0], rGlyph.uv[1][1]};
     pVerts->norm = {0.f, 0.f, 1.f};
     bounds.compareAndUpdate(pVerts->pos);
+    ++pVerts;
 }
 
 } // end draw namespace

@@ -18,11 +18,9 @@ bool geometry::initBufferObject(
         return false;
     }
     
-    if (bo.isValid() == false) {
-        if (bo.init() == false) {
-            LS_LOG_ERR("\tUnable to initialize a geometry buffer object.");
-            return false;
-        }
+    if (bo.init() == false) {
+        LS_LOG_ERR("\tUnable to initialize a geometry buffer object.");
+        return false;
     }
     
     bo.bind();
@@ -39,7 +37,6 @@ template <typename data_t, vbo_use_t vboType>
 data_t* geometry::mapBufferData(
     vertexBuffer_t<vboType>& bo,
     const unsigned elementCount,
-    const unsigned byteCount,
     const char* const bufferStr
 ) {
     if (!initBufferObject<vboType>(bo, elementCount, sizeof(data_t), vbo_rw_t::VBO_STREAM_DRAW)) {
@@ -50,7 +47,7 @@ data_t* geometry::mapBufferData(
     
     // Attempt to get a pointer to an unsynchronized memory buffer
     data_t* pBuffer = (data_t*)bo.mapData(
-        0, byteCount,
+        0, elementCount*sizeof(data_t),
         (vbo_map_t)(VBO_MAP_BIT_INVALIDATE_RANGE | VBO_MAP_BIT_WRITE | VBO_MAP_BIT_UNSYNCHRONIZED)
     );
     LOG_GL_ERR();

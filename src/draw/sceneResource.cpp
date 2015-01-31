@@ -745,6 +745,7 @@ bool sceneResource::preprocessMeshData(const aiScene * const pScene) {
         }
     }
 
+    // initVertices implicitly calls "unload()"
     if (!initVertices(numVertices, numIndices)) {
         return false;
     }
@@ -777,6 +778,8 @@ bool sceneResource::importMeshData(const aiScene* const pScene) {
             vert.pos[0] = vec.x;
             vert.pos[1] = vec.y;
             vert.pos[2] = vec.z;
+            
+            totalBounds.compareAndUpdate(vert.pos);
 
             // Just in case the "aiProcess_GenNormals" step fails.
             if (pMesh->HasNormals()) {

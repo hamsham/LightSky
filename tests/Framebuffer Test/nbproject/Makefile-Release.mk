@@ -108,11 +108,6 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Release
-	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Release
-	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Release
-	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Release
-	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -121,11 +116,6 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd ../../LightScript && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../../LightGame && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../../LightDraw && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../../LightMath && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../../LightUtils && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

@@ -178,10 +178,9 @@ inline void camera::rotateUnlockedY(const math::vec3& amount) {
  * FPS rotation (locked Y axis)
 -------------------------------------*/
 void camera::rotateLockedY(const math::vec3& amount) {
-    orientation
-        = math::quat{0.f, amount[0], 0.f, 1.f}
-        * orientation
-        * math::quat{amount[1], 0.f, 0.f, 1.f};
+    orientation = math::normalize(
+        math::quat{0.f, amount[0], 0.f, 1.f} * orientation * math::quat{amount[1], 0.f, 0.f, 1.f}
+    );
 }
 
 /*-------------------------------------
@@ -201,7 +200,7 @@ void camera::unroll() {
 -------------------------------------*/
 void camera::update() {
     if (viewMode == VIEW_ORBIT) {
-        viewMatrix = math::translate(math::mat4{1.f}, target) * math::translate(math::quatToMat4(orientation), -pos);
+        viewMatrix = math::translate(math::quatToMat4(orientation), target-pos);
         xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
         yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
         zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};

@@ -126,6 +126,12 @@ void controlState::onRun() {
     if (pKeyStates[SDL_SCANCODE_D]) {
         pos[0] -= moveSpeed;
     }
+    if (pKeyStates[SDL_SCANCODE_E]) {
+        pos[1] += moveSpeed;
+    }
+    if (pKeyStates[SDL_SCANCODE_Q]) {
+        pos[1] -= moveSpeed;
+    }
     
     pFbState->moveCamera(pos);
 }

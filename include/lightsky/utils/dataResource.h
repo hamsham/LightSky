@@ -28,7 +28,29 @@ namespace utils {
  * methods.
  */
 class dataResource final : public resource {
+    private:
+        /**
+         * @brief fileData contains an entire file loaded into memory. The
+         * internal pointer "pData" will point to the first element in this
+         * string/ Please refer to "dataSize" for the correct size in bytes of
+         * the array pointed at by "pData".
+         */
+        std::string fileData;
+        
+        /**
+         * @brief Convenience method which reassigns the values contained in
+         * the resource base class (pData & dataSize).
+         */
+        void reassignBaseMembers();
+    
     public:
+        /**
+         * @brief Destructor
+         * 
+         * Calls "unload()" and releases all memory from *this.
+         */
+        virtual ~dataResource() override;
+        
         /**
          * @brief Constructor
          * 
@@ -56,13 +78,6 @@ class dataResource final : public resource {
          * An r-value reference to another data resource.
          */
         dataResource(dataResource&& dr);
-
-        /**
-         * @brief Destructor
-         * 
-         * Calls "unload()" and releases all memory from *this.
-         */
-        virtual ~dataResource() override;
 
         /**
          * @brief Copy Operator
@@ -134,7 +149,7 @@ class dataResource final : public resource {
          * 
          * @return true if the copy was successful. False if otherwise.
          */
-        bool setData(char* data, long size, bool copyMemory);
+        bool setData(const char* const data, long size);
 };
 
 } // end utils namespace

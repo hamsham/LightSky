@@ -10,39 +10,12 @@
 #include <algorithm> // std::copy
 #include <fstream> // std::fstream
 #include <string>
+#include <sstream>
 
 #include "lightsky/utils/dataResource.h"
 
 namespace ls {
 namespace utils {
-
-/*-------------------------------------
-    Constructor
--------------------------------------*/
-dataResource::dataResource() :
-    resource{}
-{}
-
-/*-------------------------------------
-    Copy Constructor
--------------------------------------*/
-dataResource::dataResource(const dataResource& f) :
-    resource{}
-{
-    setData(const_cast<char*>(f.pData), f.dataSize, true);
-}
-
-/*-------------------------------------
-    Move Constructor
--------------------------------------*/
-dataResource::dataResource(dataResource&& f) :
-    resource{}
-{
-    pData = f.pData;
-    f.pData = nullptr;
-    dataSize = f.dataSize;
-    f.dataSize = 0l;
-}
 
 /*-------------------------------------
     Destructor
@@ -52,20 +25,41 @@ dataResource::~dataResource() {
 }
 
 /*-------------------------------------
-    Unload a resource
+    Constructor
 -------------------------------------*/
-void dataResource::unload() {
-    delete [] pData;
-    pData = nullptr;
+dataResource::dataResource() :
+    resource{},
+    fileData{}
+{}
+
+/*-------------------------------------
+    Copy Constructor
+-------------------------------------*/
+dataResource::dataResource(const dataResource& f) :
+    resource{}
+{
+    setData(const_cast<char*>(f.pData), f.dataSize);
+}
+
+/*-------------------------------------
+    Move Constructor
+-------------------------------------*/
+dataResource::dataResource(dataResource&& f) :
+    resource{},
+    fileData{std::move(f.fileData)}
+{
+    pData = &fileData[0];
+    reassignBaseMembers();
     
-    dataSize = 0l;
+    f.pData = nullptr;
+    f.dataSize = 0;
 }
 
 /*-------------------------------------
     Copy Operator
 -------------------------------------*/
 dataResource& dataResource::operator=(const dataResource& f) {
-    setData(const_cast<char*>(f.pData), f.dataSize, true);
+    setData(const_cast<char*>(f.pData), f.dataSize);
     return *this;
 }
 
@@ -75,34 +69,51 @@ dataResource& dataResource::operator=(const dataResource& f) {
 dataResource& dataResource::operator =(dataResource&& f) {
     unload();
     
-    pData = f.pData;
+    fileData = std::move(f.fileData);
+    reassignBaseMembers();
+    
     f.pData = nullptr;
-    dataSize = f.dataSize;
-    f.dataSize = 0l;
+    f.dataSize = 0;
     
     return *this;
 }
 
 /*-------------------------------------
-    Open a file using UTF-8
+ * Reassign base class members
+-------------------------------------*/
+void dataResource::reassignBaseMembers() {
+    pData = &fileData[0];
+    dataSize = sizeof(decltype(fileData)::value_type) * fileData.size();
+}
+
+/*-------------------------------------
+    Unload a resource
+-------------------------------------*/
+void dataResource::unload() {
+    fileData.clear();
+    pData = nullptr;
+    dataSize = 0;
+}
+
+/*-------------------------------------
+ * Open a file using UTF-8
+ * 
+ * This method converts a file's input stream to an std::ostringstream's read
+ * buffer. See the following link on why this is a better idea than seeking
+ * to/from the beginning and end of a binary file to get it's size or using
+ * stream iterators to populate a string object:
+ * 
+ * http://cpp.indi.frih.net/blog/2014/09/how-to-read-an-entire-file-into-memory-in-cpp/
 -------------------------------------*/
 bool dataResource::loadFile(const std::string& filename) {
     unload();
     
     std::ifstream fin;
-    long size = 0;
-    char* buffer = nullptr;
-    
     fin.open(filename, std::ios_base::binary | std::ios_base::in);
     
     if (!fin.good()) {
         return false;
     }
-    
-    // get the file size
-    fin.seekg(0, std::ios_base::end);
-    size = fin.tellg();
-    fin.seekg(0, std::ios_base::beg);
     
     // Determine of the file can successfully scanned,
     if (fin.bad() || fin.fail()) {
@@ -110,27 +121,20 @@ bool dataResource::loadFile(const std::string& filename) {
         return false;
     }
     
-    // load the file into memory
-    buffer = new(std::nothrow) char[size];
-    if (buffer != nullptr) {
-        fin.read(buffer, size);
-    }
-    else {
+    // convert the input file's stream to an std::ostringstream's output buffer.
+    std::ostringstream oss{};
+    oss << fin.rdbuf();
+    
+    // redundancy
+    if (oss.bad() || oss.fail()) {
         fin.close();
         return false;
     }
     
-    // check for errors when reading the file
-    if (fin.bad() || fin.fail()) {
-        delete [] buffer;
-        fin.close();
-        return false;
-    }
+    // move the string stream's buffer into a string
+    fileData = std::move(oss.str());
+    reassignBaseMembers();
     
-    // everything passed, set the data at *this
-    this->pData = buffer;
-    this->dataSize = size;
-    fin.close();
     return true;
 }
 
@@ -156,33 +160,19 @@ bool dataResource::saveFile(const std::string& filename) const {
 /*-------------------------------------
     Set a resource's data
 -------------------------------------*/
-bool dataResource::setData(char* data, long size, bool copyMemory) {
+bool dataResource::setData(const char* const data, long size) {
     unload();
     
     if (data == nullptr || size == 0) {
         return true;
     }
     
-    if (copyMemory == true) {
-        pData = new char[size];
-
-        if (pData == nullptr) {
-            return false;
-        }
-        else {
-            // make sure that there are no buffer overflows
-            if (size > dataSize) {
-                size = dataSize;
-            }
-            
-            std::copy(data, data + size, pData);
-            dataSize = size;
-        }
-    }
-    else {
-        pData = data;
-        dataSize = size;
-    }
+    
+    const unsigned byteSize = sizeof(decltype(fileData)::value_type);
+    const unsigned valueSize = (size/byteSize) + (size%byteSize); 
+    
+    fileData.assign(data, valueSize);
+    reassignBaseMembers();
     
     return true;
 }

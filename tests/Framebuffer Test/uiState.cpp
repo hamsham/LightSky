@@ -94,7 +94,7 @@ bool uiState::onStart() {
     pBlender = new ls::draw::blendObject{};
     
     if (!pFontLoader
-    || !pFontLoader->loadFile(TEST_FONT_FILE, 48)
+    || !pFontLoader->loadFile(TEST_FONT_FILE, 36)
     || !fontAtlas.init(*pFontLoader)
     || !fontGeom.init(fontAtlas, "Hello World")
     || !pBlender
@@ -190,7 +190,7 @@ void uiState::drawScene() {
     const display* const disp   = global::pDisplay;
     const math::vec2&& res      = (math::vec2)disp->getResolution();
     math::mat4&& modelMat       = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
-    modelMat                    = math::scale(modelMat, math::vec3{math::length(res)*0.025f});
+    modelMat                    = math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()});
     modelMat                    = get2dViewport() * modelMat;
     
     fontProg.bind();

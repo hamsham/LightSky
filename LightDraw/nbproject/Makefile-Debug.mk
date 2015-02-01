@@ -58,6 +58,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/setup.o \
 	${OBJECTDIR}/_ext/1019371010/shaderObject.o \
 	${OBJECTDIR}/_ext/1019371010/shaderProgram.o \
+	${OBJECTDIR}/_ext/1019371010/textRenderStage.o \
 	${OBJECTDIR}/_ext/1019371010/texture.o \
 	${OBJECTDIR}/_ext/1019371010/transform.o \
 	${OBJECTDIR}/_ext/1019371010/vertexArray.o \
@@ -204,6 +205,11 @@ ${OBJECTDIR}/_ext/1019371010/shaderProgram.o: ../src/draw/shaderProgram.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/shaderProgram.o ../src/draw/shaderProgram.cpp
+
+${OBJECTDIR}/_ext/1019371010/textRenderStage.o: ../src/draw/textRenderStage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/textRenderStage.o ../src/draw/textRenderStage.cpp
 
 ${OBJECTDIR}/_ext/1019371010/texture.o: ../src/draw/texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

@@ -96,7 +96,7 @@ fontResource& fontResource::operator =(fontResource&& f) {
     f.numGlyphs = 0;
     
     glyphSize = f.glyphSize;
-    f.glyphSize = 0;
+    f.glyphSize = FONT_SIZE_DEFAULT;
     
     maxGlyphSize = f.maxGlyphSize;
     f.maxGlyphSize = {0, 0};
@@ -116,7 +116,7 @@ void fontResource::unload() {
     
     numGlyphs = 0;
     
-    glyphSize = 0;
+    glyphSize = FONT_SIZE_DEFAULT;
     
     maxGlyphSize = {0, 0};
 }

@@ -26,15 +26,13 @@ camera::~camera() {
  * Constructor
 -------------------------------------*/
 camera::camera() :
-    rotateFunction{&camera::rotateLockedY, &camera::rotateOrbitLockedY},
-    updateFunction{&camera::updateNormal, &camera::updateOrbit},
+    rotateFunction{&camera::rotateLockedY},
     viewMode{VIEW_NORMAL},
     fov{DEFAULT_VIEW_ANGLE},
     aspectW{DEFAULT_ASPECT_WIDTH},
     aspectH{DEFAULT_ASPECT_HEIGHT},
     zNear{DEFAULT_Z_NEAR},
     zFar{DEFAULT_Z_FAR},
-    orbitDist{1.f},
     pos{0.f},
     target{0.f},
     xAxis{1.f, 0.f, 0.f},
@@ -68,17 +66,13 @@ camera::camera(camera&& c) {
  * Copy Operator
 -------------------------------------*/
 camera& camera::operator = (const camera& c) {
-    rotateFunction[0] = &camera::rotateLockedY;
-    rotateFunction[1] = &camera::rotateOrbitLockedY;
-    updateFunction[0] = &camera::updateNormal;
-    updateFunction[1] = &camera::updateOrbit;
+    rotateFunction = &camera::rotateLockedY;
     viewMode = c.viewMode;
     fov = c.fov;
     aspectW = c.aspectW;
     aspectH = c.aspectH;
     zNear = c.zNear;
     zFar = c.zFar;
-    orbitDist = c.orbitDist;
     pos = c.pos;
     target = c.target;
     xAxis = c.xAxis;
@@ -118,14 +112,9 @@ void camera::setProjectionParams(
  * Y-Axis Locking
 -------------------------------------*/
 void camera::lockYAxis(bool isLocked) {
-    rotateFunction[VIEW_NORMAL] = (isLocked)
+    rotateFunction = (isLocked)
         ? &camera::rotateLockedY
         : &camera::rotateUnlockedY;
-
-    rotateFunction[VIEW_ORBIT] = (isLocked)
-        ? &camera::rotateOrbitLockedY
-        : &camera::rotateOrbitUnlockedY;
-
 }
 
 /*-------------------------------------
@@ -158,9 +147,31 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
  * Basic Movement and Rotation
 -------------------------------------*/
 void camera::move(const math::vec3& amount) {
-    pos -= xAxis * amount[0];
-    pos -= yAxis * amount[1];
-    pos -= zAxis * amount[2];
+    if (viewMode == VIEW_NORMAL) {
+        pos -= xAxis * amount[0];
+        pos -= yAxis * amount[1];
+        pos -= zAxis * amount[2];
+    }
+    else {
+        pos -= amount;
+    }
+}
+
+/*-------------------------------------
+ * FPS Rotation (unlocked Y axis)
+-------------------------------------*/
+inline void camera::rotateUnlockedY(const math::vec3& amount) {
+    // Always lerp to the new mouse position
+    const math::quat&& lerpX = math::lerp(
+        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{amount[1], 0.f, 0.f, 1.f}, 1.f
+    );
+    
+    const math::quat&& lerpY = math::lerp(
+        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{0.f, amount[0], 0.f, 1.f}, 1.f
+    );
+    
+    orientation *= lerpY * lerpX;
+    orientation = math::normalize(orientation);
 }
 
 /*-------------------------------------
@@ -168,27 +179,9 @@ void camera::move(const math::vec3& amount) {
 -------------------------------------*/
 void camera::rotateLockedY(const math::vec3& amount) {
     orientation
-        = math::fromAxisAngle(zAxis, -amount[2])
-        * math::fromAxisAngle(math::vec3{0.f, 1.f, 0.f}, -amount[1])
-        * math::fromAxisAngle(xAxis, -amount[0])
-        * orientation;
-}
-
-/*-------------------------------------
- * Orbital rotation (unlocked Y axis)
--------------------------------------*/
-void camera::rotateOrbitUnlockedY(const math::vec3& amount) {
-    pos -= xAxis * amount[0];
-    pos -= yAxis * amount[1];
-    pos -= zAxis * amount[2];
-}
-
-/*-------------------------------------
- * Orbital rotation (locked Y axis)
--------------------------------------*/
-void camera::rotateOrbitLockedY(const math::vec3& amount) {
-    rotateOrbitUnlockedY(amount);
-    lookAt(pos, target, math::vec3{0.f, 1.f, 0.f});
+        = math::quat{0.f, amount[0], 0.f, 1.f}
+        * orientation
+        * math::quat{amount[1], 0.f, 0.f, 1.f};
 }
 
 /*-------------------------------------
@@ -204,32 +197,26 @@ void camera::unroll() {
 }
 
 /*-------------------------------------
- * Update Camera (FPS Style)
--------------------------------------*/
-void camera::updateNormal() {
-    viewMatrix = math::quatToMat4(orientation);
-
-    xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
-    yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
-    zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
-}
-
-/*-------------------------------------
- * Update Camera (Orbital)
--------------------------------------*/
-void camera::updateOrbit() {
-    pos = math::normalize(pos - target) * orbitDist;
-    lookAt(target);
-}
-
-/*-------------------------------------
  * Update Implementation
 -------------------------------------*/
 void camera::update() {
-    (this->*updateFunction[viewMode])();
-    viewMatrix[3][0] = -math::dot(xAxis, pos);
-    viewMatrix[3][1] = -math::dot(yAxis, pos);
-    viewMatrix[3][2] = -math::dot(zAxis, pos);
+    if (viewMode == VIEW_ORBIT) {
+        viewMatrix = math::translate(math::mat4{1.f}, target) * math::translate(math::quatToMat4(orientation), -pos);
+        xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
+        yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
+        zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
+    }
+    else {
+        viewMatrix = math::quatToMat4(orientation);
+
+        xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
+        yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
+        zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
+
+        viewMatrix[3][0] = -math::dot(xAxis, pos);
+        viewMatrix[3][1] = -math::dot(yAxis, pos);
+        viewMatrix[3][2] = -math::dot(zAxis, pos);
+    }
 }
 
 } // end draw namespace

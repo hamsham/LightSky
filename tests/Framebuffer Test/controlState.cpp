@@ -218,7 +218,7 @@ void controlState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     // As a result, the camera's movement becomes as smooth and natural as possible.
     const math::vec2&& fRes = (math::vec2)global::pDisplay->getResolution();
     const math::vec3&& mouseDelta = math::vec3{
-        (float)-mouseY/fRes[1], (float)-mouseX/fRes[0], 0.f
+        (float)mouseX/fRes[0], (float)mouseY/fRes[1], 0.f
     };
     
     pFbState->rotateCamera(mouseDelta);

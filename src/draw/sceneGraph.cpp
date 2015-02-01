@@ -233,7 +233,7 @@ bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffs
         
         pMesh->setIndices(rMesh.indices);
         
-        if (rMesh.textureIndex != sceneResource::INVALID_SCENE_RESOURCE) {
+        if (rMesh.textureIndex < textureList.size()) {
             texture* const pTex = textureList[textureOffset + rMesh.textureIndex];
             if (pTex != nullptr) {
                 pMesh->addTexture(*pTex);
@@ -243,7 +243,7 @@ bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffs
         LS_LOG_MSG(
             "\tMesh ", meshList.size()-1,
             " contains texture ",
-            rMesh.textureIndex, '-', textureList[textureOffset+rMesh.textureIndex]->isValid()
+            rMesh.textureIndex
         );
     }
     

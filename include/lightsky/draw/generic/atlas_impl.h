@@ -44,5 +44,12 @@ inline unsigned atlas::getNumEntries() const {
     return numEntries;
 }
 
+/*-------------------------------------
+    Get the Pixel to glyph ratio
+-------------------------------------*/
+inline float atlas::getPixelRatio() const {
+    return pixelRatio;
+}
+
 } // end draw namespace
 } // end ls namespace

@@ -17,20 +17,6 @@ inline void camera::makePerspective() {
 }
 
 /*-------------------------------------
- * Get the arcball orbit distance
--------------------------------------*/
-inline float camera::getOrbitDist() const {
-    return orbitDist;
-}
-
-/*-------------------------------------
- * Set the arcball orbit distance
--------------------------------------*/
-inline void camera::setOrbitDist(float d) {
-    orbitDist = std::fabs(d);
-}
-
-/*-------------------------------------
  * Get the camera position
 -------------------------------------*/
 inline const math::vec3& camera::getPosition() const {
@@ -136,6 +122,20 @@ inline float camera::getAspectRatio() const {
 }
 
 /*-------------------------------------
+ * Get the current aspect width.
+-------------------------------------*/
+inline float camera::getAspectWidth() const {
+    return aspectW;
+}
+
+/*-------------------------------------
+ * Get the current aspect height.
+-------------------------------------*/
+inline float camera::getAspectHeight() const {
+    return aspectH;
+}
+
+/*-------------------------------------
  * Set the near plane distance
 -------------------------------------*/
 inline void camera::setNearPlane(float inZNear) {
@@ -188,14 +188,7 @@ inline void camera::lookAt(const math::vec3& point) {
  * Camera Rotation function
 -------------------------------------*/
 inline void camera::rotate(const math::vec3& amount) {
-    (this->*rotateFunction[viewMode])(amount);
-}
-
-/*-------------------------------------
- * FPS Rotation (unlocked Y axis)
--------------------------------------*/
-inline void camera::rotateUnlockedY(const math::vec3& amount) {
-    orientation *= math::fromEuler(-amount);
+    (this->*rotateFunction)(amount);
 }
 
 } // end draw namespace

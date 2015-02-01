@@ -55,7 +55,7 @@ class sceneResource final : public utils::resource {
         
         struct resourceMesh {
             draw_index_pair_t indices = {};
-            unsigned textureIndex = 0;
+            unsigned textureIndex = INVALID_SCENE_RESOURCE;
         };
         
         /**

@@ -36,10 +36,12 @@ atlas::atlas() {
 atlas::atlas(atlas&& a) :
     atlasTex{std::move(a.atlasTex)},
     entries{a.entries},
-    numEntries{a.numEntries}
+    numEntries{a.numEntries},
+    pixelRatio{a.pixelRatio}
 {
     a.entries = nullptr;
     a.numEntries = 0;
+    a.pixelRatio = 1.f;
 }
 
 /*
@@ -54,6 +56,9 @@ atlas& atlas::operator =(atlas&& a) {
     numEntries = a.numEntries;
     a.numEntries = 0;
     
+    pixelRatio = a.pixelRatio;
+    a.pixelRatio = 1.f;
+    
     return *this;
 }
 
@@ -63,19 +68,12 @@ atlas& atlas::operator =(atlas&& a) {
 bool atlas::init(const fontResource& fr) {
     terminate();
     
-    // calculate the size of the atlas. Cast like crazy.
+    // Calculate the size of the atlas.
     // Dimensions is the number of entries in the x/y directions
     const int dimensions = (int)std::sqrt((float)fr.getNumGlyphs());
     const vec2i&& maxGlyphSize = fr.getMaxGlyphSize();
     
-    LS_LOG_MSG(
-        "Attempting to load a font atlas.",
-        "\n\tSupported X*Y Size: ", texture::getMaxTextureSize(),
-        "\n\tGlyphs Per Row/Col: ", dimensions, " x ", dimensions,
-        "\n\tTotal Glyph Count:  ", fr.getNumGlyphs(),
-        "\n\tWidth Per Glyph:    ", maxGlyphSize[0],
-        "\n\tHeight Per Glyph:   ", maxGlyphSize[1]
-    );
+    LS_LOG_MSG("Attempting to load a font atlas.");
     
     // prepare the array of atlas entries
     entries = new(std::nothrow) atlasEntry[fr.numGlyphs];
@@ -100,7 +98,7 @@ bool atlas::init(const fontResource& fr) {
     // Upload the data
     numEntries = fr.numGlyphs;
     const float fDimension = (float)dimensions;
-    const math::vec2&& fMaxGlyphSize = (math::vec2)maxGlyphSize*dimensions;
+    const math::vec2&& texResolution = (math::vec2)maxGlyphSize*dimensions;
     int iter = 0;
     
     for (int x = 0; x < dimensions; ++x) {
@@ -120,8 +118,8 @@ bool atlas::init(const fontResource& fr) {
             pEntry.uv[1] = pEntry.uv[0] + (vec2)pGlyph.size;
             
             // NORMALIZE ALL THE THINGS!!!
-            pEntry.uv[0] /= fMaxGlyphSize;
-            pEntry.uv[1] /= fMaxGlyphSize;
+            pEntry.uv[0] /= texResolution;
+            pEntry.uv[1] /= texResolution;
 
             // Add descriptor data for each glyoh.
             pEntry.advance = (vec2)pGlyph.advance;
@@ -151,7 +149,18 @@ bool atlas::init(const fontResource& fr) {
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     LOG_GL_ERR();
     
+    pixelRatio = 1.f / (float)fr.getFontSize();
+    
     LS_LOG_MSG("\tSuccessfully loaded a font atlas.\n");
+    LS_LOG_MSG(
+        "\tSuccessfully loaded a font atlas.",
+        "\n\t\\Total Resolution:   ", texResolution[0], 'x', texResolution[1],
+        "\n\t\tGlyphs Per Row/Col: ", dimensions, " x ", dimensions,
+        "\n\t\tTotal Glyph Count:  ", fr.getNumGlyphs(),
+        "\n\t\tWidth Per Glyph:    ", maxGlyphSize[0],
+        "\n\t\tHeight Per Glyph:   ", maxGlyphSize[1]
+    );
+    
     
     return true;
 }
@@ -166,6 +175,7 @@ void atlas::terminate() {
     entries = nullptr;
 
     numEntries = 0;
+    pixelRatio = 1.f;
 }
 
 } // end draw namespace

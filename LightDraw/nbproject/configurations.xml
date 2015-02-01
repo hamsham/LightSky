@@ -50,6 +50,7 @@
       <itemPath>../include/lightsky/draw/setup.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderObject.h</itemPath>
       <itemPath>../include/lightsky/draw/shaderProgram.h</itemPath>
+      <itemPath>../include/lightsky/draw/textRenderStage.h</itemPath>
       <itemPath>../include/lightsky/draw/texture.h</itemPath>
       <itemPath>../include/lightsky/draw/transform.h</itemPath>
       <itemPath>../include/lightsky/draw/vertex.h</itemPath>
@@ -86,6 +87,7 @@
       <itemPath>../src/draw/setup.cpp</itemPath>
       <itemPath>../src/draw/shaderObject.cpp</itemPath>
       <itemPath>../src/draw/shaderProgram.cpp</itemPath>
+      <itemPath>../src/draw/textRenderStage.cpp</itemPath>
       <itemPath>../src/draw/texture.cpp</itemPath>
       <itemPath>../src/draw/transform.cpp</itemPath>
       <itemPath>../src/draw/vertexArray.cpp</itemPath>
@@ -367,6 +369,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/textRenderStage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/transform.h"
@@ -431,6 +438,8 @@
       <item path="../src/draw/shaderObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/shaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/textRenderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -707,6 +716,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/textRenderStage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/texture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/transform.h"
@@ -771,6 +785,8 @@
       <item path="../src/draw/shaderObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/shaderProgram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/textRenderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/texture.cpp" ex="false" tool="1" flavor2="0">
       </item>

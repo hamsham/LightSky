@@ -48,12 +48,15 @@ class fontResource final : public ls::utils::resource {
     friend class atlas;
     
     public:
-        
         /**
          * Default font size (as DPI) of fonts loaded from a file.
          */
-        enum : int {
-            DEFAULT_FONT_SIZE = 72
+        enum : unsigned {
+            FONT_SIZE_LOW       = 48,
+            FONT_SIZE_MEDIUM    = 72,
+            FONT_SIZE_HIGH      = 96,
+
+            FONT_SIZE_DEFAULT   = 72
         };
     
     private:
@@ -65,7 +68,7 @@ class fontResource final : public ls::utils::resource {
         /**
          * Contains the currently loaded font's glyph size
          */
-        unsigned glyphSize = 0;
+        unsigned glyphSize = FONT_SIZE_DEFAULT;
         
         /**
          * Size of the largest glyph

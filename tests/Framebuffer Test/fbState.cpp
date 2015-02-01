@@ -119,7 +119,10 @@ bool fbState::onStart() {
     mainCam.setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
     mainCam.makePerspective();
     mainCam.lockYAxis(true);
+    //mainCam.lockYAxis(false);
     mainCam.setViewMode(draw::camera_view_t::VIEW_NORMAL);
+    //mainCam.setOrbitDist(10.f);
+    //mainCam.setViewMode(draw::camera_view_t::VIEW_ORBIT);
     mainCam.lookAt(math::vec3{10.f}, math::vec3{0.f});
     
     constexpr draw::color::color gray = draw::color::gray;

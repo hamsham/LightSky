@@ -67,6 +67,12 @@ class atlas {
          */
         unsigned numEntries = 0;
         
+        /**
+         * @brief pixelRatio contains the recommended uniform scaling ratio
+         * which should be applied to each generated glyph when rendering.
+         */
+        float pixelRatio = 1.f;
+        
     public:
         /**
          * @brief Constructor
@@ -179,6 +185,12 @@ class atlas {
          * Get the number of atlas entries currently loaded
          */
         unsigned getNumEntries() const;
+        
+        /**
+         * @return A float containing the recommended uniform scaling ratio
+         * which should be applied to each generated glyph when rendering.
+         */
+        float getPixelRatio() const;
 };
 
 } // end draw namespace

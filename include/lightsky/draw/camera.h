@@ -58,14 +58,7 @@ class camera {
          * will help keep camera's rotation method just between FPS/arcball
          * rotations with either a locked or unlocked Yaw axis.
          */
-        void (camera::*rotateFunction[VIEW_MAX])(const math::vec3&);
-
-        /**
-         * @brief updateFunction is an array of class method pointers. This
-         * will help keep camera's update method just between FPS/arcball
-         * rotations with either a locked or unlocked Yaw axis.
-         */
-        void (camera::*updateFunction[VIEW_MAX])();
+        void (camera::*rotateFunction)(const math::vec3&);
 
         /**
          * @brief viewMode sets the view mode in *this to wither use FPS or
@@ -99,11 +92,6 @@ class camera {
          * @brief Distance to the far occlusion plane.
          */
         float zFar = DEFAULT_Z_FAR;
-
-        /**
-         * @brief Distance for orbiting around a target.
-         */
-        float orbitDist = 1.f;
 
         /**
          * @brief Camera Position
@@ -153,7 +141,7 @@ class camera {
          * allows the camera to roll.
          *
          * @param amount
-         * The amount, in radians, that the camera should rotate by. These
+         * The amount, in percent, that the camera should rotate by. These
          * angles correspond to Pitch, Yaw, and Roll, respectively.
          */
         void rotateUnlockedY(const math::vec3& amount);
@@ -164,43 +152,10 @@ class camera {
          * prevents the camera from rolling.
          *
          * @param amount
-         * The amount, in radians, that the camera should rotate by. These
+         * The amount, in percent, that the camera should rotate by. These
          * angles correspond to Pitch, Yaw, and Roll, respectively.
          */
         void rotateLockedY(const math::vec3& amount);
-
-        /**
-         * @brief rotateOrbitUnlockedY
-         * Function to rotate the camera around a target with an unlocked Y
-         * axis; This method allows the camera to roll.
-         *
-         * @param amount
-         * The amount, in radians, that the camera should rotate by. These
-         * angles correspond to Pitch, Yaw, and Roll, respectively.
-         */
-        void rotateOrbitUnlockedY(const math::vec3& amount);
-
-        /**
-         * @brief rotateOrbitUnlockedY
-         * Function to rotate the camera around a target with a locked Y
-         * axis; This method prevents the camera from rolling.
-         *
-         * @param amount
-         * The amount, in radians, that the camera should rotate by. These
-         * angles correspond to Pitch, Yaw, and Roll, respectively.
-         */
-        void rotateOrbitLockedY(const math::vec3& amount);
-
-        /**
-         * @brief Update the camera's projection parameters using FPS-mode.
-         */
-        void updateNormal();
-
-        /**
-         * @brief Update the camera's projection parameters using an arcball
-         * rotation mode.
-         */
-        void updateOrbit();
 
     public:
         /**
@@ -276,24 +231,6 @@ class camera {
             float near          = DEFAULT_Z_NEAR,
             float far           = DEFAULT_Z_FAR
         );
-
-        /**
-         * @brief Get the distance that the camera will be when using orbit
-         * mode.
-         * 
-         * @return A floating-point number, using user-defined units,
-         * determining how far the camera is from a desired target.
-         */
-        float getOrbitDist() const;
-
-        /**
-         * @brief Sets the distance that the camera will be orbiting a target.
-         * 
-         * @param d
-         * A floating-point number, using user-defined units, determining how
-         * far the camera will be from a desired target.
-         */
-        void setOrbitDist(float d);
 
         /**
          * @brief Get the current position of the camera in 3D cartesian space.
@@ -420,6 +357,22 @@ class camera {
          * projection matrix frustum, divided by its height.
          */
         float getAspectRatio() const;
+
+        /**
+         * @brief Get the width of the projection matrix frustum.
+         * 
+         * @return A floating-point value, representing the width of the
+         * projection matrix frustum.
+         */
+        float getAspectWidth() const;
+
+        /**
+         * @brief Get the height of the projection matrix frustum.
+         * 
+         * @return A floating-point value, representing the height of the
+         * projection matrix frustum.
+         */
+        float getAspectHeight() const;
 
         /**
          * @brief Set the distance to the camera's near-clipping plane.

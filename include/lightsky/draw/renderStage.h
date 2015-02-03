@@ -11,7 +11,7 @@
 //#include <stack>
 
 #include "lightsky/draw/setup.h"
-#include "lightsky/draw/color.h"
+#include "lightsky/draw/camera.h"
 #include "lightsky/draw/sceneGraph.h"
 #include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/sceneMesh.h"
@@ -21,7 +21,7 @@ namespace draw {
 
 /**----------------------------------------------------------------------------
  * @brief The renderStage class is an abstract base class, describing the
- * basic functionality of a scene graph renderer. Use this interfact to plan
+ * basic functionality of a scene graph renderer. Use this interface to plan
  * out a renderer.
 -----------------------------------------------------------------------------*/
 class renderStage {
@@ -119,6 +119,43 @@ class renderStage {
          * A constant reference to a constant sceneGraph.
          */
         virtual void draw(const sceneGraph& scene);
+
+        /**
+         * @brief Render the data contained within a scene graph.
+         *
+         * This method traverses a scene graph and calls "drawSceneNode(...)"
+         * for derived renderers to customize their rendering.
+         *
+         * @param scene
+         * A constant reference to a constant sceneGraph.
+         * 
+         * @param vpMatrix
+         * The view/projection matrix from which all scene data will be viewed.
+         */
+        virtual void draw(const sceneGraph& scene, const math::mat4& vpMatrix);
+
+        /**
+         * @brief Render the data contained within a scene graph. Use a set of
+         * node indices to draw specific nodes.
+         *
+         * This method traverses a scene graph and calls "drawSceneNode(...)"
+         * for derived renderers to customize their rendering.
+         *
+         * @param scene
+         * A constant reference to a constant sceneGraph.
+         * 
+         * @param vpMatrix
+         * The view/projection matrix from which all scene data will be viewed.
+         * 
+         * @param nodeIndices
+         * A std::vector of unsigned integers, specifying which nodes in the
+         * sceneGraph object's array of nodes that should be rendered.
+         */
+        virtual void draw(
+            const sceneGraph& scene,
+            const math::mat4& vpMatrix,
+            const std::vector<unsigned>& nodeIndices
+        );
 };
 
 } // end draw namepsace

@@ -6,7 +6,7 @@ namespace draw {
  * Create an orthographic camera
 -------------------------------------*/
 inline void camera::makeOrtho() {
-    projMatrix = math::ortho(-aspectW, aspectW, -aspectH, aspectH, zNear, zFar);
+    projMatrix = math::ortho(0.f, aspectW, 0.f, aspectH, zNear, zFar);
 }
 
 /*-------------------------------------

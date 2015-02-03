@@ -17,7 +17,21 @@ renderStage::~renderStage() {
 }
 
 /*-------------------------------------
- * Scene Gaph traversing for rendering (hierarchial).
+ * Draw a scene (linear) using indices.
+-------------------------------------*/
+void renderStage::draw(
+    const sceneGraph& scene,
+    const math::mat4&,
+    const std::vector<unsigned>& nodeIndices
+) {
+    const scene_node_list_t& nodes = scene.getNodeList();
+    for (unsigned index : nodeIndices) {
+        drawSceneNode(scene, nodes[index]);
+    }
+}
+
+/*-------------------------------------
+ * Scene Graph traversing for rendering (hierarchial).
 -------------------------------------*/
 /*
 void renderStage::draw(const sceneGraph& scene) {

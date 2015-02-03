@@ -98,30 +98,40 @@ defaultRenderStage::~defaultRenderStage() {
 /*-------------------------------------
  * Constructor
 -------------------------------------*/
-defaultRenderStage::defaultRenderStage() :
-    renderStage{},
-    vertShader{},
-    fragShader{},
-    shaderBinary{}
-{}
+defaultRenderStage::defaultRenderStage() {
+}
 
 /*-------------------------------------
  * Move Constructor
 -------------------------------------*/
 defaultRenderStage::defaultRenderStage(defaultRenderStage&& rs) :
     renderStage{std::move(rs)},
+    vpMatUniformId{rs.vpMatUniformId},
+    modelMatUniformId{rs.modelMatUniformId},
     vertShader{std::move(rs.vertShader)},
     fragShader{std::move(rs.fragShader)},
     shaderBinary{std::move(rs.shaderBinary)}
-{}
+{
+    rs.vpMatUniformId = -1;
+    rs.modelMatUniformId = -1;
+}
 
 /*-------------------------------------
  * Move Operator
 -------------------------------------*/
 defaultRenderStage& defaultRenderStage::operator=(defaultRenderStage&& rs) {
     renderStage::operator=(std::move(rs));
+    
+    vpMatUniformId = rs.vpMatUniformId;
+    rs.vpMatUniformId = -1;
+    
+    modelMatUniformId = rs.modelMatUniformId;
+    rs.modelMatUniformId = -1;
+    
     vertShader = std::move(rs.vertShader);
+    
     fragShader = std::move(rs.fragShader);
+    
     shaderBinary = std::move(rs.shaderBinary);
 
     return *this;
@@ -162,20 +172,20 @@ bool defaultRenderStage::init() {
     LOG_GL_ERR();
 
     shaderBinary.bind();
-    
-    // attach the model matrix uniform to the scene graph
-    modelMatUniformId = shaderBinary.getUniformLocation(DEFAULT_MODEL_MATRIX_UNIFORM);
-    if (modelMatUniformId < 0) {
-        LS_LOG_ERR("Unable to set the default render stage's model matrix uniform.");
-        LOG_GL_ERR();
-        shaderBinary.unbind();
-        return false;
-    }
 
     // attach the view-projection uniform to the scene graph
     vpMatUniformId = shaderBinary.getUniformLocation(DEFAULT_VP_MATRIX_UNIFORM);
     if (vpMatUniformId < 0) {
         LS_LOG_ERR("Unable to set the default render stage's view-projection matrix uniform.");
+        LOG_GL_ERR();
+        shaderBinary.unbind();
+        return false;
+    }
+    
+    // attach the model matrix uniform to the scene graph
+    modelMatUniformId = shaderBinary.getUniformLocation(DEFAULT_MODEL_MATRIX_UNIFORM);
+    if (modelMatUniformId < 0) {
+        LS_LOG_ERR("Unable to set the default render stage's model matrix uniform.");
         LOG_GL_ERR();
         shaderBinary.unbind();
         return false;
@@ -192,8 +202,8 @@ bool defaultRenderStage::init() {
  * Release Resources
 -------------------------------------*/
 void defaultRenderStage::terminate() {
-    vpMatUniformId = 0;
-    modelMatUniformId = 0;
+    vpMatUniformId = -1;
+    modelMatUniformId = -1;
     vertShader.terminate();
     fragShader.terminate();
     shaderBinary.terminate();
@@ -202,12 +212,34 @@ void defaultRenderStage::terminate() {
 /*-------------------------------------
  * Draw a scene
 -------------------------------------*/
-void defaultRenderStage::draw(const sceneGraph& scene) {
-    const camera& mainCam = scene.getMainCamera();
-    shaderBinary.setUniformValue(vpMatUniformId, mainCam.getVPMatrix());
+void defaultRenderStage::draw(const sceneGraph& scene, const math::mat4& vpMatrix) {
+    shaderBinary.setUniformValue(vpMatUniformId, vpMatrix);
     
     for (const sceneNode& node : scene.getNodeList()) {
         shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        for (const sceneMesh* const pMesh : node.nodeMeshes) {
+            pMesh->draw();
+        }
+    }
+}
+
+/*-------------------------------------
+ * Draw a scene using indices.
+-------------------------------------*/
+void defaultRenderStage::draw(
+    const sceneGraph& scene,
+    const math::mat4& vpMatrix,
+    const std::vector<unsigned>& nodeIndices
+) {
+    
+    shaderBinary.setUniformValue(vpMatUniformId, vpMatrix);
+    
+    const scene_node_list_t& nodes = scene.getNodeList();
+    
+    for (unsigned index : nodeIndices) {
+        const sceneNode& node = nodes[index];
+        shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        
         for (const sceneMesh* const pMesh : node.nodeMeshes) {
             pMesh->draw();
         }

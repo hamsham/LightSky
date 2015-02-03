@@ -20,14 +20,13 @@ class uiState final : virtual public ls::game::gameState {
      * Event Management
      */
     private:
-        float                   secondTimer = 0.f;
+        uint64_t                secondTimer = 0.f;
         ls::draw::atlas         fontAtlas   = {};
-        ls::draw::geometry      fontGeom    = {};
-        ls::draw::shaderProgram fontProg    = {};
-        ls::draw::blendObject*  pBlender    = {};
+        ls::draw::sceneGraph*   pScene      = nullptr;
+        ls::draw::textRenderStage* pRenderer = nullptr;
         
         std::string     getTimingStr        () const;
-        math::mat4      get2dViewport       () const;
+        void            reset2dViewport     () const;
         void            drawScene           ();
         
     public:

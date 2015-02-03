@@ -38,7 +38,11 @@ sceneGraph::sceneGraph() :
     textureList{},
     meshList{},
     nodeList{}
-{}
+{
+    pMainCamera->makePerspective();
+    pMainCamera->lockYAxis(true);
+    pMainCamera->setViewMode(draw::camera_view_t::VIEW_NORMAL);
+}
 
 /*-------------------------------------
  * Move Constructor
@@ -235,9 +239,8 @@ bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffs
         
         if (rMesh.textureIndex < textureList.size()) {
             texture* const pTex = textureList[textureOffset + rMesh.textureIndex];
-            if (pTex != nullptr) {
-                pMesh->addTexture(*pTex);
-            }
+            LS_DEBUG_ASSERT(pTex != nullptr);
+            pMesh->addTexture(*pTex);
         }
         
         LS_LOG_MSG(

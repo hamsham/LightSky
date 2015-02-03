@@ -33,6 +33,7 @@
 #include "lightsky/draw/shaderObject.h"
 #include "lightsky/draw/shaderProgram.h"
 #include "lightsky/draw/texture.h"
+#include "lightsky/draw/textRenderStage.h"
 #include "lightsky/draw/transform.h"
 #include "lightsky/draw/vertex.h"
 #include "lightsky/draw/vertexArray.h"

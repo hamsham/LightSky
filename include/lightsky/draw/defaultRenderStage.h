@@ -24,31 +24,31 @@ class defaultRenderStage final : public renderStage {
         /**
          * @brief Shader uniform to set the scene's camera in a shader.
          */
-        mutable int vpMatUniformId = 0;
+        mutable int vpMatUniformId = -1;
 
         /**
          * @brief Shader uniform to set a scene node's model matrix in a
          * shader.
          */
-        mutable int modelMatUniformId = 0;
+        mutable int modelMatUniformId = -1;
 
         /**
          * @brief Vertex shader which permits meshes to be manipulated before
          * being passed to the fragment shader.
          */
-        vertexShader vertShader;
+        vertexShader vertShader = {};
 
         /**
          * @brief Fragment shader which renders all transformed vertices and
          * geometry data to the currently bound framebuffer.
          */
-        fragmentShader fragShader;
+        fragmentShader fragShader = {};
 
         /**
          * @brief The shader binary contains the linked vertex and fragment
          * shaders.
          */
-        shaderProgram shaderBinary;
+        shaderProgram shaderBinary = {};
 
     public:
         /**
@@ -142,16 +142,58 @@ class defaultRenderStage final : public renderStage {
         virtual void unbind() override;
 
         /**
-         * @brief Draw all nodes in the current scene.
-         * 
+         * @brief Render the data contained within a scene graph.
+         *
+         * This method traverses a scene graph and calls "drawSceneNode(...)"
+         * for derived renderers to customize their rendering.
+         *
          * @param scene
-         * A constant reference to the scene object containing data to render.
+         * A constant reference to a constant sceneGraph.
          */
         virtual void draw(const sceneGraph& scene) override;
+
+        /**
+         * @brief Render the data contained within a scene graph.
+         *
+         * This method traverses a scene graph and calls "drawSceneNode(...)"
+         * for derived renderers to customize their rendering.
+         *
+         * @param scene
+         * A constant reference to a constant sceneGraph.
+         * 
+         * @param vpMatrix
+         * The view/projection matrix from which all scene data will be viewed.
+         */
+        virtual void draw(const sceneGraph& scene, const math::mat4& vpMatrix) override;
+
+        /**
+         * @brief Render the data contained within a scene graph. Use a set of
+         * node indices to draw specific nodes.
+         *
+         * This method traverses a scene graph and calls "drawSceneNode(...)"
+         * for derived renderers to customize their rendering.
+         *
+         * @param scene
+         * A constant reference to a constant sceneGraph.
+         * 
+         * @param vpMatrix
+         * The view/projection matrix from which all scene data will be viewed.
+         * 
+         * @param nodeIndices
+         * A std::vector of unsigned integers, specifying which nodes in the
+         * sceneGraph object's array of nodes that should be rendered.
+         */
+        virtual void draw(
+            const sceneGraph& scene,
+            const math::mat4& vpMatrix,
+            const std::vector<unsigned>& nodeIndices
+        ) override;
 };
 
 } // end draw namespace
 } // end ls namespace
+
+#include "lightsky/draw/generic/defaultRenderStage_impl.h"
 
 #endif /* __LS_DRAW_DEFAULT_RENDER_STAGE_H__ */
 

@@ -7,51 +7,17 @@
 
 #include <utility>
 
+#include "lightsky/draw/atlas.h"
+#include "lightsky/draw/geometry.h"
+#include "lightsky/draw/sceneGraph.h"
+#include "lightsky/draw/sceneMesh.h"
+#include "lightsky/draw/sceneNode.h"
+#include "lightsky/draw/texture.h"
+
 #include "display.h"
 #include "uiState.h"
 
 #define TEST_FONT_FILE L"./FiraSans-Regular.otf"
-
-/*
- * Font Vertex Shader
- */
-static constexpr char meshVSData[] = u8R"***(
-#version 300 es
-
-layout (location = 0) in vec3 inPos;
-layout (location = 1) in vec2 inUv;
-layout (location = 2) in vec3 inNorm;
-
-uniform mat4 mvpMatrix;
-
-out vec2 uvCoords;
-
-void main() {
-    gl_Position = mvpMatrix * vec4(inPos, 1.0);
-    uvCoords = inUv;
-}
-)***";
-
-/*
- * Font Fragment Shader
- */
-static constexpr char fontFSData[] = u8R"***(
-#version 300 es
-
-precision lowp float;
-
-in vec2 uvCoords;
-
-out vec4 outFragCol;
-
-uniform sampler2D texSampler;
-uniform vec4 fontColor = vec4(0.0, 1.0, 1.0, 1.0);
-
-void main() {
-    float mask = texture(texSampler, uvCoords).r;
-    outFragCol = fontColor*step(0.5, mask);
-}
-)***";
 
 /*-------------------------------------
  * Constructor & Destructor
@@ -72,10 +38,12 @@ uiState& uiState::operator=(uiState&& state) {
     gameState::operator=(std::move(state));
     
     fontAtlas = std::move(state.fontAtlas);
-    fontGeom = std::move(state.fontGeom);
-    fontProg = std::move(state.fontProg);
     
-    pBlender = std::move(state.pBlender);
+    pScene = std::move(state.pScene);
+    state.pScene = nullptr;
+    
+    pRenderer = std::move(state.pRenderer);
+    state.pRenderer = nullptr;
     
     return *this;
 }
@@ -87,34 +55,45 @@ uiState& uiState::operator=(uiState&& state) {
 -------------------------------------*/
 bool uiState::onStart() {
     bool ret = true;
-    ls::draw::vertexShader vertShader;
-    ls::draw::fragmentShader fontFragShader;
+    
+    pScene = new ls::draw::sceneGraph{};
+    pRenderer = new ls::draw::textRenderStage{};
     
     ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
-    pBlender = new ls::draw::blendObject{};
+    ls::draw::geometry* pGeometry = new ls::draw::geometry{};
+    ls::draw::sceneMesh* pMesh = new ls::draw::sceneMesh{};
     
-    if (!pFontLoader
+    if (!pScene
+    || !pRenderer
+    || !pRenderer->init()
+    || !pFontLoader
     || !pFontLoader->loadFile(TEST_FONT_FILE, 36)
     || !fontAtlas.init(*pFontLoader)
-    || !fontGeom.init(fontAtlas, "Hello World")
-    || !pBlender
-    || !vertShader.init(meshVSData)
-    || !fontFragShader.init(fontFSData)
-    || !fontProg.init(vertShader, fontFragShader)
-    || !fontProg.link()
+    || !pGeometry
+    || !pGeometry->init(fontAtlas, "Hello World!")
+    || !pMesh
+    || !pMesh->init(*pGeometry)
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
         ret = false;
     }
     else {
-        pBlender->setState(true);
-        pBlender->setBlendEquation(ls::draw::BLEND_EQU_ADD, ls::draw::BLEND_EQU_ADD);
-        pBlender->setBlendFunction(ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_1_SUB_SRC_ALPHA, ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_ZERO);
+        pRenderer->setTextColor(ls::draw::color::cyan);
+        
+        pScene->getGeometryList().push_back(pGeometry);
+        pScene->getMeshList().push_back(pMesh);
+        pMesh->addTexture(fontAtlas.getTexture());
+        
+        pScene->getNodeList().resize(1);
+        ls::draw::sceneNode& node = pScene->getNodeList().back();
+        node.nodeChildren.clear();
+        node.nodeMeshes.push_back(pMesh);
+        node.nodeParent = &pScene->getRootNode();
+        pScene->update(0);
     }
     
     delete pFontLoader;
     
-    fontProg.unbind();
     global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
     LOG_GL_ERR();
     return ret;
@@ -124,13 +103,22 @@ bool uiState::onStart() {
  * Running state
 -------------------------------------*/
 void uiState::onRun() {
+    ls::draw::geometry* pGeometry = pScene->getGeometryList().back();
+    
     // Regenerate a string mesh using the frame's timing information.
     secondTimer += getParentSystem().getTickTime();
+    
     if (secondTimer >= 1000) {
         const std::string&& timingStr = getTimingStr();
-        fontGeom.init(fontAtlas, timingStr);
+        pGeometry->init(fontAtlas, timingStr);
         secondTimer = 0;
     }
+    
+    pScene->update(getParentSystem().getTickTime());
+    
+    // Make sure that the current mesh contains all relevant text vertices.
+    ls::draw::sceneMesh* pMesh = pScene->getMeshList().back();
+    pMesh->setIndices(pGeometry->getSubGeometry().front());
     
     drawScene();
 }
@@ -146,38 +134,37 @@ void uiState::onPause() {
  * Stopping state
 -------------------------------------*/
 void uiState::onStop() {
-    secondTimer = 0.f;
+    secondTimer = 0;
     
     fontAtlas.terminate();
-    fontGeom.terminate();
-    fontProg.terminate();
     
-    delete pBlender;
-    pBlender = nullptr;
+    delete pScene;
+    pScene = nullptr;
+    
+    delete pRenderer;
+    pRenderer = nullptr;
 }
 
 /*-------------------------------------
  * Get a string representing the current Ms/s and F/s
 -------------------------------------*/
 std::string uiState::getTimingStr() const {
-    const float tickTime = (float)getParentSystem().getTickTime();
+    const uint64_t tickTime = getParentSystem().getTickTime();
     return
-        "MPS: " + std::to_string(tickTime) +
-        "\nFPS:  " + std::to_string(1000.f/tickTime);
+        "MPS:  " + std::to_string(tickTime) +
+        "\nFPS:   " + std::to_string(1000/tickTime);
 }
 
 /*-------------------------------------
  * get a 2d viewport for 2d/gui drawing
 -------------------------------------*/
-math::mat4 uiState::get2dViewport() const {
+void uiState::reset2dViewport() const {
     const display& display = *global::pDisplay;
     const math::vec2&& displayRes = (math::vec2)display.getResolution();
     
-    return math::ortho(
-        0.f, displayRes[0],
-        0.f, displayRes[1],
-        0.f, 1.f
-    );
+    ls::draw::camera& mainCam = pScene->getMainCamera();
+    mainCam.setProjectionParams(60.f, displayRes[0], displayRes[1], 0.f, 10.f);
+    mainCam.makeOrtho();
 }
 
 /*-------------------------------------
@@ -185,26 +172,20 @@ math::mat4 uiState::get2dViewport() const {
 -------------------------------------*/
 void uiState::drawScene() {
     LOG_GL_ERR();
+    reset2dViewport();
     
     // setup some UI parameters with a resolution-independent model matrix
     const display* const disp   = global::pDisplay;
     const math::vec2&& res      = (math::vec2)disp->getResolution();
-    math::mat4&& modelMat       = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
-    modelMat                    = math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()});
-    modelMat                    = get2dViewport() * modelMat;
+    const math::mat4&& modelMat = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
+    ls::draw::sceneNode& node   = pScene->getNodeList().back();
     
-    fontProg.bind();
-    fontProg.setUniformValue    (fontProg.getUniformLocation("mvpMatrix"), modelMat);
-
+    node.nodeTransform.setTransform(math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()}));
+    
     // setup parameters to draw a transparent mesh as a screen overlay/UI
-    glDisable(GL_DEPTH_TEST);
-    pBlender->bind();
-    fontAtlas.getTexture().bind();
-    fontGeom.draw();
-    fontAtlas.getTexture().unbind();
-    pBlender->unbind();
-    glEnable(GL_DEPTH_TEST);
+    pRenderer->bind();
+    pRenderer->draw(*pScene);
+    pRenderer->unbind();
     
-    fontProg.unbind();
     LOG_GL_ERR();
 }

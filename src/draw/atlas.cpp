@@ -154,7 +154,7 @@ bool atlas::init(const fontResource& fr) {
     LS_LOG_MSG("\tSuccessfully loaded a font atlas.\n");
     LS_LOG_MSG(
         "\tSuccessfully loaded a font atlas.",
-        "\n\t\\Total Resolution:   ", texResolution[0], 'x', texResolution[1],
+        "\n\t\tTotal Resolution:   ", texResolution[0], 'x', texResolution[1],
         "\n\t\tGlyphs Per Row/Col: ", dimensions, " x ", dimensions,
         "\n\t\tTotal Glyph Count:  ", fr.getNumGlyphs(),
         "\n\t\tWidth Per Glyph:    ", maxGlyphSize[0],

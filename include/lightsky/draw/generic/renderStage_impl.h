@@ -12,8 +12,13 @@ namespace draw {
  * Scene Gaph traversing for rendering.
 -------------------------------------*/
 inline void renderStage::draw(const sceneGraph& scene) {
-    // Linearly iterate through the scene nodes as they should already have
-    // their accumulated transformations
+    draw(scene, scene.getMainCamera().getVPMatrix());
+}
+
+/*-------------------------------------
+ * Scene Gaph traversing for rendering.
+-------------------------------------*/
+inline void renderStage::draw(const sceneGraph& scene, const math::mat4&) {
     for (const sceneNode& node : scene.getNodeList()) {
         drawSceneNode(scene, node);
     }
@@ -22,8 +27,7 @@ inline void renderStage::draw(const sceneGraph& scene) {
 /*-------------------------------------
  * Scene Node Rendering.
 -------------------------------------*/
-inline void renderStage::drawSceneNode(const sceneGraph& scene, const sceneNode& node) {
-    (void)scene;
+inline void renderStage::drawSceneNode(const sceneGraph&, const sceneNode& node) {
     for (const sceneMesh* const pMesh : node.nodeMeshes) {
         drawNodeMesh(node, *pMesh);
     }
@@ -32,8 +36,7 @@ inline void renderStage::drawSceneNode(const sceneGraph& scene, const sceneNode&
 /*-------------------------------------
  * Scene Mesh Rendering.
 -------------------------------------*/
-inline void renderStage::drawNodeMesh(const sceneNode& node, const sceneMesh& mesh) {
-    (void)node;
+inline void renderStage::drawNodeMesh(const sceneNode&, const sceneMesh& mesh) {
     mesh.draw();
 }
 

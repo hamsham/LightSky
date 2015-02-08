@@ -45,20 +45,6 @@ inline void camera::setDirection(const math::vec3& d) {
 }
 
 /*-------------------------------------
- * Get the view direction (arcball movement)
--------------------------------------*/
-inline const math::vec3& camera::getTarget() const {
-    return target;
-}
-
-/*-------------------------------------
- * Set the camera direction (arcball)
--------------------------------------*/
-inline void camera::setTarget(const math::vec3& t) {
-    target = t;
-}
-
-/*-------------------------------------
  * Retrieve the camera's up vector
 -------------------------------------*/
 inline const math::vec3& camera::getUpDirection() const {
@@ -161,20 +147,6 @@ inline void camera::setFarPlane(float inZFar) {
 -------------------------------------*/
 inline float camera::getFarPlane() const {
     return zFar;
-}
-
-/*-------------------------------------
- * Set the perspective mode.
--------------------------------------*/
-inline void camera::setViewMode(camera_view_t m) {
-    viewMode = m;
-}
-
-/*-------------------------------------
- * Retrieve the current perspective mode.
--------------------------------------*/
-inline camera_view_t camera::getViewMode() const {
-    return viewMode;
 }
 
 /*-------------------------------------

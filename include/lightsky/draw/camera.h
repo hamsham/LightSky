@@ -8,16 +8,6 @@ namespace ls {
 namespace draw {
 
 /**----------------------------------------------------------------------------
- * @brief Camera Perspective Modes
------------------------------------------------------------------------------*/
-enum camera_view_t : unsigned {
-    VIEW_NORMAL = 0,
-    VIEW_ORBIT  = 1,
-
-    VIEW_MAX    = 2
-};
-
-/**----------------------------------------------------------------------------
  * @brief Camera transformation class
 -----------------------------------------------------------------------------*/
 class camera {
@@ -61,12 +51,6 @@ class camera {
         void (camera::*rotateFunction)(const math::vec3&);
 
         /**
-         * @brief viewMode sets the view mode in *this to wither use FPS or
-         * arcball rotations.
-         */
-        camera_view_t viewMode = VIEW_NORMAL;
-
-        /**
          * @brief fov Determines the angle of vision for the camera.
          */
         float fov = DEFAULT_VIEW_ANGLE;
@@ -97,11 +81,6 @@ class camera {
          * @brief Camera Position
          */
         math::vec3 pos;
-
-        /**
-         * @brief Orbit Target
-         */
-        math::vec3 target;
 
         /**
          * @brief Left/right direction
@@ -267,23 +246,6 @@ class camera {
         void setDirection(const math::vec3& d);
 
         /**
-         * @brief Get the orbit target of the camera.
-         * 
-         * @return a 3D vector, containing the position in 3D space of a point
-         * that the camera will orbit around, (or look at in FPS mode).
-         */
-        const math::vec3& getTarget() const;
-
-        /**
-         * @brief Set the orbit target of the camera.
-         * 
-         * @param t
-         * A 3D vector containing the position in 3D space of a point that the
-         * camera will orbit around, (or look at in FPS mode).
-         */
-        void setTarget(const math::vec3& t);
-
-        /**
          * @brief Get the camera's normal vector.
          * 
          * @return a 3D vector, used to determine which direction is upwards.
@@ -407,23 +369,6 @@ class camera {
          * camera's far-clipping plane.
          */
         float getFarPlane() const;
-
-        /**
-         * @brief Set the view mode of the camera (FPS or orbit mode).
-         * 
-         * @param m
-         * The mode in which the camera should be operated in.
-         */
-        void setViewMode(camera_view_t m);
-
-        /**
-         * @brief Get the view mode of the camera.
-         * 
-         * @return camera_view_t
-         * An enumeration that determines of the camera should be in FPS or
-         * orbit mode.
-         */
-        camera_view_t  getViewMode() const;
 
         /**
          * @brief Set whether or not the Y axis of the camera should be locked.

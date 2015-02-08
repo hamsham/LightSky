@@ -41,7 +41,6 @@ sceneGraph::sceneGraph() :
 {
     pMainCamera->makePerspective();
     pMainCamera->lockYAxis(true);
-    pMainCamera->setViewMode(draw::camera_view_t::VIEW_NORMAL);
 }
 
 /*-------------------------------------

@@ -75,7 +75,7 @@ void drawCommand::draw(const vertexBuffer& vbo) const {
 
     setAttribPointers();
 
-    glDrawArrays(LS_ENUM_VAL(mode), first, count);
+    glDrawArrays(LS_ENUM_VAL(mode), indices.first, indices.count);
 
     vbo.unbind();
     unbindAttribs();
@@ -92,8 +92,8 @@ void drawCommand::draw(const vertexBuffer& vbo, const indexBuffer& ibo) const {
 
     setAttribPointers();
 
-    const uintptr_t offset = first;
-    glDrawElements(LS_ENUM_VAL(mode), count, indexType, (const void*)offset);
+    const uintptr_t offset = indices.first;
+    glDrawElements(LS_ENUM_VAL(mode), indices.count, indexType, (const void*)offset);
 
     vbo.unbind();
     ibo.unbind();
@@ -110,11 +110,11 @@ void drawCommand::draw(const vertexArray& vao) const {
     vao.bind();
     
     if (indexType == INDEX_TYPE_NONE) {
-        glDrawArrays(LS_ENUM_VAL(mode), first, count);
+        glDrawArrays(LS_ENUM_VAL(mode), indices.first, indices.count);
     }
     else {
-        const uintptr_t offset = first;
-        glDrawElements(LS_ENUM_VAL(mode), count, indexType, (const void*)offset);
+    const uintptr_t offset = indices.first;
+        glDrawElements(LS_ENUM_VAL(mode), indices.count, indexType, (const void*)offset);
     }
 
     LOG_GL_ERR();
@@ -129,11 +129,11 @@ void drawCommand::draw(const vertexArray& vao, unsigned instanceCount) const {
     vao.bind();
     
     if (indexType == INDEX_TYPE_NONE) {
-        glDrawArraysInstanced(LS_ENUM_VAL(mode), first, count, instanceCount);
+        glDrawArraysInstanced(LS_ENUM_VAL(mode), indices.first, indices.count, instanceCount);
     }
     else {
-        const uintptr_t offset = first;
-        glDrawElementsInstanced(LS_ENUM_VAL(mode), count, indexType, (const void*)offset, instanceCount);
+        const uintptr_t offset = indices.first;
+        glDrawElementsInstanced(LS_ENUM_VAL(mode), indices.count, indexType, (const void*)offset, instanceCount);
     }
     
     LOG_GL_ERR();

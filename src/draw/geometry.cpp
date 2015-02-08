@@ -155,8 +155,7 @@ bool geometry::init(
     LOG_GL_ERR();
     
     drawParams.mode = renderMode;
-    drawParams.first = 0;
-    drawParams.count = numVertices;
+    drawParams.indices = {0, numVertices};
     
     if (pBounds) {
         bounds = *pBounds;
@@ -209,7 +208,7 @@ bool geometry::init(
     LOG_GL_ERR();
     
     drawParams.mode = renderMode;
-    drawParams.count = numIndices;
+    drawParams.indices.count = numIndices;
     drawParams.indexType = indexType;
     
     // override the entry placed by the vertex buffer initialization
@@ -275,8 +274,7 @@ bool geometry::init(const atlas& ta, const std::string& str) {
     LOG_GL_ERR();
     
     drawParams.mode = draw_mode_t::TRIS;
-    drawParams.first = 0;
-    drawParams.count = numIndices;
+    drawParams.indices = {0, numIndices};
     drawParams.indexType = index_element_t::INDEX_TYPE_UINT;
     submeshes.push_back(draw_index_pair_t{0, numIndices});
     

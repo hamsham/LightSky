@@ -116,8 +116,7 @@ inline void geometry::draw() const {
 -------------------------------------*/
 inline void geometry::draw(const draw_index_pair_t& indexPair) const {
     drawCommand tempCommand = drawParams;
-    tempCommand.first = indexPair.first;
-    tempCommand.count = indexPair.count;
+    tempCommand.indices = indexPair;
 
     ibo.isValid() ? tempCommand.draw(vbo, ibo) : tempCommand.draw(vbo);
 }

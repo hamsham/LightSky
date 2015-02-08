@@ -70,10 +70,15 @@ struct draw_index_pair_t {
     unsigned first = 0;
     unsigned count = 0;
     
-    draw_index_pair_t(unsigned f = 0, unsigned c = 0) : 
-        first{f},
-        count{c}
-    {}
+    constexpr draw_index_pair_t(const unsigned f = 0, const unsigned c = 0);
+    
+    constexpr draw_index_pair_t(const draw_index_pair_t& drawIndex);
+    
+    constexpr draw_index_pair_t(draw_index_pair_t&& drawIndex);
+    
+    draw_index_pair_t& operator = (const draw_index_pair_t& drawIndex);
+    
+    draw_index_pair_t& operator = (draw_index_pair_t&& drawIndex);
 };
 
 /**------------------------------------
@@ -96,9 +101,7 @@ struct drawCommand {
     public:
         draw_mode_t mode = draw_mode_t::DEFAULT;
 
-        unsigned first = 0;
-
-        unsigned count = 0;
+        draw_index_pair_t indices = {0, 0};
 
         index_element_t indexType = INDEX_TYPE_NONE;
 
@@ -122,6 +125,8 @@ struct drawCommand {
 
 } // end draw namespace
 } // end ls namespace
+
+#include "lightsky/draw/generic/drawCommand_impl.h"
 
 #endif	/* __LS_DRAW_DRAW_COMMAND_H__ */
 

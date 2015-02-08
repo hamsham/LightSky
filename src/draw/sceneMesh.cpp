@@ -131,7 +131,7 @@ void sceneMesh::setVertexAttribs() {
 void sceneMesh::terminate() {
     pGeometry = nullptr;
     vao.terminate();
-    submeshIndices.first = submeshIndices.count = 0;
+    submeshIndices = {0, 0};
     textureList.clear();
 }
 
@@ -149,8 +149,7 @@ bool sceneMesh::init(const geometry& g) {
     }
     
     pGeometry = &g;
-    submeshIndices.first = g.getDrawCommand().first;
-    submeshIndices.count = g.getDrawCommand().count;
+    submeshIndices = g.getDrawCommand().indices;
     
     setVertexAttribs();
     
@@ -209,8 +208,7 @@ void sceneMesh::draw() const {
         }
 
         drawCommand tempCommand = pGeometry->getDrawCommand();
-        tempCommand.first = submeshIndices.first;
-        tempCommand.count = submeshIndices.count;
+        tempCommand.indices = submeshIndices;
         tempCommand.draw(vao);
 
         for (const texture* const pTex : textureList) {
@@ -219,8 +217,7 @@ void sceneMesh::draw() const {
     }
     else {
         drawCommand tempCommand = pGeometry->getDrawCommand();
-        tempCommand.first = submeshIndices.first;
-        tempCommand.count = submeshIndices.count;
+        tempCommand.indices = submeshIndices;
         tempCommand.draw(vao);
     }
 }

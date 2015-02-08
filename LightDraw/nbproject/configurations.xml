@@ -11,6 +11,7 @@
         <itemPath>../include/lightsky/draw/generic/camera_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/defaultRenderStage_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/depthObject_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/drawCommand_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/fontResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/framebuffer_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/geometry_impl.h</itemPath>
@@ -235,6 +236,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/generic/depthObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/generic/drawCommand_impl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -592,6 +598,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/generic/depthObject_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/generic/drawCommand_impl.h"
             ex="false"
             tool="3"
             flavor2="0">

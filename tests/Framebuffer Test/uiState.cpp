@@ -183,9 +183,11 @@ void uiState::drawScene() {
     node.nodeTransform.setTransform(math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()}));
     
     // setup parameters to draw a transparent mesh as a screen overlay/UI
+    glDisable(GL_DEPTH_TEST);
     pRenderer->bind();
     pRenderer->draw(*pScene);
     pRenderer->unbind();
+    glEnable(GL_DEPTH_TEST);
     
     LOG_GL_ERR();
 }

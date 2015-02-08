@@ -127,7 +127,7 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
     zAxis = math::normalize(pos - target);
     xAxis = math::normalize(math::cross(up, zAxis));
     yAxis = math::normalize(math::cross(zAxis, xAxis));
-
+    
     viewMatrix[0][0] = xAxis.v[0];
     viewMatrix[1][0] = xAxis.v[1];
     viewMatrix[2][0] = xAxis.v[2];
@@ -141,6 +141,13 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
     viewMatrix[2][2] = zAxis.v[2];
 
     orientation = math::matToQuat(viewMatrix);
+    /*
+    orientation = math::lookAt(pos, target-pos);
+    viewMatrix = math::translate(math::quatToMat4(orientation), pos);
+    xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
+    yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
+    zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
+    */
 }
 
 /*-------------------------------------
@@ -163,15 +170,18 @@ void camera::move(const math::vec3& amount) {
 inline void camera::rotateUnlockedY(const math::vec3& amount) {
     // Always lerp to the new mouse position
     const math::quat&& lerpX = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{amount[1], 0.f, 0.f, 1.f}, 1.f
+        math::quat{0.f, 0.f, 0.f, 1.f},
+        math::quat{amount[1], 0.f, 0.f, 1.f},
+        1.f
     );
     
     const math::quat&& lerpY = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f}, math::quat{0.f, amount[0], 0.f, 1.f}, 1.f
+        math::quat{0.f, 0.f, 0.f, 1.f},
+        math::quat{0.f, amount[0], 0.f, 1.f},
+        1.f
     );
     
-    orientation *= lerpY * lerpX;
-    orientation = math::normalize(orientation);
+    orientation = math::normalize(orientation * lerpY * lerpX);
 }
 
 /*-------------------------------------
@@ -179,7 +189,9 @@ inline void camera::rotateUnlockedY(const math::vec3& amount) {
 -------------------------------------*/
 void camera::rotateLockedY(const math::vec3& amount) {
     orientation = math::normalize(
-        math::quat{0.f, amount[0], 0.f, 1.f} * orientation * math::quat{amount[1], 0.f, 0.f, 1.f}
+        math::quat{0.f, amount[0], 0.f, 1.f} *
+        orientation *
+        math::quat{amount[1], 0.f, 0.f, 1.f}
     );
 }
 
@@ -200,18 +212,60 @@ void camera::unroll() {
 -------------------------------------*/
 void camera::update() {
     if (viewMode == VIEW_ORBIT) {
-        viewMatrix = math::translate(math::quatToMat4(orientation), target-pos);
+        const math::vec3&& orbitVector = pos-target;
+        const math::vec3&& orbitRotation = math::rotate(orbitVector, orientation);
+        const math::vec3&& orbitYAxis = math::getAxisY(orientation);
+
+        zAxis = math::normalize(orbitRotation);
+        xAxis = math::normalize(math::cross(orbitYAxis, zAxis));
+        yAxis = math::normalize(math::cross(zAxis, xAxis));
+
+        viewMatrix[0][0] = xAxis.v[0];
+        viewMatrix[1][0] = xAxis.v[1];
+        viewMatrix[2][0] = xAxis.v[2];
+
+        viewMatrix[0][1] = yAxis.v[0];
+        viewMatrix[1][1] = yAxis.v[1];
+        viewMatrix[2][1] = yAxis.v[2];
+
+        viewMatrix[0][2] = zAxis.v[0];
+        viewMatrix[1][2] = zAxis.v[1];
+        viewMatrix[2][2] = zAxis.v[2];
+        
+        const math::vec3&& finalPos = target+orbitRotation;
+        viewMatrix[3][0] = -math::dot(xAxis, finalPos);
+        viewMatrix[3][1] = -math::dot(yAxis, finalPos);
+        viewMatrix[3][2] = -math::dot(zAxis, finalPos);
+        
+        /*
+        const math::vec3&& orbitVec = math::rotate(target-pos, orientation);
+        viewMatrix = math::billboard(orbitVec, math::quatToMat4(orientation));
+        
         xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
         yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
         zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
+        viewMatrix[3][0] = -pos[0];
+        viewMatrix[3][1] = -pos[1];
+        viewMatrix[3][2] = -pos[2];
+        */
+        /*
+        const math::quat&& orbitRotation = math::lookAt(pos-target, math::vec3{0.f, 1.f, 0.f});
+        viewMatrix = math::quatToMat4(orientation * orbitRotation);
+        
+        xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
+        yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
+        zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
+        viewMatrix[3][0] = pos[0];
+        viewMatrix[3][1] = pos[1];
+        viewMatrix[3][2] = pos[2];
+        */
     }
     else {
         viewMatrix = math::quatToMat4(orientation);
-
+        
         xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
         yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
         zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
-
         viewMatrix[3][0] = -math::dot(xAxis, pos);
         viewMatrix[3][1] = -math::dot(yAxis, pos);
         viewMatrix[3][2] = -math::dot(zAxis, pos);

@@ -70,6 +70,24 @@ math::quat_t<num_t> math::normalize(const quat_t<num_t>& q) {
 }
 
 /*-------------------------------------
+    Vector rotation using a Quaternion
+-------------------------------------*/
+template <typename num_t> inline
+math::vec3_t<num_t> math::rotate(const vec3_t<num_t>& v, const quat_t<num_t>& q) {
+    const vec3_t<num_t> qVec = {q[0], q[1], q[2]};
+    const vec3_t<num_t> qCrossV = cross<num_t>(qVec, v);
+    const num_t         qReal   = q[3];
+    const num_t         qDotV   = dot<num_t>(qVec, v);
+    const num_t         qLenSq  = lengthSquared<num_t>(qVec);
+    
+    return vec3_t<num_t>{
+        num_t{2} * qDotV * qVec
+        + (qReal*qReal - qLenSq) * v
+        + num_t{2} * qReal * qCrossV
+    };
+}
+
+/*-------------------------------------
     lerp
 -------------------------------------*/
 template <typename num_t> constexpr

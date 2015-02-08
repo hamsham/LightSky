@@ -25,8 +25,8 @@ static constexpr float TEST_PROJECTION_FOV = 60.f;
 static constexpr float TEST_PROJECTION_NEAR = 0.1f;
 static constexpr float TEST_PROJECTION_FAR = 100.f;
 static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
-static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
-//static constexpr char TEST_SCENE_FILE[] = "./Bob.md5mesh";
+//static constexpr char TEST_SCENE_FILE[] = "./testmesh.dae";
+static constexpr char TEST_SCENE_FILE[] = "./Bob.md5mesh";
 
 /*-------------------------------------
  * Destructor
@@ -118,9 +118,11 @@ bool fbState::onStart() {
     draw::camera& mainCam = pScene->getMainCamera();
     mainCam.setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
     mainCam.makePerspective();
-    mainCam.lockYAxis(true);
-    mainCam.setViewMode(draw::camera_view_t::VIEW_NORMAL);
-    mainCam.lookAt(math::vec3{0.f, 10.f, 20.f}, math::vec3{0.f});
+    //mainCam.lockYAxis(true);
+    mainCam.lockYAxis(false);
+    mainCam.setViewMode(draw::camera_view_t::VIEW_ORBIT);
+    //mainCam.setViewMode(draw::camera_view_t::VIEW_NORMAL);
+    mainCam.lookAt(math::vec3{10.f}, math::vec3{0.f, 50.f, 0.f});
     
     constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);

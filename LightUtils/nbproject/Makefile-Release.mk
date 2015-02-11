@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1519963337/assertions.o \
 	${OBJECTDIR}/_ext/1519963337/dataResource.o \
+	${OBJECTDIR}/_ext/1519963337/pointer.o \
 	${OBJECTDIR}/_ext/1519963337/randomNum.o \
 	${OBJECTDIR}/_ext/1519963337/resource.o \
 	${OBJECTDIR}/_ext/1519963337/string_utils.o \
@@ -84,6 +85,11 @@ ${OBJECTDIR}/_ext/1519963337/dataResource.o: ../src/utils/dataResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource.o ../src/utils/dataResource.cpp
+
+${OBJECTDIR}/_ext/1519963337/pointer.o: ../src/utils/pointer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/pointer.o ../src/utils/pointer.cpp
 
 ${OBJECTDIR}/_ext/1519963337/randomNum.o: ../src/utils/randomNum.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
@@ -145,6 +151,19 @@ ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o: ${OBJECTDIR}/_ext/1519963337
 	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o ../src/utils/dataResource.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1519963337/dataResource.o ${OBJECTDIR}/_ext/1519963337/dataResource_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1519963337/pointer_nomain.o: ${OBJECTDIR}/_ext/1519963337/pointer.o ../src/utils/pointer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1519963337
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1519963337/pointer.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O3 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1519963337/pointer_nomain.o ../src/utils/pointer.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1519963337/pointer.o ${OBJECTDIR}/_ext/1519963337/pointer_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1519963337/randomNum_nomain.o: ${OBJECTDIR}/_ext/1519963337/randomNum.o ../src/utils/randomNum.cpp 

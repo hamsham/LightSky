@@ -8,6 +8,8 @@
 #ifndef __LS_UTILS_POINTER_H__
 #define	__LS_UTILS_POINTER_H__
 
+#include "lightsky/setup/macros.h"
+
 namespace ls {
 namespace utils {
 
@@ -229,6 +231,49 @@ struct pointer {
         }
         
         /**
+         * Retrieve a constant member contained within the data pointed at by
+         * *this.
+         * 
+         * @return A constant pointer to a member of the dynamically-allocated
+         * data within *this.
+         */
+        const data_t* operator ->() const {
+            return pData;
+        }
+        
+        /**
+         * Retrieve a member contained within the data pointed at by *this.
+         * 
+         * @return A pointer to a member of the dynamically-allocated data
+         * within *this.
+         */
+        data_t* operator ->() {
+            return pData;
+        }
+        
+        /**
+         * @brief explicitly cast *this to the original pointer type contained
+         * within *this.
+         * 
+         * @return A pointer to a constant object pointer such as the one
+         * contained within *this.
+         */
+        constexpr operator const data_t*() const {
+            return pData;
+        }
+        
+        /**
+         * @brief explicitly cast *this to the original pointer type contained
+         * within *this.
+         * 
+         * @return A pointer to an object pointer such as the one contained
+         * within *this.
+         */
+        constexpr operator data_t*() {
+            return pData;
+        }
+        
+        /**
          * Free all data referenced by *this.
          * This method will delete all data that *this object references.
          */
@@ -250,6 +295,27 @@ struct pointer {
             pData = pNewData;
         }
 };
+
+/*-----------------------------------------------------------------------------
+ * Dynamic Pointer Types
+-----------------------------------------------------------------------------*/
+LS_DECLARE_CLASS_TYPE(bool_pointer, pointer, bool);
+LS_DECLARE_CLASS_TYPE(char_pointer, pointer, signed char);
+LS_DECLARE_CLASS_TYPE(uchar_pointer, pointer, unsigned char);
+LS_DECLARE_CLASS_TYPE(wchar_pointer, pointer, wchar_t);
+LS_DECLARE_CLASS_TYPE(char16_pointer, pointer, char16_t);
+LS_DECLARE_CLASS_TYPE(char32_pointer, pointer, char32_t);
+LS_DECLARE_CLASS_TYPE(short_pointer, pointer, signed short);
+LS_DECLARE_CLASS_TYPE(ushort_pointer, pointer, unsigned short);
+LS_DECLARE_CLASS_TYPE(int_pointer, pointer, signed int);
+LS_DECLARE_CLASS_TYPE(uint_pointer, pointer, unsigned int);
+LS_DECLARE_CLASS_TYPE(long_pointer, pointer, signed long);
+LS_DECLARE_CLASS_TYPE(ulong_pointer, pointer, unsigned long);
+LS_DECLARE_CLASS_TYPE(llong_pointer, pointer, signed long long);
+LS_DECLARE_CLASS_TYPE(ullong_pointer, pointer, unsigned long long);
+LS_DECLARE_CLASS_TYPE(float_pointer, pointer, float);
+LS_DECLARE_CLASS_TYPE(double_pointer, pointer, double);
+LS_DECLARE_CLASS_TYPE(ldouble_pointer, pointer, long double);
 
 /**----------------------------------------------------------------------------
  * Array Pointer Type
@@ -499,6 +565,49 @@ struct pointer<data_t[]> {
         }
         
         /**
+         * Retrieve a constant member contained within the data pointed at by
+         * *this.
+         * 
+         * @return A constant pointer to a member of the dynamically-allocated
+         * data within *this.
+         */
+        const data_t* operator ->() const {
+            return pData;
+        }
+        
+        /**
+         * Retrieve a member contained within the data pointed at by *this.
+         * 
+         * @return A pointer to a member of the dynamically-allocated data
+         * within *this.
+         */
+        data_t* operator ->() {
+            return pData;
+        }
+        
+        /**
+         * @brief explicitly cast *this to the original pointer type contained
+         * within *this.
+         * 
+         * @return A pointer to a constant object pointer such as the one
+         * contained within *this.
+         */
+        constexpr operator const data_t*() const {
+            return pData;
+        }
+        
+        /**
+         * @brief explicitly cast *this to the original pointer type contained
+         * within *this.
+         * 
+         * @return A pointer to an object pointer such as the one contained
+         * within *this.
+         */
+        constexpr operator data_t*() {
+            return pData;
+        }
+        
+        /**
          * Free all data referenced by *this.
          * This method will delete all data that *this object references.
          */
@@ -521,7 +630,28 @@ struct pointer<data_t[]> {
         }
 };
 
-} // ens utils namespace
+/*-----------------------------------------------------------------------------
+ * Dynamic Array Types
+-----------------------------------------------------------------------------*/
+LS_DECLARE_CLASS_TYPE(bool_array, pointer, bool[]);
+LS_DECLARE_CLASS_TYPE(char_array, pointer, signed char[]);
+LS_DECLARE_CLASS_TYPE(uchar_array, pointer, unsigned char[]);
+LS_DECLARE_CLASS_TYPE(wchar_array, pointer, wchar_t[]);
+LS_DECLARE_CLASS_TYPE(char16_array, pointer, char16_t[]);
+LS_DECLARE_CLASS_TYPE(char32_array, pointer, char32_t[]);
+LS_DECLARE_CLASS_TYPE(short_array, pointer, signed short[]);
+LS_DECLARE_CLASS_TYPE(ushort_array, pointer, unsigned short[]);
+LS_DECLARE_CLASS_TYPE(int_array, pointer, signed int[]);
+LS_DECLARE_CLASS_TYPE(uint_array, pointer, unsigned int[]);
+LS_DECLARE_CLASS_TYPE(long_array, pointer, signed long[]);
+LS_DECLARE_CLASS_TYPE(ulong_array, pointer, unsigned long[]);
+LS_DECLARE_CLASS_TYPE(llong_array, pointer, signed long long[]);
+LS_DECLARE_CLASS_TYPE(ullong_array, pointer, unsigned long long[]);
+LS_DECLARE_CLASS_TYPE(float_array, pointer, float[]);
+LS_DECLARE_CLASS_TYPE(double_array, pointer, double[]);
+LS_DECLARE_CLASS_TYPE(ldouble_array, pointer, long double[]);
+
+} // end utils namespace
 } // end ls namespace
 
 #endif	/* __LS_UTILS_POINTER_H__ */

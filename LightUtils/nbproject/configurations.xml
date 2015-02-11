@@ -39,6 +39,7 @@
                    projectFiles="true">
       <itemPath>../src/utils/assertions.cpp</itemPath>
       <itemPath>../src/utils/dataResource.cpp</itemPath>
+      <itemPath>../src/utils/pointer.cpp</itemPath>
       <itemPath>../src/utils/randomNum.cpp</itemPath>
       <itemPath>../src/utils/resource.cpp</itemPath>
       <itemPath>../src/utils/string_utils.cpp</itemPath>
@@ -195,6 +196,8 @@
       <item path="../src/utils/assertions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/utils/dataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/pointer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/utils/randomNum.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -356,6 +359,8 @@
       <item path="../src/utils/assertions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/utils/dataResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/utils/pointer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/utils/randomNum.cpp" ex="false" tool="1" flavor2="0">
       </item>

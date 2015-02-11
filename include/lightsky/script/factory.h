@@ -59,11 +59,12 @@ typedef std::unordered_map<hash_t, funcFactory_t> funcFactoryMap_t;
  * Factory Method Registration
 -----------------------------------------------------------------------------*/
 /**
- * @brief registerVarFactory
+ * @brief Register a factory function for instantiating a script variable type.
  * 
  * Register a global factory method for a particular variable type and map it
  * to the hashId provided. This will allow a variable to be instantiated using
- * the function "createVariable(...)," combined with the same hash.
+ * the function "createVariable(...)," combined with the same hash. Using this
+ * method will overwrite any previously registered factory.
  * 
  * @param factoryId
  * The hash value which will be used to map the provided factory method to the
@@ -77,12 +78,14 @@ typedef std::unordered_map<hash_t, funcFactory_t> funcFactoryMap_t;
  * creating a variable object using the hash provided.
  */
 const varFactory_t& registerVarFactory(hash_t factoryId, const varFactory_t& pFactory);
+
 /**
- * @brief registerFuncFactory
+ * @brief Register a factory function for instantiating a functor type.
  * 
  * Register a global factory method for a particular function type and map it
  * to the hashId provided. This will allow a function to be instantiated using
- * the function "createFunctor(...)," combined with the same hash.
+ * the function "createFunctor(...)," combined with the same hash. Using this
+ * method will overwrite any previously registered factory.
  * 
  * @param factoryId
  * The hash value which will be used to map the provided factory method to the
@@ -98,10 +101,10 @@ const varFactory_t& registerVarFactory(hash_t factoryId, const varFactory_t& pFa
 const funcFactory_t& registerFuncFactory(hash_t factoryId, const funcFactory_t& pFactory);
 
 /*-----------------------------------------------------------------------------
- * Script Object Creation/Instantiation
+ * Script Object Instantiation/Deletion
 -----------------------------------------------------------------------------*/
 /**
- * Create a script variable using the global variable factory
+ * @brief Create a script variable using the global variable factory
  * 
  * @param factoryId
  * A hash value that determines the type of variable that should be returned.
@@ -114,7 +117,16 @@ const funcFactory_t& registerFuncFactory(hash_t factoryId, const funcFactory_t& 
 pointer_t<variable> createVariable(hash_t factoryId);
 
 /**
- * Create a script function using the global functor factory
+ * @brief Destroy/free an instance of a script variable object.
+ * 
+ * @param pVariable
+ * A reference to a pointer_t<> object which points to an instance of a
+ * variable created using the "createVariable(...)" function.
+ */
+void destroyVariable(pointer_t<variable>& pVariable);
+
+/**
+ * @brief Create a script function using the global functor factory
  * 
  * @param factoryId
  * A hash value that determines the type of functor that should be returned.
@@ -125,6 +137,15 @@ pointer_t<variable> createVariable(hash_t factoryId);
  * instantiated.
  */
 pointer_t<functor> createFunctor(hash_t factoryId);
+
+/**
+ * @brief Destroy/free an instance of a script functor object.
+ * 
+ * @param pFunc
+ * A reference to a pointer_t<> object which points to an instance of a
+ * functor created using the "createVariable(...)" function.
+ */
+void destroyFunctor(pointer_t<functor>& pFunc);
 
 } // end script namespace
 } // end ls namespace

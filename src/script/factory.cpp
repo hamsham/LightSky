@@ -36,39 +36,6 @@ static std::vector<std::pair<hash_t, varFactory_t>> gVarFactoryList;
 static std::vector<std::pair<hash_t, funcFactory_t>> gFuncFactoryList;
 
 /*-----------------------------------------------------------------------------
- * Script Object Creation/Instantiation
- * 
- * Get the corresponding function pointer from gVarFactory/gFuncFactory.
- * If the pointer isn't NULL, run the function in order to return a
- * new instance of the requested object
------------------------------------------------------------------------------*/
-/*-------------------------------------
- * Variable Creation
--------------------------------------*/
-pointer_t<variable> createVariable(hash_t factoryId) {
-    for (const std::pair<hash_t, varFactory_t>& iter : gVarFactoryList) {
-        if (iter.first == factoryId) {
-            return (*iter.second)();
-        }
-    }
-    
-    return pointer_t<variable>{nullptr};
-}
-
-/*-------------------------------------
- * Functor Creation
--------------------------------------*/
-pointer_t<functor> createFunctor(hash_t factoryId) {
-    for (const std::pair<hash_t, funcFactory_t>& iter : gFuncFactoryList) {
-        if (iter.first == factoryId) {
-            return (*iter.second)();
-        }
-    }
-    
-    return pointer_t<functor>{nullptr};
-}
-
-/*-----------------------------------------------------------------------------
  * Factory Method Registration
 -----------------------------------------------------------------------------*/
 /*-------------------------------------
@@ -99,6 +66,52 @@ const funcFactory_t& registerFuncFactory(hash_t factoryId, const funcFactory_t& 
     return gFuncFactoryList.back().second;
 }
 
+/*-----------------------------------------------------------------------------
+ * Script Object Creation/Instantiation
+ * 
+ * Get the corresponding function pointer from gVarFactory/gFuncFactory.
+ * If the pointer isn't NULL, run the function in order to return a
+ * new instance of the requested object
+-----------------------------------------------------------------------------*/
+/*-------------------------------------
+ * Variable Creation
+-------------------------------------*/
+pointer_t<variable> createVariable(hash_t factoryId) {
+    for (const std::pair<hash_t, varFactory_t>& iter : gVarFactoryList) {
+        if (iter.first == factoryId) {
+            return (*iter.second)();
+        }
+    }
+    
+    return pointer_t<variable>{nullptr};
+}
+
+/*-------------------------------------
+ * Variable Deletion
+-------------------------------------*/
+void destroyVariable(pointer_t<variable>& pVariable) {
+    pVariable.release();
+}
+
+/*-------------------------------------
+ * Functor Creation
+-------------------------------------*/
+pointer_t<functor> createFunctor(hash_t factoryId) {
+    for (const std::pair<hash_t, funcFactory_t>& iter : gFuncFactoryList) {
+        if (iter.first == factoryId) {
+            return (*iter.second)();
+        }
+    }
+    
+    return pointer_t<functor>{nullptr};
+}
+
+/*-------------------------------------
+ * Functor Deletion
+-------------------------------------*/
+void destroyFunctor(pointer_t<functor>& pFunc) {
+    pFunc.release();
+}
 
 } // end script namespace
 } // end ls namespace

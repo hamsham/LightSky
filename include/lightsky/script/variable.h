@@ -259,7 +259,7 @@ class variable_t final : public variable {
  */
 #ifndef LS_SCRIPT_VAR_DATA
     #define LS_SCRIPT_VAR_DATA( pVar, varName ) \
-        static_cast<ls::script::scriptVar_##varName*>(pVar)->data
+        static_cast<ls::script::scriptVar_##varName*>((ls::script::variable*)pVar)->data
 #endif /* LS_SCRIPT_VAR_DATA */
 
 /**

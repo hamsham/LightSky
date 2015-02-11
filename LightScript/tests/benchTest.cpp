@@ -10,6 +10,16 @@
 #include <utility> /* std::move */
 #include "lightsky/script/script.h"
 
+template <class data_t> using lsPointer = ls::script::pointer_t<data_t>;
+
+using lsVariable = ls::script::variable;
+using ls::script::createVariable;
+using ls::script::destroyVariable;
+
+using lsFunctor = ls::script::functor;
+using ls::script::createFunctor;
+using ls::script::destroyFunctor;
+
 /******************************************************************************
  * Benchmark Setup
 ******************************************************************************/
@@ -58,12 +68,12 @@ void nativeFunc() {
  * SCRIPTED BENCHMARK
 ******************************************************************************/
 void scriptBench() {
-    ls::script::functor* const testFunc1 = ls::script::createFunctor(ls::script::scriptHash_addInts);
-    ls::script::functor* const testFunc2 = ls::script::createFunctor(ls::script::scriptHash_subInts);
+    lsPointer<lsFunctor> testFunc1 = createFunctor(ls::script::scriptHash_addInts);
+    lsPointer<lsFunctor> testFunc2 = createFunctor(ls::script::scriptHash_subInts);
     
-    ls::script::variable* const testVar1 = ls::script::createVariable(ls::script::scriptHash_int);
-    ls::script::variable* const testVar2 = ls::script::createVariable(ls::script::scriptHash_int);
-    ls::script::variable* const testVar3 = ls::script::createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable> testVar1 = createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable> testVar2 = createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable> testVar3 = createVariable(ls::script::scriptHash_int);
     
     LS_SCRIPT_VAR_DATA(testVar1, int) = 42;
     LS_SCRIPT_VAR_DATA(testVar2, int) = 77;
@@ -87,7 +97,7 @@ void scriptBench() {
     
     hr_time t1, t2;
     t1 = chrono::steady_clock::now();
-    ls::script::functor* pFunc = testFunc1;
+    lsFunctor* pFunc = testFunc1.get();
     
     for (unsigned i = 0; i < NUM_TEST_RUNS; ++i) {
         pFunc->run();
@@ -101,12 +111,12 @@ void scriptBench() {
         << chrono::duration_cast< hr_prec >(t2 - t1).count() / 1000.0
         << std::endl;
     
-    delete testFunc2;
-    delete testFunc1;
+    destroyFunctor(testFunc2);
+    destroyFunctor(testFunc1);
     
-    delete testVar3;
-    delete testVar2;
-    delete testVar1;
+    destroyVariable(testVar3);
+    destroyVariable(testVar2);
+    destroyVariable(testVar1);
     
     return;
 }

@@ -58,8 +58,10 @@ template <class data_t> using pointer_t = ls::utils::pointer<data_t>;
  * Create an extern template for the dynamic pointer type.
  */
 } // end script namespace
+
 extern template struct ls::utils::pointer<ls::script::variable>;
 extern template struct ls::utils::pointer<ls::script::functor>;
+
 namespace script { // continue script namespace
 
 /*-----------------------------------------------------------------------------

@@ -49,12 +49,12 @@ void main() {
     //gl_Position = mvpMatrix * vec4(inPos, 1.0);
     //gl_Position.z = -log(NEAR * gl_Position.z + 1.0) / log(NEAR * FAR + 1.0);
 
-    vec3 worldPos = (modelMatrix * vec4(inPos, 0.0)).xyz;
-    vec3 worldNorm = (modelMatrix * vec4(inPos+inNorm, 0.0)).xyz;
+    //vec3 worldPos = (modelMatrix * vec4(inPos, 0.0)).xyz;
+    //vec3 worldNorm = (modelMatrix * vec4(inPos+inNorm, 0.0)).xyz;
 
-    //fragVertNormal = vec4(modelMatrix * vec4(inNorm, 0.0)).xyz;
+    fragVertNormal = vec4(modelMatrix * vec4(inNorm, 0.0)).xyz;
     fragEyeDirection = vec3(-vpMatrix[0][3], -vpMatrix[1][3], -vpMatrix[2][3]);
-    fragVertNormal = normalize(worldNorm-worldPos);
+    //fragVertNormal = normalize(worldNorm-worldPos);
     fragUvCoords = inTex;
 }
 )***";

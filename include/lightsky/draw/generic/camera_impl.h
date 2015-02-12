@@ -17,10 +17,25 @@ inline void camera::makePerspective() {
 }
 
 /*-------------------------------------
+ * Get the camera view mode
+-------------------------------------*/
+inline camera_mode_t camera::getViewMode() const {
+    return viewMode;
+}
+
+/*-------------------------------------
+ * Set the camera view mode
+-------------------------------------*/
+inline void camera::setViewMode(camera_mode_t mode) {
+    viewMode = mode;
+}
+
+/*-------------------------------------
  * Get the camera position
 -------------------------------------*/
-inline const math::vec3& camera::getPosition() const {
-    return pos;
+inline math::vec3 camera::getPosition() const {
+    return math::vec3{viewMatrix[3][0], viewMatrix[3][1], viewMatrix[3][2]};
+    //return pos;
 }
 
 /*-------------------------------------
@@ -28,6 +43,20 @@ inline const math::vec3& camera::getPosition() const {
 -------------------------------------*/
 inline void camera::setPosition(const math::vec3& p) {
     pos = p;
+}
+
+/*-------------------------------------
+ * Get the camera target
+-------------------------------------*/
+inline const math::vec3& camera::getTarget() const {
+    return target;
+}
+
+/*-------------------------------------
+ * Set the camera target
+-------------------------------------*/
+inline void camera::setTarget(const math::vec3& t) {
+    target = t;
 }
 
 /*-------------------------------------

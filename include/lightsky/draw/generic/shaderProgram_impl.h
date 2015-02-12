@@ -199,21 +199,21 @@ inline void shaderProgram::setUniformValue(GLint uniformId, const math::vec4& va
     Set a uniform 2d matrix
 -------------------------------------*/
 inline void shaderProgram::setUniformValue(GLint uniformId, const math::mat2& val, bool transpose) {
-    glUniformMatrix2fv(uniformId, 1, transpose, &val[0]);
+    glUniformMatrix2fv(uniformId, 1, transpose ? GL_TRUE : GL_FALSE, &val[0]);
 }
 
 /*-------------------------------------
     Set a uniform 3d matrix
 -------------------------------------*/
 inline void shaderProgram::setUniformValue(GLint uniformId, const math::mat3& val, bool transpose) {
-    glUniformMatrix3fv(uniformId, 1, transpose, &val[0]);
+    glUniformMatrix3fv(uniformId, 1, transpose ? GL_TRUE : GL_FALSE, &val[0]);
 }
 
 /*-------------------------------------
     Set a uniform 4d matrix
 -------------------------------------*/
 inline void shaderProgram::setUniformValue(GLint uniformId, const math::mat4& val, bool transpose) {
-    glUniformMatrix4fv(uniformId, 1, transpose, &val[0]);
+    glUniformMatrix4fv(uniformId, 1, transpose ? GL_TRUE : GL_FALSE, &val[0]);
 }
 
 /*-------------------------------------

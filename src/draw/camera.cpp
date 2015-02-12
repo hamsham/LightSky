@@ -26,12 +26,14 @@ camera::~camera() {
  * Constructor
 -------------------------------------*/
 camera::camera() :
+    viewMode{camera_mode_t::FIRST_PERSON},
     rotateFunction{&camera::rotateLockedY},
     fov{DEFAULT_VIEW_ANGLE},
     aspectW{DEFAULT_ASPECT_WIDTH},
     aspectH{DEFAULT_ASPECT_HEIGHT},
     zNear{DEFAULT_Z_NEAR},
     zFar{DEFAULT_Z_FAR},
+    target{0.f, 0.f, 1.f},
     pos{0.f},
     xAxis{1.f, 0.f, 0.f},
     yAxis{0.f, 1.f, 0.f},
@@ -64,12 +66,14 @@ camera::camera(camera&& c) {
  * Copy Operator
 -------------------------------------*/
 camera& camera::operator = (const camera& c) {
+    viewMode = c.viewMode;
     rotateFunction = &camera::rotateLockedY;
     fov = c.fov;
     aspectW = c.aspectW;
     aspectH = c.aspectH;
     zNear = c.zNear;
     zFar = c.zFar;
+    target = c.target;
     pos = c.pos;
     xAxis = c.xAxis;
     yAxis = c.yAxis;
@@ -118,7 +122,8 @@ void camera::lockYAxis(bool isLocked) {
 -------------------------------------*/
 void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::vec3& up) {
     pos = eye;
-    zAxis = math::normalize(pos - point);
+    target = point;
+    zAxis = math::normalize(pos - target);
     xAxis = math::normalize(math::cross(up, zAxis));
     yAxis = math::normalize(math::cross(zAxis, xAxis));
     
@@ -133,6 +138,10 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
     viewMatrix[0][2] = zAxis.v[0];
     viewMatrix[1][2] = zAxis.v[1];
     viewMatrix[2][2] = zAxis.v[2];
+        
+    viewMatrix[3][0] = -math::dot(xAxis, pos);
+    viewMatrix[3][1] = -math::dot(yAxis, pos);
+    viewMatrix[3][2] = -math::dot(zAxis, pos);
 
     orientation = math::matToQuat(viewMatrix);
 }
@@ -141,9 +150,14 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
  * Basic Movement and Rotation
 -------------------------------------*/
 void camera::move(const math::vec3& amount) {
-    pos -= xAxis * amount[0];
-    pos -= yAxis * amount[1];
-    pos -= zAxis * amount[2];
+    if (viewMode == camera_mode_t::FIRST_PERSON) {
+        pos += xAxis + amount[0];
+        pos += yAxis + amount[1];
+        pos += zAxis + amount[2];
+    }
+    else {
+        pos += amount;
+    }
 }
 
 /*-------------------------------------
@@ -188,6 +202,7 @@ void camera::unroll() {
  * Update Implementation
 -------------------------------------*/
 void camera::update() {
+    if (viewMode == camera_mode_t::FIRST_PERSON) {
         viewMatrix = math::quatToMat4(orientation);
         xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
         yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
@@ -195,6 +210,32 @@ void camera::update() {
         viewMatrix[3][0] = -math::dot(xAxis, pos);
         viewMatrix[3][1] = -math::dot(yAxis, pos);
         viewMatrix[3][2] = -math::dot(zAxis, pos);
+    }
+    else {
+        const math::vec3&& orbitVec = pos-target;
+        const math::vec3&& orbitDir = math::rotate(orbitVec, orientation);
+        const math::vec3&& orbitPos = orbitDir + target;
+        
+        zAxis = math::normalize(orbitDir);
+        xAxis = math::normalize(math::cross(math::getAxisY(orientation), zAxis));
+        yAxis = math::normalize(math::cross(zAxis, xAxis));
+    
+        viewMatrix[0][0] = xAxis.v[0];
+        viewMatrix[1][0] = xAxis.v[1];
+        viewMatrix[2][0] = xAxis.v[2];
+
+        viewMatrix[0][1] = yAxis.v[0];
+        viewMatrix[1][1] = yAxis.v[1];
+        viewMatrix[2][1] = yAxis.v[2];
+
+        viewMatrix[0][2] = zAxis.v[0];
+        viewMatrix[1][2] = zAxis.v[1];
+        viewMatrix[2][2] = zAxis.v[2];
+        
+        viewMatrix[3][0] = -math::dot(xAxis, orbitPos);
+        viewMatrix[3][1] = -math::dot(yAxis, orbitPos);
+        viewMatrix[3][2] = -math::dot(zAxis, orbitPos);
+    }
 }
 
 } // end draw namespace

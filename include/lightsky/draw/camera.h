@@ -6,6 +6,11 @@
 
 namespace ls {
 namespace draw {
+    
+enum class camera_mode_t {
+    FIRST_PERSON,
+    ARCBALL
+};
 
 /**----------------------------------------------------------------------------
  * @brief Camera transformation class
@@ -44,6 +49,12 @@ class camera {
 
     private:
         /**
+         * @brief viewMode controls whether or not a camera object is to be
+         * used in an FPS style or arcball style.
+         */
+        camera_mode_t viewMode = camera_mode_t::FIRST_PERSON;
+        
+        /**
          * @brief rotationFunction is an array of class method pointers. This
          * will help keep camera's rotation method just between FPS/arcball
          * rotations with either a locked or unlocked Yaw axis.
@@ -76,6 +87,11 @@ class camera {
          * @brief Distance to the far occlusion plane.
          */
         float zFar = DEFAULT_Z_FAR;
+        
+        /**
+         * @brief Camera arcball center/target.
+         */
+        math::vec3 target;
 
         /**
          * @brief Camera Position
@@ -210,6 +226,21 @@ class camera {
             float near          = DEFAULT_Z_NEAR,
             float far           = DEFAULT_Z_FAR
         );
+        
+        /**
+         * @brief Get the view/look mode for *this.
+         * 
+         * @return An enumeration of the type camera_mode_t.
+         */
+        camera_mode_t getViewMode() const;
+        
+        /**
+         * @brief Set the view/look mode for *this.
+         * 
+         * @param mode
+         * An enumeration of the type camera_mode_t.
+         */
+        void setViewMode(camera_mode_t mode);
 
         /**
          * @brief Get the current position of the camera in 3D cartesian space.
@@ -217,7 +248,7 @@ class camera {
          * @return A 3D vector, containing the X, Y, and Z position of the
          * camera's view matrix.
          */
-        const math::vec3& getPosition() const;
+        math::vec3 getPosition() const;
 
         /**
          * @brief Set the position of the camera in 3D cartesian space.
@@ -227,6 +258,25 @@ class camera {
          * camera.
          */
         void setPosition(const math::vec3& p);
+
+        /**
+         * @brief Get the center target of the arcball rotation camera in 3D
+         * cartesian space.
+         * 
+         * @return A 3D vector, containing the X, Y, and Z position of the
+         * camera's orbital movement.
+         */
+        const math::vec3& getTarget() const;
+
+        /**
+         * @brief Set the center target of the arcball rotation camera in 3D
+         * cartesian space.
+         * 
+         * @param t
+         * A 3D vector, containing the desired X, Y, and Z position of the
+         * camera's orbital movement.
+         */
+        void setTarget(const math::vec3& p);
 
         /**
          * @brief Retrieve the current direction that the camera is facing.

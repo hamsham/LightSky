@@ -102,8 +102,9 @@ defaultRenderStage::~defaultRenderStage() {
 /*-------------------------------------
  * Constructor
 -------------------------------------*/
-defaultRenderStage::defaultRenderStage() {
-}
+defaultRenderStage::defaultRenderStage() :
+    renderStage{}
+{}
 
 /*-------------------------------------
  * Move Constructor
@@ -111,10 +112,7 @@ defaultRenderStage::defaultRenderStage() {
 defaultRenderStage::defaultRenderStage(defaultRenderStage&& rs) :
     renderStage{std::move(rs)},
     vpMatUniformId{rs.vpMatUniformId},
-    modelMatUniformId{rs.modelMatUniformId},
-    vertShader{std::move(rs.vertShader)},
-    fragShader{std::move(rs.fragShader)},
-    shaderBinary{std::move(rs.shaderBinary)}
+    modelMatUniformId{rs.modelMatUniformId}
 {
     rs.vpMatUniformId = -1;
     rs.modelMatUniformId = -1;
@@ -131,12 +129,6 @@ defaultRenderStage& defaultRenderStage::operator=(defaultRenderStage&& rs) {
     
     modelMatUniformId = rs.modelMatUniformId;
     rs.modelMatUniformId = -1;
-    
-    vertShader = std::move(rs.vertShader);
-    
-    fragShader = std::move(rs.fragShader);
-    
-    shaderBinary = std::move(rs.shaderBinary);
 
     return *this;
 }
@@ -145,36 +137,12 @@ defaultRenderStage& defaultRenderStage::operator=(defaultRenderStage&& rs) {
  * Initialization
 -------------------------------------*/
 bool defaultRenderStage::init() {
-    if (shaderBinary.getId() != 0) {
-        terminate();
-    }
-
-    if (!vertShader.init(defaultVertShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize the default vertex shader.");
+    if (!initShaders(defaultVertShader, defaultFragShader)) {
+        LS_LOG_ERR("ERROR: Unable to initialize a default render stage's shaders.");
         return false;
     }
 
-    if (!fragShader.init(defaultFragShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize the default fragment shader.");
-        vertShader.terminate();
-        return false;
-    }
-
-    if (!shaderBinary.init(vertShader, fragShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize the default shader binary.");
-        vertShader.terminate();
-        fragShader.terminate();
-        return false;
-    }
-
-    if (!shaderBinary.link()) {
-        terminate();
-        LS_LOG_ERR("ERROR: Unable to link the default shader binary.");
-        return false;
-    }
-
-    LOG_GL_ERR();
-
+    shaderProgram& shaderBinary = getShaderProgram();
     shaderBinary.bind();
 
     // attach the view-projection uniform to the scene graph
@@ -206,21 +174,19 @@ bool defaultRenderStage::init() {
  * Release Resources
 -------------------------------------*/
 void defaultRenderStage::terminate() {
+    terminateShaders();
     vpMatUniformId = -1;
     modelMatUniformId = -1;
-    vertShader.terminate();
-    fragShader.terminate();
-    shaderBinary.terminate();
 }
 
 /*-------------------------------------
  * Draw a scene
 -------------------------------------*/
 void defaultRenderStage::draw(const sceneGraph& scene, const math::mat4& vpMatrix) {
-    shaderBinary.setUniformValue(vpMatUniformId, vpMatrix);
+    getShaderProgram().setUniformValue(vpMatUniformId, vpMatrix);
     
     for (const sceneNode& node : scene.getNodeList()) {
-        shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
         for (const sceneMesh* const pMesh : node.nodeMeshes) {
             pMesh->draw();
         }
@@ -235,33 +201,18 @@ void defaultRenderStage::draw(
     const math::mat4& vpMatrix,
     const std::vector<unsigned>& nodeIndices
 ) {
-    
-    shaderBinary.setUniformValue(vpMatUniformId, vpMatrix);
+    getShaderProgram().setUniformValue(vpMatUniformId, vpMatrix);
     
     const scene_node_list_t& nodes = scene.getNodeList();
     
     for (unsigned index : nodeIndices) {
         const sceneNode& node = nodes[index];
-        shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
         
         for (const sceneMesh* const pMesh : node.nodeMeshes) {
             pMesh->draw();
         }
     }
-}
-
-/*-------------------------------------
- * Bind for rendering
--------------------------------------*/
-void defaultRenderStage::bind() {
-    shaderBinary.bind();
-}
-
-/*-------------------------------------
- * Unbind from OpenGL
--------------------------------------*/
-void defaultRenderStage::unbind() {
-    shaderBinary.unbind();
 }
 
 } // end draw namespace

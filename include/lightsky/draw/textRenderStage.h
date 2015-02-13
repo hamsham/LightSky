@@ -9,11 +9,8 @@
 #define	__LS_DRAW_TEXT_RENDER_STAGE_H__
 
 #include "lightsky/draw/blendObject.h"
-#include "lightsky/draw/camera.h"
 #include "lightsky/draw/color.h"
 #include "lightsky/draw/renderStage.h"
-#include "lightsky/draw/shaderObject.h"
-#include "lightsky/draw/shaderProgram.h"
 
 namespace ls {
 namespace draw {
@@ -40,24 +37,6 @@ class textRenderStage : public renderStage {
          * @brief Shader uniform to set the current text color.
          */
         mutable int colorUniformId = -1;
-
-        /**
-         * @brief Vertex shader which permits meshes to be manipulated before
-         * being passed to the fragment shader.
-         */
-        vertexShader vertShader = {};
-
-        /**
-         * @brief Fragment shader which renders all transformed vertices and
-         * geometry data to the currently bound framebuffer.
-         */
-        fragmentShader fragShader = {};
-
-        /**
-         * @brief The shader binary contains the linked vertex and fragment
-         * shaders.
-         */
-        shaderProgram shaderBinary = {};
         
         /**
          * @brief Color of the text to be rendered.

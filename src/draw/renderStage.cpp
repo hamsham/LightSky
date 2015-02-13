@@ -5,7 +5,11 @@
  * Created on January 20, 2015, 8:57 PM
  */
 
+#include <cstring>
+
 #include "lightsky/draw/renderStage.h"
+#include "lightsky/draw/shaderObject.h"
+#include "lightsky/draw/shaderProgram.h"
 
 namespace ls {
 namespace draw {
@@ -14,6 +18,97 @@ namespace draw {
  * Destructor
 -------------------------------------*/
 renderStage::~renderStage() {
+}
+
+/*-------------------------------------
+ * Constructor
+-------------------------------------*/
+renderStage::renderStage() :
+    vertShader{},
+    fragShader{},
+    shaderBinary{}
+{}
+
+/*-------------------------------------
+ * Move Constructor
+-------------------------------------*/
+renderStage::renderStage(renderStage&& rs) :
+    vertShader{std::move(rs.vertShader)},
+    fragShader{std::move(rs.fragShader)},
+    shaderBinary{std::move(rs.shaderBinary)}
+{}
+
+/*-------------------------------------
+ * Move Operator
+-------------------------------------*/
+renderStage& renderStage::operator=(renderStage&& rs) {
+    vertShader = std::move(rs.vertShader);
+    fragShader = std::move(rs.fragShader);
+    shaderBinary = std::move(rs.shaderBinary);
+
+    return *this;
+}
+
+/*-------------------------------------
+ * Shader Compilation
+-------------------------------------*/
+bool renderStage::compileShaders(const char* const vertShaderData, const char* const fragShaderData) {
+    if (shaderBinary.getId() != 0) {
+        terminateShaders();
+    }
+    
+    LOG_GL_ERR();
+
+    if (!vertShader.init(vertShaderData, strlen(vertShaderData))) {
+        LS_LOG_ERR("ERROR: Unable to initialize the default vertex shader.");
+        return false;
+    }
+    
+    LOG_GL_ERR();
+
+    if (!fragShader.init(fragShaderData, strlen(fragShaderData))) {
+        LS_LOG_ERR("ERROR: Unable to initialize the default fragment shader.");
+        vertShader.terminate();
+        return false;
+    }
+    
+    LOG_GL_ERR();
+
+    if (!shaderBinary.init(vertShader, fragShader)) {
+        LS_LOG_ERR("ERROR: Unable to initialize the default shader binary.");
+        vertShader.terminate();
+        fragShader.terminate();
+        return false;
+    }
+    
+    LOG_GL_ERR();
+    
+    return true;
+}
+
+/*-------------------------------------
+ * Shader Linking
+-------------------------------------*/
+bool renderStage::linkShaders() {
+    LS_DEBUG_ASSERT(shaderBinary.getId() != 0);
+    
+    if (!shaderBinary.link()) {
+        LS_LOG_ERR("ERROR: Unable to link the default shader binary.");
+        return false;
+    }
+
+    LOG_GL_ERR();
+    
+    return true;
+}
+
+/*-------------------------------------
+ * Shader Termination
+-------------------------------------*/
+void renderStage::terminateShaders() {
+    vertShader.terminate();
+    fragShader.terminate();
+    shaderBinary.terminate();
 }
 
 /*-------------------------------------

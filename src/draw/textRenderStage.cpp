@@ -96,9 +96,6 @@ textRenderStage::textRenderStage(textRenderStage&& rs) :
     vpMatUniformId{rs.vpMatUniformId},
     modelMatUniformId{rs.modelMatUniformId},
     colorUniformId{rs.colorUniformId},
-    vertShader{std::move(rs.vertShader)},
-    fragShader{std::move(rs.fragShader)},
-    shaderBinary{std::move(rs.shaderBinary)},
     textColor{rs.textColor},
     blender{std::move(rs.blender)}
 {
@@ -123,12 +120,6 @@ textRenderStage& textRenderStage::operator=(textRenderStage&& rs) {
     colorUniformId = rs.colorUniformId;
     rs.colorUniformId = -1;
     
-    vertShader = std::move(rs.vertShader);
-    
-    fragShader = std::move(rs.fragShader);
-    
-    shaderBinary = std::move(rs.shaderBinary);
-    
     textColor = rs.textColor;
     rs.textColor = color::black;
 
@@ -139,31 +130,14 @@ textRenderStage& textRenderStage::operator=(textRenderStage&& rs) {
  * Initialization
 -------------------------------------*/
 bool textRenderStage::init() {
+    shaderProgram& shaderBinary = getShaderProgram();
+    
     if (shaderBinary.getId() != 0) {
         terminate();
     }
-
-    if (!vertShader.init(textVertShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize the text vertex shader.");
-        return false;
-    }
-
-    if (!fragShader.init(textFragShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize the text fragment shader.");
-        vertShader.terminate();
-        return false;
-    }
-
-    if (!shaderBinary.init(vertShader, fragShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize the text shader binary.");
-        vertShader.terminate();
-        fragShader.terminate();
-        return false;
-    }
-
-    if (!shaderBinary.link()) {
-        terminate();
-        LS_LOG_ERR("ERROR: Unable to link the text shader binary.");
+    
+    if (!initShaders(textVertShader, textFragShader)) {
+        LS_LOG_ERR("ERROR: Unable to initialize a text renderer's shader data.");
         return false;
     }
 
@@ -217,12 +191,10 @@ bool textRenderStage::init() {
  * Release Resources
 -------------------------------------*/
 void textRenderStage::terminate() {
+    terminateShaders();
     vpMatUniformId = -1;
     modelMatUniformId = -1;
     colorUniformId = -1;
-    vertShader.terminate();
-    fragShader.terminate();
-    shaderBinary.terminate();
     textColor = color::black;
     blender.reset();
 }
@@ -231,11 +203,11 @@ void textRenderStage::terminate() {
  * Draw a scene
 -------------------------------------*/
 void textRenderStage::draw(const sceneGraph& scene, const math::mat4& vpMatrix) {
-    shaderBinary.setUniformValue(vpMatUniformId, vpMatrix);
-    shaderBinary.setUniformValue(colorUniformId, textColor);
+    getShaderProgram().setUniformValue(vpMatUniformId, vpMatrix);
+    getShaderProgram().setUniformValue(colorUniformId, textColor);
     
     for (const sceneNode& node : scene.getNodeList()) {
-        shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
         for (const sceneMesh* const pMesh : node.nodeMeshes) {
             pMesh->draw();
         }
@@ -250,14 +222,14 @@ void textRenderStage::draw(
     const math::mat4& vpMatrix,
     const std::vector<unsigned>& nodeIndices
 ) {
-    shaderBinary.setUniformValue(vpMatUniformId, vpMatrix);
-    shaderBinary.setUniformValue(colorUniformId, textColor);
+    getShaderProgram().setUniformValue(vpMatUniformId, vpMatrix);
+    getShaderProgram().setUniformValue(colorUniformId, textColor);
     
     const scene_node_list_t& nodes = scene.getNodeList();
     
     for (unsigned index : nodeIndices) {
         const sceneNode& node = nodes[index];
-        shaderBinary.setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
         
         for (const sceneMesh* const pMesh : node.nodeMeshes) {
             pMesh->draw();
@@ -269,7 +241,7 @@ void textRenderStage::draw(
  * Bind for rendering
 -------------------------------------*/
 void textRenderStage::bind() {
-    shaderBinary.bind();
+    getShaderProgram().bind();
     blender.bind();
 }
 
@@ -278,7 +250,7 @@ void textRenderStage::bind() {
 -------------------------------------*/
 void textRenderStage::unbind() {
     blender.unbind();
-    shaderBinary.unbind();
+    getShaderProgram().unbind();
 }
 
 } // end draw namespace

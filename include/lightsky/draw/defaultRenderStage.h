@@ -9,8 +9,6 @@
 #define __LS_DRAW_DEFAULT_RENDER_STAGE_H__
 
 #include "lightsky/draw/renderStage.h"
-#include "lightsky/draw/shaderObject.h"
-#include "lightsky/draw/shaderProgram.h"
 
 namespace ls {
 namespace draw {
@@ -31,24 +29,6 @@ class defaultRenderStage final : public renderStage {
          * shader.
          */
         mutable int modelMatUniformId = -1;
-
-        /**
-         * @brief Vertex shader which permits meshes to be manipulated before
-         * being passed to the fragment shader.
-         */
-        vertexShader vertShader = {};
-
-        /**
-         * @brief Fragment shader which renders all transformed vertices and
-         * geometry data to the currently bound framebuffer.
-         */
-        fragmentShader fragShader = {};
-
-        /**
-         * @brief The shader binary contains the linked vertex and fragment
-         * shaders.
-         */
-        shaderProgram shaderBinary = {};
 
     public:
         /**
@@ -126,20 +106,6 @@ class defaultRenderStage final : public renderStage {
          * @brief Terminate *this by freeing all members and resources.
          */
         virtual void terminate() override;
-
-        /**
-         * @brief Bind *this in preparation to render a scene.
-         * 
-         * This method must be called in order to render a scene graph to the
-         * currently bound framebuffer.
-         */
-        virtual void bind() override;
-
-        /**
-         * @brief Unbind *this in order to allow other OpenGL operations to be
-         * used without interference.
-         */
-        virtual void unbind() override;
 
         /**
          * @brief Render the data contained within a scene graph.

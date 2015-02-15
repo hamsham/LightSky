@@ -118,8 +118,8 @@ bool fbState::onStart() {
     draw::camera& mainCam = pScene->getMainCamera();
     mainCam.setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
     mainCam.makePerspective();
-    //mainCam.lockYAxis(true);
-    mainCam.lockYAxis(false);
+    mainCam.lockYAxis(true);
+    //mainCam.lockYAxis(false);
     mainCam.setViewMode(ls::draw::camera_mode_t::ARCBALL);
     mainCam.lookAt(math::vec3{10.f, 100.f, 10.f}, math::vec3{0.f, 50.f, 0.f});
     

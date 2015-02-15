@@ -7,8 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/hammy/Development/projects/LightSky/src/draw/textRenderStage.cpp</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/defaultRenderStage.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/draw/renderStage.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/defaultRenderStage.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/renderStage.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/camera.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/textRenderStage.h</file>
         </group>
     </open-files>
 </project-private>

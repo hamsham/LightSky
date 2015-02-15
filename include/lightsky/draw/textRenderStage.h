@@ -42,11 +42,6 @@ class textRenderStage : public renderStage {
          * @brief Color of the text to be rendered.
          */
         color::color textColor = color::black;
-        
-        /**
-         * @brief Blend object used to keep text rendering pretty.
-         */
-        blendObject blender = {};
 
     public:
         /**
@@ -124,20 +119,6 @@ class textRenderStage : public renderStage {
          * @brief Terminate *this by freeing all members and resources.
          */
         virtual void terminate() override;
-
-        /**
-         * @brief Bind *this in preparation to render a scene.
-         * 
-         * This method must be called in order to render a scene graph to the
-         * currently bound framebuffer.
-         */
-        virtual void bind() override;
-
-        /**
-         * @brief Unbind *this in order to allow other OpenGL operations to be
-         * used without interference.
-         */
-        virtual void unbind() override;
 
         /**
          * @brief Render the data contained within a scene graph.

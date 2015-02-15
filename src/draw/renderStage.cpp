@@ -24,6 +24,8 @@ renderStage::~renderStage() {
  * Constructor
 -------------------------------------*/
 renderStage::renderStage() :
+    blendParams{},
+    depthParams{},
     vertShader{},
     fragShader{},
     shaderBinary{}
@@ -33,6 +35,8 @@ renderStage::renderStage() :
  * Move Constructor
 -------------------------------------*/
 renderStage::renderStage(renderStage&& rs) :
+    blendParams{std::move(rs.blendParams)},
+    depthParams{std::move(rs.depthParams)},
     vertShader{std::move(rs.vertShader)},
     fragShader{std::move(rs.fragShader)},
     shaderBinary{std::move(rs.shaderBinary)}
@@ -42,6 +46,8 @@ renderStage::renderStage(renderStage&& rs) :
  * Move Operator
 -------------------------------------*/
 renderStage& renderStage::operator=(renderStage&& rs) {
+    blendParams = std::move(rs.blendParams);
+    depthParams = std::move(rs.depthParams);
     vertShader = std::move(rs.vertShader);
     fragShader = std::move(rs.fragShader);
     shaderBinary = std::move(rs.shaderBinary);
@@ -109,6 +115,14 @@ void renderStage::terminateShaders() {
     vertShader.terminate();
     fragShader.terminate();
     shaderBinary.terminate();
+}
+
+/*-------------------------------------
+ * Draw Parameter Termination
+-------------------------------------*/
+void renderStage::resetDrawParameters() {
+    blendParams.reset();
+    depthParams.reset();
 }
 
 /*-------------------------------------

@@ -1,4 +1,6 @@
 
+#include <cassert>
+
 #include "lightsky/draw/color.h"
 
 namespace ls {
@@ -12,7 +14,7 @@ pixel_layout_t getColorLayout(pixel_format_t internalFormat) {
         case COLOR_FMT_GRAY_8:
         case COLOR_FMT_GRAY_16I:
         //case COLOR_FMT_GRAY_16U:
-        case COLOR_FMT_GRAY_16F:
+        //case COLOR_FMT_GRAY_16F:
         case COLOR_FMT_GRAY_24:
         //case COLOR_FMT_GRAY_32I:
         //case COLOR_FMT_GRAY_32U:
@@ -22,7 +24,7 @@ pixel_layout_t getColorLayout(pixel_format_t internalFormat) {
         case COLOR_FMT_R_8:
         case COLOR_FMT_R_16I:
         case COLOR_FMT_R_16U:
-        //case COLOR_FMT_R_16F:
+        case COLOR_FMT_R_16F:
         case COLOR_FMT_R_32I:
         case COLOR_FMT_R_32U:
         case COLOR_FMT_R_32F:
@@ -72,6 +74,9 @@ pixel_layout_t getColorLayout(pixel_format_t internalFormat) {
         
         case COLOR_FMT_DEFAULT:
             return COLOR_LAYOUT_DEFAULT;
+        
+        default:
+            assert(false);
     }
     
     return COLOR_LAYOUT_DEFAULT;

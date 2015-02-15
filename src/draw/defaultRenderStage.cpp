@@ -163,6 +163,10 @@ bool defaultRenderStage::init() {
         return false;
     }
     
+    depthObject& depthParams = getDepthParameters();
+    depthParams.setDepthMask(true);
+    depthParams.setState(true);
+    
     shaderBinary.unbind();
 
     LOG_GL_ERR();
@@ -174,7 +178,7 @@ bool defaultRenderStage::init() {
  * Release Resources
 -------------------------------------*/
 void defaultRenderStage::terminate() {
-    terminateShaders();
+    renderStage::terminate();
     vpMatUniformId = -1;
     modelMatUniformId = -1;
 }

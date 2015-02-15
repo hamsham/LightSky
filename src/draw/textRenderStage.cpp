@@ -96,8 +96,7 @@ textRenderStage::textRenderStage(textRenderStage&& rs) :
     vpMatUniformId{rs.vpMatUniformId},
     modelMatUniformId{rs.modelMatUniformId},
     colorUniformId{rs.colorUniformId},
-    textColor{rs.textColor},
-    blender{std::move(rs.blender)}
+    textColor{rs.textColor}
 {
     rs.vpMatUniformId = -1;
     rs.modelMatUniformId = -1;
@@ -173,12 +172,17 @@ bool textRenderStage::init() {
     }
     
     // use additive blending for text
+    blendObject& blender = getBlendParameters();
     blender.setState(true);
     blender.setBlendEquation(ls::draw::BLEND_EQU_ADD, ls::draw::BLEND_EQU_ADD);
     blender.setBlendFunction(
         ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_1_SUB_SRC_ALPHA,
         ls::draw::BLEND_FNC_ONE, ls::draw::BLEND_FNC_ZERO
     );
+    
+    depthObject& depthParams = getDepthParameters();
+    depthParams.setDepthMask(false);
+    depthParams.setState(false);
     
     shaderBinary.unbind();
 
@@ -191,12 +195,11 @@ bool textRenderStage::init() {
  * Release Resources
 -------------------------------------*/
 void textRenderStage::terminate() {
-    terminateShaders();
+    renderStage::terminate();
     vpMatUniformId = -1;
     modelMatUniformId = -1;
     colorUniformId = -1;
     textColor = color::black;
-    blender.reset();
 }
 
 /*-------------------------------------
@@ -235,22 +238,6 @@ void textRenderStage::draw(
             pMesh->draw();
         }
     }
-}
-
-/*-------------------------------------
- * Bind for rendering
--------------------------------------*/
-void textRenderStage::bind() {
-    getShaderProgram().bind();
-    blender.bind();
-}
-
-/*-------------------------------------
- * Unbind from OpenGL
--------------------------------------*/
-void textRenderStage::unbind() {
-    blender.unbind();
-    getShaderProgram().unbind();
 }
 
 } // end draw namespace

@@ -14,12 +14,12 @@ namespace draw {
     Enable blending and apply blend parameters to OpenGL.
 -------------------------------------*/
 void blendObject::bind() const {
-    if (enabled) {
-        glEnable(BLEND_STATE);
-    }
-    else {
+    if (!enabled) {
         glDisable(BLEND_STATE);
+        return;
     }
+    
+    glEnable(BLEND_STATE);
     
     glBlendColor(blendCol[0], blendCol[1], blendCol[2], blendCol[3]);
     

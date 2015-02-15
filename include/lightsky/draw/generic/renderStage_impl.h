@@ -58,17 +58,71 @@ inline bool renderStage::initShaders(const char* const vertShaderData, const cha
 }
 
 /*-------------------------------------
+ * Terminate/Free/Reset all resources.
+-------------------------------------*/
+inline void renderStage::terminate() {
+    resetDrawParameters();
+    terminateShaders();
+}
+
+/*-------------------------------------
  * Bind for rendering
 -------------------------------------*/
 inline void renderStage::bind() {
-    shaderBinary.bind();
+    bindShaderProgram();
+    bindDrawParameters();
 }
 
 /*-------------------------------------
  * Unbind from OpenGL
 -------------------------------------*/
 inline void renderStage::unbind() {
+    unbindDrawParameters();
+    unbindShaderProgram();
+}
+
+/*-------------------------------------
+ * Get *this object's ID
+-------------------------------------*/
+inline unsigned renderStage::getId() const {
+    return shaderBinary.getId();
+}
+
+/*-------------------------------------
+ * Determine if *this can be used for rendering
+-------------------------------------*/
+inline bool renderStage::isValid() const {
+    return getId() != 0;
+}
+
+/*-------------------------------------
+ * Bind the current shader binary
+-------------------------------------*/
+inline void renderStage::bindShaderProgram() const {
+    shaderBinary.bind();
+}
+
+/*-------------------------------------
+ * unbind the current shader binary
+-------------------------------------*/
+inline void renderStage::unbindShaderProgram() const {
     shaderBinary.unbind();
+}
+
+/*-------------------------------------
+ * Bind the current shader binary
+-------------------------------------*/
+inline void renderStage::bindDrawParameters() const {
+    blendParams.bind();
+    depthParams.bind();
+}
+
+/*-------------------------------------
+ * unbind the current shader binary
+-------------------------------------*/
+inline void renderStage::unbindDrawParameters() const {
+    blendParams.unbind();
+    depthParams.unbind();
 }
 
 /*-------------------------------------
@@ -101,6 +155,48 @@ inline void renderStage::drawSceneNode(const sceneGraph&, const sceneNode& node)
 -------------------------------------*/
 inline void renderStage::drawNodeMesh(const sceneNode&, const sceneMesh& mesh) {
     mesh.draw();
+}
+
+/*-------------------------------------
+ * Set the internal blend parameters.
+-------------------------------------*/
+inline void renderStage::setBlendParameters(const blendObject& blendOptions) {
+    blendParams = blendOptions;
+}
+
+/*-------------------------------------
+ * Get the internal blend parameters (const).
+-------------------------------------*/
+inline const blendObject& renderStage::getBlendParameters() const {
+    return blendParams;
+}
+
+/*-------------------------------------
+ * Get the internal blend parameters.
+-------------------------------------*/
+inline blendObject& renderStage::getBlendParameters() {
+    return blendParams;
+}
+
+/*-------------------------------------
+ * Set the internal depth parameters.
+-------------------------------------*/
+inline void renderStage::setDepthParameters(const depthObject& depthOptions) {
+    depthParams = depthOptions;
+}
+
+/*-------------------------------------
+ * Get the internal depth parameters (const).
+-------------------------------------*/
+inline const depthObject& renderStage::getDepthParameters() const {
+    return depthParams;
+}
+
+/*-------------------------------------
+ * Get the internal depth parameters.
+-------------------------------------*/
+inline depthObject& renderStage::getDepthParameters() {
+    return depthParams;
 }
 
 } // end draw namespace

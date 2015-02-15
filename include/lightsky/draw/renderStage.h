@@ -11,7 +11,9 @@
 //#include <stack>
 
 #include "lightsky/draw/setup.h"
+#include "lightsky/draw/blendObject.h"
 #include "lightsky/draw/camera.h"
+#include "lightsky/draw/depthObject.h"
 #include "lightsky/draw/sceneGraph.h"
 #include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/sceneMesh.h"
@@ -48,6 +50,16 @@ class renderStage {
          * containers keep their maximum size if reallocated.
          */
         //std::stack<renderStackInfo> renderStack;
+        
+        /**
+         * @param Blend Parameters used by *this.
+         */
+        blendObject blendParams;
+        
+        /**
+         * @brief Depth parameters used by *this.
+         */
+        depthObject depthParams;
 
         /**
          * @brief Vertex shader which permits meshes to be manipulated before
@@ -172,6 +184,34 @@ class renderStage {
         void terminateShaders();
         
         /**
+         * @brief Bind the current shader binary to prepare for rendering.
+         */
+        void bindShaderProgram() const;
+        
+        /**
+         * @brief Remove the use of *this object's shader binary from the
+         * current rendering context.
+         */
+        void unbindShaderProgram() const;
+        
+        /**
+         * @brief Reset the blending and depth parameters used by *this.
+         */
+        void resetDrawParameters();
+        
+        /**
+         * @brief Bind the current blend and depth parameters to prepare for
+         * rendering.
+         */
+        void bindDrawParameters() const;
+        
+        /**
+         * @brief Remove the use of *this object's blending and depth
+         * parameters from the current rendering context.
+         */
+        void unbindDrawParameters() const;
+        
+        /**
          * @brief Iterate through all nodes in a scene graph and render them
          * to the currently bound framebuffer.
          * 
@@ -274,7 +314,7 @@ class renderStage {
          * @brief Terminate and free all resources used in a scene graph
          * renderer.
          */
-        virtual void terminate() = 0;
+        virtual void terminate();
 
         /**
          * @brief Bind *this object's shader program (and possibly other
@@ -290,6 +330,21 @@ class renderStage {
          * other OpenGL operations to be used without interference.
          */
         virtual void unbind();
+        
+        /**
+         * @brief Retrieve a unique identifier for *this, assigned by the GPU.
+         * 
+         * @return An unsigned integral type, provided by the GPU to uniquely
+         * identify *this.
+         */
+        unsigned getId() const;
+        
+        /**
+         * @brief Determine if *this is valid and can be used for rendering.
+         * 
+         * @return TRUE if *this represents a valid renderer, FALSE if not.
+         */
+        bool isValid() const;
 
         /**
          * @brief Render the data contained within a scene graph.
@@ -338,6 +393,60 @@ class renderStage {
             const math::mat4& vpMatrix,
             const std::vector<unsigned>& nodeIndices
         );
+        
+        /**
+         * @brief Set the blending parameters in *this which will be used to
+         * perform various types of blending during a render pass.
+         * 
+         * @param blendOptions
+         * A constant reference to a blend object which will be used during
+         * *this object's "draw()" pass.
+         */
+        void setBlendParameters(const blendObject& blendOptions);
+        
+        /**
+         * @brief Retrieve the blending parameters used by *this during
+         * rendering.
+         * 
+         * @return A constant reference to the blend object which binds to
+         * *this during a render pass.
+         */
+        const blendObject& getBlendParameters() const;
+        
+        /**
+         * @brief Retrieve the blending parameters used by *this during
+         * rendering.
+         * 
+         * @return A constant reference to the blend object which binds to
+         * *this during a render pass.
+         */
+        blendObject& getBlendParameters();
+        
+        /**
+         * @brief Set the depth parameters in *this which will be used when
+         * rendering.
+         * 
+         * @param depthOptions
+         * A constant reference to a depth object which will be used during
+         * *this object's "draw()" pass.
+         */
+        void setDepthParameters(const depthObject& depthOptions);
+        
+        /**
+         * @brief Retrieve the depth parameters used by *this during rendering.
+         * 
+         * @return A constant reference to the depth object which binds to
+         * *this during a render pass.
+         */
+        const depthObject& getDepthParameters() const;
+        
+        /**
+         * @brief Retrieve the depth parameters used by *this during rendering.
+         * 
+         * @return A reference to the depth object which binds to *this during
+         * a render pass.
+         */
+        depthObject& getDepthParameters();
 };
 
 } // end draw namepsace

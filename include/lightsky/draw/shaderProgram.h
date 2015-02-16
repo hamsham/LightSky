@@ -49,7 +49,7 @@ class shaderProgram {
          * @param sp
          * A, r-value reference to a shader program object to move into *this.
          */
-        shaderProgram(shaderProgram&&);
+        shaderProgram(shaderProgram&& sp);
         
         /**
          * @brief Copy Operator -- Deleted
@@ -67,7 +67,7 @@ class shaderProgram {
          * 
          * @return A reference to *this
          */
-        shaderProgram& operator=(shaderProgram&&);
+        shaderProgram& operator=(shaderProgram&& sp);
         
         /**
          * @brief Destructor
@@ -133,7 +133,7 @@ class shaderProgram {
          * @param name
          * The exact name of the vertex array attribute in *this to bind.
          */
-        void bindAttribute(GLuint index, const GLchar* const name);
+        void bindAttribute(GLuint index, const GLchar* const name) const;
         
         /**
          * Get the location of a vertex attribute
@@ -178,122 +178,122 @@ class shaderProgram {
         /**
          * Set a single uniform integer variable
          */
-        void setUniformValue(GLint uniformId, int val);
+        void setUniformValue(GLint uniformId, int val) const;
         
         /**
          * Set two uniform integer variables
          */
-        void setUniformValue(GLint uniformId, int val0, int val1);
+        void setUniformValue(GLint uniformId, int val0, int val1) const;
         
         /**
          * Set three uniform integer variables
          */
-        void setUniformValue(GLint uniformId, int val0, int val1, int val2);
+        void setUniformValue(GLint uniformId, int val0, int val1, int val2) const;
         
         /**
          * Set four uniform integer variables
          */
-        void setUniformValue(GLint uniformId, int val0, int val1, int val2, int val3);
+        void setUniformValue(GLint uniformId, int val0, int val1, int val2, int val3) const;
         
         /**
          * Set a uniform 2d vector of integers
          */
-        void setUniformValue(GLint uniformId, const math::vec2i& val);
+        void setUniformValue(GLint uniformId, const math::vec2i& val) const;
         
         /**
          * Set a uniform 3d vector of integers
          */
-        void setUniformValue(GLint uniformId, const math::vec3i& val);
+        void setUniformValue(GLint uniformId, const math::vec3i& val) const;
         
         /**
          * Set a uniform 4d vector of integers
          */
-        void setUniformValue(GLint uniformId, const math::vec4i& val);
+        void setUniformValue(GLint uniformId, const math::vec4i& val) const;
         
         /**
          * Set a single uniform unsigned int variable
          */
-        void setUniformValue(GLint uniformId, unsigned val);
+        void setUniformValue(GLint uniformId, unsigned val) const;
         
         /**
          * Set two uniform unsigned int variables
          */
-        void setUniformValue(GLint uniformId, unsigned val0, unsigned val1);
+        void setUniformValue(GLint uniformId, unsigned val0, unsigned val1) const;
         
         /**
          * Set three uniform unsigned int variables
          */
-        void setUniformValue(GLint uniformId, unsigned val0, unsigned val1, unsigned val2);
+        void setUniformValue(GLint uniformId, unsigned val0, unsigned val1, unsigned val2) const;
         
         /**
          * Set four uniform unsigned int variables
          */
-        void setUniformValue(GLint uniformId, unsigned val0, unsigned val1, unsigned val2, unsigned val3);
+        void setUniformValue(GLint uniformId, unsigned val0, unsigned val1, unsigned val2, unsigned val3) const;
         
         /**
          * Set a uniform 2d vector of unsigned ints
          */
-        void setUniformValue(GLint uniformId, const math::vec2ui& val);
+        void setUniformValue(GLint uniformId, const math::vec2ui& val) const;
         
         /**
          * Set a uniform 3d vector of unsigned ints
          */
-        void setUniformValue(GLint uniformId, const math::vec3ui& val);
+        void setUniformValue(GLint uniformId, const math::vec3ui& val) const;
         
         /**
          * Set a uniform 4d vector of unsigned ints
          */
-        void setUniformValue(GLint uniformId, const math::vec4ui& val);
+        void setUniformValue(GLint uniformId, const math::vec4ui& val) const;
         
         /**
          * Set a single uniform float variable
          */
-        void setUniformValue(GLint uniformId, float val);
+        void setUniformValue(GLint uniformId, float val) const;
         
         /**
          * Set two uniform float variables
          */
-        void setUniformValue(GLint uniformId, float val0, float val1);
+        void setUniformValue(GLint uniformId, float val0, float val1) const;
         
         /**
          * Set three uniform float variables
          */
-        void setUniformValue(GLint uniformId, float val0, float val1, float val2);
+        void setUniformValue(GLint uniformId, float val0, float val1, float val2) const;
         
         /**
          * Set four uniform float variables
          */
-        void setUniformValue(GLint uniformId, float val0, float val1, float val2, float val3);
+        void setUniformValue(GLint uniformId, float val0, float val1, float val2, float val3) const;
         
         /**
          * Set a uniform 2d vector of floats
          */
-        void setUniformValue(GLint uniformId, const math::vec2& val);
+        void setUniformValue(GLint uniformId, const math::vec2& val) const;
         
         /**
          * Set a uniform 3d vector of floats
          */
-        void setUniformValue(GLint uniformId, const math::vec3& val);
+        void setUniformValue(GLint uniformId, const math::vec3& val) const;
         
         /**
          * Set a uniform 4d vector of floats
          */
-        void setUniformValue(GLint uniformId, const math::vec4& val);
+        void setUniformValue(GLint uniformId, const math::vec4& val) const;
         
         /**
          * Set a uniform 2d matrix
          */
-        void setUniformValue(GLint uniformId, const math::mat2& val, bool transpose = false);
+        void setUniformValue(GLint uniformId, const math::mat2& val, bool transpose = false) const;
         
         /**
          * Set a uniform 3d matrix
          */
-        void setUniformValue(GLint uniformId, const math::mat3& val, bool transpose = false);
+        void setUniformValue(GLint uniformId, const math::mat3& val, bool transpose = false) const;
         
         /**
          * Set a uniform 4d matrix
          */
-        void setUniformValue(GLint uniformId, const math::mat4& val, bool transpose = false);
+        void setUniformValue(GLint uniformId, const math::mat4& val, bool transpose = false) const;
         
         /**
          * Query the bindings of color numbers to user-defined varying out variables

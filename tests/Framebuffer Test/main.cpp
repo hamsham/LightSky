@@ -112,6 +112,7 @@ int main() {
         std::cerr << "Unable to create a display." << std::endl;
         goto quitTest;
     }
+    global::pDisplay->setFullScreenMode(FULLSCREEN_WINDOW);
     
     if (!global::renderContext.init(*global::pDisplay)) {
         std::cerr << "Unable to create a render context." << std::endl;

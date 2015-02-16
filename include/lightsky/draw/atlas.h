@@ -8,6 +8,8 @@
 #ifndef __LS_DRAW_ATLAS_H__
 #define	__LS_DRAW_ATLAS_H__
 
+#include "lightsky/utils/pointer.h"
+
 #include "lightsky/draw/fontResource.h"
 #include "lightsky/draw/texture.h"
 
@@ -60,7 +62,7 @@ class atlas {
          * An array of atlas entries. The UVs for these entries is calculated
          * when loading the image data from a texture file.
          */
-        atlasEntry* entries = nullptr;
+        utils::pointer<atlasEntry[]> entries = nullptr;
         
         /**
          * The number of entries in a texture atlas.

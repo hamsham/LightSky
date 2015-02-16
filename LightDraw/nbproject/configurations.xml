@@ -17,6 +17,8 @@
         <itemPath>../include/lightsky/draw/generic/geometry_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/imageResource_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/matrixStack_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/pickingBuffer_impl.h</itemPath>
+        <itemPath>../include/lightsky/draw/generic/pickingRenderStage_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/renderStage_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/renderbuffer_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/sceneGraph_impl.h</itemPath>
@@ -45,6 +47,7 @@
       <itemPath>../include/lightsky/draw/imageResource.h</itemPath>
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
       <itemPath>../include/lightsky/draw/pickingBuffer.h</itemPath>
+      <itemPath>../include/lightsky/draw/pickingRenderStage.h</itemPath>
       <itemPath>../include/lightsky/draw/renderStage.h</itemPath>
       <itemPath>../include/lightsky/draw/renderbuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/sceneGraph.h</itemPath>
@@ -83,6 +86,7 @@
       <itemPath>../src/draw/imageResource.cpp</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
       <itemPath>../src/draw/pickingBuffer.cpp</itemPath>
+      <itemPath>../src/draw/pickingRenderStage.cpp</itemPath>
       <itemPath>../src/draw/renderStage.cpp</itemPath>
       <itemPath>../src/draw/renderbuffer.cpp</itemPath>
       <itemPath>../src/draw/sceneGraph.cpp</itemPath>
@@ -272,6 +276,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/pickingBuffer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/generic/pickingRenderStage_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/renderStage_impl.h"
             ex="false"
             tool="3"
@@ -348,6 +362,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/pickingBuffer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/pickingRenderStage.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -447,6 +466,8 @@
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/pickingBuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/pickingRenderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/renderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -641,6 +662,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/generic/pickingBuffer_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/generic/pickingRenderStage_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/generic/renderStage_impl.h"
             ex="false"
             tool="3"
@@ -717,6 +748,11 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/draw/pickingBuffer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/pickingRenderStage.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -816,6 +852,8 @@
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/pickingBuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/pickingRenderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/renderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>

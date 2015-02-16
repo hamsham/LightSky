@@ -25,7 +25,6 @@ namespace draw {
 -------------------------------------*/
 sceneGraph::~sceneGraph() {
     terminate();
-    delete pMainCamera;
 }
 
 /*-------------------------------------
@@ -53,19 +52,14 @@ sceneGraph::sceneGraph(sceneGraph&& s) :
     textureList{std::move(s.textureList)},
     meshList{std::move(s.meshList)},
     nodeList{std::move(s.nodeList)}
-{
-    s.pMainCamera = nullptr;
-}
+{}
 
 /*-------------------------------------
  * Move Operator
 -------------------------------------*/
 sceneGraph& sceneGraph::operator=(sceneGraph&& s) {
     rootNode = std::move(s.rootNode);
-    
     pMainCamera = std::move(s.pMainCamera);
-    s.pMainCamera = nullptr;
-    
     geometryList = std::move(s.geometryList);
     textureList = std::move(s.textureList);
     meshList = std::move(s.meshList);

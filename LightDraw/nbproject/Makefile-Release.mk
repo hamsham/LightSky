@@ -50,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
 	${OBJECTDIR}/_ext/1019371010/pickingBuffer.o \
+	${OBJECTDIR}/_ext/1019371010/pickingRenderStage.o \
 	${OBJECTDIR}/_ext/1019371010/renderStage.o \
 	${OBJECTDIR}/_ext/1019371010/renderbuffer.o \
 	${OBJECTDIR}/_ext/1019371010/sceneGraph.o \
@@ -166,6 +167,11 @@ ${OBJECTDIR}/_ext/1019371010/pickingBuffer.o: ../src/draw/pickingBuffer.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/pickingBuffer.o ../src/draw/pickingBuffer.cpp
+
+${OBJECTDIR}/_ext/1019371010/pickingRenderStage.o: ../src/draw/pickingRenderStage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/pickingRenderStage.o ../src/draw/pickingRenderStage.cpp
 
 ${OBJECTDIR}/_ext/1019371010/renderStage.o: ../src/draw/renderStage.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

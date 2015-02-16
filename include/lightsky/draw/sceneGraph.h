@@ -11,6 +11,8 @@
 //#include <stack>
 #include <vector>
 
+#include "lightsky/utils/pointer.h"
+
 #include "lightsky/draw/sceneNode.h"
 
 namespace ls {
@@ -64,12 +66,12 @@ class sceneGraph {
         sceneNode rootNode;
 
         /**
-         * @brief cameraList
+         * @brief pMainCamera
          *
-         * Contains a list of view/projection transformations used to render
+         * Contains the view/projection transformations used to render
          * sceneNodes onto a framebuffer.
          */
-        camera* pMainCamera;
+        utils::pointer<camera> pMainCamera;
 
         /**
          * @brief geometryList

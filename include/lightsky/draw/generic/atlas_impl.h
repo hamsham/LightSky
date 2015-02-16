@@ -34,7 +34,7 @@ inline const atlasEntry& atlas::getEntry(unsigned index) const {
     Retrieve the array of atlas entries contained within *this. 
 -------------------------------------*/
 inline const atlasEntry* atlas::getEntries() const {
-    return entries;
+    return (const atlasEntry*)entries;
 }
 
 /*-------------------------------------

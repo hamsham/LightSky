@@ -20,12 +20,12 @@ template <typename data_t>
 struct pointer {
     private:
         /**
-         * pData represents a pointer to some data within an application
+         * @brief pData represents a pointer to some data within an application
          */
         mutable data_t* pData = nullptr;
         
         /**
-         * Clear *this of any data/resources.
+         * @brief Clear *this of any data/resources.
          */
         void clear() {
             delete pData;
@@ -33,7 +33,7 @@ struct pointer {
         
     public:
         /**
-         * Destructor
+         * @brief Destructor
          * 
          * Clear *this of any data/resources.
          */
@@ -42,17 +42,17 @@ struct pointer {
         }
         
         /**
-         * Constructor
+         * @brief Constructor
          * 
          * Creates an empty pointer type. Which should not be dereferenced
          * under any circumstances.
          */
-        pointer() :
+        constexpr pointer() :
             pData{nullptr}
         {}
         
         /**
-         * Pointer Constructor
+         * @brief Pointer Constructor
          * 
          * @param p
          * A pointer to dynamically-allocated data.
@@ -62,12 +62,21 @@ struct pointer {
         {}
         
         /**
+         * @brief NULL Constructor
+         * 
+         * Constructs *this with no data assigned.
+         */
+        constexpr pointer(std::nullptr_t) :
+            pData{nullptr}
+        {}
+        
+        /**
          * Copy Constructor -- DE:ETED
          */
         pointer(const pointer&) = delete;
         
         /**
-         * Move Constructor
+         * @brief Move Constructor
          * 
          * Moves data from the input parameter into *this.
          * 
@@ -86,7 +95,7 @@ struct pointer {
         pointer& operator=(const pointer&) = delete;
         
         /**
-         * Move Operatpr
+         * @brief Move Operatpr
          * 
          * Moves data from the input parameter into *this.
          * 
@@ -104,7 +113,16 @@ struct pointer {
         }
         
         /**
-         * Equal-To Operator
+         * @brief Logical 'not' operator (negation).
+         * 
+         * @return TRUE if *this object points to any data, FALSE if not.
+         */
+        constexpr bool operator ! () const {
+            return !pData;
+        }
+        
+        /**
+         * @brief Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -117,7 +135,7 @@ struct pointer {
         }
         
         /**
-         * Not-Equal-To Operator
+         * @brief Not-Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -130,7 +148,7 @@ struct pointer {
         }
         
         /**
-         * Greater-Than or Equal-To Operator
+         * @brief Greater-Than or Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -143,7 +161,7 @@ struct pointer {
         }
         
         /**
-         * Greater-Than Operator
+         * @brief Greater-Than Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -156,7 +174,7 @@ struct pointer {
         }
         
         /**
-         * Less-Than or Equal-To Operator
+         * @brief Less-Than or Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -169,7 +187,7 @@ struct pointer {
         }
         
         /**
-         * Less-Than Operator
+         * @brief Less-Than Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -182,6 +200,90 @@ struct pointer {
         }
         
         /**
+         * @brief Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to the same
+         * data as *this, FALSE if not.
+         */
+        constexpr bool operator == (const data_t* const p) const {
+            return pData == p;
+        }
+        
+        /**
+         * @brief Not-Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to different
+         * data than *this, FALSE if so.
+         */
+        constexpr bool operator != (const data_t* const p) const {
+            return pData != p;
+        }
+        
+        /**
+         * @brief Greater-Than or Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to the same
+         * data as or less than, or equal to, *this, FALSE if not.
+         */
+        constexpr bool operator >= (const data_t* const p) const {
+            return pData >= p;
+        }
+        
+        /**
+         * @brief Greater-Than Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer of less
+         * value than *this, FALSE if not.
+         */
+        constexpr bool operator > (const data_t* const p) const {
+            return pData > p;
+        }
+        
+        /**
+         * @brief Less-Than or Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to the same
+         * data as or greater than *this, FALSE if not.
+         */
+        constexpr bool operator <= (const data_t* const p) const {
+            return pData <= p;
+        }
+        
+        /**
+         * @brief Less-Than Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer of greater
+         * value than *this, FALSE if not.
+         */
+        constexpr bool operator < (const data_t* const p) const {
+            return pData < p;
+        }
+        
+        /**
          * Retrieve the pointer to data contained within *this.
          * 
          * @return A pointer to a set of dynamically-allocated data.
@@ -191,7 +293,7 @@ struct pointer {
         }
         
         /**
-         * Retrieve the pointer to data contained within *this.
+         * @brief Retrieve the pointer to data contained within *this.
          * 
          * @return A pointer to a set of dynamically-allocated data.
          */
@@ -200,8 +302,8 @@ struct pointer {
         }
         
         /**
-         * Swap the value of the pointers contained within *this and an input
-         * pointer object.
+         * @brief Swap the value of the pointers contained within *this and an
+         * input pointer object.
          * 
          * @param other
          * A pointer object who's data should be swapped with *this.
@@ -213,7 +315,7 @@ struct pointer {
         }
         
         /**
-         * Retrieve a reference to the data contained within *this.
+         * @brief Retrieve a reference to the data contained within *this.
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
@@ -222,7 +324,7 @@ struct pointer {
         }
         
         /**
-         * Retrieve a reference to the data contained within *this.
+         * @brief Retrieve a reference to the data contained within *this.
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
@@ -231,8 +333,8 @@ struct pointer {
         }
         
         /**
-         * Retrieve a constant member contained within the data pointed at by
-         * *this.
+         * @brief Retrieve a constant member contained within the data pointed
+         * at by *this.
          * 
          * @return A constant pointer to a member of the dynamically-allocated
          * data within *this.
@@ -242,7 +344,7 @@ struct pointer {
         }
         
         /**
-         * Retrieve a member contained within the data pointed at by *this.
+         * @brief Retrieve a member contained within the data pointed at by *this.
          * 
          * @return A pointer to a member of the dynamically-allocated data
          * within *this.
@@ -274,17 +376,8 @@ struct pointer {
         }
         
         /**
-         * Free all data referenced by *this.
-         * This method will delete all data that *this object references.
-         */
-        void release() {
-            clear();
-            pData = nullptr;
-        }
-        
-        /**
-         * Delete the value of the internal pointer managed by this, then use
-         * *this to reference a new set of data.
+         * @brief Delete the value of the internal pointer managed by this,
+         * then use *this to reference a new set of data.
          * 
          * @param pNewData
          * A pointer to a set of dynamically-allocated memory of the same type
@@ -293,6 +386,16 @@ struct pointer {
         void reset(data_t* pNewData = nullptr) {
             clear();
             pData = pNewData;
+        }
+        
+        /**
+         * @brief Free all data referenced by *this.
+         * 
+         * This method will delete all data that *this object references. It is
+         * exactly the same as calling "reset(nullptr)".
+         */
+        inline void release() {
+            reset(nullptr);
         }
 };
 
@@ -339,7 +442,7 @@ struct pointer<data_t[]> {
         
     public:
         /**
-         * Destructor
+         * @brief Destructor
          * 
          * Clear *this of any data/resources.
          */
@@ -348,17 +451,17 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Constructor
+         * @brief Constructor
          * 
          * Creates an empty pointer type. Which should not be dereferenced
          * under any circumstances.
          */
-        pointer() :
+        constexpr pointer() :
             pData{nullptr}
         {}
         
         /**
-         * Pointer Constructor
+         * @brief Pointer Constructor
          * 
          * @param p
          * A pointer to dynamically-allocated data.
@@ -368,12 +471,21 @@ struct pointer<data_t[]> {
         {}
         
         /**
+         * @brief NULL Constructor
+         * 
+         * Constructs *this with no data assigned.
+         */
+        constexpr pointer(std::nullptr_t) :
+            pData{nullptr}
+        {}
+        
+        /**
          * Copy Constructor -- DE:ETED
          */
         pointer(const pointer&) = delete;
         
         /**
-         * Move Constructor
+         * @brief Move Constructor
          * 
          * Moves data from the input parameter into *this.
          * 
@@ -392,7 +504,7 @@ struct pointer<data_t[]> {
         pointer& operator=(const pointer&) = delete;
         
         /**
-         * Move Operatpr
+         * @brief Move Operatpr
          * 
          * Moves data from the input parameter into *this.
          * 
@@ -410,7 +522,16 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Equal-To Operator
+         * @brief Logical 'not' operator (negation).
+         * 
+         * @return TRUE if *this object points to any data, FALSE if not.
+         */
+        constexpr bool operator ! () const {
+            return !pData;
+        }
+        
+        /**
+         * @brief Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -423,7 +544,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Not-Equal-To Operator
+         * @brief Not-Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -436,7 +557,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Greater-Than or Equal-To Operator
+         * @brief Greater-Than or Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -449,7 +570,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Greater-Than Operator
+         * @brief Greater-Than Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -462,7 +583,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Less-Than or Equal-To Operator
+         * @brief Less-Than or Equal-To Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -475,7 +596,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Less-Than Operator
+         * @brief Less-Than Operator
          * 
          * @param p
          * A constant reference to a pointer object of the same type as *this.
@@ -488,7 +609,91 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Iterate through all of the memory managed by *this.
+         * @brief Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to the same
+         * data as *this, FALSE if not.
+         */
+        constexpr bool operator == (const data_t* const p) const {
+            return pData == p;
+        }
+        
+        /**
+         * @brief Not-Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to different
+         * data than *this, FALSE if so.
+         */
+        constexpr bool operator != (const data_t* const p) const {
+            return pData != p;
+        }
+        
+        /**
+         * @brief Greater-Than or Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to the same
+         * data as or less than, or equal to, *this, FALSE if not.
+         */
+        constexpr bool operator >= (const data_t* const p) const {
+            return pData >= p;
+        }
+        
+        /**
+         * @brief Greater-Than Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer of less
+         * value than *this, FALSE if not.
+         */
+        constexpr bool operator > (const data_t* const p) const {
+            return pData > p;
+        }
+        
+        /**
+         * @brief Less-Than or Equal-To Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer to the same
+         * data as or greater than *this, FALSE if not.
+         */
+        constexpr bool operator <= (const data_t* const p) const {
+            return pData <= p;
+        }
+        
+        /**
+         * @brief Less-Than Operator
+         * 
+         * @param p
+         * A pointer to an object of the same type as the one contained within
+         * *this.
+         * 
+         * @return TRUE if the input parameter contains a pointer of greater
+         * value than *this, FALSE if not.
+         */
+        constexpr bool operator < (const data_t* const p) const {
+            return pData < p;
+        }
+        
+        /**
+         * @brief Iterate through all of the memory managed by *this.
          * 
          * @param i
          * The index of the data in the internal array managed by *this.
@@ -502,7 +707,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Iterate through all of the memory managed by *this.
+         * @brief Iterate through all of the memory managed by *this.
          * 
          * @param i
          * The index of the data in the internal array managed by *this.
@@ -516,7 +721,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Retrieve the pointer to data contained within *this.
+         * @brief Retrieve the pointer to data contained within *this.
          * 
          * @return A pointer to a set of dynamically-allocated data.
          */
@@ -525,7 +730,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Retrieve the pointer to data contained within *this.
+         * @brief Retrieve the pointer to data contained within *this.
          * 
          * @return A pointer to a set of dynamically-allocated data.
          */
@@ -534,8 +739,8 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Swap the value of the pointers contained within *this and an input
-         * pointer object.
+         * @brief Swap the value of the pointers contained within *this and an
+         * input pointer object.
          * 
          * @param other
          * A pointer object who's data should be swapped with *this.
@@ -547,7 +752,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Retrieve a reference to the data contained within *this.
+         * @brief Retrieve a reference to the data contained within *this.
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
@@ -556,7 +761,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Retrieve a reference to the data contained within *this.
+         * @brief Retrieve a reference to the data contained within *this.
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
@@ -565,8 +770,8 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Retrieve a constant member contained within the data pointed at by
-         * *this.
+         * @brief Retrieve a constant member contained within the data pointed
+         * at by *this.
          * 
          * @return A constant pointer to a member of the dynamically-allocated
          * data within *this.
@@ -576,7 +781,7 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Retrieve a member contained within the data pointed at by *this.
+         * @brief Retrieve a member contained within the data pointed at by *this.
          * 
          * @return A pointer to a member of the dynamically-allocated data
          * within *this.
@@ -608,17 +813,8 @@ struct pointer<data_t[]> {
         }
         
         /**
-         * Free all data referenced by *this.
-         * This method will delete all data that *this object references.
-         */
-        void release() {
-            clear();
-            pData = nullptr;
-        }
-        
-        /**
-         * Delete the value of the internal pointer managed by this, then use
-         * *this to reference a new set of data.
+         * @brief Delete the value of the internal pointer managed by this,
+         * then use *this to reference a new set of data.
          * 
          * @param pNewData
          * A pointer to a set of dynamically-allocated memory of the same type
@@ -627,6 +823,16 @@ struct pointer<data_t[]> {
         void reset(data_t* pNewData = nullptr) {
             clear();
             pData = pNewData;
+        }
+        
+        /**
+         * @brief Free all data referenced by *this.
+         * 
+         * This method will delete all data that *this object references. It is
+         * exactly the same as calling "reset(nullptr)".
+         */
+        inline void release() {
+            reset(nullptr);
         }
 };
 

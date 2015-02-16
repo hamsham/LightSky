@@ -35,11 +35,10 @@ atlas::atlas() {
  */
 atlas::atlas(atlas&& a) :
     atlasTex{std::move(a.atlasTex)},
-    entries{a.entries},
+    entries{std::move(a.entries)},
     numEntries{a.numEntries},
     pixelRatio{a.pixelRatio}
 {
-    a.entries = nullptr;
     a.numEntries = 0;
     a.pixelRatio = 1.f;
 }
@@ -50,8 +49,7 @@ atlas::atlas(atlas&& a) :
 atlas& atlas::operator =(atlas&& a) {
     atlasTex = std::move(a.atlasTex);
     
-    entries = a.entries;
-    a.entries = nullptr;
+    entries = std::move(a.entries);
     
     numEntries = a.numEntries;
     a.numEntries = 0;
@@ -76,7 +74,7 @@ bool atlas::init(const fontResource& fr) {
     LS_LOG_MSG("Attempting to load a font atlas.");
     
     // prepare the array of atlas entries
-    entries = new(std::nothrow) atlasEntry[fr.numGlyphs];
+    entries.reset(new(std::nothrow) atlasEntry[fr.numGlyphs]);
     if (entries == nullptr) {
         LS_LOG_ERR("\tUnable to generate an array of font atlas entries.\n");
         return false;
@@ -88,8 +86,7 @@ bool atlas::init(const fontResource& fr) {
     if (!atlasTex.init(0, COLOR_FMT_R_8, maxGlyphSize*dimensions, COLOR_LAYOUT_R, COLOR_TYPE_UNSIGNED_BYTE, nullptr)) {
         LOG_GL_ERR();
         LS_LOG_ERR("\tAn error occurred while allocating space for a font atlas.\n");
-        delete [] entries;
-        entries = nullptr;
+        entries.release();
         return false;
     }
     
@@ -171,8 +168,7 @@ bool atlas::init(const fontResource& fr) {
 void atlas::terminate() {
     atlasTex.terminate();
 
-    delete [] entries;
-    entries = nullptr;
+    entries.release();
 
     numEntries = 0;
     pixelRatio = 1.f;

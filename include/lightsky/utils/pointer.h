@@ -118,8 +118,17 @@ struct pointer {
          * @return TRUE if *this object points to any data, FALSE if not.
          */
         constexpr bool operator ! () const {
-            return !pData;
+            return nullptr == pData;
         }
+        
+        /**
+         * @brief Determine if there is any data in *this.
+         * 
+         * @return TRUE if *this points to data, FALSE if not.
+         */
+        explicit constexpr operator bool() const {
+            return nullptr != pData;
+        } 
         
         /**
          * @brief Equal-To Operator
@@ -527,8 +536,17 @@ struct pointer<data_t[]> {
          * @return TRUE if *this object points to any data, FALSE if not.
          */
         constexpr bool operator ! () const {
-            return !pData;
+            return nullptr == pData;
         }
+        
+        /**
+         * @brief Determine if there is any data in *this.
+         * 
+         * @return TRUE if *this points to data, FALSE if not.
+         */
+        explicit constexpr operator bool() const {
+            return nullptr != pData;
+        } 
         
         /**
          * @brief Equal-To Operator

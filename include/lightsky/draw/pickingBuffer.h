@@ -233,29 +233,10 @@ class pickingBuffer {
         picking_id_t getIdAtLocation(int x, int y);
 };
 
-/*-------------------------------------
- * Initialization Delegation
--------------------------------------*/
-inline bool pickingBuffer::init(const math::vec2i& size) {
-    return init(size[0], size[1]);
-}
-
-/*-------------------------------------
- * FBO Binding
--------------------------------------*/
-inline void pickingBuffer::bind() const {
-    fbo.bind();
-}
-
-/*-------------------------------------
- * FBO Releasing
--------------------------------------*/
-inline void pickingBuffer::unbind() const {
-    fbo.unbind();
-}
-
 } // end draw namespace
 } // end ls namespace
+
+#include "lightsky/draw/generic/pickingBuffer_impl.h"
 
 #endif // __LS_DRAW_PICKING_BUFFER_H__
 

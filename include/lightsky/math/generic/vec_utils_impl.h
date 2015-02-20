@@ -25,9 +25,7 @@ num_t math::cross(const vec2_t<num_t>& v1, const vec2_t<num_t>& v2) {
 -------------------------------------*/
 template <typename num_t> inline
 math::vec2_t<num_t> math::normalize(const vec2_t<num_t>& v) {
-    const num_t magInv = num_t{1} / length<num_t>(v);
-    
-    return v * magInv;
+    return v * fastInvSqrt<num_t>(lengthSquared<num_t>(v));
 }
 
 /*-------------------------------------
@@ -163,9 +161,7 @@ math::vec3_t<num_t> math::cross(const vec3_t<num_t>& v1, const vec3_t<num_t>& v2
 -------------------------------------*/
 template <typename num_t> inline
 math::vec3_t<num_t> math::normalize(const vec3_t<num_t>& v) {
-    const num_t magInv = num_t{1} / length<num_t>(v);
-    
-    return v * magInv;
+    return v * fastInvSqrt<num_t>(lengthSquared<num_t>(v));
 }
 
 /*-------------------------------------
@@ -317,9 +313,7 @@ num_t math::dot(const vec4_t<num_t>& v1, const vec4_t<num_t>& v2) {
 -------------------------------------*/
 template <typename num_t> inline
 math::vec4_t<num_t> math::normalize(const vec4_t<num_t>& v) {
-    const num_t magInv = num_t{1} / length<num_t>(v);
-    
-    return v * magInv;
+    return v * fastInvSqrt<num_t>(lengthSquared<num_t>(v));
 }
 
 /*-------------------------------------

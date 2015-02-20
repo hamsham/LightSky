@@ -33,14 +33,12 @@ num_t math::length(const quat_t<num_t>& q) {
 -------------------------------------*/
 template <typename num_t> inline
 math::quat_t<num_t> math::inverse(const quat_t<num_t>& q) {
-    const num_t lenInv{
-        num_t{1} / math::length<num_t>(q)
-    };
+    const num_t magInv{fastInvSqrt<num_t>(lengthSquared<num_t>(q))};
     return quat_t<num_t>{
-        -q.q[0] * lenInv,
-        -q.q[1] * lenInv,
-        -q.q[2] * lenInv,
-        q.q[3] * lenInv
+        -q.q[0] * magInv,
+        -q.q[1] * magInv,
+        -q.q[2] * magInv,
+        q.q[3] * magInv
     };
 }
 
@@ -57,9 +55,7 @@ math::quat_t<num_t> math::conjugate(const quat_t<num_t>& q) {
 -------------------------------------*/
 template <typename num_t> inline
 math::quat_t<num_t> math::normalize(const quat_t<num_t>& q) {
-    const num_t magInv{
-        num_t{1} / length<num_t>(q)
-    };
+    const num_t magInv{fastInvSqrt<num_t>(lengthSquared<num_t>(q))};
     
     return quat_t<num_t>{
         q.q[0] * magInv,

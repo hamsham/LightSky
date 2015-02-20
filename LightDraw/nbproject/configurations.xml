@@ -33,6 +33,7 @@
       </logicalFolder>
       <itemPath>../include/lightsky/draw/atlas.h</itemPath>
       <itemPath>../include/lightsky/draw/blendObject.h</itemPath>
+      <itemPath>../include/lightsky/draw/bone.h</itemPath>
       <itemPath>../include/lightsky/draw/boundingBox.h</itemPath>
       <itemPath>../include/lightsky/draw/camera.h</itemPath>
       <itemPath>../include/lightsky/draw/color.h</itemPath>
@@ -73,6 +74,7 @@
                    projectFiles="true">
       <itemPath>../src/draw/atlas.cpp</itemPath>
       <itemPath>../src/draw/blendObject.cpp</itemPath>
+      <itemPath>../src/draw/bone.cpp</itemPath>
       <itemPath>../src/draw/boundingBox.cpp</itemPath>
       <itemPath>../src/draw/camera.cpp</itemPath>
       <itemPath>../src/draw/color.cpp</itemPath>
@@ -179,6 +181,8 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/bone.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/boundingBox.h"
             ex="false"
@@ -440,6 +444,8 @@
       <item path="../src/draw/atlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/blendObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/bone.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/boundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -566,6 +572,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/bone.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/boundingBox.h"
             ex="false"
             tool="3"
@@ -826,6 +834,8 @@
       <item path="../src/draw/atlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/blendObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/bone.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/boundingBox.cpp" ex="false" tool="1" flavor2="0">
       </item>

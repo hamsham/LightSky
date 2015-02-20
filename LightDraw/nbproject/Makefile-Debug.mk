@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/atlas.o \
 	${OBJECTDIR}/_ext/1019371010/blendObject.o \
+	${OBJECTDIR}/_ext/1019371010/bone.o \
 	${OBJECTDIR}/_ext/1019371010/boundingBox.o \
 	${OBJECTDIR}/_ext/1019371010/camera.o \
 	${OBJECTDIR}/_ext/1019371010/color.o \
@@ -102,6 +103,11 @@ ${OBJECTDIR}/_ext/1019371010/blendObject.o: ../src/draw/blendObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/blendObject.o ../src/draw/blendObject.cpp
+
+${OBJECTDIR}/_ext/1019371010/bone.o: ../src/draw/bone.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I/usr/include/freetype2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/bone.o ../src/draw/bone.cpp
 
 ${OBJECTDIR}/_ext/1019371010/boundingBox.o: ../src/draw/boundingBox.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

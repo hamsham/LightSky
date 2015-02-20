@@ -120,16 +120,16 @@ bool sceneGraph::importGeometry(const sceneResource& r) {
         LS_LOG_ERR("\tUnable to allocate geometry data while importing a scene resource.");
         return false;
     }
-    else {
-        // add the geometry data the the back of geometryList in the event of
-        // an appended import.
-        geometryList.push_back(pGeometry);
-    }
     
     if (!pGeometry->init(r)) {
         LS_LOG_ERR("\tUnable to load geometry data while importing a scene resource.");
+        delete pGeometry;
         return false;
     }
+    
+    // add the geometry data the the back of geometryList in the event of
+    // an appended import.
+    geometryList.push_back(pGeometry);
     
     return true;
 }
@@ -172,7 +172,7 @@ bool sceneGraph::importTextures(const sceneResource& r) {
                 continue;
             }
             
-            // add the geometry data the the back of textureList in the event of
+            // add the texture data the the back of textureList in the event of
             // an appended import.
             textureList.push_back(pTexture);
             pTexture->setTextureSlot(rTexSlot);
@@ -195,7 +195,6 @@ bool sceneGraph::importTextures(const sceneResource& r) {
         }
     }
     
-    
     return ret;
 }
 
@@ -216,15 +215,13 @@ bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffs
             LS_LOG_ERR("\tUnable to allocate mesh data while importing a scene resource.");
             return false;
         }
-        else {
-            meshList.push_back(pMesh);
-        }
         
         // retrieve the last geometry object as it will contain the geometry
         // data from an appended import.
         const geometry* const pGeometry = geometryList.back();
         if (!pMesh->init(*pGeometry)) {
             LS_LOG_ERR("\tUnable to initialize mesh data while importing a scene resource.");
+            delete pMesh;
             return false;
         }
         
@@ -236,11 +233,9 @@ bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffs
             pMesh->addTexture(*pTex);
         }
         
-        LS_LOG_MSG(
-            "\tMesh ", meshList.size()-1,
-            " contains texture ",
-            rMesh.textureIndex
-        );
+        meshList.push_back(pMesh);
+        
+        LS_LOG_MSG("\tMesh ", meshList.size()-1, " contains texture ", rMesh.textureIndex);
     }
     
     return true;

@@ -212,12 +212,11 @@ void camera::update() {
         viewMatrix[3][2] = -math::dot(zAxis, pos);
     }
     else {
-        const math::vec3&& orbitVec = pos-target;
-        const math::vec3&& orbitDir = math::rotate(orbitVec, orientation);
-        const math::vec3&& orbitPos = orbitDir + target;
+        const math::quat&& orbitRot = math::conjugate(orientation);
+        const math::vec3&& orbitDir = math::rotate(math::vec3{0.f, 0.f, 1.f}, orbitRot);
         
         zAxis = math::normalize(orbitDir);
-        xAxis = math::normalize(math::cross(math::getAxisY(orientation), zAxis));
+        xAxis = math::normalize(math::cross(math::getAxisY(orbitRot), zAxis));
         yAxis = math::normalize(math::cross(zAxis, xAxis));
     
         viewMatrix[0][0] = xAxis.v[0];
@@ -232,6 +231,8 @@ void camera::update() {
         viewMatrix[1][2] = zAxis.v[1];
         viewMatrix[2][2] = zAxis.v[2];
         
+        const float orbitLen = math::length(pos-target);
+        const math::vec3&& orbitPos = (zAxis*orbitLen) + target;
         viewMatrix[3][0] = -math::dot(xAxis, orbitPos);
         viewMatrix[3][1] = -math::dot(yAxis, orbitPos);
         viewMatrix[3][2] = -math::dot(zAxis, orbitPos);

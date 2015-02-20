@@ -121,7 +121,7 @@ bool fbState::onStart() {
     mainCam.lockYAxis(true);
     //mainCam.lockYAxis(false);
     mainCam.setViewMode(ls::draw::camera_mode_t::ARCBALL);
-    mainCam.lookAt(math::vec3{10.f, 100.f, 10.f}, math::vec3{0.f, 50.f, 0.f});
+    mainCam.lookAt(math::vec3{50.f}, math::vec3{0.f, 50.f, 0.f});
     
     constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);

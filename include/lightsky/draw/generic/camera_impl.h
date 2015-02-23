@@ -33,9 +33,8 @@ inline void camera::setViewMode(camera_mode_t mode) {
 /*-------------------------------------
  * Get the camera position
 -------------------------------------*/
-inline math::vec3 camera::getPosition() const {
-    return math::vec3{viewMatrix[3][0], viewMatrix[3][1], viewMatrix[3][2]};
-    //return pos;
+inline const math::vec3& camera::getPosition() const {
+    return pos;
 }
 
 /*-------------------------------------
@@ -57,34 +56,6 @@ inline const math::vec3& camera::getTarget() const {
 -------------------------------------*/
 inline void camera::setTarget(const math::vec3& t) {
     target = t;
-}
-
-/*-------------------------------------
- * Get the forward direction
--------------------------------------*/
-inline const math::vec3& camera::getDirection() const {
-    return zAxis;
-}
-
-/*-------------------------------------
- * Set the camera's direction
--------------------------------------*/
-inline void camera::setDirection(const math::vec3& d) {
-    lookAt(d);
-}
-
-/*-------------------------------------
- * Retrieve the camera's up vector
--------------------------------------*/
-inline const math::vec3& camera::getUpDirection() const {
-    return yAxis;
-}
-
-/*-------------------------------------
- * Determine which direction is up
--------------------------------------*/
-inline void camera::setUpDirection(const math::vec3& up) {
-    yAxis = up;
 }
 
 /*-------------------------------------
@@ -182,7 +153,7 @@ inline float camera::getFarPlane() const {
  * Look At function from the current cam position
 -------------------------------------*/
 inline void camera::lookAt(const math::vec3& point) {
-    lookAt(pos, point, yAxis);
+    lookAt(pos, point, getUpDirection());
 }
 
 /*-------------------------------------

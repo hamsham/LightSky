@@ -102,11 +102,10 @@ void transform::applyTransforms() {
 -------------------------------------*/
 void transform::move(const math::vec3& deltaPos, bool relative) {
     if (relative == false) {
-        const math::mat3&& axes = math::quatToMat3(orientation);
         const math::vec3&& translation = {
-            math::dot(axes[0], deltaPos),
-            math::dot(axes[1], deltaPos),
-            math::dot(axes[2], deltaPos)
+            math::dot(math::getAxisX(orientation), deltaPos),
+            math::dot(math::getAxisY(orientation), deltaPos),
+            math::dot(math::getAxisZ(orientation), deltaPos)
         };
         position += translation;
     }

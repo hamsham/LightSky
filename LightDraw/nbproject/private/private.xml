@@ -9,10 +9,13 @@
         <group>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/sceneResource.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/bone.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/generic/camera_impl.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/sceneMesh.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/sceneGraph.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/bone.cpp</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/sceneGraph.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/camera.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/draw/camera.cpp</file>
         </group>
     </open-files>
 </project-private>

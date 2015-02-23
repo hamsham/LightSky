@@ -99,21 +99,6 @@ class camera {
         math::vec3 pos;
 
         /**
-         * @brief Left/right direction
-         */
-        math::vec3 xAxis;
-
-        /**
-         * @brief Up Direction
-         */
-        math::vec3 yAxis;
-
-        /**
-         * @brief forward direction
-         */
-        math::vec3 zAxis;
-
-        /**
          * @brief Quaternion rotation, converted from the rotation angles.
          */
         math::quat orientation;
@@ -248,7 +233,7 @@ class camera {
          * @return A 3D vector, containing the X, Y, and Z position of the
          * camera's view matrix.
          */
-        math::vec3 getPosition() const;
+        const math::vec3& getPosition() const;
 
         /**
          * @brief Set the position of the camera in 3D cartesian space.
@@ -283,7 +268,7 @@ class camera {
          * 
          * @return A 3D unit vector containing the view matrix Z-axis.
          */
-        const math::vec3& getDirection() const;
+        math::vec3 getDirection() const;
 
         /**
          * @brief Set the direction that the internal view matrix is oriented
@@ -300,7 +285,7 @@ class camera {
          * 
          * @return a 3D vector, used to determine which direction is upwards.
          */
-        const math::vec3& getUpDirection() const;
+        math::vec3 getUpDirection() const;
 
         /**
          * @brief Set the camera's normal vector.

@@ -35,12 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/53083909/factory.o \
-	${OBJECTDIR}/_ext/53083909/functor.o \
+	${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o \
+	${OBJECTDIR}/_ext/53083909/scriptFactory.o \
+	${OBJECTDIR}/_ext/53083909/scriptFunctor.o \
 	${OBJECTDIR}/_ext/53083909/scriptMath.o \
+	${OBJECTDIR}/_ext/53083909/scriptVariable.o \
 	${OBJECTDIR}/_ext/53083909/scriptable.o \
-	${OBJECTDIR}/_ext/53083909/setup.o \
-	${OBJECTDIR}/_ext/53083909/variable.o
+	${OBJECTDIR}/_ext/53083909/setup.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -75,20 +76,30 @@ build/liblightscript.a: ${OBJECTFILES}
 	${AR} -rv build/liblightscript.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightscript.a
 
-${OBJECTDIR}/_ext/53083909/factory.o: ../src/script/factory.cpp 
+${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o: ../src/script/scriptBuiltIn.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/factory.o ../src/script/factory.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o ../src/script/scriptBuiltIn.cpp
 
-${OBJECTDIR}/_ext/53083909/functor.o: ../src/script/functor.cpp 
+${OBJECTDIR}/_ext/53083909/scriptFactory.o: ../src/script/scriptFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/functor.o ../src/script/functor.cpp
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptFactory.o ../src/script/scriptFactory.cpp
+
+${OBJECTDIR}/_ext/53083909/scriptFunctor.o: ../src/script/scriptFunctor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptFunctor.o ../src/script/scriptFunctor.cpp
 
 ${OBJECTDIR}/_ext/53083909/scriptMath.o: ../src/script/scriptMath.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptMath.o ../src/script/scriptMath.cpp
+
+${OBJECTDIR}/_ext/53083909/scriptVariable.o: ../src/script/scriptVariable.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptVariable.o ../src/script/scriptVariable.cpp
 
 ${OBJECTDIR}/_ext/53083909/scriptable.o: ../src/script/scriptable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
@@ -99,11 +110,6 @@ ${OBJECTDIR}/_ext/53083909/setup.o: ../src/script/setup.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/setup.o ../src/script/setup.cpp
-
-${OBJECTDIR}/_ext/53083909/variable.o: ../src/script/variable.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/variable.o ../src/script/variable.cpp
 
 # Subprojects
 .build-subprojects:
@@ -121,30 +127,43 @@ ${TESTDIR}/tests/benchTest.o: tests/benchTest.cpp
 	$(COMPILE.cc) -O2 -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/benchTest.o tests/benchTest.cpp
 
 
-${OBJECTDIR}/_ext/53083909/factory_nomain.o: ${OBJECTDIR}/_ext/53083909/factory.o ../src/script/factory.cpp 
+${OBJECTDIR}/_ext/53083909/scriptBuiltIn_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o ../src/script/scriptBuiltIn.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/factory.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/factory_nomain.o ../src/script/factory.cpp;\
+	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptBuiltIn_nomain.o ../src/script/scriptBuiltIn.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/53083909/factory.o ${OBJECTDIR}/_ext/53083909/factory_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o ${OBJECTDIR}/_ext/53083909/scriptBuiltIn_nomain.o;\
 	fi
 
-${OBJECTDIR}/_ext/53083909/functor_nomain.o: ${OBJECTDIR}/_ext/53083909/functor.o ../src/script/functor.cpp 
+${OBJECTDIR}/_ext/53083909/scriptFactory_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptFactory.o ../src/script/scriptFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/functor.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptFactory.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/functor_nomain.o ../src/script/functor.cpp;\
+	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptFactory_nomain.o ../src/script/scriptFactory.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/_ext/53083909/functor.o ${OBJECTDIR}/_ext/53083909/functor_nomain.o;\
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptFactory.o ${OBJECTDIR}/_ext/53083909/scriptFactory_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/53083909/scriptFunctor_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptFunctor.o ../src/script/scriptFunctor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptFunctor.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptFunctor_nomain.o ../src/script/scriptFunctor.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptFunctor.o ${OBJECTDIR}/_ext/53083909/scriptFunctor_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptMath.o ../src/script/scriptMath.cpp 
@@ -158,6 +177,19 @@ ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o: ${OBJECTDIR}/_ext/53083909/scrip
 	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o ../src/script/scriptMath.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptMath.o ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/53083909/scriptVariable_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptVariable.o ../src/script/scriptVariable.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptVariable.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptVariable_nomain.o ../src/script/scriptVariable.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptVariable.o ${OBJECTDIR}/_ext/53083909/scriptVariable_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/53083909/scriptable_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptable.o ../src/script/scriptable.cpp 
@@ -184,19 +216,6 @@ ${OBJECTDIR}/_ext/53083909/setup_nomain.o: ${OBJECTDIR}/_ext/53083909/setup.o ..
 	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/setup_nomain.o ../src/script/setup.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/53083909/setup.o ${OBJECTDIR}/_ext/53083909/setup_nomain.o;\
-	fi
-
-${OBJECTDIR}/_ext/53083909/variable_nomain.o: ${OBJECTDIR}/_ext/53083909/variable.o ../src/script/variable.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/variable.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/variable_nomain.o ../src/script/variable.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/53083909/variable.o ${OBJECTDIR}/_ext/53083909/variable_nomain.o;\
 	fi
 
 # Run Test Targets

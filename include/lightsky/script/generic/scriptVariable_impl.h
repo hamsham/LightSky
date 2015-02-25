@@ -94,15 +94,16 @@ variable_t<hashId, type>& variable_t<hashId, type>::operator =(variable_t&& v) {
 template <hash_t hashId, typename type>
 bool variable_t<hashId, type>::load(std::istream& istr, varImportMap_t&, funcImportMap_t&) {
     istr >> data;
-    return true;
+    return istr.good() || istr.eof();
 }
 
 /*-------------------------------------
     Variable Object Type Data Saving
 -------------------------------------*/
 template <hash_t hashId, typename type> inline
-void variable_t<hashId, type>::save(std::ostream& ostr) const {
+bool variable_t<hashId, type>::save(std::ostream& ostr) const {
     ostr << data;
+    return ostr.good();
 }
 
 /*-------------------------------------

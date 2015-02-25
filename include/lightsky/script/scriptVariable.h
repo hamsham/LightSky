@@ -8,12 +8,12 @@
 #ifndef __LS_SCRIPT_VARIABLE_H__
 #define	__LS_SCRIPT_VARIABLE_H__
 
-#include <string>
 #include <iostream>
+#include <fstream>
 
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
-#include "lightsky/script/factory.h"
+#include "lightsky/script/scriptFactory.h"
 
 namespace ls {
 namespace script {
@@ -206,8 +206,10 @@ class variable_t final : public variable {
          *  make use of the overloaded stream operator
          *  'std::istream::operator >> (T)' in order to save variable data from
          *  *this.
+         * 
+         * @return TRUE if the data was successfully saved, FALSE if not.
          */
-        void save(std::ostream& ostr) const override;
+        bool save(std::ostream& ostr) const override;
 
         /**
          *  @brief getScriptSubType
@@ -222,7 +224,7 @@ class variable_t final : public variable {
 } // end script namespace
 } // end ls namespace
 
-#include "lightsky/script/generic/variable_impl.h"
+#include "lightsky/script/generic/scriptVariable_impl.h"
 
 /*-----------------------------------------------------------------------------
     Script Type Registration and Accessibility Macros
@@ -340,26 +342,64 @@ class variable_t final : public variable {
                 return ls::script::pointer_t<ls::script::variable>{new scriptVar_##varName}; \
             } \
         )
-
 #endif /* LS_SCRIPT_DEFINE_VAR */
 
-/*-----------------------------------------------------------------------------
-    Built-In types
------------------------------------------------------------------------------*/
-namespace ls {
-namespace script {
-    
-LS_SCRIPT_DECLARE_VAR(char,     char);          // scriptVar_char
-LS_SCRIPT_DECLARE_VAR(short,    short);         // scriptVar_short
-LS_SCRIPT_DECLARE_VAR(int,      int);           // scriptVar_int
-LS_SCRIPT_DECLARE_VAR(uint,     unsigned);      // scriptVar_uint
-LS_SCRIPT_DECLARE_VAR(long,     long);          // scriptVar_long
-LS_SCRIPT_DECLARE_VAR(ulong,    unsigned long); // scriptVar_ulong
-LS_SCRIPT_DECLARE_VAR(float,    float);         // scriptVar_float
-LS_SCRIPT_DECLARE_VAR(double,   double);        // scriptVar_double
-LS_SCRIPT_DECLARE_VAR(string,   std::string);   // scriptVar_string
+/**
+ * @brief Decalre/define an override for the load method of a script variable.
+ * 
+ * Place this in a header file with a semicolon appended in order to declare
+ * the override.
+ * 
+ * Place it in a *.cpp/translation unit, with brackets, to define the override
+ * method.
+ * 
+ * The following variables will be made available in the override function:
+ *      *this       - Refers to the scriptVar_##varName being overriden.
+ *      this->data  - The data represented by *this (of type "varType").
+ *      istr        - An std::istream reference which should be used to read
+ *                  - data (deserialize) back into *this.
+ *      varImporter - A reference to a varImportMap_t, containing pointers to
+ *                  - other variable objects that *this may reference.
+ *      funcImporter- A reference to a funcImportMap_t, which will contain
+ *                  - pointers to any other functions that *this references.
+ * 
+ * @param varType
+ * The C++ type of the data contained within the specialized script object.
+ */
+#ifndef LS_SCRIPT_OVERRIDE_VAR_LOAD
+    #define LS_SCRIPT_OVERRIDE_VAR_LOAD( varType ) \
+    \
+    template <> \
+    bool ls::script::variable_t<LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)), varType>::load( \
+        std::istream&       istr, \
+        varImportMap_t&     varImporter, \
+        funcImportMap_t&    funcImporter \
+    )
+#endif /* LS_SCRIPT_OVERRIDE_VAR_LOAD */
 
-} // end script namespace
-} // end ls namespace
+/**
+ * @brief Decalre/define an override for the save method of a script variable.
+ * 
+ * Place this in a header file with a semicolon appended in order to declare
+ * the override.
+ * 
+ * Place it in a *.cpp/translation unit, with brackets, to define the override
+ * method.
+ * 
+ * The following variables will be made available in the override function:
+ *      *this       - Refers to the scriptVar_##varName being overriden.
+ *      this->data  - The data represented by *this (of type "varType").
+ *      ostr        - An std::ostream reference which should be used to export
+ *                  - or serialize the data in *this.
+ * 
+ * @param varType
+ * The C++ type of the data contained within the specialized script object.
+ */
+#ifndef LS_SCRIPT_OVERRIDE_VAR_SAVE
+    #define LS_SCRIPT_OVERRIDE_VAR_SAVE( varType ) \
+    \
+    template <> \
+    bool ls::script::variable_t<LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)), varType>::save(std::ostream& ostr) const
+#endif /* LS_SCRIPT_OVERRIDE_VAR_SAVE */
 
 #endif	/* __LS_SCRIPT_VARIABLE_H__ */

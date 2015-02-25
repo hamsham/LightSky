@@ -18,8 +18,8 @@
 
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
-#include "lightsky/script/variable.h"
-#include "lightsky/script/factory.h"
+#include "lightsky/script/scriptVariable.h"
+#include "lightsky/script/scriptFactory.h"
 
 namespace ls {
 namespace script {
@@ -344,9 +344,11 @@ class functor : public scriptable {
          *  maintained when reloaded from an input stream.
          *  
          *  @param ostr
-         *  A reference to an std::ostream object. 
+         *  A reference to an std::ostream object.
+         * 
+         * @return TRUE if the data was successfully saved, FALSE if not.
          */
-        virtual void save(std::ostream& ostr) const;
+        virtual bool save(std::ostream& ostr) const;
         
         /**
          *  @brief Compile/Verify function arguments
@@ -529,9 +531,11 @@ class functor_t final : public functor {
          *  maintained when reloaded from an input stream.
          *  
          *  @param ostr
-         *  A reference to an std::ostream object. 
+         *  A reference to an std::ostream object.
+         * 
+         * @return TRUE if the data was successfully saved, FALSE if not.
          */
-        void save(std::ostream& ostr) const final;
+        bool save(std::ostream& ostr) const final;
 
         /**
          *  @brief Compile/Verify function arguments
@@ -698,9 +702,11 @@ class functor_t<hashId, void> final : public functor {
          *  maintained when reloaded from an input stream.
          *  
          *  @param ostr
-         *  A reference to an std::ostream object. 
+         *  A reference to an std::ostream object.
+         * 
+         * @return TRUE if the data was successfully saved, FALSE if not.
          */
-        void save(std::ostream& ostr) const final;
+        bool save(std::ostream& ostr) const final;
 
         /**
          *  @brief Compile/Verify function arguments
@@ -867,9 +873,11 @@ class functor_t<0, void> final : public functor {
          *  maintained when reloaded from an input stream.
          *  
          *  @param ostr
-         *  A reference to an std::ostream object. 
+         *  A reference to an std::ostream object.
+         * 
+         * @return TRUE if the data was successfully saved, FALSE if not.
          */
-        void save(std::ostream& ostr) const final;
+        bool save(std::ostream& ostr) const final;
 
         /**
          *  @brief Compile/Verify function arguments
@@ -895,7 +903,7 @@ class functor_t<0, void> final : public functor {
 } // end script namespace
 } // end ls namespace
 
-#include "lightsky/script/generic/functor_impl.h"
+#include "lightsky/script/generic/scriptFunctor_impl.h"
 
 /*-----------------------------------------------------------------------------
     Functor Utility Macros

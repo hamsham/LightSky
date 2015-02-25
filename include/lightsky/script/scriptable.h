@@ -111,8 +111,10 @@ class scriptable {
          *  @param ostr
          *  A reference to an std::ostream object. Each scriptable object will
          *  have its own save method.
+         * 
+         * @return TRUE if the data was successfully saved, FALSE if not.
          */
-        virtual void save(std::ostream& ostr) const = 0;
+        virtual bool save(std::ostream& ostr) const = 0;
 };
 
 } // end script namespace

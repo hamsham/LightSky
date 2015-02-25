@@ -11,9 +11,9 @@
 #include "lightsky/utils/log.h"
 #include "lightsky/utils/assertions.h"
 
-#include "lightsky/script/variable.h"
-#include "lightsky/script/functor.h"
-#include "lightsky/script/factory.h"
+#include "lightsky/script/scriptVariable.h"
+#include "lightsky/script/scriptFunctor.h"
+#include "lightsky/script/scriptFactory.h"
 
 namespace ls {
 namespace script {

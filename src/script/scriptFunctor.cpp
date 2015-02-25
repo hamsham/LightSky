@@ -7,7 +7,7 @@
 
 #include <utility> // std::move
 
-#include "lightsky/script/functor.h"
+#include "lightsky/script/scriptFunctor.h"
 
 namespace ls {
 namespace script {
@@ -85,13 +85,15 @@ bool functor::load(std::istream& istr, varImportMap_t&, funcImportMap_t& flm) {
 /*-------------------------------------
     Saving a functor to an output stream
 -------------------------------------*/
-void functor::save(std::ostream& ostr) const {
+bool functor::save(std::ostream& ostr) const {
     if (nextFunc == nullptr) {
         ostr << 0 << ' ' << 0;
     }
     else {
         ostr << nextFunc->getScriptSubType() << ' ' << (void*)nextFunc;
     }
+    
+    return ostr.good();
 }
 
 /*-----------------------------------------------------------------------------
@@ -171,8 +173,8 @@ bool functor_t<0, void>::load(std::istream& istr, varImportMap_t& vlm, funcImpor
 /*-------------------------------------
     Save to an Output Stream
 -------------------------------------*/
-void functor_t<0, void>::save(std::ostream& ostr) const {
-    functor::save(ostr);
+bool functor_t<0, void>::save(std::ostream& ostr) const {
+    return functor::save(ostr);
 }
 
 /*-------------------------------------

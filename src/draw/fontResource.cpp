@@ -39,13 +39,17 @@ namespace draw {
 /**----------------------------------------------------------------------------
  *  Helper function to load a glyph
 -----------------------------------------------------------------------------*/
-void copyGlyph(glyph& pGlyph, const FT_GlyphSlot ftGlyph) {
+bool copyGlyph(glyph& pGlyph, const FT_GlyphSlot ftGlyph) {
     const FT_Glyph_Metrics& metrics = ftGlyph->metrics;
     const FT_Bitmap& ftBitmap = ftGlyph->bitmap;
     
+    if (ftBitmap.width > INT_MAX || ftBitmap.rows > INT_MAX) {
+        return false;
+    }
+    
     // These need to be divided by 64 as their measurements are
     // in "points," or, 1/64th of a pixel.
-    pGlyph.size = {ftBitmap.width, ftBitmap.rows};
+    pGlyph.size = {(int)ftBitmap.width, (int)ftBitmap.rows};
     
     pGlyph.bearing = {(int)metrics.horiBearingX, (int)metrics.horiBearingY};
     pGlyph.bearing /= 64;
@@ -55,6 +59,8 @@ void copyGlyph(glyph& pGlyph, const FT_GlyphSlot ftGlyph) {
 
     // Copy the data from FreeType into the glyph
     std::copy(ftBitmap.buffer, ftBitmap.buffer+(ftBitmap.width*ftBitmap.rows), pGlyph.pData);
+    
+    return true;
 }
 
 /*-------------------------------------
@@ -255,7 +261,7 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
         
         const FT_GlyphSlot ftGlyph  = ftFace->glyph;
         const FT_Bitmap* ftBitmap   = &ftGlyph->bitmap;
-        const math::vec2i bmpSize   = {ftBitmap->width, ftBitmap->rows};
+        const math::vec2i bmpSize   = {(int)ftBitmap->width, (int)ftBitmap->rows};
         const int byteSize          = bmpSize[0]*bmpSize[1];
         char* const data            = new (std::nothrow) char[byteSize];
         
@@ -269,7 +275,13 @@ bool fontResource::loadGlyphs(FT_FaceRec_* ftFace) {
         
         pGlyphs[i].pData = data;
         
-        copyGlyph(pGlyphs[i], ftGlyph);
+        if (!copyGlyph(pGlyphs[i], ftGlyph)) {
+            LS_LOG_ERR("\tGlyph data is too large to be used for a texture.");
+            dataSize = 0;
+            maxGlyphSize = math::vec2i{0,0};
+            delete [] pGlyphs;
+            return false;
+        }
         
         dataSize += byteSize;
         

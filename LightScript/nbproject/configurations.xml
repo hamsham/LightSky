@@ -9,10 +9,10 @@
         <itemPath>../include/lightsky/script/generic/scriptVariable_impl.h</itemPath>
       </logicalFolder>
       <itemPath>../include/lightsky/script/script.h</itemPath>
-      <itemPath>../include/lightsky/script/scriptBuiltIn.h</itemPath>
       <itemPath>../include/lightsky/script/scriptFactory.h</itemPath>
       <itemPath>../include/lightsky/script/scriptFunctor.h</itemPath>
       <itemPath>../include/lightsky/script/scriptMath.h</itemPath>
+      <itemPath>../include/lightsky/script/scriptRunner.h</itemPath>
       <itemPath>../include/lightsky/script/scriptVariable.h</itemPath>
       <itemPath>../include/lightsky/script/scriptable.h</itemPath>
       <itemPath>../include/lightsky/script/setup.h</itemPath>
@@ -24,10 +24,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../src/script/scriptBuiltIn.cpp</itemPath>
       <itemPath>../src/script/scriptFactory.cpp</itemPath>
       <itemPath>../src/script/scriptFunctor.cpp</itemPath>
       <itemPath>../src/script/scriptMath.cpp</itemPath>
+      <itemPath>../src/script/scriptRunner.cpp</itemPath>
       <itemPath>../src/script/scriptVariable.cpp</itemPath>
       <itemPath>../src/script/scriptable.cpp</itemPath>
       <itemPath>../src/script/setup.cpp</itemPath>
@@ -41,6 +41,12 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/benchTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="Sequence_Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/sequence_test.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -96,6 +102,16 @@
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="build/liblightutils_d.a">
           </makeArtifact>
+          <makeArtifact PL="../LightMath"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../LightMath"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="build/liblightmath_d.a">
+          </makeArtifact>
         </requiredProjects>
       </compileType>
       <item path="../include/lightsky/script/generic/scriptFunctor_impl.h"
@@ -109,11 +125,6 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/script/script.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/script/scriptBuiltIn.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -133,6 +144,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/script/scriptRunner.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/script/scriptVariable.h"
             ex="false"
             tool="3"
@@ -145,13 +161,13 @@
       </item>
       <item path="../include/lightsky/script/setup.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../src/script/scriptBuiltIn.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/script/scriptFactory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptFunctor.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptMath.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptRunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptVariable.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -174,6 +190,18 @@
                             OP="build/liblightutils_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../LightMath"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="false"
+                            WD="../LightMath"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="build/liblightmath_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
@@ -190,12 +218,26 @@
         </ccTool>
         <linkerTool>
           <output>benchTest</output>
-          <linkerLibItems>
-            <linkerLibFileItem>build/liblightscript_d.a</linkerLibFileItem>
-          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>sequence_test</output>
         </linkerTool>
       </folder>
       <item path="tests/benchTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/sequence_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -246,6 +288,16 @@
                         CC="${MAKE}  -f Makefile CONF=Release clean"
                         OP="build/liblightutils.a">
           </makeArtifact>
+          <makeArtifact PL="../LightMath"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="false"
+                        WD="../LightMath"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="build/liblightmath.a">
+          </makeArtifact>
         </requiredProjects>
       </compileType>
       <item path="../include/lightsky/script/generic/scriptFunctor_impl.h"
@@ -259,11 +311,6 @@
             flavor2="0">
       </item>
       <item path="../include/lightsky/script/script.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../include/lightsky/script/scriptBuiltIn.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -283,6 +330,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/script/scriptRunner.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/script/scriptVariable.h"
             ex="false"
             tool="3"
@@ -295,13 +347,13 @@
       </item>
       <item path="../include/lightsky/script/setup.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../src/script/scriptBuiltIn.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../src/script/scriptFactory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptFunctor.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptMath.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptRunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptVariable.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -324,6 +376,18 @@
                             OP="build/liblightutils.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../LightMath"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="false"
+                            WD="../LightMath"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="build/liblightmath.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
@@ -340,12 +404,26 @@
         </ccTool>
         <linkerTool>
           <output>benchTest</output>
-          <linkerLibItems>
-            <linkerLibFileItem>build/liblightscript.a</linkerLibFileItem>
-          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>sequence_test</output>
         </linkerTool>
       </folder>
       <item path="tests/benchTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/sequence_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

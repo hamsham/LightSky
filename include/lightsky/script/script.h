@@ -11,12 +11,12 @@
 #include "lightsky/script/setup.h"
 
 #include "lightsky/script/scriptable.h"
-
 #include "lightsky/script/scriptVariable.h"
-
 #include "lightsky/script/scriptFunctor.h"
 
 #include "lightsky/script/scriptFactory.h"
+
+#include "lightsky/script/scriptRunner.h"
 
 #include "lightsky/script/scriptMath.h"
 

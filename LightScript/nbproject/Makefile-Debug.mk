@@ -35,10 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o \
 	${OBJECTDIR}/_ext/53083909/scriptFactory.o \
 	${OBJECTDIR}/_ext/53083909/scriptFunctor.o \
 	${OBJECTDIR}/_ext/53083909/scriptMath.o \
+	${OBJECTDIR}/_ext/53083909/scriptRunner.o \
 	${OBJECTDIR}/_ext/53083909/scriptVariable.o \
 	${OBJECTDIR}/_ext/53083909/scriptable.o \
 	${OBJECTDIR}/_ext/53083909/setup.o
@@ -48,7 +48,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	benchTest
+	benchTest \
+	sequence_test
 
 # C Compiler Flags
 CFLAGS=
@@ -76,11 +77,6 @@ build/liblightscript_d.a: ${OBJECTFILES}
 	${AR} -rv build/liblightscript_d.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightscript_d.a
 
-${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o: ../src/script/scriptBuiltIn.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o ../src/script/scriptBuiltIn.cpp
-
 ${OBJECTDIR}/_ext/53083909/scriptFactory.o: ../src/script/scriptFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
@@ -95,6 +91,11 @@ ${OBJECTDIR}/_ext/53083909/scriptMath.o: ../src/script/scriptMath.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptMath.o ../src/script/scriptMath.cpp
+
+${OBJECTDIR}/_ext/53083909/scriptRunner.o: ../src/script/scriptRunner.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptRunner.o ../src/script/scriptRunner.cpp
 
 ${OBJECTDIR}/_ext/53083909/scriptVariable.o: ../src/script/scriptVariable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
@@ -118,7 +119,11 @@ ${OBJECTDIR}/_ext/53083909/setup.o: ../src/script/setup.cpp
 .build-tests-conf: .build-conf ${TESTFILES}
 benchTest: ${TESTDIR}/tests/benchTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p null
-	${LINK.cc}   -o benchTest $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils_d.a build/liblightscript_d.a 
+	${LINK.cc}   -o benchTest $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils_d.a ../LightMath/build/liblightmath_d.a 
+
+sequence_test: ${TESTDIR}/tests/sequence_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p null
+	${LINK.cc}   -o sequence_test $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils_d.a ../LightMath/build/liblightmath_d.a 
 
 
 ${TESTDIR}/tests/benchTest.o: tests/benchTest.cpp 
@@ -127,18 +132,11 @@ ${TESTDIR}/tests/benchTest.o: tests/benchTest.cpp
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/benchTest.o tests/benchTest.cpp
 
 
-${OBJECTDIR}/_ext/53083909/scriptBuiltIn_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o ../src/script/scriptBuiltIn.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptBuiltIn_nomain.o ../src/script/scriptBuiltIn.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptBuiltIn.o ${OBJECTDIR}/_ext/53083909/scriptBuiltIn_nomain.o;\
-	fi
+${TESTDIR}/tests/sequence_test.o: tests/sequence_test.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/sequence_test.o tests/sequence_test.cpp
+
 
 ${OBJECTDIR}/_ext/53083909/scriptFactory_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptFactory.o ../src/script/scriptFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
@@ -177,6 +175,19 @@ ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o: ${OBJECTDIR}/_ext/53083909/scrip
 	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o ../src/script/scriptMath.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptMath.o ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/53083909/scriptRunner_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptRunner.o ../src/script/scriptRunner.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptRunner.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptRunner_nomain.o ../src/script/scriptRunner.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptRunner.o ${OBJECTDIR}/_ext/53083909/scriptRunner_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/53083909/scriptVariable_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptVariable.o ../src/script/scriptVariable.cpp 
@@ -223,6 +234,7 @@ ${OBJECTDIR}/_ext/53083909/setup_nomain.o: ${OBJECTDIR}/_ext/53083909/setup.o ..
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    benchTest || true; \
+	    sequence_test || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

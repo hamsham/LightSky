@@ -106,7 +106,7 @@ void controlState::onRun() {
             case SDL_KEYDOWN:           this->onKeyboardDownEvent(e.key);       break;
             case SDL_MOUSEMOTION:       this->onMouseMoveEvent(e.motion);       break;
             case SDL_MOUSEBUTTONDOWN:   this->onMouseButtonDownEvent(e.button); break;
-            case SDL_MOUSEWHEEL:        this->pFbState->pScene->getMainCamera().rotate(math::vec3{0.f, 0.f, (float)e.wheel.y/-120.f});
+            case SDL_MOUSEWHEEL:        this->onMouseWheelEvent(e.wheel);       break;
             default: break;
         }
     }
@@ -229,4 +229,16 @@ void controlState::onMouseMoveEvent(const SDL_MouseMotionEvent& e) {
     };
     
     pFbState->rotateCamera(mouseDelta);
+}
+
+/*-------------------------------------
+ * Mouse Button Down Event
+-------------------------------------*/
+void controlState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
+    constexpr float totalAngles = -1.f / 120.f;
+    const float horizAngles = (float)e.x;
+    const float vertAngles = (float)e.y;
+    
+    ls::draw::camera& cam = pFbState->pScene->getMainCamera();
+    cam.rotate(math::vec3{horizAngles, 0.f, vertAngles * totalAngles});
 }

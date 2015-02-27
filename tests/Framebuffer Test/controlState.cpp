@@ -106,6 +106,7 @@ void controlState::onRun() {
             case SDL_KEYDOWN:           this->onKeyboardDownEvent(e.key);       break;
             case SDL_MOUSEMOTION:       this->onMouseMoveEvent(e.motion);       break;
             case SDL_MOUSEBUTTONDOWN:   this->onMouseButtonDownEvent(e.button); break;
+            case SDL_MOUSEWHEEL:        this->pFbState->pScene->getMainCamera().rotate(math::vec3{0.f, 0.f, (float)e.wheel.y/-120.f});
             default: break;
         }
     }
@@ -126,14 +127,11 @@ void controlState::onRun() {
     if (pKeyStates[SDL_SCANCODE_D]) {
         pos[0] -= moveSpeed;
     }
-    if (pKeyStates[SDL_SCANCODE_E]) {
+    if (pKeyStates[SDL_SCANCODE_Q]) {
         pos[1] += moveSpeed;
     }
-    if (pKeyStates[SDL_SCANCODE_Q]) {
+    if (pKeyStates[SDL_SCANCODE_E]) {
         pos[1] -= moveSpeed;
-    }
-    if (pKeyStates[SDL_SCANCODE_SPACE]) {
-        pFbState->pScene->getMainCamera().unroll();
     }
     
     pFbState->moveCamera(pos);

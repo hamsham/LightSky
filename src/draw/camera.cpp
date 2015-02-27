@@ -84,36 +84,26 @@ camera& camera::operator =(camera&& c) {
 }
 
 /*-------------------------------------
- * Get the forward direction
+ * Set the camera view mode
 -------------------------------------*/
-math::vec3 camera::getDirection() const {
-    return math::getAxisZ(viewTransform.getOrientation());
+void camera::setViewMode(camera_mode_t mode) {
+    viewMode = mode;
 }
 
 /*-------------------------------------
- * Set the camera's direction
+ * Get the forward direction
 -------------------------------------*/
-void camera::setDirection(const math::vec3& d) {
-    viewTransform.setOrientation(math::lookAt(d, math::vec3{0.f, 0.f, 1.f}));
+math::vec3 camera::getDirection() const {
+    const math::mat4& viewMatrix = viewTransform.getTransform();
+    return math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
 }
 
 /*-------------------------------------
  * Retrieve the camera's up vector
 -------------------------------------*/
 math::vec3 camera::getUpDirection() const {
-    return math::getAxisY(viewTransform.getOrientation());
-}
-
-/*-------------------------------------
- * Determine which direction is up
--------------------------------------*/
-void camera::setUpDirection(const math::vec3& up) {
-    if (viewMode == camera_mode_t::FIRST_PERSON) {
-        lookAt(getAbsolutePosition(), getDirection(), up);
-    }
-    else {
-        lookAt(getAbsolutePosition(), target, up);
-    }
+    const math::mat4& viewMatrix = viewTransform.getTransform();
+    return math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
 }
 
 /*-------------------------------------
@@ -150,7 +140,7 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
         viewTransform.extractTransforms(math::lookFrom(eye-target, math::vec3{0.f}, up));
     }
     else {
-        viewTransform.extractTransforms(math::lookAt(eye-target, math::vec3{0.f}, up));
+        viewTransform.extractTransforms(math::lookAt(eye, target, up));
         viewTransform.setPosition(-eye);
     }
 }
@@ -171,9 +161,10 @@ void camera::move(const math::vec3& amount) {
  * FPS Rotation (unlocked Y axis)
 -------------------------------------*/
 void camera::rotateUnlockedY(const math::vec3& amount) {
-    const math::quat&& xAxis = math::quat{0.f, amount[0], 0.f, 0.f};
-    const math::quat&& yAxis = math::quat{amount[1], 0.f, 0.f, 0.f};
-    viewTransform.rotate(xAxis * yAxis);
+    const math::quat&& xAxis = math::quat{0.f, amount[0], 0.f, 1.f};
+    const math::quat&& yAxis = math::quat{amount[1], 0.f, 0.f, 1.f};
+    const math::quat&& zAxis = math::quat{0.f, 0.f, amount[2], 1.f};
+    viewTransform.rotate(xAxis * yAxis * zAxis);
 }
 
 /*-------------------------------------
@@ -183,16 +174,10 @@ void camera::rotateLockedY(const math::vec3& amount) {
     const math::quat&  orientation  = viewTransform.getOrientation();
     const math::quat&& xAxis        = math::quat{0.f, amount[0], 0.f, 1.f};
     const math::quat&& yAxis        = math::quat{amount[1], 0.f, 0.f, 1.f};
-    const math::quat&& camRotation  = xAxis * orientation * yAxis;
+    const math::quat&& zAxis        = math::quat{0.f, 0.f, amount[2], 1.f};
+    const math::quat&& camRotation  = xAxis * orientation * yAxis * zAxis;
     
     viewTransform.setOrientation(math::normalize(camRotation));
-}
-
-/*-------------------------------------
- * Unrolling the camera
--------------------------------------*/
-void camera::unroll() {
-    setUpDirection(math::vec3{0.f, 1.f, 0.f});
 }
 
 /*-------------------------------------

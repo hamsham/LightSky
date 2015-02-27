@@ -24,13 +24,6 @@ inline camera_mode_t camera::getViewMode() const {
 }
 
 /*-------------------------------------
- * Set the camera view mode
--------------------------------------*/
-inline void camera::setViewMode(camera_mode_t mode) {
-    viewMode = mode;
-}
-
-/*-------------------------------------
  * Get the camera position
 -------------------------------------*/
 inline const math::vec3& camera::getPosition() const {

@@ -270,29 +270,11 @@ class camera {
         math::vec3 getDirection() const;
 
         /**
-         * @brief Set the direction that the internal view matrix is oriented
-         * towards.
-         * 
-         * @param d
-         * a 3D unit vector, determining the direction in 3D cartesian space
-         * that the camera should face.
-         */
-        void setDirection(const math::vec3& d);
-
-        /**
          * @brief Get the camera's normal vector.
          * 
          * @return a 3D vector, used to determine which direction is upwards.
          */
         math::vec3 getUpDirection() const;
-
-        /**
-         * @brief Set the camera's normal vector.
-         * 
-         * @param up
-         * A 3D vector, used to determine which direction is upwards.
-         */
-        void setUpDirection(const math::vec3& up);
 
         /**
          * @brief Retrieve the camera's view matrix for external use.
@@ -453,12 +435,6 @@ class camera {
          * rotation.
          */
         void rotate(const math::vec3& amount);
-
-        /**
-         * @brief Reset the camera's current orientation to it's normal vector
-         * is at {0, 1, 0}.
-         */
-        void unroll();
 
         /**
          * @brief Apply all pending updates to the camera's view+projection

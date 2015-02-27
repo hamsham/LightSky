@@ -5,6 +5,7 @@
 #include "lightsky/math/scalar_utils.h"
 #include "lightsky/math/fixed.h"
 #include "lightsky/math/vec4.h"
+#include "lightsky/math/mat3.h"
 
 namespace ls {
 namespace math {

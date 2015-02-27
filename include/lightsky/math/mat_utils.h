@@ -162,6 +162,26 @@ mat3_t<N> scale(const mat3_t<N>& m, const vec3_t<N>& amount);
 template <typename N> constexpr
 mat3_t<N> translate(const mat3_t<N>& m, const vec2_t<N>& amount);
 
+/**
+ *  @brief Look at a position in 3D space, but only return a pure rotation
+ *  matrix with no positioning.
+ *  
+ *  @param pos
+ *  The position, in 3D space, at which the projection matrix will be placed.
+ *  
+ *  @param target
+ *  The position of the target point, in 3D space, that the projection matrix
+ *  will face.
+ *  
+ *  @param up
+ *  The direction of the top of the projection matrix.
+ *  
+ *  @return A rotation matrix that represents a camera's orientation towards a
+ *  target in 3D space.
+ */
+template <typename N> inline
+mat3_t<N> pureLookAt(const vec3_t<N>& pos, const vec3_t<N>& target, const vec3_t<N>& up);
+
 /*-----------------------------------------------------------------------------
     4x4 Matrices
 -----------------------------------------------------------------------------*/
@@ -398,6 +418,25 @@ mat4_t<N> frustum(N left, N right, N top, N bottom, N near, N far);
  */
 template <typename N> inline
 mat4_t<N> lookAt(const vec3_t<N>& pos, const vec3_t<N>& target, const vec3_t<N>& up);
+
+/**
+ *  @brief Look at a target from a specific position in 3D space.
+ *  
+ *  @param pos
+ *  The position, in 3D space, at which the projection matrix will be placed.
+ *  
+ *  @param target
+ *  The position of the target point, in 3D space, that the projection matrix
+ *  will face.
+ *  
+ *  @param up
+ *  The direction of the top of the projection matrix.
+ *  
+ *  @return A rotation matrix that represents a camera's orientation towards a
+ *  target in 3D space.
+ */
+template <typename N> inline
+mat4_t<N> lookFrom(const vec3_t<N>& pos, const vec3_t<N>& target, const vec3_t<N>& up);
 
 /**
  *  @brief billboard

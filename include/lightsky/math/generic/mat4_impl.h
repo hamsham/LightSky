@@ -51,6 +51,16 @@ constexpr mat4_t<num_t>::mat4_t(const mat3_t<num_t>& input) :
 {}
 
 template <typename num_t>
+constexpr mat3_t<num_t>::mat3_t(const mat4_t<num_t>& m) :
+    m{
+        {m.m[0][0], m.m[0][1], m.m[0][2]},
+        {m.m[1][0], m.m[1][1], m.m[1][2]},
+        {m.m[2][0], m.m[2][1], m.m[2][2]}
+    }
+{}
+
+
+template <typename num_t>
 constexpr mat4_t<num_t>::mat4_t(mat3_t<num_t>&& input) :
     m{
         {input.m[0][0], input.m[0][1],  input.m[0][2],  num_t{0}},

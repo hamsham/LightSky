@@ -9,6 +9,9 @@
 namespace ls {
 namespace math {
 
+template<typename num_t>
+struct mat4_t;
+
 /**----------------------------------------------------------------------------
  *  @brief 3D Matrix Structure
  *  recommended for use with non-integral types
@@ -37,6 +40,7 @@ struct mat3_t {
     constexpr mat3_t(num_t);
     constexpr mat3_t(const mat3_t<num_t>&);
     constexpr mat3_t(mat3_t<num_t>&&);
+    constexpr mat3_t(const mat4_t<num_t>&); // defined in the mat4 header
     constexpr mat3_t(
         const vec3_t<num_t>& x,
         const vec3_t<num_t>& y,

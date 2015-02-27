@@ -279,7 +279,7 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
             newNode.nodeChildren.push_back(&nodeList[nodeOffset + childIndex]);
         }
         
-        newNode.nodeTransform.setTransform(importNode.nodeTransform);
+        newNode.nodeTransform.extractTransforms(importNode.nodeTransform);
         
         LS_LOG_MSG("\tAdded node \"", newNode.nodeName, "\" to a scene graph.");
     }

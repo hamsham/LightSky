@@ -179,7 +179,7 @@ void uiState::drawScene() {
     const math::mat4&& modelMat = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
     ls::draw::sceneNode& node   = pScene->getNodeList().back();
     
-    node.nodeTransform.setTransform(math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()}));
+    node.nodeTransform.extractTransforms(math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()}));
     
     // setup parameters to draw a transparent mesh as a screen overlay/UI
     pRenderer->bind();

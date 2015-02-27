@@ -132,6 +132,9 @@ void controlState::onRun() {
     if (pKeyStates[SDL_SCANCODE_Q]) {
         pos[1] -= moveSpeed;
     }
+    if (pKeyStates[SDL_SCANCODE_SPACE]) {
+        pFbState->pScene->getMainCamera().unroll();
+    }
     
     pFbState->moveCamera(pos);
 }

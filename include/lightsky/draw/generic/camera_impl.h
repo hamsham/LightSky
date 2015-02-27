@@ -34,14 +34,21 @@ inline void camera::setViewMode(camera_mode_t mode) {
  * Get the camera position
 -------------------------------------*/
 inline const math::vec3& camera::getPosition() const {
-    return pos;
+    return viewTransform.getPosition();
+}
+
+/*-------------------------------------
+ * Get the absolute view position
+-------------------------------------*/
+inline math::vec3 camera::getAbsolutePosition() const {
+    return viewTransform.getAbsolutePosition();
 }
 
 /*-------------------------------------
  * Set the camera position
 -------------------------------------*/
 inline void camera::setPosition(const math::vec3& p) {
-    pos = p;
+    viewTransform.setPosition(p);
 }
 
 /*-------------------------------------
@@ -62,7 +69,7 @@ inline void camera::setTarget(const math::vec3& t) {
  * Get the camera view matrix
 -------------------------------------*/
 inline const math::mat4& camera::getViewMatrix() const {
-    return viewMatrix;
+    return viewTransform.getTransform();
 }
 
 /*-------------------------------------
@@ -76,28 +83,29 @@ inline const math::mat4& camera::getProjMatrix() const {
  * Generate and return the View/Projection matrix
 -------------------------------------*/
 inline math::mat4 camera::getVPMatrix() const {
-    return projMatrix*viewMatrix;
+    return projMatrix * viewTransform.getTransform();
 }
 
 /*-------------------------------------
  * Get the camera's orientation
 -------------------------------------*/
 inline const math::quat& camera::getOrientation() const {
-    return orientation;
+    return viewTransform.getOrientation();
 }
 
 /*-------------------------------------
  * Set the camera's rotation orientation.
 -------------------------------------*/
 inline void camera::setOrientation(const math::quat& o) {
-    orientation = o;
+    viewTransform.setOrientation(o);
 }
 
 /*-------------------------------------
  * Set the aspect ratio
 -------------------------------------*/
 inline void camera::setAspectRatio(float w, float h) {
-    aspectW = w; aspectH = h;
+    aspectW = w;
+    aspectH = h;
 }
 
 /*-------------------------------------
@@ -153,7 +161,7 @@ inline float camera::getFarPlane() const {
  * Look At function from the current cam position
 -------------------------------------*/
 inline void camera::lookAt(const math::vec3& point) {
-    lookAt(pos, point, getUpDirection());
+    lookAt(viewTransform.getPosition(), point, getUpDirection());
 }
 
 /*-------------------------------------

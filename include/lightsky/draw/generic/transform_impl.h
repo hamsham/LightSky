@@ -17,28 +17,35 @@ inline void transform::setDirty() {
 }
 
 /*-------------------------------------
- * Get the current positionvoid
+ * Get the current position
 -------------------------------------*/
 inline const math::vec3& transform::getPosition() const {
     return position;
 }
 
 /*-------------------------------------
- * Get the current scalevoid
+ * Get the absolute position
+-------------------------------------*/
+inline math::vec3 transform::getAbsolutePosition() const {
+    return math::vec3{modelMatrix[3][0], modelMatrix[3][1], modelMatrix[3][2]};
+}
+
+/*-------------------------------------
+ * Get the current scale
 -------------------------------------*/
 inline const math::vec3& transform::getScale() const {
     return scaling;
 }
 
 /*-------------------------------------
- * Get the current orientationvoid
+ * Get the current orientation
 -------------------------------------*/
 inline const math::quat& transform::getOrientation() const {
     return orientation;
 }
 
 /*-------------------------------------
- * Get the current model matrixvoid
+ * Get the current model matrix
 -------------------------------------*/
 inline const math::mat4& transform::getTransform() const {
     return modelMatrix;

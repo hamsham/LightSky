@@ -125,14 +125,6 @@ class transform {
         void setDirty();
 
         /**
-         * @brief Apply any pending adjustments to the internal model matrix.
-         *
-         * This method is implicitly called if the internal model matrix has
-         * been modified manually.
-         */
-        void applyTransforms();
-
-        /**
          * @brief Adjust *this transformation object's internal position.
          *
          * Calling this method will cause the "isDirty()" function to return
@@ -168,6 +160,16 @@ class transform {
          * point in 3D cartesian space.
          */
         const math::vec3& getPosition() const;
+
+        /**
+         * @brief Retrieve the current position of *this by extracting the 
+         * first three values (x, y, and z, respectively) of the current model
+         * matrix.
+         *
+         * @return a 3D vector, representing the absolute position of a
+         * point in 3D Cartesian space since the last internal update.
+         */
+        math::vec3 getAbsolutePosition() const;
 
         /**
          * @brief Adjust *this transformation object's internal size.
@@ -234,6 +236,19 @@ class transform {
         const math::quat& getOrientation() const;
 
         /**
+         * @brief Apply any pending adjustments to the internal model matrix.
+         * 
+         * @param useSrt
+         * Determine if the applied transformation needs to use an SRT
+         * transformation, or a STR transformation (choose if the rotation
+         * should be applied before translation, or the other way around).
+         *
+         * This method is implicitly called if the internal model matrix has
+         * been modified manually.
+         */
+        void applyTransforms(bool useSRT = true);
+
+        /**
          * @brief Multiply *this by another 4x4 homogenous transformation
          * matrix.
          *
@@ -244,10 +259,15 @@ class transform {
          * firther calls to "isDirty()" to return false.
          *
          * @param deltaTransform
-         * A 3x3 transformation matrix which will determine how much to adjust
+         * A 4x4 transformation matrix which will determine how much to adjust
          * *this transformation in 3D space.
+         * 
+         * @param useSrt
+         * Determine if the applied transformation needs to use an SRT
+         * transformation, or a STR transformation (choose if the rotation
+         * should be applied before translation, or the other way around).
          */
-        void preTransform(const math::mat4& deltaTransform);
+        void applyPreTransforms(const math::mat4& deltaTransform, bool useSRT = true);
 
         /**
          * @brief Multiply *this by another 4x4 homogenous transformation
@@ -260,10 +280,15 @@ class transform {
          * firther calls to "isDirty()" to return false.
          *
          * @param deltaTransform
-         * A 3x3 transformation matrix which will determine how much to adjust
+         * A 4x4 transformation matrix which will determine how much to adjust
          * *this transformation in 3D space.
+         * 
+         * @param useSrt
+         * Determine if the applied transformation needs to use an SRT
+         * transformation, or a STR transformation (choose if the rotation
+         * should be applied before translation, or the other way around).
          */
-        void postTransform(const math::mat4& deltaTransform);
+        void applyPostTransforms(const math::mat4& deltaTransform, bool useSRT = true);
 
         /**
          * @brief Set *this transformation object's internal model matrix.
@@ -275,7 +300,7 @@ class transform {
          * A constant reference to a 4x4 matrix which, representing the
          * position, scale, and orientation of a point in 3D space.
          */
-        void setTransform(const math::mat4& newTransform);
+        void extractTransforms(const math::mat4& newTransform);
 
         /**
          * @brief Retrieve the current model matrix of *this.
@@ -284,6 +309,26 @@ class transform {
          * scale, and orientation of a point in 3D cartesian space.
          */
         const math::mat4& getTransform() const;
+        
+        /**
+         * @brief Generate a 4x4 homogenous matrix which has been uniformly
+         * scaled, rotated, and positioned.
+         * 
+         * This is the default transformation mode.
+         * 
+         * @return A 4x4 transformation matrix which can be used for 3D
+         * positioning, rotation, and scaling.
+         */
+        math::mat4 getSRTMatrix() const;
+        
+        /**
+         * @brief Generate a 4x4 homogenous matrix which has been uniformly
+         * scaled, positioned, then rotated.
+         * 
+         * @return A 4x4 transformation matrix which can be used for 3D
+         * positioning, rotation, and scaling.
+         */
+        math::mat4 getSTRMatrix() const;
 };
 
 } // end draw namespace

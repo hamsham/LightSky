@@ -2,14 +2,14 @@
 #ifndef __LS_DRAW_CAMERA_H__
 #define __LS_DRAW_CAMERA_H__
 
-#include "lightsky/math/math.h"
+#include "lightsky/draw/transform.h"
 
 namespace ls {
 namespace draw {
     
 enum class camera_mode_t {
-    FIRST_PERSON,
-    ARCBALL
+    ARCBALL,
+    FIRST_PERSON
 };
 
 /**----------------------------------------------------------------------------
@@ -94,26 +94,16 @@ class camera {
         math::vec3 target;
 
         /**
-         * @brief Camera Position
-         */
-        math::vec3 pos;
-
-        /**
-         * @brief Quaternion rotation, converted from the rotation angles.
-         */
-        math::quat orientation;
-
-        /**
-         * @brief viewMatrix contains the camera's rotation after being
-         * transformed.
-         */
-        math::mat4 viewMatrix;
-
-        /**
          * @brief projMatrix contains only the projection parameters of the
          * camera which make up a viewing frustum.
          */
         math::mat4 projMatrix;
+        
+        /**
+         * @brief The viewTransform contains all transformations used for the
+         * view matrix.
+         */
+        transform viewTransform;
 
         /**
          * @brief rotateUnlockedY
@@ -234,6 +224,15 @@ class camera {
          * camera's view matrix.
          */
         const math::vec3& getPosition() const;
+
+        /**
+         * @brief Get the current position of the view matrix.
+         * 
+         * @return A 3D vector, containing the first three values of the final
+         * row of the view matrix, representing the absolute position before
+         * a perspective divide.
+         */
+        math::vec3 getAbsolutePosition() const;
 
         /**
          * @brief Set the position of the camera in 3D cartesian space.

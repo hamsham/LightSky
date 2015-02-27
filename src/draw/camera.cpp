@@ -34,15 +34,13 @@ camera::camera() :
     zNear{DEFAULT_Z_NEAR},
     zFar{DEFAULT_Z_FAR},
     target{0.f, 0.f, 1.f},
-    pos{0.f},
-    orientation{0.f, 0.f, 0.f, 1.f},
-    viewMatrix{1.f},
     projMatrix{math::perspective(
         DEFAULT_VIEW_ANGLE,
         DEFAULT_ASPECT_WIDTH/DEFAULT_ASPECT_HEIGHT,
         DEFAULT_Z_NEAR,
         DEFAULT_Z_FAR
-    )}
+    )},
+    viewTransform{}
 {}
 
 /*-------------------------------------
@@ -71,10 +69,8 @@ camera& camera::operator = (const camera& c) {
     zNear = c.zNear;
     zFar = c.zFar;
     target = c.target;
-    pos = c.pos;
-    orientation = c.orientation;
-    viewMatrix = c.viewMatrix;
     projMatrix = c.projMatrix;
+    viewTransform = c.viewTransform;
 
     return *this;
 }
@@ -91,21 +87,21 @@ camera& camera::operator =(camera&& c) {
  * Get the forward direction
 -------------------------------------*/
 math::vec3 camera::getDirection() const {
-    return math::getAxisZ(orientation);
+    return math::getAxisZ(viewTransform.getOrientation());
 }
 
 /*-------------------------------------
  * Set the camera's direction
 -------------------------------------*/
 void camera::setDirection(const math::vec3& d) {
-    orientation = math::lookAt(d, math::vec3{0.f, 0.f, 1.f});
+    viewTransform.setOrientation(math::lookAt(d, math::vec3{0.f, 0.f, 1.f}));
 }
 
 /*-------------------------------------
  * Retrieve the camera's up vector
 -------------------------------------*/
 math::vec3 camera::getUpDirection() const {
-    return math::getAxisY(orientation);
+    return math::getAxisY(viewTransform.getOrientation());
 }
 
 /*-------------------------------------
@@ -113,10 +109,10 @@ math::vec3 camera::getUpDirection() const {
 -------------------------------------*/
 void camera::setUpDirection(const math::vec3& up) {
     if (viewMode == camera_mode_t::FIRST_PERSON) {
-        lookAt(pos, getDirection(), up);
+        lookAt(getAbsolutePosition(), getDirection(), up);
     }
     else {
-        lookAt(pos, target, up);
+        lookAt(getAbsolutePosition(), target, up);
     }
 }
 
@@ -148,10 +144,15 @@ void camera::lockYAxis(bool isLocked) {
  * Looking at targets
 -------------------------------------*/
 void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::vec3& up) {
-    pos = (viewMode == camera_mode_t::FIRST_PERSON) ? eye : -eye;
     target = point;
     
-    orientation = math::matToQuat(math::lookAt(pos, target, up));
+    if (viewMode == camera_mode_t::ARCBALL) {
+        viewTransform.extractTransforms(math::lookFrom(eye-target, math::vec3{0.f}, up));
+    }
+    else {
+        viewTransform.extractTransforms(math::lookAt(eye-target, math::vec3{0.f}, up));
+        viewTransform.setPosition(-eye);
+    }
 }
 
 /*-------------------------------------
@@ -159,44 +160,32 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
 -------------------------------------*/
 void camera::move(const math::vec3& amount) {
     if (viewMode == camera_mode_t::FIRST_PERSON) {
-        pos[0] -= math::dot(math::getAxisX(orientation), amount);
-        pos[1] -= math::dot(math::getAxisY(orientation), amount);
-        pos[2] -= math::dot(math::getAxisZ(orientation), amount);
+        viewTransform.move(amount, false);
     }
     else {
-        pos += amount;
+        viewTransform.move(amount, true);
     }
 }
 
 /*-------------------------------------
  * FPS Rotation (unlocked Y axis)
 -------------------------------------*/
-inline void camera::rotateUnlockedY(const math::vec3& amount) {
-    // Always lerp to the new mouse position
-    const math::quat&& lerpX = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f},
-        math::quat{amount[1], 0.f, 0.f, 1.f},
-        1.f
-    );
-    
-    const math::quat&& lerpY = math::lerp(
-        math::quat{0.f, 0.f, 0.f, 1.f},
-        math::quat{0.f, amount[0], 0.f, 1.f},
-        1.f
-    );
-    
-    orientation = math::normalize(orientation * lerpY * lerpX);
+void camera::rotateUnlockedY(const math::vec3& amount) {
+    const math::quat&& xAxis = math::quat{0.f, amount[0], 0.f, 0.f};
+    const math::quat&& yAxis = math::quat{amount[1], 0.f, 0.f, 0.f};
+    viewTransform.rotate(xAxis * yAxis);
 }
 
 /*-------------------------------------
  * FPS rotation (locked Y axis)
 -------------------------------------*/
 void camera::rotateLockedY(const math::vec3& amount) {
-    orientation = math::normalize(
-        math::quat{0.f, amount[0], 0.f, 1.f} *
-        orientation *
-        math::quat{amount[1], 0.f, 0.f, 1.f}
-    );
+    const math::quat&  orientation  = viewTransform.getOrientation();
+    const math::quat&& xAxis        = math::quat{0.f, amount[0], 0.f, 1.f};
+    const math::quat&& yAxis        = math::quat{amount[1], 0.f, 0.f, 1.f};
+    const math::quat&& camRotation  = xAxis * orientation * yAxis;
+    
+    viewTransform.setOrientation(math::normalize(camRotation));
 }
 
 /*-------------------------------------
@@ -210,24 +199,11 @@ void camera::unroll() {
  * Update Implementation
 -------------------------------------*/
 void camera::update() {
-    if (viewMode == camera_mode_t::FIRST_PERSON) {
-        viewMatrix = math::quatToMat4(orientation);
-        const math::vec3&& xAxis = math::vec3{viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]};
-        const math::vec3&& yAxis = math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
-        const math::vec3&& zAxis = math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
-
-        viewMatrix[3][0] = -math::dot(xAxis, pos);
-        viewMatrix[3][1] = -math::dot(yAxis, pos);
-        viewMatrix[3][2] = -math::dot(zAxis, pos);
+    if (viewMode == camera_mode_t::ARCBALL) {
+        viewTransform.applyPreTransforms(math::translate(math::mat4{1.f}, -target));
     }
     else {
-        const math::quat&& o = math::conjugate(orientation);
-        const math::vec3&& x = math::getAxisX(o);
-        const math::vec3&& y = math::getAxisY(o);
-        const math::vec3&& z = math::getAxisZ(o);
-        const math::vec3&& v = pos-target;
-        const math::vec3&& p = {(x*v[0]) + (y*v[1]) + (z*v[2])};
-        viewMatrix = math::lookAt(p+target, target, y);
+        viewTransform.applyTransforms(false);
     }
 }
 

@@ -344,7 +344,7 @@ math::mat4_t<num_t> math::translate(const mat4_t<num_t>& m, const vec3_t<num_t>&
 -------------------------------------*/
 template <typename num_t> inline
 math::mat4_t<num_t> math::perspective(num_t fov, num_t aspect, num_t zNear, num_t zFar) {
-    const num_t top     = LS_TAN(LS_DEG2RAD(fov) / num_t{2}) * zNear;
+    const num_t top     = LS_TAN(fov / num_t{2}) * zNear;
     const num_t bottom  = -top;
     const num_t xMin    = bottom * aspect;
     const num_t xMax    = top * aspect;
@@ -363,7 +363,7 @@ math::mat4_t<num_t> math::perspective(num_t fov, num_t aspect, num_t zNear, num_
 -------------------------------------*/
 template <typename num_t> inline
 math::mat4_t<num_t> math::infinitePerspective(num_t fov, num_t aspect, num_t zNear) {
-    const num_t top     = LS_TAN(LS_DEG2RAD(fov) / num_t{2}) * zNear;
+    const num_t top     = LS_TAN(fov / num_t{2}) * zNear;
     const num_t bottom  = -top;
     const num_t xMin    = bottom * aspect;
     const num_t xMax    = top * aspect;

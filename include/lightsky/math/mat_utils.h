@@ -269,7 +269,7 @@ mat4_t<N> translate(const mat4_t<N>& m, const vec3_t<N>& amount);
  *  Create a 2D perspective projection matrix in 3D space.
  *  
  *  @param fov
- *  The angle, in degrees, representing the field of view of the projection
+ *  The angle, in radians, representing the field of view of the projection
  *  matrix.
  *  
  *  @param aspect
@@ -297,7 +297,7 @@ mat4_t<N> perspective(N fov, N aspect, N zNear, N zFar);
  *  of floating-point values far from the projection matrix.
  *  
  *  @param fov
- *  The angle, in degrees, representing the field of view of the projection
+ *  The angle, in radians, representing the field of view of the projection
  *  matrix.
  *  
  *  @param aspect

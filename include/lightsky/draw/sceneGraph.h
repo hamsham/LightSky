@@ -58,6 +58,8 @@ class sceneGraph {
          */
         //std::stack<nodeStackInfo> updateStack;
         
+        unsigned activeCamera = 0;
+        
         /**
          * @brief rootNode
          *
@@ -66,12 +68,12 @@ class sceneGraph {
         sceneNode rootNode;
 
         /**
-         * @brief pMainCamera
+         * @brief cameraList
          *
-         * Contains the view/projection transformations used to render
-         * sceneNodes onto a framebuffer.
+         * Contains a list of camera objects to provide viewports or places to
+         * view the scene from.
          */
-        utils::pointer<camera> pMainCamera;
+        std::vector<camera> cameraList;
 
         /**
          * @brief geometryList
@@ -150,6 +152,22 @@ class sceneGraph {
         bool importMeshes(const sceneResource& r, const unsigned textureOffset);
         
         /**
+         * @brief Retrieve the list of camera from a scene resource into
+         * *this.
+         * 
+         * @param r
+         * A constant reference to a scene resource.
+         * 
+         * @param append
+         * A boolean to determine if camera objects should be appended (TRUE)
+         * to the current camera list or not (FALSE).
+         * 
+         * @return TRUE if the cameras were successfully imported from the
+         * scene resource.
+         */
+        bool importCameras(const sceneResource& r, bool append);
+        
+        /**
          * @brief Import the scene's node hierarchy from a scene resource
          * object.
          * 
@@ -176,10 +194,10 @@ class sceneGraph {
          * The number of milliseconds which have passed since the last call to
          * "update()."
          * 
-         * @param node
-         * A reference to the scene node object which is to be updated.
+         * @param pNode
+         * A constant pointer to the scene node object which is to be updated.
          */
-        void updateSceneNode(uint64_t millisElapsed, sceneNode& node);
+        void updateSceneNode(uint64_t millisElapsed, sceneNode* const pNode);
 
     public:
         /**
@@ -283,6 +301,23 @@ class sceneGraph {
          * @return A reference to a sceneNode object.
          */
         sceneNode& getRootNode();
+        
+        /**
+         * @brief Set the active camera in the scene to the one referenced at
+         * a particular index.
+         * 
+         * @param cameraIndex
+         * The array index of the camera within *this object's camera array.
+         */
+        void setActiveCameraIndex(unsigned cameraIndex);
+        
+        /**
+         * @brief Get the index of the currently active camera in the scene.
+         * 
+         * @return The array index of the camera within *this object's camera
+         * array.
+         */
+        unsigned getActiveCameraIndex() const;
 
         /**
          * @brief Get a constant reference to primary camera in the scene.
@@ -290,7 +325,7 @@ class sceneGraph {
          * @return A constant reference to the main camera used for rendering.
          * If there is no camera in *this, a camera will be dynamically created.
          */
-        const camera& getMainCamera() const;
+        const camera& getActiveCamera() const;
 
         /**
          * @brief Get a reference to primary camera in the scene.
@@ -298,7 +333,23 @@ class sceneGraph {
          * @return A reference to the main camera used for rendering. If there
          * is no camera in *this, a camera will be dynamically created.
          */
-        camera& getMainCamera();
+        camera& getActiveCamera();
+        
+        /**
+         * @brief Retrieve the list of camera in *this (const).
+         * 
+         * @return A vector of camera objects which can be used to render the
+         * scene of nodes.
+         */
+        const std::vector<camera>& getCameraList() const;
+        
+        /**
+         * @brief Retrieve the list of camera in *this.
+         * 
+         * @return A vector of camera objects which can be used to render the
+         * scene of nodes.
+         */
+        std::vector<camera>& getCameraList();
 
         /**
          * @brief Get the array of textures used by *this scene object's

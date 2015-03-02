@@ -41,6 +41,7 @@ enum : unsigned int {
         | aiProcess_FindDegenerates
         | aiProcess_FindInvalidData
         | aiProcess_ValidateDataStructure
+        | aiProcess_ImproveCacheLocality
         | 0
 };
 
@@ -50,6 +51,40 @@ enum mesh_invalid_prim_t : int {
         | aiPrimitiveType_POINT
         | aiPrimitiveType_POLYGON
 };
+
+template <typename num_t>
+ls::math::vec2_t<num_t> convertAssimpVector(const aiVector2t<num_t>& inVec) {
+    return ls::math::vec2_t<num_t>{inVec.x, inVec.y};
+}
+
+template <typename num_t>
+ls::math::vec3_t<num_t> convertAssimpVector(const aiVector3t<num_t>& inVec) {
+    return ls::math::vec3_t<num_t>{inVec.x, inVec.z, -inVec.y};
+}
+
+template <typename num_t>
+ls::math::quat_t<num_t> convertAssimpVector(const aiQuaterniont<num_t>& inQuat) {
+    return ls::math::quat_t<num_t>{inQuat.x, inQuat.y, inQuat.z, inQuat.w};
+}
+
+template <typename num_t>
+ls::math::mat3_t<num_t> convertAssimpMatrix(const aiMatrix3x3t<num_t>& inMat) {
+    return ls::math::mat3_t<num_t>{
+        inMat.a1, inMat.b1, inMat.c1,
+        inMat.a2, inMat.b2, inMat.c2,
+        inMat.a3, inMat.b3, inMat.c3, 
+    };
+}
+
+template <typename num_t>
+ls::math::mat4_t<num_t> convertAssimpMatrix(const aiMatrix4x4t<num_t>& inMat) {
+    return ls::math::mat4_t<num_t>{
+        inMat.a1, inMat.b1, inMat.c1, inMat.d1,
+        inMat.a2, inMat.b2, inMat.c2, inMat.d2,
+        inMat.a3, inMat.b3, inMat.c3, inMat.d3,
+        inMat.a4, inMat.b4, inMat.c4, inMat.d4
+    };
+}
 }
 
 namespace ls {
@@ -77,6 +112,7 @@ sceneResource::sceneResource(const sceneResource& r) :
     indexList{r.indexList},
     nodeList{r.nodeList},
     meshList{r.meshList},
+    cameraList{r.cameraList},
     textureSet{r.textureSet},
     totalBounds{r.totalBounds}
 {
@@ -94,6 +130,7 @@ sceneResource::sceneResource(sceneResource&& r) :
     indexList{std::move(r.indexList)},
     nodeList{std::move(r.nodeList)},
     meshList{std::move(r.meshList)},
+    cameraList{std::move(r.cameraList)},
     textureSet{std::move(r.textureSet)},
     totalBounds{std::move(r.totalBounds)}
 {
@@ -118,6 +155,7 @@ sceneResource& sceneResource::operator=(const sceneResource& r) {
     indexList = r.indexList;
     nodeList = r.nodeList;
     meshList = r.meshList;
+    cameraList = r.cameraList;
     textureSet = r.textureSet;
     totalBounds = r.totalBounds;
     
@@ -150,6 +188,8 @@ sceneResource& sceneResource::operator=(sceneResource&& r) {
     
     meshList = std::move(r.meshList);
     
+    cameraList = std::move(r.cameraList);
+    
     textureSet = std::move(r.textureSet);
     
     totalBounds = std::move(r.totalBounds);
@@ -175,6 +215,8 @@ void sceneResource::unload() {
     
     meshList.clear();
     
+    cameraList.clear();
+    
     textureSet.clear();
     
     totalBounds.resetSize();
@@ -188,10 +230,12 @@ bool sceneResource::initVertices(unsigned vertCount, unsigned indexCount) {
     
     // create the vertex buffer
     vertexList.resize(vertCount);
+    vertexList.shrink_to_fit();
     
     // create the index buffer
     if (indexCount > 0) {
         indexList.resize(indexCount);
+        indexList.shrink_to_fit();
     }
     
     this->dataSize
@@ -689,6 +733,9 @@ bool sceneResource::loadFile(const std::string& filename) {
         return false;
     }
     else {
+        // lights, camera, action
+        importCameras(pScene);
+        
         // load the scene graph
         const aiNode* const pRootNode = pScene->mRootNode;
         readNodeHeirarchy(pRootNode, 0);
@@ -702,11 +749,12 @@ bool sceneResource::loadFile(const std::string& filename) {
 
     LS_LOG_MSG(
         "\tSuccessfully loaded the 3D mesh file  \"", filename, "\"!\n",
-        "\tTotal Vertices: ", getNumVertices(), '\n',
-        "\tTotal Indices:  ", getNumIndices(), '\n',
-        "\tTotal Meshes:   ", getNumMeshes(), '\n',
-        "\tTotal Nodes:    ", getNumNodes(), '\n',
-        "\tTotal Texs:     ", getNumTextureTypes(), '\n'
+        "\tTotal Vertices:  ", getNumVertices(), '\n',
+        "\tTotal Indices:   ", getNumIndices(), '\n',
+        "\tTotal Meshes:    ", getNumMeshes(), '\n',
+        "\tTotal Cameras:   ", getNumCameras(), '\n',
+        "\tTotal Nodes:     ", getNumNodes(), '\n',
+        "\tTotal Textures:  ", getNumTextureTypes(), '\n'
     );
 
     return true;
@@ -751,6 +799,7 @@ bool sceneResource::preprocessMeshData(const aiScene * const pScene) {
     }
     else {
         meshList.resize(pScene->mNumMeshes);
+        meshList.shrink_to_fit();
     }
     
     return true;
@@ -798,9 +847,13 @@ bool sceneResource::importMeshData(const aiScene* const pScene) {
             }
         }
 
+        resourceMesh& outMesh = meshList[meshIter];
+        
+        outMesh.textureIndex = pMesh->mMaterialIndex;
+        
         // load all face data
-        importMeshFaces(pMesh, baseVertex, baseIndex, meshList[meshIter].indices);
-        meshList[meshIter].textureIndex = pMesh->mMaterialIndex;
+        importMeshFaces(pMesh, baseVertex, baseIndex, outMesh.indices);
+        importMeshBones(pMesh, outMesh);
     }
 
     return true;
@@ -839,6 +892,37 @@ void sceneResource::importMeshFaces(
     // prepare the vertex and index offsets to the next mesh entry
     baseIndex += meshIndices.count;
     baseVertex += pMesh->mNumVertices;
+}
+
+/*-------------------------------------
+    Read and import all bones
+-------------------------------------*/
+void sceneResource::importMeshBones(const aiMesh* const pMesh, resourceMesh& outMesh) {
+    const unsigned numBones = pMesh->mNumBones;
+    
+    std::vector<bone>& boneList = outMesh.bones;
+    boneList.resize(numBones);
+    boneList.shrink_to_fit();
+    
+    for (unsigned i = 0; i < pMesh->mNumBones; ++i) {
+        const aiBone* const pBone = pMesh->mBones[i];
+        
+        bone& b = boneList[i];
+        b.setOffsetMatrix(convertAssimpMatrix(pBone->mOffsetMatrix));
+        
+        const unsigned numWeights = pBone->mNumWeights;
+        std::vector<boneVertex>& weights = b.getVertexWeights();
+        weights.resize(numWeights);
+        weights.shrink_to_fit();
+        
+        for (unsigned j = 0; j < numWeights; ++j) {
+            const aiVertexWeight& inWeight = pBone->mWeights[j];
+            boneVertex& boneVert = weights[j];
+            
+            boneVert.vertIndex = inWeight.mVertexId;
+            boneVert.weight = inWeight.mWeight;
+        }
+    }
 }
 
 /*-------------------------------------
@@ -913,6 +997,63 @@ void sceneResource::importSingleTexturePath(const aiMaterial* const pMaterial, i
 }
 
 /*-------------------------------------
+ * Import all matrices
+-------------------------------------*/
+void sceneResource::importCameras(const aiScene* const pScene) {
+    const aiCamera* const* const pCamList = pScene->mCameras;
+    const unsigned numCameras = pScene->mNumCameras;
+    
+    cameraList.resize(numCameras);
+    cameraList.shrink_to_fit();
+    
+    for (unsigned i = 0; i < numCameras; ++i) {
+        const aiCamera* const pInCam = pCamList[i];
+        camera& cam = cameraList[i];
+        
+        cam.setProjectionParams(
+            pInCam->mHorizontalFOV,
+            pInCam->mAspect, 1.f,
+            pInCam->mClipPlaneNear,
+            pInCam->mClipPlaneFar
+        );
+        cam.makePerspective();
+        
+        const aiNode* const pNode = pScene->mRootNode->FindNode(pInCam->mName);
+        
+        if (pNode) {
+            const aiMatrix4x4& inMat = pNode->mTransformation;
+            aiVector3D inVec;
+            
+            inVec = pInCam->mPosition;
+            inVec *= inMat;
+            const math::vec3&& finalPos = convertAssimpVector(inVec);
+
+            inVec = pInCam->mLookAt;
+            inVec *= inMat;
+            const math::vec3&& finalDir = convertAssimpVector(inVec);
+
+            inVec = pInCam->mUp;
+            inVec *= inMat;
+            const math::vec3&& finalUp = convertAssimpVector(inVec);
+            
+            cam.lookAt(finalPos, finalDir, finalUp);
+        }
+        
+        cam.update();
+        
+        LS_LOG_MSG("\tLoaded Scene Camera ", i, '/', numCameras, ':',
+            "\n\t\tField of View: ", LS_RAD2DEG(cam.getFov()),
+            "\n\t\tAspect Ratio:  ", cam.getAspectRatio(),
+            "\n\t\tNear Plane:    ", cam.getNearPlane(),
+            "\n\t\tFar Plane:     ", cam.getFarPlane(),
+            "\n\t\tPosition:      {", cam.getPosition()[0], ", ", cam.getPosition()[1], ", ", cam.getPosition()[2], '}',
+            "\n\t\tLook Target:   {", cam.getTarget()[0], ", ", cam.getTarget()[1], ", ", cam.getTarget()[2], '}',
+            "\n\t\tUp Direction:  {", cam.getUpDirection()[0], ", ", cam.getUpDirection()[1], ", ", cam.getUpDirection()[2], '}'
+        );
+    }
+}
+
+/*-------------------------------------
     Read and import all meshes in a scene
 -------------------------------------*/
 unsigned sceneResource::readNodeHeirarchy(
@@ -922,7 +1063,7 @@ unsigned sceneResource::readNodeHeirarchy(
 ) {
     // add a new scene node to the list
     const unsigned currentIndex = nodeList.size();
-    nodeList.push_back(resourceNode{});
+    nodeList.emplace_back(resourceNode{});
     resourceNode& currentNode = nodeList.back();
 
     currentNode.nodeParentId = parentId;
@@ -941,12 +1082,7 @@ unsigned sceneResource::readNodeHeirarchy(
 
     // import the node's model matrix
     const aiMatrix4x4& nodeMat = pNode->mTransformation;
-    currentNode.nodeTransform = math::mat4{
-        nodeMat.a1, nodeMat.b1, nodeMat.c1, nodeMat.d1,
-        nodeMat.a2, nodeMat.b2, nodeMat.c2, nodeMat.d2,
-        nodeMat.a3, nodeMat.b3, nodeMat.c3, nodeMat.d3,
-        nodeMat.a4, nodeMat.b4, nodeMat.c4, nodeMat.d4
-    } * parentTransform;
+    currentNode.nodeTransform = convertAssimpMatrix(nodeMat) * parentTransform;
 
     // allocate memory for the child nodes
     std::vector<unsigned>& childIndices = currentNode.nodeChildren;

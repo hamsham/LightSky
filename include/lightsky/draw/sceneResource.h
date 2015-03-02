@@ -16,7 +16,9 @@
 #include "lightsky/utils/resource.h"
 
 #include "lightsky/draw/atlas.h"
+#include "lightsky/draw/bone.h"
 #include "lightsky/draw/boundingBox.h"
+#include "lightsky/draw/camera.h"
 #include "lightsky/draw/drawCommand.h"
 #include "lightsky/draw/sceneNode.h"
 #include "lightsky/draw/setup.h"
@@ -56,6 +58,7 @@ class sceneResource final : public utils::resource {
         struct resourceMesh {
             draw_index_pair_t indices = {};
             unsigned textureIndex = INVALID_SCENE_RESOURCE;
+            std::vector<bone> bones;
         };
         
         /**
@@ -97,6 +100,12 @@ class sceneResource final : public utils::resource {
          * mesh object's texture index.
          */
         std::vector<resourceMesh> meshList;
+        
+        /**
+         * @brief cameraList contains all camera loaded from the imported
+         * scene file.
+         */
+        std::vector<camera> cameraList;
         
         /**
          * @brief textureList is a set of texture resource objects, containing
@@ -198,6 +207,17 @@ class sceneResource final : public utils::resource {
         );
         
         /**
+         * @brief Import all bones for a specific mesh.
+         * 
+         * @param pMesh
+         * A constant pointer to a constant ASSIMP mesh.
+         * 
+         * @param outMesh
+         * A reference to the mesh wrapper which will contain the bones.
+         */
+        void importMeshBones(const aiMesh* const pMesh, resourceMesh& outMesh);
+        
+        /**
          * @brief Scan an assimp scene and load all paths and slots for the
          * textures referenced by a mesh.
          * 
@@ -221,6 +241,14 @@ class sceneResource final : public utils::resource {
          */
         void importSingleTexturePath(const aiMaterial* const pMaterial, int slotType);
 
+        /**
+         * @brief Import all cameras into the scene.
+         * 
+         * @param pScene
+         * A constant pointer to a constant ASSIMP scene object.
+         */
+        void importCameras(const aiScene* const pScene);
+        
         /**
          * @brief readNodeHeirarchy
          * Recursively reads and imports scene graph data from Assimp.
@@ -402,6 +430,22 @@ class sceneResource final : public utils::resource {
          * the resourceTexture objects available to load from disk.
          */
         const std::map<tex_slot_t, std::vector<resourceTexture>>& getTextures() const;
+        
+        /**
+         * @breif Retrieve the number of camera objects in *this.
+         * 
+         * @return An unsigned integral type, denoting how many camera objects
+         * were loaded into *this from a scene file.
+         */
+        unsigned getNumCameras() const;
+        
+        /**
+         * @brief Get all cameras in *this.
+         * 
+         * @return A constant reference to a std:vector object containing all
+         * cameras which were loaded during the last scene file import.
+         */
+        const std::vector<camera>& getCameras() const;
         
         /**
          * @brief Unload

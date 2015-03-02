@@ -276,7 +276,7 @@ void pickingRenderStage::draw(
 /*-------------------------------------
  * Render an individual scene node.
 -------------------------------------*/
-void pickingRenderStage::drawSceneNode(const sceneGraph&, const sceneNode& node) {
+void pickingRenderStage::drawSceneNode(const sceneGraph&, const sceneNode* const pNode) {
     LOG_GL_ERR();
     
     const shaderProgram& shaderBinary = getShaderProgram();
@@ -285,10 +285,10 @@ void pickingRenderStage::drawSceneNode(const sceneGraph&, const sceneNode& node)
     const color::colorf_t&& idColor = pickingBuffer::convertIdToPixelColor(currentNode++);
     shaderBinary.setUniformValue(meshInstanceId, idColor);
 
-    const math::mat4& modelMatrix = node.nodeTransform.getTransform();
+    const math::mat4& modelMatrix = pNode->nodeTransform.getTransform();
     shaderBinary.setUniformValue(modelMatUniformId, modelMatrix, false);
 
-    for (const sceneMesh* pMesh : node.nodeMeshes) {
+    for (const sceneMesh* pMesh : pNode->nodeMeshes) {
         pMesh->draw();
     }
 

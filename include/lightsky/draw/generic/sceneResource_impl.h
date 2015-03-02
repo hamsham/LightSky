@@ -88,6 +88,20 @@ sceneResource::getTextures() const {
 }
 
 /*-------------------------------------
+    Get the number of camera objects which are contained in *this.
+-------------------------------------*/
+inline unsigned sceneResource::getNumCameras() const {
+    return cameraList.size();
+}
+
+/*-------------------------------------
+    Get the camera objects which are contained in *this.
+-------------------------------------*/
+inline const std::vector<camera>& sceneResource::getCameras() const {
+    return cameraList;
+}
+
+/*-------------------------------------
     Get the draw mode that was generated while loading a mesh.
 -------------------------------------*/
 inline draw_mode_t sceneResource::getDrawMode() const {

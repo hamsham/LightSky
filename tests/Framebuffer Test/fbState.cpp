@@ -21,7 +21,7 @@ enum {
 };
 
 
-static constexpr float TEST_PROJECTION_FOV = 60.f;
+static constexpr float TEST_PROJECTION_FOV = LS_DEG2RAD(60.f);
 static constexpr float TEST_PROJECTION_NEAR = 0.1f;
 static constexpr float TEST_PROJECTION_FAR = 100.f;
 static constexpr float TEST_INSTANCE_RADIUS = 0.5f;
@@ -115,14 +115,14 @@ bool fbState::onStart() {
         return false;
     }
     
-    draw::camera& mainCam = pScene->getMainCamera();
+    draw::camera& mainCam = pScene->getActiveCamera();
     mainCam.setProjectionParams(TEST_PROJECTION_FOV, TEST_FRAMEBUFFER_WIDTH, TEST_FRAMEBUFFER_HEIGHT, TEST_PROJECTION_NEAR, TEST_PROJECTION_FAR);
     mainCam.makePerspective();
     mainCam.lockYAxis(true);
-    //mainCam.lockYAxis(false);
     //mainCam.setViewMode(ls::draw::camera_mode_t::ARCBALL);
-    mainCam.setViewMode(ls::draw::camera_mode_t::FIRST_PERSON);
-    mainCam.lookAt(math::vec3{25.f, 25.f, 25.f}, math::vec3{0.f, 50.f, 0.f});
+    //mainCam.setViewMode(ls::draw::camera_mode_t::FIRST_PERSON);
+    //mainCam.lookAt(math::vec3{25.f, 25.f, 25.f});
+    //mainCam.lookAt(math::vec3{25.f, 25.f, 25.f}, math::vec3{0.f, 50.f, 0.f});
     
     constexpr draw::color::color gray = draw::color::gray;
     glClearColor(gray[0], gray[1], gray[2], gray[3]);
@@ -172,7 +172,7 @@ void fbState::onStop() {
  * Camera movement
 -------------------------------------*/
 void fbState::moveCamera(const math::vec3& deltaPos) {
-    draw::camera& mainCam = pScene->getMainCamera();
+    draw::camera& mainCam = pScene->getActiveCamera();
     mainCam.move(deltaPos);
 }
 
@@ -180,6 +180,6 @@ void fbState::moveCamera(const math::vec3& deltaPos) {
  * Mouse Move Event
 -------------------------------------*/
 void fbState::rotateCamera(const math::vec3& deltaAngle) {
-    draw::camera& mainCam = pScene->getMainCamera();
+    draw::camera& mainCam = pScene->getActiveCamera();
     mainCam.rotate(deltaAngle);
 }

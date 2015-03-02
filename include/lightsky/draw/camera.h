@@ -40,7 +40,7 @@ class camera {
         /**
          * @brief Default angle for the field-of-view
          */
-        static constexpr float DEFAULT_VIEW_ANGLE = 60.f;
+        static constexpr float DEFAULT_VIEW_ANGLE = LS_DEG2RAD(60.f);
 
         /**
          * @brief Default Perspective-projection matrix.
@@ -316,6 +316,26 @@ class camera {
          * orientation.
          */
         void setOrientation(const math::quat& o);
+        
+        /**
+         * @brief Set the field of view for the camera;
+         * 
+         * Remember to call either "makeOrtho()" or "makePerspective()" after
+         * calling this method.
+         * 
+         * @param viewAngle
+         * The desired horizontal angle, in radians, which the field of view
+         * should be set to.
+         */
+        void setFov(unsigned viewAngle);
+        
+        /**
+         * @brief Retrieve the horizontal field of view of the camera.
+         * 
+         * @return A floating point number, representing the number of radians
+         * of the field of view of the camera.
+         */
+        float getFov() const;
 
         /**
          * @brief Set the aspect ration of the internal camera.

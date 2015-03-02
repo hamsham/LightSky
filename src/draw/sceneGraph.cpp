@@ -31,35 +31,44 @@ sceneGraph::~sceneGraph() {
  * Constructor
 -------------------------------------*/
 sceneGraph::sceneGraph() :
+    activeCamera{0},
     rootNode{},
-    pMainCamera{new camera{}},
+    cameraList{1, camera{}},
     geometryList{},
     textureList{},
     meshList{},
     nodeList{}
 {
-    pMainCamera->makePerspective();
-    pMainCamera->lockYAxis(true);
+    camera& mainCamera = cameraList.front();
+    mainCamera.makePerspective();
+    mainCamera.lockYAxis(true);
 }
 
 /*-------------------------------------
  * Move Constructor
 -------------------------------------*/
 sceneGraph::sceneGraph(sceneGraph&& s) :
+    activeCamera{s.activeCamera},
     rootNode{std::move(s.rootNode)},
-    pMainCamera{std::move(s.pMainCamera)},
+    cameraList{std::move(s.cameraList)},
     geometryList{std::move(s.geometryList)},
     textureList{std::move(s.textureList)},
     meshList{std::move(s.meshList)},
     nodeList{std::move(s.nodeList)}
-{}
+{
+    s.activeCamera = 0;
+    s.cameraList.push_back(camera{});
+}
 
 /*-------------------------------------
  * Move Operator
 -------------------------------------*/
 sceneGraph& sceneGraph::operator=(sceneGraph&& s) {
+    activeCamera = s.activeCamera;
+    s.activeCamera = 0;
+    
     rootNode = std::move(s.rootNode);
-    pMainCamera = std::move(s.pMainCamera);
+    cameraList = std::move(s.cameraList);
     geometryList = std::move(s.geometryList);
     textureList = std::move(s.textureList);
     meshList = std::move(s.meshList);
@@ -97,6 +106,12 @@ bool sceneGraph::init(const sceneResource& r, bool append) {
             terminate();
             return false;
         }
+    }
+    
+    if (!importCameras(r, append)) {
+        LS_LOG_ERR("\tFailed to load camera data from a scene resource.");
+        terminate();
+        return false;
     }
     
     if (!importNodes(r, meshOffset)) {
@@ -226,16 +241,39 @@ bool sceneGraph::importMeshes(const sceneResource& r, const unsigned textureOffs
         }
         
         pMesh->setIndices(rMesh.indices);
+        const unsigned texIndex = rMesh.textureIndex + textureOffset;
         
-        if (rMesh.textureIndex < textureList.size()) {
-            texture* const pTex = textureList[textureOffset + rMesh.textureIndex];
+        if (texIndex < textureList.size()) {
+            texture* const pTex = textureList[texIndex];
             LS_DEBUG_ASSERT(pTex != nullptr);
             pMesh->addTexture(*pTex);
+        
+            LS_LOG_MSG("\tMesh ", meshList.size(), " contains texture ", texIndex);
         }
         
         meshList.push_back(pMesh);
-        
-        LS_LOG_MSG("\tMesh ", meshList.size()-1, " contains texture ", rMesh.textureIndex);
+    }
+    
+    return true;
+}
+
+/*-------------------------------------
+ * Scene Camera Loading
+-------------------------------------*/
+bool sceneGraph::importCameras(const sceneResource& r, bool append) {
+    const std::vector<camera>& rCameras = r.getCameras();
+    
+    if (!rCameras.empty()) {
+        // check to see if the default camera should be removed
+        if (!append) {
+            cameraList.clear();
+        }
+    }
+    
+    cameraList.reserve(r.getNumCameras());
+    
+    for (const camera& inCam : rCameras) {
+        cameraList.push_back(inCam);
     }
     
     return true;
@@ -254,34 +292,38 @@ bool sceneGraph::importNodes(const sceneResource& r, const unsigned meshOffset) 
     const unsigned nodeOffset = nodeList.size();
     nodeList.resize(nodeOffset + r.getNumNodes());
     
-    // insert the last node in "nodeList" into the root node
-    rootNode.nodeChildren.push_back(&nodeList[nodeOffset]);
-    
-    nodeList[nodeOffset].nodeParent = &rootNode;
-    
     for (unsigned i = 0; i < r.getNumNodes(); ++i) {
         const sceneResource::resourceNode& importNode = r.getNodes()[i];
-        sceneNode& newNode = nodeList[nodeOffset + i];
         
-        //newNode.nodeParent = &nodeList[nodeOffset + importNode.parentIndex];
-        newNode.nodeParent = &nodeList[nodeOffset + importNode.nodeParentId];
-        newNode.nodeName = importNode.nodeName;
+        nodeList[nodeOffset + i] = new sceneNode{};
+        sceneNode* const pNewNode = nodeList[nodeOffset + i];
         
-        newNode.nodeMeshes.reserve(importNode.nodeMeshes.size());
+        // handle all parent/child relationships
+        if (importNode.nodeParentId == 0) {
+            rootNode.nodeChildren.push_back(pNewNode);
+            pNewNode->nodeParent = &rootNode;
+        }
+        else {
+            const unsigned parentIndex = nodeOffset + importNode.nodeParentId;
+            pNewNode->nodeParent = nodeList[parentIndex];
+            nodeList[parentIndex]->nodeChildren.push_back(pNewNode);
+        }
         
+        pNewNode->nodeName.assign(importNode.nodeName);
+        pNewNode->nodeTransform.extractTransforms(importNode.nodeTransform);
+        
+        pNewNode->nodeMeshes.reserve(importNode.nodeMeshes.size());
         for (unsigned meshIndex : importNode.nodeMeshes) {
             sceneMesh* const pMesh = meshList[meshOffset + meshIndex];
-            newNode.nodeMeshes.push_back(pMesh);
+            pNewNode->nodeMeshes.push_back(pMesh);
         }
         
-        newNode.nodeChildren.reserve(importNode.nodeChildren.size());
+        pNewNode->nodeChildren.reserve(importNode.nodeChildren.size());
         for (unsigned childIndex : importNode.nodeChildren) {
-            newNode.nodeChildren.push_back(&nodeList[nodeOffset + childIndex]);
+            pNewNode->nodeChildren.push_back(nodeList[nodeOffset + childIndex]);
         }
         
-        newNode.nodeTransform.extractTransforms(importNode.nodeTransform);
-        
-        LS_LOG_MSG("\tAdded node \"", newNode.nodeName, "\" to a scene graph.");
+        LS_LOG_MSG("\tAdded node \"", pNewNode->nodeName, "\" to a scene graph.");
     }
     
     LS_LOG_MSG("\tSuccessfully imported ", nodeList.size(), " nodes into a scene graph.");
@@ -344,19 +386,21 @@ void sceneGraph::update(uint64_t millisElapsed) {
  * Scene updating (linear)
 -------------------------------------*/
 void sceneGraph::update(uint64_t millisElapsed) {
-    pMainCamera->update();
+    for (camera& cam : cameraList) {
+        cam.update();
+    }
     
-    for (sceneNode&node : nodeList) {
-        updateSceneNode(millisElapsed, node);
+    for (sceneNode* const pNode : nodeList) {
+        updateSceneNode(millisElapsed, pNode);
     }
 }
 
 /*-------------------------------------
  * Individual node updating
 -------------------------------------*/
-void sceneGraph::updateSceneNode(uint64_t millisElapsed, sceneNode& node) {
+void sceneGraph::updateSceneNode(uint64_t millisElapsed, sceneNode* const pNode) {
     (void)millisElapsed;
-    transform& modelTransform = node.nodeTransform;
+    transform& modelTransform = pNode->nodeTransform;
 
     if (modelTransform.isDirty()) {
         modelTransform.applyTransforms();
@@ -377,20 +421,26 @@ struct sceneDeleter {
  * Resource termination
 -------------------------------------*/
 void sceneGraph::terminate() {
+    activeCamera = 0;
+    
     rootNode.reset();
+    
+    cameraList.resize(1, camera{});
+    cameraList.shrink_to_fit();
     
     std::for_each(geometryList.begin(), geometryList.end(), sceneDeleter<geometry>{});
     geometryList.clear();
     geometryList.shrink_to_fit();
     
-    std::for_each(textureList.begin(),  textureList.end(),  sceneDeleter<texture>{});
+    std::for_each(textureList.begin(), textureList.end(), sceneDeleter<texture>{});
     textureList.clear();
     textureList.shrink_to_fit();
     
-    std::for_each(meshList.begin(),     meshList.end(),     sceneDeleter<sceneMesh>{});
+    std::for_each(meshList.begin(), meshList.end(), sceneDeleter<sceneMesh>{});
     meshList.clear();
     meshList.shrink_to_fit();
     
+    std::for_each(nodeList.begin(), nodeList.end(), sceneDeleter<sceneNode>{});
     nodeList.clear();
     nodeList.shrink_to_fit();
 }

@@ -62,11 +62,11 @@ class pickingRenderStage final : virtual public renderStage {
          * A constant reference to the current scene that contains renderable
          * scene nodes.
          * 
-         * @param node
-         * A constant reference to the scene node which contains scene meshes
+         * @param pNode
+         * A constant pointer to the scene node which contains scene meshes
          * that are to be rendered.
          */
-        virtual void drawSceneNode(const sceneGraph& scene, const sceneNode& node) override;
+        virtual void drawSceneNode(const sceneGraph& scene, const sceneNode* const pNode) override;
 
     public:
         /**

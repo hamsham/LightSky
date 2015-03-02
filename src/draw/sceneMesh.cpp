@@ -28,9 +28,11 @@ sceneMesh::sceneMesh() {
 /*-------------------------------------
     Copy Constructor
 -------------------------------------*/
+/*
 sceneMesh::sceneMesh(const sceneMesh& m) {
     this->operator=(m);
 }
+*/
 
 /*-------------------------------------
     Move Constructor
@@ -65,6 +67,7 @@ sceneMesh& sceneMesh::operator=(sceneMesh&& m) {
 /*-------------------------------------
  * Copy Operator
 -------------------------------------*/
+/*
 sceneMesh& sceneMesh::operator=(const sceneMesh& m) {
     terminate();
     
@@ -81,6 +84,7 @@ sceneMesh& sceneMesh::operator=(const sceneMesh& m) {
     
     return *this;
 }
+*/
 
 /*-------------------------------------
     Helper function to ensure all vertex attributes are setup properly.

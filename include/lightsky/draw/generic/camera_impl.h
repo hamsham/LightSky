@@ -94,6 +94,20 @@ inline void camera::setOrientation(const math::quat& o) {
 }
 
 /*-------------------------------------
+ * Set the FOV
+-------------------------------------*/
+inline void camera::setFov(unsigned viewAngle) {
+    fov = viewAngle;
+}
+
+/*-------------------------------------
+ * Get the FOV
+-------------------------------------*/
+inline float camera::getFov() const {
+    return fov;
+}
+
+/*-------------------------------------
  * Set the aspect ratio
 -------------------------------------*/
 inline void camera::setAspectRatio(float w, float h) {

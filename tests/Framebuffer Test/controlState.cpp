@@ -12,6 +12,7 @@
 #include <SDL2/SDL_events.h>
 
 #include "lightsky/game/gameSystem.h"
+#include "lightsky/draw/sceneGraph.h"
 
 #include "display.h"
 #include "controlState.h"
@@ -165,6 +166,18 @@ void controlState::onKeyboardUpEvent(const SDL_KeyboardEvent& e) {
         bool fullscreen = global::pDisplay->getFullScreenState();
         global::pDisplay->setFullScreenState(!fullscreen);
     }
+    else if (key == SDL_SCANCODE_RIGHT) {
+        ls::draw::sceneGraph* const pScene = pFbState->pScene;
+        const unsigned camIndex = pScene->getActiveCameraIndex();
+        const unsigned nextCam = (camIndex+1) % pScene->getCameraList().size();
+        pScene->setActiveCameraIndex(nextCam);
+    }
+    else if (key == SDL_SCANCODE_LEFT) {
+        ls::draw::sceneGraph* const pScene = pFbState->pScene;
+        const unsigned camIndex = pScene->getActiveCameraIndex();
+        const unsigned prevCam = (camIndex-1) % pScene->getCameraList().size();
+        pScene->setActiveCameraIndex(prevCam);
+    }
     
     pKeyStates[key] = false;
 }
@@ -239,6 +252,6 @@ void controlState::onMouseWheelEvent(const SDL_MouseWheelEvent& e) {
     const float horizAngles = (float)e.x;
     const float vertAngles = (float)e.y;
     
-    ls::draw::camera& cam = pFbState->pScene->getMainCamera();
+    ls::draw::camera& cam = pFbState->pScene->getActiveCamera();
     cam.rotate(math::vec3{horizAngles, 0.f, vertAngles * totalAngles});
 }

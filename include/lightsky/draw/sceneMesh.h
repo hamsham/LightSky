@@ -10,6 +10,7 @@
 
 #include <vector>
 
+#include "lightsky/draw/bone.h"
 #include "lightsky/draw/geometry.h"
 #include "lightsky/draw/texture.h"
 #include "lightsky/draw/vertexArray.h"
@@ -43,6 +44,8 @@ class sceneMesh {
          */
         std::vector<const texture*> textureList;
         
+        std::vector<bone> boneList;
+        
         /**
          * @brief Helper function to ensure all VAO attributes are setup
          * properly.
@@ -71,7 +74,7 @@ class sceneMesh {
          * @param m
          * A constant reference to another sceneMesh object.
          */
-        sceneMesh(const sceneMesh& m);
+        sceneMesh(const sceneMesh&) = delete;
         
         /**
          * @brief Move Constructor
@@ -95,7 +98,7 @@ class sceneMesh {
          * 
          * @return A reference to *this.
          */
-        sceneMesh& operator=(const sceneMesh& m);
+        sceneMesh& operator=(const sceneMesh&) = delete;
         
         /**
          * @brief Move Operator

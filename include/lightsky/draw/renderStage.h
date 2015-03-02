@@ -219,24 +219,24 @@ class renderStage {
          * A constant reference to the current scene that contains renderable
          * scene nodes.
          * 
-         * @param node
-         * A constant reference to the scene node which contains scene meshes
+         * @param pNode
+         * A constant pointer to the scene node which contains scene meshes
          * that are to be rendered.
          */
-        virtual void drawSceneNode(const sceneGraph& scene, const sceneNode& node);
+        virtual void drawSceneNode(const sceneGraph& scene, const sceneNode* const pNode);
         
         /**
          * @brief drawNodeMesh is an abstract method which allows scene
          * renderers to implement their own per-node render method.
          * 
-         * @param node
-         * A constant reference to the scene node containing both the spatial
+         * @param pNode
+         * A constant pointer to the scene node containing both the spatial
          * transformations and scene meshes to be rendered.
          * 
-         * @param mesh
-         * A constant reference to the scene mesh that is being rendered.
+         * @param pMesh
+         * A constant pointer to the constant scene mesh to rendered.
          */
-        virtual void drawNodeMesh(const sceneNode& node, const sceneMesh& mesh);
+        virtual void drawNodeMesh(const sceneNode* const pNode, const sceneMesh* const pMesh);
 
     public:
         /**

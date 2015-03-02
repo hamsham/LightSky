@@ -19,7 +19,7 @@ namespace draw {
 struct sceneNode;
 class sceneMesh;
 
-typedef std::deque<sceneNode> scene_node_list_t;
+typedef std::deque<sceneNode*> scene_node_list_t;
 
 /**
  * A sceneNode represents a single renderable mesh that can be drawn multiple

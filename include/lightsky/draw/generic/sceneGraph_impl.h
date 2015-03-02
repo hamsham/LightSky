@@ -23,17 +23,45 @@ inline sceneNode& sceneGraph::getRootNode() {
 }
 
 /*-------------------------------------
- * Camera Retrieval (const code smell).
+ * Camera Selection.
 -------------------------------------*/
-inline const camera& sceneGraph::getMainCamera() const {
-    return *pMainCamera;
+inline void sceneGraph::setActiveCameraIndex(unsigned cameraIndex) {
+    activeCamera = cameraIndex;
+}
+
+/*-------------------------------------
+ * Camera Selection.
+-------------------------------------*/
+inline unsigned sceneGraph::getActiveCameraIndex() const {
+    return activeCamera;
+}
+
+/*-------------------------------------
+ * Camera Retrieval (const).
+-------------------------------------*/
+inline const camera& sceneGraph::getActiveCamera() const {
+    return cameraList[activeCamera];
 }
 
 /*-------------------------------------
  * Camera Retrieval
 -------------------------------------*/
-inline camera& sceneGraph::getMainCamera() {
-    return *pMainCamera;
+inline camera& sceneGraph::getActiveCamera() {
+    return cameraList[activeCamera];
+}
+
+/*-------------------------------------
+ * Get the list of cameras (const).
+-------------------------------------*/
+inline const std::vector<camera>& sceneGraph::getCameraList() const {
+    return cameraList;
+}
+
+/*-------------------------------------
+ * Get the list of cameras.
+-------------------------------------*/
+inline std::vector<camera>& sceneGraph::getCameraList() {
+    return cameraList;
 }
 
 /*-------------------------------------

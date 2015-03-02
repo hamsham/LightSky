@@ -6,7 +6,7 @@ namespace draw {
  * Scene Gaph traversing for rendering.
 -------------------------------------*/
 inline void pickingRenderStage::draw(const sceneGraph& scene) {
-    draw(scene, scene.getMainCamera().getVPMatrix());
+    draw(scene, scene.getActiveCamera().getVPMatrix());
 }
 
 /*-------------------------------------

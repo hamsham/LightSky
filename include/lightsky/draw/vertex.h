@@ -27,8 +27,12 @@ typedef math::vec3 vert_pos_t;
 typedef math::vec2 vert_uv_t;
 typedef math::vec3 vert_norm_t;
 
+typedef unsigned bone_vert_id_t;
+typedef float bone_vert_weight_t;
+
 /**----------------------------------------------------------------------------
- * Basic vertex building block in LS.
+ * @brief Basic vertex building block in LS.
+ * 
  * This vertex type contains enough information to light a textured mesh.
 -----------------------------------------------------------------------------*/
 struct vertex {
@@ -38,34 +42,49 @@ struct vertex {
 };
 
 /**----------------------------------------------------------------------------
+ * @brief The bone vertex contains the amount of influence that a bone,
+ * at a particular ID, will have on a vertex.
+-----------------------------------------------------------------------------*/
+struct boneVertex {
+    bone_vert_id_t vertIndex;
+    bone_vert_weight_t weight;
+};
+
+/**----------------------------------------------------------------------------
  * These enumerations can be used to describe vertex layouts to VAO objects.
 -----------------------------------------------------------------------------*/
 enum class vertex_attrib_t : int {
-    VERTEX_ATTRIB_POS       = 0,
-    VERTEX_ATTRIB_TEX       = 1,
-    VERTEX_ATTRIB_NORM      = 2,
+    VERTEX_ATTRIB_POS           = 0,
+    VERTEX_ATTRIB_TEX           = 1,
+    VERTEX_ATTRIB_NORM          = 2,
     
-    VERTEX_ATTRIB_MAT_ROW   = 3,
-    VERTEX_ATTRIB_MAT_ROW0  = 3, /* Row 1, mat4_t<>[0][] */
-    VERTEX_ATTRIB_MAT_ROW1  = 4, /* Row 2, mat4_t<>[1][] */
-    VERTEX_ATTRIB_MAT_ROW2  = 5, /* Row 3, mat4_t<>[2][] */
-    VERTEX_ATTRIB_MAT_ROW3  = 6 /* Row 4, mat4_t<>[3][] */
+    VERTEX_ATTRIB_MAT_ROW       = 3, /* Matrices can be used for instancing */
+    VERTEX_ATTRIB_MAT_ROW0      = 3, /* Row 1, mat4_t<>[0][] */
+    VERTEX_ATTRIB_MAT_ROW1      = 4, /* Row 2, mat4_t<>[1][] */
+    VERTEX_ATTRIB_MAT_ROW2      = 5, /* Row 3, mat4_t<>[2][] */
+    VERTEX_ATTRIB_MAT_ROW3      = 6, /* Row 4, mat4_t<>[3][] */
+            
+    VERTEX_ATTRIB_BONE_ID       = 7,
+    VERTEX_ATTRIB_BONE_WEIGHT   = 8,
 };
 
 /**----------------------------------------------------------------------------
  * These enumerations can be used to describe vertex layouts to VAO objects.
 -----------------------------------------------------------------------------*/
 enum class vertex_desc_t : int {
-    ELEMENT_COUNT_POS       = offsetof(vertex, pos),
-    ELEMENT_COUNT_TEX       = offsetof(vertex, uv),
-    ELEMENT_COUNT_NORM      = offsetof(vertex, norm),
+    ELEMENT_COUNT_POS           = offsetof(vertex, pos),
+    ELEMENT_COUNT_TEX           = offsetof(vertex, uv),
+    ELEMENT_COUNT_NORM          = offsetof(vertex, norm),
     
     // Matrices should be included in separate VBOs from regular vertices
-    ELEMENT_COUNT_MAT_ROW  = 0,
-    ELEMENT_COUNT_MAT_ROW0 = sizeof(ls::math::vec4) * 0,
-    ELEMENT_COUNT_MAT_ROW1 = sizeof(ls::math::vec4) * 1,
-    ELEMENT_COUNT_MAT_ROW2 = sizeof(ls::math::vec4) * 2,
-    ELEMENT_COUNT_MAT_ROW3 = sizeof(ls::math::vec4) * 3
+    ELEMENT_COUNT_MAT_ROW       = 0,
+    ELEMENT_COUNT_MAT_ROW0      = sizeof(ls::math::vec4) * 0,
+    ELEMENT_COUNT_MAT_ROW1      = sizeof(ls::math::vec4) * 1,
+    ELEMENT_COUNT_MAT_ROW2      = sizeof(ls::math::vec4) * 2,
+    ELEMENT_COUNT_MAT_ROW3      = sizeof(ls::math::vec4) * 3,
+    
+    ELEMENT_COUNT_BONE_ID       = offsetof(boneVertex, vertIndex),
+    ELEMENT_COUNT_BONE_WEIGHT   = offsetof(boneVertex, weight),
 };
 
 /**----------------------------------------------------------------------------

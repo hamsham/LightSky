@@ -189,9 +189,11 @@ void defaultRenderStage::terminate() {
 void defaultRenderStage::draw(const sceneGraph& scene, const math::mat4& vpMatrix) {
     getShaderProgram().setUniformValue(vpMatUniformId, vpMatrix);
     
-    for (const sceneNode& node : scene.getNodeList()) {
-        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
-        for (const sceneMesh* const pMesh : node.nodeMeshes) {
+    for (const sceneNode* const pNode : scene.getNodeList()) {
+        const transform& nodeTransform = pNode->nodeTransform;
+        getShaderProgram().setUniformValue(modelMatUniformId, nodeTransform.getTransform());
+        
+        for (const sceneMesh* const pMesh : pNode->nodeMeshes) {
             pMesh->draw();
         }
     }
@@ -210,10 +212,11 @@ void defaultRenderStage::draw(
     const scene_node_list_t& nodes = scene.getNodeList();
     
     for (unsigned index : nodeIndices) {
-        const sceneNode& node = nodes[index];
-        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        const sceneNode* const pNode = nodes[index];
+        const transform& nodeTransform = pNode->nodeTransform;
+        getShaderProgram().setUniformValue(modelMatUniformId, nodeTransform.getTransform());
         
-        for (const sceneMesh* const pMesh : node.nodeMeshes) {
+        for (const sceneMesh* const pMesh : pNode->nodeMeshes) {
             pMesh->draw();
         }
     }

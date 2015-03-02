@@ -9,8 +9,8 @@
         <group>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/sceneResource.cpp</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/sceneGraph.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/camera.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/draw/sceneNode.h</file>
-            <file>file:/home/hammy/Development/projects/LightSky/src/draw/transform.cpp</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/camera.cpp</file>
         </group>
     </open-files>

@@ -6,7 +6,7 @@ namespace draw {
  * Draw a scene
 -------------------------------------*/
 inline void textRenderStage::draw(const sceneGraph& scene) {
-    draw(scene, scene.getMainCamera().getVPMatrix());
+    draw(scene, scene.getActiveCamera().getVPMatrix());
 }
 
 /*-------------------------------------

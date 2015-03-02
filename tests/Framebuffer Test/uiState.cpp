@@ -59,9 +59,10 @@ bool uiState::onStart() {
     pScene = new ls::draw::sceneGraph{};
     pRenderer = new ls::draw::textRenderStage{};
     
-    ls::draw::fontResource* pFontLoader = new ls::draw::fontResource{};
-    ls::draw::geometry* pGeometry = new ls::draw::geometry{};
-    ls::draw::sceneMesh* pMesh = new ls::draw::sceneMesh{};
+    ls::draw::fontResource* const   pFontLoader = new ls::draw::fontResource{};
+    ls::draw::geometry* const       pGeometry   = new ls::draw::geometry{};
+    ls::draw::sceneMesh* const      pMesh       = new ls::draw::sceneMesh{};
+    ls::draw::sceneNode* const      pNode       = new ls::draw::sceneNode{};
     
     if (!pScene
     || !pRenderer
@@ -73,6 +74,7 @@ bool uiState::onStart() {
     || !pGeometry->init(fontAtlas, "Hello World!")
     || !pMesh
     || !pMesh->init(*pGeometry)
+    || !pNode
     ) {
         LS_LOG_ERR("An error occurred while initializing the test state's resources");
         ret = false;
@@ -84,11 +86,10 @@ bool uiState::onStart() {
         pScene->getMeshList().push_back(pMesh);
         pMesh->addTexture(fontAtlas.getTexture());
         
-        pScene->getNodeList().resize(1);
-        ls::draw::sceneNode& node = pScene->getNodeList().back();
-        node.nodeChildren.clear();
-        node.nodeMeshes.push_back(pMesh);
-        node.nodeParent = &pScene->getRootNode();
+        pScene->getNodeList().push_back(pNode);
+        pNode->nodeChildren.clear();
+        pNode->nodeMeshes.push_back(pMesh);
+        pNode->nodeParent = &pScene->getRootNode();
         pScene->update(0);
     }
     
@@ -161,7 +162,7 @@ void uiState::reset2dViewport() const {
     const display& display = *global::pDisplay;
     const math::vec2&& displayRes = (math::vec2)display.getResolution();
     
-    ls::draw::camera& mainCam = pScene->getMainCamera();
+    ls::draw::camera& mainCam = pScene->getActiveCamera();
     mainCam.setProjectionParams(60.f, displayRes[0], displayRes[1], 0.f, 10.f);
     mainCam.makeOrtho();
 }
@@ -177,9 +178,10 @@ void uiState::drawScene() {
     const display* const disp   = global::pDisplay;
     const math::vec2&& res      = (math::vec2)disp->getResolution();
     const math::mat4&& modelMat = math::translate(math::mat4{1.f}, math::vec3{0.f, res[1], 0.f});
-    ls::draw::sceneNode& node   = pScene->getNodeList().back();
+    ls::draw::sceneNode* pNode  = pScene->getNodeList().back();
+    ls::draw::transform& trans  = pNode->nodeTransform;
     
-    node.nodeTransform.extractTransforms(math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()}));
+    trans.extractTransforms(math::scale(modelMat, math::vec3{math::length(res)*fontAtlas.getPixelRatio()}));
     
     // setup parameters to draw a transparent mesh as a screen overlay/UI
     pRenderer->bind();

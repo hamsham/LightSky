@@ -209,9 +209,9 @@ void textRenderStage::draw(const sceneGraph& scene, const math::mat4& vpMatrix) 
     getShaderProgram().setUniformValue(vpMatUniformId, vpMatrix);
     getShaderProgram().setUniformValue(colorUniformId, textColor);
     
-    for (const sceneNode& node : scene.getNodeList()) {
-        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
-        for (const sceneMesh* const pMesh : node.nodeMeshes) {
+    for (const sceneNode* const pNode : scene.getNodeList()) {
+        getShaderProgram().setUniformValue(modelMatUniformId, pNode->nodeTransform.getTransform());
+        for (const sceneMesh* const pMesh : pNode->nodeMeshes) {
             pMesh->draw();
         }
     }
@@ -231,10 +231,10 @@ void textRenderStage::draw(
     const scene_node_list_t& nodes = scene.getNodeList();
     
     for (unsigned index : nodeIndices) {
-        const sceneNode& node = nodes[index];
-        getShaderProgram().setUniformValue(modelMatUniformId, node.nodeTransform.getTransform());
+        const sceneNode* const pNode = nodes[index];
+        getShaderProgram().setUniformValue(modelMatUniformId, pNode->nodeTransform.getTransform());
         
-        for (const sceneMesh* const pMesh : node.nodeMeshes) {
+        for (const sceneMesh* const pMesh : pNode->nodeMeshes) {
             pMesh->draw();
         }
     }

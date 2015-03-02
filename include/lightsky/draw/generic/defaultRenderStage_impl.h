@@ -12,7 +12,7 @@ namespace draw {
  * Draw a scene
 -------------------------------------*/
 inline void defaultRenderStage::draw(const sceneGraph& scene) {
-    draw(scene, scene.getMainCamera().getVPMatrix());
+    draw(scene, scene.getActiveCamera().getVPMatrix());
 }
 
 } // end draw namespace

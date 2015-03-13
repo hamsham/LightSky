@@ -7,5 +7,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
+        <group name="LightSky">
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptFactory.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/script/scriptMath.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptVariable.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/setup.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/script/scriptFactory.cpp</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptFunctor.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptBasicVar.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptMath.h</file>
+            <file>file:/home/hammy/Development/projects/LightSky/src/script/scriptBasicVar.cpp</file>
+        </group>
     </open-files>
 </project-private>

@@ -31,13 +31,6 @@ inline const math::vec3& camera::getPosition() const {
 }
 
 /*-------------------------------------
- * Get the absolute view position
--------------------------------------*/
-inline math::vec3 camera::getAbsolutePosition() const {
-    return viewTransform.getAbsolutePosition();
-}
-
-/*-------------------------------------
  * Set the camera position
 -------------------------------------*/
 inline void camera::setPosition(const math::vec3& p) {

@@ -224,9 +224,11 @@
           <incDir>
             <pElem>.</pElem>
           </incDir>
+          <commandLine>-pthread</commandLine>
         </ccTool>
         <linkerTool>
           <output>benchTest</output>
+          <commandLine>-pthread</commandLine>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f2">
@@ -417,9 +419,11 @@
           <incDir>
             <pElem>.</pElem>
           </incDir>
+          <commandLine>-pthread</commandLine>
         </ccTool>
         <linkerTool>
           <output>benchTest</output>
+          <commandLine>-pthread</commandLine>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f2">

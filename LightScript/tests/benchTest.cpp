@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <thread>
 #include <chrono>
 #include <utility> /* std::move */
 #include "lightsky/script/script.h"
@@ -68,12 +69,12 @@ void nativeFunc() {
  * SCRIPTED BENCHMARK
 ******************************************************************************/
 void scriptBench() {
-    lsPointer<lsFunctor> testFunc1 = createFunctor(ls::script::scriptHash_addInts);
-    lsPointer<lsFunctor> testFunc2 = createFunctor(ls::script::scriptHash_subInts);
+    lsPointer<lsFunctor>&& testFunc1 = createFunctor(ls::script::scriptHash_addInts);
+    lsPointer<lsFunctor>&& testFunc2 = createFunctor(ls::script::scriptHash_subInts);
     
-    lsPointer<lsVariable> testVar1 = createVariable(ls::script::scriptHash_int);
-    lsPointer<lsVariable> testVar2 = createVariable(ls::script::scriptHash_int);
-    lsPointer<lsVariable> testVar3 = createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable>&& testVar1 = createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable>&& testVar2 = createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable>&& testVar3 = createVariable(ls::script::scriptHash_int);
     
     LS_SCRIPT_VAR_DATA(testVar1, int) = 42;
     LS_SCRIPT_VAR_DATA(testVar2, int) = 77;
@@ -122,8 +123,13 @@ void scriptBench() {
 }
 
 int main() {
-    scriptBench();
-    nativeFunc();
+    for (unsigned i = 5; i-->0;) {
+        std::thread t2{&nativeFunc};
+        std::thread t1{&scriptBench};
+
+        t2.join();
+        t1.join();
+    }
     
     return 0;
 }

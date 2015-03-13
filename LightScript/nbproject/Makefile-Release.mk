@@ -125,7 +125,7 @@ ${OBJECTDIR}/_ext/53083909/setup.o: ../src/script/setup.cpp
 .build-tests-conf: .build-conf ${TESTFILES}
 benchTest: ${TESTDIR}/tests/benchTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p null
-	${LINK.cc}   -o benchTest $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils.a ../LightMath/build/liblightmath.a 
+	${LINK.cc}  -pthread -o benchTest $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils.a ../LightMath/build/liblightmath.a 
 
 sequence_test: ${TESTDIR}/tests/sequence_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p null
@@ -135,7 +135,7 @@ sequence_test: ${TESTDIR}/tests/sequence_test.o ${OBJECTFILES:%.o=%_nomain.o}
 ${TESTDIR}/tests/benchTest.o: tests/benchTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/benchTest.o tests/benchTest.cpp
+	$(COMPILE.cc) -O2 -I../include -I. -std=c++11 -pthread -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/benchTest.o tests/benchTest.cpp
 
 
 ${TESTDIR}/tests/sequence_test.o: tests/sequence_test.cpp 

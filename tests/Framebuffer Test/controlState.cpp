@@ -134,6 +134,14 @@ void controlState::onRun() {
     if (pKeyStates[SDL_SCANCODE_E]) {
         pos[1] -= moveSpeed;
     }
+    if (pKeyStates[SDL_SCANCODE_1]) {
+        ls::draw::camera& mainCam = pFbState->pScene->getActiveCamera();
+        mainCam.setViewMode(ls::draw::camera_mode_t::ARCBALL);
+    }
+    if (pKeyStates[SDL_SCANCODE_2]) {
+        ls::draw::camera& mainCam = pFbState->pScene->getActiveCamera();
+        mainCam.setViewMode(ls::draw::camera_mode_t::FIRST_PERSON);
+    }
     
     pFbState->moveCamera(pos);
 }

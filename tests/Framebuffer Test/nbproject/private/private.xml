@@ -9,5 +9,6 @@
         <group>
             <file>file:/home/hammy/Development/projects/LightSky/tests/Framebuffer%20Test/fbState.cpp</file>
         </group>
+        <group name="LightSky"/>
     </open-files>
 </project-private>

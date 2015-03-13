@@ -63,6 +63,24 @@ extern template struct ls::utils::pointer<ls::script::variable>;
 extern template struct ls::utils::pointer<ls::script::functor>;
 
 namespace script { // continue script namespace
+/*-----------------------------------------------------------------------------
+ * Script Factory Functions
+-----------------------------------------------------------------------------*/
+/**
+ * @brief varFactory_t
+ * 
+ * This type represents a pointer to a function which instantiates a particular
+ * variable type.
+ */
+typedef pointer_t<variable> (*varFactory_t)();
+
+/**
+ * @brief funcFactory_t
+ * 
+ * This type represents a pointer to a function which instantiates a particular
+ * function type.
+ */
+typedef pointer_t<functor> (*funcFactory_t)();
 
 /*-----------------------------------------------------------------------------
     Containers

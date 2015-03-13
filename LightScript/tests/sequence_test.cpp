@@ -31,6 +31,16 @@ int main() {
     lsPointer<lsVariable> testVar2 = createVariable(ls::script::scriptHash_int);
     lsPointer<lsVariable> testVar3 = createVariable(ls::script::scriptHash_int);
     
+    lsPointer<lsVariable> testVar4 = createVariable(ls::script::scriptHash_vec3);
+    if (!testVar4) {
+        std::cout << "Unable to create a math variable." << std::endl;
+    }
+    
+    lsPointer<lsVariable> testVar5 = createVariable(ls::script::scriptHash_string);
+    if (!testVar5) {
+        std::cout << "Unable to create a string variable." << std::endl;
+    }
+    
     LS_SCRIPT_VAR_DATA(testVar1, int) = 1;
     LS_SCRIPT_VAR_DATA(testVar2, int) = 2;
     LS_SCRIPT_VAR_DATA(testVar3, int) = 0; // dummy value
@@ -55,7 +65,8 @@ int main() {
     testFunc4->setArg(2, testVar2); // should equal 1/2=1 (int division)
     testFunc4->setNextFunc(nullptr);
     
-    scriptRunner runner{testFunc1};
+    scriptRunner runner{};
+    runner.run(testFunc1);
     
     assert(LS_SCRIPT_VAR_DATA(testVar3, int) == 1/2);
     

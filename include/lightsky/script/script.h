@@ -18,6 +18,7 @@
 
 #include "lightsky/script/scriptRunner.h"
 
+#include "lightsky/script/scriptBasicVar.h"
 #include "lightsky/script/scriptMath.h"
 
 #endif	/* __LS_SCRIPT_SCRIPT_H__ */

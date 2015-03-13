@@ -7,6 +7,7 @@
 
 #include <cmath>
 
+#include "lightsky/script/scriptFactory.h"
 #include "lightsky/script/scriptMath.h"
 
 /*-----------------------------------------------------------------------------

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/53083909/scriptBasicVar.o \
 	${OBJECTDIR}/_ext/53083909/scriptFactory.o \
 	${OBJECTDIR}/_ext/53083909/scriptFunctor.o \
 	${OBJECTDIR}/_ext/53083909/scriptMath.o \
@@ -76,6 +77,11 @@ build/liblightscript.a: ${OBJECTFILES}
 	${RM} build/liblightscript.a
 	${AR} -rv build/liblightscript.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightscript.a
+
+${OBJECTDIR}/_ext/53083909/scriptBasicVar.o: ../src/script/scriptBasicVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptBasicVar.o ../src/script/scriptBasicVar.cpp
 
 ${OBJECTDIR}/_ext/53083909/scriptFactory.o: ../src/script/scriptFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
@@ -137,6 +143,19 @@ ${TESTDIR}/tests/sequence_test.o: tests/sequence_test.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/sequence_test.o tests/sequence_test.cpp
 
+
+${OBJECTDIR}/_ext/53083909/scriptBasicVar_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptBasicVar.o ../src/script/scriptBasicVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptBasicVar.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptBasicVar_nomain.o ../src/script/scriptBasicVar.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptBasicVar.o ${OBJECTDIR}/_ext/53083909/scriptBasicVar_nomain.o;\
+	fi
 
 ${OBJECTDIR}/_ext/53083909/scriptFactory_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptFactory.o ../src/script/scriptFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909

@@ -19,7 +19,6 @@
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
 #include "lightsky/script/scriptVariable.h"
-#include "lightsky/script/scriptFactory.h"
 
 namespace ls {
 namespace script {

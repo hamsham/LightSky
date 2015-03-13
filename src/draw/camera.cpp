@@ -1,6 +1,38 @@
 
 #include "lightsky/draw/camera.h"
 
+namespace {
+
+enum class view_axis_t : unsigned {
+    MV_X_AXIS = 0,
+    MV_Y_AXIS = 1,
+    MV_Z_AXIS = 2,
+    
+    MV_POSITION = 3
+};
+
+/**
+ * @brief Retrieve a camera's post-transformed x, y, z, or position vectors
+ * from its model-view matrix.
+ *  
+ * @param rotationMat
+ * A constant reference to the camera's model-view matrix.
+ * 
+ * @param axis
+ * The specific axis of rotation, or position.
+ * 
+ * @return A 3D vector, containing the transformed model-view matrix position
+ * or axis of rotation.
+ */
+inline ls::math::vec3 extractMVVector(const ls::math::mat4& viewMat, const view_axis_t axis) {
+    const ls::math::mat3&& rotationMat = ls::math::mat3{viewMat};
+    const unsigned a = LS_ENUM_VAL(axis);
+    const ls::math::vec3&& mvVec = ls::math::vec3{-viewMat[a][0], -viewMat[a][1], -viewMat[a][2]};
+    return mvVec * ls::math::transpose(rotationMat);
+}
+
+}
+
 namespace ls {
 namespace draw {
 
@@ -84,26 +116,36 @@ camera& camera::operator =(camera&& c) {
 }
 
 /*-------------------------------------
+ * Get the absolute view position
+-------------------------------------*/
+math::vec3 camera::getAbsolutePosition() const {
+    return extractMVVector(viewTransform.getTransform(), view_axis_t::MV_POSITION);
+}
+
+/*-------------------------------------
  * Set the camera view mode
 -------------------------------------*/
 void camera::setViewMode(camera_mode_t mode) {
+    if (mode == viewMode) {
+        return;
+    }
+    
     viewMode = mode;
+    lookAt(getAbsolutePosition(), target, getUpDirection());
 }
 
 /*-------------------------------------
  * Get the forward direction
 -------------------------------------*/
 math::vec3 camera::getDirection() const {
-    const math::mat4& viewMatrix = viewTransform.getTransform();
-    return math::vec3{viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]};
+    return extractMVVector(viewTransform.getTransform(), view_axis_t::MV_Z_AXIS);
 }
 
 /*-------------------------------------
  * Retrieve the camera's up vector
 -------------------------------------*/
 math::vec3 camera::getUpDirection() const {
-    const math::mat4& viewMatrix = viewTransform.getTransform();
-    return math::vec3{viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]};
+    return extractMVVector(viewTransform.getTransform(), view_axis_t::MV_Y_AXIS);
 }
 
 /*-------------------------------------
@@ -140,7 +182,7 @@ void camera::lookAt(const math::vec3& eye, const math::vec3& point, const math::
         viewTransform.extractTransforms(math::lookFrom(eye-target, math::vec3{0.f}, up));
     }
     else {
-        viewTransform.extractTransforms(math::lookAt(eye, target, up));
+        viewTransform.extractTransforms(math::lookFrom(eye, target, up));
         viewTransform.setPosition(-eye);
     }
 }

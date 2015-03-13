@@ -13,7 +13,6 @@
 
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
-#include "lightsky/script/scriptFactory.h"
 
 namespace ls {
 namespace script {
@@ -339,7 +338,7 @@ class variable_t final : public variable {
         \
         const varFactory_t& scriptFactory_##varName = ls::script::registerVarFactory( \
             scriptHash_##varName, []()->ls::script::pointer_t<ls::script::variable> { \
-                return ls::script::pointer_t<ls::script::variable>{new scriptVar_##varName}; \
+                return ls::script::pointer_t<ls::script::variable>{new scriptVar_##varName{}}; \
             } \
         )
 #endif /* LS_SCRIPT_DEFINE_VAR */
@@ -401,63 +400,5 @@ class variable_t final : public variable {
     template <> \
     bool ls::script::variable_t<LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)), varType>::save(std::ostream& ostr) const
 #endif /* LS_SCRIPT_OVERRIDE_VAR_SAVE */
-
-/*-----------------------------------------------------------------------------
-    Built-In type overrides
------------------------------------------------------------------------------*/
-namespace ls {
-namespace script {
-/*-----------------------------------------------------------------------------
-    Built-In types
------------------------------------------------------------------------------*/
-/*-------------------------------------
- * char, scriptVar_char
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(char, char);
-
-/*-------------------------------------
- * short, scriptVar_short
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(short, short);
-
-/*-------------------------------------
- * int, scriptVar_int
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(int, int);
-
-/*-------------------------------------
- * uint, scriptVar_uint
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(uint, unsigned);
-
-/*-------------------------------------
- * long, scriptVar_long
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(long, long);
-
-/*-------------------------------------
- * ulong, scriptVar_ulong
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(ulong, unsigned long);
-
-/*-------------------------------------
- * float, scriptVar_float
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(float, float);
-
-/*-------------------------------------
- * double, scriptvar_double
--------------------------------------*/
-LS_SCRIPT_DECLARE_VAR(double, double);
-
-/*-------------------------------------
- * std::string, scriptVar_string
--------------------------------------*/
-LS_SCRIPT_OVERRIDE_VAR_LOAD(std::string);
-LS_SCRIPT_OVERRIDE_VAR_SAVE(std::string);
-LS_SCRIPT_DECLARE_VAR(string, std::string); // scriptVar_string
-
-} // end script namepace
-} // end ls namespace
 
 #endif	/* __LS_SCRIPT_VARIABLE_H__ */

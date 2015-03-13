@@ -6,35 +6,52 @@
  */
 
 #include <utility> // std::make_pair<>(...)
-#include <vector>
+#include <unordered_map>
 
 #include "lightsky/utils/log.h"
 #include "lightsky/utils/assertions.h"
 
-#include "lightsky/script/scriptVariable.h"
-#include "lightsky/script/scriptFunctor.h"
-#include "lightsky/script/scriptFactory.h"
+#include "lightsky/script/script.h"
 
 namespace ls {
 namespace script {
 
+namespace {
 /*-----------------------------------------------------------------------------
  * Variable and Function factories
  * 
- * These trees are populated at the program's initialization
+ * These maps are populated at the program's initialization (before main()).
+ * 
  * They hold pointers to functions which only return a new instance of
  * whichever type is requested
+ * 
+ * They are retrieved from functions as static variables in order to ensure a
+ * proper order-of-creation. The MUST be instantiated and initialized before
+ * any other script variable used in client code to prevent crashing at
+ * startup.
+ * 
+ * See the following for additional details on order-of-creation:
+ *      http://stackoverflow.com/questions/25857340/access-violation-inserting-element-into-global-map?lq=1
+ * 
+ *      http://stackoverflow.com/questions/13353519/access-violation-when-inserting-element-into-global-map
 -----------------------------------------------------------------------------*/
 /**
  * Global Variable Factory
  */
-static std::vector<std::pair<hash_t, varFactory_t>> gVarFactoryList;
+inline std::unordered_map<hash_t, varFactory_t>& getVarFactory() {
+    static std::unordered_map<hash_t, varFactory_t> gVarFactoryList{};
+    return gVarFactoryList;
+}
 
 /**
  * Global Functor Factory
  */
-static std::vector<std::pair<hash_t, funcFactory_t>> gFuncFactoryList;
+inline std::unordered_map<hash_t, funcFactory_t>& getFuncFactory() {
+    static std::unordered_map<hash_t, funcFactory_t> gFuncFactoryList{};
+    return gFuncFactoryList;
+}
 
+} // end anonymous namespace
 /*-----------------------------------------------------------------------------
  * Factory Method Registration
 -----------------------------------------------------------------------------*/
@@ -42,28 +59,24 @@ static std::vector<std::pair<hash_t, funcFactory_t>> gFuncFactoryList;
  * Variable Factory Registration
 -------------------------------------*/
 const varFactory_t& registerVarFactory(hash_t factoryId, const varFactory_t& pFactory) {
-    for (const std::pair<hash_t, varFactory_t>& iter : gVarFactoryList) {
-        if (iter.first == factoryId) {
-            return iter.second;
-        }
+    if (getVarFactory().count(factoryId)) {
+        return getVarFactory()[factoryId];
     }
     
-    gVarFactoryList.emplace_back(std::pair<hash_t, varFactory_t>{factoryId, pFactory});
-    return gVarFactoryList.back().second;
+    getVarFactory().insert(std::pair<hash_t, varFactory_t>{factoryId, pFactory});
+    return getVarFactory()[factoryId];
 }
 
 /*-------------------------------------
  * Functor Factory Registration
 -------------------------------------*/
 const funcFactory_t& registerFuncFactory(hash_t factoryId, const funcFactory_t& pFactory) {
-    for (const std::pair<hash_t, funcFactory_t>& iter : gFuncFactoryList) {
-        if (iter.first == factoryId) {
-            return iter.second;
-        }
+    if (getFuncFactory().count(factoryId)) {
+        return getFuncFactory()[factoryId];
     }
     
-    gFuncFactoryList.emplace_back(std::pair<hash_t, funcFactory_t>{factoryId, pFactory});
-    return gFuncFactoryList.back().second;
+    getFuncFactory().insert(std::pair<hash_t, funcFactory_t>{factoryId, pFactory});
+    return getFuncFactory()[factoryId];
 }
 
 /*-----------------------------------------------------------------------------
@@ -77,7 +90,7 @@ const funcFactory_t& registerFuncFactory(hash_t factoryId, const funcFactory_t& 
  * Variable Creation
 -------------------------------------*/
 pointer_t<variable> createVariable(hash_t factoryId) {
-    for (const std::pair<hash_t, varFactory_t>& iter : gVarFactoryList) {
+    for (const std::pair<hash_t, varFactory_t>& iter : getVarFactory()) {
         if (iter.first == factoryId) {
             return (*iter.second)();
         }
@@ -97,7 +110,7 @@ void destroyVariable(pointer_t<variable>& pVariable) {
  * Functor Creation
 -------------------------------------*/
 pointer_t<functor> createFunctor(hash_t factoryId) {
-    for (const std::pair<hash_t, funcFactory_t>& iter : gFuncFactoryList) {
+    for (const std::pair<hash_t, funcFactory_t>& iter : getFuncFactory()) {
         if (iter.first == factoryId) {
             return (*iter.second)();
         }

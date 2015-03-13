@@ -19,6 +19,8 @@
 #include "lightsky/script/scriptVariable.h"
 #include "lightsky/script/scriptFunctor.h"
 
+#include "lightsky/script/scriptBasicVar.h"
+
 /*-----------------------------------------------------------------------------
     Built-In Math Types
 -----------------------------------------------------------------------------*/

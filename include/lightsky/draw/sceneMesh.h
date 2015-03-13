@@ -10,7 +10,6 @@
 
 #include <vector>
 
-#include "lightsky/draw/bone.h"
 #include "lightsky/draw/geometry.h"
 #include "lightsky/draw/texture.h"
 #include "lightsky/draw/vertexArray.h"
@@ -43,8 +42,6 @@ class sceneMesh {
          * applied when rendering *this.
          */
         std::vector<const texture*> textureList;
-        
-        std::vector<bone> boneList;
         
         /**
          * @brief Helper function to ensure all VAO attributes are setup

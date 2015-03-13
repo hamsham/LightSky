@@ -7,6 +7,7 @@
 
 #include <utility> // std::move
 
+#include "lightsky/script/scriptFactory.h"
 #include "lightsky/script/scriptFunctor.h"
 
 namespace ls {

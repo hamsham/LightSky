@@ -17,7 +17,7 @@ namespace utils {
  * Single Pointer Type
 -----------------------------------------------------------------------------*/
 template <typename data_t>
-struct pointer {
+class pointer {
     private:
         /**
          * @brief pData represents a pointer to some data within an application
@@ -306,7 +306,7 @@ struct pointer {
          * 
          * @return A pointer to a set of dynamically-allocated data.
          */
-        data_t* get() {
+        inline data_t* get() {
             return pData;
         }
         
@@ -337,7 +337,7 @@ struct pointer {
          * 
          * @return A reference to the dynamically-allocated data within *this.
          */
-        data_t& operator *() {
+        inline data_t& operator *() {
             return *pData;
         }
         
@@ -380,7 +380,7 @@ struct pointer {
          * @return A pointer to an object pointer such as the one contained
          * within *this.
          */
-        constexpr operator data_t*() {
+        inline operator data_t*() {
             return pData;
         }
         
@@ -435,7 +435,7 @@ LS_DECLARE_CLASS_TYPE(ldouble_pointer, pointer, long double);
 -----------------------------------------------------------------------------*/
 //template <>
 template <typename data_t>
-struct pointer<data_t[]> {
+class pointer<data_t[]> {
     private:
         /**
          * pData represents a pointer to some data within an application
@@ -752,7 +752,7 @@ struct pointer<data_t[]> {
          * 
          * @return A pointer to a set of dynamically-allocated data.
          */
-        data_t* get() {
+        inline data_t* get() {
             return pData;
         }
         
@@ -826,7 +826,7 @@ struct pointer<data_t[]> {
          * @return A pointer to an object pointer such as the one contained
          * within *this.
          */
-        constexpr operator data_t*() {
+        inline operator data_t*() {
             return pData;
         }
         

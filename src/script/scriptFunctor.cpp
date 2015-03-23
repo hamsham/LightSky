@@ -66,18 +66,18 @@ functor& functor::operator =(functor&& f) {
 /*-------------------------------------
     Loading a functor from an input stream
 -------------------------------------*/
-bool functor::load(std::istream& istr, varImportMap_t&, funcImportMap_t& flm) {
+bool functor::load(std::istream& istr, variableMap_t&, functorMap_t& flm) {
     hash_t nextType = 0;
-    void* ptr = nullptr;
+    functor* ptr = nullptr;
 
-    istr >> nextType >> ptr;
+    istr >> nextType >> (void*&)ptr;
 
-    nextFunc = flm[ptr].get();
+    nextFunc = flm.count(ptr) ? flm[ptr].get() : nullptr;
 
-    // Create an instance of the next function if it wasn't in the functor loader
+    // Return false if no instance of a "valid" variable was contained in the
+    // import map.
     if (nextFunc == nullptr && ptr != nullptr) {
-        flm[ptr] = std::move(createFunctor(nextType));
-        nextFunc = flm[ptr].get();
+        return false;
     }
 
     return true;
@@ -167,7 +167,7 @@ unsigned functor_t<0, void>::getNumArgs() const {
 /*-------------------------------------
     Load from an Input Stream
 -------------------------------------*/
-bool functor_t<0, void>::load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) {
+bool functor_t<0, void>::load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) {
     return functor::load(istr, vlm, flm);
 }
 

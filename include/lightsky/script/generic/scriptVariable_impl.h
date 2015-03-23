@@ -92,7 +92,7 @@ variable_t<hashId, type>& variable_t<hashId, type>::operator =(variable_t&& v) {
     Variable Object Type Data Loading
 -------------------------------------*/
 template <hash_t hashId, typename type>
-bool variable_t<hashId, type>::load(std::istream& istr, varImportMap_t&, funcImportMap_t&) {
+bool variable_t<hashId, type>::load(std::istream& istr, variableMap_t&, functorMap_t&) {
     istr >> data;
     return istr.good() || istr.eof();
 }

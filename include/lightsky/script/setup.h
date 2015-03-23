@@ -8,7 +8,7 @@
 #ifndef __LS_SCRIPT_SETUP_H__
 #define	__LS_SCRIPT_SETUP_H__
 
-#include <map>
+#include <unordered_map>
 
 #include "lightsky/setup/macros.h"
 
@@ -34,7 +34,7 @@ using ls::utils::hash_t;
 /*-----------------------------------------------------------------------------
     Data Type information
 -----------------------------------------------------------------------------*/
-enum class script_base_t {
+enum class script_base_t : int {
     VARIABLE,
     FUNCTOR
 };
@@ -59,41 +59,22 @@ template <class data_t> using pointer_t = ls::utils::pointer<data_t>;
  */
 } // end script namespace
 
-extern template struct ls::utils::pointer<ls::script::variable>;
-extern template struct ls::utils::pointer<ls::script::functor>;
+extern template class ls::utils::pointer<ls::script::variable>;
+extern template class ls::utils::pointer<ls::script::functor>;
 
 namespace script { // continue script namespace
-/*-----------------------------------------------------------------------------
- * Script Factory Functions
------------------------------------------------------------------------------*/
-/**
- * @brief varFactory_t
- * 
- * This type represents a pointer to a function which instantiates a particular
- * variable type.
- */
-typedef pointer_t<variable> (*varFactory_t)();
-
-/**
- * @brief funcFactory_t
- * 
- * This type represents a pointer to a function which instantiates a particular
- * function type.
- */
-typedef pointer_t<functor> (*funcFactory_t)();
-
 /*-----------------------------------------------------------------------------
     Containers
 -----------------------------------------------------------------------------*/
 /**
  * @brief File loading map for variable objects.
  */
-typedef std::map<void*, pointer_t<variable>> varImportMap_t;
+typedef std::unordered_map<variable*, pointer_t<variable>> variableMap_t;
 
 /**
  * @brief File loading map for functor objects.
  */
-typedef std::map<void*, pointer_t<functor>> funcImportMap_t;
+typedef std::unordered_map<functor*, pointer_t<functor>> functorMap_t;
 
 } // end script namespace
 } // end ls namespace

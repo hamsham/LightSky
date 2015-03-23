@@ -14,14 +14,14 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=CLang-Linux-x86
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/53083909/scriptFunctor.o \
 	${OBJECTDIR}/_ext/53083909/scriptMath.o \
 	${OBJECTDIR}/_ext/53083909/scriptRunner.o \
+	${OBJECTDIR}/_ext/53083909/scriptSerializer.o \
 	${OBJECTDIR}/_ext/53083909/scriptVariable.o \
 	${OBJECTDIR}/_ext/53083909/scriptable.o \
 	${OBJECTDIR}/_ext/53083909/setup.o
@@ -50,7 +51,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 # Test Files
 TESTFILES= \
 	benchTest \
-	sequence_test
+	sequence_test \
+	serialize_test
 
 # C Compiler Flags
 CFLAGS=
@@ -103,6 +105,11 @@ ${OBJECTDIR}/_ext/53083909/scriptRunner.o: ../src/script/scriptRunner.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptRunner.o ../src/script/scriptRunner.cpp
 
+${OBJECTDIR}/_ext/53083909/scriptSerializer.o: ../src/script/scriptSerializer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptSerializer.o ../src/script/scriptSerializer.cpp
+
 ${OBJECTDIR}/_ext/53083909/scriptVariable.o: ../src/script/scriptVariable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
@@ -131,6 +138,10 @@ sequence_test: ${TESTDIR}/tests/sequence_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p null
 	${LINK.cc}   -o sequence_test $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils_d.a ../LightMath/build/liblightmath_d.a 
 
+serialize_test: ${TESTDIR}/tests/serialize_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p null
+	${LINK.cc}   -o serialize_test $^ ${LDLIBSOPTIONS} ../LightUtils/build/liblightutils_d.a ../LightMath/build/liblightmath_d.a 
+
 
 ${TESTDIR}/tests/benchTest.o: tests/benchTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
@@ -142,6 +153,12 @@ ${TESTDIR}/tests/sequence_test.o: tests/sequence_test.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/sequence_test.o tests/sequence_test.cpp
+
+
+${TESTDIR}/tests/serialize_test.o: tests/serialize_test.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/serialize_test.o tests/serialize_test.cpp
 
 
 ${OBJECTDIR}/_ext/53083909/scriptBasicVar_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptBasicVar.o ../src/script/scriptBasicVar.cpp 
@@ -209,6 +226,19 @@ ${OBJECTDIR}/_ext/53083909/scriptRunner_nomain.o: ${OBJECTDIR}/_ext/53083909/scr
 	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptRunner.o ${OBJECTDIR}/_ext/53083909/scriptRunner_nomain.o;\
 	fi
 
+${OBJECTDIR}/_ext/53083909/scriptSerializer_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptSerializer.o ../src/script/scriptSerializer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptSerializer.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptSerializer_nomain.o ../src/script/scriptSerializer.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptSerializer.o ${OBJECTDIR}/_ext/53083909/scriptSerializer_nomain.o;\
+	fi
+
 ${OBJECTDIR}/_ext/53083909/scriptVariable_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptVariable.o ../src/script/scriptVariable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptVariable.o`; \
@@ -254,6 +284,7 @@ ${OBJECTDIR}/_ext/53083909/setup_nomain.o: ${OBJECTDIR}/_ext/53083909/setup.o ..
 	then  \
 	    benchTest || true; \
 	    sequence_test || true; \
+	    serialize_test || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

@@ -195,7 +195,7 @@ class variable_t final : public variable {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) override;
+        bool load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) override;
 
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -371,8 +371,8 @@ class variable_t final : public variable {
     template <> \
     bool ls::script::variable_t<LS_SCRIPT_HASH_FUNC(LS_STRINGIFY(varType)), varType>::load( \
         std::istream&       istr, \
-        varImportMap_t&     varImporter, \
-        funcImportMap_t&    funcImporter \
+        variableMap_t&     varImporter, \
+        functorMap_t&    funcImporter \
     )
 #endif /* LS_SCRIPT_OVERRIDE_VAR_LOAD */
 

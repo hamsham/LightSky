@@ -102,7 +102,7 @@ class scriptable {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        virtual bool load(std::istream& istr, varImportMap_t& varLoader, funcImportMap_t& funcLoader) = 0;
+        virtual bool load(std::istream& istr, variableMap_t& varLoader, functorMap_t& funcLoader) = 0;
         
         /**
          *  @brief save

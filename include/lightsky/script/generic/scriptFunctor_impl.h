@@ -184,13 +184,13 @@ unsigned functor_t<hashId, args_t...>::getNumArgs() const {
     Load from an Input Stream
 -------------------------------------*/
 template <hash_t hashId, typename... args_t>
-bool functor_t<hashId, args_t...>::load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) {
+bool functor_t<hashId, args_t...>::load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) {
     functor::load(istr, vlm, flm);
 
     for (unsigned i = 0; i < sizeof...(args_t); ++i) {
-        void* ptr = nullptr;
-        istr >> ptr;
-        pArgs[i] = vlm[ptr].get();
+        variable* ptr = nullptr;
+        istr >> (void*&)ptr;
+        pArgs[i] = ptr ? vlm.at(ptr).get() : nullptr;
     }
     
     return istr.good() || istr.eof();
@@ -204,7 +204,7 @@ bool functor_t<hashId, args_t...>::save(std::ostream& ostr) const {
     functor::save(ostr);
 
     for (unsigned i = 0; i < sizeof...(args_t); ++i) {
-        ostr << ' ' << (void*) pArgs[i];
+        ostr << ' ' << (void*)pArgs[i];
     }
     return ostr.good();
 }
@@ -293,7 +293,7 @@ unsigned functor_t<hashId, void>::getNumArgs() const {
     Load from an Input Stream
 -------------------------------------*/
 template <hash_t hashId>
-bool functor_t<hashId, void>::load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) {
+bool functor_t<hashId, void>::load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) {
     return functor::load(istr, vlm, flm);
 }
 

@@ -19,6 +19,7 @@
 #include "lightsky/script/setup.h"
 #include "lightsky/script/scriptable.h"
 #include "lightsky/script/scriptVariable.h"
+#include "lightsky/script/scriptFactory.h"
 
 namespace ls {
 namespace script {
@@ -331,7 +332,7 @@ class functor : public scriptable {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        virtual bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm);
+        virtual bool load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm);
 
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -518,7 +519,7 @@ class functor_t final : public functor {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) final;
+        bool load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) final;
         
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -689,7 +690,7 @@ class functor_t<hashId, void> final : public functor {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) final;
+        bool load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) final;
         
         /**
          *  @brief Save all data from *this into an std::ostream.
@@ -860,7 +861,7 @@ class functor_t<0, void> final : public functor {
          *  @return a boolean value that will determine if data was
          *  successfully loaded into *this (TRUE) or not (FALSE).
          */
-        bool load(std::istream& istr, varImportMap_t& vlm, funcImportMap_t& flm) final;
+        bool load(std::istream& istr, variableMap_t& vlm, functorMap_t& flm) final;
         
         /**
          *  @brief Save all data from *this into an std::ostream.

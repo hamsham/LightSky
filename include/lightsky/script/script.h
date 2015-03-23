@@ -21,5 +21,7 @@
 #include "lightsky/script/scriptBasicVar.h"
 #include "lightsky/script/scriptMath.h"
 
+#include "lightsky/script/scriptSerializer.h"
+
 #endif	/* __LS_SCRIPT_SCRIPT_H__ */
 

@@ -18,7 +18,7 @@ namespace ls {
 -------------------------------------*/
 std::string utils::convertWtoMb(const std::wstring& wstr) {
     // return value
-    std::string ret = "";
+    std::string ret{};
     
     // get the size difference between the two data types
     unsigned sizeDifference = sizeof(wchar_t) / sizeof(char);
@@ -26,26 +26,16 @@ std::string utils::convertWtoMb(const std::wstring& wstr) {
     // convert the wide string to a multi-byte char string
     std::size_t maxBytes = (wstr.size()*sizeDifference) + 1;
     
-    // Allocate a new character array
-    char* const str = new(std::nothrow) char[maxBytes];
-    
-    if (!str) {
-        return ret;
-    }
-    else {
-        // 0-initialize the string, just in case
-        std::memset(str, 0, maxBytes);
-    }
+    // Allocate a new character array, 0-initialize the string, just in case
+    ret.resize(maxBytes, '\0');
     
     // convert the wide char to multi-byte
-    std::size_t err = std::wcstombs(str, wstr.c_str(), maxBytes);
+    std::size_t err = std::wcstombs(&ret[0], wstr.c_str(), maxBytes);
     
     // make sure the conversion worked
     if (err != static_cast<std::size_t>(-1)) {
-        ret.assign(str, maxBytes);
+        ret.clear();
     }
-    
-    delete [] str;
     
     return ret;
 }

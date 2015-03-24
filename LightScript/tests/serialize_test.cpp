@@ -30,7 +30,6 @@ using ls::script::createFunctor;
 using ls::script::destroyFunctor;
 
 using ls::script::scriptRunner;
-using ls::script::scriptSerializer;
 using ls::script::variableMap_t;
 using ls::script::functorMap_t;
 
@@ -39,6 +38,7 @@ using ls::script::functorMap_t;
 -----------------------------------------------------------------------------*/
 namespace ls {
 namespace script {
+// dummy value to get the entry points
 LS_SCRIPT_DECLARE_FUNC(entry, void);
 
 LS_SCRIPT_DEFINE_FUNC(entry, void) {
@@ -116,21 +116,16 @@ void generateScripts(variableMap_t& varMap, functorMap_t& funcMap) {
  * Save the script maps
 -----------------------------------------------------------------------------*/
 void saveScripts(const variableMap_t& varImporter, const functorMap_t& funcImporter) {
-    scriptSerializer serializer;
-    
-    LS_ASSERT(serializer.saveFile(TEST_FILE, varImporter, funcImporter));
+    LS_ASSERT(ls::script::saveScriptFile(TEST_FILE, varImporter, funcImporter));
 }
 
 /*-----------------------------------------------------------------------------
  * Save the script maps
 -----------------------------------------------------------------------------*/
 void loadScripts(variableMap_t& varImporter, functorMap_t& funcImporter) {
-    scriptSerializer serializer;
+    LS_ASSERT(ls::script::loadScriptFile(TEST_FILE, varImporter, funcImporter));
     
-    LS_ASSERT(serializer.loadFile(TEST_FILE));
-    
-    varImporter = std::move(serializer.getVariableList());
-    funcImporter = std::move(serializer.getFunctorList());
+    ls::script::remapScriptKeys(varImporter, funcImporter);
 }
 
 /*-----------------------------------------------------------------------------
@@ -139,20 +134,20 @@ void loadScripts(variableMap_t& varImporter, functorMap_t& funcImporter) {
 bool runScripts(variableMap_t& varMap, functorMap_t& funcMap) {
     scriptRunner runner{};
     
-    ls::script::functor* pFunc = nullptr;
+    ls::script::functor* pEntryFunc = nullptr;
     
     for (std::pair<lsFunctor* const, lsPointer<lsFunctor>>& funcIter : funcMap) {
         lsPointer<lsFunctor>& func = funcIter.second;
         
         if (func->getScriptSubType() == ls::script::scriptHash_entry) {
-            pFunc = func.get();
+            pEntryFunc = func.get();
             break;
         }
     }
     
-    LS_ASSERT(pFunc != nullptr);
+    LS_ASSERT(pEntryFunc != nullptr);
     
-    runner.run(pFunc);
+    runner.run(pEntryFunc);
     
     std::cout << "Successfully ran the script tests." << std::endl;
     std::cout << "The final variable values are:" << std::endl;

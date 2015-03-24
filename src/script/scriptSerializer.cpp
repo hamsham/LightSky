@@ -1,6 +1,6 @@
 /* 
  * File:   scriptSerializer.cpp
- * Author: hammy
+ * Author: Miles Lacey
  * 
  * Created on March 13, 2015, 9:26 PM
  */
@@ -21,50 +21,14 @@ namespace ls {
 namespace script {
 
 /*-------------------------------------
- * Destructor
--------------------------------------*/
-scriptSerializer::~scriptSerializer() {
-    unload();
-}
-
-/*-------------------------------------
- * Constructor
--------------------------------------*/
-scriptSerializer::scriptSerializer() :
-    varList{},
-    funcList{}
-{}
-
-/*-------------------------------------
- * Move Constructor
--------------------------------------*/
-scriptSerializer::scriptSerializer(scriptSerializer&& s) :
-    varList{std::move(s.varList)},
-    funcList{std::move(s.funcList)}
-{}
-
-/*-------------------------------------
- * Move Operator
--------------------------------------*/
-scriptSerializer& scriptSerializer::operator=(scriptSerializer&& s) {
-    varList = std::move(s.varList);
-    funcList = std::move(funcList);
-    
-    return *this;
-}
-
-/*-------------------------------------
- * Unload all variables.
--------------------------------------*/
-void scriptSerializer::unload() {
-    varList.clear();
-    funcList.clear();
-}
-
-/*-------------------------------------
  * Perform an initial read to populate all script types.
 -------------------------------------*/
-bool scriptSerializer::initialRead(std::istream& fin, const script_base_t baseType) {
+bool initialRead(
+    variableMap_t& varList,
+    functorMap_t& funcList,
+    std::istream& fin,
+    const script_base_t baseType
+) {
     std::underlying_type<script_base_t>::type scriptBaseType; // int?
     hash_t scriptDataType = 0;
     void* pScript = nullptr;
@@ -104,7 +68,12 @@ bool scriptSerializer::initialRead(std::istream& fin, const script_base_t baseTy
 /*-------------------------------------
  * Load a specific type of script
 -------------------------------------*/
-bool scriptSerializer::dataRead(std::istream& istr, const script_base_t baseType) {
+bool dataRead(
+    variableMap_t& varList,
+    functorMap_t& funcList,
+    std::istream& istr,
+    const script_base_t baseType
+) {
     void* inAddr = nullptr;
     istr >> inAddr; // import the scriptable's address
     istr.get(); // discard extra whitespace inserted by the save() method
@@ -134,8 +103,9 @@ bool scriptSerializer::dataRead(std::istream& istr, const script_base_t baseType
 /*-------------------------------------
  * Load a list of variables.
 -------------------------------------*/
-bool scriptSerializer::loadFile(const std::string& filename) {
-    unload();
+bool loadScriptFile(const std::string& filename, variableMap_t& varList, functorMap_t& funcList) {
+    varList.clear();
+    funcList.clear();
     
     unsigned numVars = 0;
     unsigned numFuncs = 0;
@@ -149,7 +119,7 @@ bool scriptSerializer::loadFile(const std::string& filename) {
     fin >> numVars >> numFuncs;
     
     for (unsigned v = 0; v < numVars; ++v) {
-        if (!initialRead(fin, script_base_t::VARIABLE)) {
+        if (!initialRead(varList, funcList, fin, script_base_t::VARIABLE)) {
             fin.close();
             LS_LOG_ERR("Failed to initialize a variable object from ", filename, '.');
             return false;
@@ -157,7 +127,7 @@ bool scriptSerializer::loadFile(const std::string& filename) {
     }
     
     for (unsigned f = 0; f < numFuncs; ++f) {
-        if (!initialRead(fin, script_base_t::FUNCTOR)) {
+        if (!initialRead(varList, funcList, fin, script_base_t::FUNCTOR)) {
             fin.close();
             LS_LOG_ERR("Failed to initialize a functor object from ", filename, '.');
             return false;
@@ -166,7 +136,7 @@ bool scriptSerializer::loadFile(const std::string& filename) {
     
     // all variables and functors have been initialized, now load their data.
     while (numVars --> 0) {
-        if (!dataRead(fin, script_base_t::VARIABLE)) {
+        if (!dataRead(varList, funcList, fin, script_base_t::VARIABLE)) {
             fin.close();
             LS_LOG_ERR("Failed to read a variable object from ", filename, '.');
             return false;
@@ -174,7 +144,7 @@ bool scriptSerializer::loadFile(const std::string& filename) {
     }
     
     while (numFuncs --> 0) {
-        if (!dataRead(fin, script_base_t::FUNCTOR)) {
+        if (!dataRead(varList, funcList, fin, script_base_t::FUNCTOR)) {
             fin.close();
             LS_LOG_ERR("Failed to read a functor object from ", filename, '.');
             return false;
@@ -183,36 +153,54 @@ bool scriptSerializer::loadFile(const std::string& filename) {
     
     fin.close();
     
-    remapKeys();
-    
     return true;
 }
 
 /*-------------------------------------
  * Ensure all mapped script keys actually point to valid data.
 -------------------------------------*/
-void scriptSerializer::remapKeys() {
+void remapScriptKeys(variableMap_t& inVarMap, functorMap_t& inFuncMap) {
     variableMap_t tempVarMap{};
-    for (variableMap_t::value_type& inVar : varList) {
+    for (variableMap_t::value_type& inVar : inVarMap) {
         tempVarMap[inVar.second.get()] = std::move(inVar.second);
     }
-    varList = std::move(tempVarMap);
+    inVarMap = std::move(tempVarMap);
     
     functorMap_t tempFuncMap{};
-    for (functorMap_t::value_type& inFunc : funcList) {
+    for (functorMap_t::value_type& inFunc : inFuncMap) {
         tempFuncMap[inFunc.second.get()] = std::move(inFunc.second);
     }
-    funcList = std::move(tempFuncMap);
+    inFuncMap = std::move(tempFuncMap);
+}
+
+/*-------------------------------------
+ * Write an initial set of data for a script type
+-------------------------------------*/
+template <typename data_t>
+bool initialWrite(std::ostream& ostr, const pointer_t<data_t>& pScript) {
+    if (!pScript) {
+        return false;
+    }
+    
+    const script_base_t baseType = pScript->getScriptType();
+    const hash_t hashType = pScript->getScriptSubType();
+    
+    ostr
+        << '\n' << static_cast<typename std::underlying_type<decltype(baseType)>::type>(baseType)
+        << ' ' << hashType
+        << ' '<< (const void*)pScript;
+    
+    return true;
 }
 
 /*-------------------------------------
  * Save a list of variables and functors.
 -------------------------------------*/
-bool scriptSerializer::saveFile(
+bool saveScriptFile(
     const std::string& filename,
     const variableMap_t& inVarList,
     const functorMap_t& inFuncList
-) const {
+) {
     std::ofstream fout{filename, std::ios_base::binary | std::ios_base::out};
     
     if (!fout.good()) {
@@ -225,7 +213,7 @@ bool scriptSerializer::saveFile(
     
     // write function to save all "scriptable" addresses
     for (const variableMap_t::value_type& scriptIter : inVarList) {
-        if (!initialWrite<variable>(fout, scriptIter)) {
+        if (!initialWrite<variable>(fout, scriptIter.second)) {
             fout.close();
             LS_LOG_ERR("Failed to save variable initialization data to : ", filename, '.');
             return false;
@@ -233,7 +221,7 @@ bool scriptSerializer::saveFile(
     };
     
     for (const functorMap_t::value_type& scriptIter : inFuncList) {
-        if (!initialWrite<functor>(fout, scriptIter)) {
+        if (!initialWrite<functor>(fout, scriptIter.second)) {
             fout.close();
             LS_LOG_ERR("Failed to save functor initialization data to : ", filename, '.');
             return false;
@@ -263,7 +251,6 @@ bool scriptSerializer::saveFile(
     fout.close();
     return ret;
 }
-
 
 } // end script namespace
 } // end ls namespace

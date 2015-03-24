@@ -13,15 +13,6 @@
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/sceneResource.cpp</file>
             <file>file:/home/hammy/Development/projects/LightSky/src/draw/sceneGraph.cpp</file>
         </group>
-        <group name="LightSky">
-            <file>file:/home/hammy/Development/projects/LightSky/src/script/scriptMath.cpp</file>
-            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptFactory.h</file>
-            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptVariable.h</file>
-            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/setup.h</file>
-            <file>file:/home/hammy/Development/projects/LightSky/src/script/scriptFactory.cpp</file>
-            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptBasicVar.h</file>
-            <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptMath.h</file>
-            <file>file:/home/hammy/Development/projects/LightSky/src/script/scriptBasicVar.cpp</file>
-        </group>
+        <group name="LightSky"/>
     </open-files>
 </project-private>

@@ -62,7 +62,7 @@ in vec2 uvCoords;
 out vec4 outFragCol;
 
 uniform sampler2D texSampler;
-uniform vec4 textColor = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 textColor;
 
 void main() {
     float mask = texture(texSampler, uvCoords).r;

@@ -14,19 +14,8 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <itemPath>FiraSans-Bold.otf</itemPath>
-      <itemPath>FiraSans-Italic.otf</itemPath>
       <itemPath>FiraSans-Regular.otf</itemPath>
-      <itemPath>FreeImage.dll</itemPath>
       <itemPath>Makefile</itemPath>
-      <itemPath>SDL2.dll</itemPath>
-      <itemPath>earth.bmp</itemPath>
-      <itemPath>glew32.dll</itemPath>
-      <itemPath>libjpeg-62.dll</itemPath>
-      <itemPath>libpng16.dll</itemPath>
-      <itemPath>libwinpthread-1.dll</itemPath>
-      <itemPath>test_img.jpg</itemPath>
-      <itemPath>zlib1.dll</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -159,17 +148,9 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="FiraSans-Bold.otf" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="FiraSans-Italic.otf" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="FiraSans-Regular.otf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FreeImage.dll" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="SDL2.dll" ex="false" tool="3" flavor2="0">
       </item>
       <item path="context.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -183,31 +164,17 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="earth.bmp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="glew32.dll" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="libjpeg-62.dll" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="libpng16.dll" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="libwinpthread-1.dll" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="test_img.jpg" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="uiState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="uiState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="zlib1.dll" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -311,17 +278,9 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="FiraSans-Bold.otf" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="FiraSans-Italic.otf" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="FiraSans-Regular.otf" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FreeImage.dll" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="SDL2.dll" ex="false" tool="3" flavor2="0">
       </item>
       <item path="context.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -335,31 +294,17 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="earth.bmp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fbState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fbState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="glew32.dll" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="libjpeg-62.dll" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="libpng16.dll" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="libwinpthread-1.dll" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="test_img.jpg" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="uiState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="uiState.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="zlib1.dll" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

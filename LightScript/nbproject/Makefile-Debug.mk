@@ -14,14 +14,14 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=clang
-CCC=clang++
-CXX=clang++
+CC=gcc
+CCC=g++
+CXX=g++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=CLang-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/53083909/scriptBasicVar.o \
 	${OBJECTDIR}/_ext/53083909/scriptFactory.o \
 	${OBJECTDIR}/_ext/53083909/scriptFunctor.o \
+	${OBJECTDIR}/_ext/53083909/scriptIO.o \
 	${OBJECTDIR}/_ext/53083909/scriptMath.o \
 	${OBJECTDIR}/_ext/53083909/scriptRunner.o \
 	${OBJECTDIR}/_ext/53083909/scriptSerializer.o \
@@ -94,6 +95,11 @@ ${OBJECTDIR}/_ext/53083909/scriptFunctor.o: ../src/script/scriptFunctor.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptFunctor.o ../src/script/scriptFunctor.cpp
+
+${OBJECTDIR}/_ext/53083909/scriptIO.o: ../src/script/scriptIO.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptIO.o ../src/script/scriptIO.cpp
 
 ${OBJECTDIR}/_ext/53083909/scriptMath.o: ../src/script/scriptMath.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
@@ -198,6 +204,19 @@ ${OBJECTDIR}/_ext/53083909/scriptFunctor_nomain.o: ${OBJECTDIR}/_ext/53083909/sc
 	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptFunctor_nomain.o ../src/script/scriptFunctor.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptFunctor.o ${OBJECTDIR}/_ext/53083909/scriptFunctor_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/53083909/scriptIO_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptIO.o ../src/script/scriptIO.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/53083909
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/53083909/scriptIO.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/53083909/scriptIO_nomain.o ../src/script/scriptIO.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/53083909/scriptIO.o ${OBJECTDIR}/_ext/53083909/scriptIO_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/53083909/scriptMath_nomain.o: ${OBJECTDIR}/_ext/53083909/scriptMath.o ../src/script/scriptMath.cpp 

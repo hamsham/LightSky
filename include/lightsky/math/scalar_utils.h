@@ -36,8 +36,8 @@ constexpr scalar_t min(scalar_t a, scalar_t b);
  * 
  * @return The linear "mix" of a and b.
  */
-template <typename scalar_t> constexpr
-scalar_t mix(scalar_t a, scalar_t b, scalar_t percent);
+template <typename scalar_t>
+constexpr scalar_t mix(scalar_t a, scalar_t b, scalar_t percent);
 
 /**
  * @brief max
@@ -83,8 +83,8 @@ constexpr scalar_t clamp(scalar_t n, scalar_t minVal, scalar_t maxVal);
  * 
  * @return The smooth linear interpolation of x in between the interval a and b.
  */
-template <typename scalar_t> inline
-scalar_t smoothstep(scalar_t a, scalar_t b, scalar_t x);
+template <typename scalar_t>
+constexpr scalar_t smoothstep(scalar_t a, scalar_t b, scalar_t x);
 
 /**
  * @brief fastSqrt

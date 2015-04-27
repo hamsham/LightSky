@@ -39,17 +39,20 @@ constexpr scalar_t math::clamp(scalar_t n, scalar_t minVal, scalar_t maxVal) {
 /*-------------------------------------
     smoothstep
 -------------------------------------*/
-template <typename scalar_t> inline
-scalar_t math::smoothstep(scalar_t a, scalar_t b, scalar_t x) {
-    if (x <= a) {
-        return scalar_t{0};
-    }
-    else if (x >= b) {
-        return scalar_t{1};
-    }
-    
-    const scalar_t t = (x-a)/(b-a);
+namespace math { namespace impl {
+template <typename scalar_t> constexpr
+scalar_t smoothstep_impl(const scalar_t& t) {
     return (scalar_t{3}*t*t*t) - (scalar_t{2}*t*t);
+}
+} } // math::impl namespace
+
+template <typename scalar_t> constexpr
+scalar_t math::smoothstep(scalar_t a, scalar_t b, scalar_t x) {
+    return (x <= a)
+        ? scalar_t{0}
+        : (x >= b)
+            ? scalar_t{1}
+            : impl::smoothstep_impl(x-a)/(b-a);
 }
 
 /*-------------------------------------
@@ -131,17 +134,17 @@ scalar_t math::fastLog2(scalar_t n) {
 -------------------------------------*/
 template <> inline
 float math::fastLog2<float>(float n) {
-    int* const exp = reinterpret_cast<int*> (&n);
-    int x = *exp;
+    long* const exp = reinterpret_cast<long*> (&n);
+    long x = *exp;
 
-    const int log2 = ((x >> 23) & 255) - 128;
+    const long log2 = ((x >> 23) & 255) - 128;
 
     x &= ~(255 << 23);
     x += 127 << 23;
 
     *exp = x;
-    n = ((-1.f / 3.f) * n + 2.f) * n - 2.f / 3.f;
-    return n + log2;
+    const float ret = ((-1.f / 3.f) * n + 2.f) * n - 2.f / 3.f;
+    return ret + log2;
 }
 
 /*-------------------------------------

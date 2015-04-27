@@ -13,6 +13,7 @@
       <itemPath>../include/lightsky/script/scriptBasicVar.h</itemPath>
       <itemPath>../include/lightsky/script/scriptFactory.h</itemPath>
       <itemPath>../include/lightsky/script/scriptFunctor.h</itemPath>
+      <itemPath>../include/lightsky/script/scriptIO.h</itemPath>
       <itemPath>../include/lightsky/script/scriptMath.h</itemPath>
       <itemPath>../include/lightsky/script/scriptRunner.h</itemPath>
       <itemPath>../include/lightsky/script/scriptSerializer.h</itemPath>
@@ -30,6 +31,7 @@
       <itemPath>../src/script/scriptBasicVar.cpp</itemPath>
       <itemPath>../src/script/scriptFactory.cpp</itemPath>
       <itemPath>../src/script/scriptFunctor.cpp</itemPath>
+      <itemPath>../src/script/scriptIO.cpp</itemPath>
       <itemPath>../src/script/scriptMath.cpp</itemPath>
       <itemPath>../src/script/scriptRunner.cpp</itemPath>
       <itemPath>../src/script/scriptSerializer.cpp</itemPath>
@@ -161,6 +163,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/script/scriptIO.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/script/scriptMath.h"
             ex="false"
             tool="3"
@@ -193,6 +200,8 @@
       <item path="../src/script/scriptFactory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptFunctor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptIO.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -387,6 +396,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/script/scriptIO.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/script/scriptMath.h"
             ex="false"
             tool="3"
@@ -419,6 +433,8 @@
       <item path="../src/script/scriptFactory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptFunctor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/script/scriptIO.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/script/scriptMath.cpp" ex="false" tool="1" flavor2="0">
       </item>

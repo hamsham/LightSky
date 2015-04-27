@@ -33,7 +33,7 @@ std::string utils::convertWtoMb(const std::wstring& wstr) {
     std::size_t err = std::wcstombs(&ret[0], wstr.c_str(), maxBytes);
     
     // make sure the conversion worked
-    if (err != static_cast<std::size_t>(-1)) {
+    if (err == static_cast<std::size_t>(-1)) {
         ret.clear();
     }
     

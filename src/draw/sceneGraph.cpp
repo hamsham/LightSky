@@ -270,10 +270,11 @@ bool sceneGraph::importCameras(const sceneResource& r, bool append) {
         }
     }
     
-    cameraList.reserve(r.getNumCameras());
+    const unsigned camOffset = cameraList.size();
+    cameraList.resize(camOffset + r.getNumCameras());
     
-    for (const camera& inCam : rCameras) {
-        cameraList.push_back(inCam);
+    for (unsigned i = 0; i < rCameras.size(); ++i) {
+        cameraList[camOffset + i] = rCameras[i];
     }
     
     return true;

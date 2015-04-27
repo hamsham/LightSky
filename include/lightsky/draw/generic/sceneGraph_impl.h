@@ -53,14 +53,14 @@ inline camera& sceneGraph::getActiveCamera() {
 /*-------------------------------------
  * Get the list of cameras (const).
 -------------------------------------*/
-inline const std::vector<camera>& sceneGraph::getCameraList() const {
+inline const std::deque<camera>& sceneGraph::getCameraList() const {
     return cameraList;
 }
 
 /*-------------------------------------
  * Get the list of cameras.
 -------------------------------------*/
-inline std::vector<camera>& sceneGraph::getCameraList() {
+inline std::deque<camera>& sceneGraph::getCameraList() {
     return cameraList;
 }
 

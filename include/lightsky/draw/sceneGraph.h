@@ -73,7 +73,7 @@ class sceneGraph {
          * Contains a list of camera objects to provide viewports or places to
          * view the scene from.
          */
-        std::vector<camera> cameraList;
+        std::deque<camera> cameraList;
 
         /**
          * @brief geometryList
@@ -341,7 +341,7 @@ class sceneGraph {
          * @return A vector of camera objects which can be used to render the
          * scene of nodes.
          */
-        const std::vector<camera>& getCameraList() const;
+        const std::deque<camera>& getCameraList() const;
         
         /**
          * @brief Retrieve the list of camera in *this.
@@ -349,7 +349,7 @@ class sceneGraph {
          * @return A vector of camera objects which can be used to render the
          * scene of nodes.
          */
-        std::vector<camera>& getCameraList();
+        std::deque<camera>& getCameraList();
 
         /**
          * @brief Get the array of textures used by *this scene object's

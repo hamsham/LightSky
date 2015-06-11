@@ -168,7 +168,16 @@ bool initSubsystems() {
 #endif
     );
     
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+    constexpr uint32_t sdlInitFlags = 0
+        | SDL_INIT_TIMER
+        | SDL_INIT_AUDIO
+        | SDL_INIT_VIDEO
+        | SDL_INIT_EVENTS
+        | SDL_INIT_JOYSTICK
+        | SDL_INIT_GAMECONTROLLER
+        | 0;
+    
+    if (SDL_Init(sdlInitFlags) < 0) {
         LS_LOG_ERR(
             "Unable to initialize SDL due to error ", SDL_GetError(), '\n',
             "Complain to your local programmer.\n"

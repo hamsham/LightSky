@@ -39,4 +39,26 @@
 #include "lightsky/draw/vertexArray.h"
 #include "lightsky/draw/vertexBuffer.h"
 
+namespace ls {
+namespace draw {
+
+/**
+ * @brief Initialize the Lightsky Drawing system.
+ * 
+ * This function will fail if a forward-compatible OpenGL rendering context has
+ * not yet been created.
+ * 
+ * @return TRUE if the internal rendering system was successfully initialized,
+ * or FALSE if not.
+ */
+bool init();
+
+/**
+ * @brief Terminate the LightSky rendering system.
+ */
+void terminate();
+
+} // end draw namespace
+} // end ls namespace
+
 #endif	/* __LS_DRAW_H__ */

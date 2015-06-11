@@ -80,6 +80,7 @@
       <itemPath>../src/draw/color.cpp</itemPath>
       <itemPath>../src/draw/defaultRenderStage.cpp</itemPath>
       <itemPath>../src/draw/depthObject.cpp</itemPath>
+      <itemPath>../src/draw/draw.cpp</itemPath>
       <itemPath>../src/draw/drawCommand.cpp</itemPath>
       <itemPath>../src/draw/fontResource.cpp</itemPath>
       <itemPath>../src/draw/framebuffer.cpp</itemPath>
@@ -132,7 +133,6 @@
           <standard>8</standard>
           <incDir>
             <pElem>../include</pElem>
-            <pElem>/usr/include/freetype2</pElem>
           </incDir>
           <commandLine>-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2</commandLine>
           <preprocessorList>
@@ -457,9 +457,16 @@
       </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/draw.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../src/draw/drawCommand.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/fontResource.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool>
+          <incDir>
+            <pElem>/mingw/include/freetype2</pElem>
+          </incDir>
+        </ccTool>
       </item>
       <item path="../src/draw/framebuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -846,6 +853,8 @@
       <item path="../src/draw/defaultRenderStage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/depthObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/draw.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/drawCommand.cpp" ex="false" tool="1" flavor2="0">
       </item>

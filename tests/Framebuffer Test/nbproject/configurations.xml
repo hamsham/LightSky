@@ -57,7 +57,7 @@
           <incDir>
             <pElem>../../include</pElem>
           </incDir>
-          <commandLine>-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread -static-libstdc++ -static-libgcc -flto</commandLine>
+          <commandLine>-Wall -Wextra -Werror -pedantic-errors -ggdb -pthread</commandLine>
           <preprocessorList>
             <Elem>LS_DEBUG</Elem>
             <Elem>SDL_MAIN_HANDLED</Elem>
@@ -139,7 +139,8 @@
                             OP="build/liblightsetup_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>GL</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
             <linkerLibLibItem>assimp</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>

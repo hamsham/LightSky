@@ -61,7 +61,7 @@ bool context::init(const display& disp, bool useVsync) {
     LS_LOG_MSG("Initializing an OpenGL rendering context.");
     pContext = SDL_GL_CreateContext(disp.getWindow());
     
-    if (!pContext) {
+    if (!pContext || !ls::draw::init()) {
         LS_LOG_ERR("\tUnable to create a render context through SDL.");
         LS_LOG_ERR('\t', SDL_GetError(), '\n');
         terminate();
@@ -95,6 +95,8 @@ bool context::init(const display& disp, bool useVsync) {
     Renderer resource termination
 -------------------------------------*/
 void context::terminate() {
+    ls::draw::terminate();
+    
     if (pContext) {
         SDL_GL_DeleteContext(pContext);
     }

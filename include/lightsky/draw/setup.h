@@ -8,7 +8,7 @@
 #ifndef __LS_DRAW_SETUP_H__
 #define	__LS_DRAW_SETUP_H__
 
-#include <GLES3/gl3.h>
+#include <GL/glew.h>
 
 #include "lightsky/setup/setup.h"
 #include "lightsky/utils/assertions.h"

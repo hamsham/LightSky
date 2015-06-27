@@ -8,12 +8,8 @@ namespace draw {
  * Initialize LightDraw
 -------------------------------------*/
 bool init() {
-    glewExperimental = GL_TRUE;
-    const GLenum errCode = glewInit();
-    
-    if (errCode != GLEW_OK) {
+    if (lsgl_init() <= 0) {
         LS_LOG_ERR("Unable to initialize the LightSky Drawing system.");
-        LS_LOG_ERR("\tError Message: ", glewGetErrorString(errCode));
         return false;
     }
     

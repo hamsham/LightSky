@@ -11,12 +11,12 @@ void utils::runtime_assert(bool condition, error_t type, const char* const msg) 
     }
 
 	const char* const errorString[] = {"ALERT: ", "WARNING: ", "ERROR: "};
-	std::ostream& stream = (type > utils::ALERT) ? std::cerr : std::cout;
+	std::ostream& stream = (type > utils::LS_ALERT) ? std::cerr : std::cout;
 	
 	stream << errorString[type] << msg << std::endl;
 
-	if (type == utils::ERROR) {
-        throw utils::ERROR;
+	if (type == utils::LS_ERROR) {
+        throw utils::LS_ERROR;
     }
 }
 

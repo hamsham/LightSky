@@ -50,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/geometry.o \
 	${OBJECTDIR}/_ext/1019371010/geometry_utils.o \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
+	${OBJECTDIR}/_ext/1019371010/lsgl.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
 	${OBJECTDIR}/_ext/1019371010/pickingBuffer.o \
 	${OBJECTDIR}/_ext/1019371010/pickingRenderStage.o \
@@ -70,7 +71,7 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2
 
 # CC Compiler Flags
 CCFLAGS=-Wall -Werror -Wextra -pedantic -pedantic-errors -msse -msse2 -mfpmath=sse -ggdb -O2
@@ -169,6 +170,11 @@ ${OBJECTDIR}/_ext/1019371010/imageResource.o: ../src/draw/imageResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/imageResource.o ../src/draw/imageResource.cpp
+
+${OBJECTDIR}/_ext/1019371010/lsgl.o: ../src/draw/lsgl.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLS_DEBUG -I../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/lsgl.o ../src/draw/lsgl.c
 
 ${OBJECTDIR}/_ext/1019371010/matrixStack.o: ../src/draw/matrixStack.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

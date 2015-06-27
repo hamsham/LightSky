@@ -8,13 +8,15 @@
 #ifndef __LS_DRAW_SETUP_H__
 #define	__LS_DRAW_SETUP_H__
 
-#include <GL/glew.h>
-
 #include "lightsky/setup/setup.h"
+
 #include "lightsky/utils/assertions.h"
 #include "lightsky/utils/hash.h"
 #include "lightsky/utils/log.h"
+
 #include "lightsky/math/math.h"
+
+#include "lightsky/draw/lsgl.h"
 
 /*-------------------------------------
     Debugging Various Messages.

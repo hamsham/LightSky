@@ -139,7 +139,7 @@ const data_t& bTree<key_t, data_t>::operator [](const key_t& k) const {
     const bTreeNode<data_t>* const iter = iterate(&k);
     
     if (!iter || !iter->data) {
-        throw ls::utils::error_t::ERROR;
+        throw ls::utils::error_t::LS_ERROR;
     }
     
     return *iter->data;
@@ -225,7 +225,7 @@ const data_t& bTree<key_t, data_t>::at(const key_t& k) const {
     const bTreeNode<data_t>* const iter = iterate(&k);
     
     if (!iter || !iter->data) {
-        throw ls::utils::error_t::ERROR;
+        throw ls::utils::error_t::LS_ERROR;
     }
     
     return *iter->data;
@@ -239,7 +239,7 @@ data_t& bTree<key_t, data_t>::at(const key_t& k) {
     bTreeNode<data_t>* const iter = iterate(&k, false);
     
     if (!iter || !iter->data) {
-        throw ls::utils::error_t::ERROR;
+        throw ls::utils::error_t::LS_ERROR;
     }
     
     return *iter->data;

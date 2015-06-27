@@ -8,10 +8,10 @@
 #include <utility> // std::move
 #include <string>
 
-#include <FreeImage.h>
-
 #include "lightsky/draw/color.h"
 #include "lightsky/draw/imageResource.h"
+
+#include <FreeImage.h>
 
 namespace ls {
 namespace draw {

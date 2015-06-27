@@ -140,7 +140,6 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibLibItem>glew32</linkerLibLibItem>
             <linkerLibLibItem>assimp</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>

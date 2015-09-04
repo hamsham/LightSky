@@ -156,6 +156,60 @@ static constexpr color black    = color{0.f, 0.f, 0.f, 1.f};
 static constexpr color white    = color{1.f, 1.f, 1.f, 1.f};
 static constexpr color gray     = color{0.5f, 0.5f, 0.5f, 1.f};
 
+/*-----------------------------------------------------------------------------
+ * Color Functions
+-----------------------------------------------------------------------------*/
+/**
+ * @brief Convert a color using an integral type into a float color.
+ * 
+ * The returned color's precision will be clamped to [-1, 1]. The maximum
+ * possible value of the input parameter's base type must be greater than 0.
+ * 
+ * @param c
+ * An RGBA color which uses a signed or unsigned integral precision as its base
+ * type.
+ * 
+ * @return A color object which uses floating-point precision for its base type.
+ */
+template <typename int_t, typename float_t=float>
+math::vec4_t<float_t> color_int_to_float(const math::vec4_t<int_t>& c) {
+    const float_t range = float_t{1.0} / ((float_t)std::numeric_limits<int_t>::max());
+    math::vec4_t<float_t> ret;
+    
+    ret[0] = range * (float_t)c[0];
+    ret[1] = range * (float_t)c[1];
+    ret[2] = range * (float_t)c[2];
+    ret[3] = range * (float_t)c[3];
+    
+    return ret;
+}
+
+/**
+ * @brief Convert a color using a float type into an integral color.
+ * 
+ * The returned color's internal values will be clamped between the base type's
+ * std::numeric_limits::max() and std::numeric_limits::min() values. The
+ * maximum and minimum possible values of the input parameter's values must be
+ * within the range of [-1, 1].
+ * 
+ * @param c
+ * An RGBA color which uses floating-point precision as its base type.
+ * 
+ * @return A color object which uses integral precision for its base type.
+ */
+template <typename int_t, typename float_t=float>
+math::vec4_t<int_t> color_float_to_int(const math::vec4_t<float_t>& c) {
+    const int_t range = std::numeric_limits<int_t>::max();
+    math::vec4_t<int_t> ret;
+    
+    ret[0] = (int_t)std::floor((c[0] * range) + float_t{0.5});
+    ret[1] = (int_t)std::floor((c[1] * range) + float_t{0.5});
+    ret[2] = (int_t)std::floor((c[2] * range) + float_t{0.5});
+    ret[3] = (int_t)std::floor((c[3] * range) + float_t{0.5});
+    
+    return ret;
+}
+
 } // end color namespace
 } // end draw namespace
 } // end ls namespace

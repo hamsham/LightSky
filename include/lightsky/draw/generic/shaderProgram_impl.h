@@ -6,14 +6,14 @@ namespace draw {
     Get the OpenGL ID used by *this.
 -------------------------------------*/
 inline unsigned shaderProgram::getId() const {
-    return programId;
+    return gpuId;
 }
 
 /*-------------------------------------
     Bind this program to the current context
 -------------------------------------*/
 inline void shaderProgram::bind() const {
-    glUseProgram(programId);
+    glUseProgram(gpuId);
 }
 
 /*-------------------------------------
@@ -26,15 +26,15 @@ inline void shaderProgram::unbind() const {
 /*-------------------------------------
     Bind a vertex attribute to a shader
 -------------------------------------*/
-inline void shaderProgram::bindAttribute(GLuint index, const GLchar* const name) const {
-    glBindAttribLocation(programId, index, name);
+inline void shaderProgram::bindAttribLocation(GLuint index, const GLchar* const name) const {
+    glBindAttribLocation(gpuId, index, name);
 }
 
 /*-------------------------------------
     Get the location of a vert6ex attribute
 -------------------------------------*/
-inline GLint shaderProgram::getAttribute(const GLchar* const name) const {
-    return glGetAttribLocation(programId, name);
+inline GLint shaderProgram::getAttribLocation(const GLchar* const name) const {
+    return glGetAttribLocation(gpuId, name);
 }
 
 /*-------------------------------------
@@ -45,7 +45,7 @@ inline GLint shaderProgram::getAttribute(const GLchar* const name) const {
     -1 for an invalid uniform index.
 -------------------------------------*/
 inline GLint shaderProgram::getUniformLocation(const GLchar* const name) const {
-    return glGetUniformLocation(programId, name);
+    return glGetUniformLocation(gpuId, name);
 }
 
 /*-------------------------------------
@@ -220,7 +220,7 @@ inline void shaderProgram::setUniformValue(GLint uniformId, const math::mat4& va
     Query the bindings of color numbers to user-defined varying out variables
 -------------------------------------*/
 inline GLint shaderProgram::getFragDataLocation(const GLchar* const name) const {
-    return glGetFragDataLocation(programId, name);
+    return glGetFragDataLocation(gpuId, name);
 }
 
 } // end draw namespace

@@ -31,6 +31,10 @@
         <itemPath>../include/lightsky/draw/generic/transform_impl.h</itemPath>
         <itemPath>../include/lightsky/draw/generic/vertexBuffer_impl.h</itemPath>
       </logicalFolder>
+      <itemPath>../include/lightsky/draw/BufferObject.h</itemPath>
+      <itemPath>../include/lightsky/draw/ShaderUniform.h</itemPath>
+      <itemPath>../include/lightsky/draw/VertexAttrib.h</itemPath>
+      <itemPath>../include/lightsky/draw/VertexUtils.h</itemPath>
       <itemPath>../include/lightsky/draw/atlas.h</itemPath>
       <itemPath>../include/lightsky/draw/blendObject.h</itemPath>
       <itemPath>../include/lightsky/draw/bone.h</itemPath>
@@ -73,6 +77,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../src/draw/BufferObject.cpp</itemPath>
+      <itemPath>../src/draw/ShaderUniform.cpp</itemPath>
+      <itemPath>../src/draw/VertexAttrib.cpp</itemPath>
+      <itemPath>../src/draw/VertexUtils.cpp</itemPath>
       <itemPath>../src/draw/atlas.cpp</itemPath>
       <itemPath>../src/draw/blendObject.cpp</itemPath>
       <itemPath>../src/draw/bone.cpp</itemPath>
@@ -187,6 +195,26 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <item path="../include/lightsky/draw/BufferObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/ShaderUniform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/VertexAttrib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/VertexUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/atlas.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/blendObject.h"
@@ -454,6 +482,14 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="../src/draw/BufferObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/ShaderUniform.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/VertexAttrib.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/VertexUtils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/atlas.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -593,6 +629,26 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <item path="../include/lightsky/draw/BufferObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/ShaderUniform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/VertexAttrib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/VertexUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/atlas.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../include/lightsky/draw/blendObject.h"
@@ -860,6 +916,14 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="../src/draw/BufferObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/ShaderUniform.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/VertexAttrib.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/VertexUtils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/atlas.cpp" ex="false" tool="1" flavor2="0">
       </item>

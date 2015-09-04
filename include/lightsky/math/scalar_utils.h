@@ -390,6 +390,35 @@ constexpr scalar_t average();
 template <typename scalar_t, typename... scalars_t>
 constexpr scalar_t average(const scalar_t& num, const scalars_t&... nums);
 
+/**
+ * @brief Count the number of bits in an integer.
+ * 
+ * @param num
+ * A number containing a string of set bits.
+ * 
+ * @return A count of all the set bits in an integer.
+ */
+constexpr unsigned count_set_bits(const unsigned long long num);
+
+/**
+ * @brief Count the number of bits in an integer.
+ * 
+ * This version of the bit-count algorithm casts the input type into the
+ * largest possible integral data type available (currently unsigned long
+ * long). This means that negative values may return a very large value on a
+ * two's complement machine.
+ * 
+ * This also means that passing a value of -1 into the function will return the
+ * maximum allowable number of bits available for storage on the current CPU.
+ * 
+ * @param num
+ * A number containing a string of set bits.
+ * 
+ * @return A count of all the set bits in an integer.
+ */
+template <typename scalar_t>
+constexpr unsigned count_set_bits(const scalar_t num);
+
 } // end math namespace
 } // end ls namespace
 

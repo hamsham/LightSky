@@ -9,6 +9,7 @@
 #define	__LS_DRAW_SHADER_PROGRAM_H__
 
 #include <string>
+#include <vector>
 
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/shaderObject.h"
@@ -16,18 +17,24 @@
 namespace ls {
 namespace draw {
 
-/**
+/*-----------------------------------------------------------------------------
+ * Forward Declarations
+-----------------------------------------------------------------------------*/
+enum class vertex_attrib_t : int;
+class VertexAttrib;
+
+/**----------------------------------------------------------------------------
  * @brief Shader Program
  * 
  * Represents a combination of OpenGL vertex, fragment, and geometry shader
  * objects.
- */
+-----------------------------------------------------------------------------*/
 class shaderProgram {
     private:
         /**
          * A handle to the GPU-side shader program within OpenGL.
          */
-        GLuint programId = 0;
+        GLuint gpuId = 0;
 
     public:
         /**
@@ -133,7 +140,7 @@ class shaderProgram {
          * @param name
          * The exact name of the vertex array attribute in *this to bind.
          */
-        void bindAttribute(GLuint index, const GLchar* const name) const;
+        void bindAttribLocation(GLuint index, const GLchar* const name) const;
         
         /**
          * Get the location of a vertex attribute
@@ -146,7 +153,52 @@ class shaderProgram {
          * A positive value to indicate the attribute's location in OpenGL or
          * -1 for an invalid index.
          */
-        GLint getAttribute(const GLchar* const name) const;
+        GLint getAttribLocation(const GLchar* const name) const;
+        
+        /**
+         * @brief Get information about an active uniform located in a shader.
+         * 
+         * @param prog
+         * A constant reference to successfully compiled a ShaderProgram object.
+         * 
+         * @param attribType
+         * An enumeration which determines if the returned attribute should contain a
+         * Vertex attribute or Uniform attribute.
+         * 
+         * @param index - indicates the index of the uniform to be queried.
+         * 
+         * @param varSize - indicates the number of elements contained within
+         * the uniform. This will be a value of 1 for all variables that are not
+         * arrays.
+         * 
+         * @param varType - used to determine the variable's data type; such as
+         * an int, float, sampler, matrix, or sampler array.
+         * 
+         * @returns the name of a vertex or uniform attribute as it is known in a GLSL
+         * shader.
+         * 
+         */
+        std::string getAttribName(
+            const vertex_attrib_t attribType,
+            const GLint index,
+            GLint* const outVarSize,
+            GLenum* const outVarType
+        ) const;
+        
+        /**
+         * @brief Retrieve the meta-data about all shader uniform/attributes.
+         * 
+         * @param prog
+         * A constant reference to successfully compiled a ShaderProgram object.
+         * 
+         * @param attribType
+         * An enumeration which determines if the list of returned attributes should
+         * contain Vertex attributes or Uniform attributes.
+         * 
+         * @return A std::vector of std::string objects, containing the names of all
+         * shader attributes or uniforms within the input program object.
+         */
+        std::vector<VertexAttrib> getAttribs(const vertex_attrib_t attribType) const;
         
         /**
          * Get the location of a uniform variable.
@@ -173,7 +225,7 @@ class shaderProgram {
          * source code.
          * 
          */
-        std::string getUniformInfo(int index, GLint* const varSize, GLenum* const varType) const;
+        std::string getUniformName(int index, GLint* const varSize, GLenum* const varType) const;
         
         /**
          * Set a single uniform integer variable

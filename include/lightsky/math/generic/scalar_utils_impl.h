@@ -328,4 +328,16 @@ constexpr scalar_t math::average(const scalar_t& num, const scalars_t&... nums) 
     return sum(num, nums...) / scalar_t(sizeof...(scalars_t)+1);
 }
 
+/*-------------------------------------
+    Count the number of bits in an integer.
+-------------------------------------*/
+constexpr unsigned math::count_set_bits(const unsigned long long num) {
+    return num ? count_set_bits(num >> 1) + (1 & num) : 0;
+}
+
+template <typename scalar_t>
+constexpr unsigned math::count_set_bits(const scalar_t num) {
+    return count_set_bits((unsigned long long)num);
+}
+
 } /* end ls namespace */

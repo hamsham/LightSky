@@ -104,34 +104,26 @@ math::quat_t<num_t> math::nlerp(const quat_t<num_t>& q1, const quat_t<num_t>& q2
 -------------------------------------*/
 template <typename num_t> inline
 math::quat_t<num_t> math::slerp(const quat_t<num_t>& q1, const quat_t<num_t>& q2, num_t t) {
-    num_t dotProd = dot(q1, q2);
+    num_t cosTheta = dot(q1, q2);
+    quat_t<num_t> q = q2;
 
-    // Reverse the sign of q2 if q1.q2 < 0.
-    if (dotProd < num_t{0}) {
-        dotProd = -dotProd;
+    if (cosTheta == num_t{1}) {
+        return q1;
     }
-
-    const num_t theta = acos(dotProd);
-    num_t mult1, mult2;
-
-    if (theta >= LS_EPSILON) {
-        const num_t st = (num_t) LS_SIN(theta);
-        mult1 = LS_SIN((num_t{1} - t) * theta) / st;
-        mult2 = LS_SIN(t * theta) / st;
+    else if (cosTheta < num_t{0}) {
+        cosTheta = -cosTheta;
+        q[0] = -q[0];
+        q[1] = -q[1];
+        q[2] = q[2]; // no touchy touchy!
+        q[3] = -q[3];
     }
-    else {
-        // To avoid division by 0 and by very small numbers the approximation of sin(angle)
-        // by angle is used when theta is small (0.000001 is chosen arbitrarily).
-        mult1 = num_t{1} - t;
-        mult2 = t;
-    }
-
-    return quat_t<num_t>{
-        mult1 * q1.q[0] + mult2 * q2.q[0],
-        mult1 * q1.q[1] + mult2 * q2.q[1],
-        mult1 * q1.q[2] + mult2 * q2.q[2],
-        mult1 * q1.q[3] + mult2 * q2.q[3]
-    };
+    
+    const num_t theta = std::acos(cosTheta);
+    const quat_t<num_t>&& sq1 = q1 * LS_SIN(theta * (num_t{1}-t));
+    const quat_t<num_t>&& sq2 = q * LS_SIN(t * theta);
+    const num_t sinTheta = num_t{1} / LS_SIN(theta);
+    
+    return (sq1 + sq2) * sinTheta;
 }
 
 /*-------------------------------------

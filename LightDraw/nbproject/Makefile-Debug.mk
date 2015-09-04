@@ -35,6 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/1019371010/BufferObject.o \
+	${OBJECTDIR}/_ext/1019371010/ShaderUniform.o \
+	${OBJECTDIR}/_ext/1019371010/VertexAttrib.o \
+	${OBJECTDIR}/_ext/1019371010/VertexUtils.o \
 	${OBJECTDIR}/_ext/1019371010/atlas.o \
 	${OBJECTDIR}/_ext/1019371010/blendObject.o \
 	${OBJECTDIR}/_ext/1019371010/bone.o \
@@ -95,6 +99,26 @@ build/liblightdraw_d.a: ${OBJECTFILES}
 	${RM} build/liblightdraw_d.a
 	${AR} -rv build/liblightdraw_d.a ${OBJECTFILES} 
 	$(RANLIB) build/liblightdraw_d.a
+
+${OBJECTDIR}/_ext/1019371010/BufferObject.o: ../src/draw/BufferObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/BufferObject.o ../src/draw/BufferObject.cpp
+
+${OBJECTDIR}/_ext/1019371010/ShaderUniform.o: ../src/draw/ShaderUniform.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/ShaderUniform.o ../src/draw/ShaderUniform.cpp
+
+${OBJECTDIR}/_ext/1019371010/VertexAttrib.o: ../src/draw/VertexAttrib.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/VertexAttrib.o ../src/draw/VertexAttrib.cpp
+
+${OBJECTDIR}/_ext/1019371010/VertexUtils.o: ../src/draw/VertexUtils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/VertexUtils.o ../src/draw/VertexUtils.cpp
 
 ${OBJECTDIR}/_ext/1019371010/atlas.o: ../src/draw/atlas.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

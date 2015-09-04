@@ -11,9 +11,6 @@
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptSerializer.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/generic/scriptSerializer_impl.h</file>
         </group>
-        <group>
-            <file>file:/media/hammy/Hamdrive/Miscellaneous/C++/projects/LightSky/include/lightsky/draw/camera.h</file>
-            <file>file:/media/hammy/Hamdrive/Miscellaneous/C++/projects/LightSky/src/draw/camera.cpp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

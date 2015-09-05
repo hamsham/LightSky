@@ -16,7 +16,26 @@
 
 #include "lightsky/math/math.h"
 
-#include "lightsky/draw/lsgl.h"
+/* #include "lightsky/draw/lsgl.h" */
+
+/*-------------------------------------
+    OpenGL Header
+-------------------------------------*/
+#define GL_GLEXT_PROTOTYPES
+
+#ifdef LS_OS_OSX
+    #define GL_DO_NOT_WARN_IF_MULTI_GL_VERSION_HEADERS_INCLUDED
+    #include <OpenGL/gl.h>
+    #include <OpenGL/gl3.h>
+    #include <OpenGL/glext.h>
+    #include <OpenGL/gl3ext.h>
+#elif defined (LS_OS_IOS) || defined (LS_OS_IOS_SIM)
+    #include <OpenGLES/ES3/gl.h>
+    #include <OpenGLES/ES3/glext.h>
+#else
+    #include <GLES2/gl2.h>
+    #include <GLES2/gl2ext.h>
+#endif
 
 /*-------------------------------------
     Debugging Various Messages.

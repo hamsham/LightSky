@@ -9,6 +9,7 @@
 #include "lightsky/draw/textRenderStage.h"
 #include "lightsky/draw/sceneGraph.h"
 #include "lightsky/draw/sceneNode.h"
+#include "lightsky/draw/glsl_common.h"
 
 namespace {
 
@@ -30,9 +31,10 @@ const char* TEXT_COLOR_UNIFORM = "textColor";
 /*-------------------------------------
  * Text Vertex Shader
 -------------------------------------*/
-const char textVertShader[] = u8R"***(
-#version 300 es
-
+constexpr char const* textVertShader[] = {
+ls::draw::GLSL_DEFAULT_VERSION,
+ls::draw::GLSL_PRECISION_LOWP_F,
+u8R"***(
 layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inUv;
 layout (location = 2) in vec3 inNorm;
@@ -47,16 +49,16 @@ void main() {
     gl_Position = mvp * vec4(inPos, 1.0);
     uvCoords = inUv;
 }
-)***";
+)***"
+};
 
 /*-------------------------------------
  * Text Fragment Shader (with pseudo signed-distance field)
 -------------------------------------*/
-const char textFragShader[] = u8R"***(
-#version 300 es
-
-precision lowp float;
-
+constexpr char const* textFragShader[] = {
+ls::draw::GLSL_DEFAULT_VERSION,
+ls::draw::GLSL_PRECISION_LOWP_F,
+u8R"***(
 in vec2 uvCoords;
 
 out vec4 outFragCol;
@@ -68,7 +70,8 @@ void main() {
     float mask = texture(texSampler, uvCoords).r;
     outFragCol = textColor*step(0.5, mask);
 }
-)***";
+)***"
+};
 
 } // end anonymous namespace
 
@@ -135,7 +138,11 @@ bool textRenderStage::init() {
         terminate();
     }
     
-    if (!initShaders(textVertShader, textFragShader)) {
+    if (!vertShader.init(LS_ARRAY_SIZE(textVertShader), textVertShader, nullptr)
+    ||  !fragShader.init(LS_ARRAY_SIZE(textFragShader), textFragShader, nullptr)
+    ||  !shaderBinary.init(vertShader, fragShader)
+    ||  !shaderBinary.link()
+    ) {
         LS_LOG_ERR("ERROR: Unable to initialize a text renderer's shader data.");
         return false;
     }

@@ -139,7 +139,7 @@
                             OP="build/liblightsetup_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
+            <linkerOptionItem>-framework OpenGL</linkerOptionItem>
             <linkerLibLibItem>assimp</linkerLibLibItem>
             <linkerLibLibItem>SDL2</linkerLibLibItem>
             <linkerLibLibItem>SDL2main</linkerLibLibItem>

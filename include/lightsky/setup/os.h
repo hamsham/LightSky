@@ -33,8 +33,25 @@
 #endif
 
 /* Mac OSX */
-#if defined (macintosh) || defined (Macintosh) || defined (__APPLE__) || defined (__MACH__)
-    #define LS_OS_OSX 1
+#if defined (macintosh) || defined (Macintosh) || (defined (__APPLE__) && defined (__MACH__))
+    #include "TargetConditionals.h"
+    #ifdef TARGET_OS_MAC
+        #if TARGET_OS_MAC > 0
+            #define LS_OS_OSX TARGET_OS_MAC
+        #endif
+    #endif
+
+    #ifdef TARGET_OS_IPHONE
+        #if (TARGET_OS_IPHONE > 0) && (TARGET_IPHONE_SIMULATOR == 0)
+            #define LS_OS_IOS TARGET_OS_IPHONE
+        #endif
+    #endif
+
+    #ifdef TARGET_IPHONE_SIMULATOR
+        #if TARGET_IPHONE_SIMULATOR > 0
+        #define LS_OS_IOS_SIM TARGET_IPHONE_SIMULATOR
+        #endif
+    #endif
 #endif
 
 /* Unix */

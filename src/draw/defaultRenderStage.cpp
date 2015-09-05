@@ -9,6 +9,7 @@
 #include "lightsky/draw/defaultRenderStage.h"
 #include "lightsky/draw/sceneGraph.h"
 #include "lightsky/draw/sceneNode.h"
+#include "lightsky/draw/glsl_common.h"
 
 namespace {
 
@@ -20,14 +21,24 @@ const char* DEFAULT_MODEL_MATRIX_UNIFORM = "modelMatrix";
 /*-------------------------------------
  * Camera/VP Matrix Uniform Name
 -------------------------------------*/
-const char* DEFAULT_VP_MATRIX_UNIFORM = "vpMatrix";
+    const char* DEFAULT_VP_MATRIX_UNIFORM = "vpMatrix";
+
+    /*-------------------------------------
+     * Default Vertex Shader header
+    -------------------------------------*/
+    #if defined(LS_OS_IOS) || defined(LS_OS_IOS_SIM)
+        constexpr char const DEFAULT_SHADER_HEADER[] = "precision highp float;";
+    #else
+        constexpr char const DEFAULT_SHADER_HEADER[] = "";
+    #endif
 
 /*-------------------------------------
  * Default Vertex Shader (with diffuse lighting)
 -------------------------------------*/
-const char defaultVertShader[] = u8R"***(
-#version 300 es
-
+constexpr char const* defaultVertShader[] = {
+ls::draw::GLSL_DEFAULT_VERSION,
+ls::draw::GLSL_PRECISION_MEDP_F,
+u8R"***(
 layout (location = 0) in vec3 inPos;
 layout (location = 1) in vec2 inTex;
 layout (location = 2) in vec3 inNorm;
@@ -57,16 +68,16 @@ void main() {
     //fragVertNormal = normalize(worldNorm-worldPos);
     fragUvCoords = inTex;
 }
-)***";
+)***"
+};
 
 /*-------------------------------------
  * Default Fragment Shader (with diffuse lighting)
 -------------------------------------*/
-const char defaultFragShader[] = u8R"***(
-#version 300 es
-
-precision mediump float;
-
+constexpr char const* defaultFragShader[] = {
+ls::draw::GLSL_DEFAULT_VERSION,
+ls::draw::GLSL_PRECISION_MEDP_F,
+u8R"***(
 in vec3 fragVertNormal;
 in vec3 fragEyeDirection;
 in vec2 fragUvCoords;
@@ -85,7 +96,8 @@ void main() {
     float diffuseIntensity = getDiffuseIntensity(normalize(fragVertNormal), normalize(fragEyeDirection));
     fragOutColor = texture(tex, fragUvCoords) * diffuseIntensity;
 }
-)***";
+)***"
+};
 
 } // end anonymous namespace
 
@@ -137,8 +149,19 @@ defaultRenderStage& defaultRenderStage::operator=(defaultRenderStage&& rs) {
  * Initialization
 -------------------------------------*/
 bool defaultRenderStage::init() {
-    if (!initShaders(defaultVertShader, defaultFragShader)) {
-        LS_LOG_ERR("ERROR: Unable to initialize a default render stage's shaders.");
+    LOG_GL_ERR();
+
+    // check if the shader should be recompiled.
+    if (shaderBinary.getId() != 0) {
+        terminate();
+    }
+    
+    if (!vertShader.init(LS_ARRAY_SIZE(defaultVertShader), defaultVertShader, nullptr)
+    ||  !fragShader.init(LS_ARRAY_SIZE(defaultFragShader), defaultFragShader, nullptr)
+    ||  !shaderBinary.init(vertShader, fragShader)
+    ||  !shaderBinary.link()
+    ) {
+        LS_LOG_ERR("ERROR: Unable to initialize shaders for a default render stage.");
         return false;
     }
 

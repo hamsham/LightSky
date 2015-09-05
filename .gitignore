@@ -4,3 +4,7 @@
 *.mm
 !*.a
 !*.so
+/LightGame/build/
+/LightDraw/build/
+/build/
+/tests/Framebuffer Test/build/

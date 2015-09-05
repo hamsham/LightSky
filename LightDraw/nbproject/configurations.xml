@@ -49,8 +49,8 @@
       <itemPath>../include/lightsky/draw/framebuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/geometry.h</itemPath>
       <itemPath>../include/lightsky/draw/geometry_utils.h</itemPath>
+      <itemPath>../include/lightsky/draw/glsl_common.h</itemPath>
       <itemPath>../include/lightsky/draw/imageResource.h</itemPath>
-      <itemPath>../include/lightsky/draw/lsgl.h</itemPath>
       <itemPath>../include/lightsky/draw/matrixStack.h</itemPath>
       <itemPath>../include/lightsky/draw/pickingBuffer.h</itemPath>
       <itemPath>../include/lightsky/draw/pickingRenderStage.h</itemPath>
@@ -96,7 +96,6 @@
       <itemPath>../src/draw/geometry.cpp</itemPath>
       <itemPath>../src/draw/geometry_utils.cpp</itemPath>
       <itemPath>../src/draw/imageResource.cpp</itemPath>
-      <itemPath>../src/draw/lsgl.c</itemPath>
       <itemPath>../src/draw/matrixStack.cpp</itemPath>
       <itemPath>../src/draw/pickingBuffer.cpp</itemPath>
       <itemPath>../src/draw/pickingRenderStage.cpp</itemPath>
@@ -395,12 +394,15 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/imageResource.h"
+      <item path="../include/lightsky/draw/glsl_common.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/lsgl.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/draw/imageResource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../include/lightsky/draw/matrixStack.h"
             ex="false"
@@ -514,6 +516,7 @@
       <item path="../src/draw/fontResource.cpp" ex="false" tool="1" flavor2="0">
         <ccTool>
           <incDir>
+            <pElem>/usr/local/include/freetype2</pElem>
             <pElem>/mingw/include/freetype2</pElem>
           </incDir>
         </ccTool>
@@ -525,8 +528,6 @@
       <item path="../src/draw/geometry_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/imageResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/lsgl.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -829,12 +830,15 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/imageResource.h"
+      <item path="../include/lightsky/draw/glsl_common.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../include/lightsky/draw/lsgl.h" ex="false" tool="3" flavor2="0">
+      <item path="../include/lightsky/draw/imageResource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../include/lightsky/draw/matrixStack.h"
             ex="false"
@@ -954,8 +958,6 @@
       <item path="../src/draw/geometry_utils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/imageResource.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../src/draw/lsgl.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../src/draw/matrixStack.cpp" ex="false" tool="1" flavor2="0">
       </item>

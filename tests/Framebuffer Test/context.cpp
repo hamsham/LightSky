@@ -5,7 +5,8 @@
  * Created on August 2, 2014, 8:44 PM
  */
 
-#include <GLES3/gl3.h>
+#include "lightsky/draw/setup.h" // pull in OpenGL's headers
+
 #include <SDL2/SDL_video.h>
 
 #include "lightsky/draw/color.h"

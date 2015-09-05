@@ -29,7 +29,7 @@ namespace draw {
  * out a renderer.
 -----------------------------------------------------------------------------*/
 class renderStage {
-    private:
+    protected:
         /**
          * @brief The renderStackInfo struct is used specifically during draw
          * operations in order to ensure scene geometry is properly transformed
@@ -78,8 +78,7 @@ class renderStage {
          * shaders.
          */
         shaderProgram shaderBinary = {};
-
-    protected:
+        
         /**
          * @brief Retrieve the vertex shader contained within *this.
          * 

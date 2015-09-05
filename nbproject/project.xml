@@ -9,12 +9,12 @@
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
-                <make-dep-project>LightGame</make-dep-project>
-                <make-dep-project>LightDraw</make-dep-project>
                 <make-dep-project>LightMath</make-dep-project>
-                <make-dep-project>LightSetup</make-dep-project>
                 <make-dep-project>LightScript</make-dep-project>
+                <make-dep-project>LightGame</make-dep-project>
                 <make-dep-project>LightUtils</make-dep-project>
+                <make-dep-project>LightSetup</make-dep-project>
+                <make-dep-project>LightDraw</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>

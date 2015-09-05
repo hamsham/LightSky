@@ -1,6 +1,6 @@
 /* 
  * File:   scriptIO.cpp
- * Author: Miles LAcey
+ * Author: Miles Lacey
  * 
  * Created on March 24, 2015, 8:48 PM
  */

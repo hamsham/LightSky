@@ -102,6 +102,27 @@ class shaderObject {
          * otherwise.
          */
         bool init(const char* data, int size = 0);
+
+        /**
+         * Compile a set of shader strings and put them into GPU memory.
+         *
+         * @param numStrings
+         * The number of shader strings which are to be passed to the GPU for
+         * compilation.
+         *
+         * @param data
+         * A pointer to an array of strings which contain the shader's textual
+         * content.
+         *
+         * @param sizes
+         * An array of integers, specifying the sizes, in bytes, of each
+         * shader's textual data. Set this to NULL if you are sure that the
+         * data in each string is null-terminated.
+         *
+         * @return TRUE if the shader was successfully compiled, FALSE if
+         * otherwise.
+         */
+        bool init(const unsigned numStrings, const char* const* data, const int* sizes = nullptr);
         
         /**
          * Get a shader's GPU-assigned ID

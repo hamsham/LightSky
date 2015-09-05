@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
-FC=gfortran
+CC=gcc-5
+CCC=g++-5
+CXX=g++-5
+FC=gfortran-5
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW_W64-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GCC_5-MacOSX
+CND_DLIB_EXT=dylib
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build

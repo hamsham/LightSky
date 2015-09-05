@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
-FC=gfortran
+CC=gcc-5
+CCC=g++-5
+CXX=g++-5
+FC=gfortran-5
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW_W64-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GCC_5-MacOSX
+CND_DLIB_EXT=dylib
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -54,7 +54,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/geometry.o \
 	${OBJECTDIR}/_ext/1019371010/geometry_utils.o \
 	${OBJECTDIR}/_ext/1019371010/imageResource.o \
-	${OBJECTDIR}/_ext/1019371010/lsgl.o \
 	${OBJECTDIR}/_ext/1019371010/matrixStack.o \
 	${OBJECTDIR}/_ext/1019371010/pickingBuffer.o \
 	${OBJECTDIR}/_ext/1019371010/pickingRenderStage.o \
@@ -173,7 +172,7 @@ ${OBJECTDIR}/_ext/1019371010/drawCommand.o: ../src/draw/drawCommand.cpp
 ${OBJECTDIR}/_ext/1019371010/fontResource.o: ../src/draw/fontResource.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DLS_DEBUG -I/mingw/include/freetype2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/fontResource.o ../src/draw/fontResource.cpp
+	$(COMPILE.cc) -g -DLS_DEBUG -I/usr/local/include/freetype2 -I/mingw/include/freetype2 -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/fontResource.o ../src/draw/fontResource.cpp
 
 ${OBJECTDIR}/_ext/1019371010/framebuffer.o: ../src/draw/framebuffer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
@@ -194,11 +193,6 @@ ${OBJECTDIR}/_ext/1019371010/imageResource.o: ../src/draw/imageResource.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/imageResource.o ../src/draw/imageResource.cpp
-
-${OBJECTDIR}/_ext/1019371010/lsgl.o: ../src/draw/lsgl.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
-	${RM} "$@.d"
-	$(COMPILE.c) -g -DLS_DEBUG -I../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/lsgl.o ../src/draw/lsgl.c
 
 ${OBJECTDIR}/_ext/1019371010/matrixStack.o: ../src/draw/matrixStack.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

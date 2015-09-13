@@ -21,16 +21,7 @@ const char* DEFAULT_MODEL_MATRIX_UNIFORM = "modelMatrix";
 /*-------------------------------------
  * Camera/VP Matrix Uniform Name
 -------------------------------------*/
-    const char* DEFAULT_VP_MATRIX_UNIFORM = "vpMatrix";
-
-    /*-------------------------------------
-     * Default Vertex Shader header
-    -------------------------------------*/
-    #if defined(LS_OS_IOS) || defined(LS_OS_IOS_SIM)
-        constexpr char const DEFAULT_SHADER_HEADER[] = "precision highp float;";
-    #else
-        constexpr char const DEFAULT_SHADER_HEADER[] = "";
-    #endif
+const char* DEFAULT_VP_MATRIX_UNIFORM = "vpMatrix";
 
 /*-------------------------------------
  * Default Vertex Shader (with diffuse lighting)

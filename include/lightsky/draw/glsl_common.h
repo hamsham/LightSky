@@ -33,6 +33,17 @@ constexpr char const GLSL_PRECISION_HIGHP_F[] = "precision highp float;\n";
     constexpr char const GLSL_PRECISION_DEFAULT[] = "precision mediump float\n";
 #endif
 
+/*-------------------------------------
+ * Shader Functions
+-------------------------------------*/
+constexpr char const GLSL_CALC_DIFFUSE_FACTOR[] = u8R"***(
+float getDiffuseIntensity(in vec3 vertNorm, in vec3 lightDir) {
+    float brightness = dot(vertNorm, lightDir);
+    //return 0.5 + (0.5 * brightness);
+    return brightness;
+}
+)***";
+
 } // end draw namespace
 } // end ls namespace
 

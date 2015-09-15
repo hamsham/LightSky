@@ -16,8 +16,6 @@
 
 #include "lightsky/math/math.h"
 
-/* #include "lightsky/draw/lsgl.h" */
-
 /*-------------------------------------
     OpenGL Header
 -------------------------------------*/
@@ -29,12 +27,18 @@
     #include <OpenGL/gl3.h>
     #include <OpenGL/glext.h>
     #include <OpenGL/gl3ext.h>
+
 #elif defined (LS_OS_IOS) || defined (LS_OS_IOS_SIM)
     #include <OpenGLES/ES3/gl.h>
     #include <OpenGLES/ES3/glext.h>
+
+#elif defined (LS_OS_LINUX)
+    #include <GLES3/gl3.h>
+    #include <GLES3/gl2ext.h>
 #else
-    #include <GLES2/gl2.h>
-    #include <GLES2/gl2ext.h>
+    #undef GL_GLEXT_PROTOTYPES
+    #include "lightsky/draw/lsgl.h"
+
 #endif
 
 /*-------------------------------------

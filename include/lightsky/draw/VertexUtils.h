@@ -110,6 +110,11 @@ constexpr char vertex_bone_weight[] = "boneWeight";
  */
 constexpr char vertex_boneId[] = "boneId";
 
+/**
+ * @brief Common name for a vertex attribute containing index elements.
+ */
+constexpr char index_vertex[] = "ibo";
+
 /**------------------------------------
  * @brief Determine the number of bytes required to store one or more vertices
  * within a flexible-vertex-format.

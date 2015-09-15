@@ -59,6 +59,11 @@
     #define LS_OS_UNIX 1
 #endif
 
+/* Linux */
+#if defined (__linux__) || defined (__linux)
+    #define LS_OS_LINUX 1
+#endif
+
 /* Windows */
 #if defined (_WIN32) || defined (_WIN64) || defined (__WINDOWS__) || defined (__WIN32__)
     #if defined (_WIN64)

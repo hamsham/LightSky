@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc-5
-CCC=g++-5
-CXX=g++-5
-FC=gfortran-5
+CC=gcc
+CCC=g++
+CXX=g++
+FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GCC_5-MacOSX
-CND_DLIB_EXT=dylib
+CND_PLATFORM=MinGW_W64-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -57,25 +57,25 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a ../../LightSetup/build/liblightsetup_d.a -framework OpenGL -lassimp -lSDL2 -lSDL2main -lfreeimage -lfreetype
+LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/liblightgame_d.a ../../LightDraw/build/liblightdraw_d.a ../../LightMath/build/liblightmath_d.a ../../LightUtils/build/liblightutils_d.a ../../LightSetup/build/liblightsetup_d.a -lopengl32 -lassimp -lSDL2 -lSDL2main -lfreeimage -lfreetype
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug.exe
 
-fb_test_debug: ../../LightScript/build/liblightscript_d.a
+fb_test_debug.exe: ../../LightScript/build/liblightscript_d.a
 
-fb_test_debug: ../../LightGame/build/liblightgame_d.a
+fb_test_debug.exe: ../../LightGame/build/liblightgame_d.a
 
-fb_test_debug: ../../LightDraw/build/liblightdraw_d.a
+fb_test_debug.exe: ../../LightDraw/build/liblightdraw_d.a
 
-fb_test_debug: ../../LightMath/build/liblightmath_d.a
+fb_test_debug.exe: ../../LightMath/build/liblightmath_d.a
 
-fb_test_debug: ../../LightUtils/build/liblightutils_d.a
+fb_test_debug.exe: ../../LightUtils/build/liblightutils_d.a
 
-fb_test_debug: ../../LightSetup/build/liblightsetup_d.a
+fb_test_debug.exe: ../../LightSetup/build/liblightsetup_d.a
 
-fb_test_debug: ${OBJECTFILES}
+fb_test_debug.exe: ${OBJECTFILES}
 	${LINK.cc} -o fb_test_debug ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/context.o: context.cpp 
@@ -114,7 +114,7 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} fb_test_debug
+	${RM} fb_test_debug.exe
 
 # Subprojects
 .clean-subprojects:

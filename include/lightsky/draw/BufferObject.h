@@ -25,6 +25,7 @@ namespace draw {
 -----------------------------------------------------------------------------*/
 class BufferObject;
 enum common_vertex_t : unsigned;
+enum index_element_t : int;
 
 /*-----------------------------------------------------------------------------
  * Typedefs
@@ -397,9 +398,30 @@ inline bool unmap_buffer_data(const BufferObject& buf) {
  * enumeration (see VertexUtils.h).
  * 
  * @return TRUE if all vertex attributes were able to be placed into the
- * BufferObjct, FALSE if not.
+ * BufferObject, FALSE if not.
  */
-bool setup_buffer_attribs(BufferObject& buf, const common_vertex_t attribs);
+bool setup_vertex_buffer_attribs(BufferObject& buf, const common_vertex_t attribs);
+
+/**
+ * @brief Setup all index buffer attributes that will be associated with a
+ * BufferObject.
+ * 
+ * These attributes can be used to setup vertex array objects which are used in
+ * drawing indexed vertices. Index Buffer Objects created through this method
+ * are designed to be packed tightly into a single array on the GPU.
+ * 
+ * @param buf
+ * A reference to a BufferObject which is to have an array of vertex attributes
+ * placed into it.
+ * 
+ * @param indexType
+ * An enumeration, containing the data type of the indices which will be used
+ * for an index buffer object.
+ * 
+ * @return TRUE if the IBO attributes were able to be placed into the
+ * BufferObject, FALSE if not.
+ */
+bool setup_index_buffer_attribs(BufferObject& buf, const index_element_t indexType);
 
 } // end draw namespace
 } // end ls namespace

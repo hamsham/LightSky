@@ -181,7 +181,7 @@ bool copy_buffer_data(const BufferObject& from, BufferObject& to) {
 /*-------------------------------------
  * Dynamically create the vertex attributes required for a BufferObject.
 -------------------------------------*/
-bool setup_buffer_attribs(BufferObject& buf, const common_vertex_t attribs) {
+bool setup_vertex_buffer_attribs(BufferObject& buf, const common_vertex_t attribs) {
     const unsigned numAttribs = math::count_set_bits(attribs);
     VertexAttrib* pAttribs = nullptr;
     unsigned attribIndex = 0;
@@ -252,6 +252,33 @@ bool setup_buffer_attribs(BufferObject& buf, const common_vertex_t attribs) {
         const vertex_data_t cmp = vertex_data_t::BONE_WEIGHT_VERTEX_TYPE;
         setBufferAttrib(get_num_attrib_components(cmp), cmp, ls::draw::vertex_bone_weight);
     }
+    
+    return true;
+}
+
+/*-------------------------------------
+ * Dynamically create the indxe attributes required for a BufferObject.
+-------------------------------------*/
+bool setup_index_buffer_attribs(BufferObject& buf, const index_element_t indexType) {
+    utils::pointer<VertexAttrib[]> pAttrib = nullptr;
+    
+    if (buf.numAttribs != 1) {
+        pAttrib.reset(new(std::nothrow) VertexAttrib[1]);
+        
+        if (!pAttrib) {
+            return false;
+        }
+        
+        buf.pAttribs.swap(pAttrib);
+    }
+    
+    pAttrib->index      = 0;
+    pAttrib->components = get_num_attrib_components((vertex_data_t)indexType);
+    pAttrib->type       = get_attrib_base_type((vertex_data_t)indexType);
+    pAttrib->normalized = GL_FALSE;
+    pAttrib->stride     = get_num_attrib_bytes((vertex_data_t)indexType);
+    pAttrib->offset     = 0;
+    pAttrib->name       = "";
     
     return true;
 }

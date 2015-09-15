@@ -11,13 +11,6 @@
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/scriptSerializer.h</file>
             <file>file:/home/hammy/Development/projects/LightSky/include/lightsky/script/generic/scriptSerializer_impl.h</file>
         </group>
-        <group>
-            <file>file:/Users/elacey/Projects/github/LightSky/include/lightsky/draw/generic/renderStage_impl.h</file>
-            <file>file:/Users/elacey/Projects/github/LightSky/src/draw/textRenderStage.cpp</file>
-            <file>file:/Users/elacey/Projects/github/LightSky/include/lightsky/draw/glsl_common.h</file>
-            <file>file:/Users/elacey/Projects/github/LightSky/src/draw/defaultRenderStage.cpp</file>
-            <file>file:/Users/elacey/Projects/github/LightSky/src/draw/renderStage.cpp</file>
-            <file>file:/Users/elacey/Projects/github/LightSky/src/draw/pickingRenderStage.cpp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

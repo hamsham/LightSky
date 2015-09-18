@@ -55,6 +55,12 @@
                      kind="TEST">
         <itemPath>tests/pointer_test.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="tuple_test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/tuple_test.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -222,7 +228,24 @@
           <output>${TESTDIR}/TestFiles/pointer_test_debug</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/tuple_test_debug</output>
+        </linkerTool>
+      </folder>
       <item path="tests/pointer_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/tuple_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -386,7 +409,24 @@
           <stripSymbols>true</stripSymbols>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/tuple_test</output>
+        </linkerTool>
+      </folder>
       <item path="tests/pointer_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/tuple_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

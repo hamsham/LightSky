@@ -14,14 +14,6 @@ CND_ARTIFACT_PATH_Debug=build/liblightutils_d.a
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW_W64-Windows/package
 CND_PACKAGE_NAME_Debug=LightUtils.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/MinGW_W64-Windows/package/LightUtils.tar
-# Release configuration
-CND_PLATFORM_Release=GNU-Linux-x86
-CND_ARTIFACT_DIR_Release=build
-CND_ARTIFACT_NAME_Release=liblightutils.a
-CND_ARTIFACT_PATH_Release=build/liblightutils.a
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=LightUtils.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/LightUtils.tar
 #
 # include compiler specific variables
 #

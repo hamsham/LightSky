@@ -48,7 +48,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/pointer_test_debug
+	${TESTDIR}/TestFiles/pointer_test_debug \
+	${TESTDIR}/TestFiles/tuple_test_debug
 
 # C Compiler Flags
 CFLAGS=
@@ -120,11 +121,21 @@ ${TESTDIR}/TestFiles/pointer_test_debug: ${TESTDIR}/tests/pointer_test.o ${OBJEC
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/pointer_test_debug $^ ${LDLIBSOPTIONS} 
 
+${TESTDIR}/TestFiles/tuple_test_debug: ${TESTDIR}/tests/tuple_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/tuple_test_debug $^ ${LDLIBSOPTIONS} 
+
 
 ${TESTDIR}/tests/pointer_test.o: tests/pointer_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/pointer_test.o tests/pointer_test.cpp
+
+
+${TESTDIR}/tests/tuple_test.o: tests/tuple_test.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/tuple_test.o tests/tuple_test.cpp
 
 
 ${OBJECTDIR}/_ext/1519963337/assertions_nomain.o: ${OBJECTDIR}/_ext/1519963337/assertions.o ../src/utils/assertions.cpp 
@@ -223,6 +234,7 @@ ${OBJECTDIR}/_ext/1519963337/tuple_nomain.o: ${OBJECTDIR}/_ext/1519963337/tuple.
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/pointer_test_debug || true; \
+	    ${TESTDIR}/TestFiles/tuple_test_debug || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

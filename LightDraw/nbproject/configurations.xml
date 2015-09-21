@@ -32,7 +32,9 @@
         <itemPath>../include/lightsky/draw/generic/vertexBuffer_impl.h</itemPath>
       </logicalFolder>
       <itemPath>../include/lightsky/draw/BufferObject.h</itemPath>
+      <itemPath>../include/lightsky/draw/PrimitiveGeometryLoader.h</itemPath>
       <itemPath>../include/lightsky/draw/ShaderUniform.h</itemPath>
+      <itemPath>../include/lightsky/draw/TextGeometryLoader.h</itemPath>
       <itemPath>../include/lightsky/draw/VertexAttrib.h</itemPath>
       <itemPath>../include/lightsky/draw/VertexUtils.h</itemPath>
       <itemPath>../include/lightsky/draw/atlas.h</itemPath>
@@ -79,7 +81,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>../src/draw/BufferObject.cpp</itemPath>
+      <itemPath>../src/draw/PrimitiveGeometryLoader.cpp</itemPath>
       <itemPath>../src/draw/ShaderUniform.cpp</itemPath>
+      <itemPath>../src/draw/TextGeometryLoader.cpp</itemPath>
       <itemPath>../src/draw/VertexAttrib.cpp</itemPath>
       <itemPath>../src/draw/VertexUtils.cpp</itemPath>
       <itemPath>../src/draw/atlas.cpp</itemPath>
@@ -201,7 +205,17 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/PrimitiveGeometryLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/ShaderUniform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/TextGeometryLoader.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -491,7 +505,14 @@
       </item>
       <item path="../src/draw/BufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/PrimitiveGeometryLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="../src/draw/ShaderUniform.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/TextGeometryLoader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/VertexAttrib.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -641,7 +662,17 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../include/lightsky/draw/PrimitiveGeometryLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../include/lightsky/draw/ShaderUniform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../include/lightsky/draw/TextGeometryLoader.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -931,7 +962,14 @@
       </item>
       <item path="../src/draw/BufferObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="../src/draw/PrimitiveGeometryLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="../src/draw/ShaderUniform.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/draw/TextGeometryLoader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../src/draw/VertexAttrib.cpp" ex="false" tool="1" flavor2="0">
       </item>

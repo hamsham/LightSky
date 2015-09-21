@@ -243,18 +243,22 @@ inline void unbind_buffer(const BufferObject& buf) {
 /**
  * @brief Set the data within the buffer to whatever is set at "pData."
  * 
+ * @param buf
+ * A constant reference to the buffer object which will have its GPU data
+ * allocated and possibly filled.
+ * 
  * @param size
  * The size, in bytes, of the data that the buffer should contain.
  * 
  * @param pData
- * A pointer to the data contained within the buffer. This argument can
- * be NULL to indicate that an empty buffer should be allocated and
- * will have its contents filled later.
+ * A pointer to the data contained within the buffer. This argument can be NULL
+ * to indicate that an empty buffer should be allocated and will have its
+ * contents filled later.
  * 
  * @param usage
- * The usage of this buffer. This can indicate that the buffer is
- * static, should be used to stream data occasionally, or the data is
- * dynamic and will be updated on a regular basis.
+ * The usage of this buffer. This can indicate that the buffer is static,
+ * should be used to stream data occasionally, or the data is dynamic and will
+ * be updated on a regular basis.
  * 
  * @return TRUE if the buffer was successfully allocated, FALSE if not.
  */
@@ -270,6 +274,10 @@ inline void set_buffer_data(
 /**
  * @brief Modify the data within a buffer to contain whatever is in "pData."
  * at an offset of a specified amount of bytes.
+ * 
+ * @param buf
+ * A constant reference to the buffer object which will have its GPU data
+ * modified.
  * 
  * @param size
  * The size, in bytes, of the data that the buffer should contain.

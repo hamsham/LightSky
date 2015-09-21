@@ -141,7 +141,6 @@ typedef unsigned int draw_index_t;
  *      2. If a draw command should run use glDrawArrays() or glDrawElements().
 -------------------------------------*/
 enum index_element_t : int {
-    INDEX_TYPE_UBYTE = GL_UNSIGNED_BYTE,
     INDEX_TYPE_USHORT = GL_UNSIGNED_SHORT,
     INDEX_TYPE_UINT = GL_UNSIGNED_INT,
     

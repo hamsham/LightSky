@@ -36,7 +36,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1019371010/BufferObject.o \
+	${OBJECTDIR}/_ext/1019371010/PrimitiveGeometryLoader.o \
 	${OBJECTDIR}/_ext/1019371010/ShaderUniform.o \
+	${OBJECTDIR}/_ext/1019371010/TextGeometryLoader.o \
 	${OBJECTDIR}/_ext/1019371010/VertexAttrib.o \
 	${OBJECTDIR}/_ext/1019371010/VertexUtils.o \
 	${OBJECTDIR}/_ext/1019371010/atlas.o \
@@ -105,10 +107,20 @@ ${OBJECTDIR}/_ext/1019371010/BufferObject.o: ../src/draw/BufferObject.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/BufferObject.o ../src/draw/BufferObject.cpp
 
+${OBJECTDIR}/_ext/1019371010/PrimitiveGeometryLoader.o: ../src/draw/PrimitiveGeometryLoader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/PrimitiveGeometryLoader.o ../src/draw/PrimitiveGeometryLoader.cpp
+
 ${OBJECTDIR}/_ext/1019371010/ShaderUniform.o: ../src/draw/ShaderUniform.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/ShaderUniform.o ../src/draw/ShaderUniform.cpp
+
+${OBJECTDIR}/_ext/1019371010/TextGeometryLoader.o: ../src/draw/TextGeometryLoader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DLS_DEBUG -I../include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1019371010/TextGeometryLoader.o ../src/draw/TextGeometryLoader.cpp
 
 ${OBJECTDIR}/_ext/1019371010/VertexAttrib.o: ../src/draw/VertexAttrib.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1019371010

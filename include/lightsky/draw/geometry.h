@@ -14,7 +14,8 @@
 #include "lightsky/draw/drawCommand.h"
 #include "lightsky/draw/setup.h"
 #include "lightsky/draw/vertex.h"
-#include "lightsky/draw/vertexBuffer.h"
+#include "lightsky/draw/BufferObject.h"
+#include "lightsky/draw/VertexUtils.h"
 
 namespace ls {
 namespace draw {
@@ -56,12 +57,12 @@ class geometry {
         /**
          * @brief Vertex Buffer Object to be used with this geometry
          */
-        vertexBuffer vbo;
+        BufferObject vbo;
         
         /**
          * @brief Index Buffer Object to be used with this geometry
          */
-        indexBuffer ibo;
+        BufferObject ibo;
         
         /**
          * @brief OpenGL parameters for drawing vertices.
@@ -105,9 +106,8 @@ class geometry {
          * @return TRUE if the internal vertex buffer was successfully
          * initialized, false if not.
          */
-        template <vbo_use_t vbo_type>
         static bool initBufferObject(
-            vertexBuffer_t<vbo_type>& vbo,
+            BufferObject& vbo,
             unsigned numItems,
             unsigned elementSize,
             const vbo_rw_t usage = vbo_rw_t::VBO_STATIC_DRAW

@@ -83,8 +83,8 @@ geometry::~geometry() {
     Unload all GPU-based resource that are used by *this;
 -------------------------------------*/
 void geometry::terminate() {
-    vbo.terminate();
-    ibo.terminate();
+    terminate_buffer(vbo);
+    terminate_buffer(ibo);
     drawParams.reset();
     submeshes.clear();
     bounds.resetSize();
@@ -95,7 +95,7 @@ void geometry::terminate() {
 -------------------------------------*/
 bool geometry::init(const sceneResource& meshData) {
     // clear all non-used data before continuing
-    ibo.terminate();
+    terminate_buffer(ibo);
     
     bool ret = true;
     if (meshData.getIndices().empty()) {

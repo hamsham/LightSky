@@ -6,9 +6,9 @@ namespace draw {
 /*-------------------------------------
     Helper function to initialize vertex buffers objects
 -------------------------------------*/
-template <vbo_use_t vboType>
+template <buffer_use_t vboType>
 bool geometry::initBufferObject(
-    vertexBuffer_t<vboType>& bo,
+    BufferObject& bo,
     unsigned numItems,
     unsigned elementSize,
     vbo_rw_t usage
@@ -18,13 +18,14 @@ bool geometry::initBufferObject(
         return false;
     }
     
-    if (bo.init() == false) {
+    if (init_buffer(bo) == false) {
         LS_LOG_ERR("\tUnable to initialize a geometry buffer object.");
         return false;
     }
     
-    bo.bind();
-    bo.setData(numItems*elementSize, nullptr, usage);
+    bo.bufferType = vboType;
+    bind_buffer(bo);
+    set_buffer_data(bo, numItems*elementSize, nullptr, usage);
     
     LS_LOG_MSG("\tInitialized a geometry buffer object with ", numItems, " items.");
     return true;
@@ -33,22 +34,25 @@ bool geometry::initBufferObject(
 /*-------------------------------------
     Text/String buffer object initialization helper
 -------------------------------------*/
-template <typename data_t, vbo_use_t vboType>
-data_t* geometry::mapBufferData(
-    vertexBuffer_t<vboType>& bo,
+template <buffer_use_t vboType>
+void* geometry::mapBufferData(
+    BufferObject& bo,
     const unsigned elementCount,
     const char* const bufferStr
 ) {
-    if (!initBufferObject<vboType>(bo, elementCount, sizeof(data_t), vbo_rw_t::VBO_STREAM_DRAW)) {
+    const unsigned bytesPerVert = get_vertex_byte_size(attribs);
+    
+    init_buffer(bo);
+    if (!initBufferObject<vboType>(bo, elementCount, bytesPerVert, vbo_rw_t::VBO_STREAM_DRAW)) {
         LS_LOG_ERR("\tAn error occurred while initializing text geometry ", bufferStr, ".\n");
         return nullptr;
     }
     LOG_GL_ERR();
     
     // Attempt to get a pointer to an unsynchronized memory buffer
-    data_t* pBuffer = (data_t*)bo.mapData(
-        0, elementCount*sizeof(data_t),
-        (vbo_map_t)(VBO_MAP_BIT_INVALIDATE_RANGE | VBO_MAP_BIT_WRITE | VBO_MAP_BIT_UNSYNCHRONIZED)
+    void* const pBuffer = map_buffer_data(
+        bo, 0, elementCount*bytesPerVert
+        (buffer_map_t)(VBO_MAP_BIT_INVALIDATE_RANGE | VBO_MAP_BIT_WRITE | VBO_MAP_BIT_UNSYNCHRONIZED)
     );
     LOG_GL_ERR();
     

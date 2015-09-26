@@ -11,12 +11,6 @@
 #include "lightsky/draw/lsgl.h"
 
 #ifdef _WIN32
-    #include <GL/wglext.h>
-#elif defined (__unix__)
-    #include <GL/glx.h>
-#else
-    #error "An unsupported OS is currently being used."
-#endif
 
 /*-----------------------------------------------------------------------------
  * Windows OpenGL Function Loading
@@ -2324,3 +2318,4 @@ PFNGLGETPIXELMAPXVPROC glGetPixelMapxv;
 PFNGLPIXELMAPXPROC glPixelMapx;
 PFNGLPIXELSTOREXPROC glPixelStorex;
 
+#endif

@@ -14,15 +14,15 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=clang
+CCC=clang++
+CXX=clang++
 FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW_W64-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=Clang_XCode-MacOSX
+CND_DLIB_EXT=dylib
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -61,21 +61,21 @@ LDLIBSOPTIONS=../../LightScript/build/liblightscript_d.a ../../LightGame/build/l
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk fb_test_debug
 
-fb_test_debug.exe: ../../LightScript/build/liblightscript_d.a
+fb_test_debug: ../../LightScript/build/liblightscript_d.a
 
-fb_test_debug.exe: ../../LightGame/build/liblightgame_d.a
+fb_test_debug: ../../LightGame/build/liblightgame_d.a
 
-fb_test_debug.exe: ../../LightDraw/build/liblightdraw_d.a
+fb_test_debug: ../../LightDraw/build/liblightdraw_d.a
 
-fb_test_debug.exe: ../../LightMath/build/liblightmath_d.a
+fb_test_debug: ../../LightMath/build/liblightmath_d.a
 
-fb_test_debug.exe: ../../LightUtils/build/liblightutils_d.a
+fb_test_debug: ../../LightUtils/build/liblightutils_d.a
 
-fb_test_debug.exe: ../../LightSetup/build/liblightsetup_d.a
+fb_test_debug: ../../LightSetup/build/liblightsetup_d.a
 
-fb_test_debug.exe: ${OBJECTFILES}
+fb_test_debug: ${OBJECTFILES}
 	${LINK.cc} -o fb_test_debug ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/context.o: context.cpp 
@@ -114,7 +114,7 @@ ${OBJECTDIR}/uiState.o: uiState.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} fb_test_debug.exe
+	${RM} fb_test_debug
 
 # Subprojects
 .clean-subprojects:

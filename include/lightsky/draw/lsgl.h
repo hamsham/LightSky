@@ -8,8 +8,26 @@
 #ifndef __LS_GL_LOADER_H__
 #define __LS_GL_LOADER_H__
 
-#include <GL/gl.h>
-#include <GL/glext.h>
+#include "lightsky/setup/setup.h"
+
+#ifdef LS_OS_OSX
+    #define GL_GLEXT_PROTOTYPES
+    #define GL_DO_NOT_WARN_IF_MULTI_GL_VERSION_HEADERS_INCLUDED
+    #include <OpenGL/gl.h>
+    #include <OpenGL/gl3.h>
+    #include <OpenGL/glext.h>
+    #include <OpenGL/gl3ext.h>
+
+#elif defined (LS_OS_IOS) || defined (LS_OS_IOS_SIM)
+    #define GL_GLEXT_PROTOTYPES
+    #include <OpenGLES/ES3/gl.h>
+    #include <OpenGLES/ES3/glext.h>
+
+#elif defined (LS_OS_LINUX)
+    #define GL_GLEXT_PROTOTYPES
+    #include <GLES3/gl3.h>
+    #include <GLES3/gl2ext.h>
+#else
 
 #ifdef __cplusplus
 extern "C" {
@@ -770,6 +788,8 @@ extern PFNGLPIXELSTOREXPROC glPixelStorex;
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
 
 #endif /* __LS_GL_LOADER_H__ */

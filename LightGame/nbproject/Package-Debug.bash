@@ -6,11 +6,11 @@
 
 # Macros
 TOP=`pwd`
-CND_PLATFORM=MinGW_W64-Windows
+CND_PLATFORM=Clang_XCode-MacOSX
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
-CND_DLIB_EXT=dll
+CND_DLIB_EXT=dylib
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
 OUTPUT_PATH=build/liblightgame_d.a

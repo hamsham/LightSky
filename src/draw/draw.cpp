@@ -8,7 +8,7 @@ namespace draw {
  * Initialize LightDraw
 -------------------------------------*/
 bool init() {
-    #ifdef __LS_GL_LOADER_H__
+#if defined __LS_GL_LOADER_H__ && !defined GL_GLEXT_PROTOTYPES
         if (lsgl_init() <= 0) {
             LS_LOG_ERR("Unable to initialize the LightSky Drawing system.");
             return false;

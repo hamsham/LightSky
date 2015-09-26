@@ -14,7 +14,7 @@
 
 #include "lightsky/utils/pointer.h"
 
-#include "lightsky/draw/Setup.h"
+#include "lightsky/draw/setup.h"
 #include "lightsky/draw/VertexAttrib.h"
 
 namespace ls {
@@ -23,7 +23,7 @@ namespace draw {
 /*-----------------------------------------------------------------------------
  * Forward Declarations
 -----------------------------------------------------------------------------*/
-class BufferObject;
+struct BufferObject;
 enum common_vertex_t : unsigned;
 enum index_element_t : int;
 

@@ -8,6 +8,8 @@
 #ifndef __LS_DRAW_DRAW_COMMAND_H__
 #define	__LS_DRAW_DRAW_COMMAND_H__
 
+#include <vector>
+
 #include "lightsky/setup/macros.h"
 
 #include "lightsky/draw/vertex.h"
@@ -122,6 +124,12 @@ struct drawCommand {
         
         void setAttribPointers() const;
 };
+
+//bool init_draw_command(const BufferObject& bo, const vertexArray& vao);
+
+//bool init_draw_command(const BufferObject& vbo, const BufferObject& ibo, const vertexArray& vao);
+
+//void terminate_draw_command();
 
 } // end draw namespace
 } // end ls namespace

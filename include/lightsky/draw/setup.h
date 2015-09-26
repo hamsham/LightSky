@@ -19,27 +19,7 @@
 /*-------------------------------------
     OpenGL Header
 -------------------------------------*/
-#define GL_GLEXT_PROTOTYPES
-
-#ifdef LS_OS_OSX
-    #define GL_DO_NOT_WARN_IF_MULTI_GL_VERSION_HEADERS_INCLUDED
-    #include <OpenGL/gl.h>
-    #include <OpenGL/gl3.h>
-    #include <OpenGL/glext.h>
-    #include <OpenGL/gl3ext.h>
-
-#elif defined (LS_OS_IOS) || defined (LS_OS_IOS_SIM)
-    #include <OpenGLES/ES3/gl.h>
-    #include <OpenGLES/ES3/glext.h>
-
-#elif defined (LS_OS_LINUX)
-    #include <GLES3/gl3.h>
-    #include <GLES3/gl2ext.h>
-#else
-    #undef GL_GLEXT_PROTOTYPES
-    #include "lightsky/draw/lsgl.h"
-
-#endif
+#include "lightsky/draw/lsgl.h"
 
 /*-------------------------------------
     Debugging Various Messages.

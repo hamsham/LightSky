@@ -9,21 +9,12 @@
 #define __LS_DRAW_GEOMETRY_LOADER_H__
 
 #include <string>
+namespace ls {
+namespace draw {
 
 /*-----------------------------------------------------------------------------
  * Forward Declarations
 -----------------------------------------------------------------------------*/
-namespace ls {
-namespace math {
-    struct vec2;
-    struct vec3;
-}
-
-/*-----------------------------------------------------------------------------
- * Text Loader Functions
------------------------------------------------------------------------------*/
-namespace draw {
-
 enum common_vertex_t : unsigned;
 class BufferObject;
 class Atlas;

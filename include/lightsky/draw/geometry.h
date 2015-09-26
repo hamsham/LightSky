@@ -8,41 +8,13 @@
 #ifndef __LS_DRAW_MESH_H__
 #define	__LS_DRAW_MESH_H__
 
-#include <vector>
-
-#include "lightsky/draw/boundingBox.h"
 #include "lightsky/draw/drawCommand.h"
 #include "lightsky/draw/setup.h"
-#include "lightsky/draw/vertex.h"
 #include "lightsky/draw/BufferObject.h"
 #include "lightsky/draw/VertexUtils.h"
 
 namespace ls {
 namespace draw {
-
-/*-----------------------------------------------------------------------------
-    Forward declarations
------------------------------------------------------------------------------*/
-class atlas;
-struct atlasEntry;
-class sceneResource;
-struct sceneNode;
-
-/**----------------------------------------------------------------------------
- * @brief Mesh Properties
- * 
- * These enumerations contains properties for different types of geometry
- * objects. These constants used within contain vital information that's used
- * within the geometry object's implementation.
------------------------------------------------------------------------------*/
-enum geometry_property_t: int {
-    /*
-     * Text/String geometry properties
-     */
-    MESH_VERTS_PER_GLYPH = 4,
-    MESH_INDICES_PER_GLYPH = 6,
-    MESH_SPACES_PER_TAB = 4
-};
 
 /**----------------------------------------------------------------------------
  * @brief Mesh Object
@@ -68,113 +40,6 @@ class geometry {
          * @brief OpenGL parameters for drawing vertices.
          */
         drawCommand drawParams;
-        
-        /**
-         * @brief All sub-meshes contained in *this can be referenced through
-         * the "submeshes" member.
-         */
-        draw_index_list_t submeshes;
-        
-        /**
-         * @brief "bounds" determines bounding area for this set of geometry.
-         */
-        boundingBox bounds;
-        
-        /**
-         * @brief Vertex Buffer Initialization
-         * 
-         * Helper function to ensure that the vao/vbo combos are loaded.
-         * This function will cause the VBO member to be bound to the active
-         * OpenGL rendering context.
-         * 
-         * @param vbo
-         * A Vertex Buffer Object of the type vbo_use_t. This can be used to
-         * indicate to OpenGL that the buffer will be a Vertex Buffer, Index
-         * Buffer, or any other acceptable usage type.
-         * 
-         * @param numItems
-         * The number of items to be contained within the index buffer.
-         * 
-         * @param elementSize
-         * The size, in bytes, of an individual element in the vertex buffer.
-         * 
-         * @param usage
-         * The draw usage of the internal buffer contained within *this. This
-         * parameter can indicate the the mesh is meant to contain static,
-         * streamed, or dynamic vertices.
-         * 
-         * @return TRUE if the internal vertex buffer was successfully
-         * initialized, false if not.
-         */
-        static bool initBufferObject(
-            BufferObject& vbo,
-            unsigned numItems,
-            unsigned elementSize,
-            const vbo_rw_t usage = vbo_rw_t::VBO_STATIC_DRAW
-        );
-        
-        /**
-         * @brief Map a VBO or IBO in preparation for sending data to the GPU.
-         * @param bo
-         * A reference to a buffer object of type vbo_t.
-         * 
-         * @param elementCount
-         * The number of elements which are to be sent to the GPU.
-         * 
-         * @param bufferStr
-         * A null-terminated character string which can be used to logging.
-         * 
-         * @return A pointer to a buffer of type data_t which can be used to
-         * send data to OpenGL, or NULL if something went wrong.
-         */
-        template <typename data_t, vbo_use_t vboType>
-        data_t* mapBufferData(
-            vertexBuffer_t<vboType>& bo,
-            const unsigned elementCount,
-            const char* const bufferStr
-        );
-        
-        /**
-         * @brief Generate the offsets for a string's character according to
-         * it's atlas entries, them place the offsets into a vertex and index
-         * buffer mapping.
-         * 
-         * @param a
-         * A constant reference to a character atlas.
-         * 
-         * @param str
-         * A constant reference to a string object which will be used to
-         * generate a polygonal representation on the GPU.
-         * 
-         * @param pMappedVerts
-         * A pointer to the GPU-mapped vertex buffer object which will contain
-         * the generated atlas/string vertices.
-         * 
-         * @param pMappedIndx
-         * A pointer to the GPU-mapped index buffer object which will contain
-         * index values for the above vertex buffer.
-         */
-        void genTextData(const atlas& a, const std::string& str, vertex* pMappedVerts, draw_index_t* pMappedIndx);
-        
-        /**
-         * Private helper function to upload a number of text vertices to the
-         * GPU. When using a font atlas, a total number of VERTICES_PER_GLYPH
-         * will be sent to the array pointed at by the parameter pVerts.
-         * 
-         * @param xOffset
-         * The current x-offset of all the vertices to be uploaded.
-         * 
-         * @param yOffset
-         * The current y-offset of all the vertices to be uploaded.
-         * 
-         * @param rGlyph
-         * The particular atlas glyph to be sent to the GPU at the x/y offsets.
-         * 
-         * @param pVerts
-         * A pointer to the DMA-mapped buffer of vertices where the current
-         * glyph is to be sent.
-         */
-        void genTextVertices(float xOffset, float yOffset, const atlasEntry& rGlyph, vertex* pVerts);
         
     public:
         /**
@@ -243,111 +108,69 @@ class geometry {
         unsigned getId() const;
         
         /**
-         * @brief Initialize
+         * @brief Initialize a geometry object using a preexisting VBO.
          * 
-         * This method send a set of vertices from a geometry resource object
-         * to the GPU using OpenGL.
+         * @param v
+         * A constant reference to a BufferObject containing vertex data.
          * 
-         * @param mr
-         * A mesh loader that contains raw vertex data in memory.
-         * 
-         * @return TRUE if the data was successfully sent to the GPU, or FALSE
-         * if an error occurred.
+         * @param d
+         * A constant reference to a drawCommand object, containing the render
+         * parameters required to render *this geometry.
          */
-        bool init(const sceneResource& mr);
+        void init(const BufferObject& v, const drawCommand& d);
         
         /**
-         * @brief Initialize a geometry object using raw vertex data.
+         * @brief Initialize a geometry object using a preexisting VBO.
          * 
-         * @param pVertices
-         * A pointer to the array of vertices from which *this will read data
-         * from.
+         * @param v
+         * An r-value reference to a BufferObject containing vertex data.
          * 
          * @param numVertices
-         * The number of vertices in the "pVertices" array.
+         * The total number of vertices contained within the input VBO
          * 
-         * @param renderMode
-         * An optional parameter, allowing for the render mode of the imported
-         * geometry to be specified.
-         * 
-         * @param pBounds
-         * A pointer to the bounding box which can be used to specify the size,
-         * in cartesian coordinates, of *this. If pBounds is NULL, the bounding
-         * box contained in *this will be discovered by iterating through all
-         * of the vertices in "pVertices."
-         * 
-         * @return TRUE if all vertices successfully imported into *this, or
-         * FALSE if not.
+         * @param d
+         * An r-value reference to a drawCommand object, containing the render
+         * parameters required to render *this geometry.
          */
-        bool init(
-            const vertex* const pVertices, const unsigned numVertices,
-            const draw_mode_t renderMode = draw_mode_t::DEFAULT,
-            const boundingBox* const pBounds = nullptr
+        void init(BufferObject&& v, drawCommand&& d);
+        
+        /**
+         * @brief Initialize a geometry object using a preexisting VBO.
+         * 
+         * @param v
+         * A constant reference to a BufferObject containing vertex data.
+         * 
+         * @param i
+         * A constant reference to a BufferObject containing index data.
+         * 
+         * @param d
+         * A constant reference to a drawCommand object, containing the render
+         * parameters required to render *this geometry.
+         */
+        void init(
+            const BufferObject& v,
+            const BufferObject& i,
+            const drawCommand& d
         );
         
         /**
-         * @brief Initialize a geometry object using raw vertex and index data.
+         * @brief Initialize a geometry object using a preexisting VBO.
          * 
-         * @param pVertices
-         * A pointer to the array of vertices from which *this will read data
-         * from.
+         * @param v
+         * An r-value reference to a BufferObject containing vertex data.
          * 
-         * @param numVertices
-         * The number of vertices in the "pVertices" array.
+         * @param i
+         * An r-value reference to a BufferObject containing index data.
          * 
-         * @param pIndices
-         * A pointer to the array of index data from which *this will read data
-         * vertex array values.
-         * 
-         * @param numIndices
-         * The number of indices in the "pIndices" array.
-         * 
-         * @param indexType
-         * An enumeration, describing the data type of each index value in
-         * "pIndices",
-         * 
-         * @param renderMode
-         * An optional parameter, allowing for the render mode of the imported
-         * geometry to be specified.
-         * 
-         * @param pBounds
-         * A pointer to the bounding box which can be used to specify the size,
-         * in cartesian coordinates, of *this. If pBounds is NULL, the bounding
-         * box contained in *this will be discovered by iterating through all
-         * of the vertices in "pVertices."
-         * 
-         * 
-         * @return TRUE if all vertices successfully imported into *this, or
-         * FALSE if not.
+         * @param d
+         * An r-value reference to a drawCommand object, containing the render
+         * parameters required to render *this geometry.
          */
-        bool init(
-            const vertex* const pVertices, const unsigned numVertices,
-            const void* const pIndices, const unsigned numIndices,
-            const index_element_t indexType = index_element_t::INDEX_TYPE_DEFAULT,
-            const draw_mode_t renderMode = draw_mode_t::DEFAULT,
-            const boundingBox* const pBounds = nullptr
+        void init(
+            BufferObject&& v,
+            BufferObject&& i,
+            drawCommand&& d
         );
-        
-        /**
-         * @brief Initialize
-         * 
-         * Similar to its overload, this method sends text/string data to the
-         * GPU using a texture atlas and a corresponding string object. This
-         * method will generate a geometry on the fly, attempting to match the
-         * characters in the input string, and send the vertices to the GPU.
-         * 
-         * @param glyphAtlas
-         * A texture Atlas containing pre-loaded font glyphs and their offsets.
-         * 
-         * @param str
-         * A constant reference to a character string, containing data which
-         * is to be loaded onto the GPU.
-         * 
-         * @return
-         * TRUE if the data was successfully sent to the GPU, or FALSE if an
-         * error occurred.
-         */
-        bool init(const atlas& glyphAtlas, const std::string& str);
         
         /**
          * Unload all GPU-based resource that are used by *this.
@@ -359,14 +182,14 @@ class geometry {
          * 
          * @return A constant reference to a vertex buffer object.
          */
-        const vertexBuffer& getVertexBuffer() const;
+        const BufferObject& getVertexBuffer() const;
         
         /**
          * Get the internal index buffer used by *this.
          * 
          * @return A constant reference to an index buffer object.
          */
-        const indexBuffer& getIndexBuffer() const;
+        const BufferObject& getIndexBuffer() const;
         
         /**
          * Get the current Draw command for *this geometry.
@@ -377,44 +200,54 @@ class geometry {
         const drawCommand& getDrawCommand() const;
         
         /**
-         * @brief Get the list of indices which represent sub-geometry, or
-         * "meshes". These indices can be used to draw subsets of a geometry
-         * object, initialize a mesh object, or be used to add a mesh to a
-         * sceneNode object.
-         * 
-         * @return A constant reference to the list of indices used to render
-         * *this.
-         */
-        const draw_index_list_t& getSubGeometry() const;
-        
-        /**
-         * Get the maximum vertex bounds for this geometry object.
-         * 
-         * @return a constant reference to a boundingBox objext.
-         */
-        const boundingBox& getBounds() const;
-        
-        /**
          * @brief draw the geometry contained within *this.
          */
         void draw() const;
-
-        /**
-         * @brief Draw a piece of geometry.
-         *
-         * This method renders geometry to the currently bound framebuffer.
-         *
-         * @param indexPair
-         * Contains the starting offset (or element for indexed geometry) to
-         * the first vertex to be drawn and end offset (or element count for
-         * indexed geometry) to the last vertex to be drawn.
-         */
-        void draw(const draw_index_pair_t& indexPair) const;
 };
+
+/*-------------------------------------
+    Determine if *this is renderable.
+-------------------------------------*/
+inline bool geometry::isValid() const {
+    return vbo.gpuId != 0;
+}
+
+/*-------------------------------------
+    Get an general identification to be used for this object
+-------------------------------------*/
+inline unsigned geometry::getId() const {
+    return vbo.gpuId;
+}
+
+/*-------------------------------------
+ * Get the internal vertex buffer used by *this.
+-------------------------------------*/
+inline const BufferObject& geometry::getVertexBuffer() const {
+    return vbo;
+}
+
+/*-------------------------------------
+ * Get the internal index buffer used by *this.
+-------------------------------------*/
+inline const BufferObject& geometry::getIndexBuffer() const {
+    return ibo;
+}
+
+/*-------------------------------------
+    Get the current Draw parameters for this geometry.
+-------------------------------------*/
+inline const drawCommand& geometry::getDrawCommand() const {
+    return drawParams;
+}
+
+/*-------------------------------------
+ * Draw the geometry contained within *this.
+-------------------------------------*/
+inline void geometry::draw() const {
+    ibo.gpuId ? drawParams.draw(vbo, ibo) : drawParams.draw(vbo);
+}
 
 } // end draw namespace
 } // end ls namespace
-
-#include "lightsky/draw/generic/geometry_impl.h"
 
 #endif	/* __LS_DRAW_MESH_H__ */

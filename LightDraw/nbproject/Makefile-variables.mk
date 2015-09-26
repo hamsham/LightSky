@@ -7,13 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=MinGW_W64-Windows
+CND_PLATFORM_Debug=Clang_XCode-MacOSX
 CND_ARTIFACT_DIR_Debug=build
 CND_ARTIFACT_NAME_Debug=liblightdraw_d.a
 CND_ARTIFACT_PATH_Debug=build/liblightdraw_d.a
-CND_PACKAGE_DIR_Debug=dist/Debug/MinGW_W64-Windows/package
+CND_PACKAGE_DIR_Debug=dist/Debug/Clang_XCode-MacOSX/package
 CND_PACKAGE_NAME_Debug=LightDraw.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW_W64-Windows/package/LightDraw.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Clang_XCode-MacOSX/package/LightDraw.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=build

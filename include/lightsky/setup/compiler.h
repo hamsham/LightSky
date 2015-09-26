@@ -13,8 +13,10 @@
 /*
  * Ensure C++11 Support
  */
-#if (__cplusplus < 201103L) || (!defined(__GXX_EXPERIMENTAL_CXX0X__))
-    #error "A C++11-compliant compiler is required to build LightSky."
+#if (__cplusplus < 201103L)
+    #if defined (__GNUC__) && __GNUC__ < 5 && !defined __GXX_EXPERIMENTAL_CXX0X__
+        #error "A C++11-compliant compiler is required to build LightSky."
+    #endif
 #endif
 
 /*

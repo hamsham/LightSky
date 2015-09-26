@@ -21,7 +21,7 @@ namespace draw {
  * Forward Declarations
 -----------------------------------------------------------------------------*/
 enum class vertex_attrib_t : int;
-class VertexAttrib;
+struct VertexAttrib;
 
 /**----------------------------------------------------------------------------
  * @brief Shader Program

@@ -20,11 +20,11 @@ project("LightSky Game Development Framework")
 # -------------------------------------
 # Sub-Projects
 # -------------------------------------
-add_subdirectory("ls_setup")
-include_directories("ls_setup/include")
+add_subdirectory("LightSetup")
+include_directories("LightSetup/include")
 
-add_subdirectory("ls_utils")
-include_directories("ls_utils/include")
+add_subdirectory("LightUtils")
+include_directories("LightUtils/include")
 
-add_subdirectory("ls_math")
-include_directories("ls_math/include")
+add_subdirectory("LightMath")
+include_directories("LightMath/include")

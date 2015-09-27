@@ -28,3 +28,6 @@ include_directories("LightUtils/include")
 
 add_subdirectory("LightMath")
 include_directories("LightMath/include")
+
+add_subdirectory("LightScript")
+include_directories("LightScript/include")

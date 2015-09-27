@@ -1,0 +1,12 @@
+[submodule "LightSetup"]
+	path = LightSetup
+	url = https://github.com/hamsham/LightSetup.git
+[submodule "LightUtils"]
+	path = LightUtils
+	url = https://github.com/hamsham/LightUtils.git
+[submodule "LightMath"]
+	path = LightMath
+	url = https://github.com/hamsham/LightMath.git
+[submodule "LightScript"]
+	path = LightScript
+	url = https://github.com/hamsham/LightScript.git

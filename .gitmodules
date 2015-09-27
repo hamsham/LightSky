@@ -1,12 +1,16 @@
 [submodule "LightSetup"]
 	path = LightSetup
 	url = https://github.com/hamsham/LightSetup.git
+    branch = master
 [submodule "LightUtils"]
 	path = LightUtils
 	url = https://github.com/hamsham/LightUtils.git
+    branch = master
 [submodule "LightMath"]
 	path = LightMath
 	url = https://github.com/hamsham/LightMath.git
+    branch = master
 [submodule "LightScript"]
 	path = LightScript
 	url = https://github.com/hamsham/LightScript.git
+    branch = master

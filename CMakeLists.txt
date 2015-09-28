@@ -76,6 +76,9 @@ include_directories("LightUtils/include")
 add_subdirectory("LightMath")
 include_directories("LightMath/include")
 
+add_subdirectory("LightDraw")
+include_directories("LightDraw/include")
+
 add_subdirectory("LightScript")
 include_directories("LightScript/include")
 

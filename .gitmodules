@@ -14,3 +14,7 @@
 	path = LightScript
 	url = https://github.com/hamsham/LightScript.git
     branch = master
+[submodule "LightDraw"]
+	path = LightDraw
+	url = https://github.com/hamsham/LightDraw.git
+    branch = master

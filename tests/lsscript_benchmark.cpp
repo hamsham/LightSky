@@ -9,17 +9,17 @@
 #include <thread>
 #include <chrono>
 #include <utility> /* std::move */
-#include "lightsky/script/script.h"
+#include "lightsky/script/Script.h"
 
-template <class data_t> using lsPointer = ls::script::pointer_t<data_t>;
+template <class data_t> using lsPointer = ls::script::Pointer_t<data_t>;
 
-using lsVariable = ls::script::variable;
-using ls::script::createVariable;
-using ls::script::destroyVariable;
+using lsVariable = ls::script::Variable;
+using ls::script::create_variable;
+using ls::script::destroy_variable;
 
-using lsFunctor = ls::script::functor;
-using ls::script::createFunctor;
-using ls::script::destroyFunctor;
+using lsFunctor = ls::script::Functor;
+using ls::script::create_functor;
+using ls::script::destroy_functor;
 
 /******************************************************************************
  * Benchmark Setup
@@ -69,27 +69,27 @@ void nativeFunc() {
  * SCRIPTED BENCHMARK
 ******************************************************************************/
 void scriptBench() {
-    lsPointer<lsFunctor>&& testFunc1 = createFunctor(ls::script::scriptHash_addInts);
-    lsPointer<lsFunctor>&& testFunc2 = createFunctor(ls::script::scriptHash_subInts);
+    lsPointer<lsFunctor>&& testFunc1 = create_functor(ls::script::ScriptHash_AddInts);
+    lsPointer<lsFunctor>&& testFunc2 = create_functor(ls::script::ScriptHash_SubInts);
     
-    lsPointer<lsVariable>&& testVar1 = createVariable(ls::script::scriptHash_int);
-    lsPointer<lsVariable>&& testVar2 = createVariable(ls::script::scriptHash_int);
-    lsPointer<lsVariable>&& testVar3 = createVariable(ls::script::scriptHash_int);
+    lsPointer<lsVariable>&& testVar1 = create_variable(ls::script::ScriptHash_int);
+    lsPointer<lsVariable>&& testVar2 = create_variable(ls::script::ScriptHash_int);
+    lsPointer<lsVariable>&& testVar3 = create_variable(ls::script::ScriptHash_int);
     
     LS_SCRIPT_VAR_DATA(testVar1, int) = 42;
     LS_SCRIPT_VAR_DATA(testVar2, int) = 77;
     LS_SCRIPT_VAR_DATA(testVar3, int) = 13;
     
-    testFunc1->setArg(0, testVar1);
-    testFunc1->setArg(1, testVar2);
-    testFunc1->setArg(2, testVar3);
+    testFunc1->set_arg(0, testVar1);
+    testFunc1->set_arg(1, testVar2);
+    testFunc1->set_arg(2, testVar3);
     
-    testFunc2->setArg(2, testVar3);
-    testFunc2->setArg(0, testVar2);
-    testFunc2->setArg(1, testVar1);
+    testFunc2->set_arg(2, testVar3);
+    testFunc2->set_arg(0, testVar2);
+    testFunc2->set_arg(1, testVar1);
     
-    testFunc1->setNextFunc(testFunc2);
-    testFunc2->setNextFunc(testFunc1);
+    testFunc1->set_next_func(testFunc2);
+    testFunc2->set_next_func(testFunc1);
     
     if (!testFunc1->compile() || !testFunc2->compile()) {
         std::cerr << "Error: Unable to compile the test functions." << std::endl;
@@ -102,7 +102,7 @@ void scriptBench() {
     
     for (unsigned i = 0; i < NUM_TEST_RUNS; ++i) {
         pFunc->run();
-        pFunc = pFunc->getNextFunc();
+        pFunc = pFunc->get_next_func();
     }
     
     t2 = chrono::steady_clock::now();
@@ -112,12 +112,12 @@ void scriptBench() {
         << chrono::duration_cast< hr_prec >(t2 - t1).count() / 1000.0
         << std::endl;
     
-    destroyFunctor(testFunc2);
-    destroyFunctor(testFunc1);
+    destroy_functor(testFunc2);
+    destroy_functor(testFunc1);
     
-    destroyVariable(testVar3);
-    destroyVariable(testVar2);
-    destroyVariable(testVar1);
+    destroy_variable(testVar3);
+    destroy_variable(testVar2);
+    destroy_variable(testVar1);
     
     return;
 }

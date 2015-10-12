@@ -48,18 +48,21 @@ if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
     OR
     "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"
 )
-    set(warnings "-Wall -Werror -Wextra -pedantic -pedantic-errors")
+    set(LS_COMPILER_WARNINGS "-Wall -Werror -Wextra -pedantic -pedantic-errors")
+    set(LS_COMMON_COMPILER_FLAGS "-fPIC")
+    set(LS_C_COMPILER_FLAGS "-std=c99 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
+    set(LS_CXX_COMPILER_FLAGS "-std=c++11 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
 
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 ${warnings}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ${warnings}")
-
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_DEBUG} -std=c99 ${warnings}")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -std=c++11 ${warnings}")
-
-    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_RELEASE} -std=c99 ${warnings}")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -std=c++11 ${warnings}")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
 else()
     message(FATAL_ERROR "Your compiler is currently unsupported.")
+endif()
+
+
+set(LS_BUILD_SHARED_LIBS TRUE CACHE BOOL FORCE "Build shared libraries for LightSky where applicable.")
+if(LS_BUILD_SHARED_LIBS)
+    add_definitions(-DLS_SHARED -DLS_BUILD_SHARED)
 endif()
 
 
@@ -67,27 +70,79 @@ endif()
 # -------------------------------------
 # Sub-Projects
 # -------------------------------------
-add_subdirectory("LightSetup")
-include_directories("LightSetup/include")
+#
+#   LS Setup
+#
+set(LS_BUILD_SETUP_MODULE TRUE CACHE BOOL "Build the LS Setup module.")
 
-add_subdirectory("LightUtils")
-include_directories("LightUtils/include")
+if(LS_BUILD_SETUP_MODULE)
+    add_subdirectory("LightSetup")
+    include_directories("LightSetup/include")
 
-add_subdirectory("LightMath")
-include_directories("LightMath/include")
+endif(LS_BUILD_SETUP_MODULE)
 
-add_subdirectory("LightDraw")
-include_directories("LightDraw/include")
+#
+#   LS Utils
+#
+if(LS_BUILD_SETUP_MODULE)
+    set(LS_BUILD_UTILS_MODULE TRUE CACHE BOOL "Build the LS Utility module.")
+else()
+    set(LS_BUILD_UTILS_MODULE FALSE CACHE BOOL "LS Utility module dependencies not met." FORCE)
+endif()
 
-add_subdirectory("LightScript")
-include_directories("LightScript/include")
+if(LS_BUILD_UTILS_MODULE)
+    add_subdirectory("LightUtils")
+    include_directories("LightUtils/include")
+endif(LS_BUILD_UTILS_MODULE)
+
+#
+#   LS Math
+#
+if(LS_BUILD_SETUP_MODULE)
+    set(LS_BUILD_MATH_MODULE TRUE CACHE BOOL "Build the LS Math module.")
+else()
+    set(LS_BUILD_MATH_MODULE FALSE CACHE BOOL "LS Math module dependencies not met." FORCE)
+endif()
+
+if(LS_BUILD_MATH_MODULE)
+    add_subdirectory("LightMath")
+    include_directories("LightMath/include")
+endif(LS_BUILD_MATH_MODULE)
+
+#
+#   LS Draw
+#
+if(LS_BUILD_MATH_MODULE AND LS_BUILD_UTILS_MODULE)
+    set(LS_BUILD_DRAW_MODULE TRUE CACHE BOOL "Build the LS Draw module.")
+else()
+    set(LS_BUILD_DRAW_MODULE FALSE CACHE BOOL "LS Draw module dependencies not met." FORCE)
+endif()
+
+if(LS_BUILD_DRAW_MODULE)
+    add_subdirectory("LightDraw")
+    include_directories("LightDraw/include")
+endif(LS_BUILD_DRAW_MODULE)
+
+#
+#   LS Script
+#
+if(LS_BUILD_MATH_MODULE AND LS_BUILD_UTILS_MODULE AND LS_BUILD_SHARED_LIBS)
+    set(LS_BUILD_SCRIPT_MODULE TRUE CACHE BOOL "Build the LS Script module.")
+else()
+    set(LS_BUILD_SCRIPT_MODULE FALSE CACHE BOOL "LS Script module dependencies not met." FORCE)
+endif()
+
+if(LS_BUILD_SCRIPT_MODULE)
+    add_subdirectory("LightScript")
+    include_directories("LightScript/include")
+endif(LS_BUILD_SCRIPT_MODULE)
 
 
 
 # -------------------------------------
 # Library Tests
 # -------------------------------------
-set(LS_SCRIPT_BUILD_TESTS FALSE CACHE BOOL "Build tests for the LightScript library.")
+set(LS_SCRIPT_BUILD_TESTS TRUE CACHE BOOL "Build tests for the LightScript library.")
 
 if(LS_SCRIPT_BUILD_TESTS)
     add_subdirectory("tests")

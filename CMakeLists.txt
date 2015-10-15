@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1.0)
 
 set(CMAKE_DISABLE_IN_SOURCE_BUILDS ON)
 
@@ -30,33 +30,73 @@ endif()
 # -------------------------------------
 # Compiler-Specific Naming Conventions
 # -------------------------------------
-set(LS_STATIC_LIB_PREFIX "lib")
-set(LS_STATIC_LIB_SUFFIX ".a")
+if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
+    OR
+    "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"
+)
+    if(WIN32)
+        set(LS_STATIC_LIB_PREFIX "lib")
+        set(LS_STATIC_LIB_SUFFIX ".a")
 
-set(LS_SHARED_LIB_PREFIX "lib")
-set(LS_SHARED_LIB_SUFFIX ".so")
+        set(LS_SHARED_LIB_PREFIX "lib")
+        set(LS_SHARED_LIB_SUFFIX ".dll")
 
-set(LS_BINARY_PREFIX "")
-set(LS_BINARY_SUFFIX "")
+        set(LS_BINARY_PREFIX "")
+        set(LS_BINARY_SUFFIX "exe")
+        
+    else()
+        set(LS_STATIC_LIB_PREFIX "lib")
+        set(LS_STATIC_LIB_SUFFIX ".a")
+
+        set(LS_SHARED_LIB_PREFIX "lib")
+        set(LS_SHARED_LIB_SUFFIX ".so")
+
+        set(LS_BINARY_PREFIX "")
+        set(LS_BINARY_SUFFIX "")
+
+    endif(WIN32)
+    
+elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
+    set(LS_STATIC_LIB_PREFIX "")
+    set(LS_STATIC_LIB_SUFFIX ".lib")
+
+    set(LS_SHARED_LIB_PREFIX "")
+    set(LS_SHARED_LIB_SUFFIX ".dll")
+
+    set(LS_BINARY_PREFIX "")
+    set(LS_BINARY_SUFFIX "")
+    
+endif()
 
 
 
 # -------------------------------------
 # Compiler Options
 # -------------------------------------
-if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
-    OR
-    "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"
-)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+
     set(LS_COMPILER_WARNINGS "-Wall -Werror -Wextra -pedantic -pedantic-errors")
-    set(LS_COMMON_COMPILER_FLAGS "-fPIC")
+    set(LS_COMMON_COMPILER_FLAGS "")
     set(LS_C_COMPILER_FLAGS "-std=c99 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
     set(LS_CXX_COMPILER_FLAGS "-std=c++11 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
 
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
+    
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+
+    set(LS_COMPILER_WARNINGS "/Wall /sdl /W3 /WX")
+    set(LS_COMMON_COMPILER_FLAGS "/Za /Zc:rvalueCast /Zc:strictStrings /Zc:inline")
+    set(LS_C_COMPILER_FLAGS "${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
+    set(LS_CXX_COMPILER_FLAGS "${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
+
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
+
 else()
-    message(FATAL_ERROR "Your compiler is currently unsupported.")
+
+    message(FATAL_ERROR "Your compiler is currently unsupported: ${CMAKE_CXX_COMPILER_ID}")
+    
 endif()
 
 

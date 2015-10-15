@@ -34,7 +34,7 @@ int main() {
     test_t c;
     
     *a.get_object<int>() = 42;
-    *a.get_object<float>() = 4.2;
+    *a.get_object<float>() = 4.2f;
     *a.get_object<std::string>() = "Forty-Two";
     
     print_tuple("A", a);

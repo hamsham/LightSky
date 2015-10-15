@@ -1,6 +1,3 @@
-cmake_minimum_required(VERSION 2.8)
-
-
 
 # -------------------------------------
 # Dependency Setup
@@ -17,19 +14,24 @@ set(TEST_DEPS
 # -------------------------------------
 # Compiler Options
 # -------------------------------------
-if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU"
     OR
-    "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"
+    CMAKE_CXX_COMPILER_ID MATCHES "Clang"
 )
     set(LS_COMPILER_WARNINGS "-Wall -Werror -Wextra -pedantic -pedantic-errors")
-    set(LS_COMMON_COMPILER_FLAGS "-fPIC -pthread")
+    set(LS_COMMON_COMPILER_FLAGS "-pthread")
     set(LS_C_COMPILER_FLAGS "-std=c99 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
     set(LS_CXX_COMPILER_FLAGS "-std=c++11 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
 
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
+    
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+
 else()
+
     message(FATAL_ERROR "Your compiler is currently unsupported.")
+    
 endif()
 
 

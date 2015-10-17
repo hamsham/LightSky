@@ -184,14 +184,3 @@ if(LS_BUILD_SCRIPT_MODULE)
     add_subdirectory("LightScript")
     include_directories("LightScript/include")
 endif(LS_BUILD_SCRIPT_MODULE)
-
-
-
-# -------------------------------------
-# Library Tests
-# -------------------------------------
-set(LS_SCRIPT_BUILD_TESTS TRUE CACHE BOOL "Build tests for the LightScript library.")
-
-if(LS_SCRIPT_BUILD_TESTS)
-    add_subdirectory("tests")
-endif()

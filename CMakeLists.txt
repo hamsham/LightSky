@@ -43,7 +43,7 @@ if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
 
         set(LS_BINARY_PREFIX "")
         set(LS_BINARY_SUFFIX "exe")
-        
+
     else()
         set(LS_STATIC_LIB_PREFIX "lib")
         set(LS_STATIC_LIB_SUFFIX ".a")
@@ -55,7 +55,7 @@ if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
         set(LS_BINARY_SUFFIX "")
 
     endif(WIN32)
-    
+
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     set(LS_STATIC_LIB_PREFIX "")
     set(LS_STATIC_LIB_SUFFIX ".lib")
@@ -65,7 +65,7 @@ elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
 
     set(LS_BINARY_PREFIX "")
     set(LS_BINARY_SUFFIX "")
-    
+
 endif()
 
 
@@ -82,7 +82,15 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
-    
+
+    # Tested on Linux, all static libraries need to be compiled with the -fPIC
+    # flag in order to be linked into shared libs. This is going to destroy all
+    # benchmarks due to extra assembly instructions being compiled in.
+    if(NOT WIN32)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+    endif()
+
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 
     set(LS_COMPILER_WARNINGS "/Wall /sdl /W3 /WX")
@@ -96,7 +104,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 else()
 
     message(FATAL_ERROR "Your compiler is currently unsupported: ${CMAKE_CXX_COMPILER_ID}")
-    
+
 endif()
 
 

@@ -18,3 +18,7 @@
 	path = LightDraw
 	url = https://github.com/hamsham/LightDraw.git
 	branch = master
+[submodule "LightGame"]
+	path = LightGame
+	url = https://github.com/hamsham/LightGame.git
+	branch = master

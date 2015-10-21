@@ -113,6 +113,20 @@ if(LS_BUILD_DRAW_MODULE)
 endif(LS_BUILD_DRAW_MODULE)
 
 #
+#   LS Game
+#
+if(LS_BUILD_MATH_MODULE AND LS_BUILD_UTILS_MODULE AND LS_BUILD_DRAW_MODULE)
+    set(LS_BUILD_GAME_MODULE TRUE CACHE BOOL "Build the LS Game module.")
+else()
+    set(LS_BUILD_GAME_MODULE FALSE CACHE BOOL "LS Game module dependencies not met." FORCE)
+endif()
+
+if(LS_BUILD_GAME_MODULE)
+    add_subdirectory("LightGame")
+    include_directories("LightGame/include")
+endif(LS_BUILD_GAME_MODULE)
+
+#
 #   LS Script
 #
 if(LS_BUILD_MATH_MODULE AND LS_BUILD_UTILS_MODULE AND LS_BUILD_SHARED_LIBS)

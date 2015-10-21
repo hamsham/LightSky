@@ -12,65 +12,6 @@ project("LightSky Game Development Framework")
 
 
 # -------------------------------------
-# Output Folder Setup
-# -------------------------------------
-set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
-
-link_directories()
-get_directory_property(CURR_LINK_DIRS LINK_DIRECTORIES)
-
-if("${CURR_LINK_DIRS}")
-    link_directories("${CURR_LINK_DIRS}" "${LIBRARY_OUTPUT_PATH}")
-else()
-    link_directories("${LIBRARY_OUTPUT_PATH}")
-endif()
-
-
-
-# -------------------------------------
-# Compiler-Specific Naming Conventions
-# -------------------------------------
-if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"
-    OR
-    "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"
-)
-    if(WIN32)
-        set(LS_STATIC_LIB_PREFIX "lib")
-        set(LS_STATIC_LIB_SUFFIX ".a")
-
-        set(LS_SHARED_LIB_PREFIX "lib")
-        set(LS_SHARED_LIB_SUFFIX ".dll")
-
-        set(LS_BINARY_PREFIX "")
-        set(LS_BINARY_SUFFIX "exe")
-
-    else()
-        set(LS_STATIC_LIB_PREFIX "lib")
-        set(LS_STATIC_LIB_SUFFIX ".a")
-
-        set(LS_SHARED_LIB_PREFIX "lib")
-        set(LS_SHARED_LIB_SUFFIX ".so")
-
-        set(LS_BINARY_PREFIX "")
-        set(LS_BINARY_SUFFIX "")
-
-    endif(WIN32)
-
-elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
-    set(LS_STATIC_LIB_PREFIX "")
-    set(LS_STATIC_LIB_SUFFIX ".lib")
-
-    set(LS_SHARED_LIB_PREFIX "")
-    set(LS_SHARED_LIB_SUFFIX ".dll")
-
-    set(LS_BINARY_PREFIX "")
-    set(LS_BINARY_SUFFIX "")
-
-endif()
-
-
-
-# -------------------------------------
 # Compiler Options
 # -------------------------------------
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")

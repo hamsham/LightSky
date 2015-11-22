@@ -7,7 +7,7 @@ set(CMAKE_DISABLE_IN_SOURCE_BUILDS ON)
 # -------------------------------------
 # Project Setup
 # -------------------------------------
-project("LightSky Game Development Framework")
+project("LightSky")
 
 
 
@@ -17,7 +17,9 @@ project("LightSky Game Development Framework")
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
     set(LS_COMPILER_WARNINGS "-Wall -Werror -Wextra -pedantic -pedantic-errors")
+    
     set(LS_COMMON_COMPILER_FLAGS "")
+    
     set(LS_C_COMPILER_FLAGS "-std=c99 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
     set(LS_CXX_COMPILER_FLAGS "-std=c++11 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
 
@@ -46,6 +48,12 @@ else()
 
     message(FATAL_ERROR "Your compiler is currently unsupported: ${CMAKE_CXX_COMPILER_ID}")
 
+endif()
+
+
+if (CMAKE_BUILD_TYPE MATCHES "DEBUG" OR CMAKE_BUILD_TYPE MATCHES "RELWITHDEBINFO")
+    message("Building LightSky with debug info.")
+    add_definitions(-DLS_DEBUG)
 endif()
 
 

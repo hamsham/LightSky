@@ -51,7 +51,7 @@ else()
 endif()
 
 
-if (CMAKE_BUILD_TYPE MATCHES "DEBUG" OR CMAKE_BUILD_TYPE MATCHES "RELWITHDEBINFO")
+if (CMAKE_BUILD_TYPE MATCHES "Debug" OR CMAKE_BUILD_TYPE MATCHES "RelWithDebInfo")
     message("Building LightSky with debug info.")
     add_definitions(-DLS_DEBUG)
 endif()

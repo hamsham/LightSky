@@ -16,49 +16,35 @@ project("LightSky")
 # -------------------------------------
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
-    set(LS_COMPILER_WARNINGS "-Wall -Werror -Wextra -pedantic -pedantic-errors")
-    
-    set(LS_COMMON_COMPILER_FLAGS "")
-    
-    set(LS_C_COMPILER_FLAGS "-std=c99 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
-    set(LS_CXX_COMPILER_FLAGS "-std=c++11 ${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
-
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
+    add_definitions(-Wall -Werror -Wextra -pedantic -pedantic-errors)
+    set(CMAKE_C_FLAGS "-std=c99 ${CMAKE_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
     # Tested on Linux, all static libraries need to be compiled with the -fPIC
     # flag in order to be linked into shared libs. This is going to destroy all
     # benchmarks due to extra assembly instructions being compiled in.
     if(NOT WIN32)
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+        add_definitions(-fPIC)
     endif()
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-
-    set(LS_COMPILER_WARNINGS "/Wall /sdl /W3 /WX")
-    set(LS_COMMON_COMPILER_FLAGS "/Za /Zc:rvalueCast /Zc:strictStrings /Zc:inline")
-    set(LS_C_COMPILER_FLAGS "${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
-    set(LS_CXX_COMPILER_FLAGS "${LS_COMMON_COMPILER_FLAGS} ${LS_COMPILER_WARNINGS}")
-
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${LS_C_COMPILER_FLAGS}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LS_CXX_COMPILER_FLAGS}")
+    add_definitions(/Wall /sdl /W3 /WX)
+    add_definitions(/Za /Zc:rvalueCast /Zc:strictStrings /Zc:inline)
 
 else()
-
     message(FATAL_ERROR "Your compiler is currently unsupported: ${CMAKE_CXX_COMPILER_ID}")
 
 endif()
 
 
-if (CMAKE_BUILD_TYPE MATCHES "Debug" OR CMAKE_BUILD_TYPE MATCHES "RelWithDebInfo")
-    message("Building LightSky with debug info.")
+if (CMAKE_BUILD_TYPE MATCHES "[A-Za-z]*[Dd][Ee][Bb][A-Za-z]+")
+    message("-- Building LightSky with debug info.")
     add_definitions(-DLS_DEBUG)
 endif()
 
 
-set(LS_BUILD_SHARED_LIBS TRUE CACHE BOOL FORCE "Build shared libraries for LightSky where applicable.")
-if(LS_BUILD_SHARED_LIBS)
+
+if(BUILD_SHARED_LIBS)
     add_definitions(-DLS_SHARED -DLS_BUILD_SHARED)
 endif()
 

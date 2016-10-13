@@ -39,7 +39,7 @@ endif()
 
 if (CMAKE_BUILD_TYPE MATCHES "[A-Za-z]*[Dd][Ee][Bb][A-Za-z]+")
     message("-- Building LightSky with debug info.")
-    add_definitions(-DLS_DEBUG)
+    add_definitions(-DLS_DEBUG -g -ggdb)
 endif()
 
 

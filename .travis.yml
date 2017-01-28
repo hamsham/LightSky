@@ -26,14 +26,7 @@ addons:
       - libglm-dev
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then exit 0; fi
-  - brew update
-  - brew outdated sdl2      || brew install sdl2 freetype boost glm
-  - brew outdated freeimage || brew install freeimage
-  - brew outdated assimp    || brew install assimp
-  - brew outdated freetype  || brew install freetype
-  - brew outdated boost     || brew install boost
-  - brew outdated glm       || brew install glm
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then bash tci_osx_setup.sh; fi
 
 git:
     submodules: true
@@ -41,6 +34,7 @@ git:
 branches:
     only:
         - master
+        - lsdraw_0.1.x
 
 before_script:
   - git checkout master

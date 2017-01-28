@@ -26,7 +26,7 @@ addons:
       - libglm-dev
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" != "osx" ]] then exit 0; fi
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then exit 0; fi
   - brew update
   - brew outdated sdl2      || brew install sdl2 freetype boost glm
   - brew outdated freeimage || brew install freeimage

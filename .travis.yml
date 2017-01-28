@@ -1,16 +1,21 @@
 language: cpp
 
-compiler:
-  - clang
-  - gcc
+
 
 matrix:
     include:
       - os: linux
         dist: trusty
         sudo: required
+        
       - os: osx
         osx_image: xcode8.2
+        
+      - compiler:
+          - clang
+          - gcc
+
+
 
 addons:
     apt:
@@ -23,16 +28,24 @@ addons:
           - libboost-regex-dev
           - libglm-dev
 
+
+
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash tci_osx_setup.bash; fi
 
+
+
 git:
     submodules: true
+
+
 
 branches:
     only:
       - master
       - lsdraw_0.1.x
+
+
 
 before_script:
   - git checkout master
@@ -41,6 +54,8 @@ before_script:
   - mkdir build
   - cd build
   - cmake .. -G"Unix Makefiles"
+
+
 
 script:
     make

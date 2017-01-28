@@ -5,7 +5,8 @@ set -o pipefail
 set -ex
 
 brew update
-brew outdated sdl2      || brew install sdl2 freetype boost glm
+brew upgrade
+brew outdated sdl2      || brew install sdl2
 brew outdated freeimage || brew install freeimage
 brew outdated assimp    || brew install assimp
 brew outdated freetype  || brew install freetype

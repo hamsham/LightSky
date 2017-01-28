@@ -3,11 +3,11 @@ language: cpp
 
 
 matrix:
-    compiler:
-      - clang
-      - gcc
-      
     include:
+      - compiler:
+        - gcc
+        - clang
+
       - os: linux
         dist: trusty
         sudo: required

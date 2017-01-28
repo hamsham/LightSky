@@ -2,20 +2,26 @@ language: cpp
 
 
 
+os:
+  - osx
+  - linux
+
+
+
+compiler:
+  - gcc
+  - clang
+
+
+
 matrix:
     include:
       - os: linux
         dist: trusty
         sudo: required
-        compiler:
-          - gcc
-          - clang
-        
+
       - os: osx
         osx_image: xcode8.2
-        compiler:
-          - gcc
-          - clang
 
 
 

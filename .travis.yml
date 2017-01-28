@@ -1,7 +1,5 @@
 language: cpp
 
-dist: trusty
-
 compiler:
   - clang
   - gcc
@@ -15,15 +13,15 @@ matrix:
         osx_image: xcode8.2
 
 addons:
-  apt:
-    packages:
-      - libsdl2-dev
-      - libfreeimage-dev
-      - libassimp-dev
-      - libfreetype6-dev
-      - libosmesa6-dev
-      - libboost-regex-dev
-      - libglm-dev
+    apt:
+        packages:
+          - libsdl2-dev
+          - libfreeimage-dev
+          - libassimp-dev
+          - libfreetype6-dev
+          - libosmesa6-dev
+          - libboost-regex-dev
+          - libglm-dev
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash tci_osx_setup.sh; fi
@@ -33,8 +31,8 @@ git:
 
 branches:
     only:
-        - master
-        - lsdraw_0.1.x
+      - master
+      - lsdraw_0.1.x
 
 before_script:
   - git checkout master

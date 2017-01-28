@@ -1,9 +1,39 @@
 language: cpp
-sudo: required
+
 dist: trusty
+
 compiler:
-    - clang
-    - gcc
+  - clang
+  - gcc
+
+matrix:
+    include:
+      - os: linux
+        dist: trusty
+        sudo: required
+      - os: osx
+        osx_image: xcode8.2
+
+addons:
+  apt:
+    packages:
+      - libsdl2-dev
+      - libfreeimage-dev
+      - libassimp-dev
+      - libfreetype6-dev
+      - libosmesa6-dev
+      - libboost-regex-dev
+      - libglm-dev
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]] then exit 0; fi
+  - brew update
+  - brew outdated sdl2      || brew install sdl2 freetype boost glm
+  - brew outdated freeimage || brew install freeimage
+  - brew outdated assimp    || brew install assimp
+  - brew outdated freetype  || brew install freetype
+  - brew outdated boost     || brew install boost
+  - brew outdated glm       || brew install glm
 
 git:
     submodules: true
@@ -11,18 +41,14 @@ git:
 branches:
     only:
         - master
-    
-before_install:
-    - sudo apt-get update -qq
-    - sudo apt-get install -y libsdl2-dev libfreeimage-dev libassimp-dev libfreetype6-dev libosmesa6-dev libboost-regex-dev libglm-dev
-    
+
 before_script:
-    - git checkout master
-    - git submodule init
-    - git submodule foreach git checkout master
-    - mkdir build
-    - cd build
-    - cmake .. -G"Unix Makefiles"
+  - git checkout master
+  - git submodule init
+  - git submodule foreach git checkout master
+  - mkdir build
+  - cd build
+  - cmake .. -G"Unix Makefiles"
 
 script:
     make

@@ -26,7 +26,7 @@ addons:
       - libglm-dev
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then bash tci_osx_setup.sh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash tci_osx_setup.sh; fi
 
 git:
     submodules: true
@@ -46,3 +46,4 @@ before_script:
 
 script:
     make
+

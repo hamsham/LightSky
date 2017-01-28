@@ -14,14 +14,9 @@ compiler:
 
 
 
-matrix:
-    include:
-      - os: linux
-        dist: trusty
-        sudo: required
-
-      - os: osx
-        osx_image: xcode8.2
+dist: trusty
+osx_image: xcode8.2
+sudo: required
 
 
 

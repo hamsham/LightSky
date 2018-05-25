@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.2)
 
 set(CMAKE_DISABLE_IN_SOURCE_BUILDS ON)
+set(CMAKE_CXX_STANDARD 11)
 
 
 
@@ -15,10 +16,16 @@ project("LightSky")
 # Compiler Options
 # -------------------------------------
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-
-    add_definitions(-Wall -Werror -Wextra -pedantic -pedantic-errors)
-    set(CMAKE_C_FLAGS "-std=c99 ${CMAKE_C_FLAGS}")
-    set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+    add_definitions(-Wall)
+    add_definitions(-Werror)
+    add_definitions(-Wextra)
+    add_definitions(-pedantic)
+    add_definitions(-pedantic-errors)
+    add_definitions(-Wno-implicit-fallthrough)
+    add_definitions(-Wno-pessimizing-move)
+    add_definitions(-ftree-vectorize)
+    add_definitions(-ffast-math)
+    add_definitions(-funsafe-math-optimizations)
 
     # Tested on Linux, all static libraries need to be compiled with the -fPIC
     # flag in order to be linked into shared libs. This is going to destroy all
@@ -37,9 +44,14 @@ else()
 endif()
 
 
-if (CMAKE_BUILD_TYPE MATCHES "[A-Za-z]*[Dd][Ee][Bb][A-Za-z]+")
-    message("-- Building LightSky with debug info.")
-    add_definitions(-DLS_DEBUG -g -ggdb)
+
+string(TOLOWER ${CMAKE_BUILD_TYPE} _CURRENT_BUILD_TYPE)
+if (${_CURRENT_BUILD_TYPE} STREQUAL release)
+    message("-- Release mode enabled.")
+    add_definitions(-s)
+elseif(${_CURRENT_BUILD_TYPE} STREQUAL debug OR ${_CURRENT_BUILD_TYPE} STREQUAL relwithdebinfo)
+    message("-- Debug mode enabled.")
+    add_definitions(-D LS_DEBUG)
 endif()
 
 
@@ -47,6 +59,44 @@ endif()
 if(BUILD_SHARED_LIBS)
     add_definitions(-DLS_SHARED -DLS_BUILD_SHARED)
 endif()
+
+
+
+option(ENABLE_PROFILING "Enable profiling (recommended for release builds with debug information)." OFF)
+if (ENABLE_PROFILING)
+    message("-- Profiling enabled")
+    add_definitions(-pg)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
+endif()
+
+
+
+option(ENABLE_ARM_OPTIMIZATIONS "Enable arm-specific compiler optimization flags." OFF)
+if (ENABLE_ARM_OPTIMIZATIONS)
+    message("-- ARM compiler optimizations enabled.")
+    add_definitions(-mhard-float)
+    add_definitions(-mfloat-abi=hard)
+    add_definitions(-mfpu=neon-vfpv4)
+    add_definitions(-march=armv7-a+simd+fp16+neon-vfpv4)
+endif(ENABLE_ARM_OPTIMIZATIONS)
+
+
+
+option(ENABLE_X86_OPTIMIZATIONS "Enable x86-specific compiler optimization flags." OFF)
+if (ENABLE_X86_OPTIMIZATIONS)
+    message("-- x86 compiler optimizations enabled.")
+    add_definitions(-msse)
+    add_definitions(-msse2)
+    add_definitions(-mmmx)
+    add_definitions(-march=native)
+endif(ENABLE_X86_OPTIMIZATIONS)
+
+
+
+# -------------------------------------
+# External Project Setup
+# -------------------------------------
+include(external_deps.cmake)
 
 
 

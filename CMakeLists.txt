@@ -26,6 +26,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_definitions(-ftree-vectorize)
     add_definitions(-ffast-math)
     add_definitions(-funsafe-math-optimizations)
+    add_definitions(-static)
 
     # Tested on Linux, all static libraries need to be compiled with the -fPIC
     # flag in order to be linked into shared libs. This is going to destroy all

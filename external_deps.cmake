@@ -86,7 +86,7 @@ set(ASSIMP_BUILD_FLAGS
     -DCMAKE_C_COMPILER:STRING=${CMAKE_C_COMPILER}
     -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
     -DCMAKE_INSTALL_PREFIX:STRING=${EXTERNAL_PROJECT_PREFIX}
-    -DBUILD_SHARED_LIBS:BOOL=TRUE
+    -DBUILD_SHARED_LIBS:BOOL=OFF
     -DASSIMP_BUILD_ZLIB:BOOL=ON
     -DASSIMP_BUILD_TESTS:BOOL=OFF
     -DASSIMP_BUILD_SAMPLES:BOOL=OFF
@@ -119,8 +119,8 @@ ExternalProject_Add(
 )
 
 # Add the imported library target
-add_library(assimp SHARED IMPORTED)
-set_target_properties(assimp PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_SHARED_LIBRARY_PREFIX}assimp${CMAKE_SHARED_LIBRARY_SUFFIX})
+add_library(assimp STATIC IMPORTED)
+set_target_properties(assimp PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}assimp${CMAKE_STATIC_LIBRARY_SUFFIX})
 add_dependencies(assimp Assimp)
 
 add_library(IrrXML STATIC IMPORTED)
@@ -171,8 +171,8 @@ ExternalProject_Add(
 )
 
 # Add the imported library target
-add_library(freeimage SHARED IMPORTED)
-set_target_properties(freeimage PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_SHARED_LIBRARY_PREFIX}freeimage${CMAKE_SHARED_LIBRARY_SUFFIX})
+add_library(freeimage STATIC IMPORTED)
+set_target_properties(freeimage PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}freeimage${CMAKE_STATIC_LIBRARY_SUFFIX})
 add_dependencies(freeimage FreeImage)
 
 set(FREEIMAGE_LIBS freeimage)
@@ -183,7 +183,7 @@ set(FREEIMAGE_LIBS freeimage)
 # External build for FreeType
 # #####################################
 set(FREETYPE_BRANCH "master" CACHE STRING "Git branch or tag for checking out FreeType.")
-mark_as_advanced(ASSIMP_BRANCH)
+mark_as_advanced(FREETYPE_BRANCH)
 
 # Configure build options
 set(FREETYPE_BUILD_FLAGS
@@ -192,10 +192,11 @@ set(FREETYPE_BUILD_FLAGS
     -DCMAKE_C_COMPILER:STRING=${CMAKE_C_COMPILER}
     -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
     -DCMAKE_INSTALL_PREFIX:STRING=${EXTERNAL_PROJECT_PREFIX}
-    -DBUILD_SHARED_LIBS:BOOL=TRUE)
+    -DBUILD_SHARED_LIBS:BOOL=FALSE
+    -DCMAKE_DISABLE_FIND_PACKAGE_HarfBuzz:BOOL=TRUE)
 mark_as_advanced(FREETYPE_BUILD_FLAGS)
 
-# Build Assimp
+# Build FreeType
 ExternalProject_Add(
     FreeType
     PREFIX
@@ -221,8 +222,8 @@ ExternalProject_Add(
 )
 
 # Add the imported library target
-add_library(freetype SHARED IMPORTED)
-set_target_properties(freetype PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_SHARED_LIBRARY_PREFIX}freetype${CMAKE_SHARED_LIBRARY_SUFFIX})
+add_library(freetype STATIC IMPORTED)
+set_target_properties(freetype PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}freetype${CMAKE_STATIC_LIBRARY_SUFFIX})
 add_dependencies(freetype FreeType)
 
 include_directories(BEFORE SYSTEM ${EXTERNAL_PROJECT_PREFIX}/include/freetype2)
@@ -243,13 +244,15 @@ ExternalProject_Add(
     PREFIX
         ${EXTERNAL_PROJECT_PREFIX}
     GIT_REPOSITORY
-        "https://github.com/assimp/assimp.git"
+        "https://github.com/boostorg/regex.git"
     GIT_SHALLOW
         TRUE
     GIT_PROGRESS
         TRUE
     GIT_TAG
         "${BOOST_BRANCH}"
+    CONFIGURE_COMMAND
+        ""
     BUILD_COMMAND
         ""
     INSTALL_DIR
@@ -260,3 +263,50 @@ ExternalProject_Add(
 
 # Add the imported library
 set(BOOST_REGEX_HEADER ${EXTERNAL_PROJECT_PREFIX}/include/boost/regex.hpp)
+
+
+
+# #####################################
+# External build for SDL2
+# #####################################
+set(SDL2_BRANCH "release-2.0.8" CACHE STRING "Git branch or tag for checking out SDL2.")
+mark_as_advanced(SDL2_BRANCH)
+
+# Configure build options
+set(SDL2_BUILD_FLAGS
+    -DCMAKE_CXX_COMPILER:STRING=${CMAKE_CXX_COMPILER}
+    -DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}
+    -DCMAKE_C_COMPILER:STRING=${CMAKE_C_COMPILER}
+    -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
+    -DCMAKE_INSTALL_PREFIX:STRING=${EXTERNAL_PROJECT_PREFIX}
+    -DBUILD_SHARED_LIBS:BOOL=FALSE
+    -DSNDIO:BOOL=OFF)
+mark_as_advanced(FREETYPE_BUILD_FLAGS)
+
+# Build SDL2
+ExternalProject_Add(
+    Sdl2
+    PREFIX
+        ${EXTERNAL_PROJECT_PREFIX}
+    HG_REPOSITORY
+        "https://hg.libsdl.org/SDL"
+    HG_TAG
+        "${SDL2_BRANCH}"
+    CMAKE_COMMAND
+        ${CMAKE_COMMAND}
+    CMAKE_CACHE_ARGS
+        ${SDL2_BUILD_FLAGS}
+    BUILD_COMMAND
+        make
+    INSTALL_DIR
+        ${EXTERNAL_PROJECT_PREFIX}
+    INSTALL_COMMAND
+        make install
+)
+
+# Add the imported library target
+add_library(SDL2 STATIC IMPORTED)
+set_target_properties(SDL2 PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2${CMAKE_STATIC_LIBRARY_SUFFIX})
+add_dependencies(SDL2 Sdl2)
+
+set(SDL2_LIBS SDL2 pthread dl)

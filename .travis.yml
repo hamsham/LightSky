@@ -17,13 +17,8 @@ matrix:
 addons:
   apt:
     packages:
-      - libsdl2-dev
-      - libfreeimage-dev
-      - libassimp-dev
-      - libfreetype6-dev
+      - mercurial
       - libosmesa6-dev
-      - libboost-regex-dev
-      - libglm-dev
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" != "osx" ]] then exit 0; fi

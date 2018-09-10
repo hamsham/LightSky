@@ -46,7 +46,7 @@ endif()
 
 
 
-string(TOLOWER ${CMAKE_BUILD_TYPE} _CURRENT_BUILD_TYPE)
+string(TOLOWER "${CMAKE_BUILD_TYPE}" _CURRENT_BUILD_TYPE)
 if (${_CURRENT_BUILD_TYPE} STREQUAL release)
     message("-- Release mode enabled.")
     add_definitions(-s)

@@ -1,24 +1,24 @@
 [submodule "LightSetup"]
 	path = LightSetup
 	url = https://github.com/hamsham/LightSetup.git
-	branch = lsdraw_0.1.x
+	branch = master
 [submodule "LightUtils"]
 	path = LightUtils
 	url = https://github.com/hamsham/LightUtils.git
-	branch = lsdraw_0.1.x
+	branch = master
 [submodule "LightMath"]
 	path = LightMath
 	url = https://github.com/hamsham/LightMath.git
-	branch = lsdraw_0.1.x
+	branch = master
 [submodule "LightScript"]
 	path = LightScript
 	url = https://github.com/hamsham/LightScript.git
-	branch = lsdraw_0.1.x
+	branch = master
 [submodule "LightDraw"]
 	path = LightDraw
 	url = https://github.com/hamsham/LightDraw.git
-	branch = lsdraw_0.1.x
+	branch = master
 [submodule "LightGame"]
 	path = LightGame
 	url = https://github.com/hamsham/LightGame.git
-	branch = lsdraw_0.1.x
+	branch = master

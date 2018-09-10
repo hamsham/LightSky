@@ -27,6 +27,7 @@ addons:
           - libfreeimage-dev
           - libassimp-dev
           - libfreetype6-dev
+          - mercurial
           - libosmesa6-dev
           - libboost-regex-dev
           - libglm-dev

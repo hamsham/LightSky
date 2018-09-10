@@ -258,7 +258,7 @@ ExternalProject_Add(
     INSTALL_DIR
         ${EXTERNAL_PROJECT_PREFIX}
     INSTALL_COMMAND
-        ${CMAKE_COMMAND} -E copy_directory include "${EXTERNAL_PROJECT_PREFIX}"
+        ${CMAKE_COMMAND} -E copy_directory "${EXTERNAL_PROJECT_PREFIX}/src/Boost_Regex/include/boost" "${EXTERNAL_PROJECT_PREFIX}/include"
 )
 
 # Add the imported library

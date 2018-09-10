@@ -23,19 +23,8 @@ sudo: required
 addons:
     apt:
         packages:
-          - libsdl2-dev
-          - libfreeimage-dev
-          - libassimp-dev
-          - libfreetype6-dev
           - mercurial
           - libosmesa6-dev
-          - libboost-regex-dev
-          - libglm-dev
-
-
-
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash tci_osx_setup.bash; fi
 
 
 
@@ -47,7 +36,6 @@ git:
 branches:
     only:
       - master
-      - lsdraw_0.1.x
 
 
 

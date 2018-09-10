@@ -34,25 +34,24 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     if(NOT WIN32)
         add_definitions(-fPIC)
     endif()
-
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     add_definitions(/Wall /sdl /W3 /WX)
     add_definitions(/Za /Zc:rvalueCast /Zc:strictStrings /Zc:inline)
-
 else()
     message(FATAL_ERROR "Your compiler is currently unsupported: ${CMAKE_CXX_COMPILER_ID}")
-
 endif()
 
 
 
-string(TOLOWER "${CMAKE_BUILD_TYPE}" _CURRENT_BUILD_TYPE)
-if (${_CURRENT_BUILD_TYPE} STREQUAL release)
-    message("-- Release mode enabled.")
-    add_definitions(-s)
-elseif(${_CURRENT_BUILD_TYPE} STREQUAL debug OR ${_CURRENT_BUILD_TYPE} STREQUAL relwithdebinfo)
-    message("-- Debug mode enabled.")
-    add_definitions(-D LS_DEBUG)
+if (CMAKE_BUILD_TYPE)
+    string(TOLOWER ${CMAKE_BUILD_TYPE} _CURRENT_BUILD_TYPE)
+    
+	if(${_CURRENT_BUILD_TYPE} STREQUAL debug OR ${_CURRENT_BUILD_TYPE} STREQUAL relwithdebinfo)
+		message("-- Debug mode enabled.")
+		add_definitions(-D LS_DEBUG)
+	else()
+		message("-- Release mode enabled.")
+	endif()
 endif()
 
 

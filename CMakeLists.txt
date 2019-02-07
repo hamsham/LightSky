@@ -8,32 +8,32 @@ set(CMAKE_CXX_STANDARD 11)
 # -------------------------------------
 # Project Setup
 # -------------------------------------
-project("LightSky")
+project(LightSky)
+
+
+
+# -------------------------------------
+# Build Options
+# -------------------------------------
+if (CMAKE_BUILD_TYPE)
+    string(TOLOWER ${CMAKE_BUILD_TYPE} _CURRENT_BUILD_TYPE)
+    if(${_CURRENT_BUILD_TYPE} STREQUAL debug OR ${_CURRENT_BUILD_TYPE} STREQUAL relwithdebinfo)
+        message("-- Debug mode enabled.")
+        add_definitions(-D LS_DEBUG)
+    else()
+        message("-- Release mode enabled.")
+    endif()
+endif()
+
+option(ENABLE_X86_OPTIMIZATIONS "Enable x86-specific compiler optimization flags." ON)
+option(ENABLE_ARM_OPTIMIZATIONS "Enable arm-specific compiler optimization flags." OFF)
+option(ENABLE_PROFILING         "Enable profiling (recommended for release builds with debug information)." OFF)
 
 
 
 # -------------------------------------
 # Compiler Options
 # -------------------------------------
-if (CMAKE_BUILD_TYPE)
-    string(TOLOWER ${CMAKE_BUILD_TYPE} _CURRENT_BUILD_TYPE)
-    
-	if(${_CURRENT_BUILD_TYPE} STREQUAL debug OR ${_CURRENT_BUILD_TYPE} STREQUAL relwithdebinfo)
-		message("-- Debug mode enabled.")
-		add_definitions(-D LS_DEBUG)
-	else()
-		message("-- Release mode enabled.")
-	endif()
-endif()
-
-
-
-if(BUILD_SHARED_LIBS)
-    add_definitions(-DLS_SHARED -DLS_BUILD_SHARED)
-endif()
-
-
-
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_definitions(-Wall)
     add_definitions(-Werror)
@@ -45,54 +45,69 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_definitions(-ftree-vectorize)
     add_definitions(-ffast-math)
     add_definitions(-funsafe-math-optimizations)
-    add_definitions(-static-libstdc++)
-    add_definitions(-static-libgcc)
+    add_definitions(-fno-stack-protector)
+    add_definitions(-pthread)
 
-    option(ENABLE_PROFILING "Enable profiling (recommended for release builds with debug information)." OFF)
     if (ENABLE_PROFILING)
         message("-- Profiling enabled")
         add_definitions(-Og -pg)
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg -Og") # failsafe
-    endif(ENABLE_PROFILING)
-
-    # Tested on Linux, all static libraries need to be compiled with the -fPIC
-    # flag in order to be linked into shared libs. This is going to destroy all
-    # benchmarks due to extra assembly instructions being compiled in.
-    if(NOT WIN32)
-        add_definitions(-fPIC)
+    else()
+        add_definitions(-fomit-frame-pointer)
     endif()
 
-    option(ENABLE_ARM_OPTIMIZATIONS "Enable arm-specific compiler optimization flags." OFF)
     if (ENABLE_ARM_OPTIMIZATIONS)
         message("-- ARM compiler optimizations enabled.")
         add_definitions(-mhard-float)
         add_definitions(-mfloat-abi=hard)
         add_definitions(-mfpu=neon-vfpv4)
         add_definitions(-march=armv7-a)
-    endif(ENABLE_ARM_OPTIMIZATIONS)
+        add_definitions(-faligned-new)
+        add_definitions(-mno-unaligned-access)
+    endif()
 
-    option(ENABLE_X86_OPTIMIZATIONS "Enable x86-specific compiler optimization flags." ON)
     if (ENABLE_X86_OPTIMIZATIONS)
         message("-- x86 compiler optimizations enabled.")
+        add_definitions(-mmmx)
         add_definitions(-msse)
         add_definitions(-msse2)
         add_definitions(-msse3)
-        add_definitions(-mmmx)
+        add_definitions(-mssse3)
+        add_definitions(-msse4)
+        add_definitions(-msse4.1)
+        add_definitions(-msse4.2)
         add_definitions(-mfma)
-        add_definitions(-mfpmath=both)
-    endif(ENABLE_X86_OPTIMIZATIONS)
+        add_definitions(-mavx)
+        add_definitions(-mavx2)
+
+        if(NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+            add_definitions(-mfpmath=both)
+            #add_definitions(-march=core2)
+        endif()
+    endif()
+
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    add_definitions(/Wall) # enable all warnings
+    if (ENABLE_X86_OPTIMIZATIONS)
+        add_definitions(/arch:AVX2) # enable AVX2
+    endif()
+
     add_definitions(/GL) # global program optimization
     add_definitions(/Oi) # enable instrinsic functions
     add_definitions(/Ot) # favor fast code
     add_definitions(/Oy) # Omit frame pointers
-    add_definitions(/arch:SSE2) # enable SSE
+    add_definitions(/permissive-) # enable conformance mode
+    add_definitions(/Wall) # enable all warnings
     add_definitions(/sdl)
     add_definitions(/W3) # production-quality warnings
     add_definitions(/WX) # warnings are errors
     add_definitions(/Zc:rvalueCast /Zc:strictStrings /Zc:inline)
-    add_definitions(/permissive-) # enable conformance mode
+
+    # Prevent libraries from being rebuilt
+    set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_EXE_LINKER_FLAGS}    /LTCG:INCREMENTAL")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /LTCG:INCREMENTAL")
+    set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /LTCG:INCREMENTAL")
+    set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} /LTCG:INCREMENTAL")
+
     add_definitions(/wd4146) # unsigned negation using the '-' operator
     add_definitions(/wd4996) # insecure use of wcstombs
     add_definitions(/wd4365) # Impplicit conversion from signed to unsigned (built into the standard library :/ )
@@ -106,6 +121,19 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     add_definitions(/wd4868) # compiler may not enforce left-to-right evaluation order in braced initializer list
     add_definitions(/wd5039) # An 'extern "C"' function contains something which might throw an exception
     add_definitions(/wd4244) # possible loss of data when converting between time_t and unsigned int
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+    add_definitions(-xAVX2)
+    add_definitions(-msse)
+    add_definitions(-msse2)
+    add_definitions(-msse3)
+    add_definitions(-mavx2)
+    add_definitions(-mtune=core2)
+    add_definitions(-march=core2)
+    add_definitions(-ip)
+    add_definitions(-vecabi=gcc)
+    add_definitions(-fp-model fast=2)
+    add_definitions(-finline)
+    add_definitions(-gcc)
 else()
     message(FATAL_ERROR "Your compiler is currently unsupported: ${CMAKE_CXX_COMPILER_ID}")
 endif()

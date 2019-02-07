@@ -1,11 +1,10 @@
 language: cpp
 
 
-
 os:
   - osx
   - linux
-
+  - windows
 
 
 compiler:
@@ -13,42 +12,54 @@ compiler:
   - clang
 
 
-
-dist: trusty
-osx_image: xcode8.2
-sudo: required
-
+dist: xenial
+osx_image: xcode10.1
 
 
 addons:
-    apt:
-        packages:
-          - mercurial
-          - libosmesa6-dev
-
+  apt:
+    packages:
+      - mercurial
+      - libosmesa6-dev
+      - cmake
+      - curl
+      - git
+      - libassimp-dev
+      - libfreeimage-dev
+      - libsdl2-dev
+      - libfreetype6-dev
+  homebrew:
+    update: true
+    packages:
+      - assimp
+      - freeimage
+      - sdl2
+      - freetype
+      - mercurial
+      - cmake
+  chocolatey:
+    packages:
+      - tortoisesvn
 
 
 git:
-    submodules: true
-
+  submodules: true
 
 
 branches:
-    only:
-      - master
-
+  only:
+    - master
 
 
 before_script:
   - git checkout master
   - git submodule init
   - git submodule foreach git checkout master
-  - mkdir build
-  - cd build
-  - cmake .. -G"Unix Makefiles"
-
+    - mkdir build
+    - cd build
+    - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then cmake .. -G'Unix Makefiles'; else cmake ..; fi
 
 
 script:
-    make
+  cmake --build . --config Release --parallel
 

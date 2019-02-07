@@ -43,6 +43,10 @@ addons:
       - tortoisehg
 
 
+install:
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install mingw make tortoisesvn tortoisehg; fi
+
+
 git:
   submodules: true
 

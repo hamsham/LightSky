@@ -158,7 +158,6 @@ set(LS_BUILD_SETUP_MODULE TRUE CACHE BOOL "Build the LS Setup module.")
 if(LS_BUILD_SETUP_MODULE)
     add_subdirectory("LightSetup")
     include_directories("LightSetup/include")
-
 endif(LS_BUILD_SETUP_MODULE)
 
 #
@@ -178,7 +177,7 @@ endif(LS_BUILD_UTILS_MODULE)
 #
 #   LS Math
 #
-if(LS_BUILD_SETUP_MODULE)
+if(LS_BUILD_SETUP_MODULE AND LS_BUILD_UTILS_MODULE)
     set(LS_BUILD_MATH_MODULE TRUE CACHE BOOL "Build the LS Math module.")
 else()
     set(LS_BUILD_MATH_MODULE FALSE CACHE BOOL "LS Math module dependencies not met." FORCE)

@@ -25,9 +25,28 @@ if (CMAKE_BUILD_TYPE)
     endif()
 endif()
 
-option(ENABLE_X86_OPTIMIZATIONS "Enable x86-specific compiler optimization flags." ON)
-option(ENABLE_ARM_OPTIMIZATIONS "Enable arm-specific compiler optimization flags." OFF)
-option(ENABLE_PROFILING         "Enable profiling (recommended for release builds with debug information)." OFF)
+include(CheckIncludeFile)
+include(CheckCXXCompilerFlag)
+include(CheckCXXSymbolExists)
+
+check_include_file(immintrin.h HAVE_X86_SIMD)
+check_include_file(arm_neon.h HAVE_ARM_SIMD)
+
+check_cxx_compiler_flag(-march=arm-v7a HAVE_ARM_V7A)
+check_cxx_compiler_flag(-march=arm-v8a HAVE_ARM_V8A)
+
+if (HAVE_X86_SIMD)
+    option(ENABLE_X86_OPTIMIZATIONS "Enable x86-specific compiler optimization flags." ON)
+endif()
+
+if (HAVE_ARM_V7A OR HAVE_ARM_V8A)
+    if (HAVE_ARM_SIMD)
+        option(ENABLE_ARM_OPTIMIZATIONS "Enable arm-specific compiler optimization flags." ON)
+    endif()
+endif()
+
+option(ENABLE_PROFILING "Enable profiling (recommended for release builds with debug information)." OFF)
+
 
 
 
@@ -58,12 +77,16 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
     if (ENABLE_ARM_OPTIMIZATIONS)
         message("-- ARM compiler optimizations enabled.")
-        add_definitions(-mhard-float)
-        add_definitions(-mfloat-abi=hard)
-        add_definitions(-mfpu=neon-vfpv4)
-        add_definitions(-march=armv7-a)
-        add_definitions(-faligned-new)
-        add_definitions(-mno-unaligned-access)
+
+        if (HAVE_ARM_V7A)
+            add_definitions(-mhard-float)
+            add_definitions(-mfloat-abi=hard)
+            add_definitions(-mfpu=neon-vfpv4+fp16)
+            add_definitions(-mno-unaligned-access)
+        elseif(HAVE_ARM_V8A)
+            add_definitions(-march=armv8-a+fp16)
+            add_definitions(-faligned-new)
+        endif()
     endif()
 
     if (ENABLE_X86_OPTIMIZATIONS)
@@ -79,6 +102,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         add_definitions(-mfma)
         add_definitions(-mavx)
         add_definitions(-mavx2)
+        add_definitions(-mf16c)
 
         if(NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
             add_definitions(-mfpmath=both)
@@ -92,16 +116,22 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     endif()
 
     add_definitions(/GL) # global program optimization
+    add_definitions(/Gw) # Whole-program optimization
+    add_definitions(/GA) # Windows program optimizations
+    add_definitions(/MT) # Enable multi-threaded application linking
+    #add_definitions(/Gv) # Enable __vectorcall conventions
     add_definitions(/Oi) # enable instrinsic functions
     add_definitions(/Ot) # favor fast code
     add_definitions(/Oy) # Omit frame pointers
+    #add_definitions(/Ox) # Optimize, optimize, optimize
     add_definitions(/permissive-) # enable conformance mode
     add_definitions(/Wall) # enable all warnings
+    add_definitions(/GS-) # Disable global security cookies
     add_definitions(/sdl-) # Disable Security Development Lifecycle checks
-    #add_definitions(/GS-) # Disable global security cookies
     add_definitions(/W3) # production-quality warnings
     add_definitions(/WX) # warnings are errors
     add_definitions(/Zc:rvalueCast /Zc:strictStrings /Zc:inline)
+    add_definitions(/fp:fast)
 
     # Prevent libraries from being rebuilt
     set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_EXE_LINKER_FLAGS}    /LTCG:INCREMENTAL")
@@ -133,6 +163,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
     add_definitions(-msse2)
     add_definitions(-msse3)
     add_definitions(-mavx2)
+    add_definitions(-mf16c)
     add_definitions(-mtune=core2)
     add_definitions(-march=core2)
     add_definitions(-ip)
@@ -156,6 +187,10 @@ include(external_deps.cmake)
 # -------------------------------------
 # Sub-Projects
 # -------------------------------------
+if (APPLE)
+    add_definitions(-DGL_SILENCE_DEPRECATION)
+endif()
+
 #
 #   LS Setup
 #
@@ -235,3 +270,14 @@ if(LS_BUILD_SCRIPT_MODULE)
     add_subdirectory("LightScript")
     include_directories("LightScript/include")
 endif(LS_BUILD_SCRIPT_MODULE)
+
+
+
+# -------------------------------------
+# LS Game Testing Area
+# -------------------------------------
+option(LS_BUILD_TESTS "Build tests for LightSky." ON)
+
+if(LS_BUILD_TESTS)
+    add_subdirectory(tests)
+endif(LS_BUILD_TESTS)

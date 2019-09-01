@@ -2,7 +2,7 @@
 # -------------------------------------
 # Project Setup
 # -------------------------------------
-project(ls_game_tests CXX)
+project(ls_tests CXX)
 
 
 
@@ -33,16 +33,16 @@ include(SDL2Config.cmake)
 # Include Paths
 # -------------------------------------
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-include_directories(${OPENGL_INCLUDE_DIR})
+include_directories(${OPENGL_INCLUDE_DIR} SYSTEM)
 
-file(GLOB RECURSE LS_GAME_TEST_HEADERS "include/*.h" "include/*.hpp")
+file(GLOB RECURSE LS_TEST_HEADERS "include/*.h" "include/*.hpp")
 
 
 
 # -------------------------------------
 # Dependency Setup
 # -------------------------------------
-set(LS_GAME_INTERNAL_DEPS
+set(LS_TEST_INTERNAL_DEPS
     lssetup
     lsutils
     lsmath
@@ -50,7 +50,7 @@ set(LS_GAME_INTERNAL_DEPS
     lsgame
 )
 
-set(LS_GAME_EXTERNAL_DEPS
+set(LS_TEST_EXTERNAL_DEPS
     ${OPENGL_gl_LIBRARY}
     ${SDL2_LIBRARIES}
     ${FREETYPE_LIBRARIES}
@@ -64,7 +64,7 @@ set(LS_GAME_EXTERNAL_DEPS
 # -------------------------------------
 # Source Paths
 # -------------------------------------
-set(LS_GAME_TEST_SOURCES
+set(LS_TEST_SOURCES
     Context.cpp
     ControlState.cpp
     Display.cpp
@@ -76,10 +76,10 @@ set(LS_GAME_TEST_SOURCES
 )
 
 set(
-    LS_GAME_TEST_SOURCES_HELLOWORLD
+    LS_TEST_SOURCES_HELLOWORLD
     main.cpp
-    ${LS_GAME_TEST_SOURCES}
-    ${LS_GAME_TEST_HEADERS}
+    ${LS_TEST_SOURCES}
+    ${LS_TEST_HEADERS}
 )
 
 
@@ -147,10 +147,10 @@ configure_file(testdata/sibenik/sibenik.obj        testdata/sibenik/sibenik.obj 
 # -------------------------------------
 # Building and Linking Targets
 # -------------------------------------
-function(LS_GAME_ADD_TARGET trg srcs)
+function(LS_TEST_ADD_TARGET trg srcs)
     add_executable(${trg} ${srcs})
-    add_dependencies(${trg} ${LS_GAME_INTERNAL_DEPS})
-    target_link_libraries(${trg} ${LS_GAME_INTERNAL_DEPS} ${LS_GAME_EXTERNAL_DEPS})
-endfunction(LS_GAME_ADD_TARGET)
+    add_dependencies(${trg} ${LS_TEST_INTERNAL_DEPS})
+    target_link_libraries(${trg} ${LS_TEST_INTERNAL_DEPS} ${LS_TEST_EXTERNAL_DEPS})
+endfunction()
 
-LS_GAME_ADD_TARGET(hello_ls_game "${LS_GAME_TEST_SOURCES_HELLOWORLD}")
+LS_TEST_ADD_TARGET(hello_ls_game "${LS_TEST_SOURCES_HELLOWORLD}")

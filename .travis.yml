@@ -12,8 +12,8 @@ compiler:
   - clang
 
 
-dist: xenial
-osx_image: xcode10.1
+dist: bionic
+osx_image: xcode11.2
 
 
 addons:

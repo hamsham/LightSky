@@ -149,7 +149,7 @@ else()
         BUILD_COMMAND
             ${CMAKE_COMMAND} -E make_directory ${SDL2_LIBRARY_DIRECTORY} &&
             ${CMAKE_COMMAND} -E make_directory ${SDL2_INCLUDE_DIRECTORY} &&
-            ${CMAKE_COMMAND} -E chdir ${SDL2_BINARY_DIRECTORY} ${CMAKE_COMMAND} --build . --config ${CMAKE_CFG_INTDIR} --parallel
+            ${CMAKE_COMMAND} -E chdir ${SDL2_BINARY_DIRECTORY} ${CMAKE_COMMAND} --build . --config ${CMAKE_CFG_INTDIR}
         INSTALL_DIR
             ${SDL2_INSTALL_PREFIX}
         INSTALL_COMMAND

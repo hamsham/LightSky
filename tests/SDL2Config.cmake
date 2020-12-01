@@ -21,7 +21,7 @@ set(SDL2_SOURCE_DIRECTORY  ${SDL2_INSTALL_PREFIX}/src/Sdl2)
 set(SDL2_INCLUDE_DIRECTORY ${SDL2_INSTALL_PREFIX}/include)
 set(SDL2_LIBRARY_DIRECTORY ${SDL2_INSTALL_PREFIX}/lib)
 
-set(SDL2_BRANCH "release-2.0.10" CACHE STRING "Git branch or tag for checking out SDL2.")
+set(SDL2_BRANCH "release-2.0.12" CACHE STRING "Git branch or tag for checking out SDL2.")
 mark_as_advanced(SDL2_BRANCH)
 
 set(SDL2_BUILD_SHARED OFF)
@@ -118,9 +118,9 @@ if (CMAKE_SYSTEM_NAME MATCHES "iOS")
         Sdl2
         PREFIX
             ${SDL2_INSTALL_PREFIX}
-        HG_REPOSITORY
-            "https://hg.libsdl.org/SDL"
-        HG_TAG
+        GIT_REPOSITORY
+            "https://github.com/SDL-mirror/SDL.git"
+        GIT_TAG
             "${SDL2_BRANCH}"
         CONFIGURE_COMMAND
             ${CMAKE_COMMAND} -E make_directory ${SDL2_LIBRARY_DIRECTORY} &&
@@ -138,9 +138,9 @@ else()
         Sdl2
         PREFIX
             ${SDL2_INSTALL_PREFIX}
-        HG_REPOSITORY
-            "https://hg.libsdl.org/SDL"
-        HG_TAG
+        GIT_REPOSITORY
+            "https://github.com/SDL-mirror/SDL.git"
+        GIT_TAG
             "${SDL2_BRANCH}"
         CMAKE_COMMAND
             ${CMAKE_COMMAND}
@@ -200,7 +200,7 @@ endfunction()
 if (WIN32)
     find_package(OpenGL REQUIRED)
 
-    set(SDL2_LIBRARIES SDL2 ${OPENGL_LIBRARIES} Threads::Threads)
+    set(SDL2_LIBRARIES SDL2 ${OPENGL_LIBRARIES} Threads::Threads Setupapi Version Imm32 User32 Kernel32)
 elseif (CMAKE_SYSTEM_NAME MATCHES "Android")
     find_path(GLES2_INCLUDE_DIR GLES2/gl2.h HINTS ${ANDROID_NDK})
     find_library(GLES2_LIBRARY libGLESv2.so HINTS "${GLES2_INCLUDE_DIR}/../lib")

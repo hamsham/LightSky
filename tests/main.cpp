@@ -2,6 +2,13 @@
 #include <new> // std::nothrow
 #include <iostream>
 
+#include "lightsky/setup/OS.h"
+
+#ifdef LS_OS_WINDOWS
+    #define SDL_MAIN_HANDLED
+    #include <SDL2/SDL.h>
+#endif
+
 #include "ControlState.h"
 #include "MainState.h"
 

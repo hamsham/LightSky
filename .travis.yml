@@ -40,11 +40,10 @@ addons:
   chocolatey:
     packages:
       - tortoisesvn
-      - tortoisehg
 
 
 install:
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install mingw make tortoisesvn tortoisehg; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install mingw make tortoisesvn; fi
 
 
 git:

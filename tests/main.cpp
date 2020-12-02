@@ -1,13 +1,7 @@
 
 #include <new> // std::nothrow
 #include <iostream>
-
-#include "lightsky/setup/OS.h"
-
-#ifdef LS_OS_WINDOWS
-    #define SDL_MAIN_HANDLED
-    #include <SDL2/SDL.h>
-#endif
+#include <SDL2/SDL.h>
 
 #include "ControlState.h"
 #include "MainState.h"
@@ -19,7 +13,7 @@ namespace math = ls::math;
 /*-------------------------------------
  * main()
 -------------------------------------*/
-int main(int argc, char* argv[]) {
+extern "C" int main(int argc, char* argv[]) {
     ls::game::GameSystem sys {};
 
     for (int i = 0; i < argc; ++i) {

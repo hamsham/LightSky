@@ -32,7 +32,7 @@ else()
     string(TOLOWER ${CMAKE_BUILD_TYPE} SDL2_BUILD_TYPE)
 endif()
 
-if (NOT SDL2_BUILD_TYPE OR SDL2_BUILD_TYPE MATCHES "debug")
+if (SDL2_BUILD_TYPE MATCHES "debug")
     set(SDL2_LIB_SUFFIX d)
 else()
     set(SDL2_LIB_SUFFIX "")
@@ -117,43 +117,43 @@ if (CMAKE_SYSTEM_NAME MATCHES "iOS")
     ExternalProject_Add(
         Sdl2
         PREFIX
-            ${SDL2_INSTALL_PREFIX}
+        ${SDL2_INSTALL_PREFIX}
         GIT_REPOSITORY
-            "https://github.com/SDL-mirror/SDL.git"
+        "https://github.com/SDL-mirror/SDL.git"
         GIT_TAG
-            "${SDL2_BRANCH}"
+        "${SDL2_BRANCH}"
         CONFIGURE_COMMAND
-            ${CMAKE_COMMAND} -E make_directory ${SDL2_LIBRARY_DIRECTORY} &&
-            ${CMAKE_COMMAND} -E make_directory ${SDL2_INCLUDE_DIRECTORY}
+        ${CMAKE_COMMAND} -E make_directory ${SDL2_LIBRARY_DIRECTORY} &&
+        ${CMAKE_COMMAND} -E make_directory ${SDL2_INCLUDE_DIRECTORY}
         BUILD_COMMAND
-            ${XCODEBUILD_CMD} SYMROOT=${SDL2_LIBRARY_DIRECTORY} -sdk ${SDL_XCODE_SDK} only_active_arch=no -scheme libSDL-iOS -configuration ${SDL_XCODE_BUILD_STR} -project "${SDL2_SOURCE_DIRECTORY}/Xcode-iOS/SDL/SDL.xcodeproj"
+        ${XCODEBUILD_CMD} SYMROOT=${SDL2_LIBRARY_DIRECTORY} -sdk ${SDL_XCODE_SDK} only_active_arch=no -scheme libSDL-iOS -configuration ${SDL_XCODE_BUILD_STR} -project "${SDL2_SOURCE_DIRECTORY}/Xcode-iOS/SDL/SDL.xcodeproj"
         INSTALL_DIR
-            ${SDL2_INSTALL_PREFIX}
+        ${SDL2_INSTALL_PREFIX}
         INSTALL_COMMAND
-            ${CMAKE_COMMAND} -E copy_if_different "${SDL2_INSTALL_PREFIX}/${SDL2_LIB_TYPE}-${SDL_XCODE_SDK}/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2${SDL2_LIB_SUFFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}" "${SDL2_INSTALL_PREFIX}/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2${SDL2_LIB_SUFFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}" &&
-            ${CMAKE_COMMAND} -E copy_directory ${SDL2_SOURCE_DIRECTORY}/include ${SDL2_INSTALL_PREFIX}/include/SDL2
+        ${CMAKE_COMMAND} -E copy_if_different "${SDL2_INSTALL_PREFIX}/${SDL2_LIB_TYPE}-${SDL_XCODE_SDK}/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2${SDL2_LIB_SUFFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}" "${SDL2_INSTALL_PREFIX}/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2${SDL2_LIB_SUFFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}" &&
+        ${CMAKE_COMMAND} -E copy_directory ${SDL2_SOURCE_DIRECTORY}/include ${SDL2_INSTALL_PREFIX}/include/SDL2
     )
 else()
     ExternalProject_Add(
         Sdl2
         PREFIX
-            ${SDL2_INSTALL_PREFIX}
+        ${SDL2_INSTALL_PREFIX}
         GIT_REPOSITORY
-            "https://github.com/SDL-mirror/SDL.git"
+        "https://github.com/SDL-mirror/SDL.git"
         GIT_TAG
-            "${SDL2_BRANCH}"
+        "${SDL2_BRANCH}"
         CMAKE_COMMAND
-            ${CMAKE_COMMAND}
+        ${CMAKE_COMMAND}
         CMAKE_CACHE_ARGS
-            ${SDL2_BUILD_FLAGS}
+        ${SDL2_BUILD_FLAGS}
         BUILD_COMMAND
-            ${CMAKE_COMMAND} -E make_directory ${SDL2_LIBRARY_DIRECTORY} &&
-            ${CMAKE_COMMAND} -E make_directory ${SDL2_INCLUDE_DIRECTORY} &&
-            ${CMAKE_COMMAND} -E chdir ${SDL2_BINARY_DIRECTORY} ${CMAKE_COMMAND} --build . --config ${CMAKE_CFG_INTDIR}
+        ${CMAKE_COMMAND} -E make_directory ${SDL2_LIBRARY_DIRECTORY} &&
+        ${CMAKE_COMMAND} -E make_directory ${SDL2_INCLUDE_DIRECTORY} &&
+        ${CMAKE_COMMAND} -E chdir ${SDL2_BINARY_DIRECTORY} ${CMAKE_COMMAND} --build . --config ${CMAKE_CFG_INTDIR}
         INSTALL_DIR
-            ${SDL2_INSTALL_PREFIX}
+        ${SDL2_INSTALL_PREFIX}
         INSTALL_COMMAND
-            ${CMAKE_COMMAND} -E chdir ${SDL2_BINARY_DIRECTORY} ${CMAKE_COMMAND} --build . --config ${CMAKE_CFG_INTDIR} --target install
+        ${CMAKE_COMMAND} -E chdir ${SDL2_BINARY_DIRECTORY} ${CMAKE_COMMAND} --build . --config ${CMAKE_CFG_INTDIR} --target install
     )
 endif()
 
@@ -166,7 +166,7 @@ add_dependencies(SDL2 Sdl2)
 
 add_library(SDL2_MAIN STATIC IMPORTED)
 set_target_properties(SDL2_MAIN PROPERTIES IMPORTED_LOCATION ${EXTERNAL_PROJECT_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2main${SDL2_LIB_SUFFIX}${CMAKE_STATIC_LIBRARY_SUFFIX})
-add_dependencies(SDL2_MAIN Sdl2)
+add_dependencies(SDL2_MAIN SDL2)
 
 add_dependencies(SDL2 Sdl2)
 
@@ -200,7 +200,12 @@ endfunction()
 if (WIN32)
     find_package(OpenGL REQUIRED)
 
-    set(SDL2_LIBRARIES SDL2 ${OPENGL_LIBRARIES} Threads::Threads Setupapi Version Imm32 User32 Kernel32)
+    if (MINGW)
+        set(SDL2_LIBRARIES ${OPENGL_LIBRARIES} mingw32 SDL2_MAIN SDL2 Threads::Threads Setupapi Version Imm32)
+    else()
+        set(SDL2_LIBRARIES ${OPENGL_LIBRARIES} SDL2_MAIN SDL2 Threads::Threads Setupapi Version Imm32 User32 Kernel32)
+    endif()
+
 elseif (CMAKE_SYSTEM_NAME MATCHES "Android")
     find_path(GLES2_INCLUDE_DIR GLES2/gl2.h HINTS ${ANDROID_NDK})
     find_library(GLES2_LIBRARY libGLESv2.so HINTS "${GLES2_INCLUDE_DIR}/../lib")
@@ -245,7 +250,7 @@ elseif (CMAKE_SYSTEM_NAME MATCHES "Android")
         message("-- Found Android logging library: ${ANDROID_LOG_LIBRARY}")
     endif()
 
-    set(SDL2_LIBRARIES SDL2 SDL2_MAIN ${OPENGL_LIBRARIES} ${GLES2_LIBRARY} ${GLES3_LIBRARY} ${EGL_LIBRARY} ${ANDROID_LOG_LIBRARY} ${ANDROID_LIBRARY} Threads::Threads)
+    set(SDL2_LIBRARIES SDL2_MAIN SDL2 ${GLES2_LIBRARY} ${GLES3_LIBRARY} ${EGL_LIBRARY} ${ANDROID_LOG_LIBRARY} ${ANDROID_LIBRARY} Threads::Threads)
 elseif(NOT APPLE)
     find_package(OpenGL REQUIRED)
     find_library(DYNAMIC_LIBRARY dl REQUIRED)
@@ -254,7 +259,7 @@ elseif(NOT APPLE)
         message(FATAL_ERROR "-- Unable to find libdl for linking with SDL2.")
     endif()
 
-    set(SDL2_LIBRARIES SDL2 SDL2_MAIN ${OPENGL_LIBRARIES} Threads::Threads ${DYNAMIC_LIBRARY})
+    set(SDL2_LIBRARIES SDL2_MAIN SDL2 ${OPENGL_LIBRARIES} Threads::Threads ${DYNAMIC_LIBRARY})
 
 elseif(APPLE)
     set(CMAKE_FIND_FRAMEWORK LAST)

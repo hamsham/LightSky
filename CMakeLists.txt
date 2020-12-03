@@ -198,7 +198,6 @@ set(LS_BUILD_SETUP_MODULE TRUE CACHE BOOL "Build the LS Setup module.")
 
 if(LS_BUILD_SETUP_MODULE)
     add_subdirectory("LightSetup")
-    include_directories("LightSetup/include")
 endif(LS_BUILD_SETUP_MODULE)
 
 #
@@ -212,7 +211,6 @@ endif()
 
 if(LS_BUILD_UTILS_MODULE)
     add_subdirectory("LightUtils")
-    include_directories("LightUtils/include")
 endif(LS_BUILD_UTILS_MODULE)
 
 #
@@ -226,7 +224,6 @@ endif()
 
 if(LS_BUILD_MATH_MODULE)
     add_subdirectory("LightMath")
-    include_directories("LightMath/include")
 endif(LS_BUILD_MATH_MODULE)
 
 #
@@ -240,7 +237,6 @@ endif()
 
 if(LS_BUILD_DRAW_MODULE)
     add_subdirectory("LightDraw")
-    include_directories("LightDraw/include")
 endif(LS_BUILD_DRAW_MODULE)
 
 #
@@ -254,7 +250,6 @@ endif()
 
 if(LS_BUILD_GAME_MODULE)
     add_subdirectory("LightGame")
-    include_directories("LightGame/include")
 endif(LS_BUILD_GAME_MODULE)
 
 #
@@ -268,7 +263,6 @@ endif()
 
 if(LS_BUILD_SCRIPT_MODULE)
     add_subdirectory("LightScript")
-    include_directories("LightScript/include")
 endif(LS_BUILD_SCRIPT_MODULE)
 
 

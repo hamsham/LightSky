@@ -479,7 +479,7 @@ void HelloTextState::setup_atlas() {
 /*-------------------------------------
 -------------------------------------*/
 void HelloTextState::create_matrix_buffer() {
-    const unsigned numMeshes = textMesh.meshes.size();
+    const size_t numMeshes = textMesh.meshes.size();
     const math::vec2i bufSize {4, (int)numMeshes};
 
     {
@@ -499,7 +499,7 @@ void HelloTextState::create_matrix_buffer() {
     // async copy of model matrices into a texture object.
     // Hopefully this prevents any pipeline stalls
     {
-        const unsigned numBytes = sizeof (math::mat4) * numMeshes;
+        const size_t numBytes = sizeof (math::mat4) * numMeshes;
         draw::PixelBuffer matrixPbo;
         
         LS_ASSERT(matrixPbo.init());
@@ -508,10 +508,10 @@ void HelloTextState::create_matrix_buffer() {
         matrixPbo.bind();
         LS_LOG_GL_ERR();
         
-        matrixPbo.set_data(numBytes, nullptr, draw::buffer_access_t::VBO_STREAM_DRAW);
+        matrixPbo.set_data((ptrdiff_t)numBytes, nullptr, draw::buffer_access_t::VBO_STREAM_DRAW);
         LS_LOG_GL_ERR();
 
-        math::mat4 * const pMatrices = (math::mat4*)matrixPbo.map_data(0, numBytes, draw::TextMeshLoader::DEFAULT_VBO_MAP_FLAGS);
+        math::mat4 * const pMatrices = (math::mat4*)matrixPbo.map_data(0, (ptrdiff_t)numBytes, draw::TextMeshLoader::DEFAULT_VBO_MAP_FLAGS);
         LS_LOG_GL_ERR();
 
         std::fill(pMatrices, pMatrices + numMeshes, math::mat4 {1.f});
@@ -535,7 +535,7 @@ void HelloTextState::setup_occluders() {
     draw::OcclusionMeshLoader loader;
     const std::vector<draw::BoundingBox>& textBoxes = textMesh.bounds;
     
-    LS_ASSERT(loader.load(textBoxes.size()));
+    LS_ASSERT(loader.load((unsigned)textBoxes.size()));
     
     occlusionMeshes = std::move(loader.get_mesh());
     
@@ -545,9 +545,9 @@ void HelloTextState::setup_occluders() {
     LS_LOG_GL_ERR();
     
     // inject bounding boxes from the text mesh into the occlusion fbo
-    const unsigned numBytes = textBoxes.size() * sizeof(draw::BoundingBox);
+    const size_t numBytes = textBoxes.size() * sizeof(draw::BoundingBox);
     LS_LOG_MSG("UPLOADING ", numBytes, " BYTES OF DATA FOR AN OCCLUSION VBO");
-    boundsVbo.modify(0, numBytes, textBoxes.data());
+    boundsVbo.modify(0, (ptrdiff_t)numBytes, textBoxes.data());
     LS_LOG_GL_ERR();
     
     boundsVbo.unbind();
@@ -619,7 +619,7 @@ void HelloTextState::draw_occlusion_data(const ls::math::mat4& vpMatrix) {
     LS_LOG_GL_ERR();
 
     constexpr unsigned vertCount = draw::OCCLUSION_BOX_NUM_VERTS;
-    const unsigned numInstances = occlusionMeshes.bounds.size();
+    const unsigned numInstances = (unsigned)occlusionMeshes.bounds.size();
     glDrawArraysInstanced(draw::draw_mode_t::DRAW_MODE_TRIS, 0, vertCount, numInstances);
     LS_LOG_GL_ERR();
     

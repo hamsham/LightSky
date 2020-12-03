@@ -43,11 +43,11 @@ file(GLOB RECURSE LS_TEST_HEADERS "include/*.h" "include/*.hpp")
 # Dependency Setup
 # -------------------------------------
 set(LS_TEST_INTERNAL_DEPS
-    lssetup
-    lsutils
-    lsmath
-    lsdraw
-    lsgame
+    LightSky::Setup
+    LightSky::Utils
+    LightSky::Math
+    LightSky::Draw
+    LightSky::Game
 )
 
 set(LS_TEST_EXTERNAL_DEPS

@@ -159,10 +159,10 @@ HelloPropertyState& HelloPropertyState::operator =(HelloPropertyState&& state) {
 -------------------------------------*/
 void HelloPropertyState::setup_shader(ls::draw::ShaderProgram& s, const std::string& vertData, const std::string& fragData) {
     draw::ShaderObject vMeshShader, fMeshShader;
-    constexpr unsigned charSize = sizeof(std::string::value_type);
+    constexpr size_t charSize = sizeof(std::string::value_type);
     
-    const auto compile_shader = [](draw::ShaderObject& shaderObj, const draw::shader_stage_t shaderType, const std::string& shaderData)->void {
-        if (!shaderObj.init(shaderType, shaderData.c_str(), shaderData.size() * charSize)) {
+    const auto compile_shader = [&](draw::ShaderObject& shaderObj, const draw::shader_stage_t shaderType, const std::string& shaderData)->void {
+        if (!shaderObj.init(shaderType, shaderData.c_str(), (int)(shaderData.size() * charSize))) {
             LS_LOG_GL_ERR();
             LS_ASSERT(false);
         }

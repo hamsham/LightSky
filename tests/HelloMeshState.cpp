@@ -793,7 +793,7 @@ uint32_t HelloMeshState::render_scene_node(uint32_t currentVao, const draw::Scen
     const math::mat4& vpMat = pController->get_camera_view_projection();
 
     unsigned materialId = draw::material_property_t::INVALID_MATERIAL;
-    unsigned meshDataId = n.dataId;
+    size_t meshDataId = n.dataId;
 
     const std::vector<unsigned>& meshCounts = testData.nodeMeshCounts;
     const unsigned numMeshes = meshCounts[meshDataId];

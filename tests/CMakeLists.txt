@@ -7,22 +7,6 @@ project(ls_tests CXX)
 
 
 # -------------------------------------
-# CMake Setup
-# -------------------------------------
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules" ${CMAKE_MODULE_PATH})
-
-
-
-# -------------------------------------
-# Finders
-# -------------------------------------
-# Only using OpenGL for its libraries, not headers
-set(OpenGL_GL_PREFERENCE LEGACY)
-find_package(OpenGL REQUIRED)
-
-
-
-# -------------------------------------
 # 3rd-party libraries
 # -------------------------------------
 include(SDL2Config.cmake)
@@ -30,53 +14,35 @@ include(SDL2Config.cmake)
 
 
 # -------------------------------------
-# Include Paths
-# -------------------------------------
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-include_directories(${OPENGL_INCLUDE_DIR} SYSTEM)
-
-file(GLOB RECURSE LS_TEST_HEADERS "include/*.h" "include/*.hpp")
-
-
-
-# -------------------------------------
-# Dependency Setup
-# -------------------------------------
-set(LS_TEST_INTERNAL_DEPS
-    LightSky::Setup
-    LightSky::Utils
-    LightSky::Math
-    LightSky::Draw
-    LightSky::Game
-)
-
-set(LS_TEST_EXTERNAL_DEPS
-    ${OPENGL_gl_LIBRARY}
-    ${SDL2_LIBRARIES}
-    ${FREETYPE_LIBRARIES}
-    ${ASSIMP_LIBRARIES}
-    ${FREEIMAGE_LIBRARIES}
-    ${Boost_REGEX_LIBRARY}
-)
-
-
-
-# -------------------------------------
 # Source Paths
 # -------------------------------------
 set(LS_TEST_SOURCES
+    Context.h
     Context.cpp
+
+    ControlState.h
     ControlState.cpp
+
+    Display.h
     Display.cpp
-    HelloMeshState.cpp
+
+    HelloPropertyState.h
     HelloPropertyState.cpp
+
+    HelloMeshState.h
+    HelloMeshState.cpp
+
+    HelloPrimState.h
     HelloPrimState.cpp
+
+    HelloTextState.h
     HelloTextState.cpp
+
+    MainState.h
     MainState.cpp
 )
 
-set(
-    LS_TEST_SOURCES_HELLOWORLD
+set(LS_TEST_SOURCES_HELLOWORLD
     main.cpp
     ${LS_TEST_SOURCES}
     ${LS_TEST_HEADERS}
@@ -149,8 +115,15 @@ configure_file(testdata/sibenik/sibenik.obj        testdata/sibenik/sibenik.obj 
 # -------------------------------------
 function(LS_TEST_ADD_TARGET trg srcs)
     add_executable(${trg} ${srcs})
-    add_dependencies(${trg} ${LS_TEST_INTERNAL_DEPS})
-    target_link_libraries(${trg} ${LS_TEST_INTERNAL_DEPS} ${LS_TEST_EXTERNAL_DEPS})
+    target_include_directories(${trg} PUBLIC .)
+    target_link_libraries(${trg}
+        LightSky::Game
+        LightSky::Draw
+        LightSky::Utils
+        LightSky::Math
+        LightSky::Setup
+        ${SDL2_LIBRARIES}
+    )
 endfunction()
 
 LS_TEST_ADD_TARGET(hello_ls_game "${LS_TEST_SOURCES_HELLOWORLD}")

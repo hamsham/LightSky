@@ -252,14 +252,13 @@ elseif (CMAKE_SYSTEM_NAME MATCHES "Android")
 
     set(SDL2_LIBRARIES SDL2_MAIN SDL2 ${GLES2_LIBRARY} ${GLES3_LIBRARY} ${EGL_LIBRARY} ${ANDROID_LOG_LIBRARY} ${ANDROID_LIBRARY} Threads::Threads)
 elseif(NOT APPLE)
-    find_package(OpenGL REQUIRED)
     find_library(DYNAMIC_LIBRARY dl REQUIRED)
 
     if (DYNAMIC_LIBRARY-NOTFOUND)
         message(FATAL_ERROR "-- Unable to find libdl for linking with SDL2.")
     endif()
 
-    set(SDL2_LIBRARIES SDL2_MAIN SDL2 ${OPENGL_LIBRARIES} Threads::Threads ${DYNAMIC_LIBRARY})
+    set(SDL2_LIBRARIES SDL2_MAIN SDL2 Threads::Threads ${DYNAMIC_LIBRARY})
 
 elseif(APPLE)
     set(CMAKE_FIND_FRAMEWORK LAST)

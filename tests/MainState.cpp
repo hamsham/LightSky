@@ -172,7 +172,7 @@ bool MainState::on_start() {
         return false;
     }
     
-    constexpr math::vec2i winSize = {get_test_window_width(), get_test_window_height()};
+    constexpr math::vec2i winSize{(int)get_test_window_width(), (int)get_test_window_height()};
     global::pDisplay.reset(new(std::nothrow) Display{});
     
     if (!global::pDisplay || !global::pDisplay->init(winSize)) {
